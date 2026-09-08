@@ -1,8 +1,0 @@
-# Versions used for the reviewed figures and tests (Python 3.13.3).
-# Training reuses locally downloaded JKP data; WRDS downloading is separate.
-numpy==2.3.5
-pandas==2.2.3
-matplotlib==3.10.8
-pyarrow==22.0.0
-scipy==1.16.3
-pytest==7.4.4

@@ -19,8 +19,6 @@ def main():
             "random_state": 0,
             "batch_size": 4096,
         },
-        # Default: 29 relative penalties from 1e-10 to 1e4.
-        rho_grid=None,
         train_years=10,
         validation_years=5,
         test_years=1,

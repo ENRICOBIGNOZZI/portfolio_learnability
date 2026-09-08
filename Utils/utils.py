@@ -355,52 +355,32 @@ def _managed_payoff_matrix(monthly_statistics):
 def _ridge_path_from_managed_payoffs(
     managed_payoffs,
     *,
-    rho_grid=None,
-    lambdas=None,
+    lambda_grid=None,
 ):
     """Solve the response-one KRR path using the small monthly dual.
 
-    ``rho_grid`` expresses lambda relative to the largest eigenvalue of
-    G'G/T. Supplying absolute ``lambdas`` remains available for experiments,
-    but the two arguments are mutually exclusive.
+    ``lambda_grid`` contains the direct ridge penalties used in every rolling
+    window. It is deliberately not rescaled by the managed-payoff spectrum.
     """
     G = np.asarray(managed_payoffs, dtype=float)
     if G.ndim != 2 or len(G) == 0 or not np.isfinite(G).all():
         raise ValueError("managed_payoffs must be a finite, non-empty matrix.")
-    if rho_grid is not None and lambdas is not None:
-        raise ValueError("Supply rho_grid or lambdas, not both.")
 
     n_months = len(G)
     dual_covariance = (G @ G.T) / n_months
     eigenvalues, eigenvectors = np.linalg.eigh(dual_covariance)
     eigenvalues = np.maximum(eigenvalues, 0.0)
-    spectral_scale = float(eigenvalues.max())
-    if not np.isfinite(spectral_scale) or spectral_scale <= 0.0:
-        raise ValueError("Managed payoffs have zero spectral scale.")
-
-    if lambdas is None:
-        rho_grid = np.asarray(
-            np.logspace(-10.0, 4.0, 29) if rho_grid is None else rho_grid,
-            dtype=float,
-        )
-        if rho_grid.ndim != 1 or len(rho_grid) == 0 or np.any(rho_grid <= 0):
-            raise ValueError("rho_grid must contain positive values.")
-        rho_grid = np.unique(rho_grid)
-        absolute_lambdas = rho_grid * spectral_scale
-    else:
-        absolute_lambdas = np.asarray(lambdas, dtype=float)
-        if (
-            absolute_lambdas.ndim != 1
-            or len(absolute_lambdas) == 0
-            or np.any(absolute_lambdas <= 0)
-        ):
-            raise ValueError("lambdas must contain positive values.")
-        absolute_lambdas = np.unique(absolute_lambdas)
-        rho_grid = absolute_lambdas / spectral_scale
+    lambda_grid = np.asarray(
+        np.logspace(-6.0, 6.0, 37) if lambda_grid is None else lambda_grid,
+        dtype=float,
+    )
+    if lambda_grid.ndim != 1 or len(lambda_grid) == 0 or np.any(lambda_grid <= 0):
+        raise ValueError("lambda_grid must contain positive values.")
+    lambda_grid = np.unique(lambda_grid)
 
     response = np.ones(n_months, dtype=float)
     projected_response = eigenvectors.T @ response
-    denominators = eigenvalues[:, None] + absolute_lambdas[None, :]
+    denominators = eigenvalues[:, None] + lambda_grid[None, :]
     dual_coefficients = eigenvectors @ (
         projected_response[:, None] / (n_months * denominators)
     )
@@ -415,9 +395,7 @@ def _ridge_path_from_managed_payoffs(
         "effective_dimensions": effective_dimensions,
         "eigenvalues": eigenvalues,
         "target_alignment": projected_response**2 / n_months,
-        "spectral_scale": spectral_scale,
-        "rho_grid": rho_grid,
-        "lambdas": absolute_lambdas,
+        "lambda_grid": lambda_grid,
     }
 
 
@@ -426,49 +404,17 @@ def _portfolio_returns_from_loadings(monthly_statistics, coefficients):
     return G @ coefficients
 
 
-def _weight_turnover(ids, weights, previous_positions):
-    """L1 turnover over the union of the current and previous stock universe."""
-    ids = np.asarray(ids)
-    weights = np.asarray(weights, dtype=float)
-    if previous_positions is None:
-        width = 1 if weights.ndim == 1 else weights.shape[1]
-        return np.full(width, np.nan, dtype=float)
-
-    previous_ids = np.asarray(previous_positions["ids"])
-    previous_weights = np.asarray(previous_positions["weights"], dtype=float)
-    current_was_vector = weights.ndim == 1
-    if current_was_vector:
-        weights = weights[:, None]
-    if previous_weights.ndim == 1:
-        previous_weights = previous_weights[:, None]
-    if weights.shape[1] != previous_weights.shape[1]:
-        raise ValueError("Current and previous portfolio paths have different widths.")
-
-    union = pd.Index(previous_ids).union(pd.Index(ids), sort=False)
-    current_aligned = np.zeros((len(union), weights.shape[1]), dtype=float)
-    previous_aligned = np.zeros_like(current_aligned)
-    current_locations = union.get_indexer(ids)
-    previous_locations = union.get_indexer(previous_ids)
-    current_aligned[current_locations] = weights
-    previous_aligned[previous_locations] = previous_weights
-    turnover = np.abs(current_aligned - previous_aligned).sum(axis=0)
-    return turnover
-
-
 def _evaluate_oos_panels(
     panels,
     monthly_statistics,
     kernel,
     coefficients,
-    rho_grid,
-    lambdas,
+    lambda_grid,
     test_year,
     selected_index,
     *,
     volatility_scales=None,
     max_gross_exposure=10.0,
-    previous_path_positions=None,
-    previous_selected_positions=None,
     save_weights=False,
 ):
     """Evaluate raw weights and a proportional monthly gross-exposure cap."""
@@ -523,22 +469,9 @@ def _evaluate_oos_panels(
         portfolio_returns = raw_portfolio_returns * leverage_scales
         net_exposures = raw_net_exposures * leverage_scales
         gross_exposures = raw_gross_exposures * leverage_scales
-        implemented_weights = raw_weights * leverage_scales[None, :]
-        selected_weights = implemented_weights[:, selected_index]
-        path_turnover = _weight_turnover(
-            panel["id"], implemented_weights, previous_path_positions
+        selected_weights = (
+            raw_weights[:, selected_index] * leverage_scales[selected_index]
         )
-        selected_turnover = _weight_turnover(
-            panel["id"], selected_weights, previous_selected_positions
-        )[0]
-        previous_path_positions = {
-            "ids": np.asarray(panel["id"]).copy(),
-            "weights": implemented_weights.copy(),
-        }
-        previous_selected_positions = {
-            "ids": np.asarray(panel["id"]).copy(),
-            "weights": selected_weights.copy(),
-        }
 
         if save_weights:
             for index in range(n_assets):
@@ -555,13 +488,11 @@ def _evaluate_oos_panels(
                     }
                 )
 
-        for index, (rho, lambda_) in enumerate(zip(rho_grid, lambdas, strict=True)):
-            is_selected = index == selected_index
+        for index, lambda_ in enumerate(lambda_grid):
             record = {
                     "test_year": test_year,
                     "date": pd.Timestamp(panel["date"]),
                     "penalty_index": index,
-                    "rho": float(rho),
                     "lambda": float(lambda_),
                     "portfolio_return": float(portfolio_returns[index]),
                     "portfolio_return_raw": float(raw_portfolio_returns[index]),
@@ -573,27 +504,17 @@ def _evaluate_oos_panels(
                     "leverage_scale": float(leverage_scales[index]),
                     "volatility_scale": float(volatility_scales[index]),
                     "max_gross_exposure": max_gross_exposure,
-                    "turnover": float(path_turnover[index]),
-                    "selected_strategy_turnover": (
-                        float(selected_turnover) if is_selected else np.nan
-                    ),
                     "n_assets": n_assets,
                     "selected_by_validation": is_selected,
                 }
             records.append(record)
-    return (
-        records,
-        weight_records,
-        previous_path_positions,
-        previous_selected_positions,
-    )
+    return records, weight_records
 
 
 def _evaluate_native_oos_months(
     monthly_statistics,
     coefficients,
-    rho_grid,
-    lambdas,
+    lambda_grid,
     test_year,
     selected_index,
 ):
@@ -601,20 +522,19 @@ def _evaluate_native_oos_months(
 
     This path is intended for auxiliary exercises that only study statistical
     loss and effective dimension.  It avoids reconstructing stock-level weights
-    for every value of rho, so long-history experiments remain fast and
+    for every value of lambda, so long-history experiments remain fast and
     memory-bounded.  Headline economic results continue to use
     ``_evaluate_oos_panels`` and therefore retain weights and exposure data.
     """
     native_returns = _managed_payoff_matrix(monthly_statistics) @ coefficients
     records = []
     for month_index, month in enumerate(monthly_statistics):
-        for index, (rho, lambda_) in enumerate(zip(rho_grid, lambdas, strict=True)):
+        for index, lambda_ in enumerate(lambda_grid):
             records.append(
                 {
                     "test_year": test_year,
                     "date": pd.Timestamp(month["date"]),
                     "penalty_index": index,
-                    "rho": float(rho),
                     "lambda": float(lambda_),
                     "portfolio_return": np.nan,
                     "portfolio_return_raw": np.nan,
@@ -626,8 +546,6 @@ def _evaluate_native_oos_months(
                     "leverage_scale": np.nan,
                     "volatility_scale": np.nan,
                     "max_gross_exposure": np.nan,
-                    "turnover": np.nan,
-                    "selected_strategy_turnover": np.nan,
                     "n_assets": np.nan,
                     "selected_by_validation": index == selected_index,
                 }
@@ -650,8 +568,7 @@ def train_model(
     *,
     kernel="gaussian",
     kernel_parameters=None,
-    rho_grid=None,
-    lambdas=None,
+    lambda_grid=None,
     train_years=10,
     validation_years=5,
     test_years=1,
@@ -668,7 +585,7 @@ def train_model(
 
     The policy is shared across stocks, ``w_it = phi(z_it)' beta``. Estimation
     weights are free and are never divided by N_t. Lambda is chosen only with
-    response-one validation loss, then the chosen rho is refitted on train + validation.
+    response-one validation loss, then the chosen lambda is refitted on train + validation.
     In the held-out implementation, an optional proportional monthly overlay
     enforces ``sum_i abs(w_it) <= max_gross_exposure``.  Auxiliary statistical
     exercises may set ``native_oos_only=True`` to skip stock-level weight
@@ -679,8 +596,6 @@ def train_model(
         raise NotImplementedError(
             "train_model supports Gaussian RFF, Matérn-3/2 RFF, and linear ridge."
         )
-    if rho_grid is not None and lambdas is not None:
-        raise ValueError("Supply rho_grid or lambdas, not both.")
 
     parameters = {"batch_size": 4096}
     if kernel in {"gaussian", "matern32"}:
@@ -787,13 +702,9 @@ def train_model(
     refit_target_alignment = []
     model_test_years = []
     selected_indices = []
-    train_spectral_scales = []
-    refit_spectral_scales = []
     model_volatility_scales = []
     refit_dual_coefficients = []
     refit_month_dates = []
-    previous_path_positions = None
-    previous_selected_positions = None
 
     for test_year, train_year_list, validation_year_list, test_year_list in candidate_windows:
         required_years = set(train_year_list + validation_year_list + test_year_list)
@@ -822,8 +733,7 @@ def train_model(
 
         train_path = _ridge_path_from_managed_payoffs(
             train_G,
-            rho_grid=rho_grid,
-            lambdas=lambdas,
+            lambda_grid=lambda_grid,
         )
         train_returns = train_G @ train_path["coefficients"]
         validation_returns = validation_G @ train_path["coefficients"]
@@ -872,8 +782,7 @@ def train_model(
 
         refit_path = _ridge_path_from_managed_payoffs(
             _managed_payoff_matrix(refit_months),
-            rho_grid=train_path["rho_grid"] if lambdas is None else None,
-            lambdas=lambdas,
+            lambda_grid=train_path["lambda_grid"],
         )
         test_months = [
             month for year in test_year_list for month in monthly_statistics[year]
@@ -882,8 +791,7 @@ def train_model(
             window_oos = _evaluate_native_oos_months(
                 test_months,
                 refit_path["coefficients"],
-                refit_path["rho_grid"],
-                refit_path["lambdas"],
+                refit_path["lambda_grid"],
                 test_year,
                 selected_index,
             )
@@ -892,31 +800,23 @@ def train_model(
             test_panels = [
                 panel for year in test_year_list for panel in panels_by_year[year]
             ]
-            (
-                window_oos,
-                window_weights,
-                previous_path_positions,
-                previous_selected_positions,
-            ) = _evaluate_oos_panels(
+            window_oos, window_weights = _evaluate_oos_panels(
                 test_panels,
                 test_months,
                 rff_kernel,
                 refit_path["coefficients"],
-                refit_path["rho_grid"],
-                refit_path["lambdas"],
+                refit_path["lambda_grid"],
                 test_year,
                 selected_index,
                 volatility_scales=volatility_scales,
                 max_gross_exposure=max_gross_exposure,
-                previous_path_positions=previous_path_positions,
-                previous_selected_positions=previous_selected_positions,
                 save_weights=save_weights,
             )
         monthly_oos.extend(window_oos)
         selected_weight_records.extend(window_weights)
         window_oos_frame = pd.DataFrame(window_oos)
 
-        for index, rho in enumerate(refit_path["rho_grid"]):
+        for index, lambda_ in enumerate(refit_path["lambda_grid"]):
             lambda_oos = window_oos_frame.loc[
                 window_oos_frame["penalty_index"].eq(index),
                 "portfolio_return",
@@ -933,9 +833,7 @@ def train_model(
                 {
                     "test_year": test_year,
                     "penalty_index": index,
-                    "rho": float(rho),
-                    "lambda_train": float(train_path["lambdas"][index]),
-                    "lambda_refit": float(refit_path["lambdas"][index]),
+                    "lambda": float(lambda_),
                     "in_sample_sharpe": float(train_sharpes[index]),
                     "validation_sharpe": float(validation_sharpes[index]),
                     "in_sample_loss": float(train_losses[index]),
@@ -965,8 +863,6 @@ def train_model(
         refit_eigenvalues.append(refit_path["eigenvalues"])
         train_target_alignment.append(train_path["target_alignment"])
         refit_target_alignment.append(refit_path["target_alignment"])
-        train_spectral_scales.append(train_path["spectral_scale"])
-        refit_spectral_scales.append(refit_path["spectral_scale"])
         model_volatility_scales.append(volatility_scales)
         refit_dual_coefficients.append(refit_path["dual_coefficients"])
         refit_month_dates.append(
@@ -977,8 +873,7 @@ def train_model(
         for year in test_year_list:
             panels_by_year.pop(year, None)
         print(
-            f"Window {test_year}: selected rho={refit_path['rho_grid'][selected_index]:.3g}, "
-            f"lambda(refit)={refit_path['lambdas'][selected_index]:.3g}, "
+            f"Window {test_year}: selected lambda={refit_path['lambda_grid'][selected_index]:.3g}, "
             f"validation loss={validation_losses[selected_index]:.4g}"
         )
 
@@ -997,8 +892,6 @@ def train_model(
     ].sort_values("date").copy()
     selected_oos["equity"] = (1.0 + selected_oos["portfolio_return"]).cumprod()
     selected_oos["cumulative_pnl"] = 1.0 + selected_oos["portfolio_return"].cumsum()
-    selected_oos["fixed_rho_turnover"] = selected_oos["turnover"]
-    selected_oos["turnover"] = selected_oos["selected_strategy_turnover"]
 
     output_dir.mkdir(parents=True, exist_ok=True)
     diagnostics_path = output_dir / "lambda_diagnostics.parquet"
@@ -1024,14 +917,12 @@ def train_model(
 
     model_payload = {
         "test_years": np.asarray(model_test_years),
-        "rho_grid": np.asarray(refit_path["rho_grid"]),
+        "lambda_grid": np.asarray(refit_path["lambda_grid"]),
         "coefficients": np.stack(model_coefficients),
         "train_eigenvalues": _pad_vectors(train_eigenvalues),
         "refit_eigenvalues": _pad_vectors(refit_eigenvalues),
         "train_target_alignment": _pad_vectors(train_target_alignment),
         "refit_target_alignment": _pad_vectors(refit_target_alignment),
-        "train_spectral_scales": np.asarray(train_spectral_scales),
-        "refit_spectral_scales": np.asarray(refit_spectral_scales),
         "selected_indices": np.asarray(selected_indices),
         "volatility_scales": np.stack(model_volatility_scales),
         "refit_dual_coefficients": np.stack(refit_dual_coefficients),
@@ -1053,8 +944,8 @@ def train_model(
         "ell_method": ell_method,
         "characteristics": characteristics,
         "n_characteristics": len(characteristics),
-        "rho_grid": np.asarray(refit_path["rho_grid"]).tolist(),
-        "lambda_units": "rho times the largest training/refit managed-payoff eigenvalue",
+        "lambda_grid": np.asarray(refit_path["lambda_grid"]).tolist(),
+        "lambda_units": "direct ridge penalty in the response-one objective",
         "train_years": train_years,
         "validation_years": validation_years,
         "test_years": test_years,
@@ -1065,10 +956,9 @@ def train_model(
         "target_annualized_volatility": target_volatility,
         "volatility_scaling": "validation-period realized volatility, fixed before each test window",
         "leverage_rule": "monthly proportional rescaling if sum(abs(raw weights)) exceeds the cap",
-        "turnover_definition": "sum of absolute weight changes over the union of consecutive stock universes",
         "training_objective": "mean_t (1 - portfolio_return_t)^2 + lambda * ||beta||^2",
         "lambda_selection": "minimum response-one validation loss of the unconstrained paper estimator",
-        "refit": "train plus validation after rho selection",
+        "refit": "train plus validation after lambda selection",
         "effective_dimension": "sum_j mu_j / (mu_j + lambda), mu_j eigenvalues of G'G/T",
         "completed_windows": len(model_test_years),
         "save_weights": bool(save_weights),
