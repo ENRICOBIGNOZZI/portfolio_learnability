@@ -1,6 +1,8 @@
 # Local data, caches, and generated research outputs
 data/
-results/
+results/**
+!results/**/
+!results/**/*.png
 tmp/
 
 # Python environments and build artifacts
