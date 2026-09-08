@@ -338,3 +338,19 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+DEFAULT_DATA_DIR = PROJECT_ROOT / "data" / "JKP_USA"
+
+
+def load_dataset(
+    data_dir=DEFAULT_DATA_DIR,
+    characteristics="all",
+    years=None,
+):
+    return load_jkp_value(
+        data_dir=Path(data_dir),
+        CHARACTERISTIC=characteristics,
+        years=years,
+    )
