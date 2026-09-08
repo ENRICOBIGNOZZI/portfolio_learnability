@@ -1,0 +1,25 @@
+# Local data, caches, and generated research outputs
+data/
+results/
+tmp/
+
+# Python environments and build artifacts
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.so
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Secrets and local editor configuration
+.env
+.env.*
+!.env.example
+.vscode/
+.idea/
+
+# Operating-system files
+.DS_Store
+Thumbs.db
