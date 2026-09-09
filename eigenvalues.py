@@ -9,11 +9,17 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+from matplotlib.ticker import MaxNLocator
+import argparse
 
 from plot_style import KERNEL_COLORS, save_figure, use_plot_style
 
 
 use_plot_style()
+
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument("--plots-only", action="store_true")
+plots_only = parser.parse_args().plots_only
 
 characteristics = "all"
 kernel_names = [
@@ -95,26 +101,39 @@ for kernel_name in kernel_names:
     figure, axes = plt.subplots(
         1,
         2,
-        figsize=(7.2, 3.5),
+        figsize=(8.4, 3.8),
     )
 
-    histogram_weights = np.full(
-        len(normalized_values),
+    zoom_limit = np.quantile(normalized_values, 0.90)
+    zoom_limit = max(zoom_limit, normalized_values.min())
+    zoom_values = normalized_values[
+        normalized_values <= zoom_limit
+    ]
+    zoom_weights = np.full(
+        len(zoom_values),
         100.0 / len(normalized_values),
     )
     axes[0].hist(
-        normalized_values,
-        bins=np.linspace(0.0, 1.0, 61),
-        weights=histogram_weights,
+        zoom_values,
+        bins=np.linspace(0.0, zoom_limit, 31),
+        weights=zoom_weights,
         color=KERNEL_COLORS[kernel_name],
         edgecolor="white",
         linewidth=0.4,
     )
-    axes[0].set_xlim(0.0, 1.0)
+    axes[0].set_xlim(0.0, zoom_limit)
     axes[0].set_xlabel(r"Normalized eigenvalue  $\mu_j / \mu_1$")
-    axes[0].set_ylabel("Share (%) - log scale")
-    axes[0].set_yscale("log")
-    axes[0].set_title("Distribution")
+    axes[0].set_ylabel("Share of eigenvalues (%)")
+    axes[0].set_title("Distribution · Zoom to 90th percentile")
+    axes[0].xaxis.set_major_locator(MaxNLocator(nbins=4))
+    axes[0].ticklabel_format(axis="x", style="sci", scilimits=(0, 0), useMathText=True)
+    axes[0].grid(False)
+    axes[0].yaxis.grid(True, alpha=0.4)
+    axes[0].text(
+        0.97, 0.96, "Linear x-axis\nUpper 10% outside view",
+        transform=axes[0].transAxes, ha="right", va="top",
+        fontsize=8, color="#666666",
+    )
 
     axes[1].loglog(
         ranks,
@@ -172,12 +191,8 @@ for kernel_name in kernel_names:
         results_folder
         / "estimated_b.parquet"
     )
-    pd.DataFrame(
-        [estimate]
-    ).to_parquet(
-        estimate_file,
-        index=False,
-    )
+    if not plots_only:
+        pd.DataFrame([estimate]).to_parquet(estimate_file, index=False)
 
     print()
     print("Kernel:", kernel_label)
@@ -190,10 +205,6 @@ all_estimates_file = (
     / "results"
     / f"estimated_b_all_kernels_{characteristic_name}.parquet"
 )
-pd.DataFrame(all_estimates).to_parquet(
-    all_estimates_file,
-    index=False,
-)
-
-print()
-print("All estimates saved in:", all_estimates_file)
+if not plots_only:
+    pd.DataFrame(all_estimates).to_parquet(all_estimates_file, index=False)
+    print("All estimates saved in:", all_estimates_file)

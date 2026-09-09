@@ -62,6 +62,5 @@ def use_plot_style():
 
 
 def save_figure(figure, png_file):
-    """Save a high-resolution PNG and a vector PDF."""
+    """Save only a high-resolution PNG."""
     figure.savefig(png_file, dpi=300)
-    figure.savefig(png_file.with_suffix(".pdf"))
