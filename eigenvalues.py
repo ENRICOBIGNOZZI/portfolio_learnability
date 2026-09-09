@@ -19,9 +19,11 @@ use_plot_style()
 
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument("--plots-only", action="store_true")
-plots_only = parser.parse_args().plots_only
+parser.add_argument("--characteristics", nargs="+", default=["all"])
+args = parser.parse_args()
+plots_only = args.plots_only
 
-characteristics = "all"
+characteristics = "all" if args.characteristics == ["all"] else args.characteristics
 kernel_names = [
     "linear",
     "gaussian",
@@ -85,7 +87,7 @@ for kernel_name in kernel_names:
     estimated_b = np.nan
     fitted_values = None
 
-    if len(values) >= 2:
+    if len(values) >= 3:
         slope, intercept = np.polyfit(
             np.log(ranks),
             np.log(values),
@@ -104,7 +106,8 @@ for kernel_name in kernel_names:
         figsize=(8.4, 3.8),
     )
 
-    zoom_limit = np.quantile(normalized_values, 0.90)
+    show_full_spectrum = len(values) <= 10
+    zoom_limit = normalized_values.max() if show_full_spectrum else np.quantile(normalized_values, 0.90)
     zoom_limit = max(zoom_limit, normalized_values.min())
     zoom_values = normalized_values[
         normalized_values <= zoom_limit
@@ -124,13 +127,14 @@ for kernel_name in kernel_names:
     axes[0].set_xlim(0.0, zoom_limit)
     axes[0].set_xlabel(r"Normalized eigenvalue  $\mu_j / \mu_1$")
     axes[0].set_ylabel("Share of eigenvalues (%)")
-    axes[0].set_title("Distribution · Zoom to 90th percentile")
+    axes[0].set_title("Distribution · Full spectrum" if show_full_spectrum else "Distribution · Zoom to 90th percentile")
     axes[0].xaxis.set_major_locator(MaxNLocator(nbins=4))
     axes[0].ticklabel_format(axis="x", style="sci", scilimits=(0, 0), useMathText=True)
     axes[0].grid(False)
     axes[0].yaxis.grid(True, alpha=0.4)
     axes[0].text(
-        0.97, 0.96, "Linear x-axis\nUpper 10% outside view",
+        0.97, 0.96, (f"Linear x-axis\nAll {len(values)} eigenvalues shown" if show_full_spectrum
+                    else "Linear x-axis\nAbove 90th percentile outside view"),
         transform=axes[0].transAxes, ha="right", va="top",
         fontsize=8, color="#666666",
     )
@@ -154,6 +158,9 @@ for kernel_name in kernel_names:
     axes[1].set_xlabel("Eigenvalue rank")
     axes[1].set_ylabel(r"Normalized eigenvalue  $\mu_j / \mu_1$")
     axes[1].set_title("Ranked spectrum and fit")
+    if fitted_values is None:
+        axes[1].set_title("Ranked spectrum · No tail fit")
+        axes[1].text(.04, .05, "Too few eigenvalues for a spectral-tail fit", transform=axes[1].transAxes, fontsize=8)
     axes[1].legend(loc="upper right")
 
     title = (

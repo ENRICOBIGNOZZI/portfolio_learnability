@@ -1,6 +1,7 @@
 """Plot the out-of-sample equity line."""
 
 from pathlib import Path
+import argparse
 
 import matplotlib
 
@@ -12,8 +13,12 @@ import pandas as pd
 from Utils.utils import compute_equity_line
 
 
-kernel_name = "linear"
-characteristics = ["be_me"]
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument("--kernel", default="linear")
+parser.add_argument("--characteristics", nargs="+", default=["be_me"])
+args = parser.parse_args()
+kernel_name = args.kernel
+characteristics = args.characteristics
 
 project_folder = Path(__file__).resolve().parent
 characteristic_name = "_".join(characteristics)

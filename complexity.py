@@ -19,7 +19,6 @@ from Utils.utils import compute_sharpe_ratio
 use_plot_style()
 
 project_folder = Path(__file__).resolve().parent
-characteristics = "all"
 kernel_labels = {
     "linear": "Linear",
     "gaussian": "Gaussian",
@@ -319,8 +318,8 @@ def plot_relative_graphs(diagnostics, monthly_returns, kernel_name, folder):
     return data, summary
 
 
-def plot_complexity(kernel_name):
-    folder = project_folder / "results" / kernel_name / characteristics
+def plot_complexity(kernel_name, characteristic_name="all"):
+    folder = project_folder / "results" / kernel_name / characteristic_name
     diagnostics = pd.read_parquet(folder / "lambda_diagnostics.parquet")
     monthly_returns = pd.read_parquet(folder / "lambda_portfolio_returns.parquet")
     summary = make_summary(diagnostics, monthly_returns)
@@ -355,5 +354,9 @@ def plot_complexity(kernel_name):
 
 
 if __name__ == "__main__":
+    import argparse
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--characteristics", nargs="+", default=["all"])
+    characteristic_name = "_".join(parser.parse_args().characteristics)
     for kernel_name in kernel_labels:
-        plot_complexity(kernel_name)
+        plot_complexity(kernel_name, characteristic_name)

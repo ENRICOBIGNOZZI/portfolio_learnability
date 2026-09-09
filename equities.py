@@ -1,6 +1,7 @@
 """Plot all kernel equity lines in one graph."""
 
 from pathlib import Path
+import argparse
 
 import matplotlib
 
@@ -20,7 +21,11 @@ from Utils.utils import compute_equity_line
 
 use_plot_style()
 
-characteristics = "all"
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument("--characteristics", nargs="+", default=["all"])
+characteristics = parser.parse_args().characteristics
+if characteristics == ["all"]:
+    characteristics = "all"
 kernel_names = [
     "linear",
     "gaussian",
@@ -70,7 +75,7 @@ for kernel_name in kernel_names:
         linestyle=KERNEL_LINESTYLES[kernel_name],
     )
 
-axis.set_title("Out-of-sample equity by kernel")
+axis.set_title(f"Out-of-sample equity by kernel · {characteristic_name}")
 axis.set_xlabel("Date")
 axis.set_ylabel("Cumulative wealth - log scale")
 axis.set_yscale("log")

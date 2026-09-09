@@ -1,5 +1,7 @@
 """Run all portfolio kernels."""
 
+import argparse
+
 from train_model import train_model
 
 
@@ -10,7 +12,11 @@ lengthscale_multipliers = [
     1.0,
     2.0,
 ]
-characteristics = "all"
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument("--characteristics", nargs="+", default=["all"])
+parser.add_argument("--kernels", nargs="+", choices=["linear", "gaussian", "ntk", "matern12", "matern32", "matern52"])
+args = parser.parse_args()
+characteristics = "all" if args.characteristics == ["all"] else args.characteristics
 max_gross_exposure = 2.0
 kernel_names = [
     "linear",
@@ -20,8 +26,11 @@ kernel_names = [
     "matern32",
     "matern52",
 ]
+if args.kernels:
+    kernel_names = args.kernels
 
 for kernel_name in kernel_names:
+    print(f"Training {kernel_name}: {characteristics}", flush=True)
     train_model(
         lambda_grid=lambda_grid,
         kernel_name=kernel_name,

@@ -38,8 +38,8 @@ def bootstrap_curves(monthly_returns, lambdas):
     return sharpe, weights
 
 
-def analyze_kernel(kernel):
-    folder = ROOT / "results" / kernel / "all"
+def analyze_kernel(kernel, characteristic_name="all", input_dimension=132):
+    folder = ROOT / "results" / kernel / characteristic_name
     diagnostics = pd.read_parquet(folder / "lambda_diagnostics.parquet")
     monthly = pd.read_parquet(folder / "lambda_portfolio_returns.parquet")
     portfolio = pd.read_parquet(folder / "portfolio_returns.parquet").sort_values("return_date")
@@ -52,7 +52,8 @@ def analyze_kernel(kernel):
     spectrum = pd.read_parquet(folder / "kernel_eigenvalues.parquet")
     dimensions = spectrum.groupby("test_year").size()
     Ts = data.groupby("test_year").estimation_months.first()
-    expected = np.minimum(Ts, 133 if kernel == "linear" else 1000)
+    feature_count = input_dimension + 1 if kernel == "linear" else (2000 if kernel == "ntk" else 1000)
+    expected = np.minimum(Ts, feature_count)
     assert np.array_equal(dimensions.to_numpy(), expected.to_numpy())
     assert portfolio.gross_exposure.max() <= 2 + 1e-10
 
@@ -128,10 +129,21 @@ def analyze_kernel(kernel):
 
 
 def main():
+    global OUTPUT
+    import argparse
+    from download_JKP.read_dataset import DEFAULT_DATA_DIR, available_jkp_characteristics
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--characteristics", nargs="+", default=["all"])
+    args = parser.parse_args()
+    characteristic_name = "_".join(args.characteristics)
+    input_dimension = (len(available_jkp_characteristics(DEFAULT_DATA_DIR))
+                       if characteristic_name == "all" else len(args.characteristics))
+    OUTPUT = ROOT / "results" / ("complexity_analysis" if characteristic_name == "all"
+                                 else f"complexity_analysis_{characteristic_name}")
     OUTPUT.mkdir(exist_ok=True, parents=True)
     rows, annuals, curves = [], [], []
     for kernel in charts.kernel_labels:
-        row, annual, curve = analyze_kernel(kernel)
+        row, annual, curve = analyze_kernel(kernel, characteristic_name, input_dimension)
         rows.append(row)
         annuals.append(annual)
         curves.append((kernel, curve))
@@ -151,20 +163,23 @@ def main():
         axis.yaxis.grid(True, alpha=0.4)
     axes[0,0].set_ylabel("Pooled OOS Sharpe")
     axes[1,0].set_ylabel("Pooled OOS Sharpe")
-    figure.suptitle("Relative complexity · Six kernels", fontsize=15)
+    figure.suptitle(f"Relative complexity · Six kernels · {characteristic_name}", fontsize=15)
     figure.text(0.5, 0.015, "Shading: 95% pointwise intervals, 1,000 paired test-window bootstrap draws. Unconstrained returns.",
                 ha="center", fontsize=9)
     figure.tight_layout(rect=(0,0.04,1,0.95))
     save_figure(figure, OUTPUT / "relative_complexity_all_kernels.png")
     plt.close(figure)
 
-    figure, axes = plt.subplots(2, 3, figsize=(12, 7), sharex=True, sharey=True)
+    figure, axes = plt.subplots(2, 3, figsize=(12, 7), sharex=True, sharey=characteristic_name == "all")
     for axis, annual, kernel in zip(axes.flat, annuals, charts.kernel_labels):
         axis.plot(annual.test_year, annual.relative_complexity, color=KERNEL_COLORS[kernel],
                    marker="o", markersize=3, linewidth=0.8)
         axis.set_title(charts.kernel_labels[kernel])
         axis.set_xlabel("Test formation year")
-        axis.set_ylim(-0.02,1.02)
+        if characteristic_name == "all":
+            axis.set_ylim(-0.02,1.02)
+        else:
+            axis.set_ylim(0, max(annual.relative_complexity.max() * 1.08, 1e-6))
         axis.grid(False)
         axis.yaxis.grid(True, alpha=0.4)
     axes[0,0].set_ylabel(r"Window-specific optimal $C/T$")
@@ -177,7 +192,8 @@ def main():
     plt.close(figure)
     print(pd.DataFrame(rows).to_string(index=False))
     from complexity_report import build_report
-    build_report()
+    build_report(output=OUTPUT, characteristic_name=characteristic_name,
+                 characteristics=args.characteristics)
 
 
 if __name__ == "__main__":

@@ -2,6 +2,7 @@
 
 from html import escape
 from pathlib import Path
+import shlex
 
 import pandas as pd
 
@@ -21,7 +22,9 @@ def figure(path, caption):
     return f'<figure><a href="{path}"><img src="{path}" loading="lazy" alt="{escape(caption)}"></a><figcaption>{caption}</figcaption></figure>'
 
 
-def build_report():
+def build_report(output=None, characteristic_name="all", characteristics=None):
+    global OUTPUT
+    OUTPUT = Path(output) if output is not None else ROOT / "results/complexity_analysis"
     comparison = pd.read_parquet(OUTPUT / "kernel_comparison.parquet")
     gaussian = comparison.set_index("kernel").loc["gaussian"]
 
@@ -41,11 +44,12 @@ def build_report():
     implemented = table(
         ["Kernel", "Sharpe OOS, pesi capped", "Crescita composta annualizzata¹", "Max drawdown¹", "Lengthscale", "b descrittivo, 2024"],
         [[r.label, f"{r.capped_selected_sharpe:.3f}", f"{r.capped_cagr:.1%}", f"{r.capped_max_drawdown:.1%}",
-          "—" if r.kernel in ("linear", "ntk") else f"{r.lengthscale:.4f}", f"{r.estimated_b:.3f}"] for r in comparison.itertuples()])
+          "—" if r.kernel in ("linear", "ntk") else f"{r.lengthscale:.4f}",
+          "—" if pd.isna(r.estimated_b) else f"{r.estimated_b:.3f}"] for r in comparison.itertuples()])
 
     gallery = ""
     for row in comparison.itertuples():
-        folder = f"../{row.kernel}/all"
+        folder = f"../{row.kernel}/{characteristic_name}"
         gallery += f'<details id="{row.kernel}"><summary>{row.label} · tutti i grafici</summary>'
         gallery += f'<p><a href="{folder}/pooled_oos_relative_complexity_3d.html">Ruota la curva OOS aggregata</a> · <a href="{folder}/relative_complexity_3d.html">Ruota la curva OOS 2024</a></p>'
         gallery += '<div class="gallery">'
@@ -60,6 +64,67 @@ def build_report():
         ]:
             gallery += figure(f"{folder}/{filename}.png", f"{row.label} — {caption}")
         gallery += "</div></details>"
+
+    if characteristic_name != "all":
+        gallery = ""
+        for row in comparison.itertuples():
+            folder = ROOT / "results" / row.kernel / characteristic_name
+            gallery += f'<details><summary>{row.label} · tutti i grafici</summary><div class="gallery">'
+            for path in sorted(folder.glob("*.png")):
+                relative = f"../{row.kernel}/{characteristic_name}/{path.name}"
+                gallery += figure(relative, path.stem.replace("_", " "))
+                if path.with_suffix(".html").exists():
+                    gallery += f'<p><a href="{relative[:-4]}.html">Grafico 3D interattivo</a></p>'
+            gallery += "</div></details>"
+        first = comparison.iloc[0]
+        name = escape(characteristic_name)
+        linear_spectrum = pd.read_parquet(ROOT / "results/linear" / characteristic_name / "kernel_eigenvalues.parquet")
+        feature_count = int(linear_spectrum.groupby("test_year").size().max())
+        rank_note = ("Anche l'NTK senza bias in una dimensione ha rango al massimo due: "
+                     "le molte coordinate casuali non equivalgono ad altrettanti fattori indipendenti. "
+                     "Due autovalori non identificano una legge di decadimento asintotica."
+                     if feature_count == 2 else "Le coordinate casuali possono essere linearmente dipendenti.")
+        command_selection = escape(shlex.join(characteristics or [characteristic_name]))
+        content = f'''<!doctype html><html lang="it"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><title>Complexity · {name}</title>
+<style>body{{margin:0;background:#f3f1ec;color:#243343;font:16px/1.6 system-ui,sans-serif}}
+main{{max-width:1160px;margin:auto;padding:32px 24px}}section{{background:white;padding:24px;margin:20px 0;border-radius:10px}}
+img{{width:100%;height:auto}}figure{{margin:16px 0}}figcaption{{font-size:13px;color:#65717b}}
+table{{border-collapse:collapse;font-size:13px;width:100%}}th,td{{padding:10px;text-align:right;border-bottom:1px solid #ddd}}
+.table-wrap{{overflow-x:auto}}.gallery{{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}}
+a{{color:#126e7e}}summary{{cursor:pointer;font-size:20px;padding:16px 0}}
+@media(max-width:760px){{.gallery{{grid-template-columns:1fr}}}}</style><main>
+<h1>Solo {name} · equity, spettro e complessità</h1>
+<p>Sei kernel riallenati con la caratteristica {name}. {int(first.windows)} finestre expanding,
+{int(first.months)} rendimenti OOS da {first.first_return_date} a {first.last_return_date};
+{int(first.lambdas)} λ per kernel. Training iniziale di 10 anni, validation di 5 anni, test annuale.
+Il refit include training e validation: T varia da {int(first.T_min)} a {int(first.T_max)} mesi.</p>
+<p><a href="../lambda_scaling_{name}/report.html">Confronto delle regole di lambda</a> · <a href="#grafici">Tutti i grafici</a></p>
+<section><h2>Portafogli con selezione annuale</h2>
+<p>λ è selezionata sulla loss raw di validation. I pesi del test sono ridimensionati quando l'esposizione lorda supera 2.</p>
+{figure(f'../equities_{characteristic_name}.png', 'Equity dei sei kernel con cap lordo mensile a 2.')}{implemented}</section>
+<section><h2>Sharpe e complessità relativa</h2>
+<p>C(λ) = Σ μ/(μ+λ); C/T è calcolato per finestra e poi mediato. Gli Sharpe OOS delle curve
+usano i rendimenti raw concatenati, mentre gli Sharpe IS sono medie tra finestre.
+Le stelle identificano massimi ex post e non selezionano i portafogli implementati.
+Le bande sono intervalli puntuali da 1.000 ricampionamenti appaiati di finestre test annuali.</p>
+{figure('relative_complexity_all_kernels.png', 'Sharpe OOS vs complessità relativa, con intervalli bootstrap.')}
+{peaks}{decline}</section><section><h2>Massimi nelle singole finestre</h2>{annual}
+{figure('relative_complexity_optima_over_time.png', 'Massimi annuali ex post; scale verticali adattate al rango dei kernel.')}</section>
+<section><h2>Spettro e interpretazione</h2>
+<p>Lo spettro proviene dal secondo momento non centrato F′F/T. Il limite è C/T ≤ min(1, P/T).
+Il lineare ha {feature_count} coordinate, inclusa la costante. {rank_note}
+I fit dello spettro finito sono descrittivi.</p>
+<p>Le equity capitalizzano i rendimenti excess salvati. Costi e turnover non sono inclusi.
+La pulizia del dataset è quella della prova precedente e usa la disponibilità sull'intero campione.</p></section>
+<section id="grafici"><h2>Galleria completa</h2>{gallery}</section>
+<section><h2>Dati</h2><p><a href="kernel_comparison.parquet">Confronto kernel</a> ·
+<a href="window_optima.parquet">Massimi per finestra</a></p>
+<p>Rigenerazione: <code>python3 complexity_analysis.py --characteristics {command_selection}</code>.</p></section></main></html>'''
+        OUTPUT.mkdir(exist_ok=True, parents=True)
+        (OUTPUT / "report.html").write_text(content, encoding="utf-8")
+        print("Report:", OUTPUT / "report.html")
+        return
 
     content = f"""
 <header>
