@@ -102,8 +102,8 @@ bounds = db.raw_sql(
     date_cols=["min_date", "max_date"],
 )
 
-start_year = pd.Timestamp(bounds.loc[0, "min_date"]).year
-end_year = pd.Timestamp(bounds.loc[0, "max_date"]).year
+start_year = max(1963, pd.Timestamp(bounds.loc[0, "min_date"]).year)
+end_year = min(2024, pd.Timestamp(bounds.loc[0, "max_date"]).year)
 
 print("JKP USA sample:")
 print(bounds)
