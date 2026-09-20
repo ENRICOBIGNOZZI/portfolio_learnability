@@ -52,7 +52,7 @@ def analyze_kernel(kernel, characteristic_name="all", input_dimension=132):
     spectrum = pd.read_parquet(folder / "kernel_eigenvalues.parquet")
     dimensions = spectrum.groupby("test_year").size()
     Ts = data.groupby("test_year").estimation_months.first()
-    feature_count = input_dimension + 1 if kernel == "linear" else (2000 if kernel == "ntk" else 1000)
+    feature_count = input_dimension + 1 if kernel == "linear" else 1000
     expected = np.minimum(Ts, feature_count)
     assert np.array_equal(dimensions.to_numpy(), expected.to_numpy())
     assert portfolio.gross_exposure.max() <= 2 + 1e-10
