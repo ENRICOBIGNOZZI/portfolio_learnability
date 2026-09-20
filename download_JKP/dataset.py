@@ -7,8 +7,16 @@ from pathlib import Path
 # 1. WRDS CREDENTIALS
 # ============================================================
 
-WRDS_USERNAME = "bignolo1111"
-WRDS_PASSWORD = "YZag6ycw7f9GKGt"
+import os
+
+WRDS_USERNAME = os.environ.get("WRDS_USERNAME")
+WRDS_PASSWORD = os.environ.get("WRDS_PASSWORD")
+
+if not WRDS_USERNAME or not WRDS_PASSWORD:
+    raise RuntimeError(
+        "WRDS credentials are required through WRDS_USERNAME and WRDS_PASSWORD "
+        "environment variables. Never commit credentials to the repository."
+    )
 
 
 # ============================================================
