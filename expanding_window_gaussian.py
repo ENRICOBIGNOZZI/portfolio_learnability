@@ -40,7 +40,7 @@ from plot_style import save_figure, use_plot_style
 ROOT = Path(__file__).resolve().parent
 OUTPUT_ROOT = ROOT / "results" / "expanding_gaussian"
 KERNEL = "gaussian"
-N_RANDOM_FEATURES = 1000
+N_RANDOM_FEATURES = 2000
 RANDOM_STATE = 0
 MOVING_AVERAGE_YEARS = 5
 
