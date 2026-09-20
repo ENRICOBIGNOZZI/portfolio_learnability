@@ -39,7 +39,7 @@ matern_kernels = {"matern12", "matern32", "matern52"}
 project_folder = Path(__file__).resolve().parent
 
 
-def interior_matern_fit(ranks, values, first_rank=5, upper_fraction=0.90):
+def interior_matern_fit(ranks, values, first_rank=5, upper_fraction=0.80):
     """Fit log(mu_j) = a - b log(j) on a fixed interior spectral tail."""
     ranks = np.asarray(ranks, dtype=float)
     values = np.asarray(values, dtype=float)
