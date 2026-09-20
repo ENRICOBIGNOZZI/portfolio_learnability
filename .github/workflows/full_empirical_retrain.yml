@@ -1,0 +1,301 @@
+name: Full 2000-feature empirical retrain
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - empirics-expanding-clean-20260920
+    paths:
+      - .github/workflows/full_empirical_retrain.yml
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: "1"
+  OPENBLAS_NUM_THREADS: "4"
+  OMP_NUM_THREADS: "4"
+  MKL_NUM_THREADS: "4"
+  NUMEXPR_NUM_THREADS: "4"
+
+jobs:
+  prepare-data:
+    name: Prepare licensed JKP data
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    env:
+      WRDS_USERNAME: ${{ secrets.WRDS_USERNAME }}
+      WRDS_PASSWORD: ${{ secrets.WRDS_PASSWORD }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Verify WRDS secrets are configured
+        shell: bash
+        run: |
+          test -n "$WRDS_USERNAME" || (echo "WRDS_USERNAME repository secret is missing" >&2; exit 2)
+          test -n "$WRDS_PASSWORD" || (echo "WRDS_PASSWORD repository secret is missing" >&2; exit 2)
+
+      - name: Install data dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install numpy pandas pyarrow openpyxl wrds psycopg2-binary
+
+      - name: Download paper sample from WRDS
+        run: python download_JKP/dataset.py
+
+      - name: Build and verify clean 1963-2024 cache
+        run: |
+          python - <<'PY'
+          from download_JKP.read_dataset import DEFAULT_DATA_DIR, available_jkp_characteristics, available_jkp_years
+          chars = available_jkp_characteristics(DEFAULT_DATA_DIR)
+          years = available_jkp_years(DEFAULT_DATA_DIR)
+          assert len(chars) == 132, len(chars)
+          assert years[0] == 1963 and years[-1] == 2024, (years[0], years[-1])
+          print("Verified:", len(chars), "characteristics,", len(years), "years")
+          PY
+
+      - name: Package licensed data for this workflow only
+        shell: bash
+        run: |
+          tar -cf - data/JKP_USA data/JKP_USA_clean \
+            | zstd -T0 -6 \
+            | openssl enc -aes-256-cbc -pbkdf2 -salt \
+                -pass env:WRDS_PASSWORD \
+                -out jkp_data.tar.zst.enc
+          rm -rf data/JKP_USA data/JKP_USA_clean
+
+      - name: Upload encrypted ephemeral data bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: encrypted-jkp-data
+          path: jkp_data.tar.zst.enc
+          retention-days: 1
+          compression-level: 0
+          if-no-files-found: error
+
+  train:
+    name: Train ${{ matrix.kernel }}
+    needs: prepare-data
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        kernel: [linear, gaussian, ntk, matern12, matern32, matern52]
+    env:
+      WRDS_PASSWORD: ${{ secrets.WRDS_PASSWORD }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install training dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install numpy pandas pyarrow scipy matplotlib scikit-learn plotly
+
+      - name: Download encrypted data
+        uses: actions/download-artifact@v4
+        with:
+          name: encrypted-jkp-data
+          path: .data_artifact
+
+      - name: Decrypt data into ephemeral runner
+        shell: bash
+        run: |
+          openssl enc -d -aes-256-cbc -pbkdf2 \
+            -pass env:WRDS_PASSWORD \
+            -in .data_artifact/jkp_data.tar.zst.enc \
+            | zstd -d \
+            | tar -xf -
+          test -f data/JKP_USA_clean/cleaning_manifest.json
+
+      - name: Full chronological training and hyperparameter optimization
+        run: python main.py --characteristics all --kernels "${{ matrix.kernel }}"
+
+      - name: Package kernel results
+        if: always()
+        shell: bash
+        run: |
+          if [ -d "results/${{ matrix.kernel }}/all" ]; then
+            tar -czf "kernel-${{ matrix.kernel }}.tar.gz" "results/${{ matrix.kernel }}/all"
+          fi
+
+      - name: Upload kernel results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kernel-${{ matrix.kernel }}
+          path: kernel-${{ matrix.kernel }}.tar.gz
+          retention-days: 30
+          compression-level: 0
+          if-no-files-found: warn
+
+  aggregate:
+    name: Rebuild paper figures and central diagnostics
+    needs: train
+    if: always() && !cancelled()
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    env:
+      WRDS_PASSWORD: ${{ secrets.WRDS_PASSWORD }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install analysis dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install numpy pandas pyarrow scipy matplotlib scikit-learn plotly
+
+      - name: Download all kernel artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: kernel-*
+          path: .kernel_artifacts
+          merge-multiple: true
+
+      - name: Restore kernel result trees
+        shell: bash
+        run: |
+          shopt -s nullglob
+          files=(.kernel_artifacts/kernel-*.tar.gz)
+          test "\${#files[@]}" -eq 6 || (echo "Expected 6 completed kernel artifacts, found \${#files[@]}" >&2; exit 3)
+          for file in "\${files[@]}"; do
+            tar -xzf "$file"
+          done
+
+      - name: Download encrypted data
+        uses: actions/download-artifact@v4
+        with:
+          name: encrypted-jkp-data
+          path: .data_artifact
+
+      - name: Decrypt data for expanding-window diagnostics
+        shell: bash
+        run: |
+          openssl enc -d -aes-256-cbc -pbkdf2 \
+            -pass env:WRDS_PASSWORD \
+            -in .data_artifact/jkp_data.tar.zst.enc \
+            | zstd -d \
+            | tar -xf -
+
+      - name: Rebuild equity comparison
+        run: python equities.py --characteristics all
+      - name: Rebuild effective-complexity analysis
+        run: python complexity_analysis.py --characteristics all
+      - name: Rebuild raw spectra
+        run: python final_spectra.py
+      - name: Run final Gaussian expanding-window 1/T experiment
+        run: python expanding_window_gaussian.py --characteristics all
+
+      - name: Write compact numerical summary
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import pandas as pd
+          root = Path("results")
+          rows = []
+          for kernel in ["linear","gaussian","ntk","matern12","matern32","matern52"]:
+              d = pd.read_parquet(root / kernel / "all" / "portfolio_returns.parquet").sort_values("return_date")
+              r = d["portfolio_return"]
+              wealth = (1+r).cumprod()
+              dd = wealth / wealth.cummax() - 1
+              rows.append({
+                  "kernel": kernel,
+                  "months": len(r),
+                  "mean_ann": 12*r.mean(),
+                  "vol_ann": (12**0.5)*r.std(ddof=1),
+                  "sharpe": (12**0.5)*r.mean()/r.std(ddof=1),
+                  "max_drawdown": dd.min(),
+                  "mean_gross": d["gross_exposure"].mean(),
+              })
+          summary = pd.DataFrame(rows)
+          summary.to_csv(root / "final_performance_summary.csv", index=False)
+          print(summary.to_string(index=False))
+
+          k = pd.read_parquet(root / "complexity_analysis" / "kernel_comparison.parquet")
+          print("\nComplexity summary")
+          cols = [c for c in ["kernel","peak_q","peak_sharpe","capped_selected_sharpe","estimated_b"] if c in k]
+          print(k[cols].to_string(index=False))
+
+          print("\nGaussian 1/T summary")
+          g = pd.read_csv(root / "expanding_gaussian" / "all" / "performance_summary.csv")
+          print(g.to_string(index=False))
+          PY
+
+      - name: Upload complete regenerated research outputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: paper-results-2000
+          path: results/
+          retention-days: 30
+          compression-level: 3
+          if-no-files-found: error
+
+  extended-diagnostics:
+    name: Extended lambda-scaling diagnostics
+    needs: train
+    if: success()
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    env:
+      WRDS_PASSWORD: ${{ secrets.WRDS_PASSWORD }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install analysis dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install numpy pandas pyarrow scipy matplotlib scikit-learn plotly
+
+      - name: Download all kernel artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: kernel-*
+          path: .kernel_artifacts
+          merge-multiple: true
+
+      - name: Restore baseline results
+        shell: bash
+        run: |
+          for file in .kernel_artifacts/kernel-*.tar.gz; do
+            tar -xzf "$file"
+          done
+
+      - name: Download encrypted data
+        uses: actions/download-artifact@v4
+        with:
+          name: encrypted-jkp-data
+          path: .data_artifact
+
+      - name: Restore licensed data
+        shell: bash
+        run: |
+          openssl enc -d -aes-256-cbc -pbkdf2 \
+            -pass env:WRDS_PASSWORD \
+            -in .data_artifact/jkp_data.tar.zst.enc \
+            | zstd -d \
+            | tar -xf -
+
+      - name: Run full lambda-scaling robustness suite
+        run: python lambda_scaling.py --characteristics all
+
+      - name: Upload extended diagnostics
+        uses: actions/upload-artifact@v4
+        with:
+          name: lambda-scaling-2000
+          path: results/lambda_scaling/
+          retention-days: 30
+          compression-level: 3
+          if-no-files-found: error
