@@ -216,6 +216,9 @@ def fit_kernel(k, spec, characteristic_name="all"):
     selected_index = int(np.argmin(losses))
     lambda0 = float(spec["grid"][selected_index])
     rules = {f"paper_r{r:g}": paper_alpha(b, r) for r in R_VALUES}
+    # Exact inverse-history rule used in the current Gaussian empirical table.
+    # It is calibrated once at T0 and thereafter imposes lambda_T = lambda0 * T0 / T.
+    rules["inverse_T"] = 1.0
     rules["empirical"] = alpha_empirical
     # A constant-lambda control separates freezing lambda from imposing decay.
     rules["constant"] = 0.0
