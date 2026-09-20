@@ -38,6 +38,18 @@ Keep this short.
 
 ### B. Portfolio performance across representations
 
+For the finite numerical implementations, use a common nominal nonlinear
+feature dimension of 1,000 coordinates. Gaussian and Matérn use 1,000 random
+Fourier features. The NTK uses 500 Monte Carlo hidden directions, each
+contributing an NNGP/ReLU coordinate and a derivative coordinate, for exactly
+1,000 final NTK feature coordinates. This makes the nominal-size comparison
+across nonlinear representations like-for-like. The linear specification has
+133 coordinates including the constant.
+
+Changing NTK from 2,000 to 1,000 final coordinates invalidates the previously
+saved NTK backtest, complexity curves, spectra, and Table-III NTK row. Rerun
+the NTK pipeline before updating the manuscript.
+
 Main table:
 
 - Linear
