@@ -1,6 +1,7 @@
 name: Full 2000-feature empirical retrain
 
 on:
+  workflow_call:
   workflow_dispatch:
   push:
     branches:
