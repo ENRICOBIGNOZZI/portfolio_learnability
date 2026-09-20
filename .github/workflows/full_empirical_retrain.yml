@@ -39,6 +39,14 @@ jobs:
           test -n "$WRDS_USERNAME" || (echo "WRDS_USERNAME repository secret is missing" >&2; exit 2)
           test -n "$WRDS_PASSWORD" || (echo "WRDS_PASSWORD repository secret is missing" >&2; exit 2)
 
+      - name: Configure non-interactive WRDS libpq credentials
+        shell: bash
+        run: |
+          mkdir -p "$HOME"
+          printf 'wrds-pgdata.wharton.upenn.edu:9737:wrds:%s:%s\n' "$WRDS_USERNAME" "$WRDS_PASSWORD" > "$HOME/.pgpass"
+          chmod 600 "$HOME/.pgpass"
+          echo "PGPASSFILE=$HOME/.pgpass" >> "$GITHUB_ENV"
+
       - name: Install data dependencies
         run: |
           python -m pip install --upgrade pip
@@ -197,6 +205,9 @@ jobs:
       - name: Run final Gaussian expanding-window 1/T experiment
         run: python expanding_window_gaussian.py --characteristics all
 
+      - name: Run Matérn smoothness-based expanding-window experiments
+        run: python expanding_window_matern.py --characteristics all
+
       - name: Write compact numerical summary
         run: |
           python - <<'PY'
@@ -230,6 +241,10 @@ jobs:
           print("\nGaussian 1/T summary")
           g = pd.read_csv(root / "expanding_gaussian" / "all" / "performance_summary.csv")
           print(g.to_string(index=False))
+
+          print("\nMatérn smoothness-scaling summary")
+          m = pd.read_csv(root / "expanding_matern" / "all" / "performance_summary.csv")
+          print(m.to_string(index=False))
           PY
 
       - name: Upload complete regenerated research outputs
