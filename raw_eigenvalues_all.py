@@ -17,7 +17,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import wrds
+import psycopg2
 
 from download_JKP.read_dataset import build_clean_jkp_cache
 from Kernels.kernel_function import (
@@ -107,7 +107,14 @@ def ensure_raw_data():
         AND excntry = 'USA'
     """
 
-    db = wrds.Connection(wrds_username=user, wrds_password=password)
+    connection = psycopg2.connect(
+        host="wrds-pgdata.wharton.upenn.edu",
+        port=9737,
+        dbname="wrds",
+        user=user,
+        password=password,
+        sslmode="require",
+    )
     try:
         for year, path in zip(range(START_YEAR, END_YEAR + 1), wanted):
             if path.exists():
@@ -121,11 +128,11 @@ def ensure_raw_data():
                   AND eom < '{year + 1}-01-01'
                 ORDER BY eom, id
             """
-            frame = db.raw_sql(sql, date_cols=["eom"])
+            frame = pd.read_sql_query(sql, connection, parse_dates=["eom"])
             frame.to_parquet(path, index=False, compression="zstd")
             print(f"  {len(frame):,} rows", flush=True)
     finally:
-        db.close()
+        connection.close()
 
 
 def clean_manifest():
