@@ -1,217 +1,181 @@
-"""Plot the spectrum and estimate b for every kernel."""
+"""Plot raw managed-portfolio spectra and estimate Matérn tail exponents.
+
+Main figures use raw eigenvalues. Power-law slopes are reported only for the
+Matérn kernels and are fitted on a pre-specified interior tail: the first four
+directions and the final 10% of numerically nonzero eigenvalues are excluded.
+"""
 
 from pathlib import Path
+import argparse
 
 import matplotlib
-
 matplotlib.use("Agg")
-
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from matplotlib.ticker import MaxNLocator
-import argparse
 
 from plot_style import KERNEL_COLORS, save_figure, use_plot_style
-
 
 use_plot_style()
 
 parser = argparse.ArgumentParser(description=__doc__)
-parser.add_argument("--plots-only", action="store_true")
 parser.add_argument("--characteristics", nargs="+", default=["all"])
 args = parser.parse_args()
-plots_only = args.plots_only
 
 characteristics = "all" if args.characteristics == ["all"] else args.characteristics
-kernel_names = [
-    "linear",
-    "gaussian",
-    "ntk",
-    "matern12",
-    "matern32",
-    "matern52",
-]
+characteristic_name = "all" if characteristics == "all" else "_".join(characteristics)
+
+kernel_names = ["linear", "gaussian", "ntk", "matern12", "matern32", "matern52"]
 kernel_labels = {
     "linear": "Linear",
     "gaussian": "Gaussian",
     "ntk": "NTK",
-    "matern12": "Matern 1/2",
-    "matern32": "Matern 3/2",
-    "matern52": "Matern 5/2",
+    "matern12": "Matérn 1/2",
+    "matern32": "Matérn 3/2",
+    "matern52": "Matérn 5/2",
 }
+matern_kernels = {"matern12", "matern32", "matern52"}
 
 project_folder = Path(__file__).resolve().parent
-if characteristics == "all":
-    characteristic_name = "all"
-else:
-    characteristic_name = "_".join(characteristics)
+
+
+def interior_matern_fit(ranks, values, first_rank=5, upper_fraction=0.90):
+    """Fit log(mu_j) = a - b log(j) on a fixed interior spectral tail."""
+    ranks = np.asarray(ranks, dtype=float)
+    values = np.asarray(values, dtype=float)
+    n = len(values)
+    if n < 12:
+        return np.nan, np.nan, np.full(n, False)
+
+    last_position = max(first_rank + 4, int(np.floor(upper_fraction * n)))
+    last_position = min(last_position, n)
+
+    mask = (ranks >= first_rank)
+    sorted_positions = np.arange(1, n + 1)
+    mask &= sorted_positions <= last_position
+
+    if mask.sum() < 5:
+        return np.nan, np.nan, mask
+
+    slope, intercept = np.polyfit(np.log(ranks[mask]), np.log(values[mask]), 1)
+    return float(-slope), float(intercept), mask
+
+
+def robust_matern_windows(ranks, values):
+    """Pre-specified sensitivity windows; no window is chosen using fit quality."""
+    rows = []
+    for first_rank in (3, 5, 10):
+        for upper_fraction in (0.80, 0.90, 0.95):
+            b, intercept, mask = interior_matern_fit(
+                ranks, values, first_rank=first_rank, upper_fraction=upper_fraction
+            )
+            rows.append({
+                "first_rank": first_rank,
+                "upper_fraction": upper_fraction,
+                "estimated_b": b,
+                "number_fit_eigenvalues": int(mask.sum()),
+            })
+    return pd.DataFrame(rows)
+
+
 all_estimates = []
 
-
 for kernel_name in kernel_names:
-    kernel_label = kernel_labels[kernel_name]
-    results_folder = (
-        project_folder
-        / "results"
-        / kernel_name
-        / characteristic_name
-    )
-    eigenvalues_file = (
-        results_folder
-        / "kernel_eigenvalues.parquet"
-    )
-    eigenvalues = pd.read_parquet(
-        eigenvalues_file
-    )
+    results_folder = project_folder / "results" / kernel_name / characteristic_name
+    eigenvalues = pd.read_parquet(results_folder / "kernel_eigenvalues.parquet")
 
-    last_test_year = eigenvalues["test_year"].max()
-    spectrum = eigenvalues[
-        eigenvalues["test_year"] == last_test_year
+    last_test_year = int(eigenvalues["test_year"].max())
+    spectrum = (
+        eigenvalues.loc[eigenvalues["test_year"].eq(last_test_year)]
+        .sort_values("eigenvalue_number")
+        .copy()
+    )
+    lengthscale = float(spectrum["lengthscale"].iloc[0])
+
+    largest = float(spectrum["eigenvalue"].max())
+    spectrum = spectrum.loc[
+        np.isfinite(spectrum["eigenvalue"]) &
+        (spectrum["eigenvalue"] > largest * 1e-10)
     ].copy()
-    spectrum = spectrum.sort_values(
-        "eigenvalue_number"
-    )
-    lengthscale = spectrum["lengthscale"].iloc[0]
 
-    largest_eigenvalue = spectrum["eigenvalue"].max()
-    spectrum = spectrum[
-        spectrum["eigenvalue"]
-        > largest_eigenvalue * 1e-10
-    ]
+    ranks = spectrum["eigenvalue_number"].to_numpy(dtype=float)
+    values = spectrum["eigenvalue"].to_numpy(dtype=float)
 
-    ranks = spectrum["eigenvalue_number"].to_numpy()
-    values = spectrum["eigenvalue"].to_numpy()
-    normalized_values = values / values.max()
+    # Main paper object: raw spectrum, no normalization.
+    fig, ax = plt.subplots(figsize=(6.6, 4.2))
+    ax.plot(ranks, values, color=KERNEL_COLORS[kernel_name], linewidth=1.6)
+    ax.set_xlabel("Ordered managed-portfolio direction")
+    ax.set_ylabel(r"Raw eigenvalue $\hat{\mu}_j$")
+    ax.set_title(f"{kernel_labels[kernel_name]} managed-portfolio spectrum")
+    ax.grid(False)
+    ax.yaxis.grid(True, alpha=0.35)
+    fig.tight_layout()
+    save_figure(fig, results_folder / "eigenvalue_spectrum_raw.png")
+    plt.close(fig)
 
     estimated_b = np.nan
-    fitted_values = None
+    fit_start = np.nan
+    fit_end = np.nan
 
-    if len(values) >= 3:
-        slope, intercept = np.polyfit(
-            np.log(ranks),
-            np.log(values),
-            1,
-        )
-        estimated_b = -slope
-        fitted_values = (
-            np.exp(intercept)
-            * ranks ** (-estimated_b)
-        )
-        fitted_values = fitted_values / values.max()
+    # Only Matérn gets a theoretically interpreted power-law fit.
+    if kernel_name in matern_kernels:
+        estimated_b, intercept, fit_mask = interior_matern_fit(ranks, values)
+        if np.isfinite(estimated_b):
+            fit_start = int(ranks[fit_mask][0])
+            fit_end = int(ranks[fit_mask][-1])
 
-    figure, axes = plt.subplots(
-        1,
-        2,
-        figsize=(8.4, 3.8),
-    )
+            fig, ax = plt.subplots(figsize=(6.6, 4.2))
+            ax.loglog(
+                ranks, values,
+                color=KERNEL_COLORS[kernel_name],
+                linewidth=1.6,
+                label="Eigenvalues",
+            )
+            fit_ranks = ranks[fit_mask]
+            fitted = np.exp(intercept) * fit_ranks ** (-estimated_b)
+            ax.loglog(
+                fit_ranks, fitted,
+                color="#333333",
+                linestyle="--",
+                linewidth=1.4,
+                label=rf"Interior fit: $\hat{{b}}={estimated_b:.3f}$",
+            )
+            ax.axvline(fit_start, color="#777777", linewidth=0.8, alpha=0.6)
+            ax.axvline(fit_end, color="#777777", linewidth=0.8, alpha=0.6)
+            ax.set_xlabel("Eigenvalue rank")
+            ax.set_ylabel(r"Raw eigenvalue $\hat{\mu}_j$")
+            ax.set_title(
+                f"{kernel_labels[kernel_name]} spectrum · fit ranks "
+                f"{fit_start}–{fit_end}"
+            )
+            ax.legend(loc="upper right")
+            ax.grid(False)
+            ax.yaxis.grid(True, which="both", alpha=0.25)
+            fig.tight_layout()
+            save_figure(fig, results_folder / "eigenvalue_spectrum_fit.png")
+            plt.close(fig)
 
-    show_full_spectrum = len(values) <= 10
-    zoom_limit = normalized_values.max() if show_full_spectrum else np.quantile(normalized_values, 0.90)
-    zoom_limit = max(zoom_limit, normalized_values.min())
-    zoom_values = normalized_values[
-        normalized_values <= zoom_limit
-    ]
-    zoom_weights = np.full(
-        len(zoom_values),
-        100.0 / len(normalized_values),
-    )
-    axes[0].hist(
-        zoom_values,
-        bins=np.linspace(0.0, zoom_limit, 31),
-        weights=zoom_weights,
-        color=KERNEL_COLORS[kernel_name],
-        edgecolor="white",
-        linewidth=0.4,
-    )
-    axes[0].set_xlim(0.0, zoom_limit)
-    axes[0].set_xlabel(r"Normalized eigenvalue  $\mu_j / \mu_1$")
-    axes[0].set_ylabel("Share of eigenvalues (%)")
-    axes[0].set_title("Distribution · Full spectrum" if show_full_spectrum else "Distribution · Zoom to 90th percentile")
-    axes[0].xaxis.set_major_locator(MaxNLocator(nbins=4))
-    axes[0].ticklabel_format(axis="x", style="sci", scilimits=(0, 0), useMathText=True)
-    axes[0].grid(False)
-    axes[0].yaxis.grid(True, alpha=0.4)
-    axes[0].text(
-        0.97, 0.96, (f"Linear x-axis\nAll {len(values)} eigenvalues shown" if show_full_spectrum
-                    else "Linear x-axis\nAbove 90th percentile outside view"),
-        transform=axes[0].transAxes, ha="right", va="top",
-        fontsize=8, color="#666666",
-    )
-
-    axes[1].loglog(
-        ranks,
-        normalized_values,
-        label="Eigenvalues",
-        color=KERNEL_COLORS[kernel_name],
-    )
-
-    if fitted_values is not None:
-        axes[1].loglog(
-            ranks,
-            fitted_values,
-            linestyle="--",
-            color="#333333",
-            label=rf"Power-law fit: $\hat{{b}}={estimated_b:.3f}$",
-        )
-
-    axes[1].set_xlabel("Eigenvalue rank")
-    axes[1].set_ylabel(r"Normalized eigenvalue  $\mu_j / \mu_1$")
-    axes[1].set_title("Ranked spectrum and fit")
-    if fitted_values is None:
-        axes[1].set_title("Ranked spectrum · No tail fit")
-        axes[1].text(.04, .05, "Too few eigenvalues for a spectral-tail fit", transform=axes[1].transAxes, fontsize=8)
-    axes[1].legend(loc="upper right")
-
-    title = (
-        f"{kernel_label} kernel: Normalized eigenvalue distribution"
-    )
-    if kernel_name in {
-        "gaussian",
-        "matern12",
-        "matern32",
-        "matern52",
-    }:
-        title = (
-            f"{title}  (lengthscale = {lengthscale:.3g})"
-        )
-    figure.suptitle(title)
-    figure.tight_layout()
-
-    plot_file = (
-        results_folder
-        / "eigenvalue_spectrum.png"
-    )
-    save_figure(figure, plot_file)
-    plt.close(figure)
+            robust_matern_windows(ranks, values).to_csv(
+                results_folder / "matern_b_window_sensitivity.csv", index=False
+            )
 
     estimate = {
         "kernel": kernel_name,
         "test_year": last_test_year,
         "lengthscale": lengthscale,
         "estimated_b": estimated_b,
+        "fit_start_rank": fit_start,
+        "fit_end_rank": fit_end,
         "number_of_eigenvalues": len(values),
     }
     all_estimates.append(estimate)
-
-    estimate_file = (
-        results_folder
-        / "estimated_b.parquet"
+    pd.DataFrame([estimate]).to_parquet(
+        results_folder / "estimated_b.parquet", index=False
     )
-    if not plots_only:
-        pd.DataFrame([estimate]).to_parquet(estimate_file, index=False)
 
-    print()
-    print("Kernel:", kernel_label)
-    print("Estimated b:", estimated_b)
-    print("Spectrum:", plot_file)
+    print(kernel_labels[kernel_name], estimate)
 
-
-all_estimates_file = (
-    project_folder
-    / "results"
-    / f"estimated_b_all_kernels_{characteristic_name}.parquet"
+pd.DataFrame(all_estimates).to_parquet(
+    project_folder / "results" / f"estimated_b_all_kernels_{characteristic_name}.parquet",
+    index=False,
 )
-if not plots_only:
-    pd.DataFrame(all_estimates).to_parquet(all_estimates_file, index=False)
-    print("All estimates saved in:", all_estimates_file)
