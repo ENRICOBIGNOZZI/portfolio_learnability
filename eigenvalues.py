@@ -1,8 +1,9 @@
 """Plot raw managed-portfolio spectra and estimate Matérn tail exponents.
 
 Main figures use raw eigenvalues. Power-law slopes are reported only for the
-Matérn kernels and are fitted on a pre-specified interior tail: the first four
-directions and the final 10% of numerically nonzero eigenvalues are excluded.
+Matérn kernels and are fitted on a pre-specified pre-downturn interior region:
+the first four directions are excluded and the fit stops at 45% of the
+numerically nonzero spectrum, before the final steep collapse.
 """
 
 from pathlib import Path
@@ -39,7 +40,7 @@ matern_kernels = {"matern12", "matern32", "matern52"}
 project_folder = Path(__file__).resolve().parent
 
 
-def interior_matern_fit(ranks, values, first_rank=5, upper_fraction=0.80):
+def interior_matern_fit(ranks, values, first_rank=5, upper_fraction=0.45):
     """Fit log(mu_j) = a - b log(j) on a fixed interior spectral tail."""
     ranks = np.asarray(ranks, dtype=float)
     values = np.asarray(values, dtype=float)
