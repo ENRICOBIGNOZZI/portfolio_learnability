@@ -10,6 +10,7 @@ on:
       - test_expanding_window_gaussian.py
       - test_ntk_feature_dimension.py
       - .github/workflows/empirics_code_check.yml
+      - .github/workflows/full_empirical_retrain.yml
 
 permissions:
   contents: read
@@ -35,3 +36,10 @@ jobs:
 
       - name: Run synthetic tests
         run: pytest -q test_expanding_window_gaussian.py test_ntk_feature_dimension.py
+
+
+  full-retrain:
+    needs: test
+    if: contains(github.event.head_commit.message, '[full-retrain]')
+    uses: ./.github/workflows/full_empirical_retrain.yml
+    secrets: inherit
