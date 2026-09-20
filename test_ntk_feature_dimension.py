@@ -4,18 +4,18 @@ import pytest
 from Kernels.kernel_function import PortfolioKernel
 
 
-def test_ntk_1000_means_1000_final_coordinates():
+def test_ntk_2000_means_2000_final_coordinates():
     rng = np.random.default_rng(123)
     X = rng.normal(size=(9, 7))
     kernel = PortfolioKernel(
         kernel="ntk",
-        n_random_features=1000,
+        n_random_features=2000,
         random_state=0,
     )
     features = kernel.features(X)
 
-    assert kernel.ntk_hidden_directions == 500
-    assert features.shape == (9, 1000)
+    assert kernel.ntk_hidden_directions == 1000
+    assert features.shape == (9, 2000)
     assert np.isfinite(features).all()
 
 
@@ -25,17 +25,17 @@ def test_stationary_and_ntk_nominal_dimensions_match():
 
     gaussian = PortfolioKernel(
         kernel="gaussian",
-        n_random_features=1000,
+        n_random_features=2000,
         random_state=0,
     )
     ntk = PortfolioKernel(
         kernel="ntk",
-        n_random_features=1000,
+        n_random_features=2000,
         random_state=0,
     )
 
-    assert gaussian.features(X).shape[1] == 1000
-    assert ntk.features(X).shape[1] == 1000
+    assert gaussian.features(X).shape[1] == 2000
+    assert ntk.features(X).shape[1] == 2000
 
 
 def test_ntk_requires_even_final_dimension():
