@@ -25,7 +25,6 @@ if not WRDS_USERNAME or not WRDS_PASSWORD:
 
 db = wrds.Connection(
     wrds_username=WRDS_USERNAME,
-    wrds_password=WRDS_PASSWORD,
 )
 
 
