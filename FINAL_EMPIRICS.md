@@ -142,33 +142,47 @@ appendix. Declining shrinkage activates additional managed-portfolio
 directions as history accumulates, while C_T/T measures complexity relative to
 the amount of available return history."
 
-### D.1 Matérn smoothness-based history scaling
+### D.1 Matérn scaling from the economic spectrum
 
 Run:
 
 python expanding_window_matern.py --characteristics all
 
 For each of Matérn 1/2, 3/2, and 5/2, calibrate the initial penalty once and
-then use the Sobolev/Matérn specialization of the current r=1 theorem. Under
-the standard spectral-equivalence specialization,
+estimate the economically relevant spectral exponent directly from the
+managed-payoff spectrum using only pre-OOS information through 1977. Freeze
+that estimate before the first test year. Under the current r=1 theorem the
+headline rule is
 
-[
-b = 2s/D,qquad
-lambda_T = lambda_0 (T/T_0)^{-2s/(2s+D)}.
-]
+\[
+\widehat\alpha
+=
+\frac{\widehat b}{\widehat b+1},
+\qquad
+\lambda_T
+=
+\lambda_0
+(T/T_0)^{-\widehat\alpha}.
+\]
 
-For a standard Matérn-(
-u) kernel in (D) dimensions, the associated
-Sobolev order is (s=D/2+
-u). The main Matérn figure therefore reports the
-kernel-specific theoretical exponent implied by (
-u), with fixed initial
-lambda and annual validation retained as benchmarks.
+The operational \(\widehat b\) is estimated on an interior pre-OOS spectral
+window: ranks 5 through
+\(\min\{450,\lfloor 0.8J\rfloor\}\), where \(J\) is the number of active
+positive eigenvalues. The estimate is frozen. Annual expanding-window
+estimates of \(b\) are retained only as diagnostics and are never used to tune
+the OOS penalty.
 
-This is a transparent special-case schedule, not an assertion that the word
-"Matérn" alone determines the empirical managed-payoff spectrum. The raw
-economic eigenvalues are saved separately so the s-based schedule can later be
-compared with empirical-spectrum diagnostics.
+The Sobolev/Matérn relation
+
+\[
+b_{\mathrm{theory}}=\frac{2s}{D},
+\qquad
+s=D/2+\nu,
+\]
+
+is retained as an appendix benchmark rather than imposed on the economic
+spectrum. This follows the main paper's principle that the managed-payoff
+spectrum, not the formal kernel alone, is the economically relevant object.
 
 Retain all analysis objects under:
 
@@ -179,12 +193,18 @@ including:
 - annual_diagnostics.parquet and CSV
 - monthly_returns.parquet
 - annual_spectra.parquet
+- one pre-OOS spectrum per Matérn kernel
+- one annual spectral-fit file per Matérn kernel
 - one initial calibration profile per Matérn kernel
 - fitted annual coefficient arrays for every rule
 - calibration_and_rates.csv
 - performance_summary.csv
 - raw annual appendix plots
 - smoothed main-text plots
+
+The main Matérn figure compares fixed lambda with the frozen empirical-b
+schedule. The s-based schedule and annual validation are robustness
+benchmarks.
 
 ### E. Performance of the shrinkage schedules
 
