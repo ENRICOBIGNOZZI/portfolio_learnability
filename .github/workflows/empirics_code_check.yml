@@ -8,6 +8,7 @@ on:
       - expanding_window_gaussian.py
       - final_spectra.py
       - test_expanding_window_gaussian.py
+      - test_ntk_feature_dimension.py
       - .github/workflows/empirics_code_check.yml
 
 permissions:
@@ -33,4 +34,4 @@ jobs:
           python -m py_compile expanding_window_gaussian.py final_spectra.py
 
       - name: Run synthetic tests
-        run: pytest -q test_expanding_window_gaussian.py
+        run: pytest -q test_expanding_window_gaussian.py test_ntk_feature_dimension.py
