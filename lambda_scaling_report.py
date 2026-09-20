@@ -20,6 +20,7 @@ from Utils.utils import compute_equity_line, compute_sharpe_ratio
 
 
 RULES = {"baseline": "Current: annual validation", "constant": "Frozen constant lambda",
+         "inverse_T": "Initial calibration, then 1/T",
          "paper_r1.5": "Paper scaling (r = 1.5)", "empirical": "Empirical lambda exponent",
          "paper_r1.05": "Paper scaling (r = 1.05)", "paper_r2": "Paper scaling (r = 2)"}
 COLORS = {"baseline": "#556579", "constant": "#AF8F52", "paper_r1.5": "#167D8D",
@@ -108,6 +109,90 @@ def trajectory_plots(k, data, params):
     fig.suptitle(kernel_labels[k] + " · Same data, different lambda rules")
     fig.tight_layout(rect=(0, .08, 1, .95))
     save_figure(fig, folder / "strategy_comparison.png")
+    plt.close(fig)
+
+    # Main-text diagnostic: one initial calibration, then inverse-history shrinkage.
+    # This figure deliberately focuses on the three rules in the current Gaussian
+    # regularization table and uses the exact refit-specific C/T computed from
+    # each year's managed-payoff spectrum.
+    focus_rules = ("baseline", "constant", "inverse_T")
+    focus_labels = {
+        "baseline": "Annual validation",
+        "constant": "Fixed initial penalty",
+        "inverse_T": r"Initial calibration, then $1/T$",
+    }
+
+    fig, axes = plt.subplots(1, 2, figsize=(10.5, 4.2))
+    for rule in focus_rules:
+        part = data.loc[data.strategy == rule].sort_values("return_date")
+        if part.empty:
+            continue
+        annual = part.drop_duplicates("test_year")
+        axes[0].plot(
+            annual.n, annual["lambda"],
+            color=COLORS.get(rule, KERNEL_COLORS[k]),
+            linewidth=1.8,
+            label=focus_labels[rule],
+        )
+        axes[1].plot(
+            annual.n, annual["relative_complexity"],
+            color=COLORS.get(rule, KERNEL_COLORS[k]),
+            linewidth=1.8,
+            label=focus_labels[rule],
+        )
+
+    axes[0].set(
+        xscale="log", yscale="log",
+        xlabel="Refit months $T$",
+        ylabel=r"Regularization $\lambda_T$",
+        title="Shrinkage path",
+    )
+    axes[1].set(
+        xlabel="Refit months $T$",
+        ylabel=r"Relative complexity $C(\lambda_T)/T$",
+        title="Learnable complexity per observation",
+    )
+    for axis in axes:
+        axis.grid(False)
+        axis.yaxis.grid(True, alpha=0.35)
+    axes[1].legend(frameon=False, fontsize=8.5)
+    fig.suptitle(kernel_labels[k] + " · History, shrinkage, and relative complexity", fontsize=13)
+    fig.text(
+        0.5, 0.015,
+        "Same expanding refits and managed-payoff spectra; the inverse-history rule is calibrated once and then fixed.",
+        ha="center", fontsize=8, color="#666666",
+    )
+    fig.tight_layout(rect=(0, 0.05, 1, 0.94))
+    save_figure(fig, folder / "lambda_and_relative_complexity.png")
+    plt.close(fig)
+
+    fig, ax = plt.subplots(figsize=(7.4, 4.6))
+    for rule in focus_rules:
+        part = data.loc[data.strategy == rule].sort_values("return_date")
+        if part.empty:
+            continue
+        annual = part.drop_duplicates("test_year")
+        ax.plot(
+            annual.n, annual["relative_complexity"],
+            color=COLORS.get(rule, KERNEL_COLORS[k]),
+            linewidth=1.9,
+            label=focus_labels[rule],
+        )
+    ax.set(
+        xlabel="Refit months $T$",
+        ylabel=r"Relative complexity $C(\lambda_T)/T$",
+        title=kernel_labels[k] + " · Relative portfolio complexity",
+    )
+    ax.grid(False)
+    ax.yaxis.grid(True, alpha=0.35)
+    ax.legend(frameon=False, fontsize=8.5)
+    fig.text(
+        0.5, 0.015,
+        r"$C(\lambda_T)/T$ is computed from the refit-specific managed-payoff eigenvalues; no test return enters this quantity.",
+        ha="center", fontsize=8, color="#666666",
+    )
+    fig.tight_layout(rect=(0, 0.05, 1, 1))
+    save_figure(fig, folder / "relative_complexity_over_time.png")
     plt.close(fig)
 
     fig, axes = plt.subplots(1, 2, figsize=(10, 4.3))
