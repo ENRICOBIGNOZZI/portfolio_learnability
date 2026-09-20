@@ -1,4 +1,4 @@
-import wrds
+import sqlalchemy as sa
 import pandas as pd
 from pathlib import Path
 
@@ -23,9 +23,42 @@ if not WRDS_USERNAME or not WRDS_PASSWORD:
 # 2. CONNECT TO WRDS -- NO PROMPT
 # ============================================================
 
-db = wrds.Connection(
-    wrds_username=WRDS_USERNAME,
+engine = sa.create_engine(
+    sa.URL.create(
+        drivername="postgresql+psycopg2",
+        username=WRDS_USERNAME,
+        password=WRDS_PASSWORD,
+        host="wrds-pgdata.wharton.upenn.edu",
+        port=9737,
+        database="wrds",
+    ),
+    isolation_level="AUTOCOMMIT",
+    connect_args={
+        "sslmode": "require",
+        "application_name": "portfolio_learnability",
+    },
 )
+
+
+class _DirectWRDS:
+    """Minimal non-interactive SQL interface for GitHub Actions."""
+
+    def __init__(self, engine):
+        self.engine = engine
+
+    def raw_sql(self, query, date_cols=None):
+        with self.engine.connect() as connection:
+            return pd.read_sql_query(
+                sa.text(query),
+                connection,
+                parse_dates=date_cols,
+            )
+
+    def close(self):
+        self.engine.dispose()
+
+
+db = _DirectWRDS(engine)
 
 
 # ============================================================
