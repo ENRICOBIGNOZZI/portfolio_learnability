@@ -1,0 +1,120 @@
+name: Aggregate completed empirical retrain
+
+on:
+  push:
+    branches:
+      - empirics-expanding-clean-20260920
+    paths:
+      - .github/workflows/aggregate_empirical_results.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+env:
+  PYTHONUNBUFFERED: "1"
+  OPENBLAS_NUM_THREADS: "4"
+  OMP_NUM_THREADS: "4"
+  MKL_NUM_THREADS: "4"
+  NUMEXPR_NUM_THREADS: "4"
+
+jobs:
+  aggregate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    env:
+      WRDS_PASSWORD: ${{ secrets.WRDS_PASSWORD }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install analysis dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install numpy pandas pyarrow scipy matplotlib scikit-learn plotly
+
+      - name: Download completed kernel artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: kernel-*
+          path: .kernel_artifacts
+          merge-multiple: true
+          run-id: 35529212364
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Restore kernel result trees
+        shell: bash
+        run: |
+          shopt -s nullglob
+          files=(.kernel_artifacts/kernel-*.tar.gz)
+          test "${#files[@]}" -eq 6 || (echo "Expected 6 completed kernel artifacts, found ${#files[@]}" >&2; exit 3)
+          for file in "${files[@]}"; do
+            tar -xzf "$file"
+          done
+
+      - name: Download encrypted paper data
+        uses: actions/download-artifact@v4
+        with:
+          name: encrypted-jkp-data
+          path: .data_artifact
+          run-id: 35529212364
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Restore licensed data
+        shell: bash
+        run: |
+          openssl enc -d -aes-256-cbc -pbkdf2             -pass env:WRDS_PASSWORD             -in .data_artifact/jkp_data.tar.zst.enc             | zstd -d             | tar -xf -
+
+      - name: Rebuild equity comparison
+        run: python equities.py --characteristics all
+
+      - name: Rebuild effective-complexity analysis
+        run: python complexity_analysis.py --characteristics all
+
+      - name: Rebuild raw spectra
+        run: python final_spectra.py
+
+      - name: Run Gaussian expanding-window experiment
+        run: python expanding_window_gaussian.py --characteristics all
+
+      - name: Run Matérn empirical-b expanding-window experiments
+        run: python expanding_window_matern.py --characteristics all
+
+      - name: Write compact final summary
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import pandas as pd
+          root = Path("results")
+          rows = []
+          for kernel in ["linear","gaussian","ntk","matern12","matern32","matern52"]:
+              d = pd.read_parquet(root / kernel / "all" / "portfolio_returns.parquet").sort_values("return_date")
+              r = d["portfolio_return"]
+              wealth = (1+r).cumprod()
+              dd = wealth / wealth.cummax() - 1
+              rows.append({
+                  "kernel": kernel,
+                  "months": len(r),
+                  "mean_ann": 12*r.mean(),
+                  "vol_ann": (12**0.5)*r.std(ddof=1),
+                  "sharpe": (12**0.5)*r.mean()/r.std(ddof=1),
+                  "max_drawdown": dd.min(),
+                  "mean_gross": d["gross_exposure"].mean(),
+              })
+          summary = pd.DataFrame(rows)
+          summary.to_csv(root / "final_performance_summary.csv", index=False)
+          print(summary.to_string(index=False))
+          PY
+
+      - name: Upload complete regenerated research outputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: paper-results-2000
+          path: results/
+          retention-days: 90
+          compression-level: 3
+          if-no-files-found: error
