@@ -219,20 +219,35 @@ class PortfolioKernel:
         )
 
     def initialize_ntk_features(self, input_dimension):
+        if self.n_random_features is None:
+            raise ValueError(
+                "n_random_features is required for NTK features."
+            )
+        if self.n_random_features < 2 or self.n_random_features % 2:
+            raise ValueError(
+                "NTK n_random_features must be an even number of final feature coordinates."
+            )
+
         random_generator = np.random.default_rng(
             self.random_state
         )
+        # The NTK map has two coordinates per Monte Carlo direction:
+        # one ReLU/NNGP coordinate and one derivative coordinate.
+        # Interpret n_random_features as the FINAL feature dimension so that
+        # n_random_features=1000 is directly comparable with 1000 RFF for
+        # Gaussian/Matérn. Hence 500 random directions generate 1000 columns.
+        self.ntk_hidden_directions = self.n_random_features // 2
 
         self.ntk_weights = random_generator.normal(
             size=(
                 input_dimension,
-                self.n_random_features,
+                self.ntk_hidden_directions,
             )
         )
         self.ntk_directions = random_generator.normal(
             size=(
                 input_dimension,
-                self.n_random_features,
+                self.ntk_hidden_directions,
             )
         )
 
@@ -262,7 +277,7 @@ class PortfolioKernel:
             )
 
         projection = X @ self.ntk_weights
-        scale = np.sqrt(self.n_random_features)
+        scale = np.sqrt(self.ntk_hidden_directions)
 
         first_part = np.maximum(
             projection,

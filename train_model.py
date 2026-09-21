@@ -116,7 +116,7 @@ def train_model(
     lambda_grid,
     kernel_name,
     characteristics,
-    n_random_features=1000,
+    n_random_features=2000,
     max_gross_exposure=2.0,
     number_of_lambdas=60,
     lengthscale_multipliers=(0.5, 1.0, 2.0),

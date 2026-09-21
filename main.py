@@ -35,7 +35,7 @@ for kernel_name in kernel_names:
         lambda_grid=lambda_grid,
         kernel_name=kernel_name,
         characteristics=characteristics,
-        n_random_features=1000,
+        n_random_features=2000,
         max_gross_exposure=max_gross_exposure,
         number_of_lambdas=number_of_lambdas,
         lengthscale_multipliers=lengthscale_multipliers,

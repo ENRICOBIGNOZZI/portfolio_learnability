@@ -89,7 +89,7 @@ def prepare_matrices(characteristics, years, specs):
     cache = OUT / "cache"
     cache.mkdir(parents=True, exist_ok=True)
     signature = {
-        "version": 1, "characteristics": characteristics, "years": years,
+        "version": 3, "characteristics": characteristics, "years": years,
         "kernel_source": digest(ROOT / "Kernels/kernel_function.py"),
         "utils_source": digest(ROOT / "Utils/utils.py"),
         "loader_source": digest(ROOT / "download_JKP/read_dataset.py"),
@@ -97,7 +97,7 @@ def prepare_matrices(characteristics, years, specs):
         "clean_files": [(p.name, p.stat().st_size, p.stat().st_mtime_ns)
                         for p in sorted((ROOT / "data/JKP_USA_clean").glob("*.parquet"))],
         "lengthscales": {k: s["lengthscale"] for k, s in specs.items()},
-        "n_random_features": 1000, "random_state": 0,
+        "n_random_features": 2000, "ntk_final_feature_coordinates": 2000, "random_state": 0,
     }
     signature = json.loads(json.dumps(signature))
     manifest = cache / "signature.json"
@@ -106,7 +106,7 @@ def prepare_matrices(characteristics, years, specs):
         print("Reusing verified managed-payoff cache", flush=True)
         return
     kernels = {k: PortfolioKernel(kernel=k, ell=specs[k]["lengthscale"],
-                                  n_random_features=1000) for k in KERNELS}
+                                  n_random_features=2000) for k in KERNELS}
     rows = {k: [] for k in KERNELS}
     dates = []
     for year in years:
@@ -312,7 +312,7 @@ def fit_kernel(k, spec, characteristic_name="all"):
 
 def evaluate_exposures(characteristics, years, specs):
     """Use actual newly fitted weights to apply the identical monthly gross cap."""
-    models = {k: PortfolioKernel(kernel=k, ell=specs[k]["lengthscale"], n_random_features=1000)
+    models = {k: PortfolioKernel(kernel=k, ell=specs[k]["lengthscale"], n_random_features=2000)
               for k in KERNELS}
     beta_files = {k: np.load(OUT / k / "test_betas.npz") for k in KERNELS}
     rules = list(json.loads((OUT / KERNELS[0] / "parameters.json").read_text())["rules"])
