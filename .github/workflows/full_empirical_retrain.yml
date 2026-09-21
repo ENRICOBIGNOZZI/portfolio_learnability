@@ -176,8 +176,8 @@ jobs:
         run: |
           shopt -s nullglob
           files=(.kernel_artifacts/kernel-*.tar.gz)
-          test "\${#files[@]}" -eq 6 || (echo "Expected 6 completed kernel artifacts, found \${#files[@]}" >&2; exit 3)
-          for file in "\${files[@]}"; do
+          test "${#files[@]}" -eq 6 || (echo "Expected 6 completed kernel artifacts, found ${#files[@]}" >&2; exit 3)
+          for file in "${files[@]}"; do
             tar -xzf "$file"
           done
 
