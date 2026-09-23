@@ -1,0 +1,148 @@
+name: Postprocess clean uncapped 2000-feature run
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - empirics-uncapped-20260923
+    paths:
+      - .github/workflows/postprocess_uncapped.yml
+      - complexity_report.py
+      - complexity_analysis.py
+      - learnability_diagnostics.py
+      - seed_stability.py
+
+permissions:
+  contents: read
+  actions: read
+
+env:
+  PYTHONUNBUFFERED: "1"
+  OPENBLAS_NUM_THREADS: "4"
+  OMP_NUM_THREADS: "4"
+  MKL_NUM_THREADS: "4"
+  NUMEXPR_NUM_THREADS: "4"
+  SOURCE_RUN_ID: "35861667045"
+
+jobs:
+  postprocess:
+    name: Rebuild uncapped analysis from completed kernel artifacts
+    runs-on: ubuntu-latest
+    timeout-minutes: 420
+    env:
+      WRDS_PASSWORD: ${{ secrets.WRDS_PASSWORD }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install analysis dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install numpy pandas pyarrow scipy matplotlib scikit-learn plotly
+
+      - name: Download completed kernel artifacts from source run
+        uses: actions/download-artifact@v4
+        with:
+          pattern: kernel-*-seed*
+          path: .kernel_artifacts
+          merge-multiple: true
+          github-token: ${{ github.token }}
+          run-id: ${{ env.SOURCE_RUN_ID }}
+
+      - name: Restore kernel result trees
+        shell: bash
+        run: |
+          shopt -s nullglob
+          files=(.kernel_artifacts/kernel-*-seed*.tar.gz)
+          test "${#files[@]}" -eq 11 || (echo "Expected 11 completed seed artifacts, found ${#files[@]}" >&2; exit 3)
+          for file in "${files[@]}"; do
+            tar -xzf "$file"
+          done
+
+      - name: Download encrypted JKP data from source run
+        uses: actions/download-artifact@v4
+        with:
+          name: encrypted-jkp-data
+          path: .data_artifact
+          github-token: ${{ github.token }}
+          run-id: ${{ env.SOURCE_RUN_ID }}
+
+      - name: Decrypt data
+        shell: bash
+        run: |
+          openssl enc -d -aes-256-cbc -pbkdf2 \
+            -pass env:WRDS_PASSWORD \
+            -in .data_artifact/jkp_data.tar.zst.enc \
+            | zstd -d \
+            | tar -xf -
+
+      - name: Rebuild seed-0 equity comparison
+        run: python equities.py --characteristics all
+
+      - name: Rebuild spectra and b files
+        run: python eigenvalues.py --characteristics all
+
+      - name: Rebuild effective-complexity analysis
+        run: python complexity_analysis.py --characteristics all
+
+      - name: Rebuild raw paper spectra
+        run: python final_spectra.py
+
+      - name: Run Gaussian expanding-window 1/T experiment
+        run: python expanding_window_gaussian.py --characteristics all
+
+      - name: Run Matérn expanding-window spectrum-rate experiments
+        run: python expanding_window_matern.py --characteristics all
+
+      - name: Compare the two finite-feature seeds
+        run: python seed_stability.py
+
+      - name: Build lambda, complexity, return and drawdown diagnostics
+        run: python learnability_diagnostics.py
+
+      - name: Write compact uncapped numerical summary
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import pandas as pd
+          root = Path("results")
+          rows = []
+          for kernel in ["linear","gaussian","ntk","matern12","matern32","matern52"]:
+              d = pd.read_parquet(root / kernel / "all" / "portfolio_returns.parquet").sort_values("return_date")
+              r = d["raw_portfolio_return"]
+              rows.append({
+                  "kernel": kernel,
+                  "months": len(r),
+                  "mean_ann": 12*r.mean(),
+                  "vol_ann": (12**0.5)*r.std(ddof=1),
+                  "sharpe": (12**0.5)*r.mean()/r.std(ddof=1),
+                  "quadratic_criterion": ((1-r)**2).mean(),
+                  "median_gross": d["gross_exposure"].median(),
+                  "p95_gross": d["gross_exposure"].quantile(.95),
+                  "p99_gross": d["gross_exposure"].quantile(.99),
+                  "max_gross": d["gross_exposure"].max(),
+                  "max_abs_weight": d["max_abs_weight"].max(),
+              })
+          summary = pd.DataFrame(rows)
+          summary.to_csv(root / "final_uncapped_performance_summary.csv", index=False)
+          print(summary.to_string(index=False))
+
+          print("\nTwo-seed stability")
+          print(pd.read_csv(root / "seed_stability" / "seed_performance.csv").to_string(index=False))
+
+          print("\nGaussian annual-retuning versus inverse-history rule")
+          print(pd.read_csv(root / "learnability_diagnostics" / "rule_summary.csv").to_string(index=False))
+          print(pd.read_csv(root / "learnability_diagnostics" / "hyperoptimized_vs_rate_bootstrap_summary.csv").to_string(index=False))
+          PY
+
+      - name: Upload final uncapped research outputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: paper-results-uncapped-2000-final
+          path: results/
+          retention-days: 90
+          compression-level: 3
+          if-no-files-found: error
