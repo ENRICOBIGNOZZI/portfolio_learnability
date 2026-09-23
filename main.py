@@ -2,24 +2,23 @@
 
 import argparse
 
+import numpy as np
+
 from train_model import train_model
 
 
 lambda_grid = None
 number_of_lambdas = 120
-lengthscale_multipliers = [
-    0.125,
-    0.25,
-    0.5,
-    0.75,
-    1.0,
-    1.5,
-    2.0,
-    4.0,
-]
+lengthscale_multipliers = np.unique(
+    np.r_[
+        np.geomspace(0.125, 4.0, 41),
+        [0.125, 0.25, 0.5, 0.75, 1.0, 1.5, 2.0, 4.0],
+    ]
+).tolist()
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument("--characteristics", nargs="+", default=["all"])
 parser.add_argument("--kernels", nargs="+", choices=["linear", "gaussian", "ntk", "matern12", "matern32", "matern52"])
+parser.add_argument("--seed", type=int, default=0)
 args = parser.parse_args()
 characteristics = "all" if args.characteristics == ["all"] else args.characteristics
 max_gross_exposure = None
@@ -44,4 +43,5 @@ for kernel_name in kernel_names:
         max_gross_exposure=max_gross_exposure,
         number_of_lambdas=number_of_lambdas,
         lengthscale_multipliers=lengthscale_multipliers,
+        random_state=args.seed,
     )
