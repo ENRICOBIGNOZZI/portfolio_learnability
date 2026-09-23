@@ -107,7 +107,7 @@ Il refit include training e validation: T varia da {int(first.T_min)} a {int(fir
 <p><a href="../lambda_scaling_{name}/report.html">Confronto delle regole di lambda</a> · <a href="#grafici">Tutti i grafici</a></p>
 <section><h2>Portafogli con selezione annuale</h2>
 <p>λ è selezionata sulla loss raw di validation. I pesi del test sono ridimensionati quando l'esposizione lorda supera 2.</p>
-{figure(f'../equities_{characteristic_name}.png', 'Equity dei sei kernel con cap lordo mensile a 2.')}{implemented}</section>
+{figure(f'../equities_{characteristic_name}.png', 'Percorsi OOS uncapped dei sei kernel.')}{implemented}</section>
 <section><h2>Sharpe e complessità relativa</h2>
 <p>C(λ) = Σ μ/(μ+λ); C/T è calcolato per finestra e poi mediato. Gli Sharpe OOS delle curve
 usano i rendimenti raw concatenati, mentre gli Sharpe IS sono medie tra finestre.
@@ -238,7 +238,7 @@ nessuna interpolazione su una seconda dimensione e nessuna selezione locale di f
 Il massimo della curva è {gaussian.peak_sharpe:.2f} a Average C/T = {gaussian.peak_q:.3f},
 con λ scelto ex post sull'intero test e rendimenti senza cap.
 Lo Sharpe della strategia salvata, con λ scelto sulla validation e nessun cap lordo,
-è invece {gaussian.capped_selected_sharpe:.2f}. Nessuno dei due numeri è stato modificato dalla nuova visualizzazione.</div>
+è invece {gaussian.selected_sharpe:.2f}. Nessuno dei due numeri è stato modificato dalla nuova visualizzazione.</div>
 <h3>Perché la precedente superficie mostrava circa 8?</h3>
 <p>Mostrava una media locale degli Sharpe stimati su finestre di soli dodici mesi.
 Una media di rapporti non equivale al rapporto fra media e deviazione standard della serie concatenata.
