@@ -3,8 +3,13 @@ name: Empirics code check
 on:
   push:
     branches:
-      - empirics-expanding-clean-20260920
+      - empirics-uncapped-20260923
     paths:
+      - main.py
+      - train_model.py
+      - Utils/utils.py
+      - seed_stability.py
+      - learnability_diagnostics.py
       - expanding_window_gaussian.py
       - final_spectra.py
       - test_expanding_window_gaussian.py
@@ -34,7 +39,7 @@ jobs:
 
       - name: Compile empirical scripts
         run: |
-          python -m py_compile expanding_window_gaussian.py expanding_window_matern.py final_spectra.py
+          python -m py_compile main.py train_model.py Utils/utils.py seed_stability.py learnability_diagnostics.py expanding_window_gaussian.py expanding_window_matern.py final_spectra.py
 
       - name: Run synthetic tests
         run: pytest -q test_expanding_window_gaussian.py test_expanding_window_matern.py test_ntk_feature_dimension.py
