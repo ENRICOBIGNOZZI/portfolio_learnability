@@ -283,6 +283,9 @@ def train_model(
                 best_lengthscale_loss = trial_best_loss
                 best_lengthscale_grid = trial_grid
 
+        if lambda_grid is None:
+            lambda_grid = best_lengthscale_grid
+
         lengthscale_file = (
             results_folder
             / "lengthscale_diagnostics.parquet"
@@ -304,12 +307,6 @@ def train_model(
         kernel,
     )
 
-    if lambda_grid is None:
-        print(
-            "Lambda grid: rebuilt in effective-complexity space "
-            "inside every chronological training window."
-        )
-
     test_results = []
     eigenvalue_results = []
     lambda_results = []
@@ -329,17 +326,9 @@ def train_model(
             kernel,
             return_dictionary,
         )
-        if lambda_grid is None:
-            train_eigenvalues = kernel_eigenvalues(train_matrix)
-            window_lambda_grid = make_complexity_lambda_grid(
-                train_eigenvalues,
-                number_of_lambdas=number_of_lambdas,
-            )
-        else:
-            window_lambda_grid = lambda_grid
         betas, _ = fit_lambda_grid(
             train_matrix,
-            window_lambda_grid,
+            lambda_grid,
         )
         validation_results = evaluate_lambdas(
             window["validation"],
@@ -353,7 +342,7 @@ def train_model(
         best_validation_loss = np.inf
         window_lambda_results = []
 
-        for lambda_value in window_lambda_grid:
+        for lambda_value in lambda_grid:
             beta = betas[lambda_value]
             raw_validation_returns = validation_matrix @ beta
             validation_returns = validation_results[
@@ -418,7 +407,7 @@ def train_model(
         )
         refit_betas, eigenvalues = fit_lambda_grid(
             train_and_validation,
-            window_lambda_grid,
+            lambda_grid,
         )
         test_lambda_results = evaluate_lambdas(
             window["test"],
