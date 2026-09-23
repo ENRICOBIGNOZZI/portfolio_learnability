@@ -55,7 +55,11 @@ def analyze_kernel(kernel, characteristic_name="all", input_dimension=132):
     feature_count = input_dimension + 1 if kernel == "linear" else 2000
     expected = np.minimum(Ts, feature_count)
     assert np.array_equal(dimensions.to_numpy(), expected.to_numpy())
-    assert portfolio.gross_exposure.max() <= 2 + 1e-10
+    assert np.allclose(portfolio["scale_factor"], 1.0)
+    assert np.allclose(
+        portfolio["portfolio_return"],
+        portfolio["raw_portfolio_return"],
+    )
 
     draws, weights = bootstrap_curves(monthly, summary["lambda"].to_numpy())
     low, high = np.quantile(draws, [0.025, 0.975], axis=0)
@@ -95,9 +99,14 @@ def analyze_kernel(kernel, characteristic_name="all", input_dimension=132):
     annual.to_parquet(folder / "relative_complexity_window_optima.parquet", index=False)
     test = annual.loc[annual.test_year == 2024].iloc[0]
     full = pd.read_parquet(folder / "estimated_b.parquet").iloc[0]
-    capped = portfolio.portfolio_return.to_numpy()
-    wealth = np.r_[1.0, np.cumprod(1 + capped)]
+    implemented = portfolio.portfolio_return.to_numpy()
+    wealth = np.r_[1.0, np.cumprod(1 + implemented)]
     drawdown = wealth / np.maximum.accumulate(wealth) - 1
+    annualized_growth = (
+        wealth[-1] ** (12 / len(implemented)) - 1
+        if wealth[-1] > 0
+        else np.nan
+    )
     first = ordered.iloc[0]
     last = ordered.iloc[-1]
     same_mean_peak = summary.loc[summary.mean_window_oos_sharpe.idxmax()]
@@ -118,8 +127,19 @@ def analyze_kernel(kernel, characteristic_name="all", input_dimension=132):
         "test2024_lambda": test["lambda"], "test2024_sharpe": test.out_of_sample_sharpe_raw,
         "annual_peak_at_endpoint_share": np.mean(annual["lambda"].isin([summary["lambda"].min(),summary["lambda"].max()])),
         "mean_window_peak_q": same_mean_peak.complexity, "mean_window_peak_sharpe": same_mean_peak.mean_window_oos_sharpe,
-        "capped_selected_sharpe": compute_sharpe_ratio(capped), "capped_cagr": wealth[-1]**(12/len(capped))-1,
-        "capped_max_drawdown": drawdown.min(), "max_gross_exposure": portfolio.gross_exposure.max(),
+        "selected_sharpe": compute_sharpe_ratio(implemented),
+        "cagr": annualized_growth,
+        "max_drawdown": drawdown.min(),
+        "mean_gross_exposure": portfolio.gross_exposure.mean(),
+        "median_gross_exposure": portfolio.gross_exposure.median(),
+        "p95_gross_exposure": portfolio.gross_exposure.quantile(0.95),
+        "p99_gross_exposure": portfolio.gross_exposure.quantile(0.99),
+        "max_gross_exposure": portfolio.gross_exposure.max(),
+        "max_abs_weight": (
+            portfolio.max_abs_weight.max()
+            if "max_abs_weight" in portfolio
+            else np.nan
+        ),
         "lengthscale": portfolio.lengthscale.iloc[0], "estimated_b": full.estimated_b,
         "first_return_date": str(portfolio.return_date.min().date()),
         "last_return_date": str(portfolio.return_date.max().date()),
