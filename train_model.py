@@ -170,11 +170,16 @@ def train_model(
         characteristic_name = "all"
     else:
         characteristic_name = "_".join(characteristics)
-    results_folder = (
+    base_results_folder = (
         project_folder
         / "results"
         / kernel_name
         / characteristic_name
+    )
+    results_folder = (
+        base_results_folder
+        if random_state == 0
+        else base_results_folder / f"seed_{random_state}"
     )
     results_folder.mkdir(
         parents=True,
