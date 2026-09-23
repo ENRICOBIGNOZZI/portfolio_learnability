@@ -316,6 +316,23 @@ def train_model(
         kernel,
     )
 
+    if lambda_grid is None:
+        first_train_matrix = make_return_matrix(
+            windows[0]["train"],
+            kernel,
+            return_dictionary,
+        )
+        first_eigenvalues = kernel_eigenvalues(
+            first_train_matrix
+        )
+        lambda_grid = make_complexity_lambda_grid(
+            first_eigenvalues,
+            number_of_lambdas=number_of_lambdas,
+        )
+        print("Number of lambdas:", len(lambda_grid))
+        print("Smallest lambda:", lambda_grid[0])
+        print("Largest lambda:", lambda_grid[-1])
+
     test_results = []
     eigenvalue_results = []
     lambda_results = []
