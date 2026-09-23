@@ -42,8 +42,13 @@ def build_report(output=None, characteristic_name="all", characteristics=None):
         [[r.label, f"{r.test2024_q:.3f}", f"{r.test2024_C:.2f}", f"{r.test2024_lambda:.3e}",
           f"{r.test2024_sharpe:.3f}", f"{round(r.annual_peak_at_endpoint_share * r.windows)}/{r.windows}"] for r in comparison.itertuples()])
     implemented = table(
-        ["Kernel", "Sharpe OOS, pesi capped", "Crescita composta annualizzata¹", "Max drawdown¹", "Lengthscale", "b descrittivo, 2024"],
-        [[r.label, f"{r.capped_selected_sharpe:.3f}", f"{r.capped_cagr:.1%}", f"{r.capped_max_drawdown:.1%}",
+        ["Kernel", "Sharpe OOS uncapped", "Crescita composta annualizzata¹", "Max drawdown¹",
+         "Gross mediano", "Gross p95", "Gross p99", "Gross max", "Max |weight|",
+         "Lengthscale", "b descrittivo, 2024"],
+        [[r.label, f"{r.selected_sharpe:.3f}", f"{r.cagr:.1%}", f"{r.max_drawdown:.1%}",
+          f"{r.median_gross_exposure:.2f}", f"{r.p95_gross_exposure:.2f}",
+          f"{r.p99_gross_exposure:.2f}", f"{r.max_gross_exposure:.2f}",
+          "—" if pd.isna(r.max_abs_weight) else f"{r.max_abs_weight:.3f}",
           "—" if r.kernel in ("linear", "ntk") else f"{r.lengthscale:.4f}",
           "—" if pd.isna(r.estimated_b) else f"{r.estimated_b:.3f}"] for r in comparison.itertuples()])
 
@@ -232,7 +237,7 @@ nessuna interpolazione su una seconda dimensione e nessuna selezione locale di f
 <div class="callout"><strong>Per il gaussiano: {gaussian.peak_sharpe:.2f}, non 8.</strong>
 Il massimo della curva è {gaussian.peak_sharpe:.2f} a Average C/T = {gaussian.peak_q:.3f},
 con λ scelto ex post sull'intero test e rendimenti senza cap.
-Lo Sharpe della strategia salvata, con λ scelto sulla validation e cap lordo a 2,
+Lo Sharpe della strategia salvata, con λ scelto sulla validation e nessun cap lordo,
 è invece {gaussian.capped_selected_sharpe:.2f}. Nessuno dei due numeri è stato modificato dalla nuova visualizzazione.</div>
 <h3>Perché la precedente superficie mostrava circa 8?</h3>
 <p>Mostrava una media locale degli Sharpe stimati su finestre di soli dodici mesi.
