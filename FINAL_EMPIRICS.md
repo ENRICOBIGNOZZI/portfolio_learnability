@@ -1,5 +1,46 @@
 # Final empirical section
 
+## Clean uncapped rerun protocol — 23 September 2026
+
+The current branch is `empirics-uncapped-20260923`. All previously generated
+figures under `results/` have been removed before the new run.
+
+Headline portfolio evaluation is now fully uncapped. The response-one
+validation criterion, OOS returns, complexity diagnostics, and reported
+portfolio weights therefore refer to the same estimator. Gross exposure and
+maximum stock weights are retained as diagnostics rather than mechanically
+truncated.
+
+Finite nonlinear representations use 2,000 final coordinates. Every random
+representation is run with exactly two fixed seeds, 0 and 1. Seed 0 is the
+headline path and seed 1 is a robustness replication. The linear model is
+deterministic and is run once.
+
+For Gaussian and Matérn representations the initial lengthscale search is much
+denser than before: a 41-point logarithmic grid on
+([0.125,4]	imesell_{median}), augmented to contain exactly the anchor
+multipliers
+[
+0.125,;0.25,;0.5,;0.75,;1,;1.5,;2,;4.
+]
+Thus the search has well over 30 candidate lengthscales and cannot select the
+old lower boundary merely because the grid stopped at 0.5.
+
+For each candidate lengthscale, ridge tuning uses 120 complexity-spaced
+lambda values. Lengthscale and lambda are selected chronologically by the
+response-one validation loss.
+
+The clean post-run diagnostics include:
+
+- lambda, effective complexity C, and C/T through expanding history;
+- annual return, Sharpe, volatility, and drawdown versus effective complexity;
+- uncapped gross exposure versus complexity;
+- a paired annual-block-bootstrap comparison of annual lambda re-optimization
+  against one initial calibration followed by the Gaussian 1/T rule;
+- two-seed performance, loss, leverage, and monthly-return stability.
+
+No legacy r=1.5 lambda-scaling figures are regenerated in this clean run.
+
 This file records the empirical design that matches the current paper. It also
 marks which older figures must not be used in the main text.
 
