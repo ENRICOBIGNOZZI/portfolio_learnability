@@ -75,7 +75,11 @@ def baseline_spec(kernel, characteristic_name="all"):
         "train_start": int(first.train_start.iloc[0]),
         "train_end": int(first.train_end.iloc[0]),
         "validation_end": int(first.validation_end.iloc[0]),
-        "cap": float(first.max_gross_exposure.iloc[0]),
+        "cap": (
+            None
+            if pd.isna(first.max_gross_exposure.iloc[0])
+            else float(first.max_gross_exposure.iloc[0])
+        ),
     }
 
 
@@ -325,7 +329,13 @@ def evaluate_exposures(characteristics, years, specs):
             for k in KERNELS:
                 weights = models[k].features(month["x"]) @ beta[k] / month["n_assets"]
                 gross = np.abs(weights).sum(axis=0)
-                scale = np.minimum(1.0, specs[k]["cap"] / np.maximum(gross, 1e-300))
+                if specs[k]["cap"] is None:
+                    scale = np.ones_like(gross)
+                else:
+                    scale = np.minimum(
+                        1.0,
+                        specs[k]["cap"] / np.maximum(gross, 1e-300),
+                    )
                 raw = month["r"] @ weights
                 for column, name in enumerate(rules):
                     records[k].append({"formation_date": month["formation_date"], "strategy": name,
@@ -341,7 +351,8 @@ def evaluate_exposures(characteristics, years, specs):
         result = raw.merge(pd.DataFrame(records[k]), on=["formation_date", "strategy"], validate="one_to_one")
         assert len(result) == len(raw)
         np.testing.assert_allclose(result.raw_portfolio_return, result.raw_return_check, atol=1e-8, rtol=1e-8)
-        assert result.gross_exposure.max() <= specs[k]["cap"] + 1e-10
+        if specs[k]["cap"] is not None:
+            assert result.gross_exposure.max() <= specs[k]["cap"] + 1e-10
         assert np.isfinite(result.select_dtypes("number")).all().all()
         result.drop(columns="raw_return_check").to_parquet(OUT / k / "portfolio_returns.parquet", index=False)
 
