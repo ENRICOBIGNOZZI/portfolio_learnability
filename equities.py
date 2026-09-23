@@ -8,6 +8,7 @@ import matplotlib
 matplotlib.use("Agg")
 
 import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
 
 from plot_style import (
@@ -52,6 +53,8 @@ else:
 
 figure, axis = plt.subplots(figsize=(7.2, 4.6))
 
+series = {}
+use_additive = False
 for kernel_name in kernel_names:
     returns_file = (
         project_folder
@@ -60,25 +63,31 @@ for kernel_name in kernel_names:
         / characteristic_name
         / "portfolio_returns.parquet"
     )
+    results = pd.read_parquet(returns_file).sort_values("return_date")
+    returns = results["portfolio_return"].to_numpy(dtype=float)
+    equity = compute_equity_line(returns)
+    if np.any(equity <= 0):
+        use_additive = True
+    series[kernel_name] = (results["return_date"], returns, equity)
 
-    results = pd.read_parquet(returns_file)
-    results = results.sort_values("return_date")
-    equity = compute_equity_line(
-        results["portfolio_return"]
-    )
-
+for kernel_name in kernel_names:
+    dates, returns, equity = series[kernel_name]
+    y = np.cumsum(returns) if use_additive else equity
     axis.plot(
-        results["return_date"],
-        equity,
+        dates,
+        y,
         label=kernel_labels[kernel_name],
         color=KERNEL_COLORS[kernel_name],
         linestyle=KERNEL_LINESTYLES[kernel_name],
     )
 
-axis.set_title(f"Out-of-sample equity by kernel · {characteristic_name}")
+axis.set_title(f"Out-of-sample uncapped paths by kernel · {characteristic_name}")
 axis.set_xlabel("Date")
-axis.set_ylabel("Cumulative wealth - log scale")
-axis.set_yscale("log")
+if use_additive:
+    axis.set_ylabel("Cumulative excess return (additive)")
+else:
+    axis.set_ylabel("Cumulative wealth - log scale")
+    axis.set_yscale("log")
 axis.legend(ncol=3, loc="upper left")
 axis.text(
     0.99,
