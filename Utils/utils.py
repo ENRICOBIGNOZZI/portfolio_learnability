@@ -74,23 +74,22 @@ def compute_sharpe_ratio(returns, periods_per_year=12):
     )
 
 
-def limit_gross_exposure(weights, maximum=2.0):
-    """Limit the sum of the absolute portfolio weights."""
+def limit_gross_exposure(weights, maximum=None):
+    """Optionally limit gross exposure; None leaves weights uncapped."""
     weights = np.asarray(weights, dtype=float)
 
     if weights.ndim != 1:
         raise ValueError("weights must be a one-dimensional vector.")
     if not np.isfinite(weights).all():
         raise ValueError("weights must contain only finite values.")
+
+    raw_gross_exposure = np.abs(weights).sum()
+    if maximum is None:
+        return weights.copy(), raw_gross_exposure, 1.0
     if maximum <= 0:
         raise ValueError("maximum must be positive.")
 
-    raw_gross_exposure = np.abs(weights).sum()
-    scale_factor = 1.0
-
-    if raw_gross_exposure > maximum:
-        scale_factor = maximum / raw_gross_exposure
-
+    scale_factor = min(1.0, maximum / max(raw_gross_exposure, 1e-300))
     limited_weights = weights * scale_factor
 
     return limited_weights, raw_gross_exposure, scale_factor
