@@ -1,11 +1,11 @@
-name: Full 2000-feature empirical retrain
+name: Full uncapped 2000-feature empirical retrain
 
 on:
   workflow_call:
   workflow_dispatch:
   push:
     branches:
-      - empirics-expanding-clean-20260920
+      - empirics-uncapped-20260923
     paths:
       - .github/workflows/full_empirical_retrain.yml
 
@@ -86,15 +86,37 @@ jobs:
           if-no-files-found: error
 
   train:
-    name: Train ${{ matrix.kernel }}
+    name: Train ${{ matrix.kernel }} seed ${{ matrix.seed }}
     needs: prepare-data
     runs-on: ubuntu-latest
-    timeout-minutes: 300
+    timeout-minutes: 420
     strategy:
       fail-fast: false
       max-parallel: 6
       matrix:
-        kernel: [linear, gaussian, ntk, matern12, matern32, matern52]
+        include:
+          - kernel: linear
+            seed: 0
+          - kernel: gaussian
+            seed: 0
+          - kernel: gaussian
+            seed: 1
+          - kernel: ntk
+            seed: 0
+          - kernel: ntk
+            seed: 1
+          - kernel: matern12
+            seed: 0
+          - kernel: matern12
+            seed: 1
+          - kernel: matern32
+            seed: 0
+          - kernel: matern32
+            seed: 1
+          - kernel: matern52
+            seed: 0
+          - kernel: matern52
+            seed: 1
     env:
       WRDS_PASSWORD: ${{ secrets.WRDS_PASSWORD }}
     steps:
@@ -124,33 +146,33 @@ jobs:
             | tar -xf -
           test -f data/JKP_USA_clean/cleaning_manifest.json
 
-      - name: Full chronological training and hyperparameter optimization
-        run: python main.py --characteristics all --kernels "${{ matrix.kernel }}"
+      - name: Full chronological uncapped training and tuning
+        run: python main.py --characteristics all --kernels "${{ matrix.kernel }}" --seed "${{ matrix.seed }}"
 
-      - name: Package kernel results
+      - name: Package kernel result tree
         if: always()
         shell: bash
         run: |
           if [ -d "results/${{ matrix.kernel }}/all" ]; then
-            tar -czf "kernel-${{ matrix.kernel }}.tar.gz" "results/${{ matrix.kernel }}/all"
+            tar -czf "kernel-${{ matrix.kernel }}-seed${{ matrix.seed }}.tar.gz" "results/${{ matrix.kernel }}/all"
           fi
 
       - name: Upload kernel results
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: kernel-${{ matrix.kernel }}
-          path: kernel-${{ matrix.kernel }}.tar.gz
+          name: kernel-${{ matrix.kernel }}-seed${{ matrix.seed }}
+          path: kernel-${{ matrix.kernel }}-seed${{ matrix.seed }}.tar.gz
           retention-days: 90
           compression-level: 0
-          if-no-files-found: warn
+          if-no-files-found: error
 
   aggregate:
-    name: Rebuild paper figures and central diagnostics
+    name: Rebuild clean uncapped empirical package
     needs: train
     if: success()
     runs-on: ubuntu-latest
-    timeout-minutes: 240
+    timeout-minutes: 420
     env:
       WRDS_PASSWORD: ${{ secrets.WRDS_PASSWORD }}
     steps:
@@ -164,10 +186,10 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install numpy pandas pyarrow scipy matplotlib scikit-learn plotly
 
-      - name: Download all kernel artifacts
+      - name: Download all seed artifacts
         uses: actions/download-artifact@v4
         with:
-          pattern: kernel-*
+          pattern: kernel-*-seed*
           path: .kernel_artifacts
           merge-multiple: true
 
@@ -175,8 +197,8 @@ jobs:
         shell: bash
         run: |
           shopt -s nullglob
-          files=(.kernel_artifacts/kernel-*.tar.gz)
-          test "${#files[@]}" -eq 6 || (echo "Expected 6 completed kernel artifacts, found ${#files[@]}" >&2; exit 3)
+          files=(.kernel_artifacts/kernel-*-seed*.tar.gz)
+          test "${#files[@]}" -eq 11 || (echo "Expected 11 completed seed artifacts, found ${#files[@]}" >&2; exit 3)
           for file in "${files[@]}"; do
             tar -xzf "$file"
           done
@@ -196,19 +218,31 @@ jobs:
             | zstd -d \
             | tar -xf -
 
-      - name: Rebuild equity comparison
+      - name: Rebuild seed-0 equity comparison
         run: python equities.py --characteristics all
+
+      - name: Rebuild spectra and b files
+        run: python eigenvalues.py --characteristics all
+
       - name: Rebuild effective-complexity analysis
         run: python complexity_analysis.py --characteristics all
-      - name: Rebuild raw spectra
+
+      - name: Rebuild raw paper spectra
         run: python final_spectra.py
-      - name: Run final Gaussian expanding-window 1/T experiment
+
+      - name: Run Gaussian expanding-window 1/T experiment
         run: python expanding_window_gaussian.py --characteristics all
 
-      - name: Run Matérn smoothness-based expanding-window experiments
+      - name: Run Matérn expanding-window spectrum-rate experiments
         run: python expanding_window_matern.py --characteristics all
 
-      - name: Write compact numerical summary
+      - name: Compare the two finite-feature seeds
+        run: python seed_stability.py
+
+      - name: Build lambda, complexity, return and drawdown diagnostics
+        run: python learnability_diagnostics.py
+
+      - name: Write compact uncapped numerical summary
         run: |
           python - <<'PY'
           from pathlib import Path
@@ -217,101 +251,37 @@ jobs:
           rows = []
           for kernel in ["linear","gaussian","ntk","matern12","matern32","matern52"]:
               d = pd.read_parquet(root / kernel / "all" / "portfolio_returns.parquet").sort_values("return_date")
-              r = d["portfolio_return"]
-              wealth = (1+r).cumprod()
-              dd = wealth / wealth.cummax() - 1
+              r = d["raw_portfolio_return"]
               rows.append({
                   "kernel": kernel,
                   "months": len(r),
                   "mean_ann": 12*r.mean(),
                   "vol_ann": (12**0.5)*r.std(ddof=1),
                   "sharpe": (12**0.5)*r.mean()/r.std(ddof=1),
-                  "max_drawdown": dd.min(),
-                  "mean_gross": d["gross_exposure"].mean(),
+                  "quadratic_criterion": ((1-r)**2).mean(),
+                  "median_gross": d["gross_exposure"].median(),
+                  "p95_gross": d["gross_exposure"].quantile(.95),
+                  "p99_gross": d["gross_exposure"].quantile(.99),
+                  "max_gross": d["gross_exposure"].max(),
+                  "max_abs_weight": d["max_abs_weight"].max(),
               })
           summary = pd.DataFrame(rows)
-          summary.to_csv(root / "final_performance_summary.csv", index=False)
+          summary.to_csv(root / "final_uncapped_performance_summary.csv", index=False)
           print(summary.to_string(index=False))
 
-          k = pd.read_parquet(root / "complexity_analysis" / "kernel_comparison.parquet")
-          print("\nComplexity summary")
-          cols = [c for c in ["kernel","peak_q","peak_sharpe","capped_selected_sharpe","estimated_b"] if c in k]
-          print(k[cols].to_string(index=False))
+          print("\nTwo-seed stability")
+          print(pd.read_csv(root / "seed_stability" / "seed_performance.csv").to_string(index=False))
 
-          print("\nGaussian 1/T summary")
-          g = pd.read_csv(root / "expanding_gaussian" / "all" / "performance_summary.csv")
-          print(g.to_string(index=False))
-
-          print("\nMatérn smoothness-scaling summary")
-          m = pd.read_csv(root / "expanding_matern" / "all" / "performance_summary.csv")
-          print(m.to_string(index=False))
+          print("\nGaussian annual-retuning versus inverse-history rule")
+          print(pd.read_csv(root / "learnability_diagnostics" / "rule_summary.csv").to_string(index=False))
+          print(pd.read_csv(root / "learnability_diagnostics" / "hyperoptimized_vs_rate_bootstrap_summary.csv").to_string(index=False))
           PY
 
-      - name: Upload complete regenerated research outputs
+      - name: Upload complete clean uncapped research outputs
         uses: actions/upload-artifact@v4
         with:
-          name: paper-results-2000
+          name: paper-results-uncapped-2000
           path: results/
-          retention-days: 90
-          compression-level: 3
-          if-no-files-found: error
-
-  extended-diagnostics:
-    name: Extended lambda-scaling diagnostics
-    needs: train
-    if: success()
-    runs-on: ubuntu-latest
-    timeout-minutes: 360
-    env:
-      WRDS_PASSWORD: ${{ secrets.WRDS_PASSWORD }}
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-
-      - name: Install analysis dependencies
-        run: |
-          python -m pip install --upgrade pip
-          python -m pip install numpy pandas pyarrow scipy matplotlib scikit-learn plotly
-
-      - name: Download all kernel artifacts
-        uses: actions/download-artifact@v4
-        with:
-          pattern: kernel-*
-          path: .kernel_artifacts
-          merge-multiple: true
-
-      - name: Restore baseline results
-        shell: bash
-        run: |
-          for file in .kernel_artifacts/kernel-*.tar.gz; do
-            tar -xzf "$file"
-          done
-
-      - name: Download encrypted data
-        uses: actions/download-artifact@v4
-        with:
-          name: encrypted-jkp-data
-          path: .data_artifact
-
-      - name: Restore licensed data
-        shell: bash
-        run: |
-          openssl enc -d -aes-256-cbc -pbkdf2 \
-            -pass env:WRDS_PASSWORD \
-            -in .data_artifact/jkp_data.tar.zst.enc \
-            | zstd -d \
-            | tar -xf -
-
-      - name: Run full lambda-scaling robustness suite
-        run: python lambda_scaling.py --characteristics all
-
-      - name: Upload extended diagnostics
-        uses: actions/upload-artifact@v4
-        with:
-          name: lambda-scaling-2000
-          path: results/lambda_scaling/
           retention-days: 90
           compression-level: 3
           if-no-files-found: error
