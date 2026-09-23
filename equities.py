@@ -83,7 +83,7 @@ axis.legend(ncol=3, loc="upper left")
 axis.text(
     0.99,
     0.02,
-    r"Monthly gross exposure $\leq 2$",
+    "Uncapped monthly portfolio weights",
     transform=axis.transAxes,
     ha="right",
     va="bottom",
