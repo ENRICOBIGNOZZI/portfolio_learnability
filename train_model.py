@@ -121,6 +121,7 @@ def train_model(
     max_gross_exposure=None,
     number_of_lambdas=120,
     lengthscale_multipliers=(0.125, 0.25, 0.5, 0.75, 1.0, 1.5, 2.0, 4.0),
+    random_state=0,
 ):
     """Train one kernel with expanding windows."""
     use_all_characteristics = (
@@ -214,6 +215,7 @@ def train_model(
                 kernel=kernel_name,
                 ell=trial_lengthscale,
                 n_random_features=n_random_features,
+                random_state=random_state,
             )
             trial_months = first_train + first_validation
             trial_returns = make_return_dictionary(
@@ -269,6 +271,7 @@ def train_model(
             lengthscale_results.append(
                 {
                     "kernel": kernel_name,
+                    "random_state": random_state,
                     "median_lengthscale": median,
                     "multiplier": multiplier,
                     "lengthscale": trial_lengthscale,
@@ -301,6 +304,7 @@ def train_model(
         kernel=kernel_name,
         ell=lengthscale,
         n_random_features=n_random_features,
+        random_state=random_state,
     )
     return_dictionary = make_return_dictionary(
         panels,
@@ -355,6 +359,7 @@ def train_model(
             window_lambda_results.append(
                 {
                     "kernel": kernel_name,
+                    "random_state": random_state,
                     "test_year": test_year,
                     "train_start": window["train_years"][0],
                     "train_end": window["train_years"][-1],
@@ -423,6 +428,7 @@ def train_model(
             eigenvalue_results.append(
                 {
                     "kernel": kernel_name,
+                    "random_state": random_state,
                     "test_year": test_year,
                     "lengthscale": lengthscale,
                     "eigenvalue_number": number,
@@ -477,6 +483,7 @@ def train_model(
                         "formation_date": month["formation_date"],
                         "return_date": month["return_date"],
                         "kernel": kernel_name,
+                        "random_state": random_state,
                         "lengthscale": lengthscale,
                         "lambda": lambda_value,
                         "max_gross_exposure": cap_value,
@@ -536,6 +543,7 @@ def train_model(
                     "formation_date": month["formation_date"],
                     "return_date": month["return_date"],
                     "kernel": kernel_name,
+                    "random_state": random_state,
                     "lengthscale": lengthscale,
                     "lambda": best_lambda,
                     "max_gross_exposure": cap_value,
@@ -555,6 +563,7 @@ def train_model(
                         "formation_date": month["formation_date"],
                         "return_date": month["return_date"],
                         "kernel": kernel_name,
+                        "random_state": random_state,
                         "lengthscale": lengthscale,
                         "lambda": best_lambda,
                         "id": month["id"],
