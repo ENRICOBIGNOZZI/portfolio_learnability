@@ -38,7 +38,7 @@ def evaluate_lambdas(
     betas,
     max_gross_exposure,
 ):
-    """Compute limited portfolio returns for every lambda."""
+    """Compute portfolio returns for every lambda, optionally with a gross cap."""
     lambda_values = list(betas)
     beta_matrix = np.column_stack(
         [betas[value] for value in lambda_values]
@@ -56,11 +56,12 @@ def evaluate_lambdas(
 
         month_raw_gross = np.abs(raw_weights).sum(axis=0)
         month_scales = np.ones(len(lambda_values))
-        too_large = month_raw_gross > max_gross_exposure
-        month_scales[too_large] = (
-            max_gross_exposure
-            / month_raw_gross[too_large]
-        )
+        if max_gross_exposure is not None:
+            too_large = month_raw_gross > max_gross_exposure
+            month_scales[too_large] = (
+                max_gross_exposure
+                / month_raw_gross[too_large]
+            )
 
         weights = raw_weights * month_scales
         month_returns = month["r"] @ weights
@@ -117,9 +118,9 @@ def train_model(
     kernel_name,
     characteristics,
     n_random_features=2000,
-    max_gross_exposure=2.0,
-    number_of_lambdas=60,
-    lengthscale_multipliers=(0.5, 1.0, 2.0),
+    max_gross_exposure=None,
+    number_of_lambdas=120,
+    lengthscale_multipliers=(0.125, 0.25, 0.5, 0.75, 1.0, 1.5, 2.0, 4.0),
 ):
     """Train one kernel with expanding windows."""
     use_all_characteristics = (
@@ -146,10 +147,15 @@ def train_model(
                 "Use at least 1000 random features."
             )
 
-    if max_gross_exposure <= 0:
+    if max_gross_exposure is not None and max_gross_exposure <= 0:
         raise ValueError(
-            "max_gross_exposure must be positive."
+            "max_gross_exposure must be positive when supplied."
         )
+    cap_value = (
+        np.nan
+        if max_gross_exposure is None
+        else float(max_gross_exposure)
+    )
 
     uses_lengthscale = kernel_name in {
         "gaussian",
@@ -277,7 +283,6 @@ def train_model(
                 best_lengthscale_loss = trial_best_loss
                 best_lengthscale_grid = trial_grid
 
-        lambda_grid = best_lengthscale_grid
         lengthscale_file = (
             results_folder
             / "lengthscale_diagnostics.parquet"
@@ -300,21 +305,10 @@ def train_model(
     )
 
     if lambda_grid is None:
-        first_train_matrix = make_return_matrix(
-            windows[0]["train"],
-            kernel,
-            return_dictionary,
+        print(
+            "Lambda grid: rebuilt in effective-complexity space "
+            "inside every chronological training window."
         )
-        first_eigenvalues = kernel_eigenvalues(
-            first_train_matrix
-        )
-        lambda_grid = make_complexity_lambda_grid(
-            first_eigenvalues,
-            number_of_lambdas=number_of_lambdas,
-        )
-        print("Number of lambdas:", len(lambda_grid))
-        print("Smallest lambda:", lambda_grid[0])
-        print("Largest lambda:", lambda_grid[-1])
 
     test_results = []
     eigenvalue_results = []
@@ -335,9 +329,17 @@ def train_model(
             kernel,
             return_dictionary,
         )
+        if lambda_grid is None:
+            train_eigenvalues = kernel_eigenvalues(train_matrix)
+            window_lambda_grid = make_complexity_lambda_grid(
+                train_eigenvalues,
+                number_of_lambdas=number_of_lambdas,
+            )
+        else:
+            window_lambda_grid = lambda_grid
         betas, _ = fit_lambda_grid(
             train_matrix,
-            lambda_grid,
+            window_lambda_grid,
         )
         validation_results = evaluate_lambdas(
             window["validation"],
@@ -351,7 +353,7 @@ def train_model(
         best_validation_loss = np.inf
         window_lambda_results = []
 
-        for lambda_value in lambda_grid:
+        for lambda_value in window_lambda_grid:
             beta = betas[lambda_value]
             raw_validation_returns = validation_matrix @ beta
             validation_returns = validation_results[
@@ -371,7 +373,7 @@ def train_model(
                     "validation_end": window["validation_years"][-1],
                     "lengthscale": lengthscale,
                     "lambda": lambda_value,
-                    "max_gross_exposure": max_gross_exposure,
+                    "max_gross_exposure": cap_value,
                     "validation_sharpe": compute_sharpe_ratio(
                         validation_returns
                     ),
@@ -416,7 +418,7 @@ def train_model(
         )
         refit_betas, eigenvalues = fit_lambda_grid(
             train_and_validation,
-            lambda_grid,
+            window_lambda_grid,
         )
         test_lambda_results = evaluate_lambdas(
             window["test"],
@@ -488,7 +490,7 @@ def train_model(
                         "kernel": kernel_name,
                         "lengthscale": lengthscale,
                         "lambda": lambda_value,
-                        "max_gross_exposure": max_gross_exposure,
+                        "max_gross_exposure": cap_value,
                         "raw_portfolio_return": raw_test_returns[
                             month_number
                         ],
@@ -531,8 +533,11 @@ def train_model(
             )
             raw_portfolio_return = raw_weights @ month["r"]
             portfolio_return = weights @ month["r"]
-            gross_exposure = np.abs(weights).sum()
+            absolute_weights = np.abs(weights)
+            gross_exposure = absolute_weights.sum()
             net_exposure = weights.sum()
+            max_abs_weight = absolute_weights.max()
+            p99_abs_weight = np.quantile(absolute_weights, 0.99)
 
             window_test_returns.append(
                 portfolio_return
@@ -544,12 +549,14 @@ def train_model(
                     "kernel": kernel_name,
                     "lengthscale": lengthscale,
                     "lambda": best_lambda,
-                    "max_gross_exposure": max_gross_exposure,
+                    "max_gross_exposure": cap_value,
                     "raw_portfolio_return": raw_portfolio_return,
                     "portfolio_return": portfolio_return,
                     "raw_gross_exposure": raw_gross_exposure,
                     "gross_exposure": gross_exposure,
                     "net_exposure": net_exposure,
+                    "max_abs_weight": max_abs_weight,
+                    "p99_abs_weight": p99_abs_weight,
                     "scale_factor": scale_factor,
                 }
             )
