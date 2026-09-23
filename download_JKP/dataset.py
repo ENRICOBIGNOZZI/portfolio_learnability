@@ -1,6 +1,7 @@
 import sqlalchemy as sa
 import pandas as pd
 from pathlib import Path
+import time
 
 
 # ============================================================
@@ -33,9 +34,16 @@ engine = sa.create_engine(
         database="wrds",
     ),
     isolation_level="AUTOCOMMIT",
+    pool_pre_ping=True,
+    pool_recycle=300,
     connect_args={
         "sslmode": "require",
         "application_name": "portfolio_learnability",
+        "connect_timeout": 30,
+        "keepalives": 1,
+        "keepalives_idle": 30,
+        "keepalives_interval": 10,
+        "keepalives_count": 5,
     },
 )
 
@@ -46,13 +54,30 @@ class _DirectWRDS:
     def __init__(self, engine):
         self.engine = engine
 
-    def raw_sql(self, query, date_cols=None):
-        with self.engine.connect() as connection:
-            return pd.read_sql_query(
-                sa.text(query),
-                connection,
-                parse_dates=date_cols,
-            )
+    def raw_sql(self, query, date_cols=None, attempts=8):
+        """Run one WRDS query with bounded retries for transient SSL drops."""
+        last_error = None
+        for attempt in range(1, attempts + 1):
+            try:
+                with self.engine.connect() as connection:
+                    return pd.read_sql_query(
+                        sa.text(query),
+                        connection,
+                        parse_dates=date_cols,
+                    )
+            except (sa.exc.OperationalError, sa.exc.DBAPIError) as exc:
+                last_error = exc
+                self.engine.dispose()
+                if attempt == attempts:
+                    break
+                delay = min(60, 5 * 2 ** (attempt - 1))
+                print(
+                    f"WRDS connection/query failed on attempt {attempt}/{attempts}; "
+                    f"retrying in {delay}s: {exc}",
+                    flush=True,
+                )
+                time.sleep(delay)
+        raise last_error
 
     def close(self):
         self.engine.dispose()
