@@ -45,12 +45,23 @@ def formation_dates():
 def add_relative_complexity(diagnostics):
     """Divide each window's C by its actual number of refit months."""
     data = diagnostics.copy()
-    dates = formation_dates()
+    try:
+        dates = formation_dates()
+    except ValueError:
+        dates = None
     counts = {}
     for year, window in data.groupby("test_year"):
         first = window.iloc[0]
-        counts[year] = int(((dates.year >= first["train_start"]) &
-                            (dates.year <= first["validation_end"])).sum())
+        if dates is not None:
+            counts[year] = int(((dates.year >= first["train_start"]) &
+                                (dates.year <= first["validation_end"])).sum())
+        else:
+            # The paper sample contains one panel per calendar month. This
+            # fallback makes post-processing of saved licensed-data artifacts
+            # independent of a second WRDS download.
+            counts[year] = 12 * (
+                int(first["validation_end"]) - int(first["train_start"]) + 1
+            )
     data["estimation_months"] = data["test_year"].map(counts)
     if (data["estimation_months"] <= 0).any():
         raise ValueError("Every estimation window must contain months")
