@@ -15,11 +15,23 @@ lengthscale_multipliers = np.unique(
         [0.125, 0.25, 0.5, 0.75, 1.0, 1.5, 2.0, 4.0],
     ]
 ).tolist()
+
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument("--characteristics", nargs="+", default=["all"])
-parser.add_argument("--kernels", nargs="+", choices=["linear", "gaussian", "ntk", "matern12", "matern32", "matern52"])
+parser.add_argument(
+    "--kernels",
+    nargs="+",
+    choices=["linear", "gaussian", "ntk", "matern12", "matern32", "matern52"],
+)
 parser.add_argument("--seed", type=int, default=0)
+parser.add_argument("--n-random-features", type=int, default=2000)
+parser.add_argument(
+    "--fixed-median-lengthscale",
+    action="store_true",
+    help="For Gaussian and Matérn kernels, set ell to the initial-sample median distance and do not tune ell.",
+)
 args = parser.parse_args()
+
 characteristics = "all" if args.characteristics == ["all"] else args.characteristics
 max_gross_exposure = None
 kernel_names = [
@@ -33,15 +45,21 @@ kernel_names = [
 if args.kernels:
     kernel_names = args.kernels
 
+active_lengthscale_multipliers = (
+    [1.0]
+    if args.fixed_median_lengthscale
+    else lengthscale_multipliers
+)
+
 for kernel_name in kernel_names:
     print(f"Training {kernel_name}: {characteristics}", flush=True)
     train_model(
         lambda_grid=lambda_grid,
         kernel_name=kernel_name,
         characteristics=characteristics,
-        n_random_features=2000,
+        n_random_features=args.n_random_features,
         max_gross_exposure=max_gross_exposure,
         number_of_lambdas=number_of_lambdas,
-        lengthscale_multipliers=lengthscale_multipliers,
+        lengthscale_multipliers=active_lengthscale_multipliers,
         random_state=args.seed,
     )
