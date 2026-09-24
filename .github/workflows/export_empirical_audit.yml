@@ -1,0 +1,84 @@
+name: Export empirical audit inputs
+on:
+  push:
+    branches: [empirics-audit-20260924]
+    paths: [.github/workflows/export_empirical_audit.yml]
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install numpy pandas pyarrow
+      - name: Read completed c=1 artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: paper-results-uncapped-2000-final
+          path: .audit_c1
+          github-token: ${{ github.token }}
+          run-id: '35918570205'
+      - name: Read completed c=0.1 artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: paper-results-uncapped-c01-2000-final
+          path: .audit_c01
+          github-token: ${{ github.token }}
+          run-id: '35961791656'
+      - name: Export compact data and verify weight scaling
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import shutil, json, hashlib
+          import numpy as np
+          import pandas as pd
+          out=Path('audit_export'); out.mkdir()
+          roots={tag:Path(path) for tag,path in [('c1','.audit_c1'),('c01','.audit_c01')]}
+          for tag,root in list(roots.items()):
+              if (root/'results').is_dir(): roots[tag]=root/'results'
+          for tag,root in roots.items():
+              if not (root/'gaussian/all/portfolio_returns.parquet').exists():
+                  raise RuntimeError(f'{tag}: unexpected artifact structure')
+              for src in root.rglob('*'):
+                  if not src.is_file(): continue
+                  rel=src.relative_to(root)
+                  if 'weights' in rel.parts: continue
+                  if tag=='c1' and src.suffix.lower() in {'.png','.pdf','.svg','.html'}: continue
+                  dst=out/tag/rel; dst.parent.mkdir(parents=True,exist_ok=True)
+                  shutil.copy2(src,dst)
+          rows=[]; exposure=[]
+          for old in sorted(roots['c1'].rglob('weights_*.parquet')):
+              rel=old.relative_to(roots['c1']); new=roots['c01']/rel
+              a=pd.read_parquet(old); b=pd.read_parquet(new)
+              keys=[k for k in ['formation_date','return_date','id','permno'] if k in a]
+              same_ids=a[keys].equals(b[keys])
+              diff=float(np.max(np.abs(b['weight'].to_numpy()-.1*a['weight'].to_numpy())))
+              rawdiff=float(np.max(np.abs(b['raw_weight'].to_numpy()-.1*a['raw_weight'].to_numpy())))
+              rows.append({'path':str(rel),'rows':len(a),'same_ids_dates':same_ids,'max_weight_scaling_error':diff,'max_raw_weight_scaling_error':rawdiff})
+              for date,g in b.groupby('formation_date'):
+                  w=g['weight'].to_numpy(dtype=float)
+                  exposure.append({'path':str(rel),'kernel':g['kernel'].iloc[0], 'seed':int(g['random_state'].iloc[0]), 'formation_date':date,'gross_from_weights':float(np.abs(w).sum()),'net_from_weights':float(w.sum()),'max_abs_weight':float(np.abs(w).max()),'weight_count':len(w)})
+          pd.DataFrame(rows).to_csv(out/'weight_scaling_checks.csv',index=False)
+          pd.DataFrame(exposure).to_parquet(out/'monthly_weight_checks.parquet',index=False)
+          for src in Path('.').rglob('*.py'):
+              if any(p.startswith('.') for p in src.parts): continue
+              if 'audit_export' in src.parts: continue
+              dst=out/'source'/src; dst.parent.mkdir(parents=True,exist_ok=True); shutil.copy2(src,dst)
+          meta={'source_c1_run':35918570205,'source_c01_run':35961791656,'source_code_sha':'167f3f104829f673f5f42285a5f1b7c7371f0cf0','weight_files_checked':len(rows),'weight_rows_checked':sum(r['rows'] for r in rows),'all_weight_scaling_pass':all(r['same_ids_dates'] and r['max_weight_scaling_error']<1e-12 and r['max_raw_weight_scaling_error']<1e-12 for r in rows),'note':'Read-only export of completed artifacts; no training, no WRDS, no modifications to source outputs.'}
+          (out/'audit_manifest.json').write_text(json.dumps(meta,indent=2))
+          print(json.dumps(meta,indent=2))
+          print('Export bytes:',sum(p.stat().st_size for p in out.rglob('*') if p.is_file()))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: empirical-audit-inputs
+          path: audit_export/
+          retention-days: 30
+          compression-level: 6
+          if-no-files-found: error
