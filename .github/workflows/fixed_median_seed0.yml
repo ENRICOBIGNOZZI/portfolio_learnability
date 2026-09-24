@@ -1,4 +1,4 @@
-name: Fixed median seed-0 empirical retrain
+name: Fixed median seed-0 2k/4k empirical retrain
 
 on:
   workflow_dispatch:
@@ -9,6 +9,7 @@ on:
       - .github/workflows/fixed_median_seed0.yml
       - main.py
       - train_model.py
+      - spectral_lambda_experiment.py
       - Kernels/**
       - median_lengthscale.py
       - Utils/**
@@ -41,8 +42,8 @@ jobs:
       - name: Verify WRDS secrets
         shell: bash
         run: |
-          test -n "$WRDS_USERNAME"
-          test -n "$WRDS_PASSWORD"
+          test -n "$WRDS_USERNAME" || (echo "WRDS_USERNAME is missing" >&2; exit 2)
+          test -n "$WRDS_PASSWORD" || (echo "WRDS_PASSWORD is missing" >&2; exit 2)
 
       - name: Configure WRDS libpq credentials
         shell: bash
@@ -68,7 +69,7 @@ jobs:
           years = available_jkp_years(DEFAULT_DATA_DIR)
           assert len(chars) == 132, len(chars)
           assert years[0] == 1963 and years[-1] == 2024, (years[0], years[-1])
-          print("Verified", len(chars), "characteristics", years[0], years[-1])
+          print("Verified:", len(chars), "characteristics,", years[0], "-", years[-1])
           PY
 
       - name: Package encrypted ephemeral data
@@ -90,7 +91,7 @@ jobs:
           if-no-files-found: error
 
   train:
-    name: Train ${{ matrix.kernel }} seed 0 median ell
+    name: ${{ matrix.kernel }} / ${{ matrix.features }} features / seed 0 / median ell
     needs: prepare-data
     runs-on: ubuntu-latest
     timeout-minutes: 420
@@ -98,9 +99,22 @@ jobs:
       fail-fast: false
       max-parallel: 6
       matrix:
-        kernel: [linear, gaussian, ntk, matern12, matern32, matern52]
+        include:
+          - {kernel: linear, features: 2000}
+          - {kernel: gaussian, features: 2000}
+          - {kernel: gaussian, features: 4000}
+          - {kernel: ntk, features: 2000}
+          - {kernel: ntk, features: 4000}
+          - {kernel: matern12, features: 2000}
+          - {kernel: matern12, features: 4000}
+          - {kernel: matern32, features: 2000}
+          - {kernel: matern32, features: 4000}
+          - {kernel: matern52, features: 2000}
+          - {kernel: matern52, features: 4000}
+
     env:
       WRDS_PASSWORD: ${{ secrets.WRDS_PASSWORD }}
+
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -126,54 +140,73 @@ jobs:
             | zstd -d \
             | tar -xf -
 
-      - name: Train fixed representation
+      - name: Train with annual cross-validated lambda
         run: |
           python main.py \
             --characteristics all \
             --kernels "${{ matrix.kernel }}" \
             --seed 0 \
-            --n-random-features 2000 \
+            --n-random-features "${{ matrix.features }}" \
             --fixed-median-lengthscale
 
       - name: Package results
         shell: bash
-        run: tar -czf "kernel-${{ matrix.kernel }}.tar.gz" "results/${{ matrix.kernel }}/all"
+        run: |
+          tar -czf "kernel-${{ matrix.kernel }}-${{ matrix.features }}.tar.gz" \
+            "results/${{ matrix.kernel }}/all"
 
       - uses: actions/upload-artifact@v4
         with:
-          name: fixed-median-${{ matrix.kernel }}
-          path: kernel-${{ matrix.kernel }}.tar.gz
+          name: fixed-median-${{ matrix.kernel }}-${{ matrix.features }}
+          path: kernel-${{ matrix.kernel }}-${{ matrix.features }}.tar.gz
           retention-days: 90
           compression-level: 0
           if-no-files-found: error
 
   aggregate:
-    name: Aggregate fixed-median results
+    name: Compare 2k/4k and run spectral lambda rule
     needs: train
     if: success()
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 90
+
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
       - run: python -m pip install numpy pandas pyarrow scipy matplotlib
 
       - uses: actions/download-artifact@v4
         with:
           pattern: fixed-median-*
           path: .artifacts
-          merge-multiple: true
 
-      - name: Restore result trees
+      - name: Restore 2k and 4k result trees separately
         shell: bash
         run: |
-          for file in .artifacts/kernel-*.tar.gz; do
-            tar -xzf "$file"
+          mkdir -p restored/2000 restored/4000
+          find .artifacts -name 'kernel-*-2000.tar.gz' -print0 | while IFS= read -r -d '' file; do
+            tar -xzf "$file" -C restored/2000
+          done
+          find .artifacts -name 'kernel-*-4000.tar.gz' -print0 | while IFS= read -r -d '' file; do
+            tar -xzf "$file" -C restored/4000
           done
 
-      - name: Build fixed-median numerical summary
+      - name: Run spectrum-adaptive lambda experiment
+        run: |
+          python spectral_lambda_experiment.py \
+            --results-root restored/2000/results \
+            --rank-min 5 --rank-max 100 \
+            --output analysis/2000/spectral_lambda
+
+          python spectral_lambda_experiment.py \
+            --results-root restored/4000/results \
+            --rank-min 5 --rank-max 100 \
+            --output analysis/4000/spectral_lambda
+
+      - name: Build 2k versus 4k summary
         run: |
           python - <<'PY'
           from pathlib import Path
@@ -182,71 +215,77 @@ jobs:
           from scipy.stats import linregress
 
           kernels = ["linear","gaussian","ntk","matern12","matern32","matern52"]
-          root = Path("results")
           rows = []
-          spectral = []
-          eig2024 = []
+          spectra = []
+          eig = []
 
-          for kernel in kernels:
-              folder = root / kernel / "all"
-              p = pd.read_parquet(folder / "portfolio_returns.parquet").sort_values("return_date")
-              r = 0.1 * p["raw_portfolio_return"].to_numpy(float)
-              wealth = np.cumprod(1.0 + r)
-              drawdown = wealth / np.maximum.accumulate(wealth) - 1.0
-              rows.append({
-                  "kernel": kernel,
-                  "months": len(r),
-                  "mean_ann": 12*np.mean(r),
-                  "vol_ann": np.sqrt(12)*np.std(r, ddof=1),
-                  "sharpe": np.sqrt(12)*np.mean(r)/np.std(r, ddof=1),
-                  "max_drawdown": np.min(drawdown),
-                  "median_gross_c01": 0.1*p["raw_gross_exposure"].median(),
-                  "p99_gross_c01": 0.1*p["raw_gross_exposure"].quantile(.99),
-                  "max_gross_c01": 0.1*p["raw_gross_exposure"].max(),
-                  "lengthscale": p["lengthscale"].iloc[0],
-              })
+          for features in [2000, 4000]:
+              root = Path(f"restored/{features}/results")
+              for kernel in kernels:
+                  folder = root / kernel / "all"
+                  if not folder.exists():
+                      continue
 
-              e = pd.read_parquet(folder / "kernel_eigenvalues.parquet")
-              e = e[e["test_year"].eq(2024)].sort_values("eigenvalue_number").copy()
-              e["kernel"] = kernel
-              eig2024.append(e)
+                  p = pd.read_parquet(folder / "portfolio_returns.parquet").sort_values("return_date")
+                  r = 0.1 * p["raw_portfolio_return"].to_numpy(float)
+                  wealth = np.cumprod(1.0 + r)
+                  dd = wealth / np.maximum.accumulate(wealth) - 1.0
 
-              positive = e[e["eigenvalue"].gt(0)].copy()
-              mu = positive["eigenvalue"].to_numpy(float)
-              ranks = positive["eigenvalue_number"].to_numpy(float)
-              total = mu.sum()
-              row = {
-                  "kernel": kernel,
-                  "n_positive": len(mu),
-                  "mu1": mu[0] if len(mu) else np.nan,
-                  "top1_share": mu[:1].sum()/total if total > 0 else np.nan,
-                  "top10_share": mu[:10].sum()/total if total > 0 else np.nan,
-                  "top50_share": mu[:50].sum()/total if total > 0 else np.nan,
-              }
-              mask = (ranks >= 5) & (ranks <= min(450, ranks.max()))
-              if mask.sum() >= 10:
-                  fit = linregress(np.log(ranks[mask]), np.log(mu[mask]))
-                  row["power_b_rank5_450"] = -fit.slope
-                  row["power_r2_rank5_450"] = fit.rvalue**2
-              else:
-                  row["power_b_rank5_450"] = np.nan
-                  row["power_r2_rank5_450"] = np.nan
-              spectral.append(row)
+                  rows.append({
+                      "features": features,
+                      "kernel": kernel,
+                      "months": len(r),
+                      "mean_ann": 12*np.mean(r),
+                      "vol_ann": np.sqrt(12)*np.std(r, ddof=1),
+                      "sharpe": np.sqrt(12)*np.mean(r)/np.std(r, ddof=1),
+                      "max_drawdown": np.min(dd),
+                      "median_gross_c01": 0.1*p["raw_gross_exposure"].median(),
+                      "p99_gross_c01": 0.1*p["raw_gross_exposure"].quantile(.99),
+                      "lengthscale": p["lengthscale"].iloc[0],
+                  })
 
-          pd.DataFrame(rows).to_csv(root / "fixed_median_performance_summary.csv", index=False)
-          pd.DataFrame(spectral).to_csv(root / "fixed_median_spectral_summary_2024.csv", index=False)
-          pd.concat(eig2024, ignore_index=True).to_csv(root / "fixed_median_eigenvalues_2024.csv", index=False)
+                  e = pd.read_parquet(folder / "kernel_eigenvalues.parquet")
+                  e = e[e["test_year"].eq(2024)].sort_values("eigenvalue_number").copy()
+                  e["features"] = features
+                  eig.append(e)
+
+                  g = e.loc[
+                      e["eigenvalue_number"].between(5,100)
+                      & e["eigenvalue"].gt(0)
+                  ]
+                  fit = linregress(
+                      np.log(g["eigenvalue_number"].to_numpy(float)),
+                      np.log(g["eigenvalue"].to_numpy(float)),
+                  )
+                  mu = e.loc[e["eigenvalue"].gt(0), "eigenvalue"].to_numpy(float)
+                  total = mu.sum()
+                  spectra.append({
+                      "features": features,
+                      "kernel": kernel,
+                      "b_hat_rank5_100": -fit.slope,
+                      "b_r2_rank5_100": fit.rvalue**2,
+                      "mu1": mu[0],
+                      "top1_share": mu[:1].sum()/total,
+                      "top10_share": mu[:10].sum()/total,
+                      "top50_share": mu[:50].sum()/total,
+                  })
+
+          out = Path("analysis")
+          out.mkdir(exist_ok=True)
+          pd.DataFrame(rows).to_csv(out/"performance_2k_4k.csv", index=False)
+          pd.DataFrame(spectra).to_csv(out/"spectrum_2k_4k_2024.csv", index=False)
+          pd.concat(eig, ignore_index=True).to_csv(out/"eigenvalues_2k_4k_2024.csv", index=False)
 
           print("\nPERFORMANCE")
           print(pd.DataFrame(rows).to_string(index=False))
-          print("\n2024 SPECTRUM")
-          print(pd.DataFrame(spectral).to_string(index=False))
+          print("\nSPECTRUM 2024")
+          print(pd.DataFrame(spectra).to_string(index=False))
           PY
 
       - uses: actions/upload-artifact@v4
         with:
-          name: fixed-median-seed0-2000-results
-          path: results/
+          name: fixed-median-seed0-2k-4k-analysis
+          path: analysis/
           retention-days: 90
           compression-level: 3
           if-no-files-found: error
