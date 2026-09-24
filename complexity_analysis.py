@@ -151,13 +151,11 @@ def analyze_kernel(kernel, characteristic_name="all", input_dimension=132):
 def main():
     global OUTPUT
     import argparse
-    from download_JKP.read_dataset import DEFAULT_DATA_DIR, available_jkp_characteristics
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--characteristics", nargs="+", default=["all"])
     args = parser.parse_args()
     characteristic_name = "_".join(args.characteristics)
-    input_dimension = (len(available_jkp_characteristics(DEFAULT_DATA_DIR))
-                       if characteristic_name == "all" else len(args.characteristics))
+    input_dimension = 132 if characteristic_name == "all" else len(args.characteristics)
     OUTPUT = ROOT / "results" / ("complexity_analysis" if characteristic_name == "all"
                                  else f"complexity_analysis_{characteristic_name}")
     OUTPUT.mkdir(exist_ok=True, parents=True)
