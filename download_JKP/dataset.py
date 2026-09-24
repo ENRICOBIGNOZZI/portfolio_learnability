@@ -88,7 +88,6 @@ def build_engine(username, password):
             port=9737,
             database="wrds",
         ),
-        isolation_level="AUTOCOMMIT",
         poolclass=sa.pool.NullPool,
         connect_args={
             "sslmode": "require",
