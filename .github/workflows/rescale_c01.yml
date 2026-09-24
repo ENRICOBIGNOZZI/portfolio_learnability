@@ -1,0 +1,146 @@
+name: Exact c=0.1 rescale of completed uncapped run
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - empirics-uncapped-20260923
+    paths:
+      - .github/workflows/rescale_c01.yml
+      - rescale_response_target.py
+      - replot_scaled_expanding.py
+      - seed_stability.py
+      - learnability_diagnostics.py
+      - complexity_analysis.py
+      - complexity_report.py
+
+permissions:
+  contents: read
+  actions: read
+
+env:
+  PYTHONUNBUFFERED: "1"
+  OPENBLAS_NUM_THREADS: "4"
+  OMP_NUM_THREADS: "4"
+  MKL_NUM_THREADS: "4"
+  NUMEXPR_NUM_THREADS: "4"
+  SOURCE_RUN_ID: "35918570205"
+
+jobs:
+  rescale:
+    name: Build exact uncapped c=0.1 empirical package
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install analysis dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install numpy pandas pyarrow scipy matplotlib scikit-learn plotly
+
+      - name: Download completed c=1 empirical package
+        uses: actions/download-artifact@v4
+        with:
+          name: paper-results-uncapped-2000-final
+          path: .source_results
+          github-token: ${{ github.token }}
+          run-id: ${{ env.SOURCE_RUN_ID }}
+
+      - name: Restore result tree
+        shell: bash
+        run: |
+          rm -rf results
+          mkdir -p results
+          if [ -d ".source_results/results" ]; then
+            cp -a .source_results/results/. results/
+          else
+            cp -a .source_results/. results/
+          fi
+          test -f results/gaussian/all/portfolio_returns.parquet
+          test -f results/expanding_gaussian/all/monthly_returns.parquet
+          test -f results/expanding_matern/all/monthly_returns.parquet
+
+      - name: Apply exact response-target transformation c=1 to c=0.1
+        run: python rescale_response_target.py
+
+      - name: Rebuild equity comparison
+        run: python equities.py --characteristics all
+
+      - name: Rebuild spectra and b files
+        run: python eigenvalues.py --characteristics all
+
+      - name: Rebuild effective-complexity analysis
+        run: python complexity_analysis.py --characteristics all
+
+      - name: Rebuild raw paper spectra
+        run: python final_spectra.py
+
+      - name: Replot scaled expanding-window exercises
+        run: python replot_scaled_expanding.py
+
+      - name: Rebuild two-seed diagnostics at c=0.1
+        run: python seed_stability.py
+
+      - name: Rebuild lambda, complexity, return and drawdown diagnostics
+        run: python learnability_diagnostics.py
+
+      - name: Write final c=0.1 numerical summary
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          import numpy as np
+          import pandas as pd
+
+          root = Path("results")
+          c = 0.1
+          rows = []
+          for kernel in ["linear","gaussian","ntk","matern12","matern32","matern52"]:
+              d = pd.read_parquet(root / kernel / "all" / "portfolio_returns.parquet").sort_values("return_date")
+              r = d["raw_portfolio_return"].to_numpy(dtype=float)
+              wealth = np.r_[1.0, np.cumprod(1.0 + r)]
+              drawdown = wealth / np.maximum.accumulate(wealth) - 1.0
+              rows.append({
+                  "kernel": kernel,
+                  "response_target": c,
+                  "months": len(r),
+                  "mean_ann": 12*np.mean(r),
+                  "vol_ann": np.sqrt(12)*np.std(r, ddof=1),
+                  "sharpe": np.sqrt(12)*np.mean(r)/np.std(r, ddof=1),
+                  "quadratic_criterion": np.mean((c-r)**2),
+                  "max_drawdown": np.min(drawdown),
+                  "median_gross": d["gross_exposure"].median(),
+                  "p95_gross": d["gross_exposure"].quantile(.95),
+                  "p99_gross": d["gross_exposure"].quantile(.99),
+                  "max_gross": d["gross_exposure"].max(),
+                  "max_abs_weight": d["max_abs_weight"].max(),
+              })
+          summary = pd.DataFrame(rows)
+          summary.to_csv(root / "final_uncapped_c01_performance_summary.csv", index=False)
+          print(summary.to_string(index=False))
+
+          print("\nTwo-seed stability")
+          print(pd.read_csv(root / "seed_stability" / "seed_performance.csv").to_string(index=False))
+
+          print("\nGaussian annual-retuning versus inverse-history rule")
+          print(pd.read_csv(root / "learnability_diagnostics" / "rule_summary.csv").to_string(index=False))
+          print(pd.read_csv(root / "learnability_diagnostics" / "hyperoptimized_vs_rate_bootstrap_summary.csv").to_string(index=False))
+
+          manifest = json.loads((root / "response_target_manifest.json").read_text())
+          print("\nTransformation manifest")
+          print(json.dumps(manifest, indent=2))
+          PY
+
+      - name: Upload exact c=0.1 research outputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: paper-results-uncapped-c01-2000-final
+          path: results/
+          retention-days: 90
+          compression-level: 3
+          if-no-files-found: error
