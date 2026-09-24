@@ -23,6 +23,7 @@ LABELS = {
     "matern52": "Matérn 5/2",
 }
 SEEDS = (0, 1)
+RESPONSE_TARGET = 0.1
 
 
 def folder(kernel, seed):
@@ -49,7 +50,7 @@ def stats(kernel, seed, data):
         "seed": seed,
         "months": len(data),
         "sharpe": float(compute_sharpe_ratio(r)),
-        "quadratic_criterion": float(np.mean((1.0 - r) ** 2)),
+        "quadratic_criterion": float(np.mean((RESPONSE_TARGET - r) ** 2)),
         "mean_ann": float(12.0 * np.mean(r)),
         "vol_ann": float(np.sqrt(12.0) * np.std(r, ddof=1)),
         "lengthscale": lengthscale,
@@ -104,7 +105,7 @@ def main():
         axes[0].plot(x, part["sharpe"], marker=marker, label=f"Seed {seed}")
         axes[1].plot(x, part["quadratic_criterion"], marker=marker, label=f"Seed {seed}")
     axes[0].set_ylabel("OOS Sharpe")
-    axes[1].set_ylabel("Response-one OOS loss")
+    axes[1].set_ylabel("Response-target OOS loss (c=0.1)")
     for ax in axes:
         ax.set_xticks(x, [LABELS[k] for k in KERNELS], rotation=25, ha="right")
         ax.grid(False)
