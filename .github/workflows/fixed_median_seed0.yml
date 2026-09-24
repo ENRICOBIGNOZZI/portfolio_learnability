@@ -58,6 +58,9 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install numpy pandas pyarrow openpyxl sqlalchemy psycopg2-binary
 
+      - name: Enforce one-request WRDS/Duo budget
+        run: python -m unittest discover -s tests -p 'test_single_wrds_request.py'
+
       - name: Download paper sample
         run: python download_JKP/dataset.py
 
