@@ -291,3 +291,5 @@ jobs:
           retention-days: 90
           compression-level: 3
           if-no-files-found: error
+
+# Manual full rerun requested 2026-09-24
