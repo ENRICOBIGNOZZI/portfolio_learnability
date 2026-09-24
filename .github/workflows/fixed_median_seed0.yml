@@ -1,0 +1,252 @@
+name: Fixed median seed-0 empirical retrain
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - empirics-fixed-median-seed0-20260924
+    paths:
+      - .github/workflows/fixed_median_seed0.yml
+      - main.py
+      - train_model.py
+      - Kernels/**
+      - median_lengthscale.py
+      - Utils/**
+      - download_JKP/**
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: "1"
+  OPENBLAS_NUM_THREADS: "4"
+  OMP_NUM_THREADS: "4"
+  MKL_NUM_THREADS: "4"
+  NUMEXPR_NUM_THREADS: "4"
+
+jobs:
+  prepare-data:
+    name: Prepare licensed JKP data
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    env:
+      WRDS_USERNAME: ${{ secrets.WRDS_USERNAME }}
+      WRDS_PASSWORD: ${{ secrets.WRDS_PASSWORD }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Verify WRDS secrets
+        shell: bash
+        run: |
+          test -n "$WRDS_USERNAME"
+          test -n "$WRDS_PASSWORD"
+
+      - name: Configure WRDS libpq credentials
+        shell: bash
+        run: |
+          mkdir -p "$HOME"
+          printf 'wrds-pgdata.wharton.upenn.edu:9737:wrds:%s:%s\n' "$WRDS_USERNAME" "$WRDS_PASSWORD" > "$HOME/.pgpass"
+          chmod 600 "$HOME/.pgpass"
+          echo "PGPASSFILE=$HOME/.pgpass" >> "$GITHUB_ENV"
+
+      - name: Install data dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install numpy pandas pyarrow openpyxl sqlalchemy psycopg2-binary
+
+      - name: Download paper sample
+        run: python download_JKP/dataset.py
+
+      - name: Verify sample
+        run: |
+          python - <<'PY'
+          from download_JKP.read_dataset import DEFAULT_DATA_DIR, available_jkp_characteristics, available_jkp_years
+          chars = available_jkp_characteristics(DEFAULT_DATA_DIR)
+          years = available_jkp_years(DEFAULT_DATA_DIR)
+          assert len(chars) == 132, len(chars)
+          assert years[0] == 1963 and years[-1] == 2024, (years[0], years[-1])
+          print("Verified", len(chars), "characteristics", years[0], years[-1])
+          PY
+
+      - name: Package encrypted ephemeral data
+        shell: bash
+        run: |
+          tar -cf - data/JKP_USA data/JKP_USA_clean \
+            | zstd -T0 -6 \
+            | openssl enc -aes-256-cbc -pbkdf2 -salt \
+                -pass env:WRDS_PASSWORD \
+                -out jkp_data.tar.zst.enc
+          rm -rf data/JKP_USA data/JKP_USA_clean
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: encrypted-jkp-data
+          path: jkp_data.tar.zst.enc
+          retention-days: 1
+          compression-level: 0
+          if-no-files-found: error
+
+  train:
+    name: Train ${{ matrix.kernel }} seed 0 median ell
+    needs: prepare-data
+    runs-on: ubuntu-latest
+    timeout-minutes: 420
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        kernel: [linear, gaussian, ntk, matern12, matern32, matern52]
+    env:
+      WRDS_PASSWORD: ${{ secrets.WRDS_PASSWORD }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install training dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install numpy pandas pyarrow scipy matplotlib scikit-learn plotly
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: encrypted-jkp-data
+          path: .data_artifact
+
+      - name: Decrypt data
+        shell: bash
+        run: |
+          openssl enc -d -aes-256-cbc -pbkdf2 \
+            -pass env:WRDS_PASSWORD \
+            -in .data_artifact/jkp_data.tar.zst.enc \
+            | zstd -d \
+            | tar -xf -
+
+      - name: Train fixed representation
+        run: |
+          python main.py \
+            --characteristics all \
+            --kernels "${{ matrix.kernel }}" \
+            --seed 0 \
+            --n-random-features 2000 \
+            --fixed-median-lengthscale
+
+      - name: Package results
+        shell: bash
+        run: tar -czf "kernel-${{ matrix.kernel }}.tar.gz" "results/${{ matrix.kernel }}/all"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: fixed-median-${{ matrix.kernel }}
+          path: kernel-${{ matrix.kernel }}.tar.gz
+          retention-days: 90
+          compression-level: 0
+          if-no-files-found: error
+
+  aggregate:
+    name: Aggregate fixed-median results
+    needs: train
+    if: success()
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install numpy pandas pyarrow scipy matplotlib
+
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: fixed-median-*
+          path: .artifacts
+          merge-multiple: true
+
+      - name: Restore result trees
+        shell: bash
+        run: |
+          for file in .artifacts/kernel-*.tar.gz; do
+            tar -xzf "$file"
+          done
+
+      - name: Build fixed-median numerical summary
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import numpy as np
+          import pandas as pd
+          from scipy.stats import linregress
+
+          kernels = ["linear","gaussian","ntk","matern12","matern32","matern52"]
+          root = Path("results")
+          rows = []
+          spectral = []
+          eig2024 = []
+
+          for kernel in kernels:
+              folder = root / kernel / "all"
+              p = pd.read_parquet(folder / "portfolio_returns.parquet").sort_values("return_date")
+              r = 0.1 * p["raw_portfolio_return"].to_numpy(float)
+              wealth = np.cumprod(1.0 + r)
+              drawdown = wealth / np.maximum.accumulate(wealth) - 1.0
+              rows.append({
+                  "kernel": kernel,
+                  "months": len(r),
+                  "mean_ann": 12*np.mean(r),
+                  "vol_ann": np.sqrt(12)*np.std(r, ddof=1),
+                  "sharpe": np.sqrt(12)*np.mean(r)/np.std(r, ddof=1),
+                  "max_drawdown": np.min(drawdown),
+                  "median_gross_c01": 0.1*p["raw_gross_exposure"].median(),
+                  "p99_gross_c01": 0.1*p["raw_gross_exposure"].quantile(.99),
+                  "max_gross_c01": 0.1*p["raw_gross_exposure"].max(),
+                  "lengthscale": p["lengthscale"].iloc[0],
+              })
+
+              e = pd.read_parquet(folder / "kernel_eigenvalues.parquet")
+              e = e[e["test_year"].eq(2024)].sort_values("eigenvalue_number").copy()
+              e["kernel"] = kernel
+              eig2024.append(e)
+
+              positive = e[e["eigenvalue"].gt(0)].copy()
+              mu = positive["eigenvalue"].to_numpy(float)
+              ranks = positive["eigenvalue_number"].to_numpy(float)
+              total = mu.sum()
+              row = {
+                  "kernel": kernel,
+                  "n_positive": len(mu),
+                  "mu1": mu[0] if len(mu) else np.nan,
+                  "top1_share": mu[:1].sum()/total if total > 0 else np.nan,
+                  "top10_share": mu[:10].sum()/total if total > 0 else np.nan,
+                  "top50_share": mu[:50].sum()/total if total > 0 else np.nan,
+              }
+              mask = (ranks >= 5) & (ranks <= min(450, ranks.max()))
+              if mask.sum() >= 10:
+                  fit = linregress(np.log(ranks[mask]), np.log(mu[mask]))
+                  row["power_b_rank5_450"] = -fit.slope
+                  row["power_r2_rank5_450"] = fit.rvalue**2
+              else:
+                  row["power_b_rank5_450"] = np.nan
+                  row["power_r2_rank5_450"] = np.nan
+              spectral.append(row)
+
+          pd.DataFrame(rows).to_csv(root / "fixed_median_performance_summary.csv", index=False)
+          pd.DataFrame(spectral).to_csv(root / "fixed_median_spectral_summary_2024.csv", index=False)
+          pd.concat(eig2024, ignore_index=True).to_csv(root / "fixed_median_eigenvalues_2024.csv", index=False)
+
+          print("\nPERFORMANCE")
+          print(pd.DataFrame(rows).to_string(index=False))
+          print("\n2024 SPECTRUM")
+          print(pd.DataFrame(spectral).to_string(index=False))
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: fixed-median-seed0-2000-results
+          path: results/
+          retention-days: 90
+          compression-level: 3
+          if-no-files-found: error
