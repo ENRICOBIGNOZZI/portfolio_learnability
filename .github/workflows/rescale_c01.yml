@@ -12,6 +12,7 @@ on:
       - seed_stability.py
       - learnability_diagnostics.py
       - complexity_analysis.py
+      - complexity.py
       - complexity_report.py
 
 permissions:
