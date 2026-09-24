@@ -24,6 +24,7 @@ OUT = ROOT / "results" / "learnability_diagnostics"
 GAUSSIAN = ROOT / "results" / "expanding_gaussian" / "all"
 SEED = 20260923
 BOOTSTRAPS = 3000
+RESPONSE_TARGET = 0.1
 RULES = ("annual_validation", "fixed", "inverse_T")
 LABELS = {
     "annual_validation": "Annual validation",
@@ -55,7 +56,7 @@ def annual_economics(monthly, annual):
             "mean_return_ann": float(12.0 * r.mean()),
             "volatility_ann": float(np.sqrt(12.0) * r.std(ddof=1)),
             "sharpe": float(compute_sharpe_ratio(r)),
-            "quadratic_criterion": float(np.mean((1.0 - r) ** 2)),
+            "quadratic_criterion": float(np.mean((RESPONSE_TARGET - r) ** 2)),
             "max_drawdown": dd,
             "drawdown_definition": dd_type,
             "worst_month": float(r.min()),
@@ -87,7 +88,7 @@ def rule_summary(monthly, annual):
             "sharpe": float(compute_sharpe_ratio(r)),
             "mean_ann": float(12.0 * r.mean()),
             "vol_ann": float(np.sqrt(12.0) * r.std(ddof=1)),
-            "quadratic_criterion": float(np.mean((1.0 - r) ** 2)),
+            "quadratic_criterion": float(np.mean((RESPONSE_TARGET - r) ** 2)),
             "max_drawdown": dd,
             "drawdown_definition": dd_type,
             "mean_C": float(diag["C"].mean()),
@@ -214,8 +215,8 @@ def plot_hyperoptimized_vs_rate(monthly, annual):
         suffixes=("_annual", "_rate"),
         validate="one_to_one",
     )
-    merged["loss_annual"] = (1.0 - merged["raw_portfolio_return_annual"]) ** 2
-    merged["loss_rate"] = (1.0 - merged["raw_portfolio_return_rate"]) ** 2
+    merged["loss_annual"] = (RESPONSE_TARGET - merged["raw_portfolio_return_annual"]) ** 2
+    merged["loss_rate"] = (RESPONSE_TARGET - merged["raw_portfolio_return_rate"]) ** 2
     merged["cumulative_loss_advantage_rate"] = (
         merged["loss_annual"] - merged["loss_rate"]
     ).cumsum()
@@ -264,9 +265,9 @@ def plot_hyperoptimized_vs_rate(monthly, annual):
         merged["cumulative_loss_advantage_rate"],
     )
     axes[1, 1].axhline(0.0, linewidth=0.8)
-    axes[1, 1].set_title("Cumulative response-one loss advantage of 1/T")
+    axes[1, 1].set_title("Cumulative response-target loss advantage of 1/T (c=0.1)")
     axes[1, 1].set_xlabel("Return date")
-    axes[1, 1].set_ylabel("Cumulative Q(annual) - Q(1/T)")
+    axes[1, 1].set_ylabel("Cumulative Q_0.1(annual) - Q_0.1(1/T)")
 
     for ax in axes.flat:
         ax.grid(False)
