@@ -1,0 +1,259 @@
+name: Fixed median seed-0 10k empirical retrain
+
+on:
+  push:
+    branches:
+      - empirics-single-wrds-request-20260925
+    paths:
+      - .github/workflows/fixed_median_seed0_10k.yml
+  workflow_dispatch:
+
+concurrency:
+  group: portfolio-learnability-wrds-single-request
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  actions: read
+
+env:
+  PYTHONUNBUFFERED: "1"
+  OPENBLAS_NUM_THREADS: "4"
+  OMP_NUM_THREADS: "4"
+  MKL_NUM_THREADS: "4"
+  NUMEXPR_NUM_THREADS: "4"
+
+jobs:
+  prepare-data:
+    name: Reuse validated JKP data from successful 2k/4k run
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download validated encrypted JKP artifact from successful run
+        uses: actions/download-artifact@v4
+        with:
+          name: encrypted-jkp-data
+          path: .data_artifact
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          run-id: 36068772664
+
+      - name: Verify reused artifact
+        shell: bash
+        run: |
+          test -f .data_artifact/jkp_data.tar.zst.enc
+          ls -lh .data_artifact/jkp_data.tar.zst.enc
+          echo "No WRDS/CRSP request is made in the 10k run."
+
+      - name: Re-upload data bundle for this run
+        uses: actions/upload-artifact@v4
+        with:
+          name: encrypted-jkp-data-10k
+          path: .data_artifact/jkp_data.tar.zst.enc
+          retention-days: 1
+          compression-level: 0
+          if-no-files-found: error
+
+  train:
+    name: ${{ matrix.kernel }} / 10000 features / seed 0 / median ell
+    needs: prepare-data
+    runs-on: ubuntu-latest
+    timeout-minutes: 420
+
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        kernel:
+          - gaussian
+          - ntk
+          - matern12
+          - matern32
+          - matern52
+
+    env:
+      WRDS_PASSWORD: ${{ secrets.WRDS_PASSWORD }}
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install training dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install numpy pandas pyarrow scipy matplotlib scikit-learn plotly
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: encrypted-jkp-data-10k
+          path: .data_artifact
+
+      - name: Decrypt data
+        shell: bash
+        run: |
+          openssl enc -d -aes-256-cbc -pbkdf2 \
+            -pass env:WRDS_PASSWORD \
+            -in .data_artifact/jkp_data.tar.zst.enc \
+            | zstd -d \
+            | tar -xf -
+
+      - name: Train 10k representation with annual cross-validated lambda
+        run: |
+          python main.py \
+            --characteristics all \
+            --kernels "${{ matrix.kernel }}" \
+            --seed 0 \
+            --n-random-features 10000 \
+            --fixed-median-lengthscale
+
+      - name: Package kernel results
+        shell: bash
+        run: |
+          tar -czf "kernel-${{ matrix.kernel }}-10000.tar.gz" \
+            "results/${{ matrix.kernel }}/all"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: fixed-median-${{ matrix.kernel }}-10000
+          path: kernel-${{ matrix.kernel }}-10000.tar.gz
+          retention-days: 90
+          compression-level: 0
+          if-no-files-found: error
+
+  aggregate:
+    name: Analyze 10k and run spectral lambda rule
+    needs: train
+    if: success()
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: python -m pip install numpy pandas pyarrow scipy matplotlib
+
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: fixed-median-*-10000
+          path: .artifacts
+
+      - name: Restore 10k results
+        shell: bash
+        run: |
+          mkdir -p restored/10000
+          find .artifacts -name 'kernel-*-10000.tar.gz' -print0 | while IFS= read -r -d '' file; do
+            tar -xzf "$file" -C restored/10000
+          done
+
+      - name: Run spectrum-adaptive lambda experiment
+        run: |
+          python spectral_lambda_experiment.py \
+            --results-root restored/10000/results \
+            --rank-min 5 --rank-max 100 \
+            --output analysis/10000/spectral_lambda
+
+      - name: Build 10k performance and spectral summaries
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import numpy as np
+          import pandas as pd
+          from scipy.stats import linregress
+
+          kernels = ["gaussian","ntk","matern12","matern32","matern52"]
+          root = Path("restored/10000/results")
+          out = Path("analysis/10000")
+          out.mkdir(parents=True, exist_ok=True)
+
+          performance = []
+          spectra = []
+          eig_all = []
+
+          for kernel in kernels:
+              folder = root / kernel / "all"
+              p = pd.read_parquet(folder / "portfolio_returns.parquet").sort_values("return_date")
+              r = 0.1 * p["raw_portfolio_return"].to_numpy(float)
+              wealth = np.cumprod(1.0 + r)
+              dd = wealth / np.maximum.accumulate(wealth) - 1.0
+
+              performance.append({
+                  "features": 10000,
+                  "kernel": kernel,
+                  "months": len(r),
+                  "mean_ann": 12*np.mean(r),
+                  "vol_ann": np.sqrt(12)*np.std(r, ddof=1),
+                  "sharpe": np.sqrt(12)*np.mean(r)/np.std(r, ddof=1),
+                  "max_drawdown": np.min(dd),
+                  "median_gross_c01": 0.1*p["raw_gross_exposure"].median(),
+                  "p99_gross_c01": 0.1*p["raw_gross_exposure"].quantile(.99),
+                  "lengthscale": p["lengthscale"].iloc[0],
+              })
+
+              e = pd.read_parquet(folder / "kernel_eigenvalues.parquet")
+              e = e[e["test_year"].eq(2024)].sort_values("eigenvalue_number").copy()
+              e["features"] = 10000
+              eig_all.append(e)
+
+              g = e.loc[
+                  e["eigenvalue_number"].between(5,100)
+                  & e["eigenvalue"].gt(0)
+              ]
+              fit = linregress(
+                  np.log(g["eigenvalue_number"].to_numpy(float)),
+                  np.log(g["eigenvalue"].to_numpy(float)),
+              )
+              mu = e.loc[e["eigenvalue"].gt(0), "eigenvalue"].to_numpy(float)
+              total = mu.sum()
+
+              spectra.append({
+                  "features": 10000,
+                  "kernel": kernel,
+                  "b_hat_rank5_100": -fit.slope,
+                  "b_r2_rank5_100": fit.rvalue**2,
+                  "mu1": mu[0],
+                  "top1_share": mu[:1].sum()/total,
+                  "top10_share": mu[:10].sum()/total,
+                  "top50_share": mu[:50].sum()/total,
+              })
+
+          pd.DataFrame(performance).to_csv(out/"performance_10k.csv", index=False)
+          pd.DataFrame(spectra).to_csv(out/"spectrum_10k_2024.csv", index=False)
+          pd.concat(eig_all, ignore_index=True).to_csv(out/"eigenvalues_10k_2024.csv", index=False)
+
+          print("\n10K PERFORMANCE")
+          print(pd.DataFrame(performance).to_string(index=False))
+          print("\n10K SPECTRUM 2024")
+          print(pd.DataFrame(spectra).to_string(index=False))
+          PY
+
+      - name: Build paper figures
+        run: |
+          python plot_spectral_lambda.py \
+            --annual-path analysis/10000/spectral_lambda/annual_lambda_paths.csv \
+            --kernel gaussian \
+            --output-dir analysis/10000/figures/gaussian \
+            --eigen-parquet restored/10000/results/gaussian/all/kernel_eigenvalues.parquet \
+            --max-rank 100
+
+          python plot_spectral_lambda.py \
+            --annual-path analysis/10000/spectral_lambda/annual_lambda_paths.csv \
+            --kernel matern32 \
+            --output-dir analysis/10000/figures/matern32 \
+            --eigen-parquet restored/10000/results/matern32/all/kernel_eigenvalues.parquet \
+            --max-rank 100
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: fixed-median-seed0-10k-analysis
+          path: analysis/
+          retention-days: 90
+          compression-level: 3
+          if-no-files-found: error
