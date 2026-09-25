@@ -14,6 +14,7 @@ concurrency:
 
 permissions:
   contents: read
+  actions: read
 
 env:
   PYTHONUNBUFFERED: "1"
@@ -24,61 +25,34 @@ env:
 
 jobs:
   prepare-data:
-    name: Prepare licensed JKP data once
+    name: Reuse validated JKP data from successful 2k/4k run
     runs-on: ubuntu-latest
-    timeout-minutes: 180
-    env:
-      WRDS_USERNAME: ${{ secrets.WRDS_USERNAME }}
-      WRDS_PASSWORD: ${{ secrets.WRDS_PASSWORD }}
+    timeout-minutes: 60
 
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+
+      - name: Download validated encrypted JKP artifact from successful run
+        uses: actions/download-artifact@v4
         with:
-          python-version: "3.12"
+          name: encrypted-jkp-data
+          path: .data_artifact
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          run-id: 36068772664
 
-      - name: Install data dependencies
-        run: |
-          python -m pip install --upgrade pip
-          python -m pip install numpy pandas pyarrow openpyxl sqlalchemy psycopg2-binary
-
-      - name: Enforce one-request WRDS/Duo budget
-        run: python -m unittest discover -s tests -p 'test_single_wrds_request.py'
-
-      - name: Verify WRDS credentials exist
+      - name: Verify reused artifact
         shell: bash
         run: |
-          test -n "$WRDS_USERNAME" || (echo "WRDS_USERNAME is missing" >&2; exit 2)
-          test -n "$WRDS_PASSWORD" || (echo "WRDS_PASSWORD is missing" >&2; exit 2)
+          test -f .data_artifact/jkp_data.tar.zst.enc
+          ls -lh .data_artifact/jkp_data.tar.zst.enc
+          echo "No WRDS/CRSP request is made in the 10k run."
 
-      - name: Download complete 1963-2024 sample with one WRDS query
-        run: python download_JKP/dataset.py
-
-      - name: Build and verify clean sample
-        run: |
-          python - <<'PY'
-          from download_JKP.read_dataset import DEFAULT_DATA_DIR, available_jkp_characteristics, available_jkp_years
-          chars = available_jkp_characteristics(DEFAULT_DATA_DIR)
-          years = available_jkp_years(DEFAULT_DATA_DIR)
-          assert len(chars) == 132, len(chars)
-          assert years[0] == 1963 and years[-1] == 2024, (years[0], years[-1])
-          print("Verified:", len(chars), "characteristics,", years[0], "-", years[-1])
-          PY
-
-      - name: Package encrypted ephemeral data
-        shell: bash
-        run: |
-          tar -cf - data/JKP_USA data/JKP_USA_clean \
-            | zstd -T0 -6 \
-            | openssl enc -aes-256-cbc -pbkdf2 -salt \
-                -pass env:WRDS_PASSWORD \
-                -out jkp_data.tar.zst.enc
-          rm -rf data/JKP_USA data/JKP_USA_clean
-
-      - uses: actions/upload-artifact@v4
+      - name: Re-upload data bundle for this run
+        uses: actions/upload-artifact@v4
         with:
           name: encrypted-jkp-data-10k
-          path: jkp_data.tar.zst.enc
+          path: .data_artifact/jkp_data.tar.zst.enc
           retention-days: 1
           compression-level: 0
           if-no-files-found: error
@@ -259,6 +233,22 @@ jobs:
           print("\n10K SPECTRUM 2024")
           print(pd.DataFrame(spectra).to_string(index=False))
           PY
+
+      - name: Build paper figures
+        run: |
+          python plot_spectral_lambda.py \
+            --annual-path analysis/10000/spectral_lambda/annual_lambda_paths.csv \
+            --kernel gaussian \
+            --output-dir analysis/10000/figures/gaussian \
+            --eigen-parquet restored/10000/results/gaussian/all/kernel_eigenvalues.parquet \
+            --max-rank 100
+
+          python plot_spectral_lambda.py \
+            --annual-path analysis/10000/spectral_lambda/annual_lambda_paths.csv \
+            --kernel matern32 \
+            --output-dir analysis/10000/figures/matern32 \
+            --eigen-parquet restored/10000/results/matern32/all/kernel_eigenvalues.parquet \
+            --max-rank 100
 
       - uses: actions/upload-artifact@v4
         with:
