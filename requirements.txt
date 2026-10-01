@@ -1,0 +1,9 @@
+numpy==2.2.6
+pandas==2.2.3
+scipy==1.15.2
+pyarrow==19.0.1
+matplotlib==3.10.1
+PyMuPDF==1.25.5
+requests==2.32.3
+psycopg2-binary==2.9.10
+pytest==8.3.5
