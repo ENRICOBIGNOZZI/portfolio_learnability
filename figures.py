@@ -100,7 +100,7 @@ def get_case(root, kernel):
     for name, checksum in source['code_checksums'].items():
         if digest(Path(__file__).with_name(name)) != checksum:
             raise ValueError('Fit/report code differs: '+name)
-    if source['clean_manifest']['protocol']['protocol_version'] != 'final-empirical-rebuild-v1':
+    if source['clean_manifest']['protocol']['protocol_version'] != 'final-empirical-rebuild-v2-complete-payoffs':
         raise ValueError('Old results cannot enter this report.')
     penalties = np.asarray(meta['lambda_grid'])
     if len(penalties) != 120 or array_hash(penalties) != meta['lambda_grid_sha256']:
