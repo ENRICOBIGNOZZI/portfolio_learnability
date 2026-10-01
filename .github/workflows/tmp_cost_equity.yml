@@ -1,0 +1,182 @@
+name: Temporary cost equity extraction
+on:
+  push:
+    branches: [tmp-cost-equity-20261002]
+    paths: ['.github/workflows/tmp_cost_equity.yml']
+permissions:
+  contents: read
+  actions: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install pandas==2.2.3 pyarrow==19.0.1 numpy==2.2.6 matplotlib==3.10.1
+      - uses: actions/download-artifact@v4
+        with:
+          name: fixed-median-linear-2000
+          run-id: 36068772664
+          github-token: ${{ github.token }}
+          path: inputs/linear
+      - uses: actions/download-artifact@v4
+        with:
+          name: fixed-median-gaussian-10000
+          run-id: 36117367230
+          github-token: ${{ github.token }}
+          path: inputs/gaussian
+      - uses: actions/download-artifact@v4
+        with:
+          name: fixed-median-matern32-10000
+          run-id: 36117367230
+          github-token: ${{ github.token }}
+          path: inputs/matern32
+      - name: Compute 25bp turnover cost and borrowing-cost equity
+        run: |
+          set -e
+          mkdir -p extracted output
+          tar -xzf inputs/linear/kernel-linear-2000.tar.gz -C extracted
+          tar -xzf inputs/gaussian/kernel-gaussian-10000.tar.gz -C extracted
+          tar -xzf inputs/matern32/kernel-matern32-10000.tar.gz -C extracted
+          python - <<'PY'
+          from pathlib import Path
+          import numpy as np, pandas as pd
+          import matplotlib.pyplot as plt
+          import matplotlib.dates as mdates
+
+          SCALE=0.1
+          COMMISSION=0.0025
+          BORROW_ANNUAL=0.003   # 30 bp/year, transparent illustrative benchmark
+          BORROW_MONTHLY=BORROW_ANNUAL/12
+          labels={'linear':'Linear','gaussian':'Gaussian','matern32':'Matérn-3/2'}
+          colors={'linear':'#2B2B2B','gaussian':'#355C7D','matern32':'#8A5A64'}
+          styles={'gross':'-','commission':'--','all_costs':'-.'}
+          root=Path('extracted/results')
+          out=Path('output')
+
+          monthly_rows=[]
+          stats=[]
+          for k in labels:
+              base=root/k/'all'
+              pr=pd.read_parquet(base/'portfolio_returns.parquet').sort_values('return_date')
+              print(k, 'portfolio columns:', pr.columns.tolist())
+              if len(pr)!=564:
+                  raise ValueError((k,len(pr)))
+              ret=SCALE*pr['raw_portfolio_return'].to_numpy(float)
+              dates=pd.to_datetime(pr['return_date']).to_numpy()
+
+              weight_files=sorted((base/'weights').rglob('weights_*.parquet'))
+              if len(weight_files)!=47:
+                  raise ValueError((k,'weight files',len(weight_files)))
+              wframes=[]
+              for wf in weight_files:
+                  w=pd.read_parquet(wf)
+                  if len(wframes)==0:
+                      print(k,'weight columns:',w.columns.tolist())
+                  cols=w.columns.tolist()
+                  datecol=next((c for c in ['formation_date','eom','date'] if c in cols),None)
+                  idcol=next((c for c in ['id','permno'] if c in cols),None)
+                  weightcol=next((c for c in ['raw_weight','weight','weights','portfolio_weight'] if c in cols),None)
+                  if not all([datecol,idcol,weightcol]):
+                      raise ValueError((k,wf.name,cols))
+                  x=w[[datecol,idcol,weightcol]].rename(columns={datecol:'formation_date',idcol:'id',weightcol:'weight'})
+                  x['formation_date']=pd.to_datetime(x['formation_date'])
+                  x['weight']=SCALE*pd.to_numeric(x['weight'])
+                  wframes.append(x)
+              W=pd.concat(wframes,ignore_index=True)
+              if W.duplicated(['formation_date','id']).any():
+                  raise ValueError((k,'duplicate weights'))
+              grouped={d:g.set_index('id')['weight'] for d,g in W.groupby('formation_date',sort=True)}
+              form_dates=pd.to_datetime(pr['formation_date'])
+              turnovers=[]; shorts=[]; prev=None
+              for d in form_dates:
+                  if d not in grouped:
+                      raise ValueError((k,'missing weights',str(d)))
+                  cur=grouped[d]
+                  shorts.append(float((-cur[cur<0]).sum()))
+                  if prev is None:
+                      turnovers.append(float(cur.abs().sum()))
+                  else:
+                      union=cur.index.union(prev.index)
+                      turnovers.append(float((cur.reindex(union,fill_value=0)-prev.reindex(union,fill_value=0)).abs().sum()))
+                  prev=cur
+              turnovers=np.asarray(turnovers)
+              shorts=np.asarray(shorts)
+              commission_cost=COMMISSION*turnovers
+              borrow_cost=BORROW_MONTHLY*shorts
+              r_comm=ret-commission_cost
+              r_all=ret-commission_cost-borrow_cost
+              for arr,name in [(ret,'gross'),(r_comm,'commission_25bp'),(r_all,'commission_25bp_plus_borrow_30bp_pa')]:
+                  if np.any(1+arr<=0):
+                      raise ValueError((k,name,'nonpositive wealth factor'))
+              wg=np.cumprod(1+ret)
+              wc=np.cumprod(1+r_comm)
+              wa=np.cumprod(1+r_all)
+              for i in range(len(pr)):
+                  monthly_rows.append({
+                    'kernel':k,'formation_date':str(pd.Timestamp(form_dates.iloc[i]).date()),
+                    'return_date':str(pd.Timestamp(dates[i]).date()),
+                    'gross_return':ret[i],
+                    'turnover':turnovers[i],
+                    'short_notional':shorts[i],
+                    'commission_cost_25bp':commission_cost[i],
+                    'borrow_cost_30bp_pa':borrow_cost[i],
+                    'return_after_commission':r_comm[i],
+                    'return_after_all_costs':r_all[i],
+                    'wealth_gross':wg[i],
+                    'wealth_after_commission':wc[i],
+                    'wealth_after_all_costs':wa[i],
+                  })
+              sr=lambda x: np.sqrt(12)*np.mean(x)/np.std(x,ddof=1)
+              stats.append({
+                'kernel':k,
+                'gross_sharpe':sr(ret),
+                'sharpe_after_25bp_commission':sr(r_comm),
+                'sharpe_after_25bp_plus_30bp_pa_borrow':sr(r_all),
+                'annualized_commission_cost':12*np.mean(commission_cost),
+                'annualized_borrow_cost':12*np.mean(borrow_cost),
+                'mean_monthly_turnover':np.mean(turnovers),
+                'mean_short_notional':np.mean(shorts),
+                'terminal_wealth_gross':wg[-1],
+                'terminal_wealth_after_commission':wc[-1],
+                'terminal_wealth_after_all_costs':wa[-1],
+              })
+
+          monthly=pd.DataFrame(monthly_rows)
+          monthly.to_csv(out/'cost_adjusted_monthly.csv',index=False)
+          pd.DataFrame(stats).to_csv(out/'cost_adjusted_summary.csv',index=False)
+          print(pd.DataFrame(stats).to_string(index=False))
+
+          plt.rcParams.update({
+              'font.family':'serif','font.size':10,'axes.spines.top':False,
+              'axes.spines.right':False,'axes.linewidth':.7,'legend.frameon':False,
+              'figure.facecolor':'white','axes.facecolor':'white','pdf.fonttype':42
+          })
+          fig,axes=plt.subplots(3,1,figsize=(7.2,8.1),sharex=True)
+          for ax,(k,label) in zip(axes,labels.items()):
+              d=monthly[monthly.kernel.eq(k)].copy()
+              dd=pd.to_datetime(d.return_date)
+              ax.plot(dd,d.wealth_gross,color=colors[k],lw=1.45,ls='-',label='Before costs')
+              ax.plot(dd,d.wealth_after_commission,color=colors[k],lw=1.35,ls='--',label='25 bp commission')
+              ax.plot(dd,d.wealth_after_all_costs,color=colors[k],lw=1.35,ls='-.',label='25 bp + 30 bp/year borrow')
+              ax.set_yscale('log')
+              ax.set_ylabel(label)
+              ax.grid(axis='y',alpha=.15)
+          axes[0].legend(loc='upper left',ncol=3,fontsize=8.4)
+          axes[-1].xaxis.set_major_locator(mdates.YearLocator(10))
+          axes[-1].xaxis.set_major_formatter(mdates.DateFormatter('%Y'))
+          axes[-1].set_xlabel('Return realization date')
+          fig.text(.015,.5,'Cumulative excess-return index',rotation=90,va='center')
+          fig.subplots_adjust(left=.13,right=.98,top=.97,bottom=.07,hspace=.12)
+          fig.savefig(out/'equity_with_costs.pdf',bbox_inches='tight')
+          fig.savefig(out/'equity_with_costs.png',dpi=260,bbox_inches='tight')
+          plt.close(fig)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: temporary-cost-equity
+          path: output/
+          retention-days: 7
