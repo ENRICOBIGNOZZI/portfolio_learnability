@@ -29,7 +29,7 @@ def periods():
     yield "2025-01", pd.Timestamp("2025-01-01"), pd.Timestamp("2025-02-01")
 
 
-def download(out, names_file, max_connections=3):
+def download(out, names_file, max_connections=1):
     import psycopg2
     from psycopg2 import OperationalError
 
@@ -69,7 +69,7 @@ def download(out, names_file, max_connections=3):
     select = ", ".join('g."' + n + '"' for n in columns)
     sql = (
         "SELECT " + select +
-        ", (to_jsonb(g)->>'ret_exc')::double precision AS current_excess_return "
+        ", g.ret_exc AS current_excess_return, g.ret AS current_total_return "
         "FROM contrib.global_factor g "
         "WHERE excntry = 'USA' AND id <= 99999 "
         "AND eom >= %s AND eom < %s ORDER BY eom, id"
@@ -78,12 +78,6 @@ def download(out, names_file, max_connections=3):
 
     expected = list(periods())
     completed = {}
-    for label, _, _ in expected:
-        p = out / f"jkp_{label}.parquet"
-        if p.exists():
-            # A prior partial run may have been restored. It is usable only when
-            # accompanied by the progress record with the checksum.
-            completed[label] = p
 
     state = {
         "status": "starting",
@@ -118,7 +112,7 @@ def download(out, names_file, max_connections=3):
 
     def convert(frame):
         frame["eom"] = pd.to_datetime(frame["eom"])
-        for col in names + ["me", "ret_exc_lead1m", "current_excess_return"]:
+        for col in names + ["me", "ret_exc_lead1m", "current_excess_return", "current_total_return"]:
             frame[col] = pd.to_numeric(frame[col], errors="coerce").astype(float)
         for col in [
             "id", "permno", "crsp_shrcd", "crsp_exchcd",
@@ -149,7 +143,7 @@ def download(out, names_file, max_connections=3):
                 port=9737,
                 dbname="wrds",
                 sslmode="require",
-                connect_timeout=90,
+                connect_timeout=30,
                 application_name="portfolio_paper_yearly_download",
                 keepalives=1,
                 keepalives_idle=30,
@@ -176,7 +170,7 @@ def download(out, names_file, max_connections=3):
                         if not rows:
                             break
                         buffers.append(pd.DataFrame.from_records(
-                            rows, columns=columns + ["current_excess_return"]
+                            rows, columns=columns + ["current_excess_return", "current_total_return"]
                         ))
                 finally:
                     cursor.close()
@@ -202,13 +196,18 @@ def download(out, names_file, max_connections=3):
         except OperationalError as error:
             state["status"] = "connection_lost"
             state["last_error_type"] = type(error).__name__
-            state["last_error_message"] = str(error).splitlines()[0][:300]
+            state["last_error_message"] = "Connection failure; details suppressed to protect credentials"
             persist()
             print(
                 f"WRDS connection lost during {state['current_period']} / {state['phase']}; "
                 f"saved periods will not be repeated.",
                 flush=True,
             )
+        except Exception:
+            state["status"] = "failed"
+            state["last_error_message"] = "Acquisition failed; details suppressed to protect credentials"
+            persist()
+            raise RuntimeError("WRDS acquisition failed; no database exception text is exposed.") from None
         finally:
             if conn is not None:
                 try:
@@ -230,6 +229,9 @@ def download(out, names_file, max_connections=3):
     manifest = {
         "status": "complete",
         "source": "WRDS contrib.global_factor",
+        "return_units": "decimal",
+        "return_construction": "JKP ret_exc and ret_exc_lead1m, including upstream CRSP delisting treatment",
+        "acquired_at":str(pd.Timestamp.now("UTC")),
         "characteristics": names,
         "files": [{k: v for k, v in item.items() if k != "period"} for item in files],
         "periods": [item["period"] for item in files],
@@ -257,6 +259,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--out", type=Path, default=Path("data/raw"))
     parser.add_argument("--names", type=Path, required=True)
-    parser.add_argument("--max-connections", type=int, default=3)
+    parser.add_argument("--max-connections", type=int, default=1)
     args = parser.parse_args()
     download(args.out, args.names, args.max_connections)

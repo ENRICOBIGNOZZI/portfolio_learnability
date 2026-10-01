@@ -1,0 +1,68 @@
+{
+  "protocol_version": "final-empirical-rebuild-v1",
+  "characteristic_selection": {
+    "method": "reconstructed_published_coverage_rule",
+    "reference_start": "1963-01-01",
+    "reference_end": "2023-12-31",
+    "count": 130,
+    "candidate_count": 153,
+    "tie_break": "characteristic name ascending",
+    "primary_source": "https://www.nber.org/system/files/working_papers/w33012/revisions/w33012.rev0.pdf",
+    "source_sha256": "5ba2ce32de3ac9a21e5dd6396dc82d85378e48814910baf536a1af013372f424",
+    "section": "2.5, printed page 15",
+    "exact_author_list_found": false,
+    "searched_official_materials": [
+      "https://www.antoinedidisheim.com/research",
+      "https://www.bryankellyacademic.org/",
+      "https://github.com/AntoineDidisheim",
+      "https://github.com/AntoineDidisheim/data_share",
+      "https://github.com/bkelly-lab",
+      "NBER September 2024 paper and appendix"
+    ],
+    "interpretation": "Coverage over the paper sample 1963-2023; historical research-selection information, not a point-in-time feature-discovery claim. No 2024 data."
+  },
+  "jkp": {
+    "documentation": "https://jkpfactors-data.s3.amazonaws.com/documents/Documentation.pdf",
+    "code_commit": "67174c7f170bf8b952b3c86876f187fd9970b5ba",
+    "return_source": "https://github.com/bkelly-lab/ReplicationCrisis/blob/67174c7f170bf8b952b3c86876f187fd9970b5ba/GlobalFactors/project_macros.sas",
+    "return_source_sha256": "5bdb898e0ee27cc79eb6590d6803ca4d59059ffc2426937c0e05b0a07749abb0",
+    "return_rules": {
+      "lines_428_451": "CRSP return compounded with delisting return. Upstream code assigns -0.30 to missing performance-related delisting returns (code 500 or 520-584). This project consumes documented JKP returns; it never invents replacements.",
+      "lines_454_465": "Monthly ret_exc subtracts CRSP t30ret, falling back to French rf, in decimal units.",
+      "lines_818_825": "Lead return is next security observation ret_exc, invalidated when security changes or next ret_lag_dif is not one.",
+      "recovery": "Only actually observed next-calendar-month current excess return from the identical snapshot. Missing security/payoff remains unresolved and blocks fitting."
+    }
+  },
+  "timing": {
+    "annual_refit": "January formation close; last December label observed at that close",
+    "scale_available_at": "1978-01-31",
+    "status": "user_confirmed",
+    "conflict": "Full December 1977 formation validation is incompatible with fixing kappa before January 1978.",
+    "resolution": "User selected January 31, 1978 before February first OOS payoff."
+  },
+  "linear_specification": {
+    "features": "intercept plus 130 ranked characteristics",
+    "status": "inherited_current_implementation; theoretical manuscript not present for verification"
+  },
+  "representations": [
+    "linear",
+    "gaussian",
+    "matern32"
+  ],
+  "features": 10000,
+  "seed": 0,
+  "lambda_count": 120,
+  "lambda_rule": "Separate frozen grid per representation from its initial 1963-1972 managed-payoff spectrum; 120 effective-complexity-spaced positive penalties.",
+  "rank_singleton": "0.0",
+  "return_units": "decimal",
+  "common_scale_target": 1.8,
+  "no_monthly_normalization": true,
+  "no_gross_cap": true,
+  "candidate_dictionary": {
+    "source": "https://github.com/bkelly-lab/ReplicationCrisis/blob/67174c7f170bf8b952b3c86876f187fd9970b5ba/GlobalFactors/Factor%20Details.xlsx",
+    "sha256": "4c579e4dcb93eed0897941d8f5f84e9cc784a2d3fc696be68a29a24e68206141",
+    "column": "abr_jkp",
+    "count": 153,
+    "verified_against_characteristics_json": true
+  }
+}

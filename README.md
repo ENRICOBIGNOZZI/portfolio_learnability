@@ -1,74 +1,130 @@
-# Portfolio learnability — reproducible empirical analysis
+# Portfolio learnability: final empirical rebuild
 
-Only **Linear, Gaussian, and Matérn-3/2** belong to this experiment. There is one cleaner, one estimator, and one figure/report generator. Old results must never be passed to the new report generator.
+The active experiment contains only **Linear, Gaussian and Matérn-3/2**. Old
+cleaned data, fitted models, performance statistics and figures are not valid
+inputs. Licensed raw snapshots and stock-level outputs stay outside Git.
 
-## Current execution status
+## Execution status
 
-The first raw-data attempt on 1 October 2026 failed at the WRDS connection: **one connection attempt, zero SELECT calls, OperationalError**. Run: https://github.com/ENRICOBIGNOZZI/portfolio_learnability/actions/runs/36896896876 . It has not been retried automatically. The new empirical backtest, its numerical results and its real-data RFF figures have **not** been produced. Passing unit tests is not an empirical rerun.
+**The real-data run is incomplete. No new empirical results are claimed.**
+The local historical raw parquet files omit the universe flags, CRSP share and
+exchange codes, and current returns needed for the mandatory audit. They cannot
+substitute for a complete raw snapshot. `WRDS_USERNAME` and `WRDS_PASSWORD` were
+absent from the local process on 1 October 2026. No fresh authentication or
+repeated GitHub-hosted acquisition has been attempted.
 
-## What the cleaning follows
+The exact 130 author variables were not found in the official materials searched.
+`protocol.json` records the sources and the fallback: best coverage among the
+153 candidates in `characteristics.json`, measured over **1963–2023**, the sample
+in Section 2.5 of the September 2024 AIPT paper. Alphabetical names break ties.
+This reference selection uses historical research information; it is not a
+claim of real-time feature discovery. The 2024 extension cannot affect selection.
+The final selected names and all 153 missing shares are generated only from the
+new complete raw snapshot, in `data/clean/characteristic_provenance.json`.
 
-Primary reference: Didisheim, Ke, Kelly and Malamud, *APT or AIPT? The Surprising Dominance of Large Factor Models*, NBER 33012, September 2024 version, Section 2.5, printed p. 15:
-https://www.nber.org/system/files/working_papers/w33012/revisions/w33012.rev0.pdf
+Linear currently retains the existing affine specification `[1, Z]` (130 input
+characteristics, 131 coefficients). The theoretical manuscript is absent from
+this checkout, so equivalence to its exact linear specification remains to be
+verified before accepting the empirical run.
 
-PDF SHA256: `5ba2ce32de3ac9a21e5dd6396dc82d85378e48814910baf536a1af013372f424`.
+## Reproduce locally
 
-That passage specifies 153 JKP candidates; NYSE/AMEX/NASDAQ and CRSP share codes 10/11/12; exclusion of nano stocks; the 130 characteristics with the fewest missing values; exclusion of rows with more than 30% missing characteristics; monthly ranks in [-0.5,0.5]. It does **not** specify our former <=1/3 characteristic cutoff yielding 132 variables.
-
-**Declared adaptation, not literal replication:** the 130 names are chosen using **1963–1972 only**, after the formation-universe filters, with deterministic alphabetical tie-breaking. Their names then remain fixed. A separate coverage table records the calculation. We do not assert that this is the authors' exact 130-name list or that adopting a later-published information set eliminates all historical research-selection issues. Formation dates extend to 2024, beyond the reference sample. The standard JKP primary/common/main-observation flags are also retained. These choices are not the distinct JKMP 115-variable, NYSE-large-stock, entry/deletion protocol.
-
-The 153 candidates in `characteristics.json` are frozen from JKP's published Factor Details dictionary (source XLSX SHA256 `4c579e4dcb93eed0897941d8f5f84e9cc784a2d3fc696be68a29a24e68206141`). We do not classify arbitrary metadata columns as predictors.
-
-Observed monthly values use `(average_rank-1)/(observed_count-1)-0.5`. Residual missing values are mapped to **neutral zero**. With ties, zero need not be the empirical median. This implementation convention is explicit; it is not attributed as an exact algorithm stated in the source paragraph.
-
-Formation universes and N_t never depend on future-return availability. Missing lead returns may be recovered from an actually observed next-calendar-month return in the same raw snapshot. Unresolved payoffs are **not** silently set to zero and securities are **not** dropped to make the backtest run. The fit is blocked until documented return corrections reconcile them. Publication lags and source-level delisting completeness remain properties of the JKP snapshot, not guarantees established by these unit tests.
-
-## Frozen experiment
-
-- First train: 1963–1972; validation: 1973–1977. Expanding training, preceding five formation years for validation, annual refits.
-- OOS formation: January 1978–December 2024. Realized returns: February 1978–January 2025. A refit takes place after the first formation-month close; labels available at that close may be used.
-- Response-one ridge loss; 120 positive penalties built from the initial managed-payoff spectrum and held fixed. Validation, not test Sharpe, chooses lambda.
-- Main nonlinear specification: 10,000 RFF, seed zero. Median Euclidean distance among 1,000 initial-training characteristic vectors fixes the common bandwidth.
-- P sensitivity: 250, 500, 1,000, 2,000, 4,000 and 10,000. Separate random streams for Gaussian frequencies, Matérn radial scales and phases ensure **nested prefixes**. The sqrt(2/P) normalization changes with P. Main P is not selected from OOS performance.
-- Numerical approximation error uses only initial-training vectors; its range across seeds 0/1/2 is not a confidence interval. Economic P sensitivity uses seed-zero policies, not a seed ensemble.
-- One common positive portfolio scale is calibrated from the first Linear validation portfolio, targeting median gross 1.8 there, and is fixed before the first OOS return. Reported gross is its **time mean**, not median. No time-varying gross cap or ex-post volatility rescaling.
-- Turnover is the L1 difference between target weights over the union of consecutive universes. The optional 25-bp net Sharpe is a **turnover-cost proxy**, not drift-adjusted execution accounting. It never chooses complexity.
-
-Effective complexity is a trace of the ridge filter, not the number of stocks or profitable factors. A test-window maximum is descriptive and ex post. The report checks whether the maximum is interior; it does not insert that conclusion irrespective of the data. Finite RFF spaces for different kernels are not asserted to be nested.
-
-## Reproduce
-
-Python 3.12 is the pinned CI interpreter.
+Python 3.12 is used in CI. Unit and integration fixtures are synthetic tests,
+not empirical results.
 
 ```sh
-python -m pip install -r requirements.txt
-python -m pytest -q tests
+python3 -m pip install -r requirements.txt
+PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python3 -m pytest -q tests
 
-# Only after an explicit authorization for a fresh authentication:
-# export WRDS_USERNAME=... and WRDS_PASSWORD=... securely, never in source files.
-python download.py --names characteristics.json --out data/raw
-
-# No subsequent command connects to WRDS.
-python run.py prepare --raw data/raw --clean data/clean
-python run.py fit --clean data/clean --out results/new --kernel linear
-python run.py fit --clean data/clean --out results/new --kernel gaussian
-python run.py fit --clean data/clean --out results/new --kernel matern32
-python run.py risk-free --out data/risk_free.csv
-python run.py report --results results/new --risk-free data/risk_free.csv --out paper
-
-cd paper
-pdflatex -interaction=nonstopmode -halt-on-error main.tex
-bibtex main
-pdflatex -interaction=nonstopmode -halt-on-error main.tex
-pdflatex -interaction=nonstopmode -halt-on-error main.tex
+# Set WRDS_USERNAME and WRDS_PASSWORD securely in the process environment.
+# Do not put their values in source, command-line arguments or a tracked file.
+python3 download.py --names characteristics.json --out data/raw --max-connections 1
+python3 run_empirics.py prepare --raw data/raw --clean data/clean
+python3 run_empirics.py risk-free --raw data/raw --out data/risk_free.csv
+python3 run_empirics.py fit --clean data/clean --out results/final --kernel linear
+python3 run_empirics.py fit --clean data/clean --out results/final --kernel gaussian
+python3 run_empirics.py fit --clean data/clean --out results/final --kernel matern32
+python3 run_empirics.py report --results results/final --risk-free data/risk_free.csv --out paper
 ```
 
-The downloader makes a single authenticated connection and a single streaming SELECT. A failed attempt leaves a sentinel; it cannot silently retry in the same directory. A complete cache is reused only after checksum validation. The report refuses mixed source manifests, incomplete calendars, corrupt inputs or unresolved payoffs. It generates one empirical section without subsections, all new figures, numerical CSVs, BibTeX, and a standalone empirical-section PDF. This PDF is not the full theoretical manuscript.
+The downloader makes at most one connection by default and downloads annual
+parquet files, including January 2025. A resumed raw file is accepted only with
+its recorded checksum. Failed database exception text is not printed or saved.
+GitHub Actions runs tests only; acquisition belongs on an authorized reachable
+local machine. No stock-level artifacts or secrets are uploaded by CI.
 
-Figures: log cumulative wealth; colored gross/net exposure for all three policies; Gaussian and Matérn historical/test complexity panels for the 2024 window; their managed spectra; kernel approximation error versus P; OOS portfolio Sharpe versus P. No correlation figure, stacking discussion, NTK, other Matérn specifications, rolling-window variants or simulated empirical results.
+Preparation verifies schema, checksums and duplicate security-months before
+filtering. Formation uses U.S. CRSP common shares 10/11/12 on exchanges 1/2/3,
+JKP common/primary/main flags and non-nano status. Payoff availability never
+changes formation or monthly ranks. Rows with more than 39 of 130 missing
+characteristics are excluded. Observed values use average ranks mapped by
+`(rank-1)/(n_observed-1)-0.5`; singleton and residual missing values become
+neutral zero.
 
-## Data and security
+JKP excess returns already incorporate its documented source-level delisting
+construction. The source code includes a -30% convention for specified missing
+performance-related CRSP delistings; this pipeline consumes JKP values and does
+not independently invent such returns. A missing lead can be recovered only from
+the same snapshot's actually observed next-calendar-month excess return.
+Unresolved payoffs produce **`data/clean/unresolved_returns.csv` and stop the run**.
+No fit accepts that panel. A corrected complete source snapshot must be prepared
+into a fresh output directory before proceeding.
 
-Raw and cleaned stock-level data and saved security weights are licensed/private inputs. They are gitignored and only uploaded encrypted in CI. Public artifacts contain aggregate portfolio returns, statistics, figures and source manifests. Do not print or commit WRDS credentials. Historical commits previously contained credentials: removing active files does **not** rotate credentials or erase Git history. Credential rotation and any coordinated history purge are separate operations.
+## Frozen design
 
-The new source tree deliberately contains no prior empirical plots or old pipeline copies. Git history is the recovery mechanism, not an `archive` or `legacy` directory in the active code.
+- Formation sample: January 1963–December 2024. Train 1963–1972, validation
+  1973–1977 initially; then expanding training, five validation years, annual
+  refits. Exactly 47 OOS windows / 564 monthly observations.
+- Refits occur at the January formation close. By user-confirmed convention,
+  **κ is frozen on 31 January 1978, before the first February OOS payoff**.
+  This permits use of the December 1977 formation's January 1978 realized return.
+- Direct maximum-Sharpe portfolio learning uses the quadratic ridge criterion.
+  Training estimates each candidate; validation minimizes the quadratic portfolio
+  loss; refitting then uses training plus validation. Test returns never select
+  penalties. Each representation freezes its own 120 numerical lambda candidates
+  from its initial training spectrum.
+- Gaussian and Matérn-3/2 each use exactly 10,000 fixed RFF, seed 0. Both share
+  the median pairwise Euclidean distance of 1,000 initial-training vectors.
+  Matérn frequencies use independent normal vectors divided by `sqrt(chi2(3)/3)`.
+- Weights equal `f(Z)/N`. The pipeline checks stock payoffs against managed-feature
+  payoffs every test month. The same positive κ, calibrated to Linear validation
+  median gross 1.8, scales all models and months. No monthly normalization or cap.
+- Cash returns are recovered as JKP current total minus current excess return
+  from the same snapshot, verifying consistency across CRSP stocks each month.
+  Wealth compounds `1 + Rf + κ * portfolio_excess`. Drawdown uses that same wealth
+  with a unit starting point, and is independently checked. Maximum drawdown
+  is signed. Excess-only wealth is saved as a diagnostic.
+
+## Final artifacts
+
+Only a successful new run generates:
+
+1. `paper/figures/fig01_wealth_drawdown.{pdf,png}`
+2. `paper/figures/fig02_exposure.{pdf,png}`
+3. `paper/figures/fig03_complexity_gaussian.{pdf,png}`
+4. `paper/figures/fig04_complexity_matern32.{pdf,png}`
+5. `paper/figures/fig05_managed_spectrum.{pdf,png}`
+
+The compact table is `paper/tables/performance.{csv,tex}`. The report also writes
+`paper/empirics.tex`, aggregate figure inputs, selected-characteristic provenance,
+drawdown episodes and crisis diagnostics, and `paper/reproduction_manifest.json`.
+The LaTeX section requires `graphicx` and `booktabs` in the host manuscript.
+The manifest binds raw, code, sample, lambda, scale, figure-input and figure-output
+checksums. The final complexity panels contain **only** the twelve subsequent
+payoffs for 2024 formations (February 2024–January 2025), not pooled returns.
+
+Publication stops if any total monthly return is at or below -100%, data or
+calendars fail validation, or Sharpe is at least 2.5 while the worst pre-2020
+drawdown is shallower than 5%. This last threshold is a review trigger, not a
+proof that other results are plausible. Real-data diagnostics and final PDF/PNG
+visual inspection remain required before claiming the experiment is complete.
+
+## Sources and security
+
+Primary construction sources and pinned checksums are in `protocol.json`:
+[AIPT, September 2024, §2.5](https://www.nber.org/system/files/working_papers/w33012/revisions/w33012.rev0.pdf),
+[JKP documentation](https://jkpfactors-data.s3.amazonaws.com/documents/Documentation.pdf),
+and [JKP return construction](https://github.com/bkelly-lab/ReplicationCrisis/blob/67174c7f170bf8b952b3c86876f187fd9970b5ba/GlobalFactors/project_macros.sas).
+The active tree contains no credentials. Deleting an active file does not erase
+secrets from historical commits or rotate credentials; history rewriting and
+credential rotation are separate operations.

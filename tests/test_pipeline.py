@@ -5,10 +5,10 @@ import numpy as np
 import pandas as pd
 import pytest
 from scipy.special import kv, gamma
-from data import (REFERENCE_SELECTION_END, FLAGS, characteristic_selection, formation_mask,
+from data_pipeline import (REFERENCE_SELECTION_END, FLAGS, characteristic_selection, formation_mask,
                   rank_months, sample_initial)
-from model import (FeatureBank, annual_splits, complexity_grid, exact_kernel,
-                   l1_target_turnover, managed_matrix, median_distance, ridge_path, sharpe)
+from kernels import FeatureBank, exact_kernel, median_distance
+from portfolio import annual_splits, complexity_grid, managed_matrix, ridge_path, sharpe
 
 
 def fixture_panel():
@@ -112,9 +112,16 @@ def test_2024_extension_does_not_change_reference_feature_set():
     assert before==after==['a','b']
 
 
-def test_future_returns_never_change_formation_universe_or_ranks():
+@pytest.mark.parametrize('alteration',['blank','shuffle','extreme'])
+def test_future_returns_never_change_formation_universe_or_ranks(alteration):
     original=fixture_panel()
-    mutated=original.copy();mutated.loc[0,'ret_exc_lead1m']=np.nan
+    mutated=original.copy()
+    if alteration=='blank':
+        mutated['ret_exc_lead1m']=np.nan
+    elif alteration=='shuffle':
+        mutated['ret_exc_lead1m']=original.ret_exc_lead1m.sample(frac=1,random_state=4).to_numpy()
+    else:
+        mutated['ret_exc_lead1m']=np.arange(len(mutated))*1000.
     np.testing.assert_array_equal(formation_mask(original),formation_mask(mutated))
     a=rank_months(original.loc[formation_mask(original)],['a','b'])
     b=rank_months(mutated.loc[formation_mask(mutated)],['a','b'])
@@ -162,31 +169,9 @@ def test_annual_calendar():
     assert dates[te[-1]]+pd.offsets.MonthEnd(1)==pd.Timestamp('2025-01-31')
 
 
-def test_turnover_union_and_initial_entry():
-    first,previous=l1_target_turnover([1,2],[.7,-.2])
-    second,_=l1_target_turnover([2,3],[-.1,.5],previous)
-    assert first==pytest.approx(.9)
-    assert second==pytest.approx(1.3)
-
-
 def test_missing_return_is_not_silently_zero_or_dropped():
     bank=FeatureBank('linear',2,2)
     with pytest.raises(ValueError,match='unresolved'):
         managed_matrix([{'x':np.ones((3,2)), 'r':np.array([.1,np.nan,.2])}],bank)
     with pytest.raises(ValueError,match='missing'):
         sharpe([.1,np.nan,.2])
-
-
-def test_report_module_and_latex_generation(tmp_path):
-    import figures
-    data=[]
-    for kernel in ('linear','gaussian','matern32'):
-        data.append({'kernel':kernel,'annual_mean_excess':.1,'annual_volatility':.1,
-            'sharpe':1.,'max_drawdown':.1,'mean_gross':1.8,'annual_target_turnover':12.,
-            'net_sharpe_25bps_target_turnover_proxy':.7})
-    figures.make_text(tmp_path,pd.DataFrame(data),[{'interior':False}],4.0)
-    text=(tmp_path/'empirics.tex').read_text()
-    assert '\\subsection' not in text
-    assert 'do not establish an interior optimum' in text
-    assert 'ELL' not in text and 'FINDING' not in text
-    assert all((tmp_path/p).exists() for p in ['main.tex','empirics.tex','performance.tex','references.bib'])

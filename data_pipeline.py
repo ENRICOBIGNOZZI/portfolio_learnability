@@ -11,7 +11,7 @@ END = pd.Timestamp('2024-12-31')
 REFERENCE_SELECTION_END = pd.Timestamp('2023-12-31')
 INITIAL_TRAIN_END = pd.Timestamp('1972-12-31')
 FLAGS = ['common', 'primary_sec', 'obs_main', 'exch_main']
-META = ['id', 'eom', 'excntry', 'size_grp', 'me', 'ret_exc_lead1m',
+META = ['permno', 'id', 'eom', 'excntry', 'size_grp', 'me', 'ret_exc_lead1m',
         'crsp_shrcd', 'crsp_exchcd', *FLAGS]
 
 
@@ -30,7 +30,7 @@ def write_json(path, obj):
 def formation_mask(frame):
     dates = pd.to_datetime(frame['eom'])
     mask = dates.between(START, END)
-    mask &= frame['excntry'].eq('USA') & frame['id'].le(99999)
+    mask &= frame['excntry'].eq('USA') & frame['id'].notna() & frame['id'].between(1, 99999)
     mask &= frame['crsp_shrcd'].isin([10, 11, 12])
     mask &= frame['crsp_exchcd'].isin([1, 2, 3])
     mask &= frame['size_grp'].notna() & frame['size_grp'].ne('nano')
@@ -44,7 +44,7 @@ def characteristic_selection(frame, candidates, count=130):
     known = frame.loc[formation_mask(frame) &
                       pd.to_datetime(frame['eom']).le(REFERENCE_SELECTION_END)]
     if known.empty:
-        raise ValueError('No initial training observations.')
+        raise ValueError('No reference-sample observations.')
     clean = known[candidates].apply(pd.to_numeric, errors='coerce')
     clean = clean.replace([np.inf, -np.inf], np.nan)
     coverage = clean.notna().sum()
@@ -53,13 +53,13 @@ def characteristic_selection(frame, candidates, count=130):
 
 def choose_names(coverage, observations, count=130):
     if observations <= 0 or len(coverage) < count:
-        raise ValueError('Insufficient candidate characteristics or initial observations.')
+        raise ValueError('Insufficient candidate characteristics or reference observations.')
     table = pd.DataFrame({'characteristic':coverage.index,
                           'missing_share':1-coverage.to_numpy()/observations})
     table = table.sort_values(['missing_share', 'characteristic'], kind='stable')
     chosen = table.head(count)['characteristic'].tolist()
     if table.head(count)['missing_share'].ge(1).any():
-        raise ValueError('Fewer than 130 characteristics are observed in the initial train.')
+        raise ValueError('Fewer than 130 characteristics are observed in the reference sample.')
     # Fixed alphabetical coordinate order is independent of later coverage.
     return sorted(chosen), table
 
@@ -89,16 +89,37 @@ def sample_initial(panels, max_points=1000, seed=0):
     return sample
 
 
-def prepare(raw_dir, output_dir, correction_file=None):
+def prepare(raw_dir, output_dir):
     raw_dir, output_dir = Path(raw_dir), Path(output_dir)
     raw_manifest = json.loads((raw_dir/'manifest.json').read_text())
+    protocol = json.loads(Path(__file__).with_name('protocol.json').read_text())
+    if raw_manifest.get('return_units') != 'decimal':
+        raise ValueError('Raw snapshot must document decimal return units.')
     if raw_manifest['status'] != 'complete':
         raise ValueError('Raw download is not complete.')
     candidates = raw_manifest['characteristics']
+    pinned_candidates = json.loads(Path(__file__).with_name('characteristics.json').read_text())
+    if set(candidates) != set(pinned_candidates):
+        raise ValueError('Raw candidate names differ from the pinned JKP dictionary.')
     if len(candidates) != 153 or len(set(candidates)) != 153:
         raise ValueError('Require the pinned 153-variable JKP dictionary.')
     raw_files = [raw_dir/item['name'] for item in raw_manifest['files']]
+    if len(raw_files) != len(set(raw_files)):
+        raise ValueError('Duplicate raw files.')
+    seen_keys = set()
+    import pyarrow.parquet as pq
     for item, file in zip(raw_manifest['files'], raw_files, strict=True):
+        schema = set(pq.ParquetFile(file).schema_arrow.names)
+        required = set(META + candidates + ['current_excess_return', 'current_total_return'])
+        if required - schema:
+            raise ValueError(f'Incomplete raw schema {file.name}: {sorted(required-schema)}')
+        keys = pd.read_parquet(file, columns=['id','eom'])
+        if keys.isna().any().any() or keys.duplicated().any():
+            raise ValueError('Missing or duplicated raw id/eom.')
+        pairs = set(zip(keys.id, pd.to_datetime(keys.eom)))
+        if seen_keys.intersection(pairs):
+            raise ValueError('Duplicate security-month across raw files.')
+        seen_keys.update(pairs)
         if digest(file) != item['sha256']:
             raise ValueError('Raw snapshot checksum mismatch: '+file.name)
     if output_dir.exists() and any(output_dir.iterdir()):
@@ -118,7 +139,11 @@ def prepare(raw_dir, output_dir, correction_file=None):
         coverage += values.notna().sum()
         n_calibration += len(frame)
     names, coverage_table = choose_names(coverage, n_calibration)
-    coverage_table.to_csv(output_dir/'initial_coverage.csv', index=False)
+    coverage_table.to_csv(output_dir/'characteristic_coverage.csv', index=False)
+    write_json(output_dir/'characteristic_provenance.json', {
+        **protocol['characteristic_selection'], 'candidates':candidates, 'selected':names,
+        'coverage_observations':n_calibration,
+        'coverage':coverage_table.to_dict(orient='records')})
     write_json(output_dir/'characteristics.json', names)
 
     # Recovery uses observed next-calendar-month returns, never eligibility.
@@ -129,17 +154,6 @@ def prepare(raw_dir, output_dir, correction_file=None):
     if return_history.duplicated(['id', 'eom']).any():
         raise ValueError('Duplicate raw security-month returns; do not silently aggregate.')
     return_history = return_history.rename(columns={'eom':'return_date'})
-    corrections = None
-    if correction_file is not None:
-        corrections = pd.read_csv(correction_file)
-        required = {'id', 'return_date', 'excess_return', 'source'}
-        if not required.issubset(corrections.columns):
-            raise ValueError('Return corrections require id, return_date, excess_return, source.')
-        corrections['return_date'] = pd.to_datetime(corrections['return_date'])
-        if corrections.duplicated(['id', 'return_date']).any() or corrections.source.isna().any():
-            raise ValueError('Ambiguous or undocumented return corrections.')
-        corrections = corrections.rename(columns={'excess_return':'verified_return'})
-
     counts, missing, files, initial = [], [], [], []
     n_recovered = 0
     for path in raw_files:
@@ -160,14 +174,11 @@ def prepare(raw_dir, output_dir, correction_file=None):
         recover = frame.r.isna() & np.isfinite(frame.current_excess_return)
         frame.loc[recover, 'r'] = frame.loc[recover, 'current_excess_return']
         n_recovered += int(recover.sum())
-        if corrections is not None:
-            frame = frame.merge(corrections[['id','return_date','verified_return']],
-                                on=['id','return_date'], how='left', validate='many_to_one')
-            recover = frame.r.isna() & np.isfinite(frame.verified_return)
-            frame.loc[recover, 'r'] = frame.loc[recover, 'verified_return']
-            n_recovered += int(recover.sum())
         frame['return_known'] = np.isfinite(frame.r)
-        missing.append(frame.loc[~frame.return_known, ['id','eom','return_date']])
+        unresolved = frame.loc[~frame.return_known, ['id','permno','eom','return_date',
+            'ret_exc_lead1m','current_excess_return']].rename(columns={'eom':'formation_date'})
+        unresolved['reason_unresolved'] = 'No finite JKP lead or observed next-calendar-month current excess return'
+        missing.append(unresolved)
         for date, month in frame.groupby('eom', sort=True):
             counts.append({'formation_date':date, 'stocks':len(month),
                            'unknown_returns':int((~month.return_known).sum())})
@@ -183,11 +194,14 @@ def prepare(raw_dir, output_dir, correction_file=None):
     sample = sample_initial(initial)
     np.save(output_dir/'initial_sample.npy', sample)
     missing_table = pd.concat(missing, ignore_index=True)
-    missing_table.to_parquet(output_dir/'unresolved_returns.parquet', index=False)
+    missing_table.to_csv(output_dir/'unresolved_returns.csv', index=False)
     pd.DataFrame(counts).to_csv(output_dir/'universe_counts.csv', index=False)
     manifest = {'status':'complete' if missing_table.empty else 'unresolved_returns',
         'cleaning':'AIPT Section 2.5 stock-characteristic cleaning; 2024 is an extension outside feature selection',
         'source_raw_manifest_sha256':digest(raw_dir/'manifest.json'),
+        'raw_manifest':raw_manifest, 'protocol':protocol,
+        'protocol_sha256':digest(Path(__file__).with_name('protocol.json')),
+        'characteristic_provenance':json.loads((output_dir/'characteristic_provenance.json').read_text()),
         'characteristics':names, 'feature_count':len(names),
         'coverage_start':'1963-01-01','coverage_end':'2023-12-31',
         'coverage_observations':n_calibration, 'row_missing_limit':0.30,
@@ -196,9 +210,13 @@ def prepare(raw_dir, output_dir, correction_file=None):
         'recovered_returns':n_recovered, 'unresolved_returns':len(missing_table),
         'unresolved_policy':'retain formation stocks, prohibit training/report until reconciled',
         'files':files, 'sample_sha256':digest(output_dir/'initial_sample.npy'),
-        'correction_sha256':None if correction_file is None else digest(correction_file)}
+        'formation_start':'1963-01-31','formation_end':'2024-12-31',
+        'average_stocks_per_month':float(pd.DataFrame(counts).stocks.mean()),
+        'raw_rows':sum(f['rows'] for f in raw_manifest['files'])}
     write_json(output_dir/'manifest.json', manifest)
     print('Unresolved forward returns:', len(missing_table), flush=True)
+    if not missing_table.empty:
+        raise ValueError('Unresolved payoffs: inspect unresolved_returns.csv. No fit is permitted.')
     return manifest
 
 
@@ -209,11 +227,20 @@ def load_panels(clean_dir):
         raise ValueError('Unresolved returns remain. Supply documented return corrections; '
                          'do not drop securities or replace unknown returns by zero.')
     names = manifest['characteristics']
+    if len(names) != 130 or len(set(names)) != 130:
+        raise ValueError('Exactly 130 distinct predictors required.')
     panels = []
     for item in manifest['files']:
         if digest(root/item['name']) != item['sha256']:
             raise ValueError('Clean panel checksum mismatch.')
         frame = pd.read_parquet(root/item['name'])
+        x = frame[names].to_numpy(float)
+        if not np.isfinite(x).all() or np.max(np.abs(x)) > .5:
+            raise ValueError('Invalid ranked characteristics.')
+        if not np.isfinite(frame.r).all() or not frame.return_known.all():
+            raise ValueError('Unresolved payoff cannot enter a fit.')
+        if frame.duplicated(['id','eom']).any():
+            raise ValueError('Duplicate clean security-month.')
         for date, g in frame.groupby('eom', sort=True):
             g = g.sort_values('id', kind='stable')
             panels.append({'date':pd.Timestamp(date), 'return_date':g.return_date.iloc[0],

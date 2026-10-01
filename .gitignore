@@ -1,7 +1,6 @@
 # Licensed inputs and private fitted weights never belong in Git.
 /data/
 /results/
-/paper/
 *.parquet
 *.npz
 *.npy
@@ -32,3 +31,6 @@ dist/
 test_results.xml
 source_manifest.json
 .DS_Store
+
+.mypy_cache/
+.vscode/

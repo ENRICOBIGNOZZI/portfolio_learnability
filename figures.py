@@ -1,4 +1,4 @@
-"""Paper figures: no legacy inputs, no smoothing, no result-dependent model choice."""
+"""Exactly five figures, one performance table, and a source-bound empirical section."""
 from __future__ import annotations
 import json
 from pathlib import Path
@@ -8,391 +8,383 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
-from matplotlib.ticker import ScalarFormatter
-import fitz
-from data import digest, write_json
-from model import FEATURE_COUNTS, sharpe
+from data_pipeline import digest, write_json
+from kernels import array_hash
+from portfolio import sharpe
 
 LABELS = {'linear':'Linear', 'gaussian':'Gaussian', 'matern32':'Matérn-3/2'}
-COLORS = {'linear':'#243B53', 'gaussian':'#A45F35', 'matern32':'#77364F'}
-LINES = {'linear':'--', 'gaussian':'-', 'matern32':'-.'}
+COLORS = {'linear':'#2B2B2B', 'gaussian':'#355C7D', 'matern32':'#8A5A64'}
+LINES = {'linear':'-', 'gaussian':'--', 'matern32':'-.'}
+STEMS = ('fig01_wealth_drawdown', 'fig02_exposure', 'fig03_complexity_gaussian',
+         'fig04_complexity_matern32', 'fig05_managed_spectrum')
+
+
+def wealth_drawdown(total_returns):
+    r = np.asarray(total_returns, float)
+    if not np.isfinite(r).all() or (r <= -1).any():
+        raise ValueError('Total returns must be finite decimal values strictly above -100%.')
+    wealth = np.cumprod(1+r)
+    drawdown = wealth/np.maximum.accumulate(np.r_[1.,wealth])[1:]-1
+    # Independent scalar recursion, including the unit-value starting point.
+    capital, peak = 1., 1.
+    independent = []
+    for value in r:
+        capital *= 1+value
+        peak = max(peak, capital)
+        independent.append(capital/peak-1)
+    np.testing.assert_allclose(drawdown, independent, rtol=1e-12, atol=1e-12)
+    return wealth, drawdown
+
+
+def scaled_history(frame, rf, kappa):
+    if not np.isfinite(kappa) or kappa <= 0:
+        raise ValueError('One positive fixed kappa is required.')
+    expected = pd.date_range('1978-01-31','2024-12-31',freq='ME')
+    frame = frame.sort_values('formation_date').copy()
+    if not pd.DatetimeIndex(frame.formation_date).equals(expected):
+        raise ValueError('Require exactly 564 unique OOS formation months.')
+    if not (frame.return_date == frame.formation_date+pd.offsets.MonthEnd(1)).all():
+        raise ValueError('Return dates must be the next calendar month.')
+    if not np.isfinite(frame[['raw_excess_return','raw_gross','raw_net']]).all().all():
+        raise ValueError('Nonfinite portfolio input.')
+    if (frame.raw_gross < np.abs(frame.raw_net)-1e-8).any():
+        raise ValueError('Gross exposure cannot be below absolute net exposure.')
+    frame = frame.merge(rf,on='return_date',how='left',validate='one_to_one')
+    if not np.isfinite(frame.rf).all():
+        raise ValueError('Missing cash return.')
+    frame['excess_return'] = kappa*frame.raw_excess_return
+    frame['total_return'] = frame.rf+frame.excess_return
+    frame['gross'] = kappa*frame.raw_gross
+    frame['net'] = kappa*frame.raw_net
+    frame['kappa'] = kappa
+    frame['wealth'], frame['drawdown'] = wealth_drawdown(frame.total_return)
+    frame['excess_wealth'] = np.cumprod(1+frame.excess_return)
+    np.testing.assert_allclose(sharpe(frame.excess_return),sharpe(frame.raw_excess_return))
+    return frame
+
+
+def drawdown_episodes(frame):
+    episodes, current = [], None
+    last_peak = frame.return_date.iloc[0]-pd.offsets.MonthEnd(1)
+    for row in frame.itertuples():
+        if row.drawdown < -1e-12:
+            if current is None:
+                current = {'peak_date':str(last_peak.date()), 'trough_date':str(row.return_date.date()),
+                           'drawdown':float(row.drawdown), 'recovery_date':None}
+            if row.drawdown < current['drawdown']:
+                current.update(trough_date=str(row.return_date.date()),drawdown=float(row.drawdown))
+        else:
+            if current is not None:
+                current['recovery_date'] = str(row.return_date.date())
+                episodes.append(current)
+                current = None
+            last_peak = row.return_date
+    if current is not None:
+        episodes.append(current)
+    return sorted(episodes,key=lambda x:x['drawdown'])[:5]
+
+
+def get_case(root, kernel):
+    count = 131 if kernel == 'linear' else 10000
+    folder = root/kernel/'seed_0'/f'p_{count}'
+    meta = json.loads((folder/'manifest.json').read_text())
+    if (meta['status'],meta['kernel'],meta['features'],meta['seed']) != ('complete',kernel,count,0):
+        raise ValueError('Invalid model metadata.')
+    for name, checksum in meta['files'].items():
+        if digest(folder/name) != checksum:
+            raise ValueError('Result checksum mismatch: '+name)
+    source_path = folder.parent/'source.json'
+    if digest(source_path) != meta['source_sha256']:
+        raise ValueError('Source checksum mismatch.')
+    source = json.loads(source_path.read_text())
+    for name, checksum in source['code_checksums'].items():
+        if digest(Path(__file__).with_name(name)) != checksum:
+            raise ValueError('Fit/report code differs: '+name)
+    if source['clean_manifest']['protocol']['protocol_version'] != 'final-empirical-rebuild-v1':
+        raise ValueError('Old results cannot enter this report.')
+    penalties = np.asarray(meta['lambda_grid'])
+    if len(penalties) != 120 or array_hash(penalties) != meta['lambda_grid_sha256']:
+        raise ValueError('Frozen lambda grid mismatch.')
+    return folder, meta, source
 
 
 def style():
-    plt.rcParams.update({'font.family':'serif', 'font.size':10,
-        'mathtext.fontset':'stix', 'axes.spines.top':False, 'axes.spines.right':False,
-        'axes.linewidth':0.7, 'legend.frameon':False, 'figure.facecolor':'white',
-        'axes.facecolor':'white', 'pdf.fonttype':42, 'ps.fonttype':42})
+    plt.rcParams.update({'font.family':'serif','font.size':10,'mathtext.fontset':'stix',
+        'axes.spines.top':False,'axes.spines.right':False,'axes.linewidth':.7,
+        'legend.frameon':False,'pdf.fonttype':42,'ps.fonttype':42})
 
 
-def canvas(ylabel, xlabel=''):
-    fig = plt.figure(figsize=(7.4, 4.1))
-    ax = fig.add_axes([0.13,0.15,0.83,0.79])
-    ax.set_ylabel(ylabel)
-    ax.set_xlabel(xlabel)
-    ax.grid(axis='y', linewidth=0.45, color='#E1E4E8')
-    return fig, ax
+def canvas(panels=2):
+    fig, axes = plt.subplots(panels,1,figsize=(7.2,6.2 if panels==2 else 4),
+                             layout='constrained', squeeze=False)
+    for ax in axes[:,0]:
+        ax.grid(axis='y',color='#E2E2E2',linewidth=.45)
+    return fig, axes[:,0]
 
 
-def save(fig, output, stem):
-    fig.savefig(output/(stem+'.pdf'))
-    fig.savefig(output/(stem+'.png'), dpi=250)
+def line(ax, frame, x, y, kernel):
+    ax.plot(frame[x],frame[y],color=COLORS[kernel],linestyle=LINES[kernel],
+            linewidth=1.15,label=LABELS[kernel])
+
+
+def save(fig, directory, stem):
+    fig.savefig(directory/(stem+'.pdf'))
+    fig.savefig(directory/(stem+'.png'),dpi=300)
     plt.close(fig)
 
 
-def stack(output, top, bottom, stem):
-    doc = fitz.open()
-    a, b = fitz.open(output/(top+'.pdf')), fitz.open(output/(bottom+'.pdf'))
-    width = max(a[0].rect.width, b[0].rect.width)
-    ha, hb = a[0].rect.height, b[0].rect.height
-    page = doc.new_page(width=width, height=ha+hb)
-    page.show_pdf_page(fitz.Rect(0,0,width,ha), a, 0)
-    page.show_pdf_page(fitz.Rect(0,ha,width,ha+hb), b, 0)
-    doc.save(output/(stem+'.pdf'))
-    page.get_pixmap(matrix=fitz.Matrix(2,2)).save(output/(stem+'.png'))
-    doc.close(); a.close(); b.close()
+def final_path(diagnostics, path):
+    curve = diagnostics.loc[diagnostics.test_year.eq(2024)].copy()
+    final = path.loc[path.test_year.eq(2024)]
+    if len(curve) != 120 or curve['lambda'].nunique()!=120 or curve.selected.sum()!=1:
+        raise ValueError('Require the full final-window path and one validation selection.')
+    dates = pd.date_range('2024-01-31','2024-12-31',freq='ME')
+    if len(final)!=1440 or final.duplicated(['formation_date','lambda']).any():
+        raise ValueError('The final path requires twelve actual returns per lambda.')
+    for penalty, g in final.groupby('lambda'):
+        g = g.sort_values('formation_date')
+        if not pd.DatetimeIndex(g.formation_date).equals(dates):
+            raise ValueError('Pooled OOS returns are not the 2024 test window.')
+        if not (g.return_date==g.formation_date+pd.offsets.MonthEnd(1)).all():
+            raise ValueError('Incorrect final test payoff dates.')
+        match = np.flatnonzero(np.isclose(curve['lambda'],penalty,rtol=1e-12,atol=0))
+        if len(match)!=1:
+            raise ValueError('Lambda path mismatch.')
+        np.testing.assert_allclose(curve.oos_sharpe.iloc[match[0]],sharpe(g.excess_return),rtol=1e-8)
+    if not np.isfinite(curve[['historical_sharpe','oos_sharpe','effective_complexity']]).all().all():
+        raise ValueError('Undefined final-window Sharpe or complexity.')
+    return curve.sort_values('effective_complexity')
 
 
-def time_axis(ax):
-    ax.xaxis.set_major_locator(mdates.YearLocator(10))
-    ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y'))
-    ax.set_xlabel('')
-
-
-def get_case(root, kernel, count, seed=0):
-    folder = root/kernel/f'seed_{seed}'/f'p_{count}'
-    meta = json.loads((folder/'manifest.json').read_text())
-    if meta['status'] != 'complete' or meta['kernel'] != kernel or meta['features'] != count:
-        raise ValueError('Invalid case metadata.')
-    for name, expected in meta['files'].items():
-        if digest(folder/name) != expected:
-            raise ValueError('Result checksum mismatch: '+str(folder/name))
-    source_file = folder.parent/'source.json'
-    if digest(source_file) != meta['source_sha256']:
-        raise ValueError('Result provenance mismatch.')
-    return folder, meta, json.loads(source_file.read_text())
-
-
-def complexity_figure(output, kernel, diagnostic):
-    frame = diagnostic.loc[diagnostic.test_year.eq(2024)].sort_values('effective_complexity')
-    if len(frame) != 120 or frame.selected.sum() != 1:
-        raise ValueError('The final-window curve must contain 120 penalties and one validation choice.')
+def complexity_figure(directory, kernel, frame):
     peak = frame.loc[frame.oos_sharpe.idxmax()]
     selected = frame.loc[frame.selected].iloc[0]
-    upper = kernel+'_historical_2024'
-    lower = kernel+'_test_2024'
-    for column, title, stem in [
-        ('historical_sharpe','Historical fit (train + validation)',upper),
-        ('oos_sharpe','Test window 2024 (February 2024–January 2025)',lower)]:
-        fig, ax = canvas('Annualized Sharpe ratio', r'Effective complexity $\widehat{\mathcal{C}}(\lambda)$')
-        ax.set_title(LABELS[kernel]+' — '+title, loc='left', fontsize=10, pad=10)
-        color = '#66788A' if column == 'historical_sharpe' else COLORS[kernel]
-        ax.plot(frame.effective_complexity, frame[column], color=color,
-                linewidth=1.45, marker='o', markersize=2.2, markeredgewidth=0)
-        ax.set_xlim(-5, max(frame.effective_complexity)*1.04)
-        if column == 'historical_sharpe':
-            ax.set_xlabel('')
-        else:
-            ax.scatter([peak.effective_complexity],[peak.oos_sharpe],s=110,marker='*',
-                facecolor='#D1AD54',edgecolor='#343434',linewidth=0.8,zorder=5,
-                label=f'Ex-post peak: C = {peak.effective_complexity:.1f}')
-            ax.scatter([selected.effective_complexity],[selected.oos_sharpe],s=36,
-                facecolor='white',edgecolor=color,linewidth=1.1,zorder=6,
-                label='Validation-selected policy')
-            ax.legend(loc='best',fontsize=8)
-        save(fig, output, stem)
-    stack(output, upper, lower, 'complexity_'+kernel+'_2024')
-    for stem in (upper, lower):
-        for suffix in ('.pdf','.png'):
-            (output/(stem+suffix)).unlink()
-    interior = peak.effective_complexity not in (
-        frame.effective_complexity.iloc[0], frame.effective_complexity.iloc[-1])
-    return {'kernel':kernel, 'ex_post_complexity':float(peak.effective_complexity),
-        'ex_post_sharpe':float(peak.oos_sharpe), 'interior':bool(interior),
-        'selected_complexity':float(selected.effective_complexity),
-        'selected_sharpe':float(selected.oos_sharpe)}
+    fig, axes = canvas()
+    for ax, column, label in zip(axes,['historical_sharpe','oos_sharpe'],
+            ['Historical Sharpe','2024 test Sharpe']):
+        line(ax,frame,'effective_complexity',column,kernel)
+        ax.axvline(selected.effective_complexity,color='#777777',linestyle=':',linewidth=.8)
+        ax.set_ylabel(label)
+    axes[1].scatter([selected.effective_complexity],[selected.oos_sharpe],s=25,
+        facecolors='white',edgecolors=COLORS[kernel],label='Validation selected',zorder=4)
+    axes[1].scatter([peak.effective_complexity],[peak.oos_sharpe],s=22,
+        marker='x',color='#444444',label='Ex-post maximum',zorder=5)
+    axes[1].set_xlabel(r'Effective complexity $C(\lambda)$')
+    axes[1].legend(fontsize=8)
+    save(fig,directory,STEMS[2 if kernel=='gaussian' else 3])
+    return {'kernel':kernel,'ex_post_complexity':float(peak.effective_complexity),
+            'ex_post_sharpe':float(peak.oos_sharpe),
+            'selected_complexity':float(selected.effective_complexity)}
 
 
 def report(results, risk_free_file, output):
     root, output = Path(results)/'public', Path(output)
     if output.exists() and any(output.iterdir()):
-        raise FileExistsError('Report output must be empty. Old figures cannot enter this build.')
-    output.mkdir(parents=True, exist_ok=True)
-    figdir = output/'figures'; figdir.mkdir()
-    style()
-    rf = pd.read_csv(risk_free_file, parse_dates=['return_date'])
-    if rf.return_date.duplicated().any() or not np.isfinite(rf.rf).all():
-        raise ValueError('Invalid risk-free series.')
-    calibration = json.loads((root/'linear/seed_0/calibration.json').read_text())
+        raise FileExistsError('Report output must be empty.')
+    rf = pd.read_csv(risk_free_file,parse_dates=['return_date'])
+    rf_source = json.loads(Path(risk_free_file).with_suffix('.json').read_text())
+    if rf_source['sha256'] != digest(risk_free_file) or rf_source['units']!='monthly decimal':
+        raise ValueError('Cash-return provenance mismatch.')
+    calibration_path = root/'linear/seed_0/calibration.json'
+    calibration = json.loads(calibration_path.read_text())
+    if pd.Timestamp(calibration['available_at']) > pd.Timestamp('1978-01-31'):
+        raise ValueError('Scale was unavailable at the first formation trade.')
     scale = float(calibration['scale'])
-    histories, spectra, peaks, stats, sources = {}, {}, [], [], []
-    for kernel, count in [('linear',131),('gaussian',10000),('matern32',10000)]:
-        folder, meta, source = get_case(root,kernel,count)
-        sources.append(source)
-        frame = pd.read_csv(folder/'monthly.csv',parse_dates=['formation_date','return_date'])
-        frame = frame.sort_values('return_date').merge(rf, on='return_date',how='left',validate='one_to_one')
-        if len(frame) != 564 or frame.rf.isna().any():
-            raise ValueError('Every OOS month needs its correctly dated risk-free return.')
-        frame['excess_return'] = frame.raw_excess_return*scale
-        frame['total_return'] = frame.excess_return+frame.rf
-        frame['gross'] = frame.raw_gross*scale
-        frame['net'] = frame.raw_net*scale
-        frame['target_turnover'] = frame.raw_target_turnover*scale
-        if np.any(1+frame.total_return <= 0):
-            raise ValueError('Wealth cannot be compounded: nonpositive monthly wealth factor.')
-        frame['wealth'] = np.cumprod(1+frame.total_return)
-        wealth = np.r_[1.0, frame.wealth.to_numpy()]
-        drawdown = wealth/np.maximum.accumulate(wealth)-1
-        net_proxy = frame.excess_return-0.0025*frame.target_turnover
-        stats.append({'kernel':kernel, 'annual_mean_excess':12*frame.excess_return.mean(),
-            'annual_volatility':np.sqrt(12)*frame.excess_return.std(ddof=1),
-            'sharpe':float(sharpe(frame.excess_return)), 'max_drawdown':-float(drawdown.min()),
-            'mean_gross':frame.gross.mean(), 'mean_net':frame.net.mean(),
-            'gross_p99':frame.gross.quantile(.99),
-            'annual_target_turnover':12*frame.target_turnover.mean(),
-            'net_sharpe_25bps_target_turnover_proxy':float(sharpe(net_proxy)),
-            'native_response_one_loss':meta['raw_response_one_loss'],
-            'terminal_wealth':frame.wealth.iloc[-1]})
-        histories[kernel] = frame
-        if kernel != 'linear':
-            spectra[kernel] = pd.read_csv(folder/'spectrum_2024.csv')
-            diagnostic = pd.read_csv(folder/'diagnostics.csv')
-            peaks.append(complexity_figure(figdir,kernel,diagnostic))
-    if len({s['clean_manifest_sha256'] for s in sources}) != 1:
-        raise ValueError('Representations were not estimated on the same cleaned panel.')
-    if len({s['initial_sample_sha256'] for s in sources}) != 1:
-        raise ValueError('Representations use different calibration samples.')
-    for frame in histories.values():
-        if not frame.return_date.equals(histories['linear'].return_date):
-            raise ValueError('OOS calendars do not agree.')
-    performance = pd.DataFrame(stats)
-    performance.to_csv(output/'performance.csv',index=False)
-    pd.DataFrame(peaks).to_csv(output/'complexity_2024.csv',index=False)
-
-    fig, ax = canvas('Cumulative wealth')
+    histories, sources, cases, curves, spectra, stats, audit = {}, [], {}, {}, {}, [], {}
+    for kernel in LABELS:
+        folder, meta, source = get_case(root,kernel)
+        sources.append(source); cases[kernel]=meta
+        if kernel=='linear' and digest(calibration_path)!=meta['calibration_sha256']:
+            raise ValueError('Calibration checksum mismatch.')
+        clean = source['clean_manifest']
+        if clean['protocol']['timing']['status']!='user_confirmed':
+            raise ValueError('Timing convention must be resolved before publication.')
+        if clean['unresolved_returns'] or clean['feature_count']!=130 or clean['status']!='complete':
+            raise ValueError('Invalid cleaned panel.')
+        if clean['source_raw_manifest_sha256'] != rf_source['raw_manifest_sha256']:
+            raise ValueError('Cash returns must use the same raw snapshot.')
+        frame = scaled_history(pd.read_csv(folder/'monthly.csv',
+            parse_dates=['formation_date','return_date']),rf,scale)
+        histories[kernel]=frame
+        sr = float(sharpe(frame.excess_return))
+        stats.append({'Policy':LABELS[kernel],'Annual mean excess return':12*frame.excess_return.mean(),
+            'Annual volatility':np.sqrt(12)*frame.excess_return.std(ddof=1),'Sharpe ratio':sr,
+            'Maximum drawdown':frame.drawdown.min(),'Mean gross exposure':frame.gross.mean(),
+            'Mean net exposure':frame.net.mean()})
+        pre = frame.loc[frame.return_date < '2020-01-01']
+        audit[kernel]={'maximum_drawdown_date':str(frame.loc[frame.drawdown.idxmin(),'return_date'].date()),
+            'five_largest_episodes':drawdown_episodes(frame),
+            'requires_review':bool(sr>=2.5 and pre.drawdown.min()>-.05),
+            'stress_periods':{label:{'min_drawdown':float(g.drawdown.min()),
+                'min_monthly_return':float(g.total_return.min())} for label, start, end in [
+                ('1987','1987','1987-12-31'),('2000-2002','2000','2002-12-31'),
+                ('2008-2009','2008','2009-12-31'),('2020','2020','2020-12-31'),
+                ('2022','2022','2022-12-31')]
+                for g in [frame.loc[frame.return_date.between(start,end)]]}}
+        if kernel!='linear':
+            spectra[kernel]=pd.read_csv(folder/'spectrum_2024.csv')
+            curves[kernel]=final_path(pd.read_csv(folder/'diagnostics.csv',float_precision='round_trip'),
+                                    pd.read_parquet(folder/'lambda_returns.parquet'))
+    for key in ['clean_manifest_sha256','initial_sample_sha256','git_sha','code_checksums']:
+        if any(s[key]!=sources[0][key] for s in sources):
+            raise ValueError('Mixed representation provenance: '+key)
+    if any(s['feature_bank']['ell']!=sources[0]['feature_bank']['ell'] for s in sources):
+        raise ValueError('Representations must share ell.')
+    output.mkdir(parents=True,exist_ok=True)
+    write_json(output/'audit.json',audit)
+    if any(a['requires_review'] for a in audit.values()):
+        raise ValueError('Strong Sharpe with tiny pre-2020 drawdowns: audit required before publication.')
+    figdir=output/'figures';figdir.mkdir()
+    tables=output/'tables';tables.mkdir()
+    inputs=output/'inputs';inputs.mkdir()
+    input_hashes={}
     for kernel, frame in histories.items():
-        date0 = frame.return_date.iloc[0]-pd.offsets.MonthEnd(1)
-        ax.plot(pd.DatetimeIndex([date0,*frame.return_date]), np.r_[1,frame.wealth],
-                color=COLORS[kernel], linestyle=LINES[kernel],linewidth=1.5,label=LABELS[kernel])
-    ax.set_yscale('log'); time_axis(ax); ax.legend(loc='upper left',ncol=3,fontsize=9)
-    save(fig,figdir,'cumulative_wealth')
-    for name, ylabel in [('gross','Gross exposure'),('net','Net exposure')]:
-        fig, ax = canvas(ylabel)
-        for kernel, frame in histories.items():
-            ax.plot(frame.formation_date,frame[name],color=COLORS[kernel],
-                    linestyle=LINES[kernel],linewidth=1.15,label=LABELS[kernel])
-        if name == 'gross':
-            ax.set_ylim(bottom=0)
-        else:
-            ax.axhline(0,color='#989898',linewidth=.6,zorder=0)
-        time_axis(ax); ax.legend(loc='best',ncol=3,fontsize=9)
-        save(fig,figdir,name+'_exposure')
-    stack(figdir,'gross_exposure','net_exposure','portfolio_exposure')
-    for name in ('gross_exposure','net_exposure'):
-        for suffix in ('.png','.pdf'):
-            (figdir/(name+suffix)).unlink()
-
-    fig, ax = canvas('Managed-payoff eigenvalue','Eigenvalue rank')
-    for kernel, frame in spectra.items():
-        frame = frame.loc[frame.eigenvalue > 0]
-        ax.plot(frame['rank'],frame.eigenvalue,color=COLORS[kernel],
-                linestyle=LINES[kernel],linewidth=1.4,label=LABELS[kernel])
-    ax.set_xscale('log'); ax.set_yscale('log'); ax.legend(loc='best')
-    save(fig,figdir,'managed_spectrum')
-
-    numerical = pd.read_csv(root/'gaussian/seed_0/rff_approximation.csv')
-    numerical.to_csv(output/'rff_approximation.csv',index=False)
-    fig, ax = canvas('Relative kernel approximation error','Number of Random Fourier Features')
-    for kernel in ('gaussian','matern32'):
-        frame = numerical.loc[numerical.kernel.eq(kernel)]
-        center = frame.loc[frame.seed.eq(0)].sort_values('features')
-        bands = frame.groupby('features').relative_frobenius_error.agg(['min','max']).sort_index()
-        ax.plot(center.features,center.relative_frobenius_error,
-                color=COLORS[kernel],marker='o',markersize=3,linewidth=1.4,label=LABELS[kernel])
-        ax.fill_between(bands.index.to_numpy(),bands['min'].to_numpy(),bands['max'].to_numpy(),
-                        color=COLORS[kernel],alpha=.12,linewidth=0)
-    ax.set_xscale('log'); ax.set_yscale('log'); ax.set_xticks(FEATURE_COUNTS)
-    ax.xaxis.set_major_formatter(ScalarFormatter()); ax.legend()
-    save(fig,figdir,'rff_approximation')
-
-    rff_performance = []
-    for kernel in ('gaussian','matern32'):
-        for p in FEATURE_COUNTS:
-            folder, meta, source = get_case(root,kernel,p)
-            if source['clean_manifest_sha256'] != sources[0]['clean_manifest_sha256']:
-                raise ValueError('RFF comparison changed the information set.')
-            rff_performance.append({'kernel':kernel,'features':p,'seed':0,
-                                    'sharpe':meta['oos_sharpe'],'native_loss':meta['raw_response_one_loss']})
-    rff = pd.DataFrame(rff_performance)
-    rff.to_csv(output/'rff_oos_performance.csv',index=False)
-    fig, ax = canvas('Out-of-sample Sharpe ratio','Number of Random Fourier Features')
-    for kernel in ('gaussian','matern32'):
-        frame = rff.loc[rff.kernel.eq(kernel)].sort_values('features')
-        ax.plot(frame.features,frame.sharpe,color=COLORS[kernel],
-                linewidth=1.4,marker='o',markersize=3,label=LABELS[kernel])
-    ax.set_xscale('log'); ax.set_xticks(FEATURE_COUNTS)
-    ax.xaxis.set_major_formatter(ScalarFormatter()); ax.legend()
-    save(fig,figdir,'rff_oos_performance')
-    make_text(output, performance, peaks, sources[0]['feature_bank']['ell'])
-    write_json(output/'manifest.json',{'status':'complete',
-        'clean_manifest_sha256':sources[0]['clean_manifest_sha256'],
-        'risk_free_sha256':digest(risk_free_file), 'calibration':calibration,
-        'primary_source_pdf_sha256':'5ba2ce32de3ac9a21e5dd6396dc82d85378e48814910baf536a1af013372f424',
-        'files':{str(p.relative_to(output)):digest(p) for p in output.rglob('*') if p.is_file()}})
+        path=inputs/(kernel+'_monthly.csv');frame.to_csv(path,index=False)
+        input_hashes[str(path.relative_to(output))]=digest(path)
+    style()
+    fig,axes=canvas()
+    for kernel, frame in histories.items():
+        baseline=pd.DataFrame({'return_date':[pd.Timestamp('1978-01-31')], 'wealth':[1.], 'drawdown':[0.]})
+        plot=pd.concat([baseline,frame],ignore_index=True)
+        line(axes[0],plot,'return_date','wealth',kernel)
+        plot=plot.assign(drawdown_percent=100*plot.drawdown)
+        line(axes[1],plot,'return_date','drawdown_percent',kernel)
+    axes[0].set_yscale('log');axes[0].set_ylabel('Cumulative total wealth')
+    axes[1].set_ylabel('Drawdown (%)');axes[0].legend(ncol=3,fontsize=9)
+    for ax in axes:
+        ax.xaxis.set_major_locator(mdates.YearLocator(10));ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y'))
+    save(fig,figdir,STEMS[0])
+    fig,axes=canvas()
+    for kernel, frame in histories.items():
+        line(axes[0],frame,'formation_date','gross',kernel)
+        line(axes[1],frame,'formation_date','net',kernel)
+    axes[0].set_ylabel('Gross exposure');axes[1].set_ylabel('Net exposure')
+    axes[0].legend(ncol=3,fontsize=9);axes[1].axhline(0,color='#999999',linewidth=.6)
+    save(fig,figdir,STEMS[1])
+    peaks=[]
+    for kernel, curve in curves.items():
+        path=inputs/(kernel+'_complexity_2024.csv');curve.to_csv(path,index=False)
+        input_hashes[str(path.relative_to(output))]=digest(path)
+        peaks.append(complexity_figure(figdir,kernel,curve))
+    fig,axes=canvas(1)
+    for kernel, spectrum in spectra.items():
+        if not np.isfinite(spectrum.eigenvalue).all() or (np.diff(spectrum.eigenvalue)>1e-12).any():
+            raise ValueError('Invalid ordered managed spectrum.')
+        path=inputs/(kernel+'_spectrum_2024.csv');spectrum.to_csv(path,index=False)
+        input_hashes[str(path.relative_to(output))]=digest(path)
+        line(axes[0],spectrum.loc[spectrum.eigenvalue>0],'rank','eigenvalue',kernel)
+    axes[0].set(xscale='log',yscale='log',xlabel='Eigenvalue rank',ylabel='Managed-payoff eigenvalue')
+    axes[0].legend();save(fig,figdir,STEMS[4])
+    performance=pd.DataFrame(stats)
+    performance.to_csv(tables/'performance.csv',index=False)
+    compact = performance.rename(columns={
+        'Annual mean excess return':'Annual mean excess', 'Annual volatility':'Annual vol.',
+        'Sharpe ratio':'Sharpe', 'Maximum drawdown':'Max. drawdown',
+        'Mean gross exposure':'Mean gross', 'Mean net exposure':'Mean net'})
+    compact.to_latex(tables/'performance.tex',index=False,float_format='%.3f',escape=True)
+    make_text(output,performance,peaks,sources[0]['feature_bank']['ell'])
+    write_json(output/'characteristics.json',clean['characteristic_provenance'])
+    figure_inputs={STEMS[0]:[k for k in input_hashes if 'monthly' in k],
+                   STEMS[1]:[k for k in input_hashes if 'monthly' in k],
+                   STEMS[2]:['inputs/gaussian_complexity_2024.csv'],
+                   STEMS[3]:['inputs/matern32_complexity_2024.csv'],
+                   STEMS[4]:[k for k in input_hashes if 'spectrum' in k]}
+    manifest={'status':'complete','git_sha':sources[0]['git_sha'],
+        'code_checksums':sources[0]['code_checksums'],'raw_manifest':clean['raw_manifest'],
+        'characteristics':clean['characteristics'],'characteristic_provenance':clean['characteristic_provenance'],
+        'clean_manifest':clean,'ell':sources[0]['feature_bank']['ell'],
+        'sampled_vector_sha256':sources[0]['initial_sample_sha256'],'sample_dates':['1963-01-31','1972-12-31'],
+        'seed':0,'P':10000,'lambda_grid':{k:v['lambda_grid'] for k,v in cases.items()},
+        'lambda_grid_sha256':{k:v['lambda_grid_sha256'] for k,v in cases.items()},
+        'kappa':scale,'calibration':calibration,'calibration_sha256':digest(calibration_path),
+        'risk_free_sha256':digest(risk_free_file),'oos_formation':['1978-01-31','2024-12-31'],
+        'oos_returns':['1978-02-28','2025-01-31'],'oos_months':564,
+        'wealth_definition':'product(1 + same-snapshot cash return + kappa * raw portfolio excess return)',
+        'drawdown_definition':'wealth / running maximum including unit starting wealth - 1',
+        'complexity_2024_peaks':peaks,
+        'figures':{stem:{'inputs':{p:input_hashes[p] for p in figure_inputs[stem]},
+             'outputs':{ext:digest(figdir/(stem+'.'+ext)) for ext in ('pdf','png')}} for stem in STEMS}}
+    manifest['outputs']={str(p.relative_to(output)):digest(p) for p in output.rglob('*') if p.is_file()}
+    write_json(output/'reproduction_manifest.json',manifest)
 
 
 def make_text(output, performance, peaks, ell):
-    p = performance.set_index('kernel')
-    table = [r'\begin{table}[!htbp]\centering',r'\caption{Out-of-sample portfolio performance.}',
-             r'\label{tab:performance}',r'\small',r'\begin{tabular}{lrrrrrrr}',r'\toprule',
-             r'Policy & Mean (\%) & Vol. (\%) & SR & DD (\%) & Gross & TO/yr & Net SR$^*$\\',r'\midrule']
-    for kernel in LABELS:
-        row = p.loc[kernel]
-        label = r'Mat\'ern-$3/2$' if kernel == 'matern32' else LABELS[kernel]
-        table.append(f'{label} & {100*row.annual_mean_excess:.2f} & {100*row.annual_volatility:.2f} & '
-            f'{row.sharpe:.2f} & {100*row.max_drawdown:.2f} & {row.mean_gross:.2f} & '
-            f'{row.annual_target_turnover:.2f} & {row.net_sharpe_25bps_target_turnover_proxy:.2f}'+r'\\')
-    table += [r'\bottomrule\end{tabular}',r'\par\smallskip\begin{minipage}{0.96\textwidth}\footnotesize',
-        r'Mean and volatility are annualized excess-return statistics. DD is the maximum total-wealth drawdown. '
-        r'Gross is the time average of $\sum_i|w_{i,t}|$. TO/yr is annualized L1 target-weight turnover, '
-        r'not drift-adjusted trading volume. $^*$Net SR subtracts 25 basis points per unit of this turnover proxy; '
-        r'it is not a full implementation-cost estimate. The first rebalance starts from cash.',
-        r'\end{minipage}\end{table}']
-    (output/'performance.tex').write_text('\n'.join(table))
-    interior = all(v['interior'] for v in peaks)
-    finding = ('Both representations display an interior maximum over the evaluated test-window grid. '
-               'This is descriptive evidence of a finite-sample tradeoff, not a universal optimal-complexity law.'
-               if interior else
-               'At least one representation attains its test-window maximum at a boundary of the evaluated grid. '
-               'These results therefore do not establish an interior optimum for both representations.')
-    text = r'''\section{Empirical Portfolio Learnability}
-\label{sec:empirics}
-We study how much characteristic-based portfolio demand can be learned from a finite return history.
-The data are the U.S. stock-level panel of \citet{jensenkellypedersen2023}.
-We retain the JKP main observations of primary common securities on NYSE, AMEX, and NASDAQ
-with CRSP share codes 10, 11, or 12, and exclude the nano size group.
-Following the characteristic-panel design of \citet{didisheim2024aipt}, we retain 130 of the
-153 published characteristics, remove stock-months with more than 30\% missing inputs,
-and rank observed characteristics cross-sectionally each month to $[-0.5,0.5]$.
-Our explicit timing modification is to determine the 130 best-covered characteristics using
-only 1963--1972 and then freeze their identities. Thus we do not reproduce their full-sample
-coverage selection. Remaining missing ranks are set to the neutral value zero.
-The formation universe never depends on whether a future return happens to be observed;
-unresolved payoffs must be reconciled before an empirical report is produced.
+    summaries=[]
+    for row in performance.to_dict(orient='records'):
+        policy=row['Policy'].replace('Matérn',r'Mat\'ern')
+        summaries.append(f"{policy}: Sharpe {row['Sharpe ratio']:.2f}, maximum drawdown {100*row['Maximum drawdown']:.1f}\\%")
+    text=r'''\section{Empirical analysis}
+We use the U.S. stock-level data of Jensen, Kelly, and Pedersen (2023).
+Following Section 2.5 of Didisheim, Ke, Kelly, and Malamud (2024), we retain
+130 of the 153 characteristics by coverage over 1963--2023. This is a
+reconstruction of the published coverage rule; the 2024 extension does not
+enter selection. This reference information set is fixed for the historical
+experiment, rather than a claim about point-in-time characteristic discovery.
+We retain common stocks on the main U.S. exchanges, excluding nano stocks,
+apply the 30\% row-missingness threshold, rank observed characteristics monthly
+into $[-0.5,0.5]$, and assign residual missing values neutral zero.
+Portfolio formation never depends on the availability of future returns;
+unreconciled payoffs prevent estimation.
 
-The first training period is 1963--1972, followed by validation in 1973--1977.
-The training history expands annually while the preceding five formation years remain the
-validation sample. A grid of 120 penalties is constructed from the initial training spectrum
-and fixed thereafter. The validation response-one loss selects the penalty; coefficients are
-then refitted using training and validation observations available at the first trade date.
-Policies are re-estimated annually and weights are rebalanced monthly.
-Formation dates run from January 1978 through December 2024; the corresponding realized
-returns run from February 1978 through January 2025.
+Training expands from 1963, with the preceding five formation years reserved
+for validation and annual refits at the January formation close. The experiment
+contains 47 test years and 564 formation months, January 1978--December 2024;
+realized payoffs run from February 1978 to January 2025. Ridge penalties are
+selected using the portfolio criterion introduced earlier, along 120-point grids
+fixed using only the initial 1963--1972 managed-payoff spectra.
 
-We compare Linear, Gaussian, and Mat\'ern-$3/2$ policies using the same information and calendar.
-The nonlinear specifications use 10,000 Random Fourier Features. Their common bandwidth is
-fixed at the median pairwise Euclidean distance among 1,000 characteristic vectors sampled
-from the initial training period, $\ell=ELL$.
-The Gaussian and Mat\'ern models impose different smoothness penalties on portfolio demand;
-the independently sampled finite-feature spaces should not be described as a nested sequence.
-A single positive portfolio scale, calibrated from the first Linear validation portfolio's
-gross exposure, is fixed before its first out-of-sample return and used by all specifications.
-There is no monthly gross cap or ex-post volatility normalization.
+Linear is the finite-dimensional benchmark. Gaussian represents smooth nonlinear
+policies; Mat\'ern-3/2 permits a broader nonlinear class. Each nonlinear policy
+uses one fixed map of 10,000 random Fourier features, seed zero. Both share
+a lengthscale of ELL, the median distance among 1,000 initial-training vectors.
+A common fixed positive scale targets median gross exposure 1.8 for the initial
+Linear validation policy. The last validation payoff becomes known at the
+January 1978 formation close, before the first OOS payoff.
 
-Figure~\ref{fig:wealth} reports cumulative total wealth, compounded as
-$\prod_t(1+R_{f,t}+R^p_{t})$, before implementation costs.
-Table~\ref{tab:performance} reports excess-return performance together with exposure and trading intensity.
-The full-period annualized Sharpe estimates are SRL for Linear, SRG for Gaussian, and SRM for Mat\'ern-$3/2$.
-These are point estimates from the fitted policies, not estimates of population representation gaps.
-\begin{figure}[!htbp]\centering
-\includegraphics[width=0.95\textwidth]{figures/cumulative_wealth.pdf}
-\caption{Cumulative out-of-sample total wealth. The vertical axis is logarithmic.}
-\label{fig:wealth}\end{figure}
-\input{performance.tex}
-\begin{figure}[!htbp]\centering
-\includegraphics[width=0.90\textwidth]{figures/portfolio_exposure.pdf}
-\caption{Gross exposure $\sum_i|w_{i,t}|$ and net dollar exposure $\sum_iw_{i,t}$ at each formation date.
-Net dollar exposure is not an estimate of market beta.}
-\label{fig:exposure}\end{figure}
+Figure~\ref{fig:wealth} and Table~\ref{tab:performance} summarize the new run.
+SUMMARY.
+Total wealth compounds the cash return plus the scaled portfolio excess payoff,
+adding cash exactly once. Drawdown uses exactly that wealth path, including
+its starting value.
+\begin{figure}[htbp]\centering
+\includegraphics[width=.9\linewidth]{figures/fig01_wealth_drawdown.pdf}
+\caption{Cumulative total wealth (log scale) and drawdown from the same wealth series.
+All policies use the same fixed pre-payoff scale.}\label{fig:wealth}
+\end{figure}
+\begin{table}[htbp]\centering\small
+\resizebox{\linewidth}{!}{\input{tables/performance.tex}}
+\caption{Performance from the 564 monthly OOS observations. Returns and volatility
+are annualized from decimal monthly excess returns; maximum drawdown is signed.}
+\label{tab:performance}\end{table}
 
-We next hold each representation fixed and vary regularization. Let $\widehat\mu_{j,T}$
-be the eigenvalues of the uncentered second-moment matrix of monthly managed payoffs.
-The effective portfolio complexity is
-\[
-\widehat{\mathcal C}_T(\lambda)=
-\sum_j\frac{\widehat\mu_{j,T}}{\widehat\mu_{j,T}+\lambda}.
-\]
-This measures the degrees of freedom retained by the regularization filter, not the number
-of stocks, profitable factors, or nonzero portfolio holdings. The 10,000-coordinate maps can
-have at most 732 nonzero sample eigenvalues before the final test window.
-Figure~\ref{fig:spectrum} describes this finite managed-payoff spectrum. Eigenvalues measure
-second-moment exposure in a specified feature geometry; profitability additionally depends
-on mean-payoff alignment, and sampling uncertainty is not determined by eigenvalues alone.
-\begin{figure}[!htbp]\centering
-\includegraphics[width=0.85\textwidth]{figures/managed_spectrum.pdf}
-\caption{Unnormalized managed-payoff eigenvalues before the final test window. Both axes are logarithmic;
-the feature maps and the 732-observation refit are held fixed.}
-\label{fig:spectrum}\end{figure}
+Figure~\ref{fig:exposure} reports gross and net stock exposure under the same scale.
+\begin{figure}[htbp]\centering
+\includegraphics[width=.9\linewidth]{figures/fig02_exposure.pdf}
+\caption{Gross and net exposures for the three policies.}\label{fig:exposure}
+\end{figure}
 
-Figures~\ref{fig:gaussiancomplexity} and~\ref{fig:materncomplexity} contrast historical fit
-with subsequent performance in the final test window. Each point is a fitted penalty value;
-lines simply connect evaluated points. FINDING
-The stars identify test-grid maxima after observing twelve returns, while circles identify
-the choices made using validation data. The stars do not enter the implemented backtest.
-A one-year maximum is noisy and does not identify the population-optimal penalty or a convergence rate.
-\begin{figure}[!htbp]\centering
-\includegraphics[width=0.90\textwidth]{figures/complexity_gaussian_2024.pdf}
-\caption{Gaussian: historical and subsequent Sharpe along the final regularization path.
-The test returns are February 2024--January 2025.}
-\label{fig:gaussiancomplexity}\end{figure}
-\begin{figure}[!htbp]\centering
-\includegraphics[width=0.90\textwidth]{figures/complexity_matern32_2024.pdf}
-\caption{Mat\'ern-$3/2$: the same estimation calendar and interpretation as in the Gaussian comparison.}
-\label{fig:materncomplexity}\end{figure}
+Representation determines which investment opportunities can potentially be
+expressed. The managed-portfolio spectrum describes their payoff structure.
+Effective complexity determines how much of that spectrum is actually used
+after regularization. Figure~\ref{fig:spectrum} shows the ordered positive
+second-moment eigenvalues on the common history preceding the 2024 test window.
+\begin{figure}[htbp]\centering
+\includegraphics[width=.9\linewidth]{figures/fig05_managed_spectrum.pdf}
+\caption{Managed-portfolio spectra on log-log axes.}\label{fig:spectrum}
+\end{figure}
 
-Finally, we distinguish effective complexity from the numerical size of the kernel approximation.
-We repeat the experiment at $P\in\{250,500,1000,2000,4000,10000\}$ using nested frequency banks
-and the same bandwidth and characteristic panel. Increasing $P$ retains all previous frequencies
-and phases, with the $\sqrt{2/P}$ normalization adjusted accordingly.
-Figure~\ref{fig:rffperformance} reports the seed-zero out-of-sample performance at each $P$;
-10,000 remains the prespecified main specification and is not selected using these test statistics.
-Figure~\ref{fig:rffapproximation} separately checks approximation of the exact kernels on initial-training
-characteristic vectors. Its central lines use seed zero and its shading spans seeds zero, one, and two;
-it is not a confidence interval or an ensemble portfolio.
-\begin{figure}[!htbp]\centering
-\includegraphics[width=0.85\textwidth]{figures/rff_oos_performance.pdf}
-\caption{Out-of-sample portfolio Sharpe versus the number of Random Fourier Features.
-Each policy uses chronological validation; finite-$P$ comparisons use a shared, nested random bank.}
-\label{fig:rffperformance}\end{figure}
-\begin{figure}[!htbp]\centering
-\includegraphics[width=0.85\textwidth]{figures/rff_approximation.pdf}
-\caption{Relative Frobenius error between the exact characteristic kernel matrix and its RFF approximation.
-Only characteristic vectors from the initial training sample enter this diagnostic.}
-\label{fig:rffapproximation}\end{figure}
-
-The empirical design separates three objects: the characteristic representation, its numerical
-approximation, and the effective degrees of freedom retained after regularization.
-Their effects should not be conflated. The regularization-path figures describe how a fixed
-investment representation translates into historical fit and subsequent portfolio performance.
+Figures~\ref{fig:gaussian} and~\ref{fig:matern} plot historical and subsequent
+2024 test Sharpe against $C(\lambda)=\sum_j\mu_j/(\mu_j+\lambda)$ along the
+same frozen penalty paths. The test panels use only the twelve payoffs from
+February 2024 through January 2025. Validation selections are distinguished
+from descriptive ex-post maxima, which never determine the policy.
+\begin{figure}[htbp]\centering
+\includegraphics[width=.9\linewidth]{figures/fig03_complexity_gaussian.pdf}
+\caption{Gaussian effective complexity: historical and true 2024 test Sharpe.}
+\label{fig:gaussian}\end{figure}
+\begin{figure}[htbp]\centering
+\includegraphics[width=.9\linewidth]{figures/fig04_complexity_matern32.pdf}
+\caption{Mat\'ern-3/2 effective complexity: historical and true 2024 test Sharpe.}
+\label{fig:matern}\end{figure}
 '''
-    text = text.replace('ELL',f'{ell:.6f}').replace('SRL',f'${p.loc["linear","sharpe"]:.2f}$')
-    text = text.replace('SRG',f'${p.loc["gaussian","sharpe"]:.2f}$').replace('SRM',f'${p.loc["matern32","sharpe"]:.2f}$')
-    text = text.replace('FINDING',finding)
-    (output/'empirics.tex').write_text(text)
-    bibliography = r'''@article{jensenkellypedersen2023,
- author={Jensen, Theis Ingerslev and Kelly, Bryan and Pedersen, Lasse Heje},
- title={Is There a Replication Crisis in Finance?}, journal={The Journal of Finance},
- year={2023}, volume={78}, number={5}, pages={2465--2518}, doi={10.1111/jofi.13249}}
-@techreport{didisheim2024aipt,
- author={Didisheim, Antoine and Ke, Shikun and Kelly, Bryan T. and Malamud, Semyon},
- title={APT or ``AIPT''? The Surprising Dominance of Large Factor Models},
- institution={National Bureau of Economic Research}, type={Working Paper},
- number={33012}, year={2024}, note={September 2024 version; Section 2.5}}
-'''
-    (output/'references.bib').write_text(bibliography)
-    (output/'main.tex').write_text(r'''\documentclass[11pt]{article}
-\usepackage[margin=1in]{geometry}\usepackage{amsmath,amssymb,graphicx,booktabs}
-\usepackage[round,authoryear]{natbib}\usepackage{microtype}\usepackage[hidelinks]{hyperref}
-\begin{document}\input{empirics.tex}\clearpage
-\bibliographystyle{plainnat}\bibliography{references}\end{document}
-''')
+    (Path(output)/'empirics.tex').write_text(text.replace('ELL',f'{ell:.4f}').replace('SUMMARY','; '.join(summaries)))
