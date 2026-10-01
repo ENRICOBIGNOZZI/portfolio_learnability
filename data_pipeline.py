@@ -1,4 +1,4 @@
-"""Frozen characteristic cleaning, with no future-return filter on holdings."""
+"""Frozen characteristic selection and explicit complete-payoff sample cleaning."""
 from __future__ import annotations
 import hashlib
 import json
@@ -8,7 +8,7 @@ import pandas as pd
 
 START = pd.Timestamp('1963-01-01')
 END = pd.Timestamp('2024-12-31')
-REFERENCE_SELECTION_END = pd.Timestamp('2023-12-31')
+REFERENCE_SELECTION_END = pd.Timestamp('1972-12-31')
 INITIAL_TRAIN_END = pd.Timestamp('1972-12-31')
 FLAGS = ['common', 'primary_sec', 'obs_main', 'exch_main']
 META = ['permno', 'id', 'eom', 'excntry', 'size_grp', 'me', 'ret_exc_lead1m',
@@ -146,52 +146,39 @@ def prepare(raw_dir, output_dir):
         'coverage':coverage_table.to_dict(orient='records')})
     write_json(output_dir/'characteristics.json', names)
 
-    # Recovery uses observed next-calendar-month returns, never eligibility.
-    return_history = pd.concat([pd.read_parquet(p, columns=[
-        'id', 'eom', 'current_excess_return', 'current_total_return']) for p in raw_files], ignore_index=True)
-    return_history['eom'] = pd.to_datetime(return_history['eom'])
-    if return_history.duplicated(['id', 'eom']).any():
-        raise ValueError('Duplicate raw security-month returns; do not silently aggregate.')
-    return_history = return_history.rename(columns={'eom':'return_date',
-        'current_excess_return':'next_current_excess_return',
-        'current_total_return':'next_current_total_return'})
-    return_history['next_observation_present'] = True
     counts, missing, files, initial = [], [], [], []
-    n_recovered = 0
     for path in raw_files:
-        frame = pd.read_parquet(path, columns=[*META, *names,
-            'current_excess_return', 'current_total_return']).rename(columns={
-                'current_excess_return':'formation_current_excess_return',
-                'current_total_return':'formation_current_total_return'})
+        frame = pd.read_parquet(path, columns=[*META, *names])
         frame['eom'] = pd.to_datetime(frame['eom'])
         frame = frame.loc[formation_mask(frame)].copy()
         n_universe = len(frame)
-        frame = rank_months(frame, names)
+        values = frame[names].replace([np.inf, -np.inf], np.nan)
+        frame = frame.loc[values.isna().mean(axis=1).le(0.30)].copy()
+        before = frame.groupby('eom').size()
         if frame.empty:
             continue
         if frame.duplicated(['id', 'eom']).any():
             raise ValueError('Duplicate formation security-month.')
+        valid = np.isfinite(frame.ret_exc_lead1m)
+        excluded = frame.loc[~valid, ['id','permno','eom','ret_exc_lead1m']].copy()
+        excluded['return_date'] = excluded.eom + pd.offsets.MonthEnd(1)
+        excluded = excluded.rename(columns={'eom':'formation_date'})
+        excluded['reason_excluded'] = 'Missing or nonfinite JKP ret_exc_lead1m'
+        missing.append(excluded)
+        # User-selected complete-case rule: drop before ranks and N_t; no recovery.
+        frame = rank_months(frame.loc[valid], names)
+        after = frame.groupby('eom').size()
+        if not before.index.equals(after.index):
+            raise ValueError('Payoff exclusions removed an entire formation month.')
         frame = frame.sort_values(['eom', 'id'], kind='stable')
         frame['return_date'] = frame.eom + pd.offsets.MonthEnd(1)
-        frame = frame.merge(return_history, on=['id', 'return_date'], how='left',
-                            validate='many_to_one', sort=False)
-        frame['r'] = frame.ret_exc_lead1m.where(np.isfinite(frame.ret_exc_lead1m))
-        recover = frame.r.isna() & np.isfinite(frame.next_current_excess_return)
-        frame.loc[recover, 'r'] = frame.loc[recover, 'next_current_excess_return']
-        n_recovered += int(recover.sum())
-        frame['return_known'] = np.isfinite(frame.r)
-        unresolved = frame.loc[~frame.return_known, ['id','permno','eom','return_date',
-            'ret_exc_lead1m','formation_current_excess_return','formation_current_total_return',
-            'next_current_excess_return','next_current_total_return',
-            'next_observation_present']].rename(columns={'eom':'formation_date'})
-        unresolved['reason_unresolved'] = np.where(
-            unresolved.next_observation_present.eq(True),
-            'Next calendar month exists but its JKP excess return is missing',
-            'No next-calendar-month security observation in the same raw snapshot')
-        missing.append(unresolved)
+        frame['r'] = frame.ret_exc_lead1m
+        frame['return_known'] = True
         for date, month in frame.groupby('eom', sort=True):
             counts.append({'formation_date':date, 'stocks':len(month),
-                           'unknown_returns':int((~month.return_known).sum())})
+                           'stocks_before_payoff_filter':int(before.loc[date]),
+                           'dropped_returns':int(before.loc[date]-len(month)),
+                           'unknown_returns':0})
             if date <= INITIAL_TRAIN_END:
                 initial.append(month[names].to_numpy(float))
         result_path = output_dir/path.name
@@ -204,29 +191,29 @@ def prepare(raw_dir, output_dir):
     sample = sample_initial(initial)
     np.save(output_dir/'initial_sample.npy', sample)
     missing_table = pd.concat(missing, ignore_index=True)
-    missing_table.to_csv(output_dir/'unresolved_returns.csv', index=False)
+    missing_table.to_csv(output_dir/'excluded_returns.csv', index=False)
     pd.DataFrame(counts).to_csv(output_dir/'universe_counts.csv', index=False)
-    manifest = {'status':'complete' if missing_table.empty else 'unresolved_returns',
-        'cleaning':'AIPT Section 2.5 stock-characteristic cleaning; 2024 is an extension outside feature selection',
+    manifest = {'status':'complete',
+        'cleaning':'AIPT-inspired characteristic cleaning; feature coverage frozen using initial training only',
         'source_raw_manifest_sha256':digest(raw_dir/'manifest.json'),
         'raw_manifest':raw_manifest, 'protocol':protocol,
         'protocol_sha256':digest(Path(__file__).with_name('protocol.json')),
         'characteristic_provenance':json.loads((output_dir/'characteristic_provenance.json').read_text()),
         'characteristics':names, 'feature_count':len(names),
-        'coverage_start':'1963-01-01','coverage_end':'2023-12-31',
+        'coverage_start':'1963-01-01','coverage_end':'1972-12-31',
         'coverage_observations':n_calibration, 'row_missing_limit':0.30,
         'rank':'(average_rank-1)/(observed_count-1)-0.5',
         'imputation':'zero after ranking; neutral value, not guaranteed median with ties',
-        'recovered_returns':n_recovered, 'unresolved_returns':len(missing_table),
-        'unresolved_policy':'retain formation stocks, prohibit training/report until reconciled',
+        'recovered_returns':0, 'unresolved_returns':0,
+        'dropped_returns':len(missing_table),
+        'excluded_returns_sha256':digest(output_dir/'excluded_returns.csv'),
+        'payoff_policy':protocol['payoff_sample'],
         'files':files, 'sample_sha256':digest(output_dir/'initial_sample.npy'),
         'formation_start':'1963-01-31','formation_end':'2024-12-31',
         'average_stocks_per_month':float(pd.DataFrame(counts).stocks.mean()),
         'raw_rows':sum(f['rows'] for f in raw_manifest['files'])}
     write_json(output_dir/'manifest.json', manifest)
-    print('Unresolved forward returns:', len(missing_table), flush=True)
-    if not missing_table.empty:
-        raise ValueError('Unresolved payoffs: inspect unresolved_returns.csv. No fit is permitted.')
+    print('Excluded missing forward returns:', len(missing_table), flush=True)
     return manifest
 
 
@@ -234,8 +221,8 @@ def load_panels(clean_dir):
     root = Path(clean_dir)
     manifest = json.loads((root/'manifest.json').read_text())
     if manifest['status'] != 'complete' or manifest['unresolved_returns']:
-        raise ValueError('Unresolved returns remain. Reconcile the raw source and rebuild; '
-                         'do not drop securities or replace unknown returns by zero.')
+        raise ValueError('Unresolved returns remain in the prepared sample. Rebuild from raw '
+                         'using the documented complete-payoff selection policy.')
     names = manifest['characteristics']
     if len(names) != 130 or len(set(names)) != 130:
         raise ValueError('Exactly 130 distinct predictors required.')

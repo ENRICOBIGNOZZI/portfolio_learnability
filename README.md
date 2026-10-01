@@ -6,41 +6,32 @@ inputs. Licensed raw snapshots and stock-level outputs stay outside Git.
 
 ## Execution status
 
-**The real-data run is blocked at payoff reconciliation, before any model fit.**
-On 1 October 2026, local WRDS acquisition completed using one authenticated
-connection and 63 SELECTs: **3,687,389 raw stock-month observations**, covering
-January 1963 through January 2025. The complete private snapshot is `data/raw`;
-its manifest records every file checksum. Credentials were supplied only to the
-acquisition process and were not written to repository files or acquisition logs.
+The raw WRDS snapshot contains **3,687,389 stock-month observations**, covering
+January 1963 through January 2025, acquired on 1 October 2026. Its private
+`data/raw/manifest.json` records every file checksum. Credentials are not saved.
 
-The newly constructed panel contains **2,545,685 stock-month observations**,
-exactly **130 predictors**, and all **744 formation months** in 1963–2024
-(mean **3,421.62 stocks per month**). However, **7,727 forward payoffs remain
-unresolved**: 7,611 lack a next-calendar-month security observation, and 116 have
-that observation but no return. None has an observed next-month total return
-that could recover the missing excess return; same-snapshot recovery resolved
-zero cases. Ten unresolved cases are December 2024 formations, despite the
-successful acquisition of January 2025 data.
+By user-confirmed convention, stock-months with missing or nonfinite JKP
+`ret_exc_lead1m` are excluded **after the formation metadata and characteristic
+missingness filters, before monthly ranking and calculation of N_t**. This is
+our complete-case sample choice, not a documented Didisheim rule. The resulting
+sample is conditional on future payoff availability. No payoff is imputed or
+recovered from another field. Private `data/clean/excluded_returns.csv` records
+every exclusion; `universe_counts.csv` reports monthly before/after counts.
+The previous stop-on-missing-payoff policy is superseded.
 
-`data/clean/unresolved_returns.csv` contains the security identifiers, dates,
-available formation and next-month return fields, and the precise missingness
-reason. `data/clean/audit_summary.json` records the real-data checks. These are
-private files, excluded from Git. Missing observations are not automatically
-classified as delistings: their economic disposition still needs reconciliation
-from documented source data. **No portfolio has been fitted, no OOS portfolio
-returns have been generated, and no final figure or performance table exists.**
-The fit loader was explicitly tested against this actual panel and rejects it.
+Preparation and the three model fits are being regenerated under this convention.
+Only the resulting new runs may supply figures or performance statistics.
 
 The exact 130 author variables were not found in the official materials searched.
-`protocol.json` records the sources and the fallback: best coverage among the
-153 candidates in `characteristics.json`, measured over **1963–2023**, the sample
-in Section 2.5 of the September 2024 AIPT paper. Alphabetical names break ties.
-This reference selection uses historical research information; it is not a
-claim of real-time feature discovery. The 2024 extension cannot affect selection.
-The 130 selected names and all 153 missing shares from this new snapshot are
-frozen publicly in `characteristic_selection.json`, with reference dates and
-source checksums. The private preparation copy is
-`data/clean/characteristic_provenance.json`. No prior selection was reused.
+The 130 best-covered characteristics are selected from the fixed 153-variable
+JKP research dictionary using **only the initial training period 1963–1972**.
+Alphabetical names break ties. This deliberately differs from the paper's full
+1963–2023 coverage selection to avoid using later observations. Validation,
+test and the 2024 extension cannot affect feature selection. The selected names,
+all missing shares and provenance are saved in `characteristic_selection.json`.
+The fixed published dictionary itself is a retrospective research specification,
+not a claim that all 153 signals were discovered by 1972 or that the current
+JKP snapshot is a historical data vintage.
 
 Linear uses the user-confirmed affine specification `[1, Z]`: 130 input
 characteristics and 131 coefficients, including the intercept.
@@ -49,8 +40,7 @@ characteristics and 131 coefficients, including the intercept.
 
 Python 3.12 is used in CI. Unit and integration fixtures are synthetic tests,
 not empirical results. The commands below describe reproduction in fresh output
-directories; existing prepared data are never silently overwritten. The present
-snapshot stops at `prepare` until the documented payoff issues are reconciled.
+directories; existing prepared data are never silently overwritten. The current convention drops missing payoffs explicitly during `prepare`.
 
 ```sh
 python3 -m pip install -r requirements.txt
@@ -75,20 +65,18 @@ local machine. No stock-level artifacts or secrets are uploaded by CI.
 
 Preparation verifies schema, checksums and duplicate security-months before
 filtering. Formation uses U.S. CRSP common shares 10/11/12 on exchanges 1/2/3,
-JKP common/primary/main flags and non-nano status. Payoff availability never
-changes formation or monthly ranks. Rows with more than 39 of 130 missing
-characteristics are excluded. Observed values use average ranks mapped by
+JKP common/primary/main flags and non-nano status. Rows with more than 39 of 130
+missing characteristics are excluded, followed by missing/nonfinite forward
+payoffs. Monthly ranks and N_t use the remaining sample. Observed values use average ranks mapped by
 `(rank-1)/(n_observed-1)-0.5`; singleton and residual missing values become
 neutral zero.
 
 JKP excess returns already incorporate its documented source-level delisting
 construction. The source code includes a -30% convention for specified missing
 performance-related CRSP delistings; this pipeline consumes JKP values and does
-not independently invent such returns. A missing lead can be recovered only from
-the same snapshot's actually observed next-calendar-month excess return.
-Unresolved payoffs produce **`data/clean/unresolved_returns.csv` and stop the run**.
-No fit accepts that panel. A corrected complete source snapshot must be prepared
-into a fresh output directory before proceeding.
+not independently invent such returns. Missing forward returns are dropped,
+with no alternative-source recovery. All retained returns must be finite;
+incomplete calendars and corrupt prepared data still block fitting.
 
 ## Frozen design
 

@@ -315,16 +315,18 @@ def make_text(output, performance, peaks, ell):
         summaries.append(f"{policy}: Sharpe {row['Sharpe ratio']:.2f}, maximum drawdown {100*row['Maximum drawdown']:.1f}\\%")
     text=r'''\section{Empirical analysis}
 We use the U.S. stock-level data of Jensen, Kelly, and Pedersen (2023).
-Following Section 2.5 of Didisheim, Ke, Kelly, and Malamud (2024), we retain
-130 of the 153 characteristics by coverage over 1963--2023. This is a
-reconstruction of the published coverage rule; the 2024 extension does not
-enter selection. This reference information set is fixed for the historical
-experiment, rather than a claim about point-in-time characteristic discovery.
+Inspired by Section 2.5 of Didisheim, Ke, Kelly, and Malamud (2024), we retain
+130 of the 153 characteristics by coverage using only the initial training
+sample, 1963--1972. Validation and test observations cannot affect selection.
+The published candidate dictionary is a fixed retrospective research specification;
+we do not claim a historical data vintage or contemporaneous signal discovery.
 We retain common stocks on the main U.S. exchanges, excluding nano stocks,
-apply the 30\% row-missingness threshold, rank observed characteristics monthly
-into $[-0.5,0.5]$, and assign residual missing values neutral zero.
-Portfolio formation never depends on the availability of future returns;
-unreconciled payoffs prevent estimation.
+apply the 30\% row-missingness threshold, and exclude stock-months with missing
+JKP next-month excess returns before monthly ranking and the calculation of $N_t$.
+This complete-case convention is our sample choice, not a rule attributed to
+Didisheim et al.; the sample is conditional on future payoff availability.
+We rank observed characteristics into $[-0.5,0.5]$ and assign residual missing
+characteristics neutral zero. We do not impute missing payoffs.
 
 Training expands from 1963, with the preceding five formation years reserved
 for validation and annual refits at the January formation close. The experiment

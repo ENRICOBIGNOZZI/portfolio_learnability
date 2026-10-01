@@ -104,41 +104,49 @@ def overwrite_raw(raw,frame,manifest):
     (raw/'manifest.json').write_text(json.dumps(manifest))
 
 
-def test_full_preprocessing_130_finite_ranks_same_snapshot_recovery(raw_snapshot,tmp_path):
+@pytest.mark.parametrize('bad_return',[np.nan,np.inf,-np.inf])
+def test_drop_before_ranking_without_fallback_recovery(raw_snapshot,tmp_path,bad_return):
     raw,frame,meta=raw_snapshot
-    frame.loc[0,'ret_exc_lead1m']=np.nan
+    frame.loc[0,'ret_exc_lead1m']=bad_return
+    # A finite contemporaneous return next month must not undo the chosen drop.
+    assert np.isfinite(frame.loc[10,'current_excess_return'])
     overwrite_raw(raw,frame,meta)
     m=prepare(raw,tmp_path/'clean')
-    assert m['feature_count']==130 and m['recovered_returns']==1
-    assert m['coverage_end']=='2023-12-31'
+    assert m['feature_count']==130 and m['recovered_returns']==0
+    assert m['dropped_returns']==1 and m['unresolved_returns']==0
+    assert m['coverage_end']=='1972-12-31'
     panels,_=load_panels(tmp_path/'clean')
-    assert len(panels)==744
+    assert len(panels)==744 and len(panels[0]['ids'])==9
+    assert 1 not in panels[0]['ids'] and 1 in panels[1]['ids']
+    names=m['characteristics']
+    expected=rank_months(frame.iloc[1:10],names)
+    np.testing.assert_allclose(panels[0]['x'],expected[names].to_numpy())
+    np.testing.assert_allclose(panels[0]['r'],.01)
     assert np.load(tmp_path/'clean/initial_sample.npy').shape==(1000,130)
-    for p in panels:
-        assert p['x'].shape==(10,130)
-        assert np.isfinite(p['x']).all() and np.abs(p['x']).max()<=.5
+    excluded=pd.read_csv(tmp_path/'clean/excluded_returns.csv')
+    assert len(excluded)==1 and excluded.id.iloc[0]==1
+    counts=pd.read_csv(tmp_path/'clean/universe_counts.csv')
+    assert counts.iloc[0].stocks==9 and counts.iloc[0].stocks_before_payoff_filter==10
+    assert counts.dropped_returns.sum()==1
+    for panel in panels:
+        assert np.isfinite(panel['x']).all() and np.abs(panel['x']).max()<=.5
+        assert np.isfinite(panel['r']).all()
     assert len(json.loads((tmp_path/'clean/characteristic_provenance.json').read_text())['coverage'])==153
 
 
-@pytest.mark.parametrize('missing_kind',['missing_return','missing_observation'])
-def test_unresolved_kept_and_blocks_fit_with_required_csv(raw_snapshot,tmp_path,missing_kind):
+def test_payoff_drop_cannot_silently_remove_whole_month(raw_snapshot,tmp_path):
     raw,frame,meta=raw_snapshot
-    frame.loc[0,'ret_exc_lead1m']=np.nan
-    if missing_kind=='missing_return':
-        frame.loc[10,'current_excess_return']=np.nan
-    else:
-        frame=frame.drop(index=10)
+    frame.loc[:9,'ret_exc_lead1m']=np.nan
     overwrite_raw(raw,frame,meta)
-    with pytest.raises(ValueError,match='Unresolved payoffs'):
+    with pytest.raises(ValueError,match='entire formation month'):
         prepare(raw,tmp_path/'clean')
-    unresolved=pd.read_csv(tmp_path/'clean/unresolved_returns.csv')
-    assert len(unresolved)==1
-    assert {'id','permno','formation_date','return_date','reason_unresolved','ret_exc_lead1m',
-        'formation_current_total_return','next_current_total_return',
-        'next_current_excess_return','formation_current_excess_return'}.issubset(unresolved)
-    assert ('exists' in unresolved.reason_unresolved.iloc[0]) == (missing_kind=='missing_return')
+
+
+def test_incomplete_old_manifest_still_blocks_fit(tmp_path):
+    clean=tmp_path/'clean';clean.mkdir()
+    (clean/'manifest.json').write_text(json.dumps({'status':'unresolved_returns','unresolved_returns':1}))
     with pytest.raises(ValueError,match='Unresolved'):
-        load_panels(tmp_path/'clean')
+        load_panels(clean)
 
 
 def test_duplicate_raw_stops_even_when_payoff_missing(raw_snapshot,tmp_path):
@@ -194,3 +202,24 @@ def test_cash_returns_from_same_raw_snapshot_not_added_twice(raw_snapshot,tmp_pa
     overwrite_raw(raw,frame,manifest)
     with pytest.raises(ValueError,match='Inconsistent cash'):
         get_risk_free(raw,tmp_path/'wrong_rf.csv')
+
+
+def test_final_refit_cannot_use_final_test_payoffs():
+    dates=pd.date_range('1963-01-31','2024-12-31',freq='ME')
+    g=np.random.default_rng(91).normal(.01,.1,size=(744,5))
+    before=list(fit_windows(g,dates))[-1]
+    g[-12:]=np.random.default_rng(92).normal(100,10,size=(12,5))
+    after=list(fit_windows(g,dates))[-1]
+    assert before['choice']==after['choice']
+    for key in ['penalties','validation_loss','beta','selected_train_beta']:
+        np.testing.assert_allclose(before[key],after[key],rtol=1e-10,atol=1e-10)
+    assert not np.allclose(before['test_returns'],after['test_returns'])
+
+
+def test_refit_labels_available_by_trade_close_and_test_payoffs_strictly_later():
+    dates=pd.date_range('1963-01-31','2024-12-31',freq='ME')
+    for year,train,validation,test in annual_splits(dates):
+        trade=dates[test[0]]
+        assert (dates[np.r_[train,validation]]+pd.offsets.MonthEnd(1)).max() <= trade
+        assert (dates[test]+pd.offsets.MonthEnd(1)).min() > trade
+        assert dates[train].max()<dates[validation].min()<dates[test].min()

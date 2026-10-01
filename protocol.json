@@ -1,9 +1,9 @@
 {
-  "protocol_version": "final-empirical-rebuild-v1",
+  "protocol_version": "final-empirical-rebuild-v2-complete-payoffs",
   "characteristic_selection": {
-    "method": "reconstructed_published_coverage_rule",
+    "method": "initial_training_coverage",
     "reference_start": "1963-01-01",
-    "reference_end": "2023-12-31",
+    "reference_end": "1972-12-31",
     "count": 130,
     "candidate_count": 153,
     "tie_break": "characteristic name ascending",
@@ -19,7 +19,7 @@
       "https://github.com/bkelly-lab",
       "NBER September 2024 paper and appendix"
     ],
-    "interpretation": "Coverage over the paper sample 1963-2023; historical research-selection information, not a point-in-time feature-discovery claim. No 2024 data."
+    "interpretation": "Select the 130 best-covered characteristics using only 1963-1972 initial training. The candidate dictionary is a fixed research specification; the authors' 1963-2023 coverage selection is not used."
   },
   "jkp": {
     "documentation": "https://jkpfactors-data.s3.amazonaws.com/documents/Documentation.pdf",
@@ -29,8 +29,7 @@
     "return_rules": {
       "lines_428_451": "CRSP return compounded with delisting return. Upstream code assigns -0.30 to missing performance-related delisting returns (code 500 or 520-584). This project consumes documented JKP returns; it never invents replacements.",
       "lines_454_465": "Monthly ret_exc subtracts CRSP t30ret, falling back to French rf, in decimal units.",
-      "lines_818_825": "Lead return is next security observation ret_exc, invalidated when security changes or next ret_lag_dif is not one.",
-      "recovery": "Only actually observed next-calendar-month current excess return from the identical snapshot. Missing security/payoff remains unresolved and blocks fitting."
+      "lines_818_825": "Lead return is next security observation ret_exc, invalidated when security changes or next ret_lag_dif is not one."
     }
   },
   "timing": {
@@ -80,5 +79,13 @@
     "column": "abr_jkp",
     "count": 153,
     "verified_against_characteristics_json": true
+  },
+  "payoff_sample": {
+    "method": "drop_missing_ret_exc_lead1m",
+    "status": "user_confirmed",
+    "order": "After formation metadata and 30% characteristic-missingness filters, before monthly ranking and N_t. Characteristic coverage selection remains on the pre-payoff-filter 1963-1972 reference universe.",
+    "nonfinite_returns": "Excluded along with missing returns; no imputation or fallback recovery.",
+    "interpretation": "Research sample conditional on future payoff availability, not an implementable formation-time eligibility rule. This choice is ours and is not attributed to Didisheim et al.",
+    "audit": "Private excluded_returns.csv plus monthly before/after counts; retained payoffs must all be finite."
   }
 }

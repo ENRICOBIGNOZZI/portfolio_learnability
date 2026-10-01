@@ -24,8 +24,8 @@ def write_json(path, value):
 def periods():
     for year in range(1963, 2025):
         yield str(year), pd.Timestamp(year=year, month=1, day=1), pd.Timestamp(year=year + 1, month=1, day=1)
-    # January 2025 is downloaded only so a missing Dec-2024 lead return can be
-    # reconciled from an actually observed next-calendar-month return.
+    # January 2025 supplies the final cash return and a calendar-alignment
+    # cross-check. Missing lead payoffs are dropped, never recovered.
     yield "2025-01", pd.Timestamp("2025-01-01"), pd.Timestamp("2025-02-01")
 
 

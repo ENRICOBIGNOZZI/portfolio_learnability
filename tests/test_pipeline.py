@@ -13,7 +13,7 @@ from portfolio import annual_splits, complexity_grid, managed_matrix, ridge_path
 
 def fixture_panel():
     frame = pd.DataFrame({'id':[1,2,3,1,2,3],
-        'eom':pd.to_datetime(['1963-01-31']*3+['2024-01-31']*3),
+        'eom':pd.to_datetime(['1963-01-31']*3+['1973-01-31']*3),
         'excntry':'USA','crsp_shrcd':10,'crsp_exchcd':1,'size_grp':'large',
         'ret_exc_lead1m':[.1,.2,.3,.2,.1,.0],
         'a':[1,2,3,4,5,6],'b':[2,3,4,5,6,7],
@@ -103,7 +103,7 @@ def test_managed_return_is_actual_stock_return(kernel):
     np.testing.assert_allclose(g@beta,weights@r,atol=1e-14)
 
 
-def test_2024_extension_does_not_change_reference_feature_set():
+def test_post_training_data_cannot_change_reference_feature_set():
     original=fixture_panel()
     before,_=characteristic_selection(original,['a','b','c'],count=2)
     mutated=original.copy()
@@ -113,7 +113,7 @@ def test_2024_extension_does_not_change_reference_feature_set():
 
 
 @pytest.mark.parametrize('alteration',['blank','shuffle','extreme'])
-def test_future_returns_never_change_formation_universe_or_ranks(alteration):
+def test_future_returns_do_not_change_base_metadata_mask_or_characteristic_transform(alteration):
     original=fixture_panel()
     mutated=original.copy()
     if alteration=='blank':
@@ -175,3 +175,16 @@ def test_missing_return_is_not_silently_zero_or_dropped():
         managed_matrix([{'x':np.ones((3,2)), 'r':np.array([.1,np.nan,.2])}],bank)
     with pytest.raises(ValueError,match='missing'):
         sharpe([.1,np.nan,.2])
+
+
+def test_future_month_characteristics_cannot_change_training_ranks_or_bandwidth():
+    frame=fixture_panel()
+    names=['a','b']
+    initial=rank_months(frame,names)
+    mutated=frame.copy()
+    mutated.loc[mutated.eom>REFERENCE_SELECTION_END,names]=1e9
+    later=rank_months(mutated,names)
+    np.testing.assert_array_equal(initial.loc[initial.eom<=REFERENCE_SELECTION_END,names],
+                                  later.loc[later.eom<=REFERENCE_SELECTION_END,names])
+    assert median_distance(initial.loc[initial.eom<=REFERENCE_SELECTION_END,names]) == median_distance(
+        later.loc[later.eom<=REFERENCE_SELECTION_END,names])
