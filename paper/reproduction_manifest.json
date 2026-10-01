@@ -1,0 +1,4223 @@
+{
+  "status": "complete",
+  "git_sha": "a19ccfac537375971d4ed026cc8c985cc8898c1d",
+  "code_checksums": {
+    "data_pipeline.py": "ab8376becd9d00b9ac6fdee451c6dd4c2f8e29aefbfc127601bfdee2ce7b0dc5",
+    "download.py": "ff7a9327387bac177706c73008f40f577dfe498336233466f0dd7b3d5af153aa",
+    "run_empirics.py": "31d966b0790910915ea0d3f76851bd51c5873d1c4dd1cce16821795a56a4e074",
+    "figures.py": "615daf4519e0bb04b0fb89785afdaa3dac32bbe90180b3bfc7bd5593f9061652",
+    "kernels.py": "8515be031e468ffa9f6733afa2d3f661bdb51ccdcd746aac4ce4d4faeb9c6da0",
+    "portfolio.py": "983264cfc851259d6c94c9e6931e0f44f2b007001ffcd06a2e9dbe3959a49d12"
+  },
+  "raw_manifest": {
+    "status": "complete",
+    "source": "WRDS contrib.global_factor",
+    "return_units": "decimal",
+    "return_construction": "JKP ret_exc and ret_exc_lead1m, including upstream CRSP delisting treatment",
+    "acquired_at": "2026-10-01 21:09:15.240441+00:00",
+    "characteristics": [
+      "niq_su",
+      "ret_6_1",
+      "ret_12_1",
+      "saleq_su",
+      "tax_gr1a",
+      "ni_inc8q",
+      "prc_highprc_252d",
+      "resff3_6_1",
+      "resff3_12_1",
+      "be_me",
+      "debt_me",
+      "at_me",
+      "ret_60_12",
+      "ni_me",
+      "fcf_me",
+      "div12m_me",
+      "eqpo_me",
+      "eqnpo_me",
+      "sale_gr3",
+      "sale_gr1",
+      "ebitda_mev",
+      "sale_me",
+      "ocf_me",
+      "ival_me",
+      "bev_mev",
+      "netdebt_me",
+      "eq_dur",
+      "capex_abn",
+      "at_gr1",
+      "ppeinv_gr1a",
+      "noa_at",
+      "noa_gr1a",
+      "lnoa_gr1a",
+      "capx_gr1",
+      "capx_gr2",
+      "capx_gr3",
+      "chcsho_12m",
+      "eqnpo_12m",
+      "debt_gr3",
+      "inv_gr1",
+      "inv_gr1a",
+      "oaccruals_at",
+      "taccruals_at",
+      "cowc_gr1a",
+      "coa_gr1a",
+      "col_gr1a",
+      "nncoa_gr1a",
+      "ncoa_gr1a",
+      "ncol_gr1a",
+      "nfna_gr1a",
+      "sti_gr1a",
+      "lti_gr1a",
+      "fnl_gr1a",
+      "be_gr1a",
+      "oaccruals_ni",
+      "taccruals_ni",
+      "netis_at",
+      "eqnetis_at",
+      "dbnetis_at",
+      "niq_be",
+      "niq_be_chg1",
+      "niq_at",
+      "niq_at_chg1",
+      "ebit_bev",
+      "ebit_sale",
+      "sale_bev",
+      "at_turnover",
+      "gp_at",
+      "gp_atl1",
+      "ope_be",
+      "ope_bel1",
+      "op_at",
+      "op_atl1",
+      "cop_at",
+      "cop_atl1",
+      "f_score",
+      "o_score",
+      "z_score",
+      "pi_nix",
+      "at_be",
+      "saleq_gr1",
+      "rd_me",
+      "rd_sale",
+      "opex_at",
+      "emp_gr1",
+      "rd5_at",
+      "age",
+      "dsale_dinv",
+      "dsale_drec",
+      "dgp_dsale",
+      "dsale_dsga",
+      "sale_emp_gr1",
+      "tangibility",
+      "kz_index",
+      "ocfq_saleq_std",
+      "cash_at",
+      "ni_ar1",
+      "ni_ivol",
+      "earnings_variability",
+      "aliq_at",
+      "aliq_mat",
+      "seas_1_1an",
+      "seas_1_1na",
+      "seas_2_5an",
+      "seas_2_5na",
+      "seas_6_10an",
+      "seas_6_10na",
+      "seas_11_15an",
+      "seas_11_15na",
+      "seas_16_20an",
+      "seas_16_20na",
+      "market_equity",
+      "ivol_ff3_21d",
+      "ivol_capm_252d",
+      "ivol_capm_21d",
+      "ivol_hxz4_21d",
+      "rvol_21d",
+      "beta_60m",
+      "betabab_1260d",
+      "beta_dimson_21d",
+      "turnover_126d",
+      "turnover_var_126d",
+      "dolvol_126d",
+      "dolvol_var_126d",
+      "prc",
+      "ami_126d",
+      "zero_trades_21d",
+      "zero_trades_126d",
+      "zero_trades_252d",
+      "rmax1_21d",
+      "rskew_21d",
+      "iskew_capm_21d",
+      "iskew_ff3_21d",
+      "iskew_hxz4_21d",
+      "coskew_21d",
+      "ret_1_0",
+      "betadown_252d",
+      "bidaskhl_21d",
+      "ret_3_1",
+      "ret_9_1",
+      "ret_12_7",
+      "corr_1260d",
+      "rmax5_21d",
+      "rmax5_rvol_21d",
+      "ni_be",
+      "ocf_at",
+      "ocf_at_chg1",
+      "mispricing_perf",
+      "mispricing_mgmt",
+      "qmj",
+      "qmj_prof",
+      "qmj_growth",
+      "qmj_safety"
+    ],
+    "files": [
+      {
+        "name": "jkp_1963.parquet",
+        "rows": 24348,
+        "sha256": "64a2b7f30520f3d8f2bfb88ab7691453dac7495cd58fb66e5c68506dbfbdd30d"
+      },
+      {
+        "name": "jkp_1964.parquet",
+        "rows": 24867,
+        "sha256": "b03c708392b940dd67f553f189978363071f8f590bb618fd7d8e942064b8ed61"
+      },
+      {
+        "name": "jkp_1965.parquet",
+        "rows": 25411,
+        "sha256": "8ab1a5a30fbf2f5aaee484f360ca2a1cca5b76243707a32284e6e9b3adaa3b28"
+      },
+      {
+        "name": "jkp_1966.parquet",
+        "rows": 25717,
+        "sha256": "97c4a7ffb4b60a5d96510d5d16269760ff903c8fa1d12e6fe30ffe42980d5f37"
+      },
+      {
+        "name": "jkp_1967.parquet",
+        "rows": 25860,
+        "sha256": "b9c63a825af1a56e4125c347203eb3f3fac3172a35ab2e91f92d73936f609a98"
+      },
+      {
+        "name": "jkp_1968.parquet",
+        "rows": 25845,
+        "sha256": "a73ddb095f1b2cd9acfec002d5bffbc6827f096d75decb2b4521713afdbb47a7"
+      },
+      {
+        "name": "jkp_1969.parquet",
+        "rows": 26693,
+        "sha256": "c41d382c455bd90f1e2de163d4e85d92056915d922e041c38d5ee40fd929a3c5"
+      },
+      {
+        "name": "jkp_1970.parquet",
+        "rows": 27842,
+        "sha256": "7121b4914b4481a1618303e2c6d3595e738aa9187235f64e741dc2e6d5ad0d59"
+      },
+      {
+        "name": "jkp_1971.parquet",
+        "rows": 28689,
+        "sha256": "cdc83fb85e34c96fc6d2afa6eb5344438deac4e7cd1e769ebef4c2a7c14eaaf2"
+      },
+      {
+        "name": "jkp_1972.parquet",
+        "rows": 33125,
+        "sha256": "375db310a93b925a683f5811f392cc3c5c521d446f399f78ae521e07664f31d8"
+      },
+      {
+        "name": "jkp_1973.parquet",
+        "rows": 64722,
+        "sha256": "2757a652c1d98558b4174ceb8d94d7a1c45a9a5fa9abc8e7b1557240ca246b0b"
+      },
+      {
+        "name": "jkp_1974.parquet",
+        "rows": 60655,
+        "sha256": "c82e498e6df70c442d2bc4cec161b20f6a8107c393cc9a6bd57713ed62c3ab70"
+      },
+      {
+        "name": "jkp_1975.parquet",
+        "rows": 58673,
+        "sha256": "e2403cda7432c0103a4ae08b2bea94d0ff4f20bcd7076a825239026d5dd7ecd5"
+      },
+      {
+        "name": "jkp_1976.parquet",
+        "rows": 58669,
+        "sha256": "fc77bbc195ec08d069995bc3936c6d6d12da09fb51261116e24496f554ed76bd"
+      },
+      {
+        "name": "jkp_1977.parquet",
+        "rows": 58356,
+        "sha256": "d552a69051067e6497d2ea20ef35560086d5e0ae18804066a8c2a411faa8fd85"
+      },
+      {
+        "name": "jkp_1978.parquet",
+        "rows": 57060,
+        "sha256": "388a02f802dd47acca9b90db54a2f56d4d33b95b3d4e71e1f1d3c0118fc5f7a5"
+      },
+      {
+        "name": "jkp_1979.parquet",
+        "rows": 56196,
+        "sha256": "1338e3713e655a43a9f384e1a264f7c363e86d91ea73024ad5bb0717e690e08e"
+      },
+      {
+        "name": "jkp_1980.parquet",
+        "rows": 56813,
+        "sha256": "18acf2d8618148452554f21dfc4080fa117ca5471c6e88b5d3e036f40f4c7524"
+      },
+      {
+        "name": "jkp_1981.parquet",
+        "rows": 60757,
+        "sha256": "0753bfdbb1bdcb4406fc492876cf214c6a54e79f1fc173cdb51bbe6cbb431999"
+      },
+      {
+        "name": "jkp_1982.parquet",
+        "rows": 62559,
+        "sha256": "14ea3260036a24e729547f431b3a3e556127ad0b7a5e007eb911120a2f968dbe"
+      },
+      {
+        "name": "jkp_1983.parquet",
+        "rows": 66811,
+        "sha256": "ceb2bd77071352a7e63f387b4998daeae9e4d252f84da8bdb99dae86f5bffe1b"
+      },
+      {
+        "name": "jkp_1984.parquet",
+        "rows": 72862,
+        "sha256": "b0096b3b26283a6bbccc5dc204a0ad59a0a22f0bfd9cdc2f7d14f457a078e512"
+      },
+      {
+        "name": "jkp_1985.parquet",
+        "rows": 72408,
+        "sha256": "cd02af5d5f5652a9c5e6c6f2a2038fdda98232bc62b1744546121a16ffb3643f"
+      },
+      {
+        "name": "jkp_1986.parquet",
+        "rows": 73683,
+        "sha256": "fae7e88ed2769bf9b38aa64ddae7525fc3f9b71d869e87b37d7eca9d4f0a20cb"
+      },
+      {
+        "name": "jkp_1987.parquet",
+        "rows": 78246,
+        "sha256": "cd4d26fbef55b85c1d5277c70d5da7433c5126f1b8763f6e0d46616ce3be6feb"
+      },
+      {
+        "name": "jkp_1988.parquet",
+        "rows": 77969,
+        "sha256": "f5815385404ef2082d7f3585806af58c50fb7232aad9fa469083e77b44ed3e23"
+      },
+      {
+        "name": "jkp_1989.parquet",
+        "rows": 74883,
+        "sha256": "f005232e892ef024017ba26a3af1010b1a927ecd7b3700d0b4757a1d46ed30ef"
+      },
+      {
+        "name": "jkp_1990.parquet",
+        "rows": 73316,
+        "sha256": "f9eff39a3b3c0f4f6fd1ed95b810fd94be76edd394acdda42705e16582a01f50"
+      },
+      {
+        "name": "jkp_1991.parquet",
+        "rows": 72197,
+        "sha256": "7d63d888161a10cce9fe48f6dc503e2d7ce9eda29f5793549650a9b643848e77"
+      },
+      {
+        "name": "jkp_1992.parquet",
+        "rows": 73958,
+        "sha256": "c9d87c672e6069b0dae80af2f9523509a405a002853b294a2b931b39b6f09b93"
+      },
+      {
+        "name": "jkp_1993.parquet",
+        "rows": 77450,
+        "sha256": "5e3bcb3ac6b533771ae0f28e1bbf2ea70b5a264873ca8eb32343dcfef0c00342"
+      },
+      {
+        "name": "jkp_1994.parquet",
+        "rows": 84211,
+        "sha256": "686154b55b2c27f921cd35ba555b47b29d2ec9c31c85b5bd205e2a7dc0bde2f4"
+      },
+      {
+        "name": "jkp_1995.parquet",
+        "rows": 86535,
+        "sha256": "2e9dece6fd43ec2af55a361c73de8397278b48c963446a323da95818be9deb4a"
+      },
+      {
+        "name": "jkp_1996.parquet",
+        "rows": 91992,
+        "sha256": "3d1bb9eda65b5116dd39e46f37615ca265fed79515e158d7ed76a55f83216483"
+      },
+      {
+        "name": "jkp_1997.parquet",
+        "rows": 95422,
+        "sha256": "55ad86c6eab3c9c6e94c2b240f9bb97f636bbd99947c786abc764ab759695dc9"
+      },
+      {
+        "name": "jkp_1998.parquet",
+        "rows": 93723,
+        "sha256": "a95e3eb9d0b19e6db44fce2edbd7f3784a9083594f26807e4c06ffa7c7715c69"
+      },
+      {
+        "name": "jkp_1999.parquet",
+        "rows": 87699,
+        "sha256": "6259982a6fc77404d03bb8e78f3719b7e6f46d93144bfb92a5ac1acda3b2d575"
+      },
+      {
+        "name": "jkp_2000.parquet",
+        "rows": 85054,
+        "sha256": "d5119ff47e0d3f059508e03951469f6a1932ecd69aa5810005b4c4ba548793f1"
+      },
+      {
+        "name": "jkp_2001.parquet",
+        "rows": 77550,
+        "sha256": "3c667581e46d7f02817e36e9fa2efe1acc2d68e8167adeb7b9fcaa12bb4999b9"
+      },
+      {
+        "name": "jkp_2002.parquet",
+        "rows": 70499,
+        "sha256": "f764f6041c9ff1fc83eb77dde9a0617baadc770e4bca12c9a9562b5c1f1f6692"
+      },
+      {
+        "name": "jkp_2003.parquet",
+        "rows": 65212,
+        "sha256": "92faf4fcade5389d62edc431fc83e1c604f1cf217aa05cdedee1496b87abf524"
+      },
+      {
+        "name": "jkp_2004.parquet",
+        "rows": 63304,
+        "sha256": "ad5dd4c2decde587c4293c66d95bba7760726894d04c304bd43e5f0bdba69b43"
+      },
+      {
+        "name": "jkp_2005.parquet",
+        "rows": 62837,
+        "sha256": "c7d754277469e04e7d39f6846842896530c5965441f5ac6940d48b514d4e7c46"
+      },
+      {
+        "name": "jkp_2006.parquet",
+        "rows": 62004,
+        "sha256": "d589224ad2aa8f6e531bf277fc54b56a47335bdf76f302934e2ee0c04d45b470"
+      },
+      {
+        "name": "jkp_2007.parquet",
+        "rows": 61212,
+        "sha256": "7e56222c5c952740dff755d9edae06a812fd81870da7fd8ce02cd4fe268e796e"
+      },
+      {
+        "name": "jkp_2008.parquet",
+        "rows": 59243,
+        "sha256": "c2c9534953adaa2d3cad64064e9bf66879834ed8e05255b77d99ee3e922c9d75"
+      },
+      {
+        "name": "jkp_2009.parquet",
+        "rows": 55349,
+        "sha256": "2a1dfa52bc3697f6086a12f19ec3d3794aea9a5dc40a0cf2c89e2efb5fc6d456"
+      },
+      {
+        "name": "jkp_2010.parquet",
+        "rows": 53379,
+        "sha256": "a6edec0971e5f0cb4d23a43c1d171fcc1c662091bc96fa7f18ab22e3dc04c374"
+      },
+      {
+        "name": "jkp_2011.parquet",
+        "rows": 51843,
+        "sha256": "317cdeb09076c6d72afe06ed75cfd5033203c7ed6fd2643c86d2c289996d3b46"
+      },
+      {
+        "name": "jkp_2012.parquet",
+        "rows": 50353,
+        "sha256": "df70ce8d43fc512a6f1342f5812b06318621a10d27db6b5aa9f3ff385b2f2313"
+      },
+      {
+        "name": "jkp_2013.parquet",
+        "rows": 49418,
+        "sha256": "661adcf67252c360087a4ebbc07bf4fb800dd82bb24705977e69786217cef104"
+      },
+      {
+        "name": "jkp_2014.parquet",
+        "rows": 50718,
+        "sha256": "0ee26bebec8cffe9e7b2fd4acdb0326c6f89f12c1833aa170b586cfc1c9db11a"
+      },
+      {
+        "name": "jkp_2015.parquet",
+        "rows": 51575,
+        "sha256": "b890f3ffef978f2911a9892f17c7c1fe8df854e1571e1acd5ffdfa14ec620734"
+      },
+      {
+        "name": "jkp_2016.parquet",
+        "rows": 50375,
+        "sha256": "f71e651593e822a834c4b30d96990afd5910887eb3ca1fab5d89b3982d21fbac"
+      },
+      {
+        "name": "jkp_2017.parquet",
+        "rows": 49683,
+        "sha256": "f99b4d5dd0f989e7cb8af801b8bcb4a3ec3133fa01f225f27ceae204f3838b83"
+      },
+      {
+        "name": "jkp_2018.parquet",
+        "rows": 49979,
+        "sha256": "12e1837f09d6de08db7de293ce01330e7432c08e9f4cdec0b10e3c0105d6b3af"
+      },
+      {
+        "name": "jkp_2019.parquet",
+        "rows": 50249,
+        "sha256": "cf0bdac4e1573b944e972fb579493d79b0d24ede5cfd064445f7d54bd06f3710"
+      },
+      {
+        "name": "jkp_2020.parquet",
+        "rows": 50724,
+        "sha256": "56d64ed8ef4b94a0a5fa7e84b9fce42d058b3097f83ec47ad1da9a363537f2e4"
+      },
+      {
+        "name": "jkp_2021.parquet",
+        "rows": 59589,
+        "sha256": "5e456d57f6b6ca100f0a2af2bd93bfb0385fda7c3ebc53454a3b5cdcf9b2858a"
+      },
+      {
+        "name": "jkp_2022.parquet",
+        "rows": 65621,
+        "sha256": "abb54007e93c50136f296a0a7ef922d872626ce777d330989d4585764b1b36ab"
+      },
+      {
+        "name": "jkp_2023.parquet",
+        "rows": 61927,
+        "sha256": "f818d038d3b33f6318a1cf16c3121199d2847bb9c320a57d22eaf08c516af0b6"
+      },
+      {
+        "name": "jkp_2024.parquet",
+        "rows": 58684,
+        "sha256": "4f4ce142f866dbcc6019438e03f92cb635416bfd47332d8ee94bb0fbaa2c76ad"
+      },
+      {
+        "name": "jkp_2025-01.parquet",
+        "rows": 4786,
+        "sha256": "b08365b6f371c4e21f32020cfab41b00606fcdffa70fe73c1f334e8ed453376e"
+      }
+    ],
+    "periods": [
+      "1963",
+      "1964",
+      "1965",
+      "1966",
+      "1967",
+      "1968",
+      "1969",
+      "1970",
+      "1971",
+      "1972",
+      "1973",
+      "1974",
+      "1975",
+      "1976",
+      "1977",
+      "1978",
+      "1979",
+      "1980",
+      "1981",
+      "1982",
+      "1983",
+      "1984",
+      "1985",
+      "1986",
+      "1987",
+      "1988",
+      "1989",
+      "1990",
+      "1991",
+      "1992",
+      "1993",
+      "1994",
+      "1995",
+      "1996",
+      "1997",
+      "1998",
+      "1999",
+      "2000",
+      "2001",
+      "2002",
+      "2003",
+      "2004",
+      "2005",
+      "2006",
+      "2007",
+      "2008",
+      "2009",
+      "2010",
+      "2011",
+      "2012",
+      "2013",
+      "2014",
+      "2015",
+      "2016",
+      "2017",
+      "2018",
+      "2019",
+      "2020",
+      "2021",
+      "2022",
+      "2023",
+      "2024",
+      "2025-01"
+    ],
+    "rows": 3687389,
+    "git_sha": "b2c7ece23103babe01fb0c97b0cac6fe05b7bfe1",
+    "elapsed_seconds": 1655.5419078751002,
+    "connection_attempts": 1,
+    "select_calls": 63,
+    "query_template_sha256": "69bcb4cc2465f92913b09a6d892fdb9aaf38058bc5eea5e0e3bf7f84e23ffe14",
+    "download_design": "year-sized SELECTs on bounded persistent connections"
+  },
+  "characteristics": [
+    "age",
+    "aliq_at",
+    "aliq_mat",
+    "ami_126d",
+    "at_be",
+    "at_gr1",
+    "at_me",
+    "at_turnover",
+    "be_gr1a",
+    "be_me",
+    "beta_60m",
+    "beta_dimson_21d",
+    "betabab_1260d",
+    "betadown_252d",
+    "bev_mev",
+    "bidaskhl_21d",
+    "capex_abn",
+    "capx_gr1",
+    "capx_gr2",
+    "capx_gr3",
+    "cash_at",
+    "chcsho_12m",
+    "coa_gr1a",
+    "col_gr1a",
+    "cop_at",
+    "cop_atl1",
+    "corr_1260d",
+    "coskew_21d",
+    "cowc_gr1a",
+    "dbnetis_at",
+    "debt_gr3",
+    "debt_me",
+    "dgp_dsale",
+    "div12m_me",
+    "dolvol_126d",
+    "dolvol_var_126d",
+    "dsale_dinv",
+    "dsale_drec",
+    "dsale_dsga",
+    "earnings_variability",
+    "ebit_bev",
+    "ebit_sale",
+    "ebitda_mev",
+    "emp_gr1",
+    "eq_dur",
+    "eqnpo_12m",
+    "f_score",
+    "fcf_me",
+    "fnl_gr1a",
+    "gp_at",
+    "gp_atl1",
+    "inv_gr1",
+    "inv_gr1a",
+    "iskew_capm_21d",
+    "iskew_ff3_21d",
+    "iskew_hxz4_21d",
+    "ival_me",
+    "ivol_capm_21d",
+    "ivol_capm_252d",
+    "ivol_ff3_21d",
+    "kz_index",
+    "lnoa_gr1a",
+    "lti_gr1a",
+    "market_equity",
+    "mispricing_mgmt",
+    "mispricing_perf",
+    "ncoa_gr1a",
+    "ncol_gr1a",
+    "netdebt_me",
+    "nfna_gr1a",
+    "ni_ar1",
+    "ni_be",
+    "ni_ivol",
+    "ni_me",
+    "nncoa_gr1a",
+    "noa_at",
+    "noa_gr1a",
+    "o_score",
+    "oaccruals_at",
+    "oaccruals_ni",
+    "ocf_at",
+    "ocf_at_chg1",
+    "ocf_me",
+    "op_at",
+    "op_atl1",
+    "ope_be",
+    "ope_bel1",
+    "opex_at",
+    "pi_nix",
+    "ppeinv_gr1a",
+    "prc",
+    "prc_highprc_252d",
+    "qmj",
+    "qmj_growth",
+    "qmj_prof",
+    "qmj_safety",
+    "resff3_12_1",
+    "resff3_6_1",
+    "ret_12_1",
+    "ret_12_7",
+    "ret_1_0",
+    "ret_3_1",
+    "ret_60_12",
+    "ret_6_1",
+    "ret_9_1",
+    "rmax1_21d",
+    "rmax5_21d",
+    "rmax5_rvol_21d",
+    "rskew_21d",
+    "rvol_21d",
+    "sale_bev",
+    "sale_emp_gr1",
+    "sale_gr1",
+    "sale_gr3",
+    "sale_me",
+    "saleq_gr1",
+    "seas_1_1an",
+    "seas_1_1na",
+    "seas_2_5an",
+    "seas_2_5na",
+    "taccruals_at",
+    "taccruals_ni",
+    "tangibility",
+    "tax_gr1a",
+    "turnover_126d",
+    "turnover_var_126d",
+    "z_score",
+    "zero_trades_126d",
+    "zero_trades_21d",
+    "zero_trades_252d"
+  ],
+  "characteristic_provenance": {
+    "method": "initial_training_coverage",
+    "reference_start": "1963-01-01",
+    "reference_end": "1972-12-31",
+    "count": 130,
+    "candidate_count": 153,
+    "tie_break": "characteristic name ascending",
+    "primary_source": "https://www.nber.org/system/files/working_papers/w33012/revisions/w33012.rev0.pdf",
+    "source_sha256": "5ba2ce32de3ac9a21e5dd6396dc82d85378e48814910baf536a1af013372f424",
+    "section": "2.5, printed page 15",
+    "exact_author_list_found": false,
+    "searched_official_materials": [
+      "https://www.antoinedidisheim.com/research",
+      "https://www.bryankellyacademic.org/",
+      "https://github.com/AntoineDidisheim",
+      "https://github.com/AntoineDidisheim/data_share",
+      "https://github.com/bkelly-lab",
+      "NBER September 2024 paper and appendix"
+    ],
+    "interpretation": "Select the 130 best-covered characteristics using only 1963-1972 initial training. The candidate dictionary is a fixed research specification; the authors' 1963-2023 coverage selection is not used.",
+    "candidates": [
+      "niq_su",
+      "ret_6_1",
+      "ret_12_1",
+      "saleq_su",
+      "tax_gr1a",
+      "ni_inc8q",
+      "prc_highprc_252d",
+      "resff3_6_1",
+      "resff3_12_1",
+      "be_me",
+      "debt_me",
+      "at_me",
+      "ret_60_12",
+      "ni_me",
+      "fcf_me",
+      "div12m_me",
+      "eqpo_me",
+      "eqnpo_me",
+      "sale_gr3",
+      "sale_gr1",
+      "ebitda_mev",
+      "sale_me",
+      "ocf_me",
+      "ival_me",
+      "bev_mev",
+      "netdebt_me",
+      "eq_dur",
+      "capex_abn",
+      "at_gr1",
+      "ppeinv_gr1a",
+      "noa_at",
+      "noa_gr1a",
+      "lnoa_gr1a",
+      "capx_gr1",
+      "capx_gr2",
+      "capx_gr3",
+      "chcsho_12m",
+      "eqnpo_12m",
+      "debt_gr3",
+      "inv_gr1",
+      "inv_gr1a",
+      "oaccruals_at",
+      "taccruals_at",
+      "cowc_gr1a",
+      "coa_gr1a",
+      "col_gr1a",
+      "nncoa_gr1a",
+      "ncoa_gr1a",
+      "ncol_gr1a",
+      "nfna_gr1a",
+      "sti_gr1a",
+      "lti_gr1a",
+      "fnl_gr1a",
+      "be_gr1a",
+      "oaccruals_ni",
+      "taccruals_ni",
+      "netis_at",
+      "eqnetis_at",
+      "dbnetis_at",
+      "niq_be",
+      "niq_be_chg1",
+      "niq_at",
+      "niq_at_chg1",
+      "ebit_bev",
+      "ebit_sale",
+      "sale_bev",
+      "at_turnover",
+      "gp_at",
+      "gp_atl1",
+      "ope_be",
+      "ope_bel1",
+      "op_at",
+      "op_atl1",
+      "cop_at",
+      "cop_atl1",
+      "f_score",
+      "o_score",
+      "z_score",
+      "pi_nix",
+      "at_be",
+      "saleq_gr1",
+      "rd_me",
+      "rd_sale",
+      "opex_at",
+      "emp_gr1",
+      "rd5_at",
+      "age",
+      "dsale_dinv",
+      "dsale_drec",
+      "dgp_dsale",
+      "dsale_dsga",
+      "sale_emp_gr1",
+      "tangibility",
+      "kz_index",
+      "ocfq_saleq_std",
+      "cash_at",
+      "ni_ar1",
+      "ni_ivol",
+      "earnings_variability",
+      "aliq_at",
+      "aliq_mat",
+      "seas_1_1an",
+      "seas_1_1na",
+      "seas_2_5an",
+      "seas_2_5na",
+      "seas_6_10an",
+      "seas_6_10na",
+      "seas_11_15an",
+      "seas_11_15na",
+      "seas_16_20an",
+      "seas_16_20na",
+      "market_equity",
+      "ivol_ff3_21d",
+      "ivol_capm_252d",
+      "ivol_capm_21d",
+      "ivol_hxz4_21d",
+      "rvol_21d",
+      "beta_60m",
+      "betabab_1260d",
+      "beta_dimson_21d",
+      "turnover_126d",
+      "turnover_var_126d",
+      "dolvol_126d",
+      "dolvol_var_126d",
+      "prc",
+      "ami_126d",
+      "zero_trades_21d",
+      "zero_trades_126d",
+      "zero_trades_252d",
+      "rmax1_21d",
+      "rskew_21d",
+      "iskew_capm_21d",
+      "iskew_ff3_21d",
+      "iskew_hxz4_21d",
+      "coskew_21d",
+      "ret_1_0",
+      "betadown_252d",
+      "bidaskhl_21d",
+      "ret_3_1",
+      "ret_9_1",
+      "ret_12_7",
+      "corr_1260d",
+      "rmax5_21d",
+      "rmax5_rvol_21d",
+      "ni_be",
+      "ocf_at",
+      "ocf_at_chg1",
+      "mispricing_perf",
+      "mispricing_mgmt",
+      "qmj",
+      "qmj_prof",
+      "qmj_growth",
+      "qmj_safety"
+    ],
+    "selected": [
+      "age",
+      "aliq_at",
+      "aliq_mat",
+      "ami_126d",
+      "at_be",
+      "at_gr1",
+      "at_me",
+      "at_turnover",
+      "be_gr1a",
+      "be_me",
+      "beta_60m",
+      "beta_dimson_21d",
+      "betabab_1260d",
+      "betadown_252d",
+      "bev_mev",
+      "bidaskhl_21d",
+      "capex_abn",
+      "capx_gr1",
+      "capx_gr2",
+      "capx_gr3",
+      "cash_at",
+      "chcsho_12m",
+      "coa_gr1a",
+      "col_gr1a",
+      "cop_at",
+      "cop_atl1",
+      "corr_1260d",
+      "coskew_21d",
+      "cowc_gr1a",
+      "dbnetis_at",
+      "debt_gr3",
+      "debt_me",
+      "dgp_dsale",
+      "div12m_me",
+      "dolvol_126d",
+      "dolvol_var_126d",
+      "dsale_dinv",
+      "dsale_drec",
+      "dsale_dsga",
+      "earnings_variability",
+      "ebit_bev",
+      "ebit_sale",
+      "ebitda_mev",
+      "emp_gr1",
+      "eq_dur",
+      "eqnpo_12m",
+      "f_score",
+      "fcf_me",
+      "fnl_gr1a",
+      "gp_at",
+      "gp_atl1",
+      "inv_gr1",
+      "inv_gr1a",
+      "iskew_capm_21d",
+      "iskew_ff3_21d",
+      "iskew_hxz4_21d",
+      "ival_me",
+      "ivol_capm_21d",
+      "ivol_capm_252d",
+      "ivol_ff3_21d",
+      "kz_index",
+      "lnoa_gr1a",
+      "lti_gr1a",
+      "market_equity",
+      "mispricing_mgmt",
+      "mispricing_perf",
+      "ncoa_gr1a",
+      "ncol_gr1a",
+      "netdebt_me",
+      "nfna_gr1a",
+      "ni_ar1",
+      "ni_be",
+      "ni_ivol",
+      "ni_me",
+      "nncoa_gr1a",
+      "noa_at",
+      "noa_gr1a",
+      "o_score",
+      "oaccruals_at",
+      "oaccruals_ni",
+      "ocf_at",
+      "ocf_at_chg1",
+      "ocf_me",
+      "op_at",
+      "op_atl1",
+      "ope_be",
+      "ope_bel1",
+      "opex_at",
+      "pi_nix",
+      "ppeinv_gr1a",
+      "prc",
+      "prc_highprc_252d",
+      "qmj",
+      "qmj_growth",
+      "qmj_prof",
+      "qmj_safety",
+      "resff3_12_1",
+      "resff3_6_1",
+      "ret_12_1",
+      "ret_12_7",
+      "ret_1_0",
+      "ret_3_1",
+      "ret_60_12",
+      "ret_6_1",
+      "ret_9_1",
+      "rmax1_21d",
+      "rmax5_21d",
+      "rmax5_rvol_21d",
+      "rskew_21d",
+      "rvol_21d",
+      "sale_bev",
+      "sale_emp_gr1",
+      "sale_gr1",
+      "sale_gr3",
+      "sale_me",
+      "saleq_gr1",
+      "seas_1_1an",
+      "seas_1_1na",
+      "seas_2_5an",
+      "seas_2_5na",
+      "taccruals_at",
+      "taccruals_ni",
+      "tangibility",
+      "tax_gr1a",
+      "turnover_126d",
+      "turnover_var_126d",
+      "z_score",
+      "zero_trades_126d",
+      "zero_trades_21d",
+      "zero_trades_252d"
+    ],
+    "coverage_observations": 223762,
+    "coverage": [
+      {
+        "characteristic": "age",
+        "missing_share": 0.0
+      },
+      {
+        "characteristic": "market_equity",
+        "missing_share": 0.0
+      },
+      {
+        "characteristic": "prc",
+        "missing_share": 0.0
+      },
+      {
+        "characteristic": "bidaskhl_21d",
+        "missing_share": 0.011404974928718947
+      },
+      {
+        "characteristic": "ret_1_0",
+        "missing_share": 0.012446259865392717
+      },
+      {
+        "characteristic": "zero_trades_21d",
+        "missing_share": 0.01263842833010076
+      },
+      {
+        "characteristic": "dolvol_126d",
+        "missing_share": 0.023288136502176426
+      },
+      {
+        "characteristic": "turnover_126d",
+        "missing_share": 0.023288136502176426
+      },
+      {
+        "characteristic": "zero_trades_126d",
+        "missing_share": 0.023288136502176426
+      },
+      {
+        "characteristic": "dolvol_var_126d",
+        "missing_share": 0.023471366898758506
+      },
+      {
+        "characteristic": "turnover_var_126d",
+        "missing_share": 0.023471366898758506
+      },
+      {
+        "characteristic": "ret_3_1",
+        "missing_share": 0.02394955354349715
+      },
+      {
+        "characteristic": "mispricing_perf",
+        "missing_share": 0.033884216265496425
+      },
+      {
+        "characteristic": "ami_126d",
+        "missing_share": 0.037191301472099814
+      },
+      {
+        "characteristic": "zero_trades_252d",
+        "missing_share": 0.03932749975420313
+      },
+      {
+        "characteristic": "ret_6_1",
+        "missing_share": 0.040614581564340724
+      },
+      {
+        "characteristic": "beta_dimson_21d",
+        "missing_share": 0.04750136305538921
+      },
+      {
+        "characteristic": "coskew_21d",
+        "missing_share": 0.04750136305538921
+      },
+      {
+        "characteristic": "iskew_capm_21d",
+        "missing_share": 0.04750136305538921
+      },
+      {
+        "characteristic": "iskew_ff3_21d",
+        "missing_share": 0.04750136305538921
+      },
+      {
+        "characteristic": "ivol_capm_21d",
+        "missing_share": 0.04750136305538921
+      },
+      {
+        "characteristic": "ivol_ff3_21d",
+        "missing_share": 0.04750136305538921
+      },
+      {
+        "characteristic": "rmax1_21d",
+        "missing_share": 0.04750136305538921
+      },
+      {
+        "characteristic": "rmax5_21d",
+        "missing_share": 0.04750136305538921
+      },
+      {
+        "characteristic": "rskew_21d",
+        "missing_share": 0.04750136305538921
+      },
+      {
+        "characteristic": "rvol_21d",
+        "missing_share": 0.04750136305538921
+      },
+      {
+        "characteristic": "ivol_capm_252d",
+        "missing_share": 0.05298486785066281
+      },
+      {
+        "characteristic": "prc_highprc_252d",
+        "missing_share": 0.05487080022523927
+      },
+      {
+        "characteristic": "ret_9_1",
+        "missing_share": 0.0644836924947042
+      },
+      {
+        "characteristic": "betadown_252d",
+        "missing_share": 0.06867564644577717
+      },
+      {
+        "characteristic": "div12m_me",
+        "missing_share": 0.07991079808010293
+      },
+      {
+        "characteristic": "rmax5_rvol_21d",
+        "missing_share": 0.08034429438421176
+      },
+      {
+        "characteristic": "seas_1_1an",
+        "missing_share": 0.08044708216766028
+      },
+      {
+        "characteristic": "seas_1_1na",
+        "missing_share": 0.08085376426739121
+      },
+      {
+        "characteristic": "ret_12_1",
+        "missing_share": 0.08767351024749515
+      },
+      {
+        "characteristic": "ret_12_7",
+        "missing_share": 0.08786120967814015
+      },
+      {
+        "characteristic": "eqnpo_12m",
+        "missing_share": 0.08795059035939967
+      },
+      {
+        "characteristic": "chcsho_12m",
+        "missing_share": 0.08979630142740946
+      },
+      {
+        "characteristic": "qmj_safety",
+        "missing_share": 0.10461114934618032
+      },
+      {
+        "characteristic": "resff3_12_1",
+        "missing_share": 0.17395715090140418
+      },
+      {
+        "characteristic": "resff3_6_1",
+        "missing_share": 0.1741046290254824
+      },
+      {
+        "characteristic": "ni_me",
+        "missing_share": 0.23270707269330804
+      },
+      {
+        "characteristic": "sale_me",
+        "missing_share": 0.2367962388609326
+      },
+      {
+        "characteristic": "qmj_prof",
+        "missing_share": 0.23758725789007962
+      },
+      {
+        "characteristic": "at_me",
+        "missing_share": 0.2383872149873526
+      },
+      {
+        "characteristic": "ebit_sale",
+        "missing_share": 0.2428830632547081
+      },
+      {
+        "characteristic": "op_at",
+        "missing_share": 0.24500585443462253
+      },
+      {
+        "characteristic": "debt_me",
+        "missing_share": 0.24503713767306334
+      },
+      {
+        "characteristic": "netdebt_me",
+        "missing_share": 0.24503713767306334
+      },
+      {
+        "characteristic": "ocf_me",
+        "missing_share": 0.24724037146611133
+      },
+      {
+        "characteristic": "gp_at",
+        "missing_share": 0.2473208140792449
+      },
+      {
+        "characteristic": "opex_at",
+        "missing_share": 0.24753979674833082
+      },
+      {
+        "characteristic": "ebitda_mev",
+        "missing_share": 0.25062343025178535
+      },
+      {
+        "characteristic": "ocf_at",
+        "missing_share": 0.25096307684057173
+      },
+      {
+        "characteristic": "beta_60m",
+        "missing_share": 0.2513340066677988
+      },
+      {
+        "characteristic": "at_turnover",
+        "missing_share": 0.2540377722759003
+      },
+      {
+        "characteristic": "sale_gr1",
+        "missing_share": 0.25823866429509923
+      },
+      {
+        "characteristic": "at_gr1",
+        "missing_share": 0.26036145547501366
+      },
+      {
+        "characteristic": "tax_gr1a",
+        "missing_share": 0.2603703935431396
+      },
+      {
+        "characteristic": "mispricing_mgmt",
+        "missing_share": 0.26559022532869747
+      },
+      {
+        "characteristic": "op_atl1",
+        "missing_share": 0.2657511105549647
+      },
+      {
+        "characteristic": "dbnetis_at",
+        "missing_share": 0.2660684119734361
+      },
+      {
+        "characteristic": "gp_atl1",
+        "missing_share": 0.2678247423601863
+      },
+      {
+        "characteristic": "fnl_gr1a",
+        "missing_share": 0.2680124417908313
+      },
+      {
+        "characteristic": "nfna_gr1a",
+        "missing_share": 0.2680124417908313
+      },
+      {
+        "characteristic": "be_me",
+        "missing_share": 0.26874983241122263
+      },
+      {
+        "characteristic": "at_be",
+        "missing_share": 0.2688034608199784
+      },
+      {
+        "characteristic": "ni_be",
+        "missing_share": 0.2697330199050777
+      },
+      {
+        "characteristic": "corr_1260d",
+        "missing_share": 0.27188709432343294
+      },
+      {
+        "characteristic": "ocf_at_chg1",
+        "missing_share": 0.272669175284454
+      },
+      {
+        "characteristic": "betabab_1260d",
+        "missing_share": 0.2733529374960896
+      },
+      {
+        "characteristic": "col_gr1a",
+        "missing_share": 0.2733708136323415
+      },
+      {
+        "characteristic": "bev_mev",
+        "missing_share": 0.27407692101429193
+      },
+      {
+        "characteristic": "sale_bev",
+        "missing_share": 0.2741886468658664
+      },
+      {
+        "characteristic": "pi_nix",
+        "missing_share": 0.2744165676030783
+      },
+      {
+        "characteristic": "ncoa_gr1a",
+        "missing_share": 0.2744880721480859
+      },
+      {
+        "characteristic": "ebit_bev",
+        "missing_share": 0.2761013934448209
+      },
+      {
+        "characteristic": "be_gr1a",
+        "missing_share": 0.3005201955649306
+      },
+      {
+        "characteristic": "cash_at",
+        "missing_share": 0.30303179270832403
+      },
+      {
+        "characteristic": "o_score",
+        "missing_share": 0.30631206371054964
+      },
+      {
+        "characteristic": "f_score",
+        "missing_share": 0.3075097648394276
+      },
+      {
+        "characteristic": "ncol_gr1a",
+        "missing_share": 0.3088013156836281
+      },
+      {
+        "characteristic": "eq_dur",
+        "missing_share": 0.3092526881239889
+      },
+      {
+        "characteristic": "dgp_dsale",
+        "missing_share": 0.30999454777844315
+      },
+      {
+        "characteristic": "nncoa_gr1a",
+        "missing_share": 0.3101330878343955
+      },
+      {
+        "characteristic": "ope_be",
+        "missing_share": 0.3114872051554777
+      },
+      {
+        "characteristic": "tangibility",
+        "missing_share": 0.31390048354948563
+      },
+      {
+        "characteristic": "sale_gr3",
+        "missing_share": 0.3244786871765537
+      },
+      {
+        "characteristic": "inv_gr1a",
+        "missing_share": 0.329202456181121
+      },
+      {
+        "characteristic": "aliq_at",
+        "missing_share": 0.33077108713722614
+      },
+      {
+        "characteristic": "coa_gr1a",
+        "missing_share": 0.33164701781356976
+      },
+      {
+        "characteristic": "cowc_gr1a",
+        "missing_share": 0.33186153144859265
+      },
+      {
+        "characteristic": "ppeinv_gr1a",
+        "missing_share": 0.33376533995942115
+      },
+      {
+        "characteristic": "ope_bel1",
+        "missing_share": 0.33405135813945175
+      },
+      {
+        "characteristic": "ival_me",
+        "missing_share": 0.3340558271735147
+      },
+      {
+        "characteristic": "dsale_drec",
+        "missing_share": 0.35428714437661446
+      },
+      {
+        "characteristic": "inv_gr1",
+        "missing_share": 0.35785343355887056
+      },
+      {
+        "characteristic": "lnoa_gr1a",
+        "missing_share": 0.35825117759047564
+      },
+      {
+        "characteristic": "noa_at",
+        "missing_share": 0.3592879934930864
+      },
+      {
+        "characteristic": "lti_gr1a",
+        "missing_share": 0.36183534290898367
+      },
+      {
+        "characteristic": "noa_gr1a",
+        "missing_share": 0.36716243151205297
+      },
+      {
+        "characteristic": "oaccruals_at",
+        "missing_share": 0.36716243151205297
+      },
+      {
+        "characteristic": "taccruals_at",
+        "missing_share": 0.36716243151205297
+      },
+      {
+        "characteristic": "oaccruals_ni",
+        "missing_share": 0.36717136958017893
+      },
+      {
+        "characteristic": "taccruals_ni",
+        "missing_share": 0.36717136958017893
+      },
+      {
+        "characteristic": "seas_2_5an",
+        "missing_share": 0.36748867099865035
+      },
+      {
+        "characteristic": "cop_at",
+        "missing_share": 0.367564644577721
+      },
+      {
+        "characteristic": "cop_atl1",
+        "missing_share": 0.367564644577721
+      },
+      {
+        "characteristic": "seas_2_5na",
+        "missing_share": 0.3686461508209615
+      },
+      {
+        "characteristic": "ret_60_12",
+        "missing_share": 0.3708761988183874
+      },
+      {
+        "characteristic": "fcf_me",
+        "missing_share": 0.37354868118804807
+      },
+      {
+        "characteristic": "aliq_mat",
+        "missing_share": 0.3792243544480296
+      },
+      {
+        "characteristic": "dsale_dinv",
+        "missing_share": 0.38182086323861963
+      },
+      {
+        "characteristic": "kz_index",
+        "missing_share": 0.383934716350408
+      },
+      {
+        "characteristic": "qmj",
+        "missing_share": 0.4058866116677541
+      },
+      {
+        "characteristic": "qmj_growth",
+        "missing_share": 0.4058866116677541
+      },
+      {
+        "characteristic": "debt_gr3",
+        "missing_share": 0.40725413609102523
+      },
+      {
+        "characteristic": "sale_emp_gr1",
+        "missing_share": 0.4080049338136055
+      },
+      {
+        "characteristic": "ni_ar1",
+        "missing_share": 0.40964953834878126
+      },
+      {
+        "characteristic": "ni_ivol",
+        "missing_share": 0.40964953834878126
+      },
+      {
+        "characteristic": "earnings_variability",
+        "missing_share": 0.4168402141561123
+      },
+      {
+        "characteristic": "dsale_dsga",
+        "missing_share": 0.41910154539197897
+      },
+      {
+        "characteristic": "capx_gr1",
+        "missing_share": 0.41912835959635686
+      },
+      {
+        "characteristic": "z_score",
+        "missing_share": 0.4375363109017617
+      },
+      {
+        "characteristic": "saleq_gr1",
+        "missing_share": 0.4530304519981051
+      },
+      {
+        "characteristic": "capx_gr2",
+        "missing_share": 0.4632556019341979
+      },
+      {
+        "characteristic": "emp_gr1",
+        "missing_share": 0.48027368364601675
+      },
+      {
+        "characteristic": "capx_gr3",
+        "missing_share": 0.5118697544712686
+      },
+      {
+        "characteristic": "capex_abn",
+        "missing_share": 0.5194045459014489
+      },
+      {
+        "characteristic": "iskew_hxz4_21d",
+        "missing_share": 0.5300006256647688
+      },
+      {
+        "characteristic": "ivol_hxz4_21d",
+        "missing_share": 0.5300006256647688
+      },
+      {
+        "characteristic": "seas_6_10an",
+        "missing_share": 0.5721838381852147
+      },
+      {
+        "characteristic": "seas_6_10na",
+        "missing_share": 0.5726486177277643
+      },
+      {
+        "characteristic": "seas_11_15an",
+        "missing_share": 0.6335347378017715
+      },
+      {
+        "characteristic": "seas_11_15na",
+        "missing_share": 0.6338118179136761
+      },
+      {
+        "characteristic": "niq_su",
+        "missing_share": 0.6381959403294573
+      },
+      {
+        "characteristic": "saleq_su",
+        "missing_share": 0.6507539260464243
+      },
+      {
+        "characteristic": "seas_16_20an",
+        "missing_share": 0.6870335445696767
+      },
+      {
+        "characteristic": "seas_16_20na",
+        "missing_share": 0.6870603587740546
+      },
+      {
+        "characteristic": "ni_inc8q",
+        "missing_share": 0.708154199551309
+      },
+      {
+        "characteristic": "sti_gr1a",
+        "missing_share": 0.8620856088165104
+      },
+      {
+        "characteristic": "niq_be",
+        "missing_share": 0.8668317229913927
+      },
+      {
+        "characteristic": "niq_at",
+        "missing_share": 0.8691511516700781
+      },
+      {
+        "characteristic": "ocfq_saleq_std",
+        "missing_share": 0.8715331468256451
+      },
+      {
+        "characteristic": "rd_me",
+        "missing_share": 0.8745810280565959
+      },
+      {
+        "characteristic": "rd_sale",
+        "missing_share": 0.8745810280565959
+      },
+      {
+        "characteristic": "eqnetis_at",
+        "missing_share": 0.9311634683279556
+      },
+      {
+        "characteristic": "eqnpo_me",
+        "missing_share": 0.9311634683279556
+      },
+      {
+        "characteristic": "netis_at",
+        "missing_share": 0.9311902825323335
+      },
+      {
+        "characteristic": "eqpo_me",
+        "missing_share": 0.9318248853692763
+      },
+      {
+        "characteristic": "niq_be_chg1",
+        "missing_share": 0.9367542299407406
+      },
+      {
+        "characteristic": "niq_at_chg1",
+        "missing_share": 0.9382424182837121
+      },
+      {
+        "characteristic": "rd5_at",
+        "missing_share": 0.9439270296118197
+      }
+    ]
+  },
+  "clean_manifest": {
+    "status": "complete",
+    "cleaning": "AIPT-inspired characteristic cleaning; feature coverage frozen using initial training only",
+    "source_raw_manifest_sha256": "01dc5d2771a9426534526bc963a44ccb31f437f694df1205c0c4bd79abe9e676",
+    "raw_manifest": {
+      "status": "complete",
+      "source": "WRDS contrib.global_factor",
+      "return_units": "decimal",
+      "return_construction": "JKP ret_exc and ret_exc_lead1m, including upstream CRSP delisting treatment",
+      "acquired_at": "2026-10-01 21:09:15.240441+00:00",
+      "characteristics": [
+        "niq_su",
+        "ret_6_1",
+        "ret_12_1",
+        "saleq_su",
+        "tax_gr1a",
+        "ni_inc8q",
+        "prc_highprc_252d",
+        "resff3_6_1",
+        "resff3_12_1",
+        "be_me",
+        "debt_me",
+        "at_me",
+        "ret_60_12",
+        "ni_me",
+        "fcf_me",
+        "div12m_me",
+        "eqpo_me",
+        "eqnpo_me",
+        "sale_gr3",
+        "sale_gr1",
+        "ebitda_mev",
+        "sale_me",
+        "ocf_me",
+        "ival_me",
+        "bev_mev",
+        "netdebt_me",
+        "eq_dur",
+        "capex_abn",
+        "at_gr1",
+        "ppeinv_gr1a",
+        "noa_at",
+        "noa_gr1a",
+        "lnoa_gr1a",
+        "capx_gr1",
+        "capx_gr2",
+        "capx_gr3",
+        "chcsho_12m",
+        "eqnpo_12m",
+        "debt_gr3",
+        "inv_gr1",
+        "inv_gr1a",
+        "oaccruals_at",
+        "taccruals_at",
+        "cowc_gr1a",
+        "coa_gr1a",
+        "col_gr1a",
+        "nncoa_gr1a",
+        "ncoa_gr1a",
+        "ncol_gr1a",
+        "nfna_gr1a",
+        "sti_gr1a",
+        "lti_gr1a",
+        "fnl_gr1a",
+        "be_gr1a",
+        "oaccruals_ni",
+        "taccruals_ni",
+        "netis_at",
+        "eqnetis_at",
+        "dbnetis_at",
+        "niq_be",
+        "niq_be_chg1",
+        "niq_at",
+        "niq_at_chg1",
+        "ebit_bev",
+        "ebit_sale",
+        "sale_bev",
+        "at_turnover",
+        "gp_at",
+        "gp_atl1",
+        "ope_be",
+        "ope_bel1",
+        "op_at",
+        "op_atl1",
+        "cop_at",
+        "cop_atl1",
+        "f_score",
+        "o_score",
+        "z_score",
+        "pi_nix",
+        "at_be",
+        "saleq_gr1",
+        "rd_me",
+        "rd_sale",
+        "opex_at",
+        "emp_gr1",
+        "rd5_at",
+        "age",
+        "dsale_dinv",
+        "dsale_drec",
+        "dgp_dsale",
+        "dsale_dsga",
+        "sale_emp_gr1",
+        "tangibility",
+        "kz_index",
+        "ocfq_saleq_std",
+        "cash_at",
+        "ni_ar1",
+        "ni_ivol",
+        "earnings_variability",
+        "aliq_at",
+        "aliq_mat",
+        "seas_1_1an",
+        "seas_1_1na",
+        "seas_2_5an",
+        "seas_2_5na",
+        "seas_6_10an",
+        "seas_6_10na",
+        "seas_11_15an",
+        "seas_11_15na",
+        "seas_16_20an",
+        "seas_16_20na",
+        "market_equity",
+        "ivol_ff3_21d",
+        "ivol_capm_252d",
+        "ivol_capm_21d",
+        "ivol_hxz4_21d",
+        "rvol_21d",
+        "beta_60m",
+        "betabab_1260d",
+        "beta_dimson_21d",
+        "turnover_126d",
+        "turnover_var_126d",
+        "dolvol_126d",
+        "dolvol_var_126d",
+        "prc",
+        "ami_126d",
+        "zero_trades_21d",
+        "zero_trades_126d",
+        "zero_trades_252d",
+        "rmax1_21d",
+        "rskew_21d",
+        "iskew_capm_21d",
+        "iskew_ff3_21d",
+        "iskew_hxz4_21d",
+        "coskew_21d",
+        "ret_1_0",
+        "betadown_252d",
+        "bidaskhl_21d",
+        "ret_3_1",
+        "ret_9_1",
+        "ret_12_7",
+        "corr_1260d",
+        "rmax5_21d",
+        "rmax5_rvol_21d",
+        "ni_be",
+        "ocf_at",
+        "ocf_at_chg1",
+        "mispricing_perf",
+        "mispricing_mgmt",
+        "qmj",
+        "qmj_prof",
+        "qmj_growth",
+        "qmj_safety"
+      ],
+      "files": [
+        {
+          "name": "jkp_1963.parquet",
+          "rows": 24348,
+          "sha256": "64a2b7f30520f3d8f2bfb88ab7691453dac7495cd58fb66e5c68506dbfbdd30d"
+        },
+        {
+          "name": "jkp_1964.parquet",
+          "rows": 24867,
+          "sha256": "b03c708392b940dd67f553f189978363071f8f590bb618fd7d8e942064b8ed61"
+        },
+        {
+          "name": "jkp_1965.parquet",
+          "rows": 25411,
+          "sha256": "8ab1a5a30fbf2f5aaee484f360ca2a1cca5b76243707a32284e6e9b3adaa3b28"
+        },
+        {
+          "name": "jkp_1966.parquet",
+          "rows": 25717,
+          "sha256": "97c4a7ffb4b60a5d96510d5d16269760ff903c8fa1d12e6fe30ffe42980d5f37"
+        },
+        {
+          "name": "jkp_1967.parquet",
+          "rows": 25860,
+          "sha256": "b9c63a825af1a56e4125c347203eb3f3fac3172a35ab2e91f92d73936f609a98"
+        },
+        {
+          "name": "jkp_1968.parquet",
+          "rows": 25845,
+          "sha256": "a73ddb095f1b2cd9acfec002d5bffbc6827f096d75decb2b4521713afdbb47a7"
+        },
+        {
+          "name": "jkp_1969.parquet",
+          "rows": 26693,
+          "sha256": "c41d382c455bd90f1e2de163d4e85d92056915d922e041c38d5ee40fd929a3c5"
+        },
+        {
+          "name": "jkp_1970.parquet",
+          "rows": 27842,
+          "sha256": "7121b4914b4481a1618303e2c6d3595e738aa9187235f64e741dc2e6d5ad0d59"
+        },
+        {
+          "name": "jkp_1971.parquet",
+          "rows": 28689,
+          "sha256": "cdc83fb85e34c96fc6d2afa6eb5344438deac4e7cd1e769ebef4c2a7c14eaaf2"
+        },
+        {
+          "name": "jkp_1972.parquet",
+          "rows": 33125,
+          "sha256": "375db310a93b925a683f5811f392cc3c5c521d446f399f78ae521e07664f31d8"
+        },
+        {
+          "name": "jkp_1973.parquet",
+          "rows": 64722,
+          "sha256": "2757a652c1d98558b4174ceb8d94d7a1c45a9a5fa9abc8e7b1557240ca246b0b"
+        },
+        {
+          "name": "jkp_1974.parquet",
+          "rows": 60655,
+          "sha256": "c82e498e6df70c442d2bc4cec161b20f6a8107c393cc9a6bd57713ed62c3ab70"
+        },
+        {
+          "name": "jkp_1975.parquet",
+          "rows": 58673,
+          "sha256": "e2403cda7432c0103a4ae08b2bea94d0ff4f20bcd7076a825239026d5dd7ecd5"
+        },
+        {
+          "name": "jkp_1976.parquet",
+          "rows": 58669,
+          "sha256": "fc77bbc195ec08d069995bc3936c6d6d12da09fb51261116e24496f554ed76bd"
+        },
+        {
+          "name": "jkp_1977.parquet",
+          "rows": 58356,
+          "sha256": "d552a69051067e6497d2ea20ef35560086d5e0ae18804066a8c2a411faa8fd85"
+        },
+        {
+          "name": "jkp_1978.parquet",
+          "rows": 57060,
+          "sha256": "388a02f802dd47acca9b90db54a2f56d4d33b95b3d4e71e1f1d3c0118fc5f7a5"
+        },
+        {
+          "name": "jkp_1979.parquet",
+          "rows": 56196,
+          "sha256": "1338e3713e655a43a9f384e1a264f7c363e86d91ea73024ad5bb0717e690e08e"
+        },
+        {
+          "name": "jkp_1980.parquet",
+          "rows": 56813,
+          "sha256": "18acf2d8618148452554f21dfc4080fa117ca5471c6e88b5d3e036f40f4c7524"
+        },
+        {
+          "name": "jkp_1981.parquet",
+          "rows": 60757,
+          "sha256": "0753bfdbb1bdcb4406fc492876cf214c6a54e79f1fc173cdb51bbe6cbb431999"
+        },
+        {
+          "name": "jkp_1982.parquet",
+          "rows": 62559,
+          "sha256": "14ea3260036a24e729547f431b3a3e556127ad0b7a5e007eb911120a2f968dbe"
+        },
+        {
+          "name": "jkp_1983.parquet",
+          "rows": 66811,
+          "sha256": "ceb2bd77071352a7e63f387b4998daeae9e4d252f84da8bdb99dae86f5bffe1b"
+        },
+        {
+          "name": "jkp_1984.parquet",
+          "rows": 72862,
+          "sha256": "b0096b3b26283a6bbccc5dc204a0ad59a0a22f0bfd9cdc2f7d14f457a078e512"
+        },
+        {
+          "name": "jkp_1985.parquet",
+          "rows": 72408,
+          "sha256": "cd02af5d5f5652a9c5e6c6f2a2038fdda98232bc62b1744546121a16ffb3643f"
+        },
+        {
+          "name": "jkp_1986.parquet",
+          "rows": 73683,
+          "sha256": "fae7e88ed2769bf9b38aa64ddae7525fc3f9b71d869e87b37d7eca9d4f0a20cb"
+        },
+        {
+          "name": "jkp_1987.parquet",
+          "rows": 78246,
+          "sha256": "cd4d26fbef55b85c1d5277c70d5da7433c5126f1b8763f6e0d46616ce3be6feb"
+        },
+        {
+          "name": "jkp_1988.parquet",
+          "rows": 77969,
+          "sha256": "f5815385404ef2082d7f3585806af58c50fb7232aad9fa469083e77b44ed3e23"
+        },
+        {
+          "name": "jkp_1989.parquet",
+          "rows": 74883,
+          "sha256": "f005232e892ef024017ba26a3af1010b1a927ecd7b3700d0b4757a1d46ed30ef"
+        },
+        {
+          "name": "jkp_1990.parquet",
+          "rows": 73316,
+          "sha256": "f9eff39a3b3c0f4f6fd1ed95b810fd94be76edd394acdda42705e16582a01f50"
+        },
+        {
+          "name": "jkp_1991.parquet",
+          "rows": 72197,
+          "sha256": "7d63d888161a10cce9fe48f6dc503e2d7ce9eda29f5793549650a9b643848e77"
+        },
+        {
+          "name": "jkp_1992.parquet",
+          "rows": 73958,
+          "sha256": "c9d87c672e6069b0dae80af2f9523509a405a002853b294a2b931b39b6f09b93"
+        },
+        {
+          "name": "jkp_1993.parquet",
+          "rows": 77450,
+          "sha256": "5e3bcb3ac6b533771ae0f28e1bbf2ea70b5a264873ca8eb32343dcfef0c00342"
+        },
+        {
+          "name": "jkp_1994.parquet",
+          "rows": 84211,
+          "sha256": "686154b55b2c27f921cd35ba555b47b29d2ec9c31c85b5bd205e2a7dc0bde2f4"
+        },
+        {
+          "name": "jkp_1995.parquet",
+          "rows": 86535,
+          "sha256": "2e9dece6fd43ec2af55a361c73de8397278b48c963446a323da95818be9deb4a"
+        },
+        {
+          "name": "jkp_1996.parquet",
+          "rows": 91992,
+          "sha256": "3d1bb9eda65b5116dd39e46f37615ca265fed79515e158d7ed76a55f83216483"
+        },
+        {
+          "name": "jkp_1997.parquet",
+          "rows": 95422,
+          "sha256": "55ad86c6eab3c9c6e94c2b240f9bb97f636bbd99947c786abc764ab759695dc9"
+        },
+        {
+          "name": "jkp_1998.parquet",
+          "rows": 93723,
+          "sha256": "a95e3eb9d0b19e6db44fce2edbd7f3784a9083594f26807e4c06ffa7c7715c69"
+        },
+        {
+          "name": "jkp_1999.parquet",
+          "rows": 87699,
+          "sha256": "6259982a6fc77404d03bb8e78f3719b7e6f46d93144bfb92a5ac1acda3b2d575"
+        },
+        {
+          "name": "jkp_2000.parquet",
+          "rows": 85054,
+          "sha256": "d5119ff47e0d3f059508e03951469f6a1932ecd69aa5810005b4c4ba548793f1"
+        },
+        {
+          "name": "jkp_2001.parquet",
+          "rows": 77550,
+          "sha256": "3c667581e46d7f02817e36e9fa2efe1acc2d68e8167adeb7b9fcaa12bb4999b9"
+        },
+        {
+          "name": "jkp_2002.parquet",
+          "rows": 70499,
+          "sha256": "f764f6041c9ff1fc83eb77dde9a0617baadc770e4bca12c9a9562b5c1f1f6692"
+        },
+        {
+          "name": "jkp_2003.parquet",
+          "rows": 65212,
+          "sha256": "92faf4fcade5389d62edc431fc83e1c604f1cf217aa05cdedee1496b87abf524"
+        },
+        {
+          "name": "jkp_2004.parquet",
+          "rows": 63304,
+          "sha256": "ad5dd4c2decde587c4293c66d95bba7760726894d04c304bd43e5f0bdba69b43"
+        },
+        {
+          "name": "jkp_2005.parquet",
+          "rows": 62837,
+          "sha256": "c7d754277469e04e7d39f6846842896530c5965441f5ac6940d48b514d4e7c46"
+        },
+        {
+          "name": "jkp_2006.parquet",
+          "rows": 62004,
+          "sha256": "d589224ad2aa8f6e531bf277fc54b56a47335bdf76f302934e2ee0c04d45b470"
+        },
+        {
+          "name": "jkp_2007.parquet",
+          "rows": 61212,
+          "sha256": "7e56222c5c952740dff755d9edae06a812fd81870da7fd8ce02cd4fe268e796e"
+        },
+        {
+          "name": "jkp_2008.parquet",
+          "rows": 59243,
+          "sha256": "c2c9534953adaa2d3cad64064e9bf66879834ed8e05255b77d99ee3e922c9d75"
+        },
+        {
+          "name": "jkp_2009.parquet",
+          "rows": 55349,
+          "sha256": "2a1dfa52bc3697f6086a12f19ec3d3794aea9a5dc40a0cf2c89e2efb5fc6d456"
+        },
+        {
+          "name": "jkp_2010.parquet",
+          "rows": 53379,
+          "sha256": "a6edec0971e5f0cb4d23a43c1d171fcc1c662091bc96fa7f18ab22e3dc04c374"
+        },
+        {
+          "name": "jkp_2011.parquet",
+          "rows": 51843,
+          "sha256": "317cdeb09076c6d72afe06ed75cfd5033203c7ed6fd2643c86d2c289996d3b46"
+        },
+        {
+          "name": "jkp_2012.parquet",
+          "rows": 50353,
+          "sha256": "df70ce8d43fc512a6f1342f5812b06318621a10d27db6b5aa9f3ff385b2f2313"
+        },
+        {
+          "name": "jkp_2013.parquet",
+          "rows": 49418,
+          "sha256": "661adcf67252c360087a4ebbc07bf4fb800dd82bb24705977e69786217cef104"
+        },
+        {
+          "name": "jkp_2014.parquet",
+          "rows": 50718,
+          "sha256": "0ee26bebec8cffe9e7b2fd4acdb0326c6f89f12c1833aa170b586cfc1c9db11a"
+        },
+        {
+          "name": "jkp_2015.parquet",
+          "rows": 51575,
+          "sha256": "b890f3ffef978f2911a9892f17c7c1fe8df854e1571e1acd5ffdfa14ec620734"
+        },
+        {
+          "name": "jkp_2016.parquet",
+          "rows": 50375,
+          "sha256": "f71e651593e822a834c4b30d96990afd5910887eb3ca1fab5d89b3982d21fbac"
+        },
+        {
+          "name": "jkp_2017.parquet",
+          "rows": 49683,
+          "sha256": "f99b4d5dd0f989e7cb8af801b8bcb4a3ec3133fa01f225f27ceae204f3838b83"
+        },
+        {
+          "name": "jkp_2018.parquet",
+          "rows": 49979,
+          "sha256": "12e1837f09d6de08db7de293ce01330e7432c08e9f4cdec0b10e3c0105d6b3af"
+        },
+        {
+          "name": "jkp_2019.parquet",
+          "rows": 50249,
+          "sha256": "cf0bdac4e1573b944e972fb579493d79b0d24ede5cfd064445f7d54bd06f3710"
+        },
+        {
+          "name": "jkp_2020.parquet",
+          "rows": 50724,
+          "sha256": "56d64ed8ef4b94a0a5fa7e84b9fce42d058b3097f83ec47ad1da9a363537f2e4"
+        },
+        {
+          "name": "jkp_2021.parquet",
+          "rows": 59589,
+          "sha256": "5e456d57f6b6ca100f0a2af2bd93bfb0385fda7c3ebc53454a3b5cdcf9b2858a"
+        },
+        {
+          "name": "jkp_2022.parquet",
+          "rows": 65621,
+          "sha256": "abb54007e93c50136f296a0a7ef922d872626ce777d330989d4585764b1b36ab"
+        },
+        {
+          "name": "jkp_2023.parquet",
+          "rows": 61927,
+          "sha256": "f818d038d3b33f6318a1cf16c3121199d2847bb9c320a57d22eaf08c516af0b6"
+        },
+        {
+          "name": "jkp_2024.parquet",
+          "rows": 58684,
+          "sha256": "4f4ce142f866dbcc6019438e03f92cb635416bfd47332d8ee94bb0fbaa2c76ad"
+        },
+        {
+          "name": "jkp_2025-01.parquet",
+          "rows": 4786,
+          "sha256": "b08365b6f371c4e21f32020cfab41b00606fcdffa70fe73c1f334e8ed453376e"
+        }
+      ],
+      "periods": [
+        "1963",
+        "1964",
+        "1965",
+        "1966",
+        "1967",
+        "1968",
+        "1969",
+        "1970",
+        "1971",
+        "1972",
+        "1973",
+        "1974",
+        "1975",
+        "1976",
+        "1977",
+        "1978",
+        "1979",
+        "1980",
+        "1981",
+        "1982",
+        "1983",
+        "1984",
+        "1985",
+        "1986",
+        "1987",
+        "1988",
+        "1989",
+        "1990",
+        "1991",
+        "1992",
+        "1993",
+        "1994",
+        "1995",
+        "1996",
+        "1997",
+        "1998",
+        "1999",
+        "2000",
+        "2001",
+        "2002",
+        "2003",
+        "2004",
+        "2005",
+        "2006",
+        "2007",
+        "2008",
+        "2009",
+        "2010",
+        "2011",
+        "2012",
+        "2013",
+        "2014",
+        "2015",
+        "2016",
+        "2017",
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024",
+        "2025-01"
+      ],
+      "rows": 3687389,
+      "git_sha": "b2c7ece23103babe01fb0c97b0cac6fe05b7bfe1",
+      "elapsed_seconds": 1655.5419078751002,
+      "connection_attempts": 1,
+      "select_calls": 63,
+      "query_template_sha256": "69bcb4cc2465f92913b09a6d892fdb9aaf38058bc5eea5e0e3bf7f84e23ffe14",
+      "download_design": "year-sized SELECTs on bounded persistent connections"
+    },
+    "protocol": {
+      "protocol_version": "final-empirical-rebuild-v2-complete-payoffs",
+      "characteristic_selection": {
+        "method": "initial_training_coverage",
+        "reference_start": "1963-01-01",
+        "reference_end": "1972-12-31",
+        "count": 130,
+        "candidate_count": 153,
+        "tie_break": "characteristic name ascending",
+        "primary_source": "https://www.nber.org/system/files/working_papers/w33012/revisions/w33012.rev0.pdf",
+        "source_sha256": "5ba2ce32de3ac9a21e5dd6396dc82d85378e48814910baf536a1af013372f424",
+        "section": "2.5, printed page 15",
+        "exact_author_list_found": false,
+        "searched_official_materials": [
+          "https://www.antoinedidisheim.com/research",
+          "https://www.bryankellyacademic.org/",
+          "https://github.com/AntoineDidisheim",
+          "https://github.com/AntoineDidisheim/data_share",
+          "https://github.com/bkelly-lab",
+          "NBER September 2024 paper and appendix"
+        ],
+        "interpretation": "Select the 130 best-covered characteristics using only 1963-1972 initial training. The candidate dictionary is a fixed research specification; the authors' 1963-2023 coverage selection is not used."
+      },
+      "jkp": {
+        "documentation": "https://jkpfactors-data.s3.amazonaws.com/documents/Documentation.pdf",
+        "code_commit": "67174c7f170bf8b952b3c86876f187fd9970b5ba",
+        "return_source": "https://github.com/bkelly-lab/ReplicationCrisis/blob/67174c7f170bf8b952b3c86876f187fd9970b5ba/GlobalFactors/project_macros.sas",
+        "return_source_sha256": "5bdb898e0ee27cc79eb6590d6803ca4d59059ffc2426937c0e05b0a07749abb0",
+        "return_rules": {
+          "lines_428_451": "CRSP return compounded with delisting return. Upstream code assigns -0.30 to missing performance-related delisting returns (code 500 or 520-584). This project consumes documented JKP returns; it never invents replacements.",
+          "lines_454_465": "Monthly ret_exc subtracts CRSP t30ret, falling back to French rf, in decimal units.",
+          "lines_818_825": "Lead return is next security observation ret_exc, invalidated when security changes or next ret_lag_dif is not one."
+        }
+      },
+      "timing": {
+        "annual_refit": "January formation close; last December label observed at that close",
+        "scale_available_at": "1978-01-31",
+        "status": "user_confirmed",
+        "conflict": "Full December 1977 formation validation is incompatible with fixing kappa before January 1978.",
+        "resolution": "User selected January 31, 1978 before February first OOS payoff."
+      },
+      "linear_specification": {
+        "features": "intercept plus 130 ranked characteristics",
+        "status": "user_confirmed",
+        "confirmation": "User confirmed f(z)=beta_0+beta^T z with intercept and 130 characteristics.",
+        "historical_verification": {
+          "commit": "ee5502e3c27ce5588cf6416e59bcc7e8a26e66f3",
+          "former_branch": "empirics-plugin-spectral-gross-20260928",
+          "source": "https://github.com/ENRICOBIGNOZZI/portfolio_learnability/blob/ee5502e3c27ce5588cf6416e59bcc7e8a26e66f3/Kernels/kernel_function.py",
+          "linear_gram_lines": [
+            27,
+            29
+          ],
+          "linear_features_lines": [
+            166,
+            173
+          ],
+          "kernel": "1 + X @ Y.T",
+          "features": "column_stack(ones, X)"
+        }
+      },
+      "representations": [
+        "linear",
+        "gaussian",
+        "matern32"
+      ],
+      "features": 10000,
+      "seed": 0,
+      "lambda_count": 120,
+      "lambda_rule": "Separate frozen grid per representation from its initial 1963-1972 managed-payoff spectrum; 120 effective-complexity-spaced positive penalties.",
+      "rank_singleton": "0.0",
+      "return_units": "decimal",
+      "common_scale_target": 1.8,
+      "no_monthly_normalization": true,
+      "no_gross_cap": true,
+      "candidate_dictionary": {
+        "source": "https://github.com/bkelly-lab/ReplicationCrisis/blob/67174c7f170bf8b952b3c86876f187fd9970b5ba/GlobalFactors/Factor%20Details.xlsx",
+        "sha256": "4c579e4dcb93eed0897941d8f5f84e9cc784a2d3fc696be68a29a24e68206141",
+        "column": "abr_jkp",
+        "count": 153,
+        "verified_against_characteristics_json": true
+      },
+      "payoff_sample": {
+        "method": "drop_missing_ret_exc_lead1m",
+        "status": "user_confirmed",
+        "order": "After formation metadata and 30% characteristic-missingness filters, before monthly ranking and N_t. Characteristic coverage selection remains on the pre-payoff-filter 1963-1972 reference universe.",
+        "nonfinite_returns": "Excluded along with missing returns; no imputation or fallback recovery.",
+        "interpretation": "Research sample conditional on future payoff availability, not an implementable formation-time eligibility rule. This choice is ours and is not attributed to Didisheim et al.",
+        "audit": "Private excluded_returns.csv plus monthly before/after counts; retained payoffs must all be finite."
+      }
+    },
+    "protocol_sha256": "b5629b8922ad23ddc40291ad02ef7f0b6f3e964d14526e7f2d5448505af6aefc",
+    "characteristic_provenance": {
+      "method": "initial_training_coverage",
+      "reference_start": "1963-01-01",
+      "reference_end": "1972-12-31",
+      "count": 130,
+      "candidate_count": 153,
+      "tie_break": "characteristic name ascending",
+      "primary_source": "https://www.nber.org/system/files/working_papers/w33012/revisions/w33012.rev0.pdf",
+      "source_sha256": "5ba2ce32de3ac9a21e5dd6396dc82d85378e48814910baf536a1af013372f424",
+      "section": "2.5, printed page 15",
+      "exact_author_list_found": false,
+      "searched_official_materials": [
+        "https://www.antoinedidisheim.com/research",
+        "https://www.bryankellyacademic.org/",
+        "https://github.com/AntoineDidisheim",
+        "https://github.com/AntoineDidisheim/data_share",
+        "https://github.com/bkelly-lab",
+        "NBER September 2024 paper and appendix"
+      ],
+      "interpretation": "Select the 130 best-covered characteristics using only 1963-1972 initial training. The candidate dictionary is a fixed research specification; the authors' 1963-2023 coverage selection is not used.",
+      "candidates": [
+        "niq_su",
+        "ret_6_1",
+        "ret_12_1",
+        "saleq_su",
+        "tax_gr1a",
+        "ni_inc8q",
+        "prc_highprc_252d",
+        "resff3_6_1",
+        "resff3_12_1",
+        "be_me",
+        "debt_me",
+        "at_me",
+        "ret_60_12",
+        "ni_me",
+        "fcf_me",
+        "div12m_me",
+        "eqpo_me",
+        "eqnpo_me",
+        "sale_gr3",
+        "sale_gr1",
+        "ebitda_mev",
+        "sale_me",
+        "ocf_me",
+        "ival_me",
+        "bev_mev",
+        "netdebt_me",
+        "eq_dur",
+        "capex_abn",
+        "at_gr1",
+        "ppeinv_gr1a",
+        "noa_at",
+        "noa_gr1a",
+        "lnoa_gr1a",
+        "capx_gr1",
+        "capx_gr2",
+        "capx_gr3",
+        "chcsho_12m",
+        "eqnpo_12m",
+        "debt_gr3",
+        "inv_gr1",
+        "inv_gr1a",
+        "oaccruals_at",
+        "taccruals_at",
+        "cowc_gr1a",
+        "coa_gr1a",
+        "col_gr1a",
+        "nncoa_gr1a",
+        "ncoa_gr1a",
+        "ncol_gr1a",
+        "nfna_gr1a",
+        "sti_gr1a",
+        "lti_gr1a",
+        "fnl_gr1a",
+        "be_gr1a",
+        "oaccruals_ni",
+        "taccruals_ni",
+        "netis_at",
+        "eqnetis_at",
+        "dbnetis_at",
+        "niq_be",
+        "niq_be_chg1",
+        "niq_at",
+        "niq_at_chg1",
+        "ebit_bev",
+        "ebit_sale",
+        "sale_bev",
+        "at_turnover",
+        "gp_at",
+        "gp_atl1",
+        "ope_be",
+        "ope_bel1",
+        "op_at",
+        "op_atl1",
+        "cop_at",
+        "cop_atl1",
+        "f_score",
+        "o_score",
+        "z_score",
+        "pi_nix",
+        "at_be",
+        "saleq_gr1",
+        "rd_me",
+        "rd_sale",
+        "opex_at",
+        "emp_gr1",
+        "rd5_at",
+        "age",
+        "dsale_dinv",
+        "dsale_drec",
+        "dgp_dsale",
+        "dsale_dsga",
+        "sale_emp_gr1",
+        "tangibility",
+        "kz_index",
+        "ocfq_saleq_std",
+        "cash_at",
+        "ni_ar1",
+        "ni_ivol",
+        "earnings_variability",
+        "aliq_at",
+        "aliq_mat",
+        "seas_1_1an",
+        "seas_1_1na",
+        "seas_2_5an",
+        "seas_2_5na",
+        "seas_6_10an",
+        "seas_6_10na",
+        "seas_11_15an",
+        "seas_11_15na",
+        "seas_16_20an",
+        "seas_16_20na",
+        "market_equity",
+        "ivol_ff3_21d",
+        "ivol_capm_252d",
+        "ivol_capm_21d",
+        "ivol_hxz4_21d",
+        "rvol_21d",
+        "beta_60m",
+        "betabab_1260d",
+        "beta_dimson_21d",
+        "turnover_126d",
+        "turnover_var_126d",
+        "dolvol_126d",
+        "dolvol_var_126d",
+        "prc",
+        "ami_126d",
+        "zero_trades_21d",
+        "zero_trades_126d",
+        "zero_trades_252d",
+        "rmax1_21d",
+        "rskew_21d",
+        "iskew_capm_21d",
+        "iskew_ff3_21d",
+        "iskew_hxz4_21d",
+        "coskew_21d",
+        "ret_1_0",
+        "betadown_252d",
+        "bidaskhl_21d",
+        "ret_3_1",
+        "ret_9_1",
+        "ret_12_7",
+        "corr_1260d",
+        "rmax5_21d",
+        "rmax5_rvol_21d",
+        "ni_be",
+        "ocf_at",
+        "ocf_at_chg1",
+        "mispricing_perf",
+        "mispricing_mgmt",
+        "qmj",
+        "qmj_prof",
+        "qmj_growth",
+        "qmj_safety"
+      ],
+      "selected": [
+        "age",
+        "aliq_at",
+        "aliq_mat",
+        "ami_126d",
+        "at_be",
+        "at_gr1",
+        "at_me",
+        "at_turnover",
+        "be_gr1a",
+        "be_me",
+        "beta_60m",
+        "beta_dimson_21d",
+        "betabab_1260d",
+        "betadown_252d",
+        "bev_mev",
+        "bidaskhl_21d",
+        "capex_abn",
+        "capx_gr1",
+        "capx_gr2",
+        "capx_gr3",
+        "cash_at",
+        "chcsho_12m",
+        "coa_gr1a",
+        "col_gr1a",
+        "cop_at",
+        "cop_atl1",
+        "corr_1260d",
+        "coskew_21d",
+        "cowc_gr1a",
+        "dbnetis_at",
+        "debt_gr3",
+        "debt_me",
+        "dgp_dsale",
+        "div12m_me",
+        "dolvol_126d",
+        "dolvol_var_126d",
+        "dsale_dinv",
+        "dsale_drec",
+        "dsale_dsga",
+        "earnings_variability",
+        "ebit_bev",
+        "ebit_sale",
+        "ebitda_mev",
+        "emp_gr1",
+        "eq_dur",
+        "eqnpo_12m",
+        "f_score",
+        "fcf_me",
+        "fnl_gr1a",
+        "gp_at",
+        "gp_atl1",
+        "inv_gr1",
+        "inv_gr1a",
+        "iskew_capm_21d",
+        "iskew_ff3_21d",
+        "iskew_hxz4_21d",
+        "ival_me",
+        "ivol_capm_21d",
+        "ivol_capm_252d",
+        "ivol_ff3_21d",
+        "kz_index",
+        "lnoa_gr1a",
+        "lti_gr1a",
+        "market_equity",
+        "mispricing_mgmt",
+        "mispricing_perf",
+        "ncoa_gr1a",
+        "ncol_gr1a",
+        "netdebt_me",
+        "nfna_gr1a",
+        "ni_ar1",
+        "ni_be",
+        "ni_ivol",
+        "ni_me",
+        "nncoa_gr1a",
+        "noa_at",
+        "noa_gr1a",
+        "o_score",
+        "oaccruals_at",
+        "oaccruals_ni",
+        "ocf_at",
+        "ocf_at_chg1",
+        "ocf_me",
+        "op_at",
+        "op_atl1",
+        "ope_be",
+        "ope_bel1",
+        "opex_at",
+        "pi_nix",
+        "ppeinv_gr1a",
+        "prc",
+        "prc_highprc_252d",
+        "qmj",
+        "qmj_growth",
+        "qmj_prof",
+        "qmj_safety",
+        "resff3_12_1",
+        "resff3_6_1",
+        "ret_12_1",
+        "ret_12_7",
+        "ret_1_0",
+        "ret_3_1",
+        "ret_60_12",
+        "ret_6_1",
+        "ret_9_1",
+        "rmax1_21d",
+        "rmax5_21d",
+        "rmax5_rvol_21d",
+        "rskew_21d",
+        "rvol_21d",
+        "sale_bev",
+        "sale_emp_gr1",
+        "sale_gr1",
+        "sale_gr3",
+        "sale_me",
+        "saleq_gr1",
+        "seas_1_1an",
+        "seas_1_1na",
+        "seas_2_5an",
+        "seas_2_5na",
+        "taccruals_at",
+        "taccruals_ni",
+        "tangibility",
+        "tax_gr1a",
+        "turnover_126d",
+        "turnover_var_126d",
+        "z_score",
+        "zero_trades_126d",
+        "zero_trades_21d",
+        "zero_trades_252d"
+      ],
+      "coverage_observations": 223762,
+      "coverage": [
+        {
+          "characteristic": "age",
+          "missing_share": 0.0
+        },
+        {
+          "characteristic": "market_equity",
+          "missing_share": 0.0
+        },
+        {
+          "characteristic": "prc",
+          "missing_share": 0.0
+        },
+        {
+          "characteristic": "bidaskhl_21d",
+          "missing_share": 0.011404974928718947
+        },
+        {
+          "characteristic": "ret_1_0",
+          "missing_share": 0.012446259865392717
+        },
+        {
+          "characteristic": "zero_trades_21d",
+          "missing_share": 0.01263842833010076
+        },
+        {
+          "characteristic": "dolvol_126d",
+          "missing_share": 0.023288136502176426
+        },
+        {
+          "characteristic": "turnover_126d",
+          "missing_share": 0.023288136502176426
+        },
+        {
+          "characteristic": "zero_trades_126d",
+          "missing_share": 0.023288136502176426
+        },
+        {
+          "characteristic": "dolvol_var_126d",
+          "missing_share": 0.023471366898758506
+        },
+        {
+          "characteristic": "turnover_var_126d",
+          "missing_share": 0.023471366898758506
+        },
+        {
+          "characteristic": "ret_3_1",
+          "missing_share": 0.02394955354349715
+        },
+        {
+          "characteristic": "mispricing_perf",
+          "missing_share": 0.033884216265496425
+        },
+        {
+          "characteristic": "ami_126d",
+          "missing_share": 0.037191301472099814
+        },
+        {
+          "characteristic": "zero_trades_252d",
+          "missing_share": 0.03932749975420313
+        },
+        {
+          "characteristic": "ret_6_1",
+          "missing_share": 0.040614581564340724
+        },
+        {
+          "characteristic": "beta_dimson_21d",
+          "missing_share": 0.04750136305538921
+        },
+        {
+          "characteristic": "coskew_21d",
+          "missing_share": 0.04750136305538921
+        },
+        {
+          "characteristic": "iskew_capm_21d",
+          "missing_share": 0.04750136305538921
+        },
+        {
+          "characteristic": "iskew_ff3_21d",
+          "missing_share": 0.04750136305538921
+        },
+        {
+          "characteristic": "ivol_capm_21d",
+          "missing_share": 0.04750136305538921
+        },
+        {
+          "characteristic": "ivol_ff3_21d",
+          "missing_share": 0.04750136305538921
+        },
+        {
+          "characteristic": "rmax1_21d",
+          "missing_share": 0.04750136305538921
+        },
+        {
+          "characteristic": "rmax5_21d",
+          "missing_share": 0.04750136305538921
+        },
+        {
+          "characteristic": "rskew_21d",
+          "missing_share": 0.04750136305538921
+        },
+        {
+          "characteristic": "rvol_21d",
+          "missing_share": 0.04750136305538921
+        },
+        {
+          "characteristic": "ivol_capm_252d",
+          "missing_share": 0.05298486785066281
+        },
+        {
+          "characteristic": "prc_highprc_252d",
+          "missing_share": 0.05487080022523927
+        },
+        {
+          "characteristic": "ret_9_1",
+          "missing_share": 0.0644836924947042
+        },
+        {
+          "characteristic": "betadown_252d",
+          "missing_share": 0.06867564644577717
+        },
+        {
+          "characteristic": "div12m_me",
+          "missing_share": 0.07991079808010293
+        },
+        {
+          "characteristic": "rmax5_rvol_21d",
+          "missing_share": 0.08034429438421176
+        },
+        {
+          "characteristic": "seas_1_1an",
+          "missing_share": 0.08044708216766028
+        },
+        {
+          "characteristic": "seas_1_1na",
+          "missing_share": 0.08085376426739121
+        },
+        {
+          "characteristic": "ret_12_1",
+          "missing_share": 0.08767351024749515
+        },
+        {
+          "characteristic": "ret_12_7",
+          "missing_share": 0.08786120967814015
+        },
+        {
+          "characteristic": "eqnpo_12m",
+          "missing_share": 0.08795059035939967
+        },
+        {
+          "characteristic": "chcsho_12m",
+          "missing_share": 0.08979630142740946
+        },
+        {
+          "characteristic": "qmj_safety",
+          "missing_share": 0.10461114934618032
+        },
+        {
+          "characteristic": "resff3_12_1",
+          "missing_share": 0.17395715090140418
+        },
+        {
+          "characteristic": "resff3_6_1",
+          "missing_share": 0.1741046290254824
+        },
+        {
+          "characteristic": "ni_me",
+          "missing_share": 0.23270707269330804
+        },
+        {
+          "characteristic": "sale_me",
+          "missing_share": 0.2367962388609326
+        },
+        {
+          "characteristic": "qmj_prof",
+          "missing_share": 0.23758725789007962
+        },
+        {
+          "characteristic": "at_me",
+          "missing_share": 0.2383872149873526
+        },
+        {
+          "characteristic": "ebit_sale",
+          "missing_share": 0.2428830632547081
+        },
+        {
+          "characteristic": "op_at",
+          "missing_share": 0.24500585443462253
+        },
+        {
+          "characteristic": "debt_me",
+          "missing_share": 0.24503713767306334
+        },
+        {
+          "characteristic": "netdebt_me",
+          "missing_share": 0.24503713767306334
+        },
+        {
+          "characteristic": "ocf_me",
+          "missing_share": 0.24724037146611133
+        },
+        {
+          "characteristic": "gp_at",
+          "missing_share": 0.2473208140792449
+        },
+        {
+          "characteristic": "opex_at",
+          "missing_share": 0.24753979674833082
+        },
+        {
+          "characteristic": "ebitda_mev",
+          "missing_share": 0.25062343025178535
+        },
+        {
+          "characteristic": "ocf_at",
+          "missing_share": 0.25096307684057173
+        },
+        {
+          "characteristic": "beta_60m",
+          "missing_share": 0.2513340066677988
+        },
+        {
+          "characteristic": "at_turnover",
+          "missing_share": 0.2540377722759003
+        },
+        {
+          "characteristic": "sale_gr1",
+          "missing_share": 0.25823866429509923
+        },
+        {
+          "characteristic": "at_gr1",
+          "missing_share": 0.26036145547501366
+        },
+        {
+          "characteristic": "tax_gr1a",
+          "missing_share": 0.2603703935431396
+        },
+        {
+          "characteristic": "mispricing_mgmt",
+          "missing_share": 0.26559022532869747
+        },
+        {
+          "characteristic": "op_atl1",
+          "missing_share": 0.2657511105549647
+        },
+        {
+          "characteristic": "dbnetis_at",
+          "missing_share": 0.2660684119734361
+        },
+        {
+          "characteristic": "gp_atl1",
+          "missing_share": 0.2678247423601863
+        },
+        {
+          "characteristic": "fnl_gr1a",
+          "missing_share": 0.2680124417908313
+        },
+        {
+          "characteristic": "nfna_gr1a",
+          "missing_share": 0.2680124417908313
+        },
+        {
+          "characteristic": "be_me",
+          "missing_share": 0.26874983241122263
+        },
+        {
+          "characteristic": "at_be",
+          "missing_share": 0.2688034608199784
+        },
+        {
+          "characteristic": "ni_be",
+          "missing_share": 0.2697330199050777
+        },
+        {
+          "characteristic": "corr_1260d",
+          "missing_share": 0.27188709432343294
+        },
+        {
+          "characteristic": "ocf_at_chg1",
+          "missing_share": 0.272669175284454
+        },
+        {
+          "characteristic": "betabab_1260d",
+          "missing_share": 0.2733529374960896
+        },
+        {
+          "characteristic": "col_gr1a",
+          "missing_share": 0.2733708136323415
+        },
+        {
+          "characteristic": "bev_mev",
+          "missing_share": 0.27407692101429193
+        },
+        {
+          "characteristic": "sale_bev",
+          "missing_share": 0.2741886468658664
+        },
+        {
+          "characteristic": "pi_nix",
+          "missing_share": 0.2744165676030783
+        },
+        {
+          "characteristic": "ncoa_gr1a",
+          "missing_share": 0.2744880721480859
+        },
+        {
+          "characteristic": "ebit_bev",
+          "missing_share": 0.2761013934448209
+        },
+        {
+          "characteristic": "be_gr1a",
+          "missing_share": 0.3005201955649306
+        },
+        {
+          "characteristic": "cash_at",
+          "missing_share": 0.30303179270832403
+        },
+        {
+          "characteristic": "o_score",
+          "missing_share": 0.30631206371054964
+        },
+        {
+          "characteristic": "f_score",
+          "missing_share": 0.3075097648394276
+        },
+        {
+          "characteristic": "ncol_gr1a",
+          "missing_share": 0.3088013156836281
+        },
+        {
+          "characteristic": "eq_dur",
+          "missing_share": 0.3092526881239889
+        },
+        {
+          "characteristic": "dgp_dsale",
+          "missing_share": 0.30999454777844315
+        },
+        {
+          "characteristic": "nncoa_gr1a",
+          "missing_share": 0.3101330878343955
+        },
+        {
+          "characteristic": "ope_be",
+          "missing_share": 0.3114872051554777
+        },
+        {
+          "characteristic": "tangibility",
+          "missing_share": 0.31390048354948563
+        },
+        {
+          "characteristic": "sale_gr3",
+          "missing_share": 0.3244786871765537
+        },
+        {
+          "characteristic": "inv_gr1a",
+          "missing_share": 0.329202456181121
+        },
+        {
+          "characteristic": "aliq_at",
+          "missing_share": 0.33077108713722614
+        },
+        {
+          "characteristic": "coa_gr1a",
+          "missing_share": 0.33164701781356976
+        },
+        {
+          "characteristic": "cowc_gr1a",
+          "missing_share": 0.33186153144859265
+        },
+        {
+          "characteristic": "ppeinv_gr1a",
+          "missing_share": 0.33376533995942115
+        },
+        {
+          "characteristic": "ope_bel1",
+          "missing_share": 0.33405135813945175
+        },
+        {
+          "characteristic": "ival_me",
+          "missing_share": 0.3340558271735147
+        },
+        {
+          "characteristic": "dsale_drec",
+          "missing_share": 0.35428714437661446
+        },
+        {
+          "characteristic": "inv_gr1",
+          "missing_share": 0.35785343355887056
+        },
+        {
+          "characteristic": "lnoa_gr1a",
+          "missing_share": 0.35825117759047564
+        },
+        {
+          "characteristic": "noa_at",
+          "missing_share": 0.3592879934930864
+        },
+        {
+          "characteristic": "lti_gr1a",
+          "missing_share": 0.36183534290898367
+        },
+        {
+          "characteristic": "noa_gr1a",
+          "missing_share": 0.36716243151205297
+        },
+        {
+          "characteristic": "oaccruals_at",
+          "missing_share": 0.36716243151205297
+        },
+        {
+          "characteristic": "taccruals_at",
+          "missing_share": 0.36716243151205297
+        },
+        {
+          "characteristic": "oaccruals_ni",
+          "missing_share": 0.36717136958017893
+        },
+        {
+          "characteristic": "taccruals_ni",
+          "missing_share": 0.36717136958017893
+        },
+        {
+          "characteristic": "seas_2_5an",
+          "missing_share": 0.36748867099865035
+        },
+        {
+          "characteristic": "cop_at",
+          "missing_share": 0.367564644577721
+        },
+        {
+          "characteristic": "cop_atl1",
+          "missing_share": 0.367564644577721
+        },
+        {
+          "characteristic": "seas_2_5na",
+          "missing_share": 0.3686461508209615
+        },
+        {
+          "characteristic": "ret_60_12",
+          "missing_share": 0.3708761988183874
+        },
+        {
+          "characteristic": "fcf_me",
+          "missing_share": 0.37354868118804807
+        },
+        {
+          "characteristic": "aliq_mat",
+          "missing_share": 0.3792243544480296
+        },
+        {
+          "characteristic": "dsale_dinv",
+          "missing_share": 0.38182086323861963
+        },
+        {
+          "characteristic": "kz_index",
+          "missing_share": 0.383934716350408
+        },
+        {
+          "characteristic": "qmj",
+          "missing_share": 0.4058866116677541
+        },
+        {
+          "characteristic": "qmj_growth",
+          "missing_share": 0.4058866116677541
+        },
+        {
+          "characteristic": "debt_gr3",
+          "missing_share": 0.40725413609102523
+        },
+        {
+          "characteristic": "sale_emp_gr1",
+          "missing_share": 0.4080049338136055
+        },
+        {
+          "characteristic": "ni_ar1",
+          "missing_share": 0.40964953834878126
+        },
+        {
+          "characteristic": "ni_ivol",
+          "missing_share": 0.40964953834878126
+        },
+        {
+          "characteristic": "earnings_variability",
+          "missing_share": 0.4168402141561123
+        },
+        {
+          "characteristic": "dsale_dsga",
+          "missing_share": 0.41910154539197897
+        },
+        {
+          "characteristic": "capx_gr1",
+          "missing_share": 0.41912835959635686
+        },
+        {
+          "characteristic": "z_score",
+          "missing_share": 0.4375363109017617
+        },
+        {
+          "characteristic": "saleq_gr1",
+          "missing_share": 0.4530304519981051
+        },
+        {
+          "characteristic": "capx_gr2",
+          "missing_share": 0.4632556019341979
+        },
+        {
+          "characteristic": "emp_gr1",
+          "missing_share": 0.48027368364601675
+        },
+        {
+          "characteristic": "capx_gr3",
+          "missing_share": 0.5118697544712686
+        },
+        {
+          "characteristic": "capex_abn",
+          "missing_share": 0.5194045459014489
+        },
+        {
+          "characteristic": "iskew_hxz4_21d",
+          "missing_share": 0.5300006256647688
+        },
+        {
+          "characteristic": "ivol_hxz4_21d",
+          "missing_share": 0.5300006256647688
+        },
+        {
+          "characteristic": "seas_6_10an",
+          "missing_share": 0.5721838381852147
+        },
+        {
+          "characteristic": "seas_6_10na",
+          "missing_share": 0.5726486177277643
+        },
+        {
+          "characteristic": "seas_11_15an",
+          "missing_share": 0.6335347378017715
+        },
+        {
+          "characteristic": "seas_11_15na",
+          "missing_share": 0.6338118179136761
+        },
+        {
+          "characteristic": "niq_su",
+          "missing_share": 0.6381959403294573
+        },
+        {
+          "characteristic": "saleq_su",
+          "missing_share": 0.6507539260464243
+        },
+        {
+          "characteristic": "seas_16_20an",
+          "missing_share": 0.6870335445696767
+        },
+        {
+          "characteristic": "seas_16_20na",
+          "missing_share": 0.6870603587740546
+        },
+        {
+          "characteristic": "ni_inc8q",
+          "missing_share": 0.708154199551309
+        },
+        {
+          "characteristic": "sti_gr1a",
+          "missing_share": 0.8620856088165104
+        },
+        {
+          "characteristic": "niq_be",
+          "missing_share": 0.8668317229913927
+        },
+        {
+          "characteristic": "niq_at",
+          "missing_share": 0.8691511516700781
+        },
+        {
+          "characteristic": "ocfq_saleq_std",
+          "missing_share": 0.8715331468256451
+        },
+        {
+          "characteristic": "rd_me",
+          "missing_share": 0.8745810280565959
+        },
+        {
+          "characteristic": "rd_sale",
+          "missing_share": 0.8745810280565959
+        },
+        {
+          "characteristic": "eqnetis_at",
+          "missing_share": 0.9311634683279556
+        },
+        {
+          "characteristic": "eqnpo_me",
+          "missing_share": 0.9311634683279556
+        },
+        {
+          "characteristic": "netis_at",
+          "missing_share": 0.9311902825323335
+        },
+        {
+          "characteristic": "eqpo_me",
+          "missing_share": 0.9318248853692763
+        },
+        {
+          "characteristic": "niq_be_chg1",
+          "missing_share": 0.9367542299407406
+        },
+        {
+          "characteristic": "niq_at_chg1",
+          "missing_share": 0.9382424182837121
+        },
+        {
+          "characteristic": "rd5_at",
+          "missing_share": 0.9439270296118197
+        }
+      ]
+    },
+    "characteristics": [
+      "age",
+      "aliq_at",
+      "aliq_mat",
+      "ami_126d",
+      "at_be",
+      "at_gr1",
+      "at_me",
+      "at_turnover",
+      "be_gr1a",
+      "be_me",
+      "beta_60m",
+      "beta_dimson_21d",
+      "betabab_1260d",
+      "betadown_252d",
+      "bev_mev",
+      "bidaskhl_21d",
+      "capex_abn",
+      "capx_gr1",
+      "capx_gr2",
+      "capx_gr3",
+      "cash_at",
+      "chcsho_12m",
+      "coa_gr1a",
+      "col_gr1a",
+      "cop_at",
+      "cop_atl1",
+      "corr_1260d",
+      "coskew_21d",
+      "cowc_gr1a",
+      "dbnetis_at",
+      "debt_gr3",
+      "debt_me",
+      "dgp_dsale",
+      "div12m_me",
+      "dolvol_126d",
+      "dolvol_var_126d",
+      "dsale_dinv",
+      "dsale_drec",
+      "dsale_dsga",
+      "earnings_variability",
+      "ebit_bev",
+      "ebit_sale",
+      "ebitda_mev",
+      "emp_gr1",
+      "eq_dur",
+      "eqnpo_12m",
+      "f_score",
+      "fcf_me",
+      "fnl_gr1a",
+      "gp_at",
+      "gp_atl1",
+      "inv_gr1",
+      "inv_gr1a",
+      "iskew_capm_21d",
+      "iskew_ff3_21d",
+      "iskew_hxz4_21d",
+      "ival_me",
+      "ivol_capm_21d",
+      "ivol_capm_252d",
+      "ivol_ff3_21d",
+      "kz_index",
+      "lnoa_gr1a",
+      "lti_gr1a",
+      "market_equity",
+      "mispricing_mgmt",
+      "mispricing_perf",
+      "ncoa_gr1a",
+      "ncol_gr1a",
+      "netdebt_me",
+      "nfna_gr1a",
+      "ni_ar1",
+      "ni_be",
+      "ni_ivol",
+      "ni_me",
+      "nncoa_gr1a",
+      "noa_at",
+      "noa_gr1a",
+      "o_score",
+      "oaccruals_at",
+      "oaccruals_ni",
+      "ocf_at",
+      "ocf_at_chg1",
+      "ocf_me",
+      "op_at",
+      "op_atl1",
+      "ope_be",
+      "ope_bel1",
+      "opex_at",
+      "pi_nix",
+      "ppeinv_gr1a",
+      "prc",
+      "prc_highprc_252d",
+      "qmj",
+      "qmj_growth",
+      "qmj_prof",
+      "qmj_safety",
+      "resff3_12_1",
+      "resff3_6_1",
+      "ret_12_1",
+      "ret_12_7",
+      "ret_1_0",
+      "ret_3_1",
+      "ret_60_12",
+      "ret_6_1",
+      "ret_9_1",
+      "rmax1_21d",
+      "rmax5_21d",
+      "rmax5_rvol_21d",
+      "rskew_21d",
+      "rvol_21d",
+      "sale_bev",
+      "sale_emp_gr1",
+      "sale_gr1",
+      "sale_gr3",
+      "sale_me",
+      "saleq_gr1",
+      "seas_1_1an",
+      "seas_1_1na",
+      "seas_2_5an",
+      "seas_2_5na",
+      "taccruals_at",
+      "taccruals_ni",
+      "tangibility",
+      "tax_gr1a",
+      "turnover_126d",
+      "turnover_var_126d",
+      "z_score",
+      "zero_trades_126d",
+      "zero_trades_21d",
+      "zero_trades_252d"
+    ],
+    "feature_count": 130,
+    "coverage_start": "1963-01-01",
+    "coverage_end": "1972-12-31",
+    "coverage_observations": 223762,
+    "row_missing_limit": 0.3,
+    "rank": "(average_rank-1)/(observed_count-1)-0.5",
+    "imputation": "zero after ranking; neutral value, not guaranteed median with ties",
+    "recovered_returns": 0,
+    "unresolved_returns": 0,
+    "dropped_returns": 7489,
+    "excluded_returns_sha256": "78382343b6782f485331a7fc6f63cb7f7e1d4d3cef72e8cc43b27b806a5e8d84",
+    "payoff_policy": {
+      "method": "drop_missing_ret_exc_lead1m",
+      "status": "user_confirmed",
+      "order": "After formation metadata and 30% characteristic-missingness filters, before monthly ranking and N_t. Characteristic coverage selection remains on the pre-payoff-filter 1963-1972 reference universe.",
+      "nonfinite_returns": "Excluded along with missing returns; no imputation or fallback recovery.",
+      "interpretation": "Research sample conditional on future payoff availability, not an implementable formation-time eligibility rule. This choice is ours and is not attributed to Didisheim et al.",
+      "audit": "Private excluded_returns.csv plus monthly before/after counts; retained payoffs must all be finite."
+    },
+    "files": [
+      {
+        "name": "jkp_1963.parquet",
+        "rows": 10029,
+        "sha256": "363f6215065e82db9d1d1ae1f3c305cfce413f77a58bb0fcf612818060be4838"
+      },
+      {
+        "name": "jkp_1964.parquet",
+        "rows": 11511,
+        "sha256": "b056c36e919bb31bcb59914470de55c5a1ae3fade8142cef95ff26d1745e1eeb"
+      },
+      {
+        "name": "jkp_1965.parquet",
+        "rows": 12530,
+        "sha256": "3a98372814a2bc3b79dc87b1bbe0da4cc2a0b0279498735f8c69b061f964211e"
+      },
+      {
+        "name": "jkp_1966.parquet",
+        "rows": 14339,
+        "sha256": "e7cadc6ae7d756f1ae5fda618032fa32b2c63c0fd5a8c475ae7c84dd3fd3c2c8"
+      },
+      {
+        "name": "jkp_1967.parquet",
+        "rows": 15627,
+        "sha256": "35e11eacffec2f4ad8e79ddaa161a6957c071219c32e6ad7ee5922b620a317b7"
+      },
+      {
+        "name": "jkp_1968.parquet",
+        "rows": 17110,
+        "sha256": "90c8180ce93158043eeff17b589aee6323ad2816ecc8e83bcb65d7632254e615"
+      },
+      {
+        "name": "jkp_1969.parquet",
+        "rows": 17923,
+        "sha256": "0b5a3e1ebfe75509ef465510a33f71653cab305968d26ac8b0c348f684b7198a"
+      },
+      {
+        "name": "jkp_1970.parquet",
+        "rows": 18809,
+        "sha256": "7399223f32ccd2441819306c0124680bf5e7c016d46deab0e87d955f1b2f8747"
+      },
+      {
+        "name": "jkp_1971.parquet",
+        "rows": 19538,
+        "sha256": "84b339ee87570fa24eb4a9db4795041ff953c6c5f2a95ef1060846a1e438b85e"
+      },
+      {
+        "name": "jkp_1972.parquet",
+        "rows": 20569,
+        "sha256": "b39225d83564bf32ca477430b4afe7d9b21f8fd6f8faca6deccbf80c4c092f2e"
+      },
+      {
+        "name": "jkp_1973.parquet",
+        "rows": 24645,
+        "sha256": "9734e86eddd9314ad3a0644424011d810aa052140441c83099205763fa989f9d"
+      },
+      {
+        "name": "jkp_1974.parquet",
+        "rows": 27224,
+        "sha256": "36d223e43b199614e64a73bc06f1c1ef46c5af5b350af2ed3b9a8ec5abf0cae6"
+      },
+      {
+        "name": "jkp_1975.parquet",
+        "rows": 28636,
+        "sha256": "c25efe0d0067338c99aa5e6abcedda8cb821d7aeeb19725fd475c6dce293caa1"
+      },
+      {
+        "name": "jkp_1976.parquet",
+        "rows": 29559,
+        "sha256": "42185d8bb5d69e1c2e4f43716f2e98c3e9b0416e3947b544767a68988c53e090"
+      },
+      {
+        "name": "jkp_1977.parquet",
+        "rows": 30109,
+        "sha256": "342da264da34bc52114d42fd7419159aea7b1e02ad6edf56cf5b9b8aabb3f231"
+      },
+      {
+        "name": "jkp_1978.parquet",
+        "rows": 30761,
+        "sha256": "e787044a8443865324e3321a25398856c046657214e626f4cb82b670156eb1ca"
+      },
+      {
+        "name": "jkp_1979.parquet",
+        "rows": 30540,
+        "sha256": "eb3e8bbcaf7244d1634ba095fcd214673b9a3e717c7fcac1a70552166ec007b3"
+      },
+      {
+        "name": "jkp_1980.parquet",
+        "rows": 31376,
+        "sha256": "219e2c5fba64839a3d92d42d87d9d3de794408c2dfdbc03ab4ee6a7821d676c5"
+      },
+      {
+        "name": "jkp_1981.parquet",
+        "rows": 32053,
+        "sha256": "04be33076216fabd879bc08c4bb10d3f904ee04fbf5d88ad5d8a8a0c9a65f808"
+      },
+      {
+        "name": "jkp_1982.parquet",
+        "rows": 32506,
+        "sha256": "b99a4ad32d0ac91654d2163f208d215dcc58e0cdddcb32cd761b938ac1e51812"
+      },
+      {
+        "name": "jkp_1983.parquet",
+        "rows": 34994,
+        "sha256": "591281021ea1c8d732b01b80dbd5710c69064d90bfb8a8656f99093fb94619a0"
+      },
+      {
+        "name": "jkp_1984.parquet",
+        "rows": 36520,
+        "sha256": "c9531a98b37226e5cf07ef4ce2d9836fd9bf363524a50dba201799ad5ddfda46"
+      },
+      {
+        "name": "jkp_1985.parquet",
+        "rows": 41036,
+        "sha256": "a66b965231d1d57af068df340584f117482808a6300aafacc2a5607e50beb867"
+      },
+      {
+        "name": "jkp_1986.parquet",
+        "rows": 41417,
+        "sha256": "b910466b598997a6a20ae9dd523b3103ffbdbd8c86dc8b30f9f2f9ff97c68abe"
+      },
+      {
+        "name": "jkp_1987.parquet",
+        "rows": 42580,
+        "sha256": "c16ed054b26d09b2cc0a871da9035546156b3d960afd8fe6a81411635eadd82b"
+      },
+      {
+        "name": "jkp_1988.parquet",
+        "rows": 45159,
+        "sha256": "157407fb0eba430fb78cba384b04c7db2adbf80bf518251e4742cbaf58a2942d"
+      },
+      {
+        "name": "jkp_1989.parquet",
+        "rows": 47088,
+        "sha256": "495fff7d24e8adf10745050d71d2ff4fd3fbe189d2b9e3ec0ee05c7312826ccb"
+      },
+      {
+        "name": "jkp_1990.parquet",
+        "rows": 50122,
+        "sha256": "383ac044ba560dfbd4e90b8c2ba3e931953b36d59105a92e06b8b2b00250fc2f"
+      },
+      {
+        "name": "jkp_1991.parquet",
+        "rows": 51279,
+        "sha256": "9ff11f27a22cc0eab2a1b6a74d6693a81ec431224b5d0bbd386aa3407b3bde99"
+      },
+      {
+        "name": "jkp_1992.parquet",
+        "rows": 51734,
+        "sha256": "4ec78ccff92068c44285c063f1b1bfec4669b92ddecf3d54c4b9e7ae72a20b8f"
+      },
+      {
+        "name": "jkp_1993.parquet",
+        "rows": 55584,
+        "sha256": "1421cdfb8a9e023d9476677756e8272d0ab43a73aa2fabea2d0d976788cedd6e"
+      },
+      {
+        "name": "jkp_1994.parquet",
+        "rows": 58049,
+        "sha256": "39996a035d38c160e52eda150ff730e4f0da1ddcb40e08d5e2c599bfb7e982f8"
+      },
+      {
+        "name": "jkp_1995.parquet",
+        "rows": 59691,
+        "sha256": "e1b183a9ab2bba2b868abad9552e6da5c97557214ff6de797475124cb6917480"
+      },
+      {
+        "name": "jkp_1996.parquet",
+        "rows": 63762,
+        "sha256": "e4dc3c71a79a55936b120b0f671ef6d7c9072de4e32e9fdd5d0658c767d3efd1"
+      },
+      {
+        "name": "jkp_1997.parquet",
+        "rows": 68885,
+        "sha256": "ac45b9609d082f99e2d72a35b620a1cd64782d7e1b5b663a80609100407944a9"
+      },
+      {
+        "name": "jkp_1998.parquet",
+        "rows": 69117,
+        "sha256": "a3e75ef6eb11a031f22cfbf0af26122203226585f171aa914688ac546a107ca1"
+      },
+      {
+        "name": "jkp_1999.parquet",
+        "rows": 66380,
+        "sha256": "88098e19a18f145c55118932a81e9bcf08c6c798f89da7293cc99e0de6206033"
+      },
+      {
+        "name": "jkp_2000.parquet",
+        "rows": 64509,
+        "sha256": "539ceca99c9d822734d0d3d194a3262568c457ce1ea50c804f42b54e81094d6d"
+      },
+      {
+        "name": "jkp_2001.parquet",
+        "rows": 63015,
+        "sha256": "91fbba97ecfaac58443575a5e3174623dded8d24a9027bf2aee018b857214b6d"
+      },
+      {
+        "name": "jkp_2002.parquet",
+        "rows": 54769,
+        "sha256": "b2260b259613a74fc5973bda6a6950f523652d05e92f3c91a2d9e1aae984a4d3"
+      },
+      {
+        "name": "jkp_2003.parquet",
+        "rows": 51028,
+        "sha256": "7b029f00eaa32856b99311d8616531d510e93222354153a7fee6d4f20801395f"
+      },
+      {
+        "name": "jkp_2004.parquet",
+        "rows": 48035,
+        "sha256": "60deade14b34018c73171457d06f7a0dcc1e005e97113764e9aead445daeed6c"
+      },
+      {
+        "name": "jkp_2005.parquet",
+        "rows": 48434,
+        "sha256": "a799f7a72223ecefe7c8c7fd8d8095cebd8de47b41f6bb6f4fee6b9b3025272e"
+      },
+      {
+        "name": "jkp_2006.parquet",
+        "rows": 48865,
+        "sha256": "aec7abfecb869ae74b247b9b09bfe38e2de734369cb4ac5bf447ad70e0fa9001"
+      },
+      {
+        "name": "jkp_2007.parquet",
+        "rows": 46552,
+        "sha256": "f72a569db4e9011a5fd6ee1531cd948ebe3d20043f57202ea827fa5e959bfa29"
+      },
+      {
+        "name": "jkp_2008.parquet",
+        "rows": 47452,
+        "sha256": "5c9dc9241a077d68056756329ef0ee9274c5ffe9aa0627ca9f3a1d5a9ce9b346"
+      },
+      {
+        "name": "jkp_2009.parquet",
+        "rows": 45685,
+        "sha256": "a3d933b8a0a5681c85b69214815caa76784c18546cfe07357ead0854565f9ff8"
+      },
+      {
+        "name": "jkp_2010.parquet",
+        "rows": 43898,
+        "sha256": "7bfc62a6b6e2e79ab0f358345a330fa2a53198026d3dae9aa8afc4ed2bed8cac"
+      },
+      {
+        "name": "jkp_2011.parquet",
+        "rows": 42518,
+        "sha256": "cf4e57a3806e981b8ce40b5e21c6b8ef6d6fde1a166b3d41085c2272584a9bd8"
+      },
+      {
+        "name": "jkp_2012.parquet",
+        "rows": 41525,
+        "sha256": "92202ead52f1ae76d02d3a6d4a0f887d6d8f49ccd82708a8a4dcae0ff1d61def"
+      },
+      {
+        "name": "jkp_2013.parquet",
+        "rows": 41041,
+        "sha256": "efd557771038d77708ba6c7890ebd6050662356d57d9a4d360d30797f399e2d5"
+      },
+      {
+        "name": "jkp_2014.parquet",
+        "rows": 41330,
+        "sha256": "e0cd5a2776279fd08ead83a044f2e80e215defc8dcca89c35a52af32dfda321e"
+      },
+      {
+        "name": "jkp_2015.parquet",
+        "rows": 42988,
+        "sha256": "c9bb188f3a2a9c0f542939c01392e856e68e9f81a7d6587740ee8e187158758f"
+      },
+      {
+        "name": "jkp_2016.parquet",
+        "rows": 42409,
+        "sha256": "a6cd0a1324a32499290b12f71b8311933f84740b1d2bd97b00008a295f3e459f"
+      },
+      {
+        "name": "jkp_2017.parquet",
+        "rows": 41227,
+        "sha256": "9186bbaacbc7ae30feec8ce0177607d3e9d8694ed6ede409f1d96aa6c08e9f59"
+      },
+      {
+        "name": "jkp_2018.parquet",
+        "rows": 40888,
+        "sha256": "687c0588bf386527af08c17140520297e6bba1ad5d0a13e960ca5ba1e9dc4c74"
+      },
+      {
+        "name": "jkp_2019.parquet",
+        "rows": 41825,
+        "sha256": "3a75c6756f502568d83cfbd504e7c5b4eec694ca3c31a30073d8d3c0ff83f854"
+      },
+      {
+        "name": "jkp_2020.parquet",
+        "rows": 43140,
+        "sha256": "cc0c948a4ff0fbee881be26a3a15af0438da581ca60690378b2e01ac9cf3529e"
+      },
+      {
+        "name": "jkp_2021.parquet",
+        "rows": 42013,
+        "sha256": "57e9deda6e2c46a98464658d76d98455cfe3dc804e98e06b43b82e226a84c6e9"
+      },
+      {
+        "name": "jkp_2022.parquet",
+        "rows": 44175,
+        "sha256": "ff1d556976703ce831df27fd085309d33fce8d5354aba59523f471580c5251f5"
+      },
+      {
+        "name": "jkp_2023.parquet",
+        "rows": 46315,
+        "sha256": "bfa72706326d23a767c003c8ae6a007d2f77bd2bb71d6063cae19ab8e0921b8f"
+      },
+      {
+        "name": "jkp_2024.parquet",
+        "rows": 44486,
+        "sha256": "f60d882356233929b0130532c57b61ec214ac3168e9369c5ee31aeb99b721886"
+      }
+    ],
+    "sample_sha256": "bde52837e45e37d21f3adffb041801771a60177cca7943e78d3e6c816ac45f8e",
+    "formation_start": "1963-01-31",
+    "formation_end": "2024-12-31",
+    "average_stocks_per_month": 3356.065860215054,
+    "raw_rows": 3687389
+  },
+  "ell": 4.392107784616423,
+  "sampled_vector_sha256": "f6da4a29c675d1f69b755a8aa1fe108b696931b90cc155b65f89459611406032",
+  "sample_dates": [
+    "1963-01-31",
+    "1972-12-31"
+  ],
+  "seed": 0,
+  "P": 10000,
+  "lambda_grid": {
+    "linear": [
+      3.387049663827658e-11,
+      1.017455603499996e-10,
+      1.8509649126939906e-10,
+      2.853871191390578e-10,
+      4.0408808493969336e-10,
+      5.426791549455517e-10,
+      7.026527798380472e-10,
+      8.855242218056962e-10,
+      1.092845694046059e-09,
+      1.3262210577024551e-09,
+      1.5873190936880645e-09,
+      1.877884843582684e-09,
+      2.199749344314301e-09,
+      2.5548383543614083e-09,
+      2.945180635374386e-09,
+      3.3729162084605886e-09,
+      3.840304855426688e-09,
+      4.349735023384221e-09,
+      4.903733222491829e-09,
+      5.5049739729136916e-09,
+      6.156290346640578e-09,
+      6.860685152477518e-09,
+      7.621342821060253e-09,
+      8.441642056891003e-09,
+      9.325169333943644e-09,
+      1.0275733319670155e-08,
+      1.1297380319353339e-08,
+      1.2394410839177643e-08,
+      1.3571397372730748e-08,
+      1.4833203522470624e-08,
+      1.618500457549077e-08,
+      1.7632309662089694e-08,
+      1.918098563653474e-08,
+      2.0837282832289082e-08,
+      2.2607862859103076e-08,
+      2.44998286270144e-08,
+      2.652075680271189e-08,
+      2.8678732927188465e-08,
+      3.0982389450442904e-08,
+      3.3440946969552886e-08,
+      3.6064258991132225e-08,
+      3.8862860578476596e-08,
+      4.184802128813726e-08,
+      4.5031802850885523e-08,
+      4.842712210878985e-08,
+      5.204781978432351e-08,
+      5.5908735730097607e-08,
+      6.002579139024896e-08,
+      6.441608029818027e-08,
+      6.909796754204934e-08,
+      7.409119925124488e-08,
+      7.941702329659446e-08,
+      8.509832255722604e-08,
+      9.115976229141648e-08,
+      9.762795336165781e-08,
+      1.0453163331060597e-07,
+      1.1190186757058286e-07,
+      1.1977227342206758e-07,
+      1.281792697047588e-07,
+      1.3716235573863289e-07,
+      1.467644234443999e-07,
+      1.570321072778606e-07,
+      1.6801617732904262e-07,
+      1.797719818067263e-07,
+      1.923599461589551e-07,
+      2.0584613730332496e-07,
+      2.2030290289776974e-07,
+      2.358095973231899e-07,
+      2.524534081355449e-07,
+      2.7033029925403316e-07,
+      2.895460901800048e-07,
+      3.102176942091747e-07,
+      3.324745430598906e-07,
+      3.564602307856605e-07,
+      3.8233441651644625e-07,
+      4.102750337944749e-07,
+      4.4048086444024293e-07,
+      4.7317454752476753e-07,
+      5.086061098129345e-07,
+      5.470571238661291e-07,
+      5.888456250152173e-07,
+      6.343319501787527e-07,
+      6.839257020588138e-07,
+      7.380940943506936e-07,
+      7.973720009706824e-07,
+      8.623741199982507e-07,
+      9.338097779868858e-07,
+      1.012501052125855e-06,
+      1.0994050898410696e-06,
+      1.1956417767020365e-06,
+      1.3025282708512413e-06,
+      1.4216224242925354e-06,
+      1.5547778045852607e-06,
+      1.7042139977500235e-06,
+      1.8726072382960946e-06,
+      2.0632083625483455e-06,
+      2.279997904582958e-06,
+      2.527892299102304e-06,
+      2.8130213355617662e-06,
+      3.14310637661878e-06,
+      3.5279833168131427e-06,
+      3.980337030793904e-06,
+      4.516750706411595e-06,
+      5.1592338498472235e-06,
+      5.937494922155425e-06,
+      6.892402506506154e-06,
+      8.08139889114986e-06,
+      9.587226157349809e-06,
+      1.153248025944256e-05,
+      1.4104847443082836e-05,
+      1.7602847154533103e-05,
+      2.2523057089304432e-05,
+      2.9736445749386093e-05,
+      4.087031936337839e-05,
+      5.921129650423704e-05,
+      9.212880487758179e-05,
+      0.0001590932507507219,
+      0.0003294364702128923,
+      0.001040466935799421,
+      0.011947763586734895
+    ],
+    "gaussian": [
+      5.1680512899073214e-11,
+      1.4003961338414766e-10,
+      2.3112621275077184e-10,
+      3.2503716920938445e-10,
+      4.2187349554844956e-10,
+      5.217405713286949e-10,
+      6.247483677724757e-10,
+      7.310116862273763e-10,
+      8.40650411152275e-10,
+      9.53789778649674e-10,
+      1.0705606616501065e-09,
+      1.1910998729441345e-09,
+      1.3155504873551508e-09,
+      1.444062184452983e-09,
+      1.5767916133249867e-09,
+      1.7139027810489341e-09,
+      1.8555674666517999e-09,
+      2.001965662491551e-09,
+      2.1532860451671382e-09,
+      2.309726478245987e-09,
+      2.4714945493009918e-09,
+      2.638808143971557e-09,
+      2.8118960600083624e-09,
+      2.9909986645316237e-09,
+      3.1763685980304067e-09,
+      3.368271528959306e-09,
+      3.566986963152207e-09,
+      3.7728091126747525e-09,
+      3.986047829182239e-09,
+      4.2070296073432235e-09,
+      4.436098664436844e-09,
+      4.673618102840334e-09,
+      4.919971162800627e-09,
+      5.175562573637602e-09,
+      5.440820012367866e-09,
+      5.716195679676915e-09,
+      6.002168004217054e-09,
+      6.299243487384098e-09,
+      6.607958702042879e-09,
+      6.928882460150599e-09,
+      7.2626181658893266e-09,
+      7.609806372790158e-09,
+      7.971127565441312e-09,
+      8.347305188754463e-09,
+      8.739108950457244e-09,
+      9.147358425531197e-09,
+      9.572926994775697e-09,
+      1.0016746153612464e-08,
+      1.0479810231723262e-08,
+      1.0963181569220371e-08,
+      1.1467996200884434e-08,
+      1.1995470106681983e-08,
+      1.2546906094435e-08,
+      1.3123701389314965e-08,
+      1.3727356014968474e-08,
+      1.4359482062773788e-08,
+      1.5021813959249375e-08,
+      1.5716219857304774e-08,
+      1.6444714295226178e-08,
+      1.7209472288481363e-08,
+      1.8012845044163557e-08,
+      1.8857377516836303e-08,
+      1.974582805849452e-08,
+      2.0681190455295594e-08,
+      2.1666718690824535e-08,
+      2.2705954831385043e-08,
+      2.3802760494927576e-08,
+      2.4961352443914047e-08,
+      2.61863429363654e-08,
+      2.7482785581872598e-08,
+      2.8856227584613197e-08,
+      3.031276941857497e-08,
+      3.185913317772655e-08,
+      3.3502741083959295e-08,
+      3.525180592858621e-08,
+      3.711543558216316e-08,
+      3.910375414918554e-08,
+      4.122804289038263e-08,
+      4.350090471375038e-08,
+      4.593645688233432e-08,
+      4.855055764941762e-08,
+      5.136107387242111e-08,
+      5.4388198357872605e-08,
+      5.765482786108628e-08,
+      6.118701545318497e-08,
+      6.501451457433665e-08,
+      6.917143678771909e-08,
+      7.369705140812544e-08,
+      7.863676332185331e-08,
+      8.404331616854283e-08,
+      8.99782826512047e-08,
+      9.65139235514748e-08,
+      1.0373552418514166e-07,
+      1.1174435466007528e-07,
+      1.2066145302551644e-07,
+      1.3063250519242263e-07,
+      1.418342029888252e-07,
+      1.544826183762284e-07,
+      1.6884436369796607e-07,
+      1.8525165664761934e-07,
+      2.0412294294572222e-07,
+      2.2599156427580924e-07,
+      2.515462907417361e-07,
+      2.816897124906087e-07,
+      3.1762413150413883e-07,
+      3.6098088317071496e-07,
+      4.1402021105782765e-07,
+      4.799494585893938e-07,
+      5.634469379887346e-07,
+      6.715582922390173e-07,
+      8.153000761910674e-07,
+      1.0126824801674282e-06,
+      1.294776331579868e-06,
+      1.7188851402807676e-06,
+      2.4003048448717078e-06,
+      3.6015844846209594e-06,
+      6.053724583919316e-06,
+      1.2773946607970997e-05,
+      6.518010932332091e-05,
+      0.00477969090655684
+    ],
+    "matern32": [
+      1.0994176795761658e-10,
+      2.9720332529966354e-10,
+      4.893399439272753e-10,
+      6.865069646090152e-10,
+      8.88865963085339e-10,
+      1.0965850561817843e-09,
+      1.3098392257630595e-09,
+      1.5288106617371203e-09,
+      1.7536891254117415e-09,
+      1.9846723346082627e-09,
+      2.22196637204772e-09,
+      2.4657861186454662e-09,
+      2.716355713481896e-09,
+      2.9739090423602896e-09,
+      3.2386902570195177e-09,
+      3.5109543272404173e-09,
+      3.790967628271686e-09,
+      4.0790085662059e-09,
+      4.375368244160597e-09,
+      4.68035117236498e-09,
+      4.994276025522659e-09,
+      5.317476451116946e-09,
+      5.650301932650953e-09,
+      5.9931187121727106e-09,
+      6.346310776830472e-09,
+      6.710280914637875e-09,
+      7.085451845109149e-09,
+      7.472267430954377e-09,
+      7.871193977611676e-09,
+      8.282721628041963e-09,
+      8.707365860931953e-09,
+      9.14566910124882e-09,
+      9.59820245297729e-09,
+      1.0065567564855756e-08,
+      1.0548398641026151e-08,
+      1.1047364609736728e-08,
+      1.1563171464603035e-08,
+      1.2096564794459749e-08,
+      1.2648332519545085e-08,
+      1.3219307853675008e-08,
+      1.3810372514213417e-08,
+      1.4422460204060442e-08,
+      1.5056560392598417e-08,
+      1.5713722425599756e-08,
+      1.6395059997558015e-08,
+      1.710175602381411e-08,
+      1.7835067954276062e-08,
+      1.859633357555249e-08,
+      1.938697735402451e-08,
+      2.0208517378874215e-08,
+      2.1062572971489947e-08,
+      2.1950873036124537e-08,
+      2.2875265236359074e-08,
+      2.383772609301898e-08,
+      2.4840372111936587e-08,
+      2.588547206462752e-08,
+      2.697546056187833e-08,
+      2.8112953079815034e-08,
+      2.9300762620703324e-08,
+      3.054191821707361e-08,
+      3.183968551843269e-08,
+      3.319758973561751e-08,
+      3.461944125972673e-08,
+      3.610936432169897e-08,
+      3.767182911640274e-08,
+      3.9311687883283414e-08,
+      4.103421551627634e-08,
+      4.28451553714158e-08,
+      4.475077105451453e-08,
+      4.675790510736589e-08,
+      4.887404567398011e-08,
+      5.1107402424437944e-08,
+      5.346699325057498e-08,
+      5.596274353436467e-08,
+      5.860560013849522e-08,
+      6.1407662694372e-08,
+      6.438233528490619e-08,
+      6.754450226265786e-08,
+      7.091073273996997e-08,
+      7.449951927779526e-08,
+      7.833155753756055e-08,
+      8.243007521583302e-08,
+      8.682122054734125e-08,
+      9.153452316100747e-08,
+      9.660344327050736e-08,
+      1.0206602929706775e-07,
+      1.0796570935871957e-07,
+      1.1435224902925814e-07,
+      1.2128291694135438e-07,
+      1.2882391197607737e-07,
+      1.3705212206465614e-07,
+      1.4605730662065375e-07,
+      1.5594482461490982e-07,
+      1.668390716416937e-07,
+      1.788878469296491e-07,
+      1.9226795249259087e-07,
+      2.071924426697013e-07,
+      2.239201103936283e-07,
+      2.427680436317002e-07,
+      2.6412845461873716e-07,
+      2.884915457741994e-07,
+      3.164770459504547e-07,
+      3.488784268051638e-07,
+      3.8672603681693823e-07,
+      4.313790888068535e-07,
+      4.846627506225983e-07,
+      5.49077708994768e-07,
+      6.281298620490742e-07,
+      7.26866305986548e-07,
+      8.527803271797036e-07,
+      1.0174086863462535e-06,
+      1.2393038586083136e-06,
+      1.549935270966396e-06,
+      2.00641489360315e-06,
+      2.722156279579547e-06,
+      3.953463359424298e-06,
+      6.412896785154553e-06,
+      1.3041186605895987e-05,
+      6.281168800960001e-05,
+      0.00383508044633947
+    ]
+  },
+  "lambda_grid_sha256": {
+    "linear": "64077df4c3910a8716dd04936ac86e2e7bbb0769b85cdecf3669f94593d3c72f",
+    "gaussian": "820c5928de5a1d51e8901c4f1f78e1af3b8aa10108d159113f5dc4786ab85d6b",
+    "matern32": "1924da3526bc8908fa73b929811aae413784d683a430f8f6de929a535966ae8b"
+  },
+  "kappa": 0.03740000227285338,
+  "calibration": {
+    "scale": 0.03740000227285338,
+    "target_initial_median_gross": 1.8,
+    "raw_initial_validation_median_gross": 48.12833932115886,
+    "raw_validation_gross": [
+      45.598909056221416,
+      46.9544851946973,
+      46.33990912446494,
+      47.678949586221336,
+      48.34791365044665,
+      48.8267898679676,
+      48.941019584703945,
+      48.41942638308002,
+      49.19631127810138,
+      46.33782999698641,
+      49.3370911175919,
+      47.18472710248807,
+      47.51409572259513,
+      45.13603553999322,
+      46.386410978714316,
+      44.41200709300517,
+      48.19981784271756,
+      49.32256389351982,
+      49.28828477893004,
+      49.91014210510558,
+      50.13050670894826,
+      48.08456971418677,
+      48.094049734707895,
+      48.573603010240944,
+      51.203073863571305,
+      47.34147360755127,
+      47.23724879193874,
+      47.05863086193058,
+      50.57593417200455,
+      49.05157472471561,
+      45.276204105402094,
+      45.942894222305796,
+      44.798189037884846,
+      45.981658377806305,
+      47.065559610845405,
+      49.849599674448015,
+      47.228131136481814,
+      47.20183463947533,
+      49.32063628417718,
+      52.54459509385883,
+      54.188813126376395,
+      52.3894147168498,
+      49.53329077827003,
+      51.42775041190471,
+      50.94890709944356,
+      50.72768787901241,
+      49.447402295464876,
+      49.933527788201005,
+      48.672307930578654,
+      47.420440060011366,
+      48.40236999162204,
+      47.34980927520892,
+      46.58501211006932,
+      48.338477558980436,
+      48.16262890760983,
+      47.37547033313764,
+      47.64495512512519,
+      47.34780341480298,
+      47.169430731997295,
+      46.74117419555017
+    ],
+    "selected_lambda": 1.4104847443082836e-05,
+    "selected_train_beta_sha256": "134fbb2dcbc53a8732f41c68a56903ba4ecf09391f4ab44f91b3b065212dd808",
+    "available_at": "1978-01-31",
+    "formation_start": "1973-01-31",
+    "formation_end": "1977-12-31",
+    "return_end": "1978-01-31",
+    "timing_caveat": "Full 1977 formation validation requires January 1978 payoff.",
+    "common_to_every_strategy": true,
+    "time_varying_exposure_normalization": false
+  },
+  "calibration_sha256": "039f44469e50d65bd424ec612ef30f1344ca7a3e90dd504458a0da24ecd91cbf",
+  "risk_free_sha256": "59bc4ff921b19d64198ca85d77a197e6af1b7d5a0ebf923767fc6fec2d4ecf89",
+  "oos_formation": [
+    "1978-01-31",
+    "2024-12-31"
+  ],
+  "oos_returns": [
+    "1978-02-28",
+    "2025-01-31"
+  ],
+  "oos_months": 564,
+  "wealth_definition": "product(1 + same-snapshot cash return + kappa * raw portfolio excess return)",
+  "drawdown_definition": "wealth / running maximum including unit starting wealth - 1",
+  "complexity_2024_peaks": [
+    {
+      "kernel": "gaussian",
+      "ex_post_complexity": 76.75659306078799,
+      "ex_post_sharpe": 3.1377194181015438,
+      "selected_complexity": 11.391268270089803
+    },
+    {
+      "kernel": "matern32",
+      "ex_post_complexity": 89.51065717521557,
+      "ex_post_sharpe": 2.8872947529527657,
+      "selected_complexity": 14.391208597292685
+    }
+  ],
+  "figures": {
+    "fig01_wealth_drawdown": {
+      "inputs": {
+        "inputs/linear_monthly.csv": "72cb5e9ae2821fce3bb9d5d2f33e7d14f087bbe1cee5c95921a2697642602731",
+        "inputs/gaussian_monthly.csv": "6c274dcd0379906a2a2a26fdc45a57b13dbf49277ced22964c46df1914c692d7",
+        "inputs/matern32_monthly.csv": "2aeeadc386471fff304b382a0c3199989753df555fdc443dbba6e860aca6e3af"
+      },
+      "outputs": {
+        "pdf": "be665b2766618dea18698608e6479ec3dda0bdaf99760b11dd24dba6c3b46fee",
+        "png": "68789ba68e09b2c0b6278535e9fd27351be050f6c45eaa6ed4abac086fb2bf3d"
+      }
+    },
+    "fig02_exposure": {
+      "inputs": {
+        "inputs/linear_monthly.csv": "72cb5e9ae2821fce3bb9d5d2f33e7d14f087bbe1cee5c95921a2697642602731",
+        "inputs/gaussian_monthly.csv": "6c274dcd0379906a2a2a26fdc45a57b13dbf49277ced22964c46df1914c692d7",
+        "inputs/matern32_monthly.csv": "2aeeadc386471fff304b382a0c3199989753df555fdc443dbba6e860aca6e3af"
+      },
+      "outputs": {
+        "pdf": "d4ff0d5902f4fe88d34574637ebc9e262fc15ec022a0d22ebd9a69b86a29ffcb",
+        "png": "1fb5381740f88715c39840d6f4f77b11ac7feec461c6f14fec97238100bccbed"
+      }
+    },
+    "fig03_complexity_gaussian": {
+      "inputs": {
+        "inputs/gaussian_complexity_2024.csv": "de77c14e97592eb79a405ac6a01eac203aaa35e130ec9b01546b5df31e0d14bf"
+      },
+      "outputs": {
+        "pdf": "25c9ca07bb6fa40475d2e487d8525c3be507d8124160dfb44ac390b12d7bf450",
+        "png": "d41c16c4ba9a7b167d5c24bf81f37e155cc80b753465216dd1b237008ba3ea3a"
+      }
+    },
+    "fig04_complexity_matern32": {
+      "inputs": {
+        "inputs/matern32_complexity_2024.csv": "3280fe29017dd8d88e30c2f1e096060d196df7b9777e6394f1ab8863d085efed"
+      },
+      "outputs": {
+        "pdf": "c3c2a92518d1455c9edadc306be41761b69ffcd46aa9c8ce40e2186d7803b393",
+        "png": "e9aa6d65c6bbd824489bc9957aa3272898467a4766032939cfc528a76f8abd69"
+      }
+    },
+    "fig05_managed_spectrum": {
+      "inputs": {
+        "inputs/gaussian_spectrum_2024.csv": "443df15063ba899b646313a61663c0b9fbc49f0b7dc31dfd49dafab0d78c2e51",
+        "inputs/matern32_spectrum_2024.csv": "6ee3da3f05e2238f3c52ad8020b29a49c294030b683a38a2f4af566c54792148"
+      },
+      "outputs": {
+        "pdf": "197bd8f2b98c3d8a3b156926fb669cf0d951aa111b6e4a468a9524914f1874a1",
+        "png": "f670614feb480b47c2ab06c834d6e8a1943fce7808ac31b04cf355f67f1c6bd8"
+      }
+    }
+  },
+  "outputs": {
+    "audit.json": "dc89cc3a996d3bfa4b37a139b90ec21872c211b09dac5f1b18c1735c0ec32e33",
+    "empirics.tex": "f92b0817154e8bb93e0edaadafc52979d2e36c1f3499dfc63daf792e4f363a6c",
+    "characteristics.json": "dfbb2a2b8ea50aa5ed690a8c129dc703fc86611b59bd1d292653c98c006fae97",
+    "tables/performance.csv": "49ac2e25136aa1bd6eb7ee940589c8101afef6911cc270e2ed39c3c850eb9abc",
+    "tables/performance.tex": "0d20cd445c5f8055ed04fc9a5b88e7d0b2767d7692907c2bfe9537ce599ba9f6",
+    "figures/fig01_wealth_drawdown.pdf": "be665b2766618dea18698608e6479ec3dda0bdaf99760b11dd24dba6c3b46fee",
+    "figures/fig04_complexity_matern32.png": "e9aa6d65c6bbd824489bc9957aa3272898467a4766032939cfc528a76f8abd69",
+    "figures/fig01_wealth_drawdown.png": "68789ba68e09b2c0b6278535e9fd27351be050f6c45eaa6ed4abac086fb2bf3d",
+    "figures/fig04_complexity_matern32.pdf": "c3c2a92518d1455c9edadc306be41761b69ffcd46aa9c8ce40e2186d7803b393",
+    "figures/fig05_managed_spectrum.pdf": "197bd8f2b98c3d8a3b156926fb669cf0d951aa111b6e4a468a9524914f1874a1",
+    "figures/fig05_managed_spectrum.png": "f670614feb480b47c2ab06c834d6e8a1943fce7808ac31b04cf355f67f1c6bd8",
+    "figures/fig02_exposure.pdf": "d4ff0d5902f4fe88d34574637ebc9e262fc15ec022a0d22ebd9a69b86a29ffcb",
+    "figures/fig02_exposure.png": "1fb5381740f88715c39840d6f4f77b11ac7feec461c6f14fec97238100bccbed",
+    "figures/fig03_complexity_gaussian.png": "d41c16c4ba9a7b167d5c24bf81f37e155cc80b753465216dd1b237008ba3ea3a",
+    "figures/fig03_complexity_gaussian.pdf": "25c9ca07bb6fa40475d2e487d8525c3be507d8124160dfb44ac390b12d7bf450",
+    "inputs/gaussian_complexity_2024.csv": "de77c14e97592eb79a405ac6a01eac203aaa35e130ec9b01546b5df31e0d14bf",
+    "inputs/gaussian_monthly.csv": "6c274dcd0379906a2a2a26fdc45a57b13dbf49277ced22964c46df1914c692d7",
+    "inputs/matern32_monthly.csv": "2aeeadc386471fff304b382a0c3199989753df555fdc443dbba6e860aca6e3af",
+    "inputs/linear_monthly.csv": "72cb5e9ae2821fce3bb9d5d2f33e7d14f087bbe1cee5c95921a2697642602731",
+    "inputs/matern32_spectrum_2024.csv": "6ee3da3f05e2238f3c52ad8020b29a49c294030b683a38a2f4af566c54792148",
+    "inputs/gaussian_spectrum_2024.csv": "443df15063ba899b646313a61663c0b9fbc49f0b7dc31dfd49dafab0d78c2e51",
+    "inputs/matern32_complexity_2024.csv": "3280fe29017dd8d88e30c2f1e096060d196df7b9777e6394f1ab8863d085efed",
+    "temporal_audit.json": "4a1af6560c67501df4431921b30a4c57cd02928feb99c9d9ad7c83c1e776c750"
+  },
+  "supplemental_audits": {
+    "temporal_audit.json": "4a1af6560c67501df4431921b30a4c57cd02928feb99c9d9ad7c83c1e776c750"
+  },
+  "visual_inspection": "All five final PDFs rendered and visually checked."
+}

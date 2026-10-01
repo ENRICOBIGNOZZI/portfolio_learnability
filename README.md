@@ -19,8 +19,29 @@ recovered from another field. Private `data/clean/excluded_returns.csv` records
 every exclusion; `universe_counts.csv` reports monthly before/after counts.
 The previous stop-on-missing-payoff policy is superseded.
 
-Preparation and the three model fits are being regenerated under this convention.
-Only the resulting new runs may supply figures or performance statistics.
+Preparation is complete: **2,496,913 retained stock-months**, **744 months**,
+**7,489 exclusions**, and **3,356.07 stocks per month** on average. The initial
+coverage sample contains 223,762 observations; restricting feature selection to
+1963–1972 changes 12 selected characteristics compared with full-period coverage.
+**The real-data run is complete:** all three representations have 47 refits and
+564 OOS monthly payoffs. The five PDF/PNG figures, performance table, empirical
+LaTeX section and reproduction manifest are in `paper/`. All five PDFs were
+rendered and visually inspected. The implementation passes 57 tests.
+
+| Policy | OOS Sharpe | Maximum drawdown |
+|---|---:|---:|
+| Linear | 3.0911 | -15.7741% |
+| Gaussian | 3.2999 | -15.6100% |
+| Matérn-3/2 | 3.4610 | -13.6346% |
+
+The common lengthscale is 4.3921077846 and kappa is 0.0374000023. The descriptive
+2024 test maxima occur at effective complexities 76.7566 (Gaussian) and 89.5107
+(Matérn); these ex-post peaks do not select the fitted policies.
+
+`paper/temporal_audit.json` records the temporal, accounting, source and memory
+checks. The combined resident-memory peak sampled across the two model workers
+was 1,277.4 MiB; per-process OS peaks and the one-second sampling convention are
+recorded separately. Annual caching and 256-stock feature blocks bound memory.
 
 The exact 130 author variables were not found in the official materials searched.
 The 130 best-covered characteristics are selected from the fixed 153-variable
@@ -51,11 +72,18 @@ PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python3 -m pytest -q tests
 python3 download.py --names characteristics.json --out data/raw --max-connections 1
 python3 run_empirics.py prepare --raw data/raw --clean data/clean
 python3 run_empirics.py risk-free --raw data/raw --out data/risk_free.csv
+export VECLIB_MAXIMUM_THREADS=2
 python3 run_empirics.py fit --clean data/clean --out results/final --kernel linear
 python3 run_empirics.py fit --clean data/clean --out results/final --kernel gaussian
 python3 run_empirics.py fit --clean data/clean --out results/final --kernel matern32
 python3 run_empirics.py report --results results/final --risk-free data/risk_free.csv --out paper
 ```
+
+Memory use is bounded by a one-year panel cache and nonlinear feature blocks of
+256 stocks. On macOS the double-precision vector cosine uses Apple Accelerate;
+other platforms use NumPy. Tests compare both paths to double-precision NumPy,
+and compare batched scores and managed returns to dense feature calculations.
+The feature bank, 10,000-feature count and statistical specification are unchanged.
 
 The downloader makes at most one connection by default and downloads annual
 parquet files, including January 2025. A resumed raw file is accepted only with
@@ -72,11 +100,24 @@ payoffs. Monthly ranks and N_t use the remaining sample. Observed values use ave
 neutral zero.
 
 JKP excess returns already incorporate its documented source-level delisting
-construction. The source code includes a -30% convention for specified missing
+construction. The legacy SAS code documents a -30% convention for specified missing
 performance-related CRSP delistings; this pipeline consumes JKP values and does
 not independently invent such returns. Missing forward returns are dropped,
 with no alternative-source recovery. All retained returns must be finite;
 incomplete calendars and corrupt prepared data still block fitting.
+
+The calendar audit compared 3,642,027 finite raw lead/current-return pairs from
+adjacent months with zero discrepancies. For the 346 retained observations
+without a next-month characteristic row, CRSP CIZ confirms the next-calendar
+payoff: 345 match the monthly CIZ return less the frozen cash rate, and one
+matches the delisting compounding documented in the
+[current JKP Python code](https://github.com/bkelly-lab/jkp-data/blob/666e8960ed81a664f1e9f189f92925ab2eeffcd5/src/jkp/data/aux_functions.py).
+The legacy CRSP tables alone did not reconcile these cases; WRDS documents the
+[format transition](https://wrds-www.wharton.upenn.edu/pages/data-announcements/changes-to-crsp-data/).
+These read-only cross-checks did not modify returns or sample membership.
+The frozen protocol retains its legacy SAS reference; the supplementary audit
+records the CIZ evidence separately, rather than claiming an unobserved WRDS
+build version. This is not certification of historical database vintages.
 
 ## Frozen design
 
@@ -124,8 +165,9 @@ payoffs for 2024 formations (February 2024–January 2025), not pooled returns.
 Publication stops if any total monthly return is at or below -100%, data or
 calendars fail validation, or Sharpe is at least 2.5 while the worst pre-2020
 drawdown is shallower than 5%. This last threshold is a review trigger, not a
-proof that other results are plausible. Real-data diagnostics and final PDF/PNG
-visual inspection remain required before claiming the experiment is complete.
+proof that other results are plausible. The committed run passed the real-data accounting diagnostics and final PDF/PNG
+visual inspection. High Sharpe alone is not evidence that source-vintage biases
+have been eliminated.
 
 ## Sources and security
 

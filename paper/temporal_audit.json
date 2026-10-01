@@ -1,0 +1,382 @@
+{
+  "status": "passed pipeline temporal and accounting checks; explicit complete-case exception; historical source vintages not certified",
+  "code_commit": "a19ccfac537375971d4ed026cc8c985cc8898c1d",
+  "tests_passed": 57,
+  "raw_manifest_sha256": "01dc5d2771a9426534526bc963a44ccb31f437f694df1205c0c4bd79abe9e676",
+  "clean_manifest_sha256": "ca6e97aa3b6cd96962afb1ce5ffc6d901f74f90eb5c2cef5902391633c3e7db9",
+  "retained_stock_months": 2496913,
+  "formation_months": 744,
+  "explicit_exception": {
+    "rule": "Drop missing/nonfinite JKP ret_exc_lead1m before monthly ranks and N_t",
+    "excluded_stock_months": 7489,
+    "interpretation": "Sample selection depends on future payoff availability; not attributed to Didisheim et al."
+  },
+  "feature_selection": {
+    "coverage_start": "1963-01-01",
+    "coverage_end": "1972-12-31",
+    "coverage_observations": 223762,
+    "selected_count": 130,
+    "future_data_perturbation_test": "passed",
+    "post_training_data_used": false
+  },
+  "transformations": {
+    "ranks": "within formation month, after explicit payoff exclusion",
+    "imputation": "zero only for ranked characteristics",
+    "bandwidth_sample": "1000 vectors from 1963-1972 only",
+    "rff": "10000 fixed features, seed 0"
+  },
+  "annual_refits": {
+    "count": 47,
+    "oos_months": 564,
+    "last_historical_label": "January close of each test year",
+    "first_test_payoff": "February close of each test year",
+    "future_payoff_perturbation_tests": "first and final window choices, coefficients and lambda grids invariant"
+  },
+  "lambda_selection": "initial-training numerical grid frozen per representation; preceding five years validation loss; no test-return selection",
+  "scale": "one common kappa, initial Linear validation gross, fixed January 31 1978 before February payoff",
+  "cash": "same-snapshot monthly total minus excess, all 745 months checked for cross-sectional consistency; added exactly once",
+  "source_return_crosscheck": {
+    "finite_leads_raw": 3643409,
+    "adjacent_month_pairs_compared": 3642027,
+    "adjacent_month_pair_mismatches": 0,
+    "raw_finite_leads_without_next_calendar_row": 1382,
+    "retained_finite_leads_without_next_calendar_row": 346,
+    "interpretation": "All 346 retained leads lacking a next-month characteristic row were checked against next-calendar CRSP CIZ monthly records. 345 match MthRet minus the frozen cash rate; one matches the documented JKP compounding with CIZ delisting return. No portfolio inputs were changed.",
+    "retained_calendar_cases_verified": 346,
+    "direct_ciz_matches": 345,
+    "documented_jkp_delisting_matches": 1,
+    "remaining_retained_calendar_cases": 0,
+    "source_audits": [
+      {
+        "audit": "crsp_forward_crosscheck",
+        "manifest_sha256": "c0a265101fc320c9896ce46713f121027ffca3c3911dc93218a5a5bfd714e60d",
+        "manifest": {
+          "purpose": "Independent next-calendar CRSP check of supplied finite JKP leads; no replacements or sample changes",
+          "target_count": 346,
+          "acquired_at": "2026-10-01 22:37:31.701999+00:00",
+          "connection_attempts": 1,
+          "select_calls": 1,
+          "status": "complete",
+          "matched": 93,
+          "finite_reconstructions": 110,
+          "unavailable_reconstructions": 236,
+          "mismatched_finite": 17,
+          "files": {
+            "source.parquet": "2a96201b466311b4202965e75fea9805b6990165848722137d3f05d162a54947",
+            "query.sql": "e1eeff50b2cbd9d06673ddbd5182566cf363238d211d9b30b9df9b0df53af9f9",
+            "comparison.csv": "ef4ba87341f68252b403ba4c36cd921776ef2b6975920d16abda01c9809de646"
+          }
+        }
+      },
+      {
+        "audit": "crsp_ciz_crosscheck",
+        "manifest_sha256": "fd15cf64cb2ff66fe6812e971354a3ae345fcdf9470c0dc6bb9aa6685390da81",
+        "manifest": {
+          "purpose": "Independent next-calendar CRSP CIZ check of supplied finite JKP leads; no replacements or sample changes",
+          "target_count": 346,
+          "acquired_at": "2026-10-01 22:42:07.190294+00:00",
+          "connection_attempts": 1,
+          "select_calls": 1,
+          "status": "complete",
+          "matched": 345,
+          "finite_reconstructions": 346,
+          "unavailable_reconstructions": 0,
+          "mismatched_finite": 1,
+          "files": {
+            "source.parquet": "5f27a3b5a4fe3c808e0895e7d77fc60c6a1dc0c3dfb3f79f21a0861ff950b311",
+            "query.sql": "6843bf3896169c2f79a86ca0276ece966776b5cfe95247af510f3f26e7fcc3ef",
+            "comparison.csv": "5902481c8278d93fa6d99356f61b14d9672557b283294fda74c4b9817e1e4e16"
+          }
+        }
+      },
+      {
+        "audit": "crsp_ciz_delisting_crosscheck",
+        "manifest_sha256": "2ed7ee901fe90e85888aca2e5647cdca32d1d5ef3ce2452fd3ecece87ca83e03",
+        "manifest": {
+          "purpose": "JKP Python documented CIZ return-plus-delisting construction check of supplied finite JKP leads; no replacements or sample changes",
+          "target_count": 1,
+          "acquired_at": "2026-10-01 22:45:40.134242+00:00",
+          "connection_attempts": 1,
+          "select_calls": 1,
+          "status": "complete",
+          "matched": 1,
+          "finite_reconstructions": 1,
+          "unavailable_reconstructions": 0,
+          "mismatched_finite": 0,
+          "files": {
+            "source.parquet": "8edfe22023c360ceb3c3edca9323b6cf72aa87ad2b125b7859ad6b3e7e932927",
+            "query.sql": "1d46f3b29a9dcc46883d6b94ac27ae4c1ad2ae4a263f9634a052b974e4a9becf",
+            "comparison.csv": "90d55d74b913dd3f9a7ebdd9c73df64470b84f2d4769ab87103e20f2c6c6cf59"
+          }
+        }
+      }
+    ],
+    "legacy_comparison": "The legacy msf/msedelist comparison had 93 matches, 17 differences and 236 unavailable reconstructions. It is a different CRSP format and was not used to change JKP payoffs.",
+    "current_jkp_source": "https://github.com/bkelly-lab/jkp-data/blob/666e8960ed81a664f1e9f189f92925ab2eeffcd5/src/jkp/data/aux_functions.py",
+    "current_jkp_source_sha256": "b3cab651d62bd1214651c9e0aab1fdcafec9125911a6ddc1435967bf8c8732aa",
+    "documented_compounding_lines": [
+      2747,
+      2758
+    ],
+    "format_transition_source": "https://wrds-www.wharton.upenn.edu/pages/data-announcements/changes-to-crsp-data/",
+    "provenance_note": "The original protocol pins the legacy SAS construction as a historical reference. The supplemental CIZ checks document the observed frozen WRDS return values; the exact WRDS dataset build commit is not supplied by its download table."
+  },
+  "source_limitations": [
+    "The published 153-variable dictionary is a retrospective research specification, not a claim of historical signal discovery.",
+    "The current JKP snapshot is not a historical database vintage; revisions and exact source release dates are not independently certified.",
+    "Monthly formation assumes execution at the close with contemporaneous month-end characteristics, as in the stated research protocol."
+  ],
+  "streaming_equivalence": {
+    "files_compared": 15,
+    "result": "calibration and 14 annual Linear stock-weight files byte-identical to in-memory calculation"
+  },
+  "ex_post_plot_peaks": "2024 test maxima are labelled diagnostics and never select fitted policies",
+  "memory_design": {
+    "year_cache_files": 1,
+    "nonlinear_stock_batch_size": 256,
+    "feature_count_unchanged": 10000,
+    "batch_vs_dense_tests": "all three representations, full and prefix feature counts, scores and managed payoffs agree within 1e-12",
+    "cosine_backend": "Apple Accelerate vvcos float64, NumPy fallback",
+    "cosine_comparison": "Matches NumPy within absolute 1e-14 on strided inputs spanning +/-1e6; measured batch maximum discrepancy 3.33e-16."
+  },
+  "environment": {
+    "python": "3.13.3",
+    "system": "Darwin",
+    "machine": "arm64",
+    "packages": {
+      "numpy": "2.3.5",
+      "pandas": "2.2.3",
+      "scipy": "1.16.3",
+      "pyarrow": "22.0.0",
+      "matplotlib": "3.10.8"
+    },
+    "VECLIB_MAXIMUM_THREADS": 2
+  },
+  "full_linear_equivalence": {
+    "files_compared": 53,
+    "result": "all 47 annual weight files, fitted coefficients, scale, monthly returns, diagnostics, lambda paths and spectrum byte-identical after memory changes",
+    "comparison_code_before": "f9faa5affcbbaac690828447e3a263416f28dec7",
+    "comparison_code_after": "e81fc95899646e5a384fbd519759e401bccc3fcb",
+    "VECLIB_MAXIMUM_THREADS": 4
+  },
+  "final_linear_aggregate_equivalence": {
+    "result": "passed",
+    "compared": [
+      "kappa",
+      "Sharpe",
+      "maximum drawdown",
+      "pre-2020 maximum drawdown",
+      "terminal wealth",
+      "mean gross"
+    ],
+    "relative_tolerance": 1e-10,
+    "absolute_tolerance": 1e-12,
+    "note": "Thread limit changed from four to two; bitwise equality is not asserted across these runs."
+  },
+  "completed_at": "2026-10-01T22:50:38.160470+00:00",
+  "resource_usage": {
+    "machine_ram_bytes": 8589934592,
+    "per_kernel": [
+      {
+        "kernel": "linear",
+        "elapsed_seconds": 487.4614357079845,
+        "process_peak_resident_bytes": 1046691840
+      },
+      {
+        "kernel": "gaussian",
+        "elapsed_seconds": 1546.654726458015,
+        "process_peak_resident_bytes": 624721920
+      },
+      {
+        "kernel": "matern32",
+        "elapsed_seconds": 1260.9124369998462,
+        "process_peak_resident_bytes": 1046691840
+      }
+    ],
+    "combined_resident_peak_sampled_bytes": 1339490304,
+    "sampling_interval_seconds": 1,
+    "note": "Peak sampled across the two model workers; OS per-process maximum resident sizes are recorded separately. Mat\u00e9rn shares a worker with Linear, so its maximum is cumulative for that worker."
+  },
+  "figure_quality_control": {
+    "pdf_count": 5,
+    "png_count": 5,
+    "pdf_pages_rendered": 5,
+    "visual_inspection": "passed: labels, legends, markers, axes and line styles checked on rendered PDFs"
+  },
+  "accounting_audits": {
+    "linear": {
+      "maximum_drawdown_date": "2021-01-31",
+      "five_largest_episodes": [
+        {
+          "peak_date": "2019-10-31",
+          "trough_date": "2021-01-31",
+          "drawdown": -0.1577409461699132,
+          "recovery_date": "2022-04-30"
+        },
+        {
+          "peak_date": "2016-01-31",
+          "trough_date": "2016-04-30",
+          "drawdown": -0.06867035523525489,
+          "recovery_date": "2016-10-31"
+        },
+        {
+          "peak_date": "2009-06-30",
+          "trough_date": "2009-08-31",
+          "drawdown": -0.0639781906279695,
+          "recovery_date": "2009-11-30"
+        },
+        {
+          "peak_date": "2009-02-28",
+          "trough_date": "2009-04-30",
+          "drawdown": -0.05174912557802713,
+          "recovery_date": "2009-06-30"
+        },
+        {
+          "peak_date": "2008-08-31",
+          "trough_date": "2008-11-30",
+          "drawdown": -0.03705622734233416,
+          "recovery_date": "2008-12-31"
+        }
+      ],
+      "requires_review": false,
+      "stress_periods": {
+        "1987": {
+          "min_drawdown": 0.0,
+          "min_monthly_return": 0.007764762410834773
+        },
+        "2000-2002": {
+          "min_drawdown": -0.021066340267652417,
+          "min_monthly_return": -0.01511587137578355
+        },
+        "2008-2009": {
+          "min_drawdown": -0.0639781906279695,
+          "min_monthly_return": -0.06345430877088043
+        },
+        "2020": {
+          "min_drawdown": -0.09935019518698518,
+          "min_monthly_return": -0.035980550314102015
+        },
+        "2022": {
+          "min_drawdown": -0.01672533009184307,
+          "min_monthly_return": -0.01207542738491799
+        }
+      }
+    },
+    "gaussian": {
+      "maximum_drawdown_date": "2020-03-31",
+      "five_largest_episodes": [
+        {
+          "peak_date": "2019-10-31",
+          "trough_date": "2020-03-31",
+          "drawdown": -0.15610002122752686,
+          "recovery_date": "2020-08-31"
+        },
+        {
+          "peak_date": "2020-12-31",
+          "trough_date": "2021-01-31",
+          "drawdown": -0.11043518380427031,
+          "recovery_date": "2021-11-30"
+        },
+        {
+          "peak_date": "2009-02-28",
+          "trough_date": "2009-08-31",
+          "drawdown": -0.08229301791137988,
+          "recovery_date": "2009-11-30"
+        },
+        {
+          "peak_date": "2020-08-31",
+          "trough_date": "2020-09-30",
+          "drawdown": -0.029238922789049604,
+          "recovery_date": "2020-11-30"
+        },
+        {
+          "peak_date": "2017-11-30",
+          "trough_date": "2018-01-31",
+          "drawdown": -0.023683205301936683,
+          "recovery_date": "2018-06-30"
+        }
+      ],
+      "requires_review": false,
+      "stress_periods": {
+        "1987": {
+          "min_drawdown": 0.0,
+          "min_monthly_return": 0.008987719373419528
+        },
+        "2000-2002": {
+          "min_drawdown": -0.013437663524216825,
+          "min_monthly_return": -0.013437663524216898
+        },
+        "2008-2009": {
+          "min_drawdown": -0.08229301791137988,
+          "min_monthly_return": -0.06172224400501037
+        },
+        "2020": {
+          "min_drawdown": -0.15610002122752686,
+          "min_monthly_return": -0.10562841627599356
+        },
+        "2022": {
+          "min_drawdown": -0.013177674080172785,
+          "min_monthly_return": -0.013177674080172834
+        }
+      }
+    },
+    "matern32": {
+      "maximum_drawdown_date": "2020-03-31",
+      "five_largest_episodes": [
+        {
+          "peak_date": "2020-01-31",
+          "trough_date": "2020-03-31",
+          "drawdown": -0.1363456826067162,
+          "recovery_date": "2020-08-31"
+        },
+        {
+          "peak_date": "2020-12-31",
+          "trough_date": "2021-01-31",
+          "drawdown": -0.11161537941392763,
+          "recovery_date": "2021-11-30"
+        },
+        {
+          "peak_date": "2009-07-31",
+          "trough_date": "2009-08-31",
+          "drawdown": -0.05531413604181723,
+          "recovery_date": "2009-10-31"
+        },
+        {
+          "peak_date": "2009-02-28",
+          "trough_date": "2009-04-30",
+          "drawdown": -0.05511540434261053,
+          "recovery_date": "2009-06-30"
+        },
+        {
+          "peak_date": "2020-08-31",
+          "trough_date": "2020-09-30",
+          "drawdown": -0.033196896176043045,
+          "recovery_date": "2020-11-30"
+        }
+      ],
+      "requires_review": false,
+      "stress_periods": {
+        "1987": {
+          "min_drawdown": 0.0,
+          "min_monthly_return": 0.010615722582548066
+        },
+        "2000-2002": {
+          "min_drawdown": -0.011569683749551918,
+          "min_monthly_return": -0.011569683749551907
+        },
+        "2008-2009": {
+          "min_drawdown": -0.05531413604181723,
+          "min_monthly_return": -0.05531413604181737
+        },
+        "2020": {
+          "min_drawdown": -0.1363456826067162,
+          "min_monthly_return": -0.09727794116667851
+        },
+        "2022": {
+          "min_drawdown": -0.01332221171114889,
+          "min_monthly_return": -0.013322211711148894
+        }
+      }
+    }
+  }
+}
