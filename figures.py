@@ -84,7 +84,7 @@ def complexity_figure(output, kernel, diagnostic):
     for column, title, stem in [
         ('historical_sharpe','Historical fit (train + validation)',upper),
         ('oos_sharpe','Test window 2024 (February 2024–January 2025)',lower)]:
-        fig, ax = canvas('Annualized Sharpe ratio', r'Effective complexity $\widehat{\mathcal C}(\lambda)$')
+        fig, ax = canvas('Annualized Sharpe ratio', r'Effective complexity $\widehat{\mathcal{C}}(\lambda)$')
         ax.set_title(LABELS[kernel]+' — '+title, loc='left', fontsize=10, pad=10)
         color = '#66788A' if column == 'historical_sharpe' else COLORS[kernel]
         ax.plot(frame.effective_complexity, frame[column], color=color,
@@ -102,7 +102,6 @@ def complexity_figure(output, kernel, diagnostic):
             ax.legend(loc='best',fontsize=8)
         save(fig, output, stem)
     stack(output, upper, lower, 'complexity_'+kernel+'_2024')
-    # Individual panels are reproducible but not retained as duplicate deliverables.
     for stem in (upper, lower):
         for suffix in ('.pdf','.png'):
             (output/(stem+suffix)).unlink()
