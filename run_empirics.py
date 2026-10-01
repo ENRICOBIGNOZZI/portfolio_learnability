@@ -74,7 +74,7 @@ def fit(clean_dir, output_dir, kernel, seed=0):
                     'effective_complexity':result['complexity'][choice],
                     'raw_excess_return':test_returns[h, choice]}
                 if save_weights:
-                    weights = bank.features(panel['x'], p) @ result['beta']/len(panel['ids'])
+                    weights = bank.scores(panel['x'], result['beta'], p)/len(panel['ids'])
                     if not np.isclose(weights @ panel['r'], row['raw_excess_return'],
                                       rtol=1e-8, atol=1e-10):
                         raise AssertionError('Stock-weight and managed-payoff returns disagree.')
@@ -91,7 +91,7 @@ def fit(clean_dir, output_dir, kernel, seed=0):
                 initial_gross = []
                 for index in result['validation']:
                     panel = panels[index]
-                    weights = bank.features(panel['x']) @ result['selected_train_beta']/len(panel['ids'])
+                    weights = bank.scores(panel['x'], result['selected_train_beta'])/len(panel['ids'])
                     initial_gross.append(float(np.abs(weights).sum()))
                 median_gross = float(np.median(initial_gross))
                 if not np.isfinite(median_gross) or median_gross <= 0:

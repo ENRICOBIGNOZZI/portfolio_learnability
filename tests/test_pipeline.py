@@ -188,3 +188,17 @@ def test_future_month_characteristics_cannot_change_training_ranks_or_bandwidth(
                                   later.loc[later.eom<=REFERENCE_SELECTION_END,names])
     assert median_distance(initial.loc[initial.eom<=REFERENCE_SELECTION_END,names]) == median_distance(
         later.loc[later.eom<=REFERENCE_SELECTION_END,names])
+
+
+@pytest.mark.parametrize('kernel',['linear','gaussian','matern32'])
+@pytest.mark.parametrize('count',[None,100])
+def test_bounded_memory_reductions_match_dense_features(kernel,count):
+    rng=np.random.default_rng(291)
+    x=rng.normal(size=(777,5));r=rng.normal(size=777)
+    bank=FeatureBank(kernel,5,321,2.,0)
+    phi=bank.features(x,count)
+    beta=rng.normal(size=phi.shape[1])
+    np.testing.assert_allclose(bank.scores(x,beta,count),phi@beta,rtol=1e-12,atol=1e-12)
+    reduced=managed_matrix([{'x':x,'r':r}],bank,count)[0]
+    np.testing.assert_allclose(reduced,phi.T@r/len(r),rtol=1e-12,atol=1e-12)
+    np.testing.assert_allclose(reduced@beta,bank.scores(x,beta,count)@r/len(r),rtol=1e-12,atol=1e-12)

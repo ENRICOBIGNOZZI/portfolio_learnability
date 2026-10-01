@@ -1,5 +1,6 @@
 """Direct maximum-Sharpe portfolio learning with ridge regularization."""
 import numpy as np
+from kernels import STOCK_BATCH_SIZE
 
 def managed_matrix(panels, bank, count=None):
     rows = []
@@ -7,8 +8,14 @@ def managed_matrix(panels, bank, count=None):
         x, r = np.asarray(panel['x']), np.asarray(panel['r'])
         if len(x) != len(r) or len(r) == 0 or not np.isfinite(r).all():
             raise ValueError('Do not train using an unresolved or misaligned payoff.')
-        phi = bank.features(x, count)
-        rows.append(phi.T @ r / len(r))
+        if bank.kernel == 'linear':
+            total = bank.features(x, count).T @ r
+        else:
+            total = np.zeros(bank.maximum if count is None else count)
+            for start in range(0, len(r), STOCK_BATCH_SIZE):
+                stop = start+STOCK_BATCH_SIZE
+                total += bank.features(x[start:stop], count).T @ r[start:stop]
+        rows.append(total / len(r))
     return np.vstack(rows)
 
 

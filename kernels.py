@@ -7,6 +7,7 @@ from scipy.spatial.distance import cdist, pdist
 
 KERNELS = ('linear', 'gaussian', 'matern32')
 FEATURE_COUNT = 10000
+STOCK_BATCH_SIZE = 256
 
 
 def array_hash(value):
@@ -75,6 +76,14 @@ class FeatureBank:
             raise ValueError('Feature count is outside the frozen bank.')
         return np.sqrt(2.0/count)*np.cos(
             x @ self.frequencies[:count].T + self.phases[:count])
+
+    def scores(self, x, beta, count=None):
+        """Evaluate a policy without materializing all stock-by-RFF values."""
+        x = np.asarray(x, float)
+        if self.kernel == 'linear':
+            return self.features(x, count) @ beta
+        return np.concatenate([self.features(x[start:start+STOCK_BATCH_SIZE], count) @ beta
+                               for start in range(0, len(x), STOCK_BATCH_SIZE)])
 
     def metadata(self):
         return {'kernel':self.kernel, 'input_dimension':self.dimension,
