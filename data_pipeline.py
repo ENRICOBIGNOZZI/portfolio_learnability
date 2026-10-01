@@ -224,7 +224,7 @@ def load_panels(clean_dir):
     root = Path(clean_dir)
     manifest = json.loads((root/'manifest.json').read_text())
     if manifest['status'] != 'complete' or manifest['unresolved_returns']:
-        raise ValueError('Unresolved returns remain. Supply documented return corrections; '
+        raise ValueError('Unresolved returns remain. Reconcile the raw source and rebuild; '
                          'do not drop securities or replace unknown returns by zero.')
     names = manifest['characteristics']
     if len(names) != 130 or len(set(names)) != 130:

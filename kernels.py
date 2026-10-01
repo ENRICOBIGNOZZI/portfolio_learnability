@@ -81,4 +81,3 @@ class FeatureBank:
                 'maximum_features':self.maximum, 'ell':self.ell, 'seed':self.seed,
                 'frequencies_sha256':array_hash(self.frequencies),
                 'phases_sha256':array_hash(self.phases)}
-
