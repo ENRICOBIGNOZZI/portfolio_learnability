@@ -8,7 +8,8 @@ import pandas as pd
 
 START = pd.Timestamp('1963-01-01')
 END = pd.Timestamp('2024-12-31')
-CALIBRATION_END = pd.Timestamp('1972-12-31')
+REFERENCE_SELECTION_END = pd.Timestamp('2023-12-31')
+INITIAL_TRAIN_END = pd.Timestamp('1972-12-31')
 FLAGS = ['common', 'primary_sec', 'obs_main', 'exch_main']
 META = ['id', 'eom', 'excntry', 'size_grp', 'me', 'ret_exc_lead1m',
         'crsp_shrcd', 'crsp_exchcd', *FLAGS]
@@ -41,7 +42,7 @@ def formation_mask(frame):
 def characteristic_selection(frame, candidates, count=130):
     """Small-fixture API; production accumulates the same counts by year."""
     known = frame.loc[formation_mask(frame) &
-                      pd.to_datetime(frame['eom']).le(CALIBRATION_END)]
+                      pd.to_datetime(frame['eom']).le(REFERENCE_SELECTION_END)]
     if known.empty:
         raise ValueError('No initial training observations.')
     clean = known[candidates].apply(pd.to_numeric, errors='coerce')
@@ -106,11 +107,13 @@ def prepare(raw_dir, output_dir, correction_file=None):
     coverage = pd.Series(0, index=candidates, dtype='int64')
     n_calibration = 0
     for path in raw_files:
-        if int(path.stem.rsplit('_', 1)[1]) > CALIBRATION_END.year:
+        period = path.stem.rsplit('_', 1)[1]
+        year = int(period.split('-')[0])
+        if year > REFERENCE_SELECTION_END.year:
             continue
         frame = pd.read_parquet(path, columns=[*META, *candidates])
         frame['eom'] = pd.to_datetime(frame['eom'])
-        frame = frame.loc[formation_mask(frame) & frame.eom.le(CALIBRATION_END)]
+        frame = frame.loc[formation_mask(frame) & frame.eom.le(REFERENCE_SELECTION_END)]
         values = frame[candidates].replace([np.inf, -np.inf], np.nan)
         coverage += values.notna().sum()
         n_calibration += len(frame)
@@ -168,7 +171,7 @@ def prepare(raw_dir, output_dir, correction_file=None):
         for date, month in frame.groupby('eom', sort=True):
             counts.append({'formation_date':date, 'stocks':len(month),
                            'unknown_returns':int((~month.return_known).sum())})
-            if date <= CALIBRATION_END:
+            if date <= INITIAL_TRAIN_END:
                 initial.append(month[names].to_numpy(float))
         result_path = output_dir/path.name
         frame[['id','eom','return_date','me','r','return_known',*names]].to_parquet(
@@ -183,10 +186,10 @@ def prepare(raw_dir, output_dir, correction_file=None):
     missing_table.to_parquet(output_dir/'unresolved_returns.parquet', index=False)
     pd.DataFrame(counts).to_csv(output_dir/'universe_counts.csv', index=False)
     manifest = {'status':'complete' if missing_table.empty else 'unresolved_returns',
-        'cleaning':'AIPT-style with training-only coverage selection; not a literal replication',
+        'cleaning':'AIPT Section 2.5 stock-characteristic cleaning; 2024 is an extension outside feature selection',
         'source_raw_manifest_sha256':digest(raw_dir/'manifest.json'),
         'characteristics':names, 'feature_count':len(names),
-        'coverage_start':'1963-01-01','coverage_end':'1972-12-31',
+        'coverage_start':'1963-01-01','coverage_end':'2023-12-31',
         'coverage_observations':n_calibration, 'row_missing_limit':0.30,
         'rank':'(average_rank-1)/(observed_count-1)-0.5',
         'imputation':'zero after ranking; neutral value, not guaranteed median with ties',
