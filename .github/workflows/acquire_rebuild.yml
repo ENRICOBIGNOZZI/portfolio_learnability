@@ -1,0 +1,187 @@
+name: Acquire clean JKP and rebuild empirics
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'download.py'
+      - 'data.py'
+      - 'model.py'
+      - 'run.py'
+      - 'figures.py'
+      - 'characteristics.json'
+      - 'requirements.txt'
+      - 'tests/**'
+      - '.github/workflows/acquire_rebuild.yml'
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: portfolio-paper-authorized-rebuild
+  cancel-in-progress: false
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements.txt
+      - run: python -m pytest -q tests
+
+  data:
+    needs: tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    env:
+      WRDS_USERNAME: ${{ secrets.WRDS_USERNAME }}
+      WRDS_PASSWORD: ${{ secrets.WRDS_PASSWORD }}
+      OPENBLAS_NUM_THREADS: '2'
+      OMP_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements.txt
+      - name: Authorized bounded WRDS acquisition
+        run: python -u download.py --names characteristics.json --out data/raw --max-connections 3
+      - name: Apply AIPT cleaning and freeze clean panel
+        run: |
+          python -u run.py prepare --raw data/raw --clean data/clean
+          python - <<'PY'
+          import json
+          m=json.load(open('data/clean/manifest.json'))
+          print(json.dumps(m,indent=2))
+          if m['status']!='complete':
+              raise SystemExit('Clean panel has unresolved returns; fitting is blocked.')
+          PY
+      - name: Download risk-free series
+        run: python run.py risk-free --out data/risk_free.csv
+      - name: Encrypt licensed raw and cleaned data
+        if: always()
+        shell: bash
+        run: |
+          mkdir -p status
+          test ! -f data/raw/connection_attempt.json || cp data/raw/connection_attempt.json status/
+          test ! -f data/raw/manifest.json || cp data/raw/manifest.json status/raw_manifest.json
+          test ! -f data/clean/manifest.json || cp data/clean/manifest.json status/clean_manifest.json
+          if [ -d data/raw ] && [ -n "$WRDS_PASSWORD" ]; then
+            tar -czf - data/raw | openssl enc -aes-256-cbc -salt -pbkdf2 -iter 200000 -pass env:WRDS_PASSWORD -out raw_jkp.tar.gz.enc
+          fi
+          if [ -f data/clean/manifest.json ] && [ -n "$WRDS_PASSWORD" ]; then
+            tar -czf - data/clean data/risk_free.csv data/risk_free.json 2>/dev/null | openssl enc -aes-256-cbc -salt -pbkdf2 -iter 200000 -pass env:WRDS_PASSWORD -out clean_jkp.tar.gz.enc
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: new-raw-jkp-encrypted
+          path: raw_jkp.tar.gz.enc
+          compression-level: 0
+          retention-days: 90
+          if-no-files-found: warn
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: new-clean-jkp-encrypted
+          path: clean_jkp.tar.gz.enc
+          compression-level: 0
+          retention-days: 90
+          if-no-files-found: warn
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: new-data-status
+          path: status/
+          retention-days: 90
+          if-no-files-found: warn
+
+  fit:
+    needs: data
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    strategy:
+      fail-fast: false
+      matrix:
+        kernel: [linear, gaussian, matern32]
+    env:
+      WRDS_PASSWORD: ${{ secrets.WRDS_PASSWORD }}
+      OPENBLAS_NUM_THREADS: '4'
+      OMP_NUM_THREADS: '4'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements.txt
+      - uses: actions/download-artifact@v4
+        with:
+          name: new-clean-jkp-encrypted
+      - run: openssl enc -d -aes-256-cbc -pbkdf2 -iter 200000 -pass env:WRDS_PASSWORD -in clean_jkp.tar.gz.enc | tar -xzf -
+      - name: Refit all annual windows and RFF counts
+        run: python -u run.py fit --clean data/clean --out results/new --kernel ${{ matrix.kernel }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: new-results-${{ matrix.kernel }}
+          path: results/new/public/
+          retention-days: 90
+      - name: Encrypt security-level weights
+        run: |
+          if [ -d results/new/private ]; then
+            tar -czf - results/new/private | openssl enc -aes-256-cbc -salt -pbkdf2 -iter 200000 -pass env:WRDS_PASSWORD -out private_results.enc
+          fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: new-private-${{ matrix.kernel }}-encrypted
+          path: private_results.enc
+          compression-level: 0
+          retention-days: 90
+          if-no-files-found: warn
+
+  report:
+    needs: fit
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      WRDS_PASSWORD: ${{ secrets.WRDS_PASSWORD }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements.txt
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: new-results-*
+          merge-multiple: true
+          path: results/new/public
+      - uses: actions/download-artifact@v4
+        with:
+          name: new-clean-jkp-encrypted
+      - run: openssl enc -d -aes-256-cbc -pbkdf2 -iter 200000 -pass env:WRDS_PASSWORD -in clean_jkp.tar.gz.enc | tar -xzf -
+      - run: python run.py report --results results/new --risk-free data/risk_free.csv --out paper
+      - name: Compile empirical section
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq texlive-latex-base texlive-latex-recommended texlive-latex-extra
+          cd paper
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          bibtex main
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+      - run: |
+          python - <<'PY'
+          import pathlib, zipfile
+          with zipfile.ZipFile('new_empirics.zip','w',zipfile.ZIP_DEFLATED) as z:
+              for p in pathlib.Path('paper').rglob('*'):
+                  if p.is_file(): z.write(p)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: new-empirics-figures-pdf
+          path: |
+            new_empirics.zip
+            paper/
+          retention-days: 90
