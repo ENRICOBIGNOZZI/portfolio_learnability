@@ -223,3 +223,23 @@ def test_refit_labels_available_by_trade_close_and_test_payoffs_strictly_later()
         assert (dates[np.r_[train,validation]]+pd.offsets.MonthEnd(1)).max() <= trade
         assert (dates[test]+pd.offsets.MonthEnd(1)).min() > trade
         assert dates[train].max()<dates[validation].min()<dates[test].min()
+
+
+def test_streamed_panels_preserve_values_and_random_access(tmp_path):
+    from data_pipeline import PanelSequence
+    records=[]
+    for year in (1963,1964):
+        dates=pd.date_range(f'{year}-01-31',periods=2,freq='ME')
+        f=pd.DataFrame({'eom':np.repeat(dates,2),'id':[2,1,2,1],
+            'x':[.2,.1,.4,.3],'r':[.02,.01,.04,.03]})
+        f['return_date']=f.eom+pd.offsets.MonthEnd(1)
+        filename=f'{year}.parquet';f.to_parquet(tmp_path/filename,index=False)
+        records.extend((date,filename) for date in dates)
+    panels=PanelSequence(tmp_path,['x'],records)
+    assert len(panels)==4
+    for index in [0,3,1,2,0]:
+        p=panels[index]
+        np.testing.assert_array_equal(p['ids'],[1,2])
+        np.testing.assert_allclose(p['x'].ravel(),[.1,.2] if index%2==0 else [.3,.4])
+        np.testing.assert_allclose(p['r'],p['x'].ravel()/10)
+    assert [p['date'] for p in panels]==[d for d,_ in records]

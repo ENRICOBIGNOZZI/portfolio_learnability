@@ -217,6 +217,29 @@ def prepare(raw_dir, output_dir):
     return manifest
 
 
+class PanelSequence:
+    """Stock panels with a one-file cache, so full historical X never fills RAM."""
+    def __init__(self, root, names, records):
+        self.root, self.names, self.records = Path(root), names, records
+        self.dates = pd.DatetimeIndex([date for date, _ in records])
+        self._file, self._frame, self._groups = None, None, None
+
+    def __len__(self):
+        return len(self.records)
+
+    def __getitem__(self, index):
+        date, filename = self.records[index]
+        if filename != self._file:
+            self._frame = pd.read_parquet(self.root/filename).sort_values(
+                ['eom','id'], kind='stable').reset_index(drop=True)
+            self._groups = self._frame.groupby('eom',sort=False).indices
+            self._file = filename
+        g = self._frame.iloc[self._groups[date]]
+        return {'date':date,'return_date':g.return_date.iloc[0],
+                'ids':g.id.to_numpy(),'x':g[self.names].to_numpy(float),
+                'r':g.r.to_numpy(float)}
+
+
 def load_panels(clean_dir):
     root = Path(clean_dir)
     manifest = json.loads((root/'manifest.json').read_text())
@@ -226,7 +249,7 @@ def load_panels(clean_dir):
     names = manifest['characteristics']
     if len(names) != 130 or len(set(names)) != 130:
         raise ValueError('Exactly 130 distinct predictors required.')
-    panels = []
+    records = []
     for item in manifest['files']:
         if digest(root/item['name']) != item['sha256']:
             raise ValueError('Clean panel checksum mismatch.')
@@ -238,14 +261,12 @@ def load_panels(clean_dir):
             raise ValueError('Unresolved payoff cannot enter a fit.')
         if frame.duplicated(['id','eom']).any():
             raise ValueError('Duplicate clean security-month.')
-        for date, g in frame.groupby('eom', sort=True):
-            g = g.sort_values('id', kind='stable')
-            panels.append({'date':pd.Timestamp(date), 'return_date':g.return_date.iloc[0],
-                           'ids':g.id.to_numpy(), 'x':g[names].to_numpy(float),
-                           'r':g.r.to_numpy(float)})
-    panels.sort(key=lambda p:p['date'])
-    actual = pd.DatetimeIndex([p['date'] for p in panels])
+        if not (frame.return_date == frame.eom + pd.offsets.MonthEnd(1)).all():
+            raise ValueError('Payoffs must refer to the next calendar month.')
+        records.extend((pd.Timestamp(date),item['name']) for date in sorted(frame.eom.unique()))
+    records.sort(key=lambda record:record[0])
+    actual = pd.DatetimeIndex([date for date, _ in records])
     expected = pd.date_range('1963-01-31', '2024-12-31', freq='ME')
     if not actual.equals(expected):
         raise ValueError('The formation panel must contain every month, 1963--2024.')
-    return panels, manifest
+    return PanelSequence(root,names,records), manifest
