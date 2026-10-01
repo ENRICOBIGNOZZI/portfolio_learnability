@@ -2,12 +2,40 @@
 from __future__ import annotations
 from dataclasses import dataclass
 import hashlib
+import ctypes
+import sys
 import numpy as np
 from scipy.spatial.distance import cdist, pdist
 
 KERNELS = ('linear', 'gaussian', 'matern32')
 FEATURE_COUNT = 10000
 STOCK_BATCH_SIZE = 256
+
+
+# Apple documents vvcos as the double-precision vector cosine:
+# https://developer.apple.com/documentation/accelerate/vvcos(_:_:_:)
+_VECTOR_COS = None
+if sys.platform == 'darwin':
+    try:
+        _ACCELERATE = ctypes.CDLL('/System/Library/Frameworks/Accelerate.framework/Accelerate')
+        _VECTOR_COS = _ACCELERATE.vvcos
+        _VECTOR_COS.argtypes = [ctypes.POINTER(ctypes.c_double),
+                               ctypes.POINTER(ctypes.c_double), ctypes.POINTER(ctypes.c_int)]
+        _VECTOR_COS.restype = None
+    except (OSError, AttributeError):
+        _VECTOR_COS = None
+
+
+def cosine(values):
+    """Float64 vector cosine, with NumPy fallback outside Apple Accelerate."""
+    values = np.ascontiguousarray(values, dtype=np.float64)
+    if _VECTOR_COS is None or values.size > np.iinfo(np.int32).max:
+        return np.cos(values)
+    result = np.empty_like(values)
+    count = ctypes.c_int(values.size)
+    _VECTOR_COS(result.ctypes.data_as(ctypes.POINTER(ctypes.c_double)),
+                values.ctypes.data_as(ctypes.POINTER(ctypes.c_double)), ctypes.byref(count))
+    return result
 
 
 def array_hash(value):
@@ -74,7 +102,7 @@ class FeatureBank:
         count = self.maximum if count is None else int(count)
         if not 1 <= count <= self.maximum:
             raise ValueError('Feature count is outside the frozen bank.')
-        return np.sqrt(2.0/count)*np.cos(
+        return np.sqrt(2.0/count)*cosine(
             x @ self.frequencies[:count].T + self.phases[:count])
 
     def scores(self, x, beta, count=None):
@@ -88,5 +116,7 @@ class FeatureBank:
     def metadata(self):
         return {'kernel':self.kernel, 'input_dimension':self.dimension,
                 'maximum_features':self.maximum, 'ell':self.ell, 'seed':self.seed,
+                'cosine_backend':('unused' if self.kernel=='linear' else
+                    'Apple Accelerate vvcos float64' if _VECTOR_COS is not None else 'NumPy float64'),
                 'frequencies_sha256':array_hash(self.frequencies),
                 'phases_sha256':array_hash(self.phases)}

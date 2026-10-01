@@ -202,3 +202,15 @@ def test_bounded_memory_reductions_match_dense_features(kernel,count):
     reduced=managed_matrix([{'x':x,'r':r}],bank,count)[0]
     np.testing.assert_allclose(reduced,phi.T@r/len(r),rtol=1e-12,atol=1e-12)
     np.testing.assert_allclose(reduced@beta,bank.scores(x,beta,count)@r/len(r),rtol=1e-12,atol=1e-12)
+
+
+@pytest.mark.parametrize('fallback',[False,True])
+def test_vector_cosine_preserves_double_precision_and_input(monkeypatch,fallback):
+    import kernels
+    if fallback:monkeypatch.setattr(kernels,'_VECTOR_COS',None)
+    values=np.random.default_rng(390).uniform(-1e6,1e6,size=(37,1001))[:,::2]
+    original=values.copy()
+    result=kernels.cosine(values)
+    assert result.dtype==np.float64 and result.shape==values.shape
+    np.testing.assert_allclose(result,np.cos(values),rtol=0,atol=1e-14)
+    np.testing.assert_array_equal(values,original)
