@@ -100,6 +100,7 @@ def raw_snapshot(tmp_path):
 def overwrite_raw(raw,frame,manifest):
     p=raw/'jkp_1963.parquet';frame.to_parquet(p,index=False)
     manifest['files'][0]['sha256']=digest(p)
+    manifest['files'][0]['rows']=len(frame)
     (raw/'manifest.json').write_text(json.dumps(manifest))
 
 
@@ -119,16 +120,23 @@ def test_full_preprocessing_130_finite_ranks_same_snapshot_recovery(raw_snapshot
     assert len(json.loads((tmp_path/'clean/characteristic_provenance.json').read_text())['coverage'])==153
 
 
-def test_unresolved_kept_and_blocks_fit_with_required_csv(raw_snapshot,tmp_path):
+@pytest.mark.parametrize('missing_kind',['missing_return','missing_observation'])
+def test_unresolved_kept_and_blocks_fit_with_required_csv(raw_snapshot,tmp_path,missing_kind):
     raw,frame,meta=raw_snapshot
     frame.loc[0,'ret_exc_lead1m']=np.nan
-    frame.loc[10,'current_excess_return']=np.nan
+    if missing_kind=='missing_return':
+        frame.loc[10,'current_excess_return']=np.nan
+    else:
+        frame=frame.drop(index=10)
     overwrite_raw(raw,frame,meta)
     with pytest.raises(ValueError,match='Unresolved payoffs'):
         prepare(raw,tmp_path/'clean')
     unresolved=pd.read_csv(tmp_path/'clean/unresolved_returns.csv')
     assert len(unresolved)==1
-    assert {'id','permno','formation_date','return_date','reason_unresolved','ret_exc_lead1m'}.issubset(unresolved)
+    assert {'id','permno','formation_date','return_date','reason_unresolved','ret_exc_lead1m',
+        'formation_current_total_return','next_current_total_return',
+        'next_current_excess_return','formation_current_excess_return'}.issubset(unresolved)
+    assert ('exists' in unresolved.reason_unresolved.iloc[0]) == (missing_kind=='missing_return')
     with pytest.raises(ValueError,match='Unresolved'):
         load_panels(tmp_path/'clean')
 

@@ -6,12 +6,30 @@ inputs. Licensed raw snapshots and stock-level outputs stay outside Git.
 
 ## Execution status
 
-**The real-data run is incomplete. No new empirical results are claimed.**
-The local historical raw parquet files omit the universe flags, CRSP share and
-exchange codes, and current returns needed for the mandatory audit. They cannot
-substitute for a complete raw snapshot. `WRDS_USERNAME` and `WRDS_PASSWORD` were
-absent from the local process on 1 October 2026. No fresh authentication or
-repeated GitHub-hosted acquisition has been attempted.
+**The real-data run is blocked at payoff reconciliation, before any model fit.**
+On 1 October 2026, local WRDS acquisition completed using one authenticated
+connection and 63 SELECTs: **3,687,389 raw stock-month observations**, covering
+January 1963 through January 2025. The complete private snapshot is `data/raw`;
+its manifest records every file checksum. Credentials were supplied only to the
+acquisition process and were not written to repository files or acquisition logs.
+
+The newly constructed panel contains **2,545,685 stock-month observations**,
+exactly **130 predictors**, and all **744 formation months** in 1963–2024
+(mean **3,421.62 stocks per month**). However, **7,727 forward payoffs remain
+unresolved**: 7,611 lack a next-calendar-month security observation, and 116 have
+that observation but no return. None has an observed next-month total return
+that could recover the missing excess return; same-snapshot recovery resolved
+zero cases. Ten unresolved cases are December 2024 formations, despite the
+successful acquisition of January 2025 data.
+
+`data/clean/unresolved_returns.csv` contains the security identifiers, dates,
+available formation and next-month return fields, and the precise missingness
+reason. `data/clean/audit_summary.json` records the real-data checks. These are
+private files, excluded from Git. Missing observations are not automatically
+classified as delistings: their economic disposition still needs reconciliation
+from documented source data. **No portfolio has been fitted, no OOS portfolio
+returns have been generated, and no final figure or performance table exists.**
+The fit loader was explicitly tested against this actual panel and rejects it.
 
 The exact 130 author variables were not found in the official materials searched.
 `protocol.json` records the sources and the fallback: best coverage among the
@@ -19,18 +37,20 @@ The exact 130 author variables were not found in the official materials searched
 in Section 2.5 of the September 2024 AIPT paper. Alphabetical names break ties.
 This reference selection uses historical research information; it is not a
 claim of real-time feature discovery. The 2024 extension cannot affect selection.
-The final selected names and all 153 missing shares are generated only from the
-new complete raw snapshot, in `data/clean/characteristic_provenance.json`.
+The 130 selected names and all 153 missing shares from this new snapshot are
+frozen publicly in `characteristic_selection.json`, with reference dates and
+source checksums. The private preparation copy is
+`data/clean/characteristic_provenance.json`. No prior selection was reused.
 
-Linear currently retains the existing affine specification `[1, Z]` (130 input
-characteristics, 131 coefficients). The theoretical manuscript is absent from
-this checkout, so equivalence to its exact linear specification remains to be
-verified before accepting the empirical run.
+Linear uses the user-confirmed affine specification `[1, Z]`: 130 input
+characteristics and 131 coefficients, including the intercept.
 
 ## Reproduce locally
 
 Python 3.12 is used in CI. Unit and integration fixtures are synthetic tests,
-not empirical results.
+not empirical results. The commands below describe reproduction in fresh output
+directories; existing prepared data are never silently overwritten. The present
+snapshot stops at `prepare` until the documented payoff issues are reconciled.
 
 ```sh
 python3 -m pip install -r requirements.txt

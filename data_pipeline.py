@@ -148,16 +148,21 @@ def prepare(raw_dir, output_dir):
 
     # Recovery uses observed next-calendar-month returns, never eligibility.
     return_history = pd.concat([pd.read_parquet(p, columns=[
-        'id', 'eom', 'current_excess_return']) for p in raw_files], ignore_index=True)
+        'id', 'eom', 'current_excess_return', 'current_total_return']) for p in raw_files], ignore_index=True)
     return_history['eom'] = pd.to_datetime(return_history['eom'])
-    return_history = return_history.loc[np.isfinite(return_history.current_excess_return)]
     if return_history.duplicated(['id', 'eom']).any():
         raise ValueError('Duplicate raw security-month returns; do not silently aggregate.')
-    return_history = return_history.rename(columns={'eom':'return_date'})
+    return_history = return_history.rename(columns={'eom':'return_date',
+        'current_excess_return':'next_current_excess_return',
+        'current_total_return':'next_current_total_return'})
+    return_history['next_observation_present'] = True
     counts, missing, files, initial = [], [], [], []
     n_recovered = 0
     for path in raw_files:
-        frame = pd.read_parquet(path, columns=[*META, *names])
+        frame = pd.read_parquet(path, columns=[*META, *names,
+            'current_excess_return', 'current_total_return']).rename(columns={
+                'current_excess_return':'formation_current_excess_return',
+                'current_total_return':'formation_current_total_return'})
         frame['eom'] = pd.to_datetime(frame['eom'])
         frame = frame.loc[formation_mask(frame)].copy()
         n_universe = len(frame)
@@ -171,13 +176,18 @@ def prepare(raw_dir, output_dir):
         frame = frame.merge(return_history, on=['id', 'return_date'], how='left',
                             validate='many_to_one', sort=False)
         frame['r'] = frame.ret_exc_lead1m.where(np.isfinite(frame.ret_exc_lead1m))
-        recover = frame.r.isna() & np.isfinite(frame.current_excess_return)
-        frame.loc[recover, 'r'] = frame.loc[recover, 'current_excess_return']
+        recover = frame.r.isna() & np.isfinite(frame.next_current_excess_return)
+        frame.loc[recover, 'r'] = frame.loc[recover, 'next_current_excess_return']
         n_recovered += int(recover.sum())
         frame['return_known'] = np.isfinite(frame.r)
         unresolved = frame.loc[~frame.return_known, ['id','permno','eom','return_date',
-            'ret_exc_lead1m','current_excess_return']].rename(columns={'eom':'formation_date'})
-        unresolved['reason_unresolved'] = 'No finite JKP lead or observed next-calendar-month current excess return'
+            'ret_exc_lead1m','formation_current_excess_return','formation_current_total_return',
+            'next_current_excess_return','next_current_total_return',
+            'next_observation_present']].rename(columns={'eom':'formation_date'})
+        unresolved['reason_unresolved'] = np.where(
+            unresolved.next_observation_present.eq(True),
+            'Next calendar month exists but its JKP excess return is missing',
+            'No next-calendar-month security observation in the same raw snapshot')
         missing.append(unresolved)
         for date, month in frame.groupby('eom', sort=True):
             counts.append({'formation_date':date, 'stocks':len(month),

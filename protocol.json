@@ -42,7 +42,23 @@
   },
   "linear_specification": {
     "features": "intercept plus 130 ranked characteristics",
-    "status": "inherited_current_implementation; theoretical manuscript not present for verification"
+    "status": "user_confirmed",
+    "confirmation": "User confirmed f(z)=beta_0+beta^T z with intercept and 130 characteristics.",
+    "historical_verification": {
+      "commit": "ee5502e3c27ce5588cf6416e59bcc7e8a26e66f3",
+      "former_branch": "empirics-plugin-spectral-gross-20260928",
+      "source": "https://github.com/ENRICOBIGNOZZI/portfolio_learnability/blob/ee5502e3c27ce5588cf6416e59bcc7e8a26e66f3/Kernels/kernel_function.py",
+      "linear_gram_lines": [
+        27,
+        29
+      ],
+      "linear_features_lines": [
+        166,
+        173
+      ],
+      "kernel": "1 + X @ Y.T",
+      "features": "column_stack(ones, X)"
+    }
   },
   "representations": [
     "linear",

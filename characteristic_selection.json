@@ -1,0 +1,926 @@
+{
+  "method": "reconstructed_published_coverage_rule",
+  "reference_start": "1963-01-01",
+  "reference_end": "2023-12-31",
+  "count": 130,
+  "candidate_count": 153,
+  "tie_break": "characteristic name ascending",
+  "primary_source": "https://www.nber.org/system/files/working_papers/w33012/revisions/w33012.rev0.pdf",
+  "source_sha256": "5ba2ce32de3ac9a21e5dd6396dc82d85378e48814910baf536a1af013372f424",
+  "section": "2.5, printed page 15",
+  "exact_author_list_found": false,
+  "searched_official_materials": [
+    "https://www.antoinedidisheim.com/research",
+    "https://www.bryankellyacademic.org/",
+    "https://github.com/AntoineDidisheim",
+    "https://github.com/AntoineDidisheim/data_share",
+    "https://github.com/bkelly-lab",
+    "NBER September 2024 paper and appendix"
+  ],
+  "interpretation": "Coverage over the paper sample 1963-2023; historical research-selection information, not a point-in-time feature-discovery claim. No 2024 data.",
+  "candidates": [
+    "niq_su",
+    "ret_6_1",
+    "ret_12_1",
+    "saleq_su",
+    "tax_gr1a",
+    "ni_inc8q",
+    "prc_highprc_252d",
+    "resff3_6_1",
+    "resff3_12_1",
+    "be_me",
+    "debt_me",
+    "at_me",
+    "ret_60_12",
+    "ni_me",
+    "fcf_me",
+    "div12m_me",
+    "eqpo_me",
+    "eqnpo_me",
+    "sale_gr3",
+    "sale_gr1",
+    "ebitda_mev",
+    "sale_me",
+    "ocf_me",
+    "ival_me",
+    "bev_mev",
+    "netdebt_me",
+    "eq_dur",
+    "capex_abn",
+    "at_gr1",
+    "ppeinv_gr1a",
+    "noa_at",
+    "noa_gr1a",
+    "lnoa_gr1a",
+    "capx_gr1",
+    "capx_gr2",
+    "capx_gr3",
+    "chcsho_12m",
+    "eqnpo_12m",
+    "debt_gr3",
+    "inv_gr1",
+    "inv_gr1a",
+    "oaccruals_at",
+    "taccruals_at",
+    "cowc_gr1a",
+    "coa_gr1a",
+    "col_gr1a",
+    "nncoa_gr1a",
+    "ncoa_gr1a",
+    "ncol_gr1a",
+    "nfna_gr1a",
+    "sti_gr1a",
+    "lti_gr1a",
+    "fnl_gr1a",
+    "be_gr1a",
+    "oaccruals_ni",
+    "taccruals_ni",
+    "netis_at",
+    "eqnetis_at",
+    "dbnetis_at",
+    "niq_be",
+    "niq_be_chg1",
+    "niq_at",
+    "niq_at_chg1",
+    "ebit_bev",
+    "ebit_sale",
+    "sale_bev",
+    "at_turnover",
+    "gp_at",
+    "gp_atl1",
+    "ope_be",
+    "ope_bel1",
+    "op_at",
+    "op_atl1",
+    "cop_at",
+    "cop_atl1",
+    "f_score",
+    "o_score",
+    "z_score",
+    "pi_nix",
+    "at_be",
+    "saleq_gr1",
+    "rd_me",
+    "rd_sale",
+    "opex_at",
+    "emp_gr1",
+    "rd5_at",
+    "age",
+    "dsale_dinv",
+    "dsale_drec",
+    "dgp_dsale",
+    "dsale_dsga",
+    "sale_emp_gr1",
+    "tangibility",
+    "kz_index",
+    "ocfq_saleq_std",
+    "cash_at",
+    "ni_ar1",
+    "ni_ivol",
+    "earnings_variability",
+    "aliq_at",
+    "aliq_mat",
+    "seas_1_1an",
+    "seas_1_1na",
+    "seas_2_5an",
+    "seas_2_5na",
+    "seas_6_10an",
+    "seas_6_10na",
+    "seas_11_15an",
+    "seas_11_15na",
+    "seas_16_20an",
+    "seas_16_20na",
+    "market_equity",
+    "ivol_ff3_21d",
+    "ivol_capm_252d",
+    "ivol_capm_21d",
+    "ivol_hxz4_21d",
+    "rvol_21d",
+    "beta_60m",
+    "betabab_1260d",
+    "beta_dimson_21d",
+    "turnover_126d",
+    "turnover_var_126d",
+    "dolvol_126d",
+    "dolvol_var_126d",
+    "prc",
+    "ami_126d",
+    "zero_trades_21d",
+    "zero_trades_126d",
+    "zero_trades_252d",
+    "rmax1_21d",
+    "rskew_21d",
+    "iskew_capm_21d",
+    "iskew_ff3_21d",
+    "iskew_hxz4_21d",
+    "coskew_21d",
+    "ret_1_0",
+    "betadown_252d",
+    "bidaskhl_21d",
+    "ret_3_1",
+    "ret_9_1",
+    "ret_12_7",
+    "corr_1260d",
+    "rmax5_21d",
+    "rmax5_rvol_21d",
+    "ni_be",
+    "ocf_at",
+    "ocf_at_chg1",
+    "mispricing_perf",
+    "mispricing_mgmt",
+    "qmj",
+    "qmj_prof",
+    "qmj_growth",
+    "qmj_safety"
+  ],
+  "selected": [
+    "age",
+    "aliq_at",
+    "aliq_mat",
+    "ami_126d",
+    "at_be",
+    "at_gr1",
+    "at_me",
+    "at_turnover",
+    "be_gr1a",
+    "be_me",
+    "beta_60m",
+    "beta_dimson_21d",
+    "betabab_1260d",
+    "betadown_252d",
+    "bev_mev",
+    "bidaskhl_21d",
+    "capx_gr1",
+    "capx_gr2",
+    "cash_at",
+    "chcsho_12m",
+    "coa_gr1a",
+    "col_gr1a",
+    "cop_at",
+    "cop_atl1",
+    "corr_1260d",
+    "coskew_21d",
+    "cowc_gr1a",
+    "dbnetis_at",
+    "debt_gr3",
+    "debt_me",
+    "dgp_dsale",
+    "div12m_me",
+    "dolvol_126d",
+    "dolvol_var_126d",
+    "dsale_drec",
+    "ebit_bev",
+    "ebit_sale",
+    "ebitda_mev",
+    "emp_gr1",
+    "eq_dur",
+    "eqnetis_at",
+    "eqnpo_12m",
+    "eqnpo_me",
+    "eqpo_me",
+    "f_score",
+    "fcf_me",
+    "fnl_gr1a",
+    "gp_at",
+    "gp_atl1",
+    "inv_gr1",
+    "inv_gr1a",
+    "iskew_capm_21d",
+    "iskew_ff3_21d",
+    "iskew_hxz4_21d",
+    "ival_me",
+    "ivol_capm_21d",
+    "ivol_capm_252d",
+    "ivol_ff3_21d",
+    "ivol_hxz4_21d",
+    "kz_index",
+    "lnoa_gr1a",
+    "lti_gr1a",
+    "market_equity",
+    "mispricing_mgmt",
+    "mispricing_perf",
+    "ncoa_gr1a",
+    "ncol_gr1a",
+    "netdebt_me",
+    "netis_at",
+    "nfna_gr1a",
+    "ni_be",
+    "ni_me",
+    "niq_at",
+    "niq_at_chg1",
+    "niq_be",
+    "niq_be_chg1",
+    "niq_su",
+    "nncoa_gr1a",
+    "noa_at",
+    "noa_gr1a",
+    "o_score",
+    "oaccruals_at",
+    "oaccruals_ni",
+    "ocf_at",
+    "ocf_at_chg1",
+    "ocf_me",
+    "op_at",
+    "op_atl1",
+    "ope_be",
+    "ope_bel1",
+    "opex_at",
+    "pi_nix",
+    "ppeinv_gr1a",
+    "prc",
+    "prc_highprc_252d",
+    "qmj_prof",
+    "qmj_safety",
+    "resff3_12_1",
+    "resff3_6_1",
+    "ret_12_1",
+    "ret_12_7",
+    "ret_1_0",
+    "ret_3_1",
+    "ret_6_1",
+    "ret_9_1",
+    "rmax1_21d",
+    "rmax5_21d",
+    "rmax5_rvol_21d",
+    "rskew_21d",
+    "rvol_21d",
+    "sale_bev",
+    "sale_emp_gr1",
+    "sale_gr1",
+    "sale_gr3",
+    "sale_me",
+    "saleq_gr1",
+    "saleq_su",
+    "seas_1_1an",
+    "seas_1_1na",
+    "sti_gr1a",
+    "taccruals_at",
+    "taccruals_ni",
+    "tangibility",
+    "tax_gr1a",
+    "turnover_126d",
+    "turnover_var_126d",
+    "z_score",
+    "zero_trades_126d",
+    "zero_trades_21d",
+    "zero_trades_252d"
+  ],
+  "coverage_observations": 2940431,
+  "coverage": [
+    {
+      "characteristic": "age",
+      "missing_share": 0.0
+    },
+    {
+      "characteristic": "market_equity",
+      "missing_share": 0.0
+    },
+    {
+      "characteristic": "prc",
+      "missing_share": 0.0
+    },
+    {
+      "characteristic": "ret_1_0",
+      "missing_share": 0.007112222663956391
+    },
+    {
+      "characteristic": "mispricing_perf",
+      "missing_share": 0.020200099917325076
+    },
+    {
+      "characteristic": "ret_3_1",
+      "missing_share": 0.02150433048760536
+    },
+    {
+      "characteristic": "ret_6_1",
+      "missing_share": 0.0423060428896308
+    },
+    {
+      "characteristic": "qmj_safety",
+      "missing_share": 0.05522421713007375
+    },
+    {
+      "characteristic": "zero_trades_21d",
+      "missing_share": 0.06190282989126428
+    },
+    {
+      "characteristic": "ret_9_1",
+      "missing_share": 0.06324242942616232
+    },
+    {
+      "characteristic": "turnover_126d",
+      "missing_share": 0.07418538302718203
+    },
+    {
+      "characteristic": "zero_trades_126d",
+      "missing_share": 0.07418538302718203
+    },
+    {
+      "characteristic": "dolvol_126d",
+      "missing_share": 0.07418708345817326
+    },
+    {
+      "characteristic": "turnover_var_126d",
+      "missing_share": 0.07420986923345596
+    },
+    {
+      "characteristic": "dolvol_var_126d",
+      "missing_share": 0.0742115696644472
+    },
+    {
+      "characteristic": "div12m_me",
+      "missing_share": 0.07688056614829597
+    },
+    {
+      "characteristic": "at_me",
+      "missing_share": 0.0773264191541988
+    },
+    {
+      "characteristic": "ni_me",
+      "missing_share": 0.07974375185134419
+    },
+    {
+      "characteristic": "seas_1_1an",
+      "missing_share": 0.07984917857280105
+    },
+    {
+      "characteristic": "debt_me",
+      "missing_share": 0.07998317253491072
+    },
+    {
+      "characteristic": "netdebt_me",
+      "missing_share": 0.07998317253491072
+    },
+    {
+      "characteristic": "qmj_prof",
+      "missing_share": 0.08030319364746186
+    },
+    {
+      "characteristic": "seas_1_1na",
+      "missing_share": 0.08050758545260883
+    },
+    {
+      "characteristic": "sale_me",
+      "missing_share": 0.08232364575125206
+    },
+    {
+      "characteristic": "op_at",
+      "missing_share": 0.08352415003106683
+    },
+    {
+      "characteristic": "ret_12_1",
+      "missing_share": 0.0837652711456246
+    },
+    {
+      "characteristic": "opex_at",
+      "missing_share": 0.08442367802543238
+    },
+    {
+      "characteristic": "gp_at",
+      "missing_share": 0.08447299052417823
+    },
+    {
+      "characteristic": "ret_12_7",
+      "missing_share": 0.08542659222406512
+    },
+    {
+      "characteristic": "cash_at",
+      "missing_share": 0.08584795902369413
+    },
+    {
+      "characteristic": "eqnpo_12m",
+      "missing_share": 0.08655091719547237
+    },
+    {
+      "characteristic": "chcsho_12m",
+      "missing_share": 0.08736984476085308
+    },
+    {
+      "characteristic": "dbnetis_at",
+      "missing_share": 0.08962835720341678
+    },
+    {
+      "characteristic": "at_turnover",
+      "missing_share": 0.09188040800821373
+    },
+    {
+      "characteristic": "bidaskhl_21d",
+      "missing_share": 0.09377196744286809
+    },
+    {
+      "characteristic": "zero_trades_252d",
+      "missing_share": 0.09420421700084103
+    },
+    {
+      "characteristic": "ebitda_mev",
+      "missing_share": 0.09752243803714489
+    },
+    {
+      "characteristic": "beta_dimson_21d",
+      "missing_share": 0.0977519962209622
+    },
+    {
+      "characteristic": "coskew_21d",
+      "missing_share": 0.0977519962209622
+    },
+    {
+      "characteristic": "iskew_capm_21d",
+      "missing_share": 0.0977519962209622
+    },
+    {
+      "characteristic": "iskew_ff3_21d",
+      "missing_share": 0.0977519962209622
+    },
+    {
+      "characteristic": "ivol_capm_21d",
+      "missing_share": 0.0977519962209622
+    },
+    {
+      "characteristic": "ivol_ff3_21d",
+      "missing_share": 0.0977519962209622
+    },
+    {
+      "characteristic": "rmax1_21d",
+      "missing_share": 0.0977519962209622
+    },
+    {
+      "characteristic": "rmax5_21d",
+      "missing_share": 0.0977519962209622
+    },
+    {
+      "characteristic": "rskew_21d",
+      "missing_share": 0.0977519962209622
+    },
+    {
+      "characteristic": "rvol_21d",
+      "missing_share": 0.0977519962209622
+    },
+    {
+      "characteristic": "ebit_sale",
+      "missing_share": 0.09884707377932012
+    },
+    {
+      "characteristic": "ocf_me",
+      "missing_share": 0.10252850687535264
+    },
+    {
+      "characteristic": "ocf_at",
+      "missing_share": 0.10303727582793132
+    },
+    {
+      "characteristic": "be_me",
+      "missing_share": 0.10379940899820472
+    },
+    {
+      "characteristic": "at_be",
+      "missing_share": 0.10382899649745225
+    },
+    {
+      "characteristic": "ni_be",
+      "missing_share": 0.10703838995031678
+    },
+    {
+      "characteristic": "ivol_capm_252d",
+      "missing_share": 0.10865175887480438
+    },
+    {
+      "characteristic": "ami_126d",
+      "missing_share": 0.1097233704854832
+    },
+    {
+      "characteristic": "at_gr1",
+      "missing_share": 0.11196351827334161
+    },
+    {
+      "characteristic": "prc_highprc_252d",
+      "missing_share": 0.11206860490860016
+    },
+    {
+      "characteristic": "mispricing_mgmt",
+      "missing_share": 0.11341602642605797
+    },
+    {
+      "characteristic": "fnl_gr1a",
+      "missing_share": 0.11469032941089252
+    },
+    {
+      "characteristic": "nfna_gr1a",
+      "missing_share": 0.11469032941089252
+    },
+    {
+      "characteristic": "op_atl1",
+      "missing_share": 0.11531506775707367
+    },
+    {
+      "characteristic": "gp_atl1",
+      "missing_share": 0.11623670135432529
+    },
+    {
+      "characteristic": "betadown_252d",
+      "missing_share": 0.11875742025573799
+    },
+    {
+      "characteristic": "sale_bev",
+      "missing_share": 0.12142267579140609
+    },
+    {
+      "characteristic": "ebit_bev",
+      "missing_share": 0.12184812362541408
+    },
+    {
+      "characteristic": "tax_gr1a",
+      "missing_share": 0.12256026412454502
+    },
+    {
+      "characteristic": "bev_mev",
+      "missing_share": 0.12330029169193224
+    },
+    {
+      "characteristic": "iskew_hxz4_21d",
+      "missing_share": 0.1344694026147868
+    },
+    {
+      "characteristic": "ivol_hxz4_21d",
+      "missing_share": 0.1344694026147868
+    },
+    {
+      "characteristic": "inv_gr1a",
+      "missing_share": 0.13802194304168336
+    },
+    {
+      "characteristic": "sale_gr1",
+      "missing_share": 0.13813791243528584
+    },
+    {
+      "characteristic": "rmax5_rvol_21d",
+      "missing_share": 0.14312697696358123
+    },
+    {
+      "characteristic": "ocf_at_chg1",
+      "missing_share": 0.14444141011980893
+    },
+    {
+      "characteristic": "fcf_me",
+      "missing_share": 0.1528425594751246
+    },
+    {
+      "characteristic": "be_gr1a",
+      "missing_share": 0.1552139805355065
+    },
+    {
+      "characteristic": "oaccruals_at",
+      "missing_share": 0.16720473971332772
+    },
+    {
+      "characteristic": "oaccruals_ni",
+      "missing_share": 0.16754380565298077
+    },
+    {
+      "characteristic": "resff3_12_1",
+      "missing_share": 0.16774411642374876
+    },
+    {
+      "characteristic": "cop_at",
+      "missing_share": 0.16794884831509393
+    },
+    {
+      "characteristic": "resff3_6_1",
+      "missing_share": 0.1680498539159735
+    },
+    {
+      "characteristic": "saleq_gr1",
+      "missing_share": 0.16940713793318052
+    },
+    {
+      "characteristic": "taccruals_at",
+      "missing_share": 0.17524165675031989
+    },
+    {
+      "characteristic": "taccruals_ni",
+      "missing_share": 0.17569295113539474
+    },
+    {
+      "characteristic": "cop_atl1",
+      "missing_share": 0.17625783431068442
+    },
+    {
+      "characteristic": "niq_at",
+      "missing_share": 0.1776878967743164
+    },
+    {
+      "characteristic": "lti_gr1a",
+      "missing_share": 0.19053397274073092
+    },
+    {
+      "characteristic": "eqnetis_at",
+      "missing_share": 0.1909958097979514
+    },
+    {
+      "characteristic": "netis_at",
+      "missing_share": 0.19109545505403802
+    },
+    {
+      "characteristic": "eqnpo_me",
+      "missing_share": 0.19393415455081242
+    },
+    {
+      "characteristic": "tangibility",
+      "missing_share": 0.19586516398446352
+    },
+    {
+      "characteristic": "col_gr1a",
+      "missing_share": 0.19821345918336464
+    },
+    {
+      "characteristic": "ncoa_gr1a",
+      "missing_share": 0.2003202931815098
+    },
+    {
+      "characteristic": "eq_dur",
+      "missing_share": 0.20060868627762396
+    },
+    {
+      "characteristic": "niq_be",
+      "missing_share": 0.20337698793136105
+    },
+    {
+      "characteristic": "ncol_gr1a",
+      "missing_share": 0.2033977331894542
+    },
+    {
+      "characteristic": "aliq_at",
+      "missing_share": 0.20387759481518186
+    },
+    {
+      "characteristic": "coa_gr1a",
+      "missing_share": 0.20629458742612905
+    },
+    {
+      "characteristic": "kz_index",
+      "missing_share": 0.20644456543955636
+    },
+    {
+      "characteristic": "capx_gr1",
+      "missing_share": 0.21017905198251552
+    },
+    {
+      "characteristic": "nncoa_gr1a",
+      "missing_share": 0.21309257044290442
+    },
+    {
+      "characteristic": "cowc_gr1a",
+      "missing_share": 0.21388973249159737
+    },
+    {
+      "characteristic": "noa_at",
+      "missing_share": 0.2148644195357755
+    },
+    {
+      "characteristic": "z_score",
+      "missing_share": 0.21669816431672773
+    },
+    {
+      "characteristic": "dsale_drec",
+      "missing_share": 0.21822481126066218
+    },
+    {
+      "characteristic": "noa_gr1a",
+      "missing_share": 0.21915358666807694
+    },
+    {
+      "characteristic": "ppeinv_gr1a",
+      "missing_share": 0.22129170859646086
+    },
+    {
+      "characteristic": "o_score",
+      "missing_share": 0.22133694006082782
+    },
+    {
+      "characteristic": "sale_emp_gr1",
+      "missing_share": 0.22466196282109663
+    },
+    {
+      "characteristic": "dgp_dsale",
+      "missing_share": 0.22621037528171895
+    },
+    {
+      "characteristic": "ope_be",
+      "missing_share": 0.23127119799784457
+    },
+    {
+      "characteristic": "beta_60m",
+      "missing_share": 0.23590793322475512
+    },
+    {
+      "characteristic": "eqpo_me",
+      "missing_share": 0.23792872541474364
+    },
+    {
+      "characteristic": "sti_gr1a",
+      "missing_share": 0.2389282387513939
+    },
+    {
+      "characteristic": "niq_at_chg1",
+      "missing_share": 0.24077830766986197
+    },
+    {
+      "characteristic": "lnoa_gr1a",
+      "missing_share": 0.2451001230771952
+    },
+    {
+      "characteristic": "sale_gr3",
+      "missing_share": 0.24616425279151255
+    },
+    {
+      "characteristic": "emp_gr1",
+      "missing_share": 0.24870367643382896
+    },
+    {
+      "characteristic": "aliq_mat",
+      "missing_share": 0.25466504740291473
+    },
+    {
+      "characteristic": "capx_gr2",
+      "missing_share": 0.26481696050681003
+    },
+    {
+      "characteristic": "ope_bel1",
+      "missing_share": 0.26637013417420774
+    },
+    {
+      "characteristic": "niq_su",
+      "missing_share": 0.269089123329199
+    },
+    {
+      "characteristic": "niq_be_chg1",
+      "missing_share": 0.2739159667409301
+    },
+    {
+      "characteristic": "f_score",
+      "missing_share": 0.2776327688015805
+    },
+    {
+      "characteristic": "saleq_su",
+      "missing_share": 0.2807227919988601
+    },
+    {
+      "characteristic": "pi_nix",
+      "missing_share": 0.29528426274923647
+    },
+    {
+      "characteristic": "corr_1260d",
+      "missing_share": 0.30633434350270417
+    },
+    {
+      "characteristic": "inv_gr1",
+      "missing_share": 0.30896899128053
+    },
+    {
+      "characteristic": "betabab_1260d",
+      "missing_share": 0.3101140615100303
+    },
+    {
+      "characteristic": "debt_gr3",
+      "missing_share": 0.3103704865035092
+    },
+    {
+      "characteristic": "ival_me",
+      "missing_share": 0.31412435795976845
+    },
+    {
+      "characteristic": "ni_inc8q",
+      "missing_share": 0.31815573975379796
+    },
+    {
+      "characteristic": "capx_gr3",
+      "missing_share": 0.3194943190301014
+    },
+    {
+      "characteristic": "dsale_dsga",
+      "missing_share": 0.3306583286599821
+    },
+    {
+      "characteristic": "qmj_growth",
+      "missing_share": 0.3322387092232397
+    },
+    {
+      "characteristic": "qmj",
+      "missing_share": 0.3322410898266275
+    },
+    {
+      "characteristic": "capex_abn",
+      "missing_share": 0.335755200513122
+    },
+    {
+      "characteristic": "ret_60_12",
+      "missing_share": 0.33817423364125876
+    },
+    {
+      "characteristic": "ni_ar1",
+      "missing_share": 0.3410387796891
+    },
+    {
+      "characteristic": "ni_ivol",
+      "missing_share": 0.3410387796891
+    },
+    {
+      "characteristic": "seas_2_5an",
+      "missing_share": 0.34321465118548944
+    },
+    {
+      "characteristic": "seas_2_5na",
+      "missing_share": 0.3452279614791165
+    },
+    {
+      "characteristic": "dsale_dinv",
+      "missing_share": 0.34897979241818633
+    },
+    {
+      "characteristic": "earnings_variability",
+      "missing_share": 0.35630762973183183
+    },
+    {
+      "characteristic": "ocfq_saleq_std",
+      "missing_share": 0.3835308497291724
+    },
+    {
+      "characteristic": "seas_6_10an",
+      "missing_share": 0.542090938369239
+    },
+    {
+      "characteristic": "seas_6_10na",
+      "missing_share": 0.544230420642416
+    },
+    {
+      "characteristic": "rd_me",
+      "missing_share": 0.5727517496584684
+    },
+    {
+      "characteristic": "rd_sale",
+      "missing_share": 0.5829516149163168
+    },
+    {
+      "characteristic": "seas_11_15an",
+      "missing_share": 0.6686451748060063
+    },
+    {
+      "characteristic": "seas_11_15na",
+      "missing_share": 0.6703911773478106
+    },
+    {
+      "characteristic": "rd5_at",
+      "missing_share": 0.7071446328786495
+    },
+    {
+      "characteristic": "seas_16_20an",
+      "missing_share": 0.7575552699587238
+    },
+    {
+      "characteristic": "seas_16_20na",
+      "missing_share": 0.7587622358763052
+    }
+  ],
+  "raw_manifest_sha256": "01dc5d2771a9426534526bc963a44ccb31f437f694df1205c0c4bd79abe9e676",
+  "selected_names_sha256": "235104d0e26a1f17ddca4efc526a0df381096d5685b9778765dd5c95e02aa844",
+  "payoff_reconciliation_status": "unresolved_returns; no model fit or performance result"
+}
