@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 import pytest
 from scipy.special import kv, gamma
-from data import (CALIBRATION_END, FLAGS, characteristic_selection, formation_mask,
+from data import (REFERENCE_SELECTION_END, FLAGS, characteristic_selection, formation_mask,
                   rank_months, sample_initial)
 from model import (FeatureBank, annual_splits, complexity_grid, exact_kernel,
                    l1_target_turnover, managed_matrix, median_distance, ridge_path, sharpe)
@@ -103,11 +103,11 @@ def test_managed_return_is_actual_stock_return(kernel):
     np.testing.assert_allclose(g@beta,weights@r,atol=1e-14)
 
 
-def test_future_coverage_does_not_choose_past_characteristics():
+def test_2024_extension_does_not_change_reference_feature_set():
     original=fixture_panel()
     before,_=characteristic_selection(original,['a','b','c'],count=2)
     mutated=original.copy()
-    mutated.loc[mutated.eom>CALIBRATION_END,['a','b']]=np.nan
+    mutated.loc[mutated.eom>REFERENCE_SELECTION_END,['a','b']]=np.nan
     after,_=characteristic_selection(mutated,['a','b','c'],count=2)
     assert before==after==['a','b']
 
