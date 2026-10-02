@@ -178,3 +178,53 @@ and [JKP return construction](https://github.com/bkelly-lab/ReplicationCrisis/bl
 The active tree contains no credentials. Deleting an active file does not erase
 secrets from historical commits or rotate credentials; history rewriting and
 credential rotation are separate operations.
+
+## Initial-C0 Matérn complexity experiment
+
+`complexity_schedule.py` produces four additional, separate empirical figures in
+`paper/complexity_schedule/`. This experiment implements the manuscript's
+r = 1 rate with an annually estimated spectral exponent:
+`lambda_T = C0 * T ** (-b_T / (b_T + 1))`, where T counts historical monthly
+managed payoffs. It differs from the original three-model results above, which
+select lambda again on each preceding five-year validation window.
+
+C0 is selected **once** using 1963–1972 training and 1973–1977 formation
+validation, available at the January 1978 close. Its grid retains all 120
+original initial-training lambda candidates, adds 80 intermediate effective
+complexity points, and converts the resulting 200 penalties to C0 using the
+initial training T and b. Subsequent OOS performance cannot change C0.
+Each January close, the coefficients and b use the expanding history through
+the previous December formation (whose payoff is then observed).
+
+The spectral estimate is an OLS slope of log second-moment eigenvalues on log
+rank, using the fixed 10%–60% band of positive ranks, with a relative 1e-12
+numerical cutoff. Both the band and cutoff are fixed for every year; the fit
+is not tuned against OOS performance. Estimates at or below b=1 cause a stop,
+not a silent bound adjustment. This is an explicit finite-sample plug-in
+convention: the supplied manuscript gives the asymptotic rate, but does not
+specify a spectral-slope estimator or the finite-sample proportionality constant.
+The appendix's general r-dependent rate is specialized to r=1 as in the main
+text. Re-estimating b can create local increases in lambda; none are suppressed.
+
+The four figures show all 47 annual OOS loss curves, all annualized OOS Sharpe
+curves, the loss heatmap, and the selected complexity/regularization path.
+Each annual curve evaluates the 12 payoffs from February through the following
+January. Loss is the unscaled held-out mean of `(1 - portfolio_excess)**2`,
+without an OOS ridge penalty. These curves do not use the common wealth-plot
+scale kappa. Heatmap interpolation is restricted to each year's observed
+complexity support; there is no extrapolation, smoothing or imposed U-shape.
+The source limitations of the main experiment continue to apply.
+
+```sh
+VECLIB_MAXIMUM_THREADS=2 python3 complexity_schedule.py \
+  --clean data/clean --cache results/schedule_cache \
+  --out paper/complexity_schedule
+```
+
+Use a fresh output directory when reproducing. The private managed-payoff cache
+is hash-checked against its frozen source manifest and feature bank. It is
+excluded from Git. Actual first/final-window future-payoff perturbations are
+checked before the figures are published; additional synthetic tests compare
+predictions with an independent primal ridge calculation. All figure inputs,
+the 200 initial validation scores, annual b diagnostics and selected monthly
+payoffs accompany the four PDFs/PNGs, with source/code/output hashes.

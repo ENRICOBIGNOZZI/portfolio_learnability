@@ -24,6 +24,6 @@ jobs:
       - run: python -m pytest -q tests
       - name: Verify final source scope
         run: |
-          python -m compileall -q data_pipeline.py download.py kernels.py portfolio.py run_empirics.py figures.py
+          python -m compileall -q data_pipeline.py download.py kernels.py portfolio.py run_empirics.py figures.py complexity_schedule.py
           test ! -d archive
           test ! -d legacy

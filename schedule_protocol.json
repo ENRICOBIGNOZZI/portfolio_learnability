@@ -1,0 +1,29 @@
+{
+  "version": "matern-initial-c0-annual-spectral-b-v1",
+  "kernel": "matern32",
+  "features": 10000,
+  "seed": 0,
+  "schedule": "lambda_T = C0 * T ** (-b_T / (b_T + 1))",
+  "T_units": "monthly managed-payoff observations used for estimation",
+  "C0_selection": "once, minimum mean (1 - raw portfolio excess payoff)^2 on 1973-1977 formation validation, fitted on 1963-1972",
+  "C0_available_at": "1978-01-31",
+  "C0_count": 200,
+  "grid": "retain all original 120 initial-spectrum lambdas and add 80 midpoints in initial effective complexity, evenly distributed across gaps; convert to C0 with initial-training b and T=120",
+  "b_estimation": {
+    "method": "OLS log positive managed second-moment eigenvalue on log rank",
+    "rank_fraction_low": 0.1,
+    "rank_fraction_high": 0.6,
+    "relative_eigenvalue_cutoff": 1e-12,
+    "minimum_points": 5,
+    "domain": "unconstrained; stop if estimated b <= 1, rather than silently clip"
+  },
+  "annual_refit": "at January close, all formation history through prior December; last payoff is known at that close",
+  "performance": "12 next-month payoffs per formation year; February through following January",
+  "loss": "mean squared (1 - raw unscaled portfolio excess payoff); no ridge term in OOS loss",
+  "heatmap": "linear interpolation in log complexity within each year only; no extrapolation, smoothing, or imputed performance",
+  "shape": "empirical only; no U-shape or monotonic selected complexity imposed",
+  "b_note": "finite-sample spectral slope is a plug-in diagnostic, not proof of the population polynomial-tail assumption",
+  "lambda_note": "annual changes in b can cause local increases in lambda despite the fixed-b asymptotic decay rate",
+  "reference_paper": "economomic_spectrum_final.tex, theorem Optimal shrinkage and learnable frontier; r=1 specialization in main text",
+  "source_caveats": "Inherited complete-case payoff availability filter, retrospective signal dictionary and current JKP snapshot; same-close execution assumption."
+}
