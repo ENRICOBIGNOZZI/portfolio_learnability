@@ -815,26 +815,26 @@
   "audit": "Actual future payoff perturbations leave initial C0 and first/final historical b, lambda, complexity and coefficients unchanged.",
   "not_claimed": "A finite empirical slope does not establish the population spectral assumption or exact theorem constants.",
   "outputs": {
-    "fig04_complexity_regularization.pdf": "72f80eb1841311214d342089924c3f439a0a34f707db9f24444620ea3ef76bb3",
+    "fig04_complexity_regularization.pdf": "d9e675eef5bd66457c0f74a6321ccab9fec3fb58cb79ff41fa50985d3424af5c",
     "initial_validation.csv": "8a09dce6226a7c2a5276c777e2f3a84edeb34717c918a5ebe57a1abde479545f",
     "fig04_complexity_regularization.png": "ff167f872c5c0ea5be098211fbec683617ffa5fac8090d2165fa21d83ab0df91",
     "annual_schedule.csv": "167d7bd3a1fdf3f30c99a799808ee0351848ceb6960aad0f5ae72480a805837b",
-    "diagnostic_paths.csv": "d8a95fc8ed61ff1a0ba864d34b873829143cd679327bc663e8372de15024e8b1",
+    "diagnostic_paths.csv": "12730d2f34301fb83abc90d7982831a0d175928dcbafad9f6dfc60c5a2dbe22d",
     "selected_monthly.csv": "f79bcfe3af7523f2c1e51f322eeff66abe59162fb6a986cf66f5c0458abf9602",
-    "fig01_oos_loss.png": "8c7e5a8e041ac5c34d123fe96ea5a7835e7f4f3b03425f731a5102a243645982",
-    "grid_audit.json": "1860485190d6022304a346ac576fc812b86fe6f53ce75b3bbbcc3eb144931604",
-    "fig01_oos_loss.pdf": "dbc11586f00e7e86ede1962b67732671941cdb62b0682cd0b90e82c72abce95c",
-    "grid_endpoint_checks.csv": "c241ac849781ff934d832cb701b66a96cae120e3bd98574888d89d32e46449e3",
-    "fig03_oos_loss_heatmap.png": "38aa9ccdcaa24fc674b07c04093c35595d4bcf70410dfcd708d21ff6427c5aa8",
-    "fig02_oos_sharpe.pdf": "8c8ffff212e634cb7ae00fea62a638fc080b39e421751a204c31fccf24505435",
+    "fig01_oos_loss.png": "e5b3dfc85eef1213a5763f185121fabb5ca03d054bf821133551c48a11d2ba32",
+    "grid_audit.json": "2813a0454a4efa5e1e7777144bddd2c2d1c58dd3bef4b883ca2f706b8b88022d",
+    "fig01_oos_loss.pdf": "c25357d69ffd78db04c8578e687053d025208cb691bb0fd76058d4e2a28b654b",
+    "grid_endpoint_checks.csv": "f431ab6c04cc2047cc6713683190ac13f0001edcfc375ffad1a7fadadf4165e4",
+    "fig03_oos_loss_heatmap.png": "c1abaf8e689ebcfaa6711add007276246be542fa1bc177d7e4a317083f809b54",
+    "fig02_oos_sharpe.pdf": "8aa1fbbbe39c03ee2aba48c8a41891c30abcc1931014eabac09491046f4de898",
     "paths.csv": "21c5bfae0c4d6f0a7cbee18769eb6489d42bc41d4e4c2d6c976a014f74c55318",
-    "fig02_oos_sharpe.png": "24675d31fdc93451178b0d2ec38391b04d4cb4a7e0bb715a90592099bb9cf163",
-    "empirics_schedule.tex": "1ba20660ac2bd2cded1b72cfd767718c87943722b6ece37575f76536181aca33",
-    "fig03_oos_loss_heatmap.pdf": "c86c564315868ee6265cdd345dd9b0cb16bebec56e9f1ca016d99ddf644c4943"
+    "fig02_oos_sharpe.png": "76c56a7891b5e2a495c894fe7929c06c872193006146e08167f94f8eb0aaea21",
+    "empirics_schedule.tex": "00975a0691c44c7e812494302273d2081a3a9e9572593864c4bb2f93de74bba4",
+    "fig03_oos_loss_heatmap.pdf": "b40916e81cc9da2663f33fa1889c672948bb6dd61454654146f5270aabf60da5"
   },
   "fit_git_sha": "4d508b380b5412ac1116b3911697ce8e035e576c",
-  "render_git_sha": "07a0bcbc473322b0e9c0b018d33a1309b6628959",
-  "render_code_checksum": "0c9e4fa3c5a1c01c34a9a73f8f23e8eda211a1343993228303a71fde34455cd0",
+  "render_git_sha": "5b10e3798c0abe8e35b8422e81b5248bb847db1b",
+  "render_code_checksum": "287453dcca346bd2d5db2efda150812c2b5c6cee1a4c363afd85f7f9bebbfbd7",
   "manuscript_sources": {
     "economomic_spectrum_final.tex": "619f99110a4c048f7529bb3625c0f55ace65b90a40d1f67fb5bc59cc31471c4b",
     "direct_port_learning.tex": "3b24c29d895da247960d97d31f71a57364e02379ade09855157d9515583d0a37",
@@ -850,13 +850,12 @@
   "post_export_audit": "9400 finite path points, 47 fixed-C0 selections, 564 unique consecutive OOS months; all path losses independently recomputed from saved monthly payoffs.",
   "figure_path_input": "diagnostic_paths.csv",
   "figure_grid_audit": "grid_audit.json",
+  "diagnostic_path_points": 56494,
+  "diagnostic_midpoint_checks": 56447,
   "visual_qa": {
     "status": "passed",
     "pdf_count": 4,
     "png_count": 4,
-    "rendered_with": "pdftoppm",
-    "checked": "all final dense-curve PDFs; labels, legend, colorbar, margins, curve limits"
-  },
-  "diagnostic_path_points": 56447,
-  "diagnostic_midpoint_checks": 56400
+    "checked": "exact-zero endpoints, dense curves, labels and margins inspected on rendered PDFs"
+  }
 }
