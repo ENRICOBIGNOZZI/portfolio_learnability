@@ -79,3 +79,18 @@ def test_normalization_uses_each_years_historical_month_count():
     assert 'T' not in paths.columns
     with pytest.raises(ValueError,match='Missing'):
         normalized_inputs(paths,selected.iloc[:1])
+
+
+def test_exact_zero_ridge_endpoint_is_minimum_norm_interpolator():
+    rng=np.random.default_rng(100)
+    g=rng.normal(size=(744,240))*np.arange(1,241)[None,:]**-1.1
+    dates=pd.date_range('1963-01-31','2024-12-31',freq='ME')
+    split=next(annual_splits(dates))
+    result=window(g,dates,split,{'c0':np.array([0.,1e-4]),'choice':0})
+    history=g[np.r_[split[1],split[2]]]
+    expected=np.linalg.lstsq(history,np.ones(len(history)),rcond=None)[0]
+    np.testing.assert_allclose(result['selected_beta'],expected,atol=1e-8,rtol=1e-8)
+    np.testing.assert_allclose(history@result['selected_beta'],1,atol=1e-8)
+    np.testing.assert_allclose(result['returns'][:,0],g[split[3]]@expected,atol=1e-8)
+    assert result['lambda'][0]==0
+    assert result['complexity'][0]==len(history)

@@ -251,9 +251,9 @@ initial validation loss by only 0.0004464%; the selected strategy is preserved.
 
 The 200-point curves were too coarse in some regions: the largest discrepancy
 between a plotted Sharpe segment and a recalculated intermediate value was
-1.123. Final figures therefore use **1,201 diagnostic candidates per year**,
+1.123. Final figures therefore use **1,202 diagnostic candidates per year**,
 including every original candidate and a wider log-spaced grid. An additional
-56,400 midpoint evaluations check their drawing accuracy. The audit checks
+56,447 midpoint evaluations check their drawing accuracy. The audit checks
 both the unregularized payoff and the strong-regularization Sharpe limit for
 every annual fit. Boundary optima are recorded as boundary/limit behavior,
 not presented as identified interior optima. These OOS diagnostics never choose
@@ -270,3 +270,13 @@ The grid audit updates the four original figure exports from saved managed
 payoffs. Run the normalized export into a fresh `normalized` subdirectory.
 `grid_audit.json`, `grid_endpoint_checks.csv`, and `diagnostic_paths.csv` contain
 all resolution checks, endpoint comparisons and extended figure inputs.
+
+The diagnostic grid includes **lambda = 0 exactly**, evaluated as the
+minimum-norm interpolating solution. Its empirical complexity equals the
+historical managed-matrix rank (T in all 47 real windows), so C/T reaches 1.
+Endpoint dots in the loss and Sharpe curves identify this point. A separate
+primal least-squares test verifies the minimum-norm solution, and all real
+zero-ridge training residuals are checked. The initial-validation loss at
+zero is 0.820087, versus 0.598552 for the selected positive C0; it does not
+improve the initial policy choice. Complexity cannot exceed T when the
+empirical second-moment operator is estimated from T monthly observations.
