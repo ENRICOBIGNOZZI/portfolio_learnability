@@ -50,6 +50,11 @@ def audit(clean='data/clean',cache='results/schedule_cache',out='paper/complexit
         for label,key in [('loss','oos_loss'),('sharpe','oos_sharpe')]:
             linear=np.interp(np.log(r['complexity'][inside]),np.log(d.complexity),d[key])
             errors[label+'_max_plot_interpolation_error']=float(np.max(np.abs(linear-r[label][inside])))
+        mid_c0=np.sqrt(candidates[:-1]*candidates[1:])
+        mid=window(g,dates,split,dict(cal,c0=mid_c0,choice=0))
+        for label in ['loss','sharpe']:
+            interpolated=np.interp(np.log(mid['complexity']),np.log(r['complexity'][::-1]),r[label][::-1])
+            errors['dense_'+label+'_max_midpoint_error']=float(np.max(np.abs(interpolated-mid[label])))
         hist=g[np.r_[split[1],split[2]]];test=g[split[3]]
         val,vec=np.linalg.eigh(hist@hist.T)
         assert val.min()>val.max()*1e-12,'Unregularized limit numerically unresolved'
@@ -86,6 +91,9 @@ def audit(clean='data/clean',cache='results/schedule_cache',out='paper/complexit
         'selected_policy_check':'All 47 selected lambda, complexity, OOS loss and Sharpe match the frozen 200-candidate policy.',
         'maximum_old_plot_interpolation_loss_error':float(check.loss_max_plot_interpolation_error.max()),
         'maximum_old_plot_interpolation_sharpe_error':float(check.sharpe_max_plot_interpolation_error.max()),
+        'midpoint_checks':47*(len(candidates)-1),
+        'maximum_dense_loss_midpoint_error':float(check.dense_loss_max_midpoint_error.max()),
+        'maximum_dense_sharpe_midpoint_error':float(check.dense_sharpe_max_midpoint_error.max()),
         'interpretation':'Endpoint extrema may represent genuine weak/strong regularization limits, not finite interior optima. OOS extrema never select C0. Both analytical limiting policies are evaluated for every year.',
         'git_sha':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
         'code_sha256':digest(Path(__file__))}
