@@ -815,23 +815,26 @@
   "audit": "Actual future payoff perturbations leave initial C0 and first/final historical b, lambda, complexity and coefficients unchanged.",
   "not_claimed": "A finite empirical slope does not establish the population spectral assumption or exact theorem constants.",
   "outputs": {
-    "annual_schedule.csv": "167d7bd3a1fdf3f30c99a799808ee0351848ceb6960aad0f5ae72480a805837b",
-    "empirics_schedule.tex": "99a61cff9c709f0fef7d66eea67832679c3df802290b3cbd79b2235e5c811b72",
-    "fig01_oos_loss.pdf": "1d9f077715a375f4bc3c9aa8cb0b8a5c1349e4155f3afdec10fdcaf8a5f72dff",
-    "fig01_oos_loss.png": "33aa05e36c1ad7c6159b5c258b4e8ee8c90ce64bdb7579785ca6fb5aa5bac87a",
-    "fig02_oos_sharpe.pdf": "f9c813c683400f35224d672a4e36e05b75bdcf356cc936733ea05001cf28ce0b",
-    "fig02_oos_sharpe.png": "9fbb31ee02d0ecb75da7811e72a565742a33423a159d2c4d914562f4cf4c27e3",
-    "fig03_oos_loss_heatmap.pdf": "9c2011efae56e3c2aa9d81866b22063ff317da86b32ee6cf6d5a5fae22a402d5",
-    "fig03_oos_loss_heatmap.png": "d9a02147ef73221fea6c1f877ff34d09dc0cd3c7803dbd62e318419eda2bfc20",
-    "fig04_complexity_regularization.pdf": "7217c5bc4728bab739efd759ca0c909039ae25c10f6192c76032a3a7a13ed0b9",
-    "fig04_complexity_regularization.png": "ff167f872c5c0ea5be098211fbec683617ffa5fac8090d2165fa21d83ab0df91",
+    "fig04_complexity_regularization.pdf": "72f80eb1841311214d342089924c3f439a0a34f707db9f24444620ea3ef76bb3",
     "initial_validation.csv": "8a09dce6226a7c2a5276c777e2f3a84edeb34717c918a5ebe57a1abde479545f",
+    "fig04_complexity_regularization.png": "ff167f872c5c0ea5be098211fbec683617ffa5fac8090d2165fa21d83ab0df91",
+    "annual_schedule.csv": "167d7bd3a1fdf3f30c99a799808ee0351848ceb6960aad0f5ae72480a805837b",
+    "diagnostic_paths.csv": "d8a95fc8ed61ff1a0ba864d34b873829143cd679327bc663e8372de15024e8b1",
+    "selected_monthly.csv": "f79bcfe3af7523f2c1e51f322eeff66abe59162fb6a986cf66f5c0458abf9602",
+    "fig01_oos_loss.png": "8c7e5a8e041ac5c34d123fe96ea5a7835e7f4f3b03425f731a5102a243645982",
+    "grid_audit.json": "1860485190d6022304a346ac576fc812b86fe6f53ce75b3bbbcc3eb144931604",
+    "fig01_oos_loss.pdf": "dbc11586f00e7e86ede1962b67732671941cdb62b0682cd0b90e82c72abce95c",
+    "grid_endpoint_checks.csv": "c241ac849781ff934d832cb701b66a96cae120e3bd98574888d89d32e46449e3",
+    "fig03_oos_loss_heatmap.png": "38aa9ccdcaa24fc674b07c04093c35595d4bcf70410dfcd708d21ff6427c5aa8",
+    "fig02_oos_sharpe.pdf": "8c8ffff212e634cb7ae00fea62a638fc080b39e421751a204c31fccf24505435",
     "paths.csv": "21c5bfae0c4d6f0a7cbee18769eb6489d42bc41d4e4c2d6c976a014f74c55318",
-    "selected_monthly.csv": "f79bcfe3af7523f2c1e51f322eeff66abe59162fb6a986cf66f5c0458abf9602"
+    "fig02_oos_sharpe.png": "24675d31fdc93451178b0d2ec38391b04d4cb4a7e0bb715a90592099bb9cf163",
+    "empirics_schedule.tex": "1ba20660ac2bd2cded1b72cfd767718c87943722b6ece37575f76536181aca33",
+    "fig03_oos_loss_heatmap.pdf": "c86c564315868ee6265cdd345dd9b0cb16bebec56e9f1ca016d99ddf644c4943"
   },
   "fit_git_sha": "4d508b380b5412ac1116b3911697ce8e035e576c",
-  "render_git_sha": "12be717b29de64de6425c5f7e698d74e1082a437",
-  "render_code_checksum": "7ac0cb0c9ff5d794ffc887e876dd1a1b5c8dc9ae34b83c9fc9cdd4b82c7e965c",
+  "render_git_sha": "07a0bcbc473322b0e9c0b018d33a1309b6628959",
+  "render_code_checksum": "0c9e4fa3c5a1c01c34a9a73f8f23e8eda211a1343993228303a71fde34455cd0",
   "manuscript_sources": {
     "economomic_spectrum_final.tex": "619f99110a4c048f7529bb3625c0f55ace65b90a40d1f67fb5bc59cc31471c4b",
     "direct_port_learning.tex": "3b24c29d895da247960d97d31f71a57364e02379ade09855157d9515583d0a37",
@@ -844,11 +847,16 @@
     "kernels.py": "8515be031e468ffa9f6733afa2d3f661bdb51ccdcd746aac4ce4d4faeb9c6da0",
     "data_pipeline.py": "ab8376becd9d00b9ac6fdee451c6dd4c2f8e29aefbfc127601bfdee2ce7b0dc5"
   },
+  "post_export_audit": "9400 finite path points, 47 fixed-C0 selections, 564 unique consecutive OOS months; all path losses independently recomputed from saved monthly payoffs.",
+  "figure_path_input": "diagnostic_paths.csv",
+  "figure_grid_audit": "grid_audit.json",
   "visual_qa": {
+    "status": "passed",
     "pdf_count": 4,
     "png_count": 4,
-    "pdfs_rendered_with": "pdftoppm",
-    "status": "passed; serif math labels, color scales and dual-axis legend visually checked"
+    "rendered_with": "pdftoppm",
+    "checked": "all final dense-curve PDFs; labels, legend, colorbar, margins, curve limits"
   },
-  "post_export_audit": "9400 finite path points, 47 fixed-C0 selections, 564 unique consecutive OOS months; all path losses independently recomputed from saved monthly payoffs."
+  "diagnostic_path_points": 56447,
+  "diagnostic_midpoint_checks": 56400
 }

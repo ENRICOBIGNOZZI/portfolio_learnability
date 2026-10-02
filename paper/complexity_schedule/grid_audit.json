@@ -1,0 +1,30 @@
+{
+  "status": "complete",
+  "initial_selection_unchanged": true,
+  "selected_C0": 2.2657790177294398e-06,
+  "initial_candidates": 200,
+  "validation_audit_candidates": 3001,
+  "validation_refined_C0": 2.2896686953638065e-06,
+  "original_validation_loss": 0.5985518620041047,
+  "refined_validation_loss": 0.5985491901033467,
+  "relative_validation_loss_gap": 4.463961863379209e-06,
+  "diagnostic_candidates": 1201,
+  "original_C0_bounds": [
+    1.5973838928325025e-09,
+    0.05572127724070448
+  ],
+  "diagnostic_C0_bounds": [
+    1.5973838928325024e-12,
+    55.721277240704474
+  ],
+  "range_extension_factor_each_end": 1000,
+  "selected_policy_check": "All 47 selected lambda, complexity, OOS loss and Sharpe match the frozen 200-candidate policy.",
+  "maximum_old_plot_interpolation_loss_error": 0.07634702073049893,
+  "maximum_old_plot_interpolation_sharpe_error": 1.1229643953437352,
+  "midpoint_checks": 56400,
+  "maximum_dense_loss_midpoint_error": 5.673937372385751e-05,
+  "maximum_dense_sharpe_midpoint_error": 0.0011131863931712616,
+  "interpretation": "Endpoint extrema may represent genuine weak/strong regularization limits, not finite interior optima. OOS extrema never select C0. Both analytical limiting policies are evaluated for every year.",
+  "git_sha": "07a0bcbc473322b0e9c0b018d33a1309b6628959",
+  "code_sha256": "050237e14393e37d3b26a0a0f216a37a81208c38484dc2c14733ca6586488ceb"
+}

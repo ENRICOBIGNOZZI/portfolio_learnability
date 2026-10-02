@@ -35,6 +35,17 @@ $C_0$, the spectral rank band, or the annual coefficients. Changes in estimated
 $b$ could make the plug-in regularization path locally nonmonotonic, although
 no annual increases occur in this sample. No curve shape is imposed.
 
+The displayed paths use 1,201 diagnostic values per year over an interval
+extended by a factor of 1,000 at each end, while the initial policy selection
+continues to use the frozen 200 candidates. A validation-only search over
+3,001 points and numerical refinement improves the selected validation loss
+by only 0.0004464\%. Additional evaluations at all 56,400 diagnostic midpoints
+bound the largest observed interpolation discrepancy at 0.00112 Sharpe points
+and 0.000057 loss units. Both weak- and strong-regularization limits are
+checked separately. Extrema at a boundary are not claimed to be interior
+optima. Companion figures divide complexity by each fit's historical monthly
+sample size $T$: the selected ratio falls from 0.2038 to 0.1254.
+
 \begin{figure}[htbp]\centering
 \includegraphics[width=\linewidth]{complexity_schedule/fig01_oos_loss.pdf}
 \caption{Next-year OOS quadratic loss against effective complexity for every

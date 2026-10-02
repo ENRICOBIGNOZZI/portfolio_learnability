@@ -1,0 +1,38 @@
+{
+  "status": "complete",
+  "normalization": "effective complexity / T",
+  "T_definition": "number of historical monthly managed payoffs in each annual refit, excluding its OOS window",
+  "T_first": 180,
+  "T_last": 732,
+  "first_complexity_over_T": 0.20378563599091204,
+  "last_complexity_over_T": 0.1253770815007888,
+  "source_manifest_sha256": "2d3d42dfd73bbfb466f873d07d36e3b1d7b80e9ad39fdf102fe4ba8fbe455c78",
+  "source_inputs": {
+    "diagnostic_paths.csv": "d8a95fc8ed61ff1a0ba864d34b873829143cd679327bc663e8372de15024e8b1",
+    "annual_schedule.csv": "167d7bd3a1fdf3f30c99a799808ee0351848ceb6960aad0f5ae72480a805837b"
+  },
+  "code_sha256": "0c9e4fa3c5a1c01c34a9a73f8f23e8eda211a1343993228303a71fde34455cd0",
+  "git_sha": "07a0bcbc473322b0e9c0b018d33a1309b6628959",
+  "no_refit": true,
+  "no_return_or_loss_changes": true,
+  "outputs": {
+    "fig04_complexity_regularization.pdf": "1942f04ffe06a40878317570b9ce73608a2d004ad245618f7c5960a8ac69601c",
+    "fig04_complexity_regularization.png": "265a941fa5a041108074594dd3d6b24e1d4bc6143aa43ddda47035463f6c4576",
+    "annual_schedule.csv": "d8e993fe1ca3a6848eb6b2d1b4d45d6d4f1c27e81ddf66c0b88427ebb90c298d",
+    "fig01_oos_loss.png": "2521cd2dfa8a1ee371a7efa49997b1cef02cb2246b570ea6b37b3d995cb53d21",
+    "fig01_oos_loss.pdf": "999d4d30287e26c2e35bd610cb45a301f9cf791e42f6d85820a601140e4388b8",
+    "fig03_oos_loss_heatmap.png": "e1869cb0c4537ece5c247c24786d5beaf969e1714920236f458b02610eb9a9c0",
+    "fig02_oos_sharpe.pdf": "c2777b014516805d33403439677026f5c437c68c4f62f23113b5b28600c13bcb",
+    "paths.csv": "0fd2858af7aabdf678e572d97a12dfe84e642bb7b74a762f16cb53384da0f355",
+    "fig02_oos_sharpe.png": "7333b3cef213c982857573d2e50197036f80ed3d56ce6db3e64a0dec9dd95e29",
+    "fig03_oos_loss_heatmap.pdf": "80083992f17b8db6b96d4270067abf0ec1921fcd7b0dc07d8aa0b72eb23ab6ec"
+  },
+  "visual_qa": {
+    "status": "passed",
+    "pdf_count": 4,
+    "png_count": 4,
+    "rendered_with": "pdftoppm",
+    "checked": "all final C/T PDFs; axis definitions, margins and footnotes"
+  },
+  "data_audit": "All 56,447 ratios recomputed with historical T; losses, Sharpes, C0 and lambdas identical to the audited unnormalized diagnostic paths."
+}
