@@ -198,7 +198,8 @@ def plot_results(paths, selected, out, normalized=False):
         fig.savefig(out/(stem+'.pdf'))
         fig.savefig(out/(stem+'.png'),dpi=220)
         plt.close(fig)
-    common = 'Matérn-3/2 · JKP U.S. stocks · 200 initial $C_0$ candidates'
+    diagnostic_count = paths.groupby('year').size().iloc[0]
+    common = f'Matérn-3/2 · 200 initial $C_0$ candidates · {diagnostic_count:,} diagnostic points per year'
     for metric, title, stem in [
         ('oos_loss','Out-of-sample loss and portfolio complexity','fig01_oos_loss'),
         ('oos_sharpe','Out-of-sample Sharpe and portfolio complexity','fig02_oos_sharpe')]:
@@ -256,14 +257,15 @@ def plot_results(paths, selected, out, normalized=False):
 def render_normalized(source_dir):
     source = Path(source_dir)
     manifest = json.loads((source/'manifest.json').read_text())
-    for name in ['paths.csv', 'annual_schedule.csv']:
+    path_name = manifest.get('figure_path_input', 'paths.csv')
+    for name in [path_name, 'annual_schedule.csv']:
         if digest(source/name) != manifest['outputs'][name]:
             raise ValueError('Published path checksum mismatch.')
     out = source/'normalized'
     if out.exists():
         raise FileExistsError('Never overwrite published normalized figures.')
     out.mkdir()
-    paths = pd.read_csv(source/'paths.csv')
+    paths = pd.read_csv(source/path_name)
     selected = pd.read_csv(source/'annual_schedule.csv')
     p, s = normalized_inputs(paths, selected)
     p.to_csv(out/'paths.csv',index=False)
@@ -276,7 +278,7 @@ def render_normalized(source_dir):
         'first_complexity_over_T':float(s.complexity_over_T.iloc[0]),
         'last_complexity_over_T':float(s.complexity_over_T.iloc[-1]),
         'source_manifest_sha256':digest(source/'manifest.json'),
-        'source_inputs':{n:manifest['outputs'][n] for n in ['paths.csv','annual_schedule.csv']},
+        'source_inputs':{n:manifest['outputs'][n] for n in [path_name,'annual_schedule.csv']},
         'code_sha256':digest(Path(__file__)),
         'git_sha':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
         'no_refit':True,'no_return_or_loss_changes':True,
