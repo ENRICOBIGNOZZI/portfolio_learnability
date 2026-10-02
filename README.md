@@ -228,3 +228,15 @@ checked before the figures are published; additional synthetic tests compare
 predictions with an independent primal ridge calculation. All figure inputs,
 the 200 initial validation scores, annual b diagnostics and selected monthly
 payoffs accompany the four PDFs/PNGs, with source/code/output hashes.
+
+The four companion `C/T` figures use each annual fit's **historical monthly**
+sample size, not the number of stocks, stock-month rows, or the 12 test months.
+T grows from 180 to 732. Generate them from the completed experiment with:
+
+```sh
+python3 complexity_schedule.py --out paper/complexity_schedule --normalized-only
+```
+
+This writes `paper/complexity_schedule/normalized/`, retaining all OOS losses,
+Sharpes, years and fixed-C0 selections. Its CSVs include the original complexity,
+T and their ratio, and its manifest links to the original input hashes.

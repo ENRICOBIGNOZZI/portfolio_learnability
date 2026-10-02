@@ -147,7 +147,22 @@ def heatmap_values(paths, count=260):
     return centers, np.asarray(years), z
 
 
-def plot_results(paths, selected, out):
+def normalized_inputs(paths, selected):
+    if selected.year.duplicated().any() or selected['T'].isna().any():
+        raise ValueError('Require one historical sample size per year.')
+    sizes = selected.set_index('year')['T']
+    if not np.isfinite(sizes).all() or (sizes <= 0).any() or (sizes % 1 != 0).any():
+        raise ValueError('T must be a positive integer number of estimation months.')
+    paths, selected = paths.copy(), selected.copy()
+    paths['T'] = paths.year.map(sizes)
+    if paths['T'].isna().any():
+        raise ValueError('Missing historical sample size for a plotted year.')
+    paths['complexity_over_T'] = paths.complexity/paths['T']
+    selected['complexity_over_T'] = selected.complexity/selected['T']
+    return paths, selected
+
+
+def plot_results(paths, selected, out, normalized=False):
     import matplotlib
     matplotlib.use('Agg')
     import matplotlib.pyplot as plt
@@ -158,8 +173,14 @@ def plot_results(paths, selected, out):
         'axes.labelsize':14, 'axes.edgecolor':'#9b9ea6', 'axes.linewidth':.7,
         'xtick.labelsize':11, 'ytick.labelsize':11, 'pdf.fonttype':42,
         'savefig.facecolor':'white'})
+    if normalized:
+        paths, selected = normalized_inputs(paths, selected)
+        paths['complexity'] = paths.complexity_over_T
+        selected['complexity'] = selected.complexity_over_T
     cmap, norm = plt.get_cmap('coolwarm'), Normalize(1978,2024)
     xlabel = r'Effective portfolio complexity $\widehat{\mathcal{C}}_T(\lambda)$'
+    if normalized:
+        xlabel = r'Complexity per observation $\widehat{\mathcal{C}}_T(\lambda)/T$'
     def base(title, subtitle):
         fig, ax = plt.subplots(figsize=(9.1,6.6))
         fig.subplots_adjust(left=.115, right=.86, bottom=.205, top=.81)
@@ -170,6 +191,8 @@ def plot_results(paths, selected, out):
         ax.set_axisbelow(True)
         return fig, ax
     def save(fig, stem, note):
+        if normalized:
+            note += '\nT counts historical monthly managed payoffs used for fitting (180-732), excluding the test year.'
         fig.text(.115,.055,note,fontsize=10,color='#555b65',ha='left',va='bottom',linespacing=1.45)
         fig.savefig(out/(stem+'.pdf'))
         fig.savefig(out/(stem+'.png'),dpi=220)
@@ -207,7 +230,7 @@ def plot_results(paths, selected, out):
     cax=fig.add_axes([.89,.205,.019,.605]);fig.colorbar(mesh,cax=cax,label='OOS loss')
     save(fig,'fig03_oos_loss_heatmap','Loss interpolated in log complexity within each year; blank cells lie outside observed support.\n'
          'Black path uses $C_0$ selected once in the initial validation; OOS losses never select it.')
-    fig, ax = base('Complexity and regularization through time',
+    fig, ax = base('Complexity per observation and regularization' if normalized else 'Complexity and regularization through time',
                    'Matérn-3/2 · $C_0$ fixed initially · spectral b and portfolio coefficients refitted annually')
     fig.subplots_adjust(right=.855)
     right = ax.twinx()
@@ -218,12 +241,45 @@ def plot_results(paths, selected, out):
     ax.set_yscale('log');right.set_yscale('log');ax.set_xlabel('Formation year')
     ax.set_ylabel(r'Selected complexity $\widehat{\mathcal{C}}_T(\lambda_T)$',color='#155ce3')
     right.set_ylabel(r'Regularization $\lambda_T$',color='#cf342e',labelpad=12)
+    if normalized:
+        ax.set_ylabel(r'Selected complexity per observation $\widehat{\mathcal{C}}_T(\lambda_T)/T$',color='#155ce3')
+        a.set_label('Complexity / T')
     ax.tick_params(axis='y',which='both',colors='#155ce3');right.tick_params(axis='y',which='both',colors='#cf342e')
     fig.legend(handles=[a,b],loc='upper left',bbox_to_anchor=(.105,.865),
                ncol=2,fontsize=11,frameon=False)
     save(fig,'fig04_complexity_regularization',
          r'$\lambda_T=C_0 T^{-\hat b_T/(\hat b_T+1)}$; $T$ counts historical monthly observations.'+'\n'
          '$C_0$ chosen on 1973-1977 validation. Annual changes in b can produce local increases in λ.')
+
+
+def render_normalized(source_dir):
+    source = Path(source_dir)
+    manifest = json.loads((source/'manifest.json').read_text())
+    for name in ['paths.csv', 'annual_schedule.csv']:
+        if digest(source/name) != manifest['outputs'][name]:
+            raise ValueError('Published path checksum mismatch.')
+    out = source/'normalized'
+    if out.exists():
+        raise FileExistsError('Never overwrite published normalized figures.')
+    out.mkdir()
+    paths = pd.read_csv(source/'paths.csv')
+    selected = pd.read_csv(source/'annual_schedule.csv')
+    p, s = normalized_inputs(paths, selected)
+    p.to_csv(out/'paths.csv',index=False)
+    s.to_csv(out/'annual_schedule.csv',index=False)
+    plot_results(paths,selected,out,normalized=True)
+    write_json(out/'manifest.json',{
+        'status':'complete', 'normalization':'effective complexity / T',
+        'T_definition':'number of historical monthly managed payoffs in each annual refit, excluding its OOS window',
+        'T_first':int(s['T'].iloc[0]),'T_last':int(s['T'].iloc[-1]),
+        'first_complexity_over_T':float(s.complexity_over_T.iloc[0]),
+        'last_complexity_over_T':float(s.complexity_over_T.iloc[-1]),
+        'source_manifest_sha256':digest(source/'manifest.json'),
+        'source_inputs':{n:manifest['outputs'][n] for n in ['paths.csv','annual_schedule.csv']},
+        'code_sha256':digest(Path(__file__)),
+        'git_sha':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
+        'no_refit':True,'no_return_or_loss_changes':True,
+        'outputs':{p.name:digest(p) for p in out.iterdir() if p.is_file()}})
 
 
 def run(clean, cache, out):
@@ -294,5 +350,9 @@ if __name__ == '__main__':
     parser.add_argument('--clean',default='data/clean')
     parser.add_argument('--cache',default='results/schedule_cache')
     parser.add_argument('--out',default='paper/complexity_schedule')
+    parser.add_argument('--normalized-only',action='store_true',help='Render C/T versions from an existing completed output, without refitting.')
     args=parser.parse_args()
-    run(args.clean,args.cache,args.out)
+    if args.normalized_only:
+        render_normalized(args.out)
+    else:
+        run(args.clean,args.cache,args.out)

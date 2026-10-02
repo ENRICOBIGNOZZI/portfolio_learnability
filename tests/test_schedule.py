@@ -64,3 +64,18 @@ def test_heatmap_never_extrapolates():
     assert np.isnan(z[0,x>10]).all()
     assert np.isnan(z[1,x<5]).all()
     assert np.isfinite(z[0,x<=10]).all()
+
+
+def test_normalization_uses_each_years_historical_month_count():
+    from complexity_schedule import normalized_inputs
+    paths=pd.DataFrame({'year':[1978,1978,2024], 'complexity':[18.,90.,73.2],
+                        'oos_loss':[.2,.4,.3]})
+    selected=pd.DataFrame({'year':[1978,2024], 'T':[180,732], 'complexity':[90.,73.2]})
+    p,s=normalized_inputs(paths,selected)
+    np.testing.assert_allclose(p.complexity_over_T,[.1,.5,.1])
+    np.testing.assert_allclose(s.complexity_over_T,[.5,.1])
+    np.testing.assert_array_equal(p.oos_loss,paths.oos_loss)
+    np.testing.assert_array_equal(p.complexity,paths.complexity)
+    assert 'T' not in paths.columns
+    with pytest.raises(ValueError,match='Missing'):
+        normalized_inputs(paths,selected.iloc[:1])
