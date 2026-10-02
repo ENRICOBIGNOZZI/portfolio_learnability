@@ -159,7 +159,7 @@ def plot_results(paths, selected, out):
         'xtick.labelsize':11, 'ytick.labelsize':11, 'pdf.fonttype':42,
         'savefig.facecolor':'white'})
     cmap, norm = plt.get_cmap('coolwarm'), Normalize(1978,2024)
-    xlabel = r'Effective portfolio complexity $\widehat{\mathcal C}_T(\lambda)$'
+    xlabel = r'Effective portfolio complexity $\widehat{\mathcal{C}}_T(\lambda)$'
     def base(title, subtitle):
         fig, ax = plt.subplots(figsize=(9.1,6.6))
         fig.subplots_adjust(left=.115, right=.86, bottom=.205, top=.81)
@@ -216,7 +216,7 @@ def plot_results(paths, selected, out):
     b, = right.plot(selected.year,selected['lambda'],'s-',color='#cf342e',ms=3,lw=1.6,
                      label=r'Regularization $\lambda_T$')
     ax.set_yscale('log');right.set_yscale('log');ax.set_xlabel('Formation year')
-    ax.set_ylabel(r'Selected complexity $\widehat{\mathcal C}_T(\lambda_T)$',color='#155ce3')
+    ax.set_ylabel(r'Selected complexity $\widehat{\mathcal{C}}_T(\lambda_T)$',color='#155ce3')
     right.set_ylabel(r'Regularization $\lambda_T$',color='#cf342e',labelpad=12)
     ax.tick_params(axis='y',colors='#155ce3');right.tick_params(axis='y',colors='#cf342e')
     ax.legend(handles=[a,b],loc='upper left',fontsize=11,framealpha=.94)
