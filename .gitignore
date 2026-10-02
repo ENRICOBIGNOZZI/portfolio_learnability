@@ -34,3 +34,6 @@ source_manifest.json
 
 .mypy_cache/
 .vscode/
+
+# Public portfolio-level path aggregates; licensed stock-level parquet stays ignored.
+!/outputs/tables/year_lambda_complexity_path_*.parquet

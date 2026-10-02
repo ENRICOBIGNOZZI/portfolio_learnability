@@ -280,3 +280,40 @@ zero-ridge training residuals are checked. The initial-validation loss at
 zero is 0.820087, versus 0.598552 for the selected positive C0; it does not
 improve the initial policy choice. Complexity cannot exceed T when the
 empirical second-moment operator is estimated from T monthly observations.
+
+## Main Figure 3: rolling local learnability
+
+`local_learnability.py` implements the local-regime experiment with trailing
+T = 60, 84, 120, 180, 240 and 360 monthly managed payoffs. The default decision
+is at the beginning of January, after the previous December close; OOS returns
+are January-December of the decision year. A window is never shortened to
+include an early year. The latest V=min(60,floor(T/3)) months validate lambda,
+using a model trained on the earliest T-V months; selected lambda is then
+refitted on the full T months. Candidate grids depend only on inner training.
+
+```sh
+VECLIB_MAXIMUM_THREADS=2 python3 local_learnability.py --kernel matern32
+```
+
+Use `--kernel gaussian` to build or reuse the Gaussian managed cache;
+`--validation-months` overrides V, and `--output` selects a fresh destination.
+`--timing january-close` explicitly enables the earlier repository convention
+(February-January OOS), which differs from the strict before-calendar-year rule.
+The default grid has 1,200 positive penalties and exact zero, all eligible for
+chronological validation. Existing ridge, feature-bank and managed-cache code
+is reused. The previous fixed-C0 experiment remains separately documented.
+
+The main relative-complexity and companion absolute-complexity heatmaps use
+T=60,120,240. Each filled cell is the actual OOS loss of the nearest path point
+**inside** that complexity bin. No values are interpolated into empty cells.
+A common logarithmic color scale and a monotonic-luminance colormap support
+comparisons and grayscale printing. White circles with black edges show the
+validation-selected full-window complexity. Two further figures trace all
+six selected-complexity histories.
+
+Figures (PNG/PDF), all year-T-lambda metrics (aggregate Parquet), selected
+annual/monthly data, coverage, summary and exact displayed-cell provenance
+are written under `outputs/`. The concise methodology note is
+`outputs/notes/heatmap_methodology_matern32.md`; the output manifest records
+hashes, chronology and actual future-payoff perturbation checks. The inherited
+future-payoff-availability filter and current-snapshot caveats still apply.

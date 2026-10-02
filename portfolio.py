@@ -82,18 +82,29 @@ def annual_splits(dates):
 
 
 def dual_path(gram, penalties):
-    """Ridge coefficients in time space; one eigendecomposition per history."""
-    gram = np.asarray(gram, float)
+    """Ridge in time space; zero penalty is the minimum-norm pseudoinverse."""
+    gram, penalties = np.asarray(gram, float), np.asarray(penalties, float)
+    if gram.ndim != 2 or gram.shape[0] != gram.shape[1] or not np.isfinite(gram).all():
+        raise ValueError('Managed Gram matrix must be finite and square.')
+    if penalties.ndim != 1 or not np.isfinite(penalties).all() or (penalties < 0).any():
+        raise ValueError('Penalties must be finite and nonnegative.')
     n = len(gram)
     values, vectors = np.linalg.eigh((gram+gram.T)/2)
     tolerance = max(float(np.max(np.abs(values))),1e-30)*1e-10
     if values.min() < -tolerance:
         raise ValueError('Managed Gram matrix is not positive semidefinite.')
     values = np.maximum(values,0.)
-    alpha = vectors @ ((vectors.T @ np.ones(n))[:,None]/
-                       (values[:,None]+n*np.asarray(penalties)[None,:]))
+    projection = vectors.T @ np.ones(n)
+    factors = np.empty((n,len(penalties)))
+    positive = penalties > 0
+    factors[:,positive] = projection[:,None]/(values[:,None]+n*penalties[None,positive])
+    active = values > max(float(values.max()),1e-30)*1e-12
+    factors[:,~positive] = np.divide(projection,values,out=np.zeros(n),where=active)[:,None]
+    alpha = vectors @ factors
     mu = values[::-1]/n
-    complexity = np.sum(mu[:,None]/(mu[:,None]+penalties[None,:]),axis=0)
+    complexity = np.empty(len(penalties))
+    complexity[positive] = np.sum(mu[:,None]/(mu[:,None]+penalties[None,positive]),axis=0)
+    complexity[~positive] = active.sum()
     return alpha, mu, complexity
 
 

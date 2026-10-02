@@ -97,14 +97,16 @@ def window(g, dates, split, calibration):
             'last_known_payoff':str((dates[history_indices[-1]]+pd.offsets.MonthEnd(1)).date())}
 
 
-def cache_managed(clean, cache):
+def cache_managed(clean, cache, kernel="matern32"):
     cache = Path(cache)
-    path, manifest_path = cache/'matern32_managed.npy', cache/'manifest.json'
+    if kernel not in ('matern32', 'gaussian'):
+        raise ValueError('This cache supports Matérn-3/2 or Gaussian only.')
+    path, manifest_path = cache/f'{kernel}_managed.npy', cache/'manifest.json'
     sample = np.load(Path(clean)/'initial_sample.npy', allow_pickle=False)
     clean_meta = json.loads((Path(clean)/'manifest.json').read_text())
     if digest(Path(clean)/'initial_sample.npy') != clean_meta['sample_sha256']:
         raise ValueError('Initial sample checksum mismatch.')
-    bank = FeatureBank('matern32', 130, 10000, median_distance(sample), 0)
+    bank = FeatureBank(kernel, 130, 10000, median_distance(sample), 0)
     if manifest_path.exists():
         meta = json.loads(manifest_path.read_text())
         if (meta['clean_manifest_sha256'] != digest(Path(clean)/'manifest.json') or
@@ -123,7 +125,7 @@ def cache_managed(clean, cache):
         g = np.vstack(rows)
         cache.mkdir(parents=True, exist_ok=True)
         np.save(path, g)
-        meta = {'kernel':'matern32', 'feature_bank':bank.metadata(),
+        meta = {'kernel':kernel, 'feature_bank':bank.metadata(),
                 'clean_manifest_sha256':digest(Path(clean)/'manifest.json'),
                 'managed_matrix_sha256':array_hash(g), 'managed_file_sha256':digest(path),
                 'dates':[str(d.date()) for d in panels.dates]}
