@@ -207,7 +207,13 @@ def plot_results(paths, selected, out, normalized=False):
         for year, d in paths.groupby('year'):
             d = d.sort_values('complexity')
             ax.plot(d.complexity,d[metric],color=cmap(norm(year)),lw=.9,alpha=.72)
+            zero=d[d['lambda']==0]
+            if len(zero):
+                ax.scatter(zero.complexity,zero[metric],s=15,color=cmap(norm(year)),
+                           edgecolor='#424650',linewidth=.35,zorder=4)
         ax.set_xscale('log'); ax.set_xlabel(xlabel)
+        if normalized and (paths['lambda']==0).any():
+            ax.axvline(1,color='#555b65',ls=':',lw=.8)
         if metric == 'oos_loss':
             ax.set_yscale('log');ax.set_ylabel(r'OOS loss $\widehat Q_{T+1}(\lambda)$')
         else:
@@ -217,7 +223,7 @@ def plot_results(paths, selected, out, normalized=False):
         cb.set_label('Formation year',fontsize=11)
         cb.set_ticks([1978,1990,2000,2010,2024])
         save(fig,stem,'Each line: one annual refit, evaluated on its 12 subsequent monthly payoffs.\n'
-             '1978-2024 formations; February-January payoffs. No smoothing or imposed curve shape.')
+             'February-January payoffs. Endpoint dots mark exact $\\lambda=0$; complexity reaches historical rank.')
     fig, ax = base('The out-of-sample loss landscape',common)
     centers, years, z = heatmap_values(paths)
     edges = np.exp(np.r_[np.log(centers[0])-(np.log(centers[1])-np.log(centers[0]))/2,

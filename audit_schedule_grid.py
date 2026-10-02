@@ -34,7 +34,7 @@ def audit(clean='data/clean',cache='results/schedule_cache',out='paper/complexit
     assert 0<best<len(x)-1,'Validation optimum at extended audit boundary'
     fit=minimize_scalar(loss,bounds=(x[best-1],x[best+1]),method='bounded',options={'xatol':1e-12})
     # Diagnostic grid only: include every original candidate and frozen selection.
-    candidates=np.unique(np.r_[cal['c0'],np.geomspace(low,high,1001)])
+    candidates=np.unique(np.r_[0.,cal['c0'],np.geomspace(low,high,1001)])
     diagnostic=dict(cal,c0=candidates,choice=int(np.flatnonzero(candidates==chosen)[0]))
     original=pd.read_csv(out/'paths.csv');selected=pd.read_csv(out/'annual_schedule.csv')
     records,checks=[],[]
@@ -53,6 +53,7 @@ def audit(clean='data/clean',cache='results/schedule_cache',out='paper/complexit
             if label=='loss': linear=np.exp(linear)
             errors[label+'_max_plot_interpolation_error']=float(np.max(np.abs(linear-r[label][inside])))
         mid_c0=np.sqrt(candidates[:-1]*candidates[1:])
+        mid_c0[0]=candidates[1]/2  # resolve the final interval down to exact zero
         mid=window(g,dates,split,dict(cal,c0=mid_c0,choice=0))
         for label in ['loss','sharpe']:
             y=np.log(r[label][::-1]) if label=='loss' else r[label][::-1]
@@ -63,11 +64,16 @@ def audit(clean='data/clean',cache='results/schedule_cache',out='paper/complexit
         val,vec=np.linalg.eigh(hist@hist.T)
         assert val.min()>val.max()*1e-12,'Unregularized limit numerically unresolved'
         testcross=test@hist.T
-        zero=testcross@(vec@((vec.T@np.ones(len(hist)))/val))
+        zero_alpha=vec@((vec.T@np.ones(len(hist)))/val)
+        zero=testcross@zero_alpha
+        zero_training_error=float(np.max(np.abs((hist@hist.T)@zero_alpha-1)))
+        assert zero_training_error<1e-6,'Zero-ridge interpolation check failed'
+        np.testing.assert_allclose(r['complexity'][0],len(hist),rtol=1e-12)
+        np.testing.assert_allclose(r['returns'][:,0],zero,rtol=1e-8,atol=1e-8)
         strong=testcross@np.ones(len(hist))
         qzero=float(np.mean((1-zero)**2));szero=float(sharpe(zero));sstrong=float(sharpe(strong))
         qmin=int(np.argmin(r['loss']));smax=int(np.argmax(r['sharpe']))
-        checks.append({'year':year,'T':r['T'],'loss_min_at_endpoint':qmin in (0,len(candidates)-1),
+        checks.append({'year':year,'T':r['T'],'zero_lambda_training_max_error':zero_training_error,'loss_min_at_endpoint':qmin in (0,len(candidates)-1),
             'sharpe_max_at_endpoint':smax in (0,len(candidates)-1),
             'loss_argmin_C0':float(candidates[qmin]),'sharpe_argmax_C0':float(candidates[smax]),
             'min_complexity_over_T':float(r['complexity'].min()/r['T']),
@@ -88,10 +94,11 @@ def audit(clean='data/clean',cache='results/schedule_cache',out='paper/complexit
     initial_loss=float(cal['loss'][cal['choice']])
     info={'status':'complete','initial_selection_unchanged':True,'selected_C0':chosen,
         'initial_candidates':200,'validation_audit_candidates':3001,
+        'zero_lambda_validation_loss':float(np.mean((1-cross@(projection/values))**2)),
         'validation_refined_C0':float(np.exp(fit.x)),'original_validation_loss':initial_loss,
         'refined_validation_loss':float(fit.fun),'relative_validation_loss_gap':float((initial_loss-fit.fun)/fit.fun),
         'diagnostic_candidates':len(candidates),'original_C0_bounds':[float(cal['c0'].min()),float(cal['c0'].max())],
-        'diagnostic_C0_bounds':[low,high],'range_extension_factor_each_end':1000,
+        'diagnostic_C0_bounds':[0.,high],'smallest_positive_diagnostic_C0':low,'exact_zero_lambda_included':True,'range_extension_factor_each_end':1000,
         'selected_policy_check':'All 47 selected lambda, complexity, OOS loss and Sharpe match the frozen 200-candidate policy.',
         'maximum_old_plot_interpolation_loss_error':float(check.loss_max_plot_interpolation_error.max()),
         'maximum_old_plot_interpolation_sharpe_error':float(check.sharpe_max_plot_interpolation_error.max()),
