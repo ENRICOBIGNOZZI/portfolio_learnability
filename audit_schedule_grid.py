@@ -48,12 +48,16 @@ def audit(clean='data/clean',cache='results/schedule_cache',out='paper/complexit
         inside=(r['complexity']>=d.complexity.min())&(r['complexity']<=d.complexity.max())
         errors={}
         for label,key in [('loss','oos_loss'),('sharpe','oos_sharpe')]:
-            linear=np.interp(np.log(r['complexity'][inside]),np.log(d.complexity),d[key])
+            y=np.log(d[key]) if label=='loss' else d[key]
+            linear=np.interp(np.log(r['complexity'][inside]),np.log(d.complexity),y)
+            if label=='loss': linear=np.exp(linear)
             errors[label+'_max_plot_interpolation_error']=float(np.max(np.abs(linear-r[label][inside])))
         mid_c0=np.sqrt(candidates[:-1]*candidates[1:])
         mid=window(g,dates,split,dict(cal,c0=mid_c0,choice=0))
         for label in ['loss','sharpe']:
-            interpolated=np.interp(np.log(mid['complexity']),np.log(r['complexity'][::-1]),r[label][::-1])
+            y=np.log(r[label][::-1]) if label=='loss' else r[label][::-1]
+            interpolated=np.interp(np.log(mid['complexity']),np.log(r['complexity'][::-1]),y)
+            if label=='loss': interpolated=np.exp(interpolated)
             errors['dense_'+label+'_max_midpoint_error']=float(np.max(np.abs(interpolated-mid[label])))
         hist=g[np.r_[split[1],split[2]]];test=g[split[3]]
         val,vec=np.linalg.eigh(hist@hist.T)

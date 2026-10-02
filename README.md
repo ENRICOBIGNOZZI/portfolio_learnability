@@ -240,3 +240,33 @@ python3 complexity_schedule.py --out paper/complexity_schedule --normalized-only
 This writes `paper/complexity_schedule/normalized/`, retaining all OOS losses,
 Sharpes, years and fixed-C0 selections. Its CSVs include the original complexity,
 T and their ratio, and its manifest links to the original input hashes.
+
+
+### Grid resolution audit and final diagnostic curves
+
+The initial policy still selects C0 from the 200 frozen candidates. A separate
+validation-only audit evaluated 3,001 points over a range 1,000 times wider at
+both ends and refined the best interval numerically. Its minimum improves the
+initial validation loss by only 0.0004464%; the selected strategy is preserved.
+
+The 200-point curves were too coarse in some regions: the largest discrepancy
+between a plotted Sharpe segment and a recalculated intermediate value was
+1.123. Final figures therefore use **1,201 diagnostic candidates per year**,
+including every original candidate and a wider log-spaced grid. An additional
+56,400 midpoint evaluations check their drawing accuracy. The audit checks
+both the unregularized payoff and the strong-regularization Sharpe limit for
+every annual fit. Boundary optima are recorded as boundary/limit behavior,
+not presented as identified interior optima. These OOS diagnostics never choose
+the investment policy or revise the initial C0.
+
+After the original fit, reproduce the audited figures in this order:
+
+```sh
+VECLIB_MAXIMUM_THREADS=2 python3 audit_schedule_grid.py
+python3 complexity_schedule.py --out paper/complexity_schedule --normalized-only
+```
+
+The grid audit updates the four original figure exports from saved managed
+payoffs. Run the normalized export into a fresh `normalized` subdirectory.
+`grid_audit.json`, `grid_endpoint_checks.csv`, and `diagnostic_paths.csv` contain
+all resolution checks, endpoint comparisons and extended figure inputs.
