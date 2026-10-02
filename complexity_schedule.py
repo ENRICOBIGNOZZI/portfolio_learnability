@@ -218,8 +218,9 @@ def plot_results(paths, selected, out):
     ax.set_yscale('log');right.set_yscale('log');ax.set_xlabel('Formation year')
     ax.set_ylabel(r'Selected complexity $\widehat{\mathcal{C}}_T(\lambda_T)$',color='#155ce3')
     right.set_ylabel(r'Regularization $\lambda_T$',color='#cf342e',labelpad=12)
-    ax.tick_params(axis='y',colors='#155ce3');right.tick_params(axis='y',colors='#cf342e')
-    ax.legend(handles=[a,b],loc='upper left',fontsize=11,framealpha=.94)
+    ax.tick_params(axis='y',which='both',colors='#155ce3');right.tick_params(axis='y',which='both',colors='#cf342e')
+    fig.legend(handles=[a,b],loc='upper left',bbox_to_anchor=(.105,.865),
+               ncol=2,fontsize=11,frameon=False)
     save(fig,'fig04_complexity_regularization',
          r'$\lambda_T=C_0 T^{-\hat b_T/(\hat b_T+1)}$; $T$ counts historical monthly observations.'+'\n'
          '$C_0$ chosen on 1973-1977 validation. Annual changes in b can produce local increases in λ.')
