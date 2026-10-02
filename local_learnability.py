@@ -111,7 +111,7 @@ def render_figures(paths, selected, kernel, output, bins, start_year, end_year, 
                               cmap=cmap,norm=norm,rasterized=True,shading='flat')
             x=s.relative_complexity if relative else s.complexity
             ax.plot(x,s.decision_year,color='white',lw=.55,alpha=.7,zorder=3)
-            ax.scatter(x,s.decision_year,facecolor='white',edgecolor='#111111',s=20,linewidth=.75,zorder=4)
+            ax.scatter(x,s.decision_year,facecolor='white',edgecolor='#111111',s=20,linewidth=.75,zorder=4,clip_on=False)
             ax.set_ylim(end_year+.5,start_year-.5);ax.set_xlim(0,1 if relative else t)
             title=f'T = {t} months'
             title+=f'  |  V = {int(s.V_months.iloc[0])}' if len(s) else '  |  unavailable'
@@ -142,7 +142,7 @@ def render_figures(paths, selected, kernel, output, bins, start_year, end_year, 
         for j,t in enumerate(T_GRID):
             s=selected[selected.T_months==t]
             ax.plot(s.decision_year,s.relative_complexity if relative else s.complexity,
-                color=colors[j],ls=styles[j],marker=markers[j],ms=2.7,lw=1.1,label=f'T = {t}')
+                color=colors[j],ls=styles[j],marker=markers[j],ms=2.7,lw=1.1,label=f'T = {t}',clip_on=False)
         ax.set_xlabel('Decision year');ax.set_ylabel('Selected C/T' if relative else 'Selected effective complexity C')
         ax.set_ylim(bottom=0,top=1.03 if relative else None)
         ax.grid(color='#dfe3e8',lw=.6);ax.set_axisbelow(True)
