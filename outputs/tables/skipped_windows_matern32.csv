@@ -1,0 +1,24 @@
+decision_year,T_months,reason,available_history_months
+1978,180,insufficient trailing history,179
+1978,240,insufficient trailing history,179
+1979,240,insufficient trailing history,191
+1980,240,insufficient trailing history,203
+1981,240,insufficient trailing history,215
+1982,240,insufficient trailing history,227
+1983,240,insufficient trailing history,239
+1978,360,insufficient trailing history,179
+1979,360,insufficient trailing history,191
+1980,360,insufficient trailing history,203
+1981,360,insufficient trailing history,215
+1982,360,insufficient trailing history,227
+1983,360,insufficient trailing history,239
+1984,360,insufficient trailing history,251
+1985,360,insufficient trailing history,263
+1986,360,insufficient trailing history,275
+1987,360,insufficient trailing history,287
+1988,360,insufficient trailing history,299
+1989,360,insufficient trailing history,311
+1990,360,insufficient trailing history,323
+1991,360,insufficient trailing history,335
+1992,360,insufficient trailing history,347
+1993,360,insufficient trailing history,359
