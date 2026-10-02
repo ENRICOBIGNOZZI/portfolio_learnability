@@ -174,7 +174,7 @@ def plot_results(paths, selected, out):
         fig.savefig(out/(stem+'.pdf'))
         fig.savefig(out/(stem+'.png'),dpi=220)
         plt.close(fig)
-    common = 'Matérn-3/2 · JKP U.S. stocks · 200 initial C₀ candidates'
+    common = 'Matérn-3/2 · JKP U.S. stocks · 200 initial $C_0$ candidates'
     for metric, title, stem in [
         ('oos_loss','Out-of-sample loss and portfolio complexity','fig01_oos_loss'),
         ('oos_sharpe','Out-of-sample Sharpe and portfolio complexity','fig02_oos_sharpe')]:
@@ -192,7 +192,7 @@ def plot_results(paths, selected, out):
         cb.set_label('Formation year',fontsize=11)
         cb.set_ticks([1978,1990,2000,2010,2024])
         save(fig,stem,'Each line: one annual refit, evaluated on its 12 subsequent monthly payoffs.\n'
-             '1978–2024 formations; February–January payoffs. No smoothing or imposed curve shape.')
+             '1978-2024 formations; February-January payoffs. No smoothing or imposed curve shape.')
     fig, ax = base('The out-of-sample loss landscape',common)
     centers, years, z = heatmap_values(paths)
     edges = np.exp(np.r_[np.log(centers[0])-(np.log(centers[1])-np.log(centers[0]))/2,
@@ -202,13 +202,13 @@ def plot_results(paths, selected, out):
         cmap='coolwarm',norm=LogNorm(vmin=paths.oos_loss.min(),vmax=paths.oos_loss.max()),rasterized=True)
     ax.set_xscale('log');ax.set_xlabel(xlabel);ax.set_ylabel('Formation year')
     ax.set_ylim(years[-1]+.5,years[0]-.5);ax.grid(False)
-    ax.plot(selected.complexity,selected.year,color='#171b24',lw=1.35,label='Fixed C₀ path')
+    ax.plot(selected.complexity,selected.year,color='#171b24',lw=1.35,label='Fixed $C_0$ path')
     ax.legend(loc='lower left',fontsize=10,framealpha=.94)
     cax=fig.add_axes([.89,.205,.019,.605]);fig.colorbar(mesh,cax=cax,label='OOS loss')
     save(fig,'fig03_oos_loss_heatmap','Loss interpolated in log complexity within each year; blank cells lie outside observed support.\n'
-         'Black path uses C₀ selected once in the initial validation; OOS losses never select it.')
+         'Black path uses $C_0$ selected once in the initial validation; OOS losses never select it.')
     fig, ax = base('Complexity and regularization through time',
-                   'Matérn-3/2 · C₀ fixed initially · spectral b and portfolio coefficients refitted annually')
+                   'Matérn-3/2 · $C_0$ fixed initially · spectral b and portfolio coefficients refitted annually')
     fig.subplots_adjust(right=.855)
     right = ax.twinx()
     a, = ax.plot(selected.year,selected.complexity,'o-',color='#155ce3',ms=3.2,lw=1.65,
@@ -222,7 +222,7 @@ def plot_results(paths, selected, out):
     ax.legend(handles=[a,b],loc='upper left',fontsize=11,framealpha=.94)
     save(fig,'fig04_complexity_regularization',
          r'$\lambda_T=C_0 T^{-\hat b_T/(\hat b_T+1)}$; $T$ counts historical monthly observations.'+'\n'
-         'C₀ chosen on 1973–1977 validation. Annual changes in b can produce local increases in λ.')
+         '$C_0$ chosen on 1973-1977 validation. Annual changes in b can produce local increases in λ.')
 
 
 def run(clean, cache, out):
