@@ -181,9 +181,10 @@ def plot_results(paths, selected, out, normalized=False):
     xlabel = r'Effective portfolio complexity $\widehat{\mathcal{C}}_T(\lambda)$'
     if normalized:
         xlabel = r'Complexity per observation $\widehat{\mathcal{C}}_T(\lambda)/T$'
+    plot_bottom = .245 if normalized else .205
     def base(title, subtitle):
         fig, ax = plt.subplots(figsize=(9.1,6.6))
-        fig.subplots_adjust(left=.115, right=.86, bottom=.205, top=.81)
+        fig.subplots_adjust(left=.115, right=.86, bottom=plot_bottom, top=.81)
         fig.text(.115,.945,title,fontsize=19,weight='bold',ha='left')
         fig.text(.115,.895,subtitle,fontsize=11.5,color='#565b65',ha='left')
         ax.grid(which='major',color='#dce0e5',lw=.65)
@@ -210,7 +211,7 @@ def plot_results(paths, selected, out, normalized=False):
             ax.set_yscale('log');ax.set_ylabel(r'OOS loss $\widehat Q_{T+1}(\lambda)$')
         else:
             ax.set_ylabel('OOS Sharpe ratio (annualized)');ax.axhline(0,color='#5f646f',lw=.8)
-        cax = fig.add_axes([.89,.205,.019,.605])
+        cax = fig.add_axes([.89,plot_bottom,.019,.81-plot_bottom])
         cb = fig.colorbar(ScalarMappable(norm=norm,cmap=cmap),cax=cax)
         cb.set_label('Formation year',fontsize=11)
         cb.set_ticks([1978,1990,2000,2010,2024])
@@ -227,7 +228,7 @@ def plot_results(paths, selected, out, normalized=False):
     ax.set_ylim(years[-1]+.5,years[0]-.5);ax.grid(False)
     ax.plot(selected.complexity,selected.year,color='#171b24',lw=1.35,label='Fixed $C_0$ path')
     ax.legend(loc='lower left',fontsize=10,framealpha=.94)
-    cax=fig.add_axes([.89,.205,.019,.605]);fig.colorbar(mesh,cax=cax,label='OOS loss')
+    cax=fig.add_axes([.89,plot_bottom,.019,.81-plot_bottom]);fig.colorbar(mesh,cax=cax,label='OOS loss')
     save(fig,'fig03_oos_loss_heatmap','Loss interpolated in log complexity within each year; blank cells lie outside observed support.\n'
          'Black path uses $C_0$ selected once in the initial validation; OOS losses never select it.')
     fig, ax = base('Complexity per observation and regularization' if normalized else 'Complexity and regularization through time',
