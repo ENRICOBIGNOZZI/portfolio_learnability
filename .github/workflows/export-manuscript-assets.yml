@@ -1,0 +1,29 @@
+name: Export pinned manuscript assets
+on:
+  push:
+    branches: [manuscript-rich-export-20261003]
+    paths: [.github/workflows/export-manuscript-assets.yml]
+permissions:
+  contents: read
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 6c72c9badee2f7824635b399100066bf7cad2367
+          persist-credentials: false
+      - name: Export only versioned public repository contents
+        run: |
+          mkdir -p manuscript-export
+          git archive --format=tar HEAD | tar -x -C manuscript-export
+          printf '%s\n' '6c72c9badee2f7824635b399100066bf7cad2367' > manuscript-export/SOURCE_COMMIT.txt
+          find manuscript-export -type f -print0 | sort -z | xargs -0 sha256sum > manuscript-export/SHA256SUMS.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: portfolio-rich-manuscript-assets
+          path: manuscript-export/
+          include-hidden-files: false
+          if-no-files-found: error
+          retention-days: 7
