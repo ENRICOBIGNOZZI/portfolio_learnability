@@ -1,0 +1,25 @@
+name: Export pinned Parquet reader
+on:
+  push:
+    branches: [manuscript-rich-export-20261003]
+    paths: [.github/workflows/export-parquet-reader.yml]
+permissions:
+  contents: read
+jobs:
+  reader:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Download the declared Apache Arrow binary only
+        run: |
+          python -m pip download --only-binary=:all: --no-deps --platform manylinux_2_28_x86_64 --python-version 313 --implementation cp --abi cp313 pyarrow==25.0.1 --dest parquet-reader
+          sha256sum parquet-reader/*.whl > parquet-reader/SHA256SUMS.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: portfolio-parquet-reader
+          path: parquet-reader/
+          if-no-files-found: error
+          retention-days: 1
