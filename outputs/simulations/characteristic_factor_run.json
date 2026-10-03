@@ -36,6 +36,24 @@
       1.5,
       4000,
       200
+    ],
+    [
+      "R1",
+      1.5,
+      2000,
+      500
+    ],
+    [
+      "R1",
+      1.5,
+      1000,
+      200
+    ],
+    [
+      "R1",
+      1.5,
+      4000,
+      200
     ]
   ],
   "T_grid": [
@@ -53,8 +71,14 @@
   "positive_lambda_count": 360,
   "bootstrap_replicates": 500,
   "headline_subset": "upper_half",
-  "elapsed_this_invocation_seconds": 2676.2452665829987,
-  "source_sha256": "80c1c48a60e8e4d5024922d6739c7a1e57b4c060c826122f092e00375fd12f0e",
+  "headline_economy": "R1",
+  "target_shapes": {
+    "R1": "1/(sqrt(j)*log(j+1))",
+    "NL": "1/j",
+    "L": "first coordinate"
+  },
+  "elapsed_this_invocation_seconds": 2411.8949794579967,
+  "source_sha256": "2ebbbbd688e42de9bde097671d650c1d7f14a7282509d0e7c0c19644495252a8",
   "workers": 2,
-  "checkpoint_compute_seconds": 3227.2638881260063
+  "checkpoint_compute_seconds": 5541.321233668001
 }

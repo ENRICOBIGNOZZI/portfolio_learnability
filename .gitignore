@@ -40,3 +40,4 @@ source_manifest.json
 
 # Artificial-economy aggregate Monte Carlo surface (no licensed observations).
 !/outputs/simulations/characteristic_factor_full_surface.parquet
+!/outputs/simulations/characteristic_factor_performance_surface.parquet

@@ -1,0 +1,24 @@
+{
+  "source_sha256": "d44902414d667f9ab748a0b596fd01fb084cd5adbc22bb52d58858172e97bb10",
+  "inputs": {
+    "simulations/characteristic_factor_performance_surface.parquet": "911aec7c9d95a4e0c4257628d5805db131bd55ee93d2d359a9db0090f508e7e5",
+    "simulations/characteristic_factor_performance_selection.csv": "7fb080a6f61ec1402b95c3cbacd3605a5da162541c7d578d9815ea96170a2fd6",
+    "simulations/characteristic_factor_performance_audit.json": "22c7dbc98c222722ae8bbc8d5aadd360c28000e19b9a459e1ff63ebf751b9dae",
+    "simulations/characteristic_factor_full_surface.parquet": "cabea110b23d3e3bf6193b37b1375d47ef6a516d12ad833507077e651d96c757"
+  },
+  "outputs": {
+    "figures/simulation_dgp_01_loss_complexity.png": "09cec9feacc6693172a4f3079a53ee33d4df59119d071016e0747fb03203e6f6",
+    "figures/simulation_dgp_01_loss_complexity.pdf": "e188a46c95621dc6d51dfa0e82cc7b29e0951440db13e64a9ab300ed2c403059",
+    "figures/simulation_dgp_02_sharpe_complexity.png": "b3d31a00aacfea4c6a3be8e8c80e6c96f2d0cc1cda209fb2bc622f2db8dd7d1e",
+    "figures/simulation_dgp_02_sharpe_complexity.pdf": "c82cf4984e789e5c4753832dce3e5ccb25bfbb27ed2808e34960753eac6f3dd7",
+    "figures/simulation_dgp_03_loss_heatmap.png": "8bfe797718feab767ee6fe956f216b99599a83355f93bb5305c970d6022e180e",
+    "figures/simulation_dgp_03_loss_heatmap.pdf": "6564afb62bb78a877bc0f760cc433178275957e9bdde2c09dd191dff56db47e6",
+    "figures/simulation_dgp_04_selected_complexity_lambda.png": "6b865225a6730ed2384a9f4116f897e6d923bf994bf0aec9dd1f2c147905bd57",
+    "figures/simulation_dgp_04_selected_complexity_lambda.pdf": "1c33e24040d73bb4fb91f25c65babffdfcf917ea99abeae27b8ced90c2d38169",
+    "figures/simulation_dgp_four_panel_overview.png": "88a9e07948106ccaad17ea4a678a81253a3a636c0dd4ef63104f5d86f3a985eb"
+  },
+  "figure_count": 4,
+  "overview_png": true,
+  "full_complexity_range": true,
+  "population_loss_matches_original_regret": true
+}

@@ -29,8 +29,22 @@ def test_dual_path_matches_primal_regret_and_chronological_validation(j):
     assert choice==np.argmin(losses)
 
 
-def test_stock_economy_recovers_managed_payoff():
-    audit=stock_audit(40,1.5,'NL',months=3,n=100)
+@pytest.mark.parametrize('economy',['NL','R1'])
+def test_stock_economy_recovers_managed_payoff(economy):
+    audit=stock_audit(40,1.5,economy,months=3,n=100)
     assert audit['passed']
     assert audit['min_eigenvalue_V_F']>0
     assert all(x['stock_residual_std']>.05 for x in audit['months'])
+
+
+def test_boundary_target_normalization_and_distinction_from_smooth():
+    j=np.arange(1,2001,dtype=float)
+    mu,theta,mean,scale=population(len(j),1.5,'R1')
+    np.testing.assert_allclose(theta/scale,1/(np.sqrt(j)*np.log1p(j)))
+    np.testing.assert_allclose(np.dot(mu,theta**2),.16)
+    np.testing.assert_allclose(mean,mu*theta)
+    _,smooth,_,smooth_scale=population(len(j),1.5,'NL')
+    np.testing.assert_allclose(smooth/smooth_scale,1/j)
+    assert theta[-1]/theta[0] > smooth[-1]/smooth[0]
+    with pytest.raises(ValueError,match='Unknown economy'):
+        population(10,1.5,'typo')

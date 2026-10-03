@@ -27,12 +27,20 @@ LAMBDA_COUNT = 360
 BOOTSTRAPS = 500
 CONFIGS = [('NL', 1.5, 2000, 500), ('NL', 1.25, 2000, 200),
            ('NL', 2., 2000, 200), ('L', 1.5, 2000, 200),
-           ('NL', 1.5, 1000, 200), ('NL', 1.5, 4000, 200)]
+           ('NL', 1.5, 1000, 200), ('NL', 1.5, 4000, 200),
+           ('R1', 1.5, 2000, 500), ('R1', 1.5, 1000, 200),
+           ('R1', 1.5, 4000, 200)]
+ECONOMY_CODES = {'NL': 0, 'L': 1, 'R1': 2}
 
 
 def population(j, b, economy='NL'):
-    mu = C_MU * np.arange(1, j+1, dtype=float)**(-b)
-    shape = 1 / np.arange(1, j+1, dtype=float)
+    if economy not in ECONOMY_CODES:
+        raise ValueError(f'Unknown economy: {economy}')
+    index = np.arange(1, j+1, dtype=float)
+    mu = C_MU * index**(-b)
+    shape = 1 / index
+    if economy == 'R1':
+        shape = 1 / (np.sqrt(index) * np.log1p(index))
     if economy == 'L':
         shape[1:] = 0
     scale = np.sqrt(SIGNAL / np.dot(mu, shape**2))
@@ -93,7 +101,7 @@ def path_estimates(f, penalties, mu, theta, validation=True):
 def stock_audit(j, b, economy, months=3, n=5000):
     if not j < n:
         raise ValueError('DCT audit requires J < N.')
-    rng = np.random.default_rng(SEED+round(b*100)+j+(economy=='L'))
+    rng = np.random.default_rng(SEED+round(b*100)+j+ECONOMY_CODES[economy])
     mu, theta, mean, scale = population(j, b, economy)
     factors = factor_path(rng, months, mu, theta)
     latent = rng.normal(size=n)
@@ -121,14 +129,17 @@ def stock_audit(j, b, economy, months=3, n=5000):
                      subset_by_index=[0,0], check_finite=False)[0]
     assert all(max(r['orthogonality_error'],r['residual_projection_error'],r['payoff_error'])<1e-10 for r in records)
     assert smallest>0
-    return dict(N=n,J=j,b=b,a=1.,economy=economy,rho_Z=RHO_Z,rho_F=RHO_F,
+    return dict(N=n,J=j,b=b,a=.5 if economy=='R1' else 1.,
+        log_power=1 if economy=='R1' else 0,
+        target_shape='1/(sqrt(j)*log(j+1))' if economy=='R1' else ('1/j' if economy=='NL' else 'first coordinate'),
+        economy=economy,rho_Z=RHO_Z,rho_F=RHO_F,
         sigma_e=SIGMA_E,c_mu=C_MU,c_theta=scale,min_eigenvalue_V_F=float(smallest),
         theta_S_theta=float(np.dot(mu,theta**2)),months=records,passed=True)
 
 
 def long_path_audit(j,b,economy,length=200000):
     """Stream a single stationary path; all coordinate means/diagonals, 16x16 block."""
-    rng=np.random.default_rng(SEED+991+j+round(100*b)+(economy=='L'))
+    rng=np.random.default_rng(SEED+991+j+round(100*b)+ECONOMY_CODES[economy])
     mu,theta,mean,_=population(j,b,economy)
     h=np.sqrt(mu)*theta; q=h@h
     prev=None; sums=np.zeros(j); squares=np.zeros(j); cross=np.zeros((16,16))
@@ -186,7 +197,7 @@ def slopes(oracle, bootstrap=None):
 def replication(job):
     economy,b,j,r,penalties=job
     mu,theta,_,_=population(j,b,economy)
-    rng=np.random.default_rng(np.random.SeedSequence([SEED,round(b*100),j,0 if economy=='NL' else 1,r]))
+    rng=np.random.default_rng(np.random.SeedSequence([SEED,round(b*100),j,ECONOMY_CODES[economy],r]))
     f=factor_path(rng,max(T_GRID),mu,theta)
     risk=[];empirical=[];chosen=[]
     for t in T_GRID:
@@ -284,10 +295,11 @@ def compute(args):
     oracle.to_csv(out/'characteristic_factor_oracle_by_T.csv',index=False)
     validation.to_csv(out/'characteristic_factor_validation_by_T.csv',index=False)
     rate.to_csv(out/'characteristic_factor_rate_slopes.csv',index=False)
-    robust=rate[(rate.economy=='NL')&(rate.b==1.5)].copy()
+    robust=rate[rate.economy.isin(['NL','R1'])&(rate.b==1.5)].copy()
     robust.to_csv(out/'characteristic_factor_finite_J_robustness.csv',index=False)
     write_json(out/'characteristic_factor_run.json',dict(seed=SEED,configs=CONFIGS,T_grid=T_GRID,
-        positive_lambda_count=LAMBDA_COUNT,bootstrap_replicates=BOOTSTRAPS,headline_subset='upper_half',
+        positive_lambda_count=LAMBDA_COUNT,bootstrap_replicates=BOOTSTRAPS,headline_subset='upper_half',headline_economy='R1',
+        target_shapes={'R1':'1/(sqrt(j)*log(j+1))','NL':'1/j','L':'first coordinate'},
         elapsed_this_invocation_seconds=time.perf_counter()-started,source_sha256=digest(__file__),
         workers=args.workers,checkpoint_compute_seconds=sum(json.loads(p.read_text())['elapsed_seconds'] for p in Path(args.cache).glob('*_R*.json'))))
     print('Monte Carlo complete',flush=True)

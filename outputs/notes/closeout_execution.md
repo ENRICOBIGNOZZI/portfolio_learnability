@@ -1,5 +1,10 @@
 # Execution and acceptance record
 
+Historical record of the original smooth-economy close-out. The subsequent
+boundary-target extension is recorded in `boundary_target_execution.md`; current
+headline figures and combined aggregates supersede the six-configuration exports
+described below. The original smooth results are retained in the appendix.
+
 The finished study contains 1,500 independent Monte Carlo paths across six configurations,
 10 sample sizes, 360 positive penalties and 21,600 aggregate surface rows.
 The main economy has 500 paths; all other cells have 200. Source/code hashes and

@@ -1,28 +1,54 @@
 {
-  "source_sha256": "4567b383ce64b81ee1659c825bc106ce1c566d527d967b1f4417d1a81585e101",
+  "source_sha256": "cee0720f8d2883d67dc5875a386eb4dbf9768bf4dbc010fda947a4b9f5aee7f8",
   "dgp_audits_passed": true,
   "finite_J_check": {
-    "max_slope_difference": 0.03623313160352282,
-    "slope_tolerance": 0.08,
-    "max_largest_T_relative_regret_difference": 0.045248074803436955,
-    "regret_tolerance": 0.1,
-    "passed": true
+    "passed": true,
+    "economies": {
+      "R1": {
+        "max_slope_difference": 0.037358305775782696,
+        "slope_tolerance": 0.08,
+        "max_largest_T_relative_regret_difference": 0.030803284660693375,
+        "regret_tolerance": 0.1,
+        "passed": true
+      },
+      "NL": {
+        "max_slope_difference": 0.03623313160352282,
+        "slope_tolerance": 0.08,
+        "max_largest_T_relative_regret_difference": 0.045248074803436955,
+        "regret_tolerance": 0.1,
+        "passed": true
+      }
+    }
   },
   "inputs": {
-    "characteristic_factor_finite_J_robustness.csv": "34ef595029e0b55d3c83328a9aa2b5b4d3039c09fcda44dc28ddcb046afd5f80",
-    "characteristic_factor_run.json": "b83f7cf0009fecf2b4d0ab606c28e2d955903939fcda3b826a7998cd49553e76",
-    "characteristic_factor_dgp_audit.json": "fab5ecd27688dcccfe4c22008ca40667fe07005fbb95741ec8422d4576ac990a",
-    "characteristic_factor_full_surface.parquet": "916dfeb9c93028968596c4b6a36f6c84522115b7209a373f87944b143cfd828e",
-    "characteristic_factor_finite_J_check.json": "14751aa531ba523c4ed73031995e49e515511457a80d3ea19daa1e1bca0a8f88",
-    "characteristic_factor_oracle_by_T.csv": "aa532649e5bd02011e5d750a874983d6558fff446e513b750d4d92b58e9ad83f",
-    "characteristic_factor_validation_by_T.csv": "4858bb07e857550786a78d8b3c04a6dec8a24eecb2ca3fb9fe678f6d7aa73983",
-    "characteristic_factor_rate_slopes.csv": "bcf78be3700ad9a9e2008430257f27b855870aa568ea2ab552be9beb45f54b29"
+    "characteristic_factor_performance_surface.parquet": "911aec7c9d95a4e0c4257628d5805db131bd55ee93d2d359a9db0090f508e7e5",
+    "characteristic_factor_performance_selection.csv": "7fb080a6f61ec1402b95c3cbacd3605a5da162541c7d578d9815ea96170a2fd6",
+    "characteristic_factor_finite_J_robustness.csv": "ac1b637dda5dc42b75cdf1d2dd0c6e3b838ecf5dcbebb5eb62bcee40b6305ac8",
+    "characteristic_factor_performance_audit.json": "22c7dbc98c222722ae8bbc8d5aadd360c28000e19b9a459e1ff63ebf751b9dae",
+    "characteristic_factor_run.json": "fa9ed16cfb622856b173bada61ca2d9a34b67b66c1204d8dbb8c7d0528777405",
+    "characteristic_factor_dgp_audit.json": "5f92c6c0a7744354813fd25607808233d0b5c8084e1311bb8a07453215925a66",
+    "characteristic_factor_full_surface.parquet": "cabea110b23d3e3bf6193b37b1375d47ef6a516d12ad833507077e651d96c757",
+    "characteristic_factor_finite_J_check.json": "36de20519c2b00110ffbb1a1862290d11189d8fe2382b48b6a39e1d56b2c7043",
+    "characteristic_factor_oracle_by_T.csv": "87240497140962333bd345a66195e302391b97684ec7d9f15e880903257ff27a",
+    "characteristic_factor_validation_by_T.csv": "ab150f17e89fbc95c05b59c21d1143936e9e10a660f0474eccfb00647951ac92",
+    "characteristic_factor_rate_slopes.csv": "3512fb35c83ccf443f226795f572e4c6d71a703bedc3cb9f3a22438599877902"
   },
   "outputs": {
-    "simulation_heatmap_absolute_complexity_b150.png": "8f94b7d91f1e0003e5ce88246b47588a80d390e45dfa5a10dd22fba4377d7cb5",
-    "simulation_learnability_law_b150.pdf": "caa277e6581b8792c3305e96e2450215413c46edc514828d1f0625489df95063",
-    "simulation_spectrum_comparison_b125_b150_b200.png": "553e3102762d622cb688b6b567017054efc398c4bd6b9ad0c83bb1e9752ba13e",
-    "simulation_learnability_law_b150.png": "93990edff49550bcb81f858c1a932ca7bc99d40e22266dc5b5958f9d6020da87",
-    "simulation_linear_sanity_check.png": "90cd4213f1dd81b4bb833c824a44ddaea566a2a2b794191a044aac3322673996"
+    "simulation_heatmap_absolute_complexity_b150.png": "d8ae7dddbdb910facd72f59cd564fc71c57e95d3244de8b3b69cc1548c27a88f",
+    "simulation_dgp_02_sharpe_complexity.png": "b3d31a00aacfea4c6a3be8e8c80e6c96f2d0cc1cda209fb2bc622f2db8dd7d1e",
+    "simulation_dgp_02_sharpe_complexity.pdf": "c82cf4984e789e5c4753832dce3e5ccb25bfbb27ed2808e34960753eac6f3dd7",
+    "simulation_dgp_03_loss_heatmap.png": "8bfe797718feab767ee6fe956f216b99599a83355f93bb5305c970d6022e180e",
+    "simulation_dgp_03_loss_heatmap.pdf": "6564afb62bb78a877bc0f760cc433178275957e9bdde2c09dd191dff56db47e6",
+    "simulation_learnability_law_b150.pdf": "dad6f147e17da1d876906e6f29be50f2fe4413405146af3f82e225579ecf6f11",
+    "simulation_dgp_04_selected_complexity_lambda.pdf": "1c33e24040d73bb4fb91f25c65babffdfcf917ea99abeae27b8ced90c2d38169",
+    "simulation_spectrum_comparison_b125_b150_b200.png": "bbfec0287b8138e9679a2e52d1d46ebdbcdc3cbb88d925162085d76637af8c80",
+    "simulation_dgp_04_selected_complexity_lambda.png": "6b865225a6730ed2384a9f4116f897e6d923bf994bf0aec9dd1f2c147905bd57",
+    "simulation_learnability_law_b150.png": "bd15a9a5a4e98f89d339c106dc42134f81fe6ff789dd47dbe7c4a549d76a98f1",
+    "simulation_dgp_four_panel_overview.png": "88a9e07948106ccaad17ea4a678a81253a3a636c0dd4ef63104f5d86f3a985eb",
+    "simulation_dgp_01_loss_complexity.png": "09cec9feacc6693172a4f3079a53ee33d4df59119d071016e0747fb03203e6f6",
+    "simulation_linear_sanity_check.png": "9c0605c489c637cc6fd6708556063db650d96adaad7abb51e91ae9246c8a293e",
+    "simulation_dgp_01_loss_complexity.pdf": "e188a46c95621dc6d51dfa0e82cc7b29e0951440db13e64a9ab300ed2c403059",
+    "simulation_appendix_smooth_nonlinear_b150.png": "ac2b21a92eb8686b46cdf272b7567610f02a5686a1d0929996dc159e3871a3f2",
+    "simulation_appendix_smooth_nonlinear_b150.pdf": "37b21ed46054d40f433812da9a31b04172291e5c5b7ec5036345fa20fb89ff7d"
   }
 }
