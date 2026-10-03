@@ -22,8 +22,10 @@ jobs:
           cache: pip
       - run: python -m pip install -r requirements.txt
       - run: python -m pytest -q tests
+      - name: Verify published scientific aggregates
+        run: python verify_final_outputs.py
       - name: Verify final source scope
         run: |
-          python -m compileall -q data_pipeline.py download.py kernels.py portfolio.py run_empirics.py figures.py complexity_schedule.py audit_schedule_grid.py local_learnability.py
+          python -m compileall -q data_pipeline.py download.py kernels.py portfolio.py run_empirics.py figures.py complexity_schedule.py audit_schedule_grid.py local_learnability.py simulation_characteristic_factor.py render_characteristic_factor.py empirical_closeout.py audit_formation_timing.py verify_final_outputs.py
           test ! -d archive
           test ! -d legacy

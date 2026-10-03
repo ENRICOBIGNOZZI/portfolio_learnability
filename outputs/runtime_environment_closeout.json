@@ -1,0 +1,13 @@
+{
+  "numpy": "2.3.5",
+  "pandas": "2.2.3",
+  "scipy": "1.16.3",
+  "matplotlib": "3.10.8",
+  "pyarrow": "22.0.0",
+  "python": "3.13.3 (v3.13.3:6280bb54784, Apr  8 2025, 10:47:54) [Clang 15.0.0 (clang-1500.3.9.4)]",
+  "platform": "macOS-26.2-arm64-arm-64bit-Mach-O",
+  "physical_memory_GiB": 8,
+  "blas_threads_per_worker": 1,
+  "physical_memory_bytes": 8589934592,
+  "final_Monte_Carlo_workers": 2
+}

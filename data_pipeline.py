@@ -1,4 +1,7 @@
-"""Frozen characteristic selection and explicit complete-payoff sample cleaning."""
+"""Frozen selection for the retrospective complete-payoff sample sensitivity.
+
+For formation-only reconstruction and unresolved payoffs, use audit_formation_timing.py.
+"""
 from __future__ import annotations
 import hashlib
 import json
@@ -165,7 +168,7 @@ def prepare(raw_dir, output_dir):
         excluded = excluded.rename(columns={'eom':'formation_date'})
         excluded['reason_excluded'] = 'Missing or nonfinite JKP ret_exc_lead1m'
         missing.append(excluded)
-        # User-selected complete-case rule: drop before ranks and N_t; no recovery.
+        # Earlier complete-payoff sensitivity: drop before ranks and N_t; no recovery.
         frame = rank_months(frame.loc[valid], names)
         after = frame.groupby('eom').size()
         if not before.index.equals(after.index):

@@ -1,0 +1,16 @@
+{
+  "seed": 20261003,
+  "bootstrap_replicates": 5000,
+  "block_months": 12,
+  "common_months": 372,
+  "near_one_threshold": 0.99,
+  "near_zero_threshold": 0.01,
+  "inputs": {
+    "outputs/tables/year_lambda_complexity_path_matern32.parquet": "3fb6a31ca0688a16b8b5ec0ce63c11083bc27be0e373b3bbf39508de44f90e81",
+    "outputs/tables/selected_monthly_payoffs_matern32.csv": "cc6edaebd46df31e4d9162fc6bf75762f5bf9591dfb1cb9044204e438edcfc69",
+    "results/schedule_cache/matern32_managed.npy": "ccd875f40d95b69a8faa6ea8554ce0179b045480e50bc7ef0c4a5033c521ea7a"
+  },
+  "source_sha256": "2583347669e7658799df1cfdd811da5b1f59e96f9f4601aa511f23bf70ec087c",
+  "elapsed_seconds": 7.053515667001193,
+  "evidence_status": "Complete-payoff sample sensitivity, not pristine real-time OOS. See formation_timing_audit.json."
+}

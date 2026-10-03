@@ -1,4 +1,44 @@
-# Portfolio learnability: final empirical rebuild
+# Portfolio learnability: controlled simulation and empirical diagnostics
+
+
+## Current evidence and entry points
+
+Completed: 1,500 Monte Carlo paths across six configurations, ten T values and
+360 positive penalties. The headline uses 500 paths; other configurations use 200.
+Stock-level identities, population-moment audits, and J=1,000/2,000/4,000 stability
+checks pass. The current suite passes 84 tests, and CI independently verifies the
+published aggregates. The 7,489 unresolved stock payoffs are explicitly isolated
+as a source limitation of the empirical evidence.
+
+The controlled stock/characteristic simulation is in `simulation_characteristic_factor.py`;
+`render_characteristic_factor.py` produces its publication figures from the saved exact-risk
+surfaces. The artificial economy is separate from the licensed JKP data. Start with
+`outputs/notes/simulation_characteristic_factor_methodology.md` for parameters, audits,
+Monte Carlo uncertainty, finite-rank checks and the distinction between a general r=1
+risk envelope and the oracle rate of a fixed smooth target.
+
+The empirical close-out is in `empirical_closeout.py`. Proposed figure roles are E1
+(managed spectrum), E2 (row-normalized local learnability), E3 (common-period window
+tradeoff). **These are complete-payoff sample sensitivities, not pristine real-time
+investment evidence.** `audit_formation_timing.py` reconstructs ranks and universes
+using formation information only and checks whether the current snapshot can recover
+missing next-month payoffs. The audit and unresolved source limitations are reported in
+`outputs/notes/empirical_closeout_methodology.md`. No unknown return is silently zeroed.
+
+The main comparison uses the identical 372 months of January 1994-December 2024.
+Sharpe is calculated from concatenated monthly returns; averages of annual Sharpes in
+earlier tables are not the headline performance metric. Ex-post oracle diagnostics
+never enter validation. All new heatmaps use unconnected validation markers.
+
+```sh
+VECLIB_MAXIMUM_THREADS=1 python3 simulation_characteristic_factor.py --workers 2
+VECLIB_MAXIMUM_THREADS=1 python3 render_characteristic_factor.py
+VECLIB_MAXIMUM_THREADS=1 python3 audit_formation_timing.py --raw data/raw --destination data/formation_only
+VECLIB_MAXIMUM_THREADS=1 python3 empirical_closeout.py
+```
+
+The sections below document the earlier complete-payoff empirical runs and their
+separate specifications. Their sample-selection caveat applies to every such result.
 
 The active experiment contains only **Linear, Gaussian and Matérn-3/2**. Old
 cleaned data, fitted models, performance statistics and figures are not valid
@@ -10,14 +50,15 @@ The raw WRDS snapshot contains **3,687,389 stock-month observations**, covering
 January 1963 through January 2025, acquired on 1 October 2026. Its private
 `data/raw/manifest.json` records every file checksum. Credentials are not saved.
 
-By user-confirmed convention, stock-months with missing or nonfinite JKP
+Under the earlier complete-payoff convention, stock-months with missing or nonfinite JKP
 `ret_exc_lead1m` are excluded **after the formation metadata and characteristic
 missingness filters, before monthly ranking and calculation of N_t**. This is
 our complete-case sample choice, not a documented Didisheim rule. The resulting
 sample is conditional on future payoff availability. No payoff is imputed or
 recovered from another field. Private `data/clean/excluded_returns.csv` records
 every exclusion; `universe_counts.csv` reports monthly before/after counts.
-The previous stop-on-missing-payoff policy is superseded.
+The new formation-only audit supersedes this convention as a source-timing check;
+these earlier fitted outputs remain explicitly isolated sensitivities.
 
 Preparation is complete: **2,496,913 retained stock-months**, **744 months**,
 **7,489 exclusions**, and **3,356.07 stocks per month** on average. The initial
@@ -26,7 +67,7 @@ coverage sample contains 223,762 observations; restricting feature selection to
 **The real-data run is complete:** all three representations have 47 refits and
 564 OOS monthly payoffs. The five PDF/PNG figures, performance table, empirical
 LaTeX section and reproduction manifest are in `paper/`. All five PDFs were
-rendered and visually inspected. The implementation passes 57 tests.
+rendered and visually inspected. That original rebuild passed 57 tests; the current close-out suite passes 84.
 
 | Policy | OOS Sharpe | Maximum drawdown |
 |---|---:|---:|
@@ -61,7 +102,7 @@ characteristics and 131 coefficients, including the intercept.
 
 Python 3.12 is used in CI. Unit and integration fixtures are synthetic tests,
 not empirical results. The commands below describe reproduction in fresh output
-directories; existing prepared data are never silently overwritten. The current convention drops missing payoffs explicitly during `prepare`.
+directories; existing prepared data are never silently overwritten. The earlier complete-payoff pipeline drops missing payoffs explicitly during `prepare`.
 
 ```sh
 python3 -m pip install -r requirements.txt

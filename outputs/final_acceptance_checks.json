@@ -1,0 +1,25 @@
+{
+  "aggregate_consistency_passed": true,
+  "finite_J_stability_passed": true,
+  "simulation_surface_rows": 21600,
+  "simulation_configurations": 6,
+  "simulation_T_values": 10,
+  "positive_lambda_values": 360,
+  "minimum_replications": 200,
+  "headline_replications": 500,
+  "empirical_common_months": 372,
+  "formation_only_reconstruction_passed": true,
+  "unresolved_stock_payoffs": 7489,
+  "empirical_evidence_status": "Explicitly isolated complete-payoff sensitivity; pristine real-time evidence unavailable.",
+  "figure_files": {
+    "simulation_learnability_law_b150": "93990edff49550bcb81f858c1a932ca7bc99d40e22266dc5b5958f9d6020da87",
+    "simulation_heatmap_absolute_complexity_b150": "8f94b7d91f1e0003e5ce88246b47588a80d390e45dfa5a10dd22fba4377d7cb5",
+    "simulation_spectrum_comparison_b125_b150_b200": "553e3102762d622cb688b6b567017054efc398c4bd6b9ad0c83bb1e9752ba13e",
+    "simulation_linear_sanity_check": "90cd4213f1dd81b4bb833c824a44ddaea566a2a2b794191a044aac3322673996",
+    "empirical_E1_managed_payoff_spectrum": "6132639e1224dd8a41ddc16c3f312c1553008d197cf2029349eafca9b7d2ba32",
+    "empirical_E2_row_normalized_heatmap": "8efb126bf951a3a21c81f80ec82072353e3c97fad640daf67fb84a6f8c6bb2eb",
+    "empirical_E3_common_period_window_tradeoff": "d7743397da1b1d6eb2850f67ca22ba739b167c68054ee40f97cb1d6675a0e216",
+    "empirical_appendix_log_ratio_heatmap": "0bd75ceaa5446c73d94fc40cc701f1d5a540c731c193ba6291c5e52e04176835",
+    "empirical_appendix_raw_heatmap": "e48b51212a607c0da6e8bdaef39d9a6c5e3c0fd4301b88f1f5c4835712930c06"
+  }
+}

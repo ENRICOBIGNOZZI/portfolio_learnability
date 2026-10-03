@@ -1,0 +1,28 @@
+{
+  "source_sha256": "4567b383ce64b81ee1659c825bc106ce1c566d527d967b1f4417d1a81585e101",
+  "dgp_audits_passed": true,
+  "finite_J_check": {
+    "max_slope_difference": 0.03623313160352282,
+    "slope_tolerance": 0.08,
+    "max_largest_T_relative_regret_difference": 0.045248074803436955,
+    "regret_tolerance": 0.1,
+    "passed": true
+  },
+  "inputs": {
+    "characteristic_factor_finite_J_robustness.csv": "34ef595029e0b55d3c83328a9aa2b5b4d3039c09fcda44dc28ddcb046afd5f80",
+    "characteristic_factor_run.json": "b83f7cf0009fecf2b4d0ab606c28e2d955903939fcda3b826a7998cd49553e76",
+    "characteristic_factor_dgp_audit.json": "fab5ecd27688dcccfe4c22008ca40667fe07005fbb95741ec8422d4576ac990a",
+    "characteristic_factor_full_surface.parquet": "916dfeb9c93028968596c4b6a36f6c84522115b7209a373f87944b143cfd828e",
+    "characteristic_factor_finite_J_check.json": "14751aa531ba523c4ed73031995e49e515511457a80d3ea19daa1e1bca0a8f88",
+    "characteristic_factor_oracle_by_T.csv": "aa532649e5bd02011e5d750a874983d6558fff446e513b750d4d92b58e9ad83f",
+    "characteristic_factor_validation_by_T.csv": "4858bb07e857550786a78d8b3c04a6dec8a24eecb2ca3fb9fe678f6d7aa73983",
+    "characteristic_factor_rate_slopes.csv": "bcf78be3700ad9a9e2008430257f27b855870aa568ea2ab552be9beb45f54b29"
+  },
+  "outputs": {
+    "simulation_heatmap_absolute_complexity_b150.png": "8f94b7d91f1e0003e5ce88246b47588a80d390e45dfa5a10dd22fba4377d7cb5",
+    "simulation_learnability_law_b150.pdf": "caa277e6581b8792c3305e96e2450215413c46edc514828d1f0625489df95063",
+    "simulation_spectrum_comparison_b125_b150_b200.png": "553e3102762d622cb688b6b567017054efc398c4bd6b9ad0c83bb1e9752ba13e",
+    "simulation_learnability_law_b150.png": "93990edff49550bcb81f858c1a932ca7bc99d40e22266dc5b5958f9d6020da87",
+    "simulation_linear_sanity_check.png": "90cd4213f1dd81b4bb833c824a44ddaea566a2a2b794191a044aac3322673996"
+  }
+}

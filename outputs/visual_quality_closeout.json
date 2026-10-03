@@ -1,0 +1,21 @@
+{
+  "reviewed": true,
+  "figures": 9,
+  "pdf_exports": 4,
+  "review": "Manual visual inspection of all nine PNG figures; Poppler rendering of all four PDFs. Comparison/sanity left margins widened; no clipped curves, labels or markers.",
+  "sha256": {
+    "empirical_E1_managed_payoff_spectrum.pdf": "a8f5182acfd2e8165526a93345c13b86a846cad5614d4e13bb58b1be7d8dde7f",
+    "empirical_E1_managed_payoff_spectrum.png": "6132639e1224dd8a41ddc16c3f312c1553008d197cf2029349eafca9b7d2ba32",
+    "empirical_E2_row_normalized_heatmap.pdf": "f67e183756784d841db0239c9447ff300d145022ce377ab802261cd09dfe4012",
+    "empirical_E2_row_normalized_heatmap.png": "8efb126bf951a3a21c81f80ec82072353e3c97fad640daf67fb84a6f8c6bb2eb",
+    "empirical_E3_common_period_window_tradeoff.pdf": "8c26a5ccb7bcc97ca01c4bc04460d0c0f0b36a3ae282bb5fdf608a0164840c1d",
+    "empirical_E3_common_period_window_tradeoff.png": "d7743397da1b1d6eb2850f67ca22ba739b167c68054ee40f97cb1d6675a0e216",
+    "empirical_appendix_log_ratio_heatmap.png": "0bd75ceaa5446c73d94fc40cc701f1d5a540c731c193ba6291c5e52e04176835",
+    "empirical_appendix_raw_heatmap.png": "e48b51212a607c0da6e8bdaef39d9a6c5e3c0fd4301b88f1f5c4835712930c06",
+    "simulation_heatmap_absolute_complexity_b150.png": "8f94b7d91f1e0003e5ce88246b47588a80d390e45dfa5a10dd22fba4377d7cb5",
+    "simulation_learnability_law_b150.pdf": "caa277e6581b8792c3305e96e2450215413c46edc514828d1f0625489df95063",
+    "simulation_learnability_law_b150.png": "93990edff49550bcb81f858c1a932ca7bc99d40e22266dc5b5958f9d6020da87",
+    "simulation_linear_sanity_check.png": "90cd4213f1dd81b4bb833c824a44ddaea566a2a2b794191a044aac3322673996",
+    "simulation_spectrum_comparison_b125_b150_b200.png": "553e3102762d622cb688b6b567017054efc398c4bd6b9ad0c83bb1e9752ba13e"
+  }
+}

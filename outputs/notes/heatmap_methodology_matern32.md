@@ -1,5 +1,9 @@
 # Local learnability heatmaps: matern32
 
+**Evidence status:** complete-payoff sample sensitivity. The subsequent formation-only
+rebuild, unresolved missing-payoff audit, and common-period diagnostics are documented
+in `empirical_closeout_methodology.md`. These cached results are not pristine real-time OOS evidence.
+
 T is the length of trailing monthly history treated as locally informative for the current regime.
 It is not the total history of a globally stationary economy, nor a count of stock-month rows.
 

@@ -1,0 +1,60 @@
+{
+  "seed": 20261003,
+  "configs": [
+    [
+      "NL",
+      1.5,
+      2000,
+      500
+    ],
+    [
+      "NL",
+      1.25,
+      2000,
+      200
+    ],
+    [
+      "NL",
+      2.0,
+      2000,
+      200
+    ],
+    [
+      "L",
+      1.5,
+      2000,
+      200
+    ],
+    [
+      "NL",
+      1.5,
+      1000,
+      200
+    ],
+    [
+      "NL",
+      1.5,
+      4000,
+      200
+    ]
+  ],
+  "T_grid": [
+    60,
+    90,
+    120,
+    180,
+    240,
+    360,
+    540,
+    720,
+    1080,
+    1440
+  ],
+  "positive_lambda_count": 360,
+  "bootstrap_replicates": 500,
+  "headline_subset": "upper_half",
+  "elapsed_this_invocation_seconds": 2676.2452665829987,
+  "source_sha256": "80c1c48a60e8e4d5024922d6739c7a1e57b4c060c826122f092e00375fd12f0e",
+  "workers": 2,
+  "checkpoint_compute_seconds": 3227.2638881260063
+}

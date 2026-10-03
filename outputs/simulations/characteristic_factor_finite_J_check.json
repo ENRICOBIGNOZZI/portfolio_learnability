@@ -1,0 +1,7 @@
+{
+  "max_slope_difference": 0.03623313160352282,
+  "slope_tolerance": 0.08,
+  "max_largest_T_relative_regret_difference": 0.045248074803436955,
+  "regret_tolerance": 0.1,
+  "passed": true
+}

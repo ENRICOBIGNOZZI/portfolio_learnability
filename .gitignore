@@ -37,3 +37,6 @@ source_manifest.json
 
 # Public portfolio-level path aggregates; licensed stock-level parquet stays ignored.
 !/outputs/tables/year_lambda_complexity_path_*.parquet
+
+# Artificial-economy aggregate Monte Carlo surface (no licensed observations).
+!/outputs/simulations/characteristic_factor_full_surface.parquet
