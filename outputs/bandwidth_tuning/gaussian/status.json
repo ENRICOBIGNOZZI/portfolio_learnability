@@ -1,0 +1,9 @@
+{
+  "status": "complete",
+  "baseline_check": {
+    "source": "results/final/public/gaussian/seed_0/p_10000/monthly.csv",
+    "sha256": "71139b4d9330fe71cb9b1fd50379bb15b95256413e4765022b238693faeed6f8",
+    "maximum_absolute_payoff_difference": 7.119016487422414e-11,
+    "passed": true
+  }
+}

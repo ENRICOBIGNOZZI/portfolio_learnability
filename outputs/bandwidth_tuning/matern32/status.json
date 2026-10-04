@@ -1,0 +1,9 @@
+{
+  "status": "complete",
+  "baseline_check": {
+    "source": "results/final/public/matern32/seed_0/p_10000/monthly.csv",
+    "sha256": "0caf443c9bbf5bd63a3dda23be56377f1569ef98a0df4273322c7580963abcd0",
+    "maximum_absolute_payoff_difference": 5.994482688009839e-11,
+    "passed": true
+  }
+}

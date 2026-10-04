@@ -1,0 +1,30 @@
+{
+  "multipliers": [
+    0.25,
+    0.5,
+    1.0,
+    2.0,
+    4.0
+  ],
+  "features": 10000,
+  "seed": 0,
+  "kernel_workers": 1,
+  "stock_batch_size": 64,
+  "lambda_count": 120,
+  "clean_manifest_sha256": "ca6e97aa3b6cd96962afb1ce5ffc6d901f74f90eb5c2cef5902391633c3e7db9",
+  "code_sha256": {
+    "bandwidth_tuning.py": "f7ed08b88180ea2be05e70e6cec8e4195afdf3f65f77ba51c6ab593c06087b18",
+    "kernels.py": "8515be031e468ffa9f6733afa2d3f661bdb51ccdcd746aac4ce4d4faeb9c6da0",
+    "portfolio.py": "a87438dd12ad07b3851d4c41b477c934ae52347315f7002fe540577a18f3a5db",
+    "data_pipeline.py": "ea130846016c0ed10321ee333af81ef0ca24371564891d1633ecec8345aa32b5"
+  },
+  "baseline_sha256": {
+    "gaussian": "71139b4d9330fe71cb9b1fd50379bb15b95256413e4765022b238693faeed6f8",
+    "matern32": "0caf443c9bbf5bd63a3dda23be56377f1569ef98a0df4273322c7580963abcd0"
+  },
+  "selection": "Joint minimum validation mean (1-raw payoff)^2, per kernel and year.",
+  "lambda_grid": "120 effective-complexity-spaced penalties, frozen separately for each kernel/bandwidth using initial 1963-1972 training.",
+  "timing": "Expanding training, last 60 historical months validation; January-close refit on train+validation, February-January OOS payoffs.",
+  "interpretation": "Exploratory historical comparison; same complete-payoff sample and execution assumptions as frozen baseline; no trading costs.",
+  "scope": "One RFF seed; bandwidth and lambda selected, feature count fixed. Existing paper protocol and results are not modified."
+}

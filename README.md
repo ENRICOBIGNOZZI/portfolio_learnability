@@ -382,3 +382,55 @@ are written under `outputs/`. The concise methodology note is
 `outputs/notes/heatmap_methodology_matern32.md`; the output manifest records
 hashes, chronology and actual future-payoff perturbation checks. The inherited
 future-payoff-availability filter and current-snapshot caveats still apply.
+
+## Exploratory joint bandwidth and ridge experiment
+
+`bandwidth_tuning.py` compares Gaussian and Matérn-3/2 under the original
+expanding-window annual-validation protocol. Each kernel uses 10,000 RFF with
+seed 0. Candidate bandwidths are 0.25, 0.5, 1, 2 and 4 times the median distance
+of the frozen 1,000 initial-training vectors. Frequencies and phases are shared
+across bandwidths, so only the frequency scale changes. For every kernel and
+bandwidth, 120 positive ridge penalties are frozen from its own 1963–1972
+managed-payoff spectrum using the existing effective-complexity grid.
+
+Each decision year selects the bandwidth/penalty pair minimizing the quadratic
+portfolio loss on the last five historical years, then refits on training plus
+validation. Exact bandwidth ties prefer the multiplier nearest 1; penalty ties
+retain the original `argmin` convention. The 47 January-close decisions span
+1978–2024, with 564 OOS monthly payoffs from February 1978 through January 2025.
+This uses the original expanding windows, not the trailing-window heatmap
+experiment. No OOS payoff selects a bandwidth or penalty.
+
+```sh
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 \
+  python3 -u bandwidth_tuning.py
+python3 -m pytest tests/test_bandwidth_tuning.py -q
+```
+
+Outputs default to the separate, Git-ignored `results/bandwidth_tuning/`
+directory. `summary.csv` compares fixed and tuned bandwidth for both kernels;
+`subperiods.csv` provides three fixed chronological subperiods; `selections.csv`
+records annual bandwidth, penalty, validation loss, complexity and grid-boundary
+flags. Kernel-specific `validation_surface.csv` files retain every validation
+candidate. `monthly.csv` contains the four selected OOS payoff histories, and
+`comparison.png` / `.pdf` visualize performance and bandwidth selection.
+`verification.json` checks that the multiplier-1 controls reproduce the original
+frozen monthly payoffs within numerical tolerance. Sharpe uses annualized monthly
+payoffs; quadratic loss uses raw payoffs, without exposure rescaling.
+
+The completed aggregate snapshot is published in
+[`outputs/bandwidth_tuning/`](outputs/bandwidth_tuning/), including the comparison
+figure, validation surfaces, monthly portfolio returns, configuration and checksums.
+OOS Sharpe changes from 3.300 to 3.646 for Gaussian and from 3.461 to 3.587 for
+Matérn-3/2. The licensed inputs and managed-feature caches remain local.
+
+The managed caches checkpoint every 12 months. Repeating the same command resumes
+the cache with matching source hashes and configuration; changed configurations
+require a fresh `--out` directory. `status.json` records completion and output
+checksums. The default runs one kernel at a time with 64-stock feature batches to
+limit memory pressure; `--workers 2` enables concurrent kernels on machines with
+more spare memory. The main paper protocol and results are not overwritten. This remains
+an exploratory historical comparison with a single RFF seed, no trading costs,
+and the original complete-payoff sample restrictions. Frequent selection at a
+grid edge is a diagnostic of limited search coverage, not evidence of an optimum
+beyond the tested range.

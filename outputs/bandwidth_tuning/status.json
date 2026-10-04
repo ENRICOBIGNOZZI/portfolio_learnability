@@ -1,0 +1,22 @@
+{
+  "status": "complete",
+  "median_bandwidth": 4.392107784616423,
+  "python": "3.13.3",
+  "numpy": "2.3.5",
+  "pandas": "2.2.3",
+  "config_sha256": "b7b241f596e15dff9bdc3092534144755865a47a90463bbe584f6bb712744e10",
+  "outputs_sha256": {
+    "comparison.pdf": "2cbc2867c85dd240ca1a1701a1a17e7d3a622903e4639c5beba90ce4cbd37ee8",
+    "comparison.png": "706da0b93c5333ce1125d23fb81551c8c76ea60639350deafa11be6cd478c700",
+    "gaussian/monthly.csv": "a82a33327ab85ddec55daae958ab6ebb70191053d1bc0f5e90af366bd0e2ab36",
+    "gaussian/selections.csv": "1ab9bf1e1df7f2635c1ea0c66b4ca2dcf28b6d544cc3ad441c363609f7b7211e",
+    "gaussian/validation_surface.csv": "6ef81f89b1aab9bb33e83b99260f1a9356812c0ffd14a282942ff2b4368422b5",
+    "matern32/monthly.csv": "36d631ad7fc648ef3a934c40b00460871a4c537f9d12d9d7f4596301e1b9607f",
+    "matern32/selections.csv": "c7fd8d701af20f6629ac703af1a211d7d58231e9b2be96fa4f8a3e7cb0662a79",
+    "matern32/validation_surface.csv": "e30df6af8aeb38550af7ca152b09f8036a98e3d00c24dedec171c6e77dd7be53",
+    "monthly.csv": "076e9db1ff91bc12bf35b09a1540959424a2be786c72f54669be5ae2c65434dc",
+    "selections.csv": "5757e00e43f08e411fe513f4a8bfec2516106a65908f933f27eb61c3326acbe3",
+    "subperiods.csv": "ab772a25fdbb761c94d6c34351c1679c05b2d6086ddd4e6833bf01ce54dafe92",
+    "summary.csv": "f323059c588efecd3970c9cbd0e83dac843fd47bf51eaadf0b825eaa8c925e0a"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "baseline_reproduction": {
+    "gaussian": {
+      "source": "results/final/public/gaussian/seed_0/p_10000/monthly.csv",
+      "sha256": "71139b4d9330fe71cb9b1fd50379bb15b95256413e4765022b238693faeed6f8",
+      "maximum_absolute_payoff_difference": 7.119016487422414e-11,
+      "passed": true
+    },
+    "matern32": {
+      "source": "results/final/public/matern32/seed_0/p_10000/monthly.csv",
+      "sha256": "0caf443c9bbf5bd63a3dda23be56377f1569ef98a0df4273322c7580963abcd0",
+      "maximum_absolute_payoff_difference": 5.994482688009839e-11,
+      "passed": true
+    }
+  },
+  "full_oos_months_per_strategy": 564
+}
