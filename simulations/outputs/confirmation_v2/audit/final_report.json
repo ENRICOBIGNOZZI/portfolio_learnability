@@ -1,0 +1,299 @@
+{
+  "schema": "confirmation-closeout/2.0",
+  "completed_utc": "2026-10-08T20:09:21.330998+00:00",
+  "source_sha256": "488885a2b7e61694de23783a630e285124a7f9f39862eb231c4c1da73924a0f7",
+  "protocol_hash": "719034dd1fd3a9a1c716c7a5fcd6337b006bce60dbb0725997a82e2cea72639a",
+  "conditions": {
+    "source_preservation_verified": {
+      "condition_met": true,
+      "command": "python -m simulations.diagnostics.closeout_v2",
+      "evidence": {
+        "audit/source_preservation.json": "5dfb3e60d448b6f197b8d9d5043358b24616aaa22abbcb4326da02adfaadd01a",
+        "audit/historical_snapshot.json": "17ba528845ce95ef8de2a9481e5ea0126baf9161b0cd80ab8d6788a1e5cd3ab2"
+      },
+      "theory_entries_verified": 11,
+      "empirical_entries_verified": 112,
+      "historical_artifacts_verified": 3891,
+      "authority": "Byte comparison with source archive; no inferred personal confirmation."
+    },
+    "baseline_reproduced_or_archived_verified": {
+      "condition_met": true,
+      "command": "python -m simulations.diagnostics.reconstruct --full --report simulations/outputs/confirmation_v2/audit/historical_reconstruction.json",
+      "evidence": {
+        "audit/historical_reconstruction.json": "b0b5a0a4684e5cc6235cde61745fd0cba44390716fc832335a3285f83591ad8d"
+      },
+      "evaluations": 3500,
+      "limitation": "Archived raw surfaces to aggregates; no claim of a stock-return fitting replay."
+    },
+    "cache_mutation_tests_passed": {
+      "condition_met": true,
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3",
+        "-m",
+        "pytest",
+        "tests",
+        "-q"
+      ],
+      "evidence": {
+        "audit/test_verification.json": "af1eb39779b43607b02f006d1b757eafae931dd9fe5f6a6fa25acebd70a6331e"
+      },
+      "log_sha256": "c45b737b77b0c589a980aa0b68575ca9832cf2550f212a08571a26b1d5bca8ca",
+      "source_files_bound": 68
+    },
+    "aggregate_mutation_tests_passed": {
+      "condition_met": true,
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3",
+        "-m",
+        "pytest",
+        "tests",
+        "-q"
+      ],
+      "evidence": {
+        "audit/test_verification.json": "af1eb39779b43607b02f006d1b757eafae931dd9fe5f6a6fa25acebd70a6331e"
+      },
+      "log_sha256": "c45b737b77b0c589a980aa0b68575ca9832cf2550f212a08571a26b1d5bca8ca",
+      "source_files_bound": 68
+    },
+    "raw_checkpoint_archive_accessible": {
+      "condition_met": true,
+      "command": "python -m simulations.diagnostics.raw_archive fetch --destination . [--index confirmation index]",
+      "evidence": {
+        "audit/raw_archive.json": "33d903c1bea3ad4778fb84930b184673b91f75152cc665fa76b09b31788c5e10",
+        "audit/raw_archive_download_verification.json": "d26938e6acc9bb51b3d074bd923a8629e36deb72d931b9ff71b307090d5bcb98",
+        "audit/confirmation_raw_archive.json": "3500f30eabc6b58bb7137174360cf8e1de3fd6c14c846548fbbfdd861b8b001c",
+        "audit/confirmation_raw_archive_download_verification.json": "d9763ff7bca6cbf207bac16c2b34eb2ea14413a5417cecd8a54961c6b4fb1cb4"
+      },
+      "scope": "Historical and confirmation synthetic checkpoints, actually downloaded with per-file verification."
+    },
+    "exact_kernel_reference_checked": {
+      "condition_met": true,
+      "command": "python -m simulations.diagnostics.exact_kernel",
+      "evidence": {
+        "audit/exact_kernel_reference.json": "7c129b94c963910d82017302d9d3257bec1467b5d5ebaf604a0ceee2ab3dfbf8",
+        "audit/exact_kernel_reference.csv": "861a5a5bf637fe6808ecb55a22f1970e5cdcd45e87a03980e3946b30ef06d6d1"
+      },
+      "comparisons": 288,
+      "limitation": "Exact-solver identities verified. Nystr\u00f6m differences are measured, not assumed zero; these small samples do not certify headline resolution."
+    },
+    "numerical_resolution_certified_for_claimed_region": {
+      "condition_met": true,
+      "command": "python -m simulations.diagnostics.reconstruct_resolution",
+      "evidence": {
+        "audit/numerical_reconstruction.json": "d6bc670a2ff91a713aa21fab37347bd074465f7da49b67a64b14b8fb218ab372",
+        "audit/claimed_resolution_regions.csv": "d932f7f57662c188faafc6f1103cef363e9d1e2ad04f08fc3a88078b0cca6469"
+      },
+      "execution_verified": true,
+      "headline_cells": 6,
+      "headline_certified": 6,
+      "scope": "Each listed practical-grid policy cell separately, relative to audited rank 1024 and quadrature; no infinite-kernel equality.",
+      "limitation": "Uncertified cells and extra horizons remain visible and unresolved; a failed tolerance is not an unexecuted audit."
+    },
+    "rich6d_algebra_and_assumptions_checked": {
+      "condition_met": true,
+      "command": "python -m simulations.diagnostics.rich6d_audit",
+      "evidence": {
+        "audit/rich6d_gradient_audit.json": "248270b8558b85b4539ce454a39ab88d13bc91dfd2f3c708ce9f178e496cf2db",
+        "audit/test_verification.json": "af1eb39779b43607b02f006d1b757eafae931dd9fe5f6a6fa25acebd70a6331e"
+      },
+      "samples": 131072,
+      "limitation": "Smooth benchmark; source condition is an analytic assumption, not a minimax hardness claim."
+    },
+    "theory_path_executed": {
+      "condition_met": true,
+      "command": "python -m simulations.diagnostics.reconstruct_confirmation",
+      "evidence": {
+        "audit/confirmation_reconstruction.json": "d1259b1431b51cbd39f6e9e980350d6f50b843342639b8b12affd8e676c652c9",
+        "run_manifest.json": "da693e47ccd6b1ed7b40263be1d04950e74842d723881e44812a823e86dcf260"
+      },
+      "environments": {
+        "baseline_original": 100,
+        "baseline_original_nu05": 50,
+        "baseline_original_nu25": 50,
+        "rich6d": 100,
+        "rich6d_nu05": 50,
+        "rich6d_nu25": 50
+      },
+      "evaluations": 400,
+      "distinct_innovation_seed_indices": 100,
+      "limitation": "Prospectively reduced 100/50/50 cohorts, not maximum 500/200/200 targets; paired maps reuse innovations."
+    },
+    "selector_comparison_executed": {
+      "condition_met": true,
+      "command": "python -m simulations.diagnostics.reconstruct_confirmation",
+      "evidence": {
+        "audit/confirmation_reconstruction.json": "d1259b1431b51cbd39f6e9e980350d6f50b843342639b8b12affd8e676c652c9",
+        "run_manifest.json": "da693e47ccd6b1ed7b40263be1d04950e74842d723881e44812a823e86dcf260"
+      },
+      "environments": {
+        "baseline_original": 100,
+        "baseline_original_nu05": 50,
+        "baseline_original_nu25": 50,
+        "rich6d": 100,
+        "rich6d_nu05": 50,
+        "rich6d_nu25": 50
+      },
+      "evaluations": 400,
+      "distinct_innovation_seed_indices": 100,
+      "limitation": "Prospectively reduced 100/50/50 cohorts, not maximum 500/200/200 targets; paired maps reuse innovations."
+    },
+    "independent_and_forward_OOS_executed": {
+      "condition_met": true,
+      "command": "python -m simulations.diagnostics.reconstruct_confirmation",
+      "evidence": {
+        "audit/confirmation_reconstruction.json": "d1259b1431b51cbd39f6e9e980350d6f50b843342639b8b12affd8e676c652c9",
+        "run_manifest.json": "da693e47ccd6b1ed7b40263be1d04950e74842d723881e44812a823e86dcf260"
+      },
+      "environments": {
+        "baseline_original": 100,
+        "baseline_original_nu05": 50,
+        "baseline_original_nu25": 50,
+        "rich6d": 100,
+        "rich6d_nu05": 50,
+        "rich6d_nu25": 50
+      },
+      "evaluations": 400,
+      "distinct_innovation_seed_indices": 100,
+      "limitation": "Prospectively reduced 100/50/50 cohorts, not maximum 500/200/200 targets; paired maps reuse innovations."
+    },
+    "all_reported_numbers_reconstructed": {
+      "condition_met": true,
+      "command": "python -m simulations.diagnostics.publication_v2",
+      "evidence": {
+        "audit/publication_reconstruction.json": "12b94c76dc435740351cafaa8df3a112fca77d2e64d993e975aefeed4efa2166",
+        "audit/figure_provenance.json": "dfb61e60d972dc951819735a0f06d5c332ab35046656533548d90f702b328cf0",
+        "audit/confirmation_reconstruction.json": "d1259b1431b51cbd39f6e9e980350d6f50b843342639b8b12affd8e676c652c9",
+        "audit/numerical_reconstruction.json": "d6bc670a2ff91a713aa21fab37347bd074465f7da49b67a64b14b8fb218ab372"
+      },
+      "numeric_cells": 462,
+      "paired_rows": 280
+    },
+    "paper_compiled_and_render_reviewed": {
+      "condition_met": true,
+      "command": [
+        "latexmk",
+        "-pdf",
+        "-recorder",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-outdir=/private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript",
+        "/private/tmp/portfolio-confirmation-v2-local/paper/main.tex"
+      ],
+      "evidence": {
+        "paper/manuscript_compilation.json": "b5287fdc45d0bcbad12d4155ad11971f45294acbf49e2710107374bf9c25104b",
+        "paper/visual_review.json": "a369546b1736fd26e1be443a16a68a74fc33e6b040a5cba460527f6d928865ec"
+      },
+      "pages": 94,
+      "pdf_sha256": "b928facaf07ae72794a670e60097490cc2cccf2d5e46ed63609e8ca52e2522b8",
+      "checkout_git_sha": "aad53a745cef83ed5cb1402a3b4ed83acc76f369"
+    }
+  },
+  "execution_timing": {
+    "schema": "execution-timing/2.0",
+    "recorded_utc": "2026-10-08T20:09:21.329710+00:00",
+    "manifest_sha256": "da693e47ccd6b1ed7b40263be1d04950e74842d723881e44812a823e86dcf260",
+    "execution_events": [
+      {
+        "started_utc": "2026-10-08T12:12:32.908494+00:00",
+        "kind": "initial",
+        "workers": 4,
+        "runtime": {
+          "python": "3.13.3",
+          "numpy": "2.3.5",
+          "scipy": "1.16.3"
+        },
+        "status": "interrupted_by_user_resource_adjustment",
+        "stopped_utc": "2026-10-08T13:53:03.592375+00:00",
+        "wall_clock_seconds": 6030.683881,
+        "end_evidence": "audit/resource_adjustment.json"
+      },
+      {
+        "started_utc": "2026-10-08T13:53:26.838000+00:00",
+        "kind": "resume",
+        "workers": 1,
+        "runtime": {
+          "python": "3.13.3",
+          "numpy": "2.3.5",
+          "scipy": "1.16.3"
+        },
+        "completed_utc": "2026-10-08T15:01:20.975351+00:00",
+        "elapsed_seconds": 4074.0640885419853,
+        "status": "finished",
+        "wall_clock_seconds": 4074.137351
+      },
+      {
+        "started_utc": "2026-10-08T19:04:42.718325+00:00",
+        "kind": "render",
+        "workers": 1,
+        "runtime": {
+          "python": "3.13.3",
+          "numpy": "2.3.5",
+          "scipy": "1.16.3"
+        },
+        "completed_utc": "2026-10-08T19:25:41.720173+00:00",
+        "elapsed_seconds": 1259.0018479824066,
+        "status": "interrupted_for_local_workspace",
+        "return_code": 143,
+        "wall_clock_seconds": 1259.001848
+      },
+      {
+        "started_utc": "2026-10-08T19:28:33.411442+00:00",
+        "kind": "render",
+        "workers": 1,
+        "runtime": {
+          "python": "3.13.3",
+          "numpy": "2.3.5",
+          "scipy": "1.16.3"
+        },
+        "completed_utc": "2026-10-08T19:33:06.631381+00:00",
+        "elapsed_seconds": 273.27328716701595,
+        "status": "finished",
+        "wall_clock_seconds": 273.219939
+      }
+    ],
+    "environments": [
+      {
+        "environment": "baseline_original",
+        "completed_evaluations": 100,
+        "expected_evaluations": 100,
+        "sum_completed_replication_seconds": 9806.934258204012
+      },
+      {
+        "environment": "baseline_original_nu05",
+        "completed_evaluations": 50,
+        "expected_evaluations": 50,
+        "sum_completed_replication_seconds": 1790.2616547110665
+      },
+      {
+        "environment": "baseline_original_nu25",
+        "completed_evaluations": 50,
+        "expected_evaluations": 50,
+        "sum_completed_replication_seconds": 2412.3831202929723
+      },
+      {
+        "environment": "rich6d",
+        "completed_evaluations": 100,
+        "expected_evaluations": 100,
+        "sum_completed_replication_seconds": 3607.358332126023
+      },
+      {
+        "environment": "rich6d_nu05",
+        "completed_evaluations": 50,
+        "expected_evaluations": 50,
+        "sum_completed_replication_seconds": 614.9626279200602
+      },
+      {
+        "environment": "rich6d_nu25",
+        "completed_evaluations": 50,
+        "expected_evaluations": 50,
+        "sum_completed_replication_seconds": 764.1681774180324
+      }
+    ],
+    "sum_completed_replication_seconds": 18996.068170672166,
+    "completed_evaluations": 400,
+    "distinct_economic_seed_indices": 100,
+    "limitations": "Checkpoint times sum individual completed evaluations, including their fitting/evaluation, not wall-clock or CPU time. They exclude aborted work and separate numerical audits. Paired environments reuse innovation seeds. V1 timing is not replaced by this V2 report."
+  },
+  "numerical_tolerance_failures_are_scoped_limits": true,
+  "diff_command": "git diff cdfbd11a5390c15c54cace9b95e7d5e40c2ec35e -- simulations tests .github/workflows .gitignore paper/main.tex"
+}

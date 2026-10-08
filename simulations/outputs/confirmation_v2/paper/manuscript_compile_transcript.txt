@@ -1,0 +1,2575 @@
+Rc files read:
+  NONE
+Latexmk: This is Latexmk, John Collins, 7 Apr. 2024. Version 4.85.
+No existing .aux file, so I'll make a simple one, and require run of *latex.
+Latexmk: applying rule 'pdflatex'...
+Rule 'pdflatex':  Reasons for rerun
+Category 'other':
+  Rerun of 'pdflatex' forced or previously required:
+    Reason or flag: 'Initial setup'
+
+------------
+Run number 1 of rule 'pdflatex'
+------------
+------------
+Running 'pdflatex  -interaction=nonstopmode -halt-on-error -recorder -output-directory="/private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript"  "/private/tmp/portfolio-confirmation-v2-local/paper/main.tex"'
+------------
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(/private/tmp/portfolio-confirmation-v2-local/paper/main.tex
+LaTeX2e <2024-06-01> patch level 2
+L3 programming layer <2024-08-30>
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2024/02/08 v1.4n Standard LaTeX document class
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/size12.clo))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/fontenc.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/mathtools/mathtools.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tools/calc.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/mathtools/mhsetup.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amscls/amsthm.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/jknapltx/mathrsfs.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tools/bm.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/newtx/newtxtext.sty
+`newtxtext' v1.744, 2024/04/01 Text macros taking advantage of TeXGyre Termes a
+nd its extensions (msharpe)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/xpatch/xpatch.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/l3kernel/expl3.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/l3packages/xparse/xparse.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/etoolbox/etoolbox.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-def/pdftex.def)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/mathcolor.ltx))
+(/usr/local/texlive/2024/texmf-dist/tex/generic/iftex/iftex.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/local/texlive/2024/texmf-dist/tex/generic/xkeyval/xkvutils.tex)))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/textcomp.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/xstring/xstring.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/xstring/xstring.tex))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/ifthen.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/carlisle/scalefnt.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/kastrup/binhex.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/fontaxes/fontaxes.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/newtx/newtxmath.sty
+`newtxmath' v1.752, 2024/07/05 Math macros based originally on txfonts (msharpe
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/oberdiek/centernot.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/kastrup/binhex.tex)
+amsthm NOT loaded
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/microtype/microtype.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/microtype/microtype-pdftex.def)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/microtype/microtype.cfg))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/setspace/setspace.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/needspace/needspace.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/geometry/geometry.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/iftex/ifvtex.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/float/float.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/placeins/placeins.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/booktabs/booktabs.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tools/array.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/caption/caption.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/caption/caption3.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.te
+x)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/pgf.revision.tex)))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfil
+tered.code.tex))
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.d
+ef
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-p
+df.def)))
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.
+code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.
+code.tex))
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.
+tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic
+.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigo
+nometric.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.rando
+m.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.compa
+rison.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.
+code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round
+.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.
+code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integ
+erarithmetics.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex)
+) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfint.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.co
+de.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconst
+ruct.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage
+.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.co
+de.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicst
+ate.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransform
+ations.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.cod
+e.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.c
+ode.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathproce
+ssing.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.co
+de.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.cod
+e.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.cod
+e.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.
+code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.co
+de.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretranspare
+ncy.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.
+code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.
+tex)))
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.cod
+e.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.
+tex)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
+-0-65.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
+-1-18.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/math/pgfmath.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex))
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex))
+
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.cod
+e.tex
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothan
+dlers.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.cod
+e.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarytopaths.code.tex)))
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.
+meta.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarycalc.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarypositioning.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarymatrix.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibraryfit.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/enumitem/enumitem.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/natbib/natbib.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/infwarerr/infwarerr.sty)))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hycolor/hycolor.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/refcount/refcount.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/gettitlestring/gettitlestring.s
+ty (/usr/local/texlive/2024/texmf-dist/tex/latex/kvoptions/kvoptions.sty)))
+(/usr/local/texlive/2024/texmf-dist/tex/generic/stringenc/stringenc.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/intcalc/intcalc.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/puenc.def)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/url/url.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/bitset/bitset.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/atbegshi-ltx.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/atveryend-ltx.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+
+(/usr/local/texlive/2024/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+))) (/usr/local/texlive/2024/texmf-dist/tex/latex/titlesec/titlesec.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/newtx/t1ntxtlf.fd)
+(/private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/
+main.aux) (/usr/local/texlive/2024/texmf-dist/tex/latex/newtx/omlntxmi.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/newtx/untxexa.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/newtx/lmsntxsy.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/newtx/lmxntxexx.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/microtype/mt-ptm.cfg)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+(/usr/local/texlive/2024/texmf-dist/tex/latex/newtx/ot1minntx.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/microtype/mt-msa.cfg)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/microtype/mt-msb.cfg)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/jknapltx/ursfs.fd)
+
+LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <10.5> not available
+(Font)              size <10.95> substituted on input line 173.
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/microtype/mt-cmr.cfg)
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <10.5> not available
+(Font)              size <10.95> substituted on input line 173.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <10.5> not available
+(Font)              size <10.95> substituted on input line 173.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <10.5> not available
+(Font)              size <10.95> substituted on input line 173.
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/gelasiomath/untxmia.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/newtx/untxsym.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/newtx/untxsyc.fd)
+[1{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/l
+ocal/texlive/2024/texmf-dist/fonts/enc/dvips/newtx/ntx-ec-tlf.enc}]
+(/private/tmp/portfolio-confirmation-v2-local/paper/theory/introduction.tex
+
+Package natbib Warning: Citation `markowitz1952' on page 2 undefined on input l
+ine 2.
+
+
+Package natbib Warning: Citation `brandt1999' on page 2 undefined on input line
+ 6.
+
+
+Package natbib Warning: Citation `brandtsantaclaravalkanov2009' on page 2 undef
+ined on input line 6.
+
+
+Package natbib Warning: Citation `kozaknagelsantosh2020' on page 2 undefined on
+ input line 13.
+
+
+Package natbib Warning: Citation `kellymalamudzhou2024' on page 2 undefined on 
+input line 19.
+
+
+Package natbib Warning: Citation `kellymalamud2025' on page 2 undefined on inpu
+t line 19.
+
+
+Package natbib Warning: Citation `nagel2025' on page 2 undefined on input line 
+32.
+
+
+Package natbib Warning: Citation `simon2026' on page 2 undefined on input line 
+40.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--44
+
+
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 49--50
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 52--56
+
+
+[3]
+[4])
+[5]
+(/private/tmp/portfolio-confirmation-v2-local/paper/theory/population_problem.t
+ex
+[6{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc}]
+
+Package natbib Warning: Citation `brittenjones1999' on page 7 undefined on inpu
+t line 70.
+
+
+Package natbib Warning: Citation `brandt1999' on page 7 undefined on input line
+ 114.
+
+
+LaTeX Warning: Reference `eq:population_loss' on page 7 undefined on input line
+ 115.
+
+
+[7]
+
+LaTeX Warning: Reference `prop:population_optimal_policy' on page 8 undefined o
+n input line 128.
+
+
+Package natbib Warning: Citation `hansenjagannathan1991' on page 8 undefined on
+ input line 188.
+
+
+LaTeX Warning: Reference `prop:population_optimal_policy' on page 8 undefined o
+n input line 191.
+
+)
+[8]
+(/private/tmp/portfolio-confirmation-v2-local/paper/theory/direct_port_learning
+.tex
+
+Package natbib Warning: Citation `filipovicschneider2024' on page 9 undefined o
+n input line 3.
+
+
+Package natbib Warning: Citation `nagel2025' on page 9 undefined on input line 
+3.
+
+
+Package natbib Warning: Citation `brittenjones1999' on page 9 undefined on inpu
+t line 6.
+
+
+Package natbib Warning: Citation `brandtsantaclaravalkanov2009' on page 9 undef
+ined on input line 7.
+
+
+Package natbib Warning: Citation `caldeirasantostorrent2023' on page 9 undefine
+d on input line 8.
+
+
+Package natbib Warning: Citation `nagel2025' on page 9 undefined on input line 
+10.
+
+
+Package natbib Warning: Citation `kellymalamud2025' on page 9 undefined on inpu
+t line 10.
+
+
+Package natbib Warning: Citation `rahimi2007random' on page 9 undefined on inpu
+t line 11.
+
+
+Package natbib Warning: Citation `jacot2018neural' on page 9 undefined on input
+ line 22.
+
+
+LaTeX Warning: Reference `eq:population_loss' on page 9 undefined on input line
+ 44.
+
+
+[9]
+[10]
+
+LaTeX Warning: Reference `eq:estimator' on page 11 undefined on input line 183.
+
+
+
+LaTeX Warning: Reference `eq:markowitz_representation' on page 11 undefined on 
+input line 198.
+
+
+[11]
+
+Package natbib Warning: Citation `kozaknagelsantosh2020' on page 12 undefined o
+n input line 204.
+
+
+Package natbib Warning: Citation `kozaknagelsantosh2020' on page 12 undefined o
+n input line 208.
+
+
+[12])
+[13]
+(/private/tmp/portfolio-confirmation-v2-local/paper/theory/economomic_spectrum_
+final.tex
+
+LaTeX Warning: Reference `ass:kernel' on page 14 undefined on input line 7.
+
+
+LaTeX Warning: Reference `eq:return_tail_condition' on page 14 undefined on inp
+ut line 61.
+
+
+LaTeX Warning: Reference `ec:returns' on page 14 undefined on input line 64.
+
+
+LaTeX Warning: Reference `prop:gaussian_admissible' on page 14 undefined on inp
+ut line 64.
+
+
+[14]
+
+LaTeX Warning: Reference `def:economy' on page 15 undefined on input line 82.
+
+
+LaTeX Warning: Reference `ec:returns' on page 15 undefined on input line 103.
+
+
+LaTeX Warning: Reference `prop:gaussian_admissible' on page 15 undefined on inp
+ut line 104.
+
+
+LaTeX Warning: Reference `app:primitive_consequences' on page 15 undefined on i
+nput line 105.
+
+
+Package natbib Warning: Citation `belkin2018' on page 15 undefined on input lin
+e 119.
+
+
+[15]
+[16]
+[17]
+
+LaTeX Warning: Reference `fig:learnable_frontier' on page 18 undefined on input
+ line 292.
+
+
+LaTeX Warning: Reference `ec:sharpe' on page 18 undefined on input line 292.
+
+
+[18]
+
+LaTeX Warning: Reference `thm:rate' on page 19 undefined on input line 323.
+
+
+[19 </private/tmp/portfolio-confirmation-v2-local/paper/figures/FRONTIER.png>]
+
+LaTeX Warning: Reference `fig:optimal-effective-complexity' on page 20 undefine
+d on input line 355.
+
+
+[20]
+[21 </private/tmp/portfolio-confirmation-v2-local/paper/figures/Complexity.png 
+(PNG copy)>]
+
+LaTeX Warning: Reference `thm:rate' on page 22 undefined on input line 420.
+
+)
+[22]
+[23]
+(/private/tmp/portfolio-confirmation-v2-local/paper/theory/representation_learn
+ability.tex
+
+Package natbib Warning: Citation `kellymalamudzhou2024' on page 24 undefined on
+ input line 3.
+
+
+[24])
+[25]
+[26] (../simulations/outputs/confirmation_v2/paper/simulation_section.tex
+(../simulations/outputs/confirmation_v2/paper/simulation_numbers.tex)
+[27]
+[28]
+[29] (../simulations/outputs/confirmation_v2/tables/confirmation_main.tex)
+(../simulations/outputs/confirmation_v2/tables/confirmation_selection.tex)
+(../simulations/outputs/confirmation_v2/tables/confirmation_theory.tex)
+(../simulations/outputs/confirmation_v2/tables/confirmation_resolution.tex))
+[30]
+[31]
+[32 <../simulations/outputs/confirmation_v2/figures/baseline_original_four_pane
+l.pdf>]
+[33 <../simulations/outputs/confirmation_v2/figures/rich6d_four_panel.pdf>]
+[34 <../simulations/outputs/confirmation_v2/figures/baseline_original_risk_comp
+lexity.pdf>]
+[35 <../simulations/outputs/confirmation_v2/figures/rich6d_risk_complexity.pdf>
+]
+[36 <../simulations/outputs/confirmation_v2/figures/baseline_original_theory_pa
+ths.pdf>]
+[37 <../simulations/outputs/confirmation_v2/figures/rich6d_theory_paths.pdf>]
+[38 <../simulations/outputs/confirmation_v2/figures/rich6d_minus_baseline.pdf>]
+(/private/tmp/portfolio-confirmation-v2-local/paper/empirics.tex
+
+LaTeX Warning: Reference `fig:wealth' on page 39 undefined on input line 31.
+
+
+LaTeX Warning: Reference `tab:performance' on page 39 undefined on input line 3
+1.
+
+(/private/tmp/portfolio-confirmation-v2-local/paper/tables/performance.tex)
+[39]
+
+LaTeX Warning: Reference `fig:exposure' on page 40 undefined on input line 47.
+
+
+LaTeX Warning: Reference `fig:spectrum' on page 40 undefined on input line 56.
+
+
+LaTeX Warning: Reference `fig:gaussian' on page 40 undefined on input line 63.
+
+
+LaTeX Warning: Reference `fig:matern' on page 40 undefined on input line 63.
+
+)
+(/private/tmp/portfolio-confirmation-v2-local/paper/complexity_schedule/empiric
+s_schedule.tex
+[40 </private/tmp/portfolio-confirmation-v2-local/paper/figures/fig01_wealth_dr
+awdown.pdf>]
+[41 </private/tmp/portfolio-confirmation-v2-local/paper/figures/fig02_exposure.
+pdf>]
+[42 </private/tmp/portfolio-confirmation-v2-local/paper/figures/fig05_managed_s
+pectrum.pdf>]
+[43 </private/tmp/portfolio-confirmation-v2-local/paper/figures/fig03_complexit
+y_gaussian.pdf>]
+[44 </private/tmp/portfolio-confirmation-v2-local/paper/figures/fig04_complexit
+y_matern32.pdf>])
+[45]
+[46 </private/tmp/portfolio-confirmation-v2-local/paper/complexity_schedule/fig
+01_oos_loss.pdf>]
+[47 </private/tmp/portfolio-confirmation-v2-local/paper/complexity_schedule/fig
+02_oos_sharpe.pdf>]
+[48 </private/tmp/portfolio-confirmation-v2-local/paper/complexity_schedule/fig
+03_oos_loss_heatmap.pdf>]
+[49 </private/tmp/portfolio-confirmation-v2-local/paper/complexity_schedule/fig
+04_complexity_regularization.pdf>]
+No file main.bbl.
+(/private/tmp/portfolio-confirmation-v2-local/paper/theory/proofs_learning.tex
+
+LaTeX Warning: Reference `prop:population_optimal_policy' on page 50 undefined 
+on input line 9.
+
+
+[50]
+
+LaTeX Warning: Reference `prop:sdf_hj' on page 51 undefined on input line 73.
+
+
+[51]
+
+LaTeX Warning: Reference `prop:population_optimal_policy' on page 52 undefined 
+on input line 104.
+
+
+LaTeX Warning: Reference `ec:pricing' on page 52 undefined on input line 138.
+
+
+LaTeX Warning: Reference `prop:managed_markowitz' on page 52 undefined on input
+ line 144.
+
+
+LaTeX Warning: Reference `lem:primitive_consequences' on page 52 undefined on i
+nput line 146.
+
+
+[52]
+
+LaTeX Warning: Reference `eq:markowitz_representation' on page 53 undefined on 
+input line 179.
+
+
+[53]
+
+LaTeX Warning: Reference `ec:pricing' on page 54 undefined on input line 225.
+
+
+LaTeX Warning: Reference `ec:returns' on page 54 undefined on input line 255.
+
+
+[54]
+
+LaTeX Warning: Reference `ec:pricing' on page 55 undefined on input line 269.
+
+
+LaTeX Warning: Reference `ec:returns' on page 55 undefined on input line 272.
+
+
+LaTeX Warning: Reference `ec:pricing' on page 55 undefined on input line 295.
+
+
+LaTeX Warning: Reference `ec:returns' on page 55 undefined on input line 306.
+
+
+[55]
+
+LaTeX Warning: Reference `eq:conditional_fourth_condition' on page 56 undefined
+ on input line 315.
+
+
+Package natbib Warning: Citation `bignozzigagliardinischneider2026' on page 56 
+undefined on input line 375.
+
+
+LaTeX Warning: Reference `lem:unbounded_stability' on page 56 undefined on inpu
+t line 376.
+
+
+[56]
+[57]
+
+LaTeX Warning: Reference `lem:primitive_consequences' on page 58 undefined on i
+nput line 428.
+
+
+LaTeX Warning: Reference `ec:dependence' on page 58 undefined on input line 452
+.
+
+
+LaTeX Warning: Reference `def:economy' on page 58 undefined on input line 458.
+
+
+LaTeX Warning: Reference `lem:primitive_consequences' on page 58 undefined on i
+nput line 466.
+
+
+LaTeX Warning: Reference `lem:primitive_consequences' on page 58 undefined on i
+nput line 472.
+
+
+[58]
+
+LaTeX Warning: Reference `lem:primitive_consequences' on page 59 undefined on i
+nput line 481.
+
+
+(/private/tmp/portfolio-confirmation-v2-local/paper/theory/unbounded_concentrat
+ion.tex
+
+Package natbib Warning: Citation `bignozzigagliardinischneider2026' on page 59 
+undefined on input line 5.
+
+
+LaTeX Warning: Reference `ec:dependence' on page 59 undefined on input line 13.
+
+
+
+LaTeX Warning: Reference `ec:pricing' on page 59 undefined on input line 13.
+
+
+[59]
+
+LaTeX Warning: Reference `eq:unbounded_score' on page 60 undefined on input lin
+e 62.
+
+
+[60]
+
+Package natbib Warning: Citation `minsker2017' on page 61 undefined on input li
+ne 105.
+
+
+LaTeX Warning: Reference `lem:primitive_consequences' on page 61 undefined on i
+nput line 122.
+
+
+[61]
+
+LaTeX Warning: Reference `eq:unbounded_covariance' on page 62 undefined on inpu
+t line 138.
+
+
+LaTeX Warning: Reference `lem:primitive_consequences' on page 62 undefined on i
+nput line 141.
+
+
+LaTeX Warning: Reference `eq:unbounded_score' on page 62 undefined on input lin
+e 156.
+
+
+LaTeX Warning: Reference `eq:unbounded_covariance' on page 62 undefined on inpu
+t line 161.
+
+
+LaTeX Warning: Reference `lem:unbounded_stability' on page 62 undefined on inpu
+t line 176.
+
+
+LaTeX Warning: Reference `eq:unbounded_admissibility' on page 62 undefined on i
+nput line 178.
+
+
+[62]
+
+Package natbib Warning: Citation `bignozzigagliardinischneider2026' on page 63 
+undefined on input line 187.
+
+
+LaTeX Warning: Reference `lem:unbounded_stability' on page 63 undefined on inpu
+t line 210.
+
+)
+[63]
+
+LaTeX Warning: Reference `prop:sdf_hj' on page 64 undefined on input line 521.
+
+
+LaTeX Warning: Reference `ec:sharpe' on page 64 undefined on input line 521.
+
+
+[64]
+
+LaTeX Warning: Reference `thm:rate' on page 65 undefined on input line 572.
+
+
+Package natbib Warning: Citation `bignozzigagliardinischneider2026' on page 65 
+undefined on input line 578.
+
+
+LaTeX Warning: Reference `lem:unbounded_stability' on page 65 undefined on inpu
+t line 579.
+
+
+LaTeX Warning: Reference `cor:unbounded_risk' on page 65 undefined on input lin
+e 580.
+
+
+LaTeX Warning: Reference `ec:spectrum' on page 65 undefined on input line 593.
+
+
+Package natbib Warning: Citation `bignozzigagliardinischneider2026' on page 65 
+undefined on input line 594.
+
+
+LaTeX Warning: Reference `eq:sample_stability' on page 65 undefined on input li
+ne 610.
+
+
+[65]
+
+LaTeX Warning: Reference `lem:sharpe_recovery' on page 66 undefined on input li
+ne 631.
+
+
+LaTeX Warning: Reference `thm:effective_complexity' on page 66 undefined on inp
+ut line 646.
+
+
+LaTeX Warning: Reference `thm:rate' on page 66 undefined on input line 647.
+
+
+[66]
+
+LaTeX Warning: Reference `ec:sharpe' on page 67 undefined on input line 681.
+
+
+LaTeX Warning: Reference `thm:minimax_words' on page 67 undefined on input line
+ 688.
+
+
+LaTeX Warning: Reference `ec:returns' on page 67 undefined on input line 703.
+
+
+LaTeX Warning: Reference `ec:spectrum' on page 67 undefined on input line 706.
+
+
+[67]
+[68]
+
+LaTeX Warning: Reference `def:economy' on page 69 undefined on input line 802.
+
+
+LaTeX Warning: Reference `ec:returns' on page 69 undefined on input line 828.
+
+
+[69]
+
+LaTeX Warning: Reference `ec:pricing' on page 70 undefined on input line 845.
+
+
+LaTeX Warning: Reference `ec:sharpe' on page 70 undefined on input line 871.
+
+
+LaTeX Warning: Reference `ec:dependence' on page 70 undefined on input line 872
+.
+
+
+LaTeX Warning: Reference `ec:spectrum' on page 70 undefined on input line 872.
+
+
+[70]
+[71]
+[72])
+(/private/tmp/portfolio-confirmation-v2-local/paper/theory/representation_table
+s.tex
+
+LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <5.5> not available
+(Font)              size <5> substituted on input line 98.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <5.5> not available
+(Font)              size <5> substituted on input line 98.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <5.5> not available
+(Font)              size <5> substituted on input line 98.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <5.5> not available
+(Font)              size <5> substituted on input line 98.
+
+
+LaTeX Warning: Reference `eq:portfolio_return' on page 73 undefined on input li
+ne 130.
+
+
+[73]
+[74]
+
+LaTeX Warning: Reference `tab:special-rates' on page 75 undefined on input line
+ 138.
+
+
+LaTeX Warning: Reference `ec:sharpe' on page 75 undefined on input line 182.
+
+
+LaTeX Warning: Reference `thm:rate' on page 75 undefined on input line 187.
+
+)
+[75] (../simulations/outputs/confirmation_v2/paper/simulation_appendix.tex
+(../simulations/outputs/confirmation_v2/tables/confirmation_gradient.tex)
+(../simulations/outputs/confirmation_v2/tables/confirmation_rates.tex)
+(../simulations/outputs/confirmation_v2/tables/confirmation_optimism.tex)
+(../simulations/outputs/confirmation_v2/tables/confirmation_unresolved_1.tex)
+(../simulations/outputs/confirmation_v2/tables/confirmation_curve_maximum_basel
+ine_original.tex)
+(../simulations/outputs/confirmation_v2/tables/confirmation_curve_maximum_rich6
+d.tex))
+
+Package natbib Warning: There were undefined citations.
+
+
+[76]
+[77]
+[78]
+[79 <../simulations/outputs/confirmation_v2/figures/baseline_original_decomposi
+tion.pdf>]
+[80 <../simulations/outputs/confirmation_v2/figures/baseline_original_selection
+_distributions.pdf>]
+[81 <../simulations/outputs/confirmation_v2/figures/baseline_original_oos_types
+.pdf>]
+[82 <../simulations/outputs/confirmation_v2/figures/baseline_original_rolling_m
+inus_holdout.pdf>]
+[83 <../simulations/outputs/confirmation_v2/figures/baseline_original_numerical
+_resolution.pdf>]
+[84 <../simulations/outputs/confirmation_v2/figures/rich6d_decomposition.pdf>]
+[85 <../simulations/outputs/confirmation_v2/figures/rich6d_selection_distributi
+ons.pdf>]
+[86 <../simulations/outputs/confirmation_v2/figures/rich6d_oos_types.pdf>]
+[87 <../simulations/outputs/confirmation_v2/figures/rich6d_rolling_minus_holdou
+t.pdf>]
+[88 <../simulations/outputs/confirmation_v2/figures/rich6d_numerical_resolution
+.pdf> <../simulations/outputs/confirmation_v2/figures/spectrum_resolution.pdf>]
+
+[89 <../simulations/outputs/confirmation_v2/figures/kernel_sensitivity.pdf>]
+[90 <../simulations/outputs/confirmation_v2/../paper/figures/appendix_N_robustn
+ess.pdf>]
+[91 <../simulations/outputs/confirmation_v2/../paper/figures/appendix_persisten
+ce.pdf>]
+(/private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/
+main.aux)
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 0.5pt have occurred.
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `main.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+ )
+(see the transcript file for additional information)</usr/local/texlive/2024/te
+xmf-dist/fonts/type1/public/newtx/NewTXMI.pfb></usr/local/texlive/2024/texmf-di
+st/fonts/type1/public/newtx/NewTXMI5.pfb></usr/local/texlive/2024/texmf-dist/fo
+nts/type1/public/newtx/NewTXMI7.pfb></usr/local/texlive/2024/texmf-dist/fonts/t
+ype1/public/newtx/stxscr.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/pu
+blic/newtx/txexas.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/ne
+wtx/txexs.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/newtx/txmi
+aX.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/newtx/txsym.pfb><
+/usr/local/texlive/2024/texmf-dist/fonts/type1/public/newtx/txsys.pfb></usr/loc
+al/texlive/2024/texmf-dist/fonts/type1/public/newtx/ztmb.pfb></usr/local/texliv
+e/2024/texmf-dist/fonts/type1/public/newtx/ztmr.pfb></usr/local/texlive/2024/te
+xmf-dist/fonts/type1/public/newtx/ztmri.pfb>
+Output written on /private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirm
+ation_manuscript/main.pdf (91 pages, 2161364 bytes).
+Transcript written on /private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/con
+firmation_manuscript/main.log.
+Latexmk: Getting log file '/private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/main.log'
+Latexmk: Examining '/private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/main.fls'
+Latexmk: Examining '/private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/main.log'
+Latexmk: References changed.
+Latexmk: References changed.
+Latexmk: Log file says output to '/private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/main.pdf'
+Latexmk: Found bibliography file(s):
+  ./theory/references.bib
+Latexmk: applying rule 'bibtex /private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/main'...
+Rule 'bibtex /private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/main':  Reasons for rerun
+Category 'other':
+  Rerun of 'bibtex /private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/main' forced or previously required:
+    Reason or flag: 'Initial set up of rule'
+
+------------
+Run number 1 of rule 'bibtex /private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/main'
+------------
+Latexmk: Change directory to '/private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/'.
+To assist finding of files in document directory, I set
+  BIBINPUTS='/private/tmp/portfolio-confirmation-v2-local/paper:/private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript:'
+  BSTINPUTS='/private/tmp/portfolio-confirmation-v2-local/paper:'.
+------------
+Running 'bibtex  "main.aux"'
+------------
+This is BibTeX, Version 0.99d (TeX Live 2024)
+The top-level auxiliary file: main.aux
+The style file: apalike.bst
+Database file #1: theory/references.bib
+Latexmk: Change directory back to '/private/tmp/portfolio-confirmation-v2-local/paper'
+Latexmk: applying rule 'pdflatex'...
+Rule 'pdflatex':  Reasons for rerun
+Changed files or newly in use/created:
+  /private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/main.aux
+  /private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/main.bbl
+  /private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/main.out
+
+------------
+Run number 2 of rule 'pdflatex'
+------------
+------------
+Running 'pdflatex  -interaction=nonstopmode -halt-on-error -recorder -output-directory="/private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript"  "/private/tmp/portfolio-confirmation-v2-local/paper/main.tex"'
+------------
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(/private/tmp/portfolio-confirmation-v2-local/paper/main.tex
+LaTeX2e <2024-06-01> patch level 2
+L3 programming layer <2024-08-30>
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2024/02/08 v1.4n Standard LaTeX document class
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/size12.clo))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/fontenc.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/mathtools/mathtools.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tools/calc.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/mathtools/mhsetup.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amscls/amsthm.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/jknapltx/mathrsfs.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tools/bm.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/newtx/newtxtext.sty
+`newtxtext' v1.744, 2024/04/01 Text macros taking advantage of TeXGyre Termes a
+nd its extensions (msharpe)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/xpatch/xpatch.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/l3kernel/expl3.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/l3packages/xparse/xparse.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/etoolbox/etoolbox.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-def/pdftex.def)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/mathcolor.ltx))
+(/usr/local/texlive/2024/texmf-dist/tex/generic/iftex/iftex.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/local/texlive/2024/texmf-dist/tex/generic/xkeyval/xkvutils.tex)))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/textcomp.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/xstring/xstring.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/xstring/xstring.tex))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/ifthen.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/carlisle/scalefnt.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/kastrup/binhex.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/fontaxes/fontaxes.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/newtx/newtxmath.sty
+`newtxmath' v1.752, 2024/07/05 Math macros based originally on txfonts (msharpe
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/oberdiek/centernot.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/kastrup/binhex.tex)
+amsthm NOT loaded
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/microtype/microtype.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/microtype/microtype-pdftex.def)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/microtype/microtype.cfg))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/setspace/setspace.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/needspace/needspace.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/geometry/geometry.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/iftex/ifvtex.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/float/float.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/placeins/placeins.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/booktabs/booktabs.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tools/array.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/caption/caption.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/caption/caption3.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.te
+x)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/pgf.revision.tex)))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfil
+tered.code.tex))
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.d
+ef
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-p
+df.def)))
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.
+code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.
+code.tex))
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.
+tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic
+.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigo
+nometric.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.rando
+m.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.compa
+rison.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.
+code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round
+.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.
+code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integ
+erarithmetics.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex)
+) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfint.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.co
+de.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconst
+ruct.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage
+.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.co
+de.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicst
+ate.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransform
+ations.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.cod
+e.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.c
+ode.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathproce
+ssing.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.co
+de.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.cod
+e.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.cod
+e.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.
+code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.co
+de.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretranspare
+ncy.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.
+code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.
+tex)))
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.cod
+e.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.
+tex)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
+-0-65.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
+-1-18.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/math/pgfmath.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex))
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex))
+
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.cod
+e.tex
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothan
+dlers.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.cod
+e.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarytopaths.code.tex)))
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.
+meta.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarycalc.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarypositioning.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarymatrix.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibraryfit.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/enumitem/enumitem.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/natbib/natbib.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/infwarerr/infwarerr.sty)))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hycolor/hycolor.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/refcount/refcount.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/gettitlestring/gettitlestring.s
+ty (/usr/local/texlive/2024/texmf-dist/tex/latex/kvoptions/kvoptions.sty)))
+(/usr/local/texlive/2024/texmf-dist/tex/generic/stringenc/stringenc.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/intcalc/intcalc.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/puenc.def)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/url/url.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/bitset/bitset.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/atbegshi-ltx.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/atveryend-ltx.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+
+(/usr/local/texlive/2024/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+))) (/usr/local/texlive/2024/texmf-dist/tex/latex/titlesec/titlesec.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/newtx/t1ntxtlf.fd)
+(/private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/
+main.aux) (/usr/local/texlive/2024/texmf-dist/tex/latex/newtx/omlntxmi.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/newtx/untxexa.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/newtx/lmsntxsy.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/newtx/lmxntxexx.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/microtype/mt-ptm.cfg)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+
+(/private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/
+main.out)
+(/private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/
+main.out) (/usr/local/texlive/2024/texmf-dist/tex/latex/newtx/ot1minntx.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/microtype/mt-msa.cfg)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/microtype/mt-msb.cfg)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/jknapltx/ursfs.fd)
+
+LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <10.5> not available
+(Font)              size <10.95> substituted on input line 173.
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/microtype/mt-cmr.cfg)
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <10.5> not available
+(Font)              size <10.95> substituted on input line 173.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <10.5> not available
+(Font)              size <10.95> substituted on input line 173.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <10.5> not available
+(Font)              size <10.95> substituted on input line 173.
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/gelasiomath/untxmia.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/newtx/untxsym.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/newtx/untxsyc.fd)
+[1{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/l
+ocal/texlive/2024/texmf-dist/fonts/enc/dvips/newtx/ntx-ec-tlf.enc}]
+(/private/tmp/portfolio-confirmation-v2-local/paper/theory/introduction.tex
+
+Package natbib Warning: Citation `markowitz1952' on page 2 undefined on input l
+ine 2.
+
+
+Package natbib Warning: Citation `brandt1999' on page 2 undefined on input line
+ 6.
+
+
+Package natbib Warning: Citation `brandtsantaclaravalkanov2009' on page 2 undef
+ined on input line 6.
+
+
+Package natbib Warning: Citation `kozaknagelsantosh2020' on page 2 undefined on
+ input line 13.
+
+
+Package natbib Warning: Citation `kellymalamudzhou2024' on page 2 undefined on 
+input line 19.
+
+
+Package natbib Warning: Citation `kellymalamud2025' on page 2 undefined on inpu
+t line 19.
+
+
+Package natbib Warning: Citation `nagel2025' on page 2 undefined on input line 
+32.
+
+
+Package natbib Warning: Citation `simon2026' on page 2 undefined on input line 
+40.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--44
+
+
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 49--50
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 52--56
+
+
+[3]
+[4])
+[5]
+(/private/tmp/portfolio-confirmation-v2-local/paper/theory/population_problem.t
+ex
+[6{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc}]
+
+Package natbib Warning: Citation `brittenjones1999' on page 7 undefined on inpu
+t line 70.
+
+
+Package natbib Warning: Citation `brandt1999' on page 7 undefined on input line
+ 114.
+
+
+[7]
+
+Package natbib Warning: Citation `hansenjagannathan1991' on page 8 undefined on
+ input line 188.
+
+)
+[8]
+(/private/tmp/portfolio-confirmation-v2-local/paper/theory/direct_port_learning
+.tex
+
+Package natbib Warning: Citation `filipovicschneider2024' on page 9 undefined o
+n input line 3.
+
+
+Package natbib Warning: Citation `nagel2025' on page 9 undefined on input line 
+3.
+
+
+Package natbib Warning: Citation `brittenjones1999' on page 9 undefined on inpu
+t line 6.
+
+
+Package natbib Warning: Citation `brandtsantaclaravalkanov2009' on page 9 undef
+ined on input line 7.
+
+
+Package natbib Warning: Citation `caldeirasantostorrent2023' on page 9 undefine
+d on input line 8.
+
+
+Package natbib Warning: Citation `nagel2025' on page 9 undefined on input line 
+10.
+
+
+Package natbib Warning: Citation `kellymalamud2025' on page 9 undefined on inpu
+t line 10.
+
+
+Package natbib Warning: Citation `rahimi2007random' on page 9 undefined on inpu
+t line 11.
+
+
+Package natbib Warning: Citation `jacot2018neural' on page 9 undefined on input
+ line 22.
+
+
+[9]
+[10]
+[11]
+
+Package natbib Warning: Citation `kozaknagelsantosh2020' on page 12 undefined o
+n input line 204.
+
+
+Package natbib Warning: Citation `kozaknagelsantosh2020' on page 12 undefined o
+n input line 208.
+
+
+[12])
+[13]
+(/private/tmp/portfolio-confirmation-v2-local/paper/theory/economomic_spectrum_
+final.tex
+[14]
+
+Package natbib Warning: Citation `belkin2018' on page 15 undefined on input lin
+e 119.
+
+
+[15]
+[16]
+[17]
+[18]
+[19 </private/tmp/portfolio-confirmation-v2-local/paper/figures/FRONTIER.png>]
+[20]
+[21 </private/tmp/portfolio-confirmation-v2-local/paper/figures/Complexity.png 
+(PNG copy)>])
+[22]
+[23]
+(/private/tmp/portfolio-confirmation-v2-local/paper/theory/representation_learn
+ability.tex
+
+Package natbib Warning: Citation `kellymalamudzhou2024' on page 24 undefined on
+ input line 3.
+
+
+[24])
+[25]
+[26] (../simulations/outputs/confirmation_v2/paper/simulation_section.tex
+(../simulations/outputs/confirmation_v2/paper/simulation_numbers.tex)
+[27]
+[28]
+[29] (../simulations/outputs/confirmation_v2/tables/confirmation_main.tex)
+(../simulations/outputs/confirmation_v2/tables/confirmation_selection.tex)
+(../simulations/outputs/confirmation_v2/tables/confirmation_theory.tex)
+(../simulations/outputs/confirmation_v2/tables/confirmation_resolution.tex))
+[30]
+[31]
+[32 <../simulations/outputs/confirmation_v2/figures/baseline_original_four_pane
+l.pdf>]
+[33 <../simulations/outputs/confirmation_v2/figures/rich6d_four_panel.pdf>]
+[34 <../simulations/outputs/confirmation_v2/figures/baseline_original_risk_comp
+lexity.pdf>]
+[35 <../simulations/outputs/confirmation_v2/figures/rich6d_risk_complexity.pdf>
+]
+[36 <../simulations/outputs/confirmation_v2/figures/baseline_original_theory_pa
+ths.pdf>]
+[37 <../simulations/outputs/confirmation_v2/figures/rich6d_theory_paths.pdf>]
+[38 <../simulations/outputs/confirmation_v2/figures/rich6d_minus_baseline.pdf>]
+(/private/tmp/portfolio-confirmation-v2-local/paper/empirics.tex
+(/private/tmp/portfolio-confirmation-v2-local/paper/tables/performance.tex)
+[39])
+(/private/tmp/portfolio-confirmation-v2-local/paper/complexity_schedule/empiric
+s_schedule.tex
+[40 </private/tmp/portfolio-confirmation-v2-local/paper/figures/fig01_wealth_dr
+awdown.pdf>]
+[41 </private/tmp/portfolio-confirmation-v2-local/paper/figures/fig02_exposure.
+pdf>]
+[42 </private/tmp/portfolio-confirmation-v2-local/paper/figures/fig05_managed_s
+pectrum.pdf>]
+[43 </private/tmp/portfolio-confirmation-v2-local/paper/figures/fig03_complexit
+y_gaussian.pdf>]
+[44 </private/tmp/portfolio-confirmation-v2-local/paper/figures/fig04_complexit
+y_matern32.pdf>])
+[45]
+[46 </private/tmp/portfolio-confirmation-v2-local/paper/complexity_schedule/fig
+01_oos_loss.pdf>]
+[47 </private/tmp/portfolio-confirmation-v2-local/paper/complexity_schedule/fig
+02_oos_sharpe.pdf>]
+[48 </private/tmp/portfolio-confirmation-v2-local/paper/complexity_schedule/fig
+03_oos_loss_heatmap.pdf>]
+[49 </private/tmp/portfolio-confirmation-v2-local/paper/complexity_schedule/fig
+04_complexity_regularization.pdf>]
+(/private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/
+main.bbl
+[50])
+[51]
+(/private/tmp/portfolio-confirmation-v2-local/paper/theory/proofs_learning.tex
+[52]
+[53]
+[54]
+[55]
+[56]
+[57]
+
+Package natbib Warning: Citation `bignozzigagliardinischneider2026' on page 58 
+undefined on input line 375.
+
+
+[58]
+[59]
+[60]
+(/private/tmp/portfolio-confirmation-v2-local/paper/theory/unbounded_concentrat
+ion.tex
+
+Package natbib Warning: Citation `bignozzigagliardinischneider2026' on page 61 
+undefined on input line 5.
+
+
+[61]
+[62]
+
+Package natbib Warning: Citation `minsker2017' on page 63 undefined on input li
+ne 105.
+
+
+[63]
+[64]
+
+Package natbib Warning: Citation `bignozzigagliardinischneider2026' on page 65 
+undefined on input line 187.
+
+)
+[65]
+[66]
+
+Package natbib Warning: Citation `bignozzigagliardinischneider2026' on page 67 
+undefined on input line 578.
+
+
+Package natbib Warning: Citation `bignozzigagliardinischneider2026' on page 67 
+undefined on input line 594.
+
+
+[67]
+[68]
+[69]
+[70]
+[71]
+[72]
+[73]
+[74])
+(/private/tmp/portfolio-confirmation-v2-local/paper/theory/representation_table
+s.tex
+
+LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <5.5> not available
+(Font)              size <5> substituted on input line 98.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <5.5> not available
+(Font)              size <5> substituted on input line 98.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <5.5> not available
+(Font)              size <5> substituted on input line 98.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <5.5> not available
+(Font)              size <5> substituted on input line 98.
+
+
+[75]
+[76])
+[77] (../simulations/outputs/confirmation_v2/paper/simulation_appendix.tex
+(../simulations/outputs/confirmation_v2/tables/confirmation_gradient.tex)
+(../simulations/outputs/confirmation_v2/tables/confirmation_rates.tex)
+(../simulations/outputs/confirmation_v2/tables/confirmation_optimism.tex)
+(../simulations/outputs/confirmation_v2/tables/confirmation_unresolved_1.tex)
+(../simulations/outputs/confirmation_v2/tables/confirmation_curve_maximum_basel
+ine_original.tex)
+(../simulations/outputs/confirmation_v2/tables/confirmation_curve_maximum_rich6
+d.tex))
+
+Package natbib Warning: There were undefined citations.
+
+
+[78]
+[79]
+[80]
+[81 <../simulations/outputs/confirmation_v2/figures/baseline_original_decomposi
+tion.pdf>]
+[82 <../simulations/outputs/confirmation_v2/figures/baseline_original_selection
+_distributions.pdf>]
+[83 <../simulations/outputs/confirmation_v2/figures/baseline_original_oos_types
+.pdf>]
+[84 <../simulations/outputs/confirmation_v2/figures/baseline_original_rolling_m
+inus_holdout.pdf>]
+[85 <../simulations/outputs/confirmation_v2/figures/baseline_original_numerical
+_resolution.pdf>]
+[86 <../simulations/outputs/confirmation_v2/figures/rich6d_decomposition.pdf>]
+[87 <../simulations/outputs/confirmation_v2/figures/rich6d_selection_distributi
+ons.pdf>]
+[88 <../simulations/outputs/confirmation_v2/figures/rich6d_oos_types.pdf>]
+[89 <../simulations/outputs/confirmation_v2/figures/rich6d_rolling_minus_holdou
+t.pdf>]
+[90 <../simulations/outputs/confirmation_v2/figures/rich6d_numerical_resolution
+.pdf> <../simulations/outputs/confirmation_v2/figures/spectrum_resolution.pdf>]
+
+[91 <../simulations/outputs/confirmation_v2/figures/kernel_sensitivity.pdf>]
+[92 <../simulations/outputs/confirmation_v2/../paper/figures/appendix_N_robustn
+ess.pdf>]
+[93 <../simulations/outputs/confirmation_v2/../paper/figures/appendix_persisten
+ce.pdf>]
+(/private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/
+main.aux
+
+Package natbib Warning: Citation(s) may have changed.
+(natbib)                Rerun to get citations correct.
+
+)
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 0.5pt have occurred.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ )
+(see the transcript file for additional information)</usr/local/texlive/2024/te
+xmf-dist/fonts/type1/public/newtx/NewTXMI.pfb></usr/local/texlive/2024/texmf-di
+st/fonts/type1/public/newtx/NewTXMI5.pfb></usr/local/texlive/2024/texmf-dist/fo
+nts/type1/public/newtx/NewTXMI7.pfb></usr/local/texlive/2024/texmf-dist/fonts/t
+ype1/public/newtx/stxscr.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/pu
+blic/newtx/txexas.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/ne
+wtx/txexs.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/newtx/txmi
+aX.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/newtx/txsym.pfb><
+/usr/local/texlive/2024/texmf-dist/fonts/type1/public/newtx/txsys.pfb></usr/loc
+al/texlive/2024/texmf-dist/fonts/type1/public/newtx/ztmb.pfb></usr/local/texliv
+e/2024/texmf-dist/fonts/type1/public/newtx/ztmr.pfb></usr/local/texlive/2024/te
+xmf-dist/fonts/type1/public/newtx/ztmri.pfb>
+Output written on /private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirm
+ation_manuscript/main.pdf (93 pages, 2170696 bytes).
+Transcript written on /private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/con
+firmation_manuscript/main.log.
+Latexmk: Getting log file '/private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/main.log'
+Latexmk: Examining '/private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/main.fls'
+Latexmk: Examining '/private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/main.log'
+Latexmk: Found input bbl file '/private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/main.bbl'
+Latexmk: References changed.
+Latexmk: References changed.
+Latexmk: Log file says output to '/private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/main.pdf'
+Latexmk: Found bibliography file(s):
+  ./theory/references.bib
+Latexmk: applying rule 'bibtex /private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/main'...
+Rule 'bibtex /private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/main':  Reasons for rerun
+Changed files or newly in use/created:
+  /private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/main.aux
+
+------------
+Run number 2 of rule 'bibtex /private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/main'
+------------
+Latexmk: Change directory to '/private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/'.
+To assist finding of files in document directory, I set
+  BIBINPUTS='/private/tmp/portfolio-confirmation-v2-local/paper:/private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript:'
+  BSTINPUTS='/private/tmp/portfolio-confirmation-v2-local/paper:'.
+------------
+Running 'bibtex  "main.aux"'
+------------
+This is BibTeX, Version 0.99d (TeX Live 2024)
+The top-level auxiliary file: main.aux
+The style file: apalike.bst
+Database file #1: theory/references.bib
+Latexmk: Change directory back to '/private/tmp/portfolio-confirmation-v2-local/paper'
+Latexmk: applying rule 'pdflatex'...
+Rule 'pdflatex':  Reasons for rerun
+Changed files or newly in use/created:
+  /private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/main.aux
+
+------------
+Run number 3 of rule 'pdflatex'
+------------
+------------
+Running 'pdflatex  -interaction=nonstopmode -halt-on-error -recorder -output-directory="/private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript"  "/private/tmp/portfolio-confirmation-v2-local/paper/main.tex"'
+------------
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(/private/tmp/portfolio-confirmation-v2-local/paper/main.tex
+LaTeX2e <2024-06-01> patch level 2
+L3 programming layer <2024-08-30>
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2024/02/08 v1.4n Standard LaTeX document class
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/size12.clo))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/fontenc.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/mathtools/mathtools.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tools/calc.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/mathtools/mhsetup.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amscls/amsthm.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/jknapltx/mathrsfs.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tools/bm.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/newtx/newtxtext.sty
+`newtxtext' v1.744, 2024/04/01 Text macros taking advantage of TeXGyre Termes a
+nd its extensions (msharpe)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/xpatch/xpatch.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/l3kernel/expl3.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/l3packages/xparse/xparse.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/etoolbox/etoolbox.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-def/pdftex.def)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/mathcolor.ltx))
+(/usr/local/texlive/2024/texmf-dist/tex/generic/iftex/iftex.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/local/texlive/2024/texmf-dist/tex/generic/xkeyval/xkvutils.tex)))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/textcomp.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/xstring/xstring.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/xstring/xstring.tex))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/ifthen.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/carlisle/scalefnt.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/kastrup/binhex.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/fontaxes/fontaxes.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/newtx/newtxmath.sty
+`newtxmath' v1.752, 2024/07/05 Math macros based originally on txfonts (msharpe
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/oberdiek/centernot.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/kastrup/binhex.tex)
+amsthm NOT loaded
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/microtype/microtype.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/microtype/microtype-pdftex.def)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/microtype/microtype.cfg))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/setspace/setspace.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/needspace/needspace.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/geometry/geometry.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/iftex/ifvtex.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/float/float.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/placeins/placeins.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/booktabs/booktabs.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tools/array.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/caption/caption.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/caption/caption3.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.te
+x)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/pgf.revision.tex)))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfil
+tered.code.tex))
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.d
+ef
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-p
+df.def)))
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.
+code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.
+code.tex))
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.
+tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic
+.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigo
+nometric.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.rando
+m.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.compa
+rison.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.
+code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round
+.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.
+code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integ
+erarithmetics.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex)
+) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfint.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.co
+de.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconst
+ruct.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage
+.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.co
+de.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicst
+ate.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransform
+ations.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.cod
+e.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.c
+ode.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathproce
+ssing.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.co
+de.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.cod
+e.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.cod
+e.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.
+code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.co
+de.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretranspare
+ncy.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.
+code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.
+tex)))
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.cod
+e.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.
+tex)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
+-0-65.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
+-1-18.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/math/pgfmath.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex))
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex))
+
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.cod
+e.tex
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothan
+dlers.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.cod
+e.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarytopaths.code.tex)))
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.
+meta.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarycalc.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarypositioning.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarymatrix.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibraryfit.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/enumitem/enumitem.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/natbib/natbib.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/infwarerr/infwarerr.sty)))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hycolor/hycolor.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/refcount/refcount.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/gettitlestring/gettitlestring.s
+ty (/usr/local/texlive/2024/texmf-dist/tex/latex/kvoptions/kvoptions.sty)))
+(/usr/local/texlive/2024/texmf-dist/tex/generic/stringenc/stringenc.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/intcalc/intcalc.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/puenc.def)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/url/url.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/bitset/bitset.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/atbegshi-ltx.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/atveryend-ltx.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+
+(/usr/local/texlive/2024/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+))) (/usr/local/texlive/2024/texmf-dist/tex/latex/titlesec/titlesec.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/newtx/t1ntxtlf.fd)
+(/private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/
+main.aux) (/usr/local/texlive/2024/texmf-dist/tex/latex/newtx/omlntxmi.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/newtx/untxexa.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/newtx/lmsntxsy.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/newtx/lmxntxexx.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/microtype/mt-ptm.cfg)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+
+(/private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/
+main.out)
+(/private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/
+main.out) (/usr/local/texlive/2024/texmf-dist/tex/latex/newtx/ot1minntx.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/microtype/mt-msa.cfg)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/microtype/mt-msb.cfg)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/jknapltx/ursfs.fd)
+
+LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <10.5> not available
+(Font)              size <10.95> substituted on input line 173.
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/microtype/mt-cmr.cfg)
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <10.5> not available
+(Font)              size <10.95> substituted on input line 173.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <10.5> not available
+(Font)              size <10.95> substituted on input line 173.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <10.5> not available
+(Font)              size <10.95> substituted on input line 173.
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/gelasiomath/untxmia.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/newtx/untxsym.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/newtx/untxsyc.fd)
+[1{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/l
+ocal/texlive/2024/texmf-dist/fonts/enc/dvips/newtx/ntx-ec-tlf.enc}]
+(/private/tmp/portfolio-confirmation-v2-local/paper/theory/introduction.tex
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 38--44
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 49--50
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 52--56
+
+
+[3]
+[4])
+[5]
+(/private/tmp/portfolio-confirmation-v2-local/paper/theory/population_problem.t
+ex
+[6{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc}]
+[7]
+[8])
+[9]
+(/private/tmp/portfolio-confirmation-v2-local/paper/theory/direct_port_learning
+.tex
+[10]
+[11]
+[12]
+[13])
+[14]
+(/private/tmp/portfolio-confirmation-v2-local/paper/theory/economomic_spectrum_
+final.tex
+[15]
+[16]
+[17]
+[18]
+[19]
+[20 </private/tmp/portfolio-confirmation-v2-local/paper/figures/FRONTIER.png>]
+[21]
+[22 </private/tmp/portfolio-confirmation-v2-local/paper/figures/Complexity.png 
+(PNG copy)>])
+[23]
+[24]
+(/private/tmp/portfolio-confirmation-v2-local/paper/theory/representation_learn
+ability.tex
+[25])
+[26]
+[27] (../simulations/outputs/confirmation_v2/paper/simulation_section.tex
+(../simulations/outputs/confirmation_v2/paper/simulation_numbers.tex)
+[28]
+[29]
+[30] (../simulations/outputs/confirmation_v2/tables/confirmation_main.tex)
+(../simulations/outputs/confirmation_v2/tables/confirmation_selection.tex)
+(../simulations/outputs/confirmation_v2/tables/confirmation_theory.tex)
+(../simulations/outputs/confirmation_v2/tables/confirmation_resolution.tex))
+[31]
+[32]
+[33 <../simulations/outputs/confirmation_v2/figures/baseline_original_four_pane
+l.pdf>]
+[34 <../simulations/outputs/confirmation_v2/figures/rich6d_four_panel.pdf>]
+[35 <../simulations/outputs/confirmation_v2/figures/baseline_original_risk_comp
+lexity.pdf>]
+[36 <../simulations/outputs/confirmation_v2/figures/rich6d_risk_complexity.pdf>
+]
+[37 <../simulations/outputs/confirmation_v2/figures/baseline_original_theory_pa
+ths.pdf>]
+[38 <../simulations/outputs/confirmation_v2/figures/rich6d_theory_paths.pdf>]
+[39 <../simulations/outputs/confirmation_v2/figures/rich6d_minus_baseline.pdf>]
+(/private/tmp/portfolio-confirmation-v2-local/paper/empirics.tex
+(/private/tmp/portfolio-confirmation-v2-local/paper/tables/performance.tex)
+[40])
+(/private/tmp/portfolio-confirmation-v2-local/paper/complexity_schedule/empiric
+s_schedule.tex
+[41 </private/tmp/portfolio-confirmation-v2-local/paper/figures/fig01_wealth_dr
+awdown.pdf>]
+[42 </private/tmp/portfolio-confirmation-v2-local/paper/figures/fig02_exposure.
+pdf>]
+[43 </private/tmp/portfolio-confirmation-v2-local/paper/figures/fig05_managed_s
+pectrum.pdf>]
+[44 </private/tmp/portfolio-confirmation-v2-local/paper/figures/fig03_complexit
+y_gaussian.pdf>]
+[45 </private/tmp/portfolio-confirmation-v2-local/paper/figures/fig04_complexit
+y_matern32.pdf>])
+[46]
+[47 </private/tmp/portfolio-confirmation-v2-local/paper/complexity_schedule/fig
+01_oos_loss.pdf>]
+[48 </private/tmp/portfolio-confirmation-v2-local/paper/complexity_schedule/fig
+02_oos_sharpe.pdf>]
+[49 </private/tmp/portfolio-confirmation-v2-local/paper/complexity_schedule/fig
+03_oos_loss_heatmap.pdf>]
+[50 </private/tmp/portfolio-confirmation-v2-local/paper/complexity_schedule/fig
+04_complexity_regularization.pdf>]
+(/private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/
+main.bbl
+[51])
+[52]
+(/private/tmp/portfolio-confirmation-v2-local/paper/theory/proofs_learning.tex
+[53]
+[54]
+[55]
+[56]
+[57]
+[58]
+[59]
+[60]
+[61]
+(/private/tmp/portfolio-confirmation-v2-local/paper/theory/unbounded_concentrat
+ion.tex
+[62]
+[63]
+[64]
+[65])
+[66]
+[67]
+[68]
+[69]
+[70]
+[71]
+[72]
+[73]
+[74]
+[75])
+(/private/tmp/portfolio-confirmation-v2-local/paper/theory/representation_table
+s.tex
+
+LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <5.5> not available
+(Font)              size <5> substituted on input line 98.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <5.5> not available
+(Font)              size <5> substituted on input line 98.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <5.5> not available
+(Font)              size <5> substituted on input line 98.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <5.5> not available
+(Font)              size <5> substituted on input line 98.
+
+
+[76]
+[77])
+[78] (../simulations/outputs/confirmation_v2/paper/simulation_appendix.tex
+(../simulations/outputs/confirmation_v2/tables/confirmation_gradient.tex)
+(../simulations/outputs/confirmation_v2/tables/confirmation_rates.tex)
+(../simulations/outputs/confirmation_v2/tables/confirmation_optimism.tex)
+(../simulations/outputs/confirmation_v2/tables/confirmation_unresolved_1.tex)
+(../simulations/outputs/confirmation_v2/tables/confirmation_curve_maximum_basel
+ine_original.tex)
+(../simulations/outputs/confirmation_v2/tables/confirmation_curve_maximum_rich6
+d.tex))
+[79]
+[80]
+[81]
+[82 <../simulations/outputs/confirmation_v2/figures/baseline_original_decomposi
+tion.pdf>]
+[83 <../simulations/outputs/confirmation_v2/figures/baseline_original_selection
+_distributions.pdf>]
+[84 <../simulations/outputs/confirmation_v2/figures/baseline_original_oos_types
+.pdf>]
+[85 <../simulations/outputs/confirmation_v2/figures/baseline_original_rolling_m
+inus_holdout.pdf>]
+[86 <../simulations/outputs/confirmation_v2/figures/baseline_original_numerical
+_resolution.pdf>]
+[87 <../simulations/outputs/confirmation_v2/figures/rich6d_decomposition.pdf>]
+[88 <../simulations/outputs/confirmation_v2/figures/rich6d_selection_distributi
+ons.pdf>]
+[89 <../simulations/outputs/confirmation_v2/figures/rich6d_oos_types.pdf>]
+[90 <../simulations/outputs/confirmation_v2/figures/rich6d_rolling_minus_holdou
+t.pdf>]
+[91 <../simulations/outputs/confirmation_v2/figures/rich6d_numerical_resolution
+.pdf> <../simulations/outputs/confirmation_v2/figures/spectrum_resolution.pdf>]
+
+[92 <../simulations/outputs/confirmation_v2/figures/kernel_sensitivity.pdf>]
+[93 <../simulations/outputs/confirmation_v2/../paper/figures/appendix_N_robustn
+ess.pdf>]
+[94 <../simulations/outputs/confirmation_v2/../paper/figures/appendix_persisten
+ce.pdf>]
+(/private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/
+main.aux)
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 0.5pt have occurred.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ )
+(see the transcript file for additional information)</usr/local/texlive/2024/te
+xmf-dist/fonts/type1/public/newtx/NewTXMI.pfb></usr/local/texlive/2024/texmf-di
+st/fonts/type1/public/newtx/NewTXMI5.pfb></usr/local/texlive/2024/texmf-dist/fo
+nts/type1/public/newtx/NewTXMI7.pfb></usr/local/texlive/2024/texmf-dist/fonts/t
+ype1/public/newtx/stxscr.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/pu
+blic/newtx/txexas.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/ne
+wtx/txexs.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/newtx/txmi
+aX.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/newtx/txsym.pfb><
+/usr/local/texlive/2024/texmf-dist/fonts/type1/public/newtx/txsys.pfb></usr/loc
+al/texlive/2024/texmf-dist/fonts/type1/public/newtx/ztmb.pfb></usr/local/texliv
+e/2024/texmf-dist/fonts/type1/public/newtx/ztmr.pfb></usr/local/texlive/2024/te
+xmf-dist/fonts/type1/public/newtx/ztmri.pfb>
+Output written on /private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirm
+ation_manuscript/main.pdf (94 pages, 2175584 bytes).
+Transcript written on /private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/con
+firmation_manuscript/main.log.
+Latexmk: Getting log file '/private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/main.log'
+Latexmk: Examining '/private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/main.fls'
+Latexmk: Examining '/private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/main.log'
+Latexmk: Found input bbl file '/private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/main.bbl'
+Latexmk: References changed.
+Latexmk: Log file says output to '/private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/main.pdf'
+Latexmk: Found bibliography file(s):
+  ./theory/references.bib
+Latexmk: applying rule 'bibtex /private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/main'...
+Rule 'bibtex /private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/main':  Reasons for rerun
+Changed files or newly in use/created:
+  /private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/main.aux
+
+------------
+Run number 3 of rule 'bibtex /private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/main'
+------------
+Latexmk: Change directory to '/private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/'.
+To assist finding of files in document directory, I set
+  BIBINPUTS='/private/tmp/portfolio-confirmation-v2-local/paper:/private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript:'
+  BSTINPUTS='/private/tmp/portfolio-confirmation-v2-local/paper:'.
+------------
+Running 'bibtex  "main.aux"'
+------------
+This is BibTeX, Version 0.99d (TeX Live 2024)
+The top-level auxiliary file: main.aux
+The style file: apalike.bst
+Database file #1: theory/references.bib
+Latexmk: Change directory back to '/private/tmp/portfolio-confirmation-v2-local/paper'
+Latexmk: applying rule 'pdflatex'...
+Rule 'pdflatex':  Reasons for rerun
+Changed files or newly in use/created:
+  /private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/main.aux
+
+------------
+Run number 4 of rule 'pdflatex'
+------------
+------------
+Running 'pdflatex  -interaction=nonstopmode -halt-on-error -recorder -output-directory="/private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript"  "/private/tmp/portfolio-confirmation-v2-local/paper/main.tex"'
+------------
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(/private/tmp/portfolio-confirmation-v2-local/paper/main.tex
+LaTeX2e <2024-06-01> patch level 2
+L3 programming layer <2024-08-30>
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2024/02/08 v1.4n Standard LaTeX document class
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/size12.clo))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/fontenc.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/mathtools/mathtools.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tools/calc.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/mathtools/mhsetup.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amscls/amsthm.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/jknapltx/mathrsfs.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tools/bm.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/newtx/newtxtext.sty
+`newtxtext' v1.744, 2024/04/01 Text macros taking advantage of TeXGyre Termes a
+nd its extensions (msharpe)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/xpatch/xpatch.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/l3kernel/expl3.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/l3packages/xparse/xparse.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/etoolbox/etoolbox.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-def/pdftex.def)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/mathcolor.ltx))
+(/usr/local/texlive/2024/texmf-dist/tex/generic/iftex/iftex.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/local/texlive/2024/texmf-dist/tex/generic/xkeyval/xkvutils.tex)))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/textcomp.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/xstring/xstring.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/xstring/xstring.tex))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/ifthen.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/carlisle/scalefnt.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/kastrup/binhex.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/fontaxes/fontaxes.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/newtx/newtxmath.sty
+`newtxmath' v1.752, 2024/07/05 Math macros based originally on txfonts (msharpe
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/oberdiek/centernot.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/kastrup/binhex.tex)
+amsthm NOT loaded
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/microtype/microtype.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/microtype/microtype-pdftex.def)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/microtype/microtype.cfg))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/setspace/setspace.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/needspace/needspace.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/geometry/geometry.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/iftex/ifvtex.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/float/float.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/placeins/placeins.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/booktabs/booktabs.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tools/array.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/caption/caption.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/caption/caption3.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.te
+x)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/pgf.revision.tex)))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfil
+tered.code.tex))
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.d
+ef
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-p
+df.def)))
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.
+code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.
+code.tex))
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.
+tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic
+.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigo
+nometric.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.rando
+m.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.compa
+rison.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.
+code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round
+.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.
+code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integ
+erarithmetics.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex)
+) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfint.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.co
+de.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconst
+ruct.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage
+.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.co
+de.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicst
+ate.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransform
+ations.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.cod
+e.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.c
+ode.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathproce
+ssing.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.co
+de.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.cod
+e.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.cod
+e.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.
+code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.co
+de.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretranspare
+ncy.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.
+code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.
+tex)))
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.cod
+e.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.
+tex)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
+-0-65.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
+-1-18.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/math/pgfmath.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex))
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex))
+
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.cod
+e.tex
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothan
+dlers.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.cod
+e.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarytopaths.code.tex)))
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.
+meta.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarycalc.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarypositioning.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarymatrix.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibraryfit.code.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/enumitem/enumitem.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/natbib/natbib.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/infwarerr/infwarerr.sty)))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hycolor/hycolor.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/refcount/refcount.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/gettitlestring/gettitlestring.s
+ty (/usr/local/texlive/2024/texmf-dist/tex/latex/kvoptions/kvoptions.sty)))
+(/usr/local/texlive/2024/texmf-dist/tex/generic/stringenc/stringenc.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/intcalc/intcalc.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/puenc.def)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/url/url.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/bitset/bitset.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/atbegshi-ltx.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/atveryend-ltx.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+
+(/usr/local/texlive/2024/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+))) (/usr/local/texlive/2024/texmf-dist/tex/latex/titlesec/titlesec.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/newtx/t1ntxtlf.fd)
+(/private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/
+main.aux) (/usr/local/texlive/2024/texmf-dist/tex/latex/newtx/omlntxmi.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/newtx/untxexa.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/newtx/lmsntxsy.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/newtx/lmxntxexx.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/microtype/mt-ptm.cfg)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+
+(/private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/
+main.out)
+(/private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/
+main.out) (/usr/local/texlive/2024/texmf-dist/tex/latex/newtx/ot1minntx.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/microtype/mt-msa.cfg)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/microtype/mt-msb.cfg)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/jknapltx/ursfs.fd)
+
+LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <10.5> not available
+(Font)              size <10.95> substituted on input line 173.
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/microtype/mt-cmr.cfg)
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <10.5> not available
+(Font)              size <10.95> substituted on input line 173.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <10.5> not available
+(Font)              size <10.95> substituted on input line 173.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <10.5> not available
+(Font)              size <10.95> substituted on input line 173.
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/gelasiomath/untxmia.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/newtx/untxsym.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/newtx/untxsyc.fd)
+[1{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/l
+ocal/texlive/2024/texmf-dist/fonts/enc/dvips/newtx/ntx-ec-tlf.enc}]
+(/private/tmp/portfolio-confirmation-v2-local/paper/theory/introduction.tex
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 38--44
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 49--50
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 52--56
+
+
+[3]
+[4])
+[5]
+(/private/tmp/portfolio-confirmation-v2-local/paper/theory/population_problem.t
+ex
+[6{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc}]
+[7]
+[8])
+[9]
+(/private/tmp/portfolio-confirmation-v2-local/paper/theory/direct_port_learning
+.tex
+[10]
+[11]
+[12]
+[13])
+[14]
+(/private/tmp/portfolio-confirmation-v2-local/paper/theory/economomic_spectrum_
+final.tex
+[15]
+[16]
+[17]
+[18]
+[19]
+[20 </private/tmp/portfolio-confirmation-v2-local/paper/figures/FRONTIER.png>]
+[21]
+[22 </private/tmp/portfolio-confirmation-v2-local/paper/figures/Complexity.png 
+(PNG copy)>])
+[23]
+[24]
+(/private/tmp/portfolio-confirmation-v2-local/paper/theory/representation_learn
+ability.tex
+[25])
+[26]
+[27] (../simulations/outputs/confirmation_v2/paper/simulation_section.tex
+(../simulations/outputs/confirmation_v2/paper/simulation_numbers.tex)
+[28]
+[29]
+[30] (../simulations/outputs/confirmation_v2/tables/confirmation_main.tex)
+(../simulations/outputs/confirmation_v2/tables/confirmation_selection.tex)
+(../simulations/outputs/confirmation_v2/tables/confirmation_theory.tex)
+(../simulations/outputs/confirmation_v2/tables/confirmation_resolution.tex))
+[31]
+[32]
+[33 <../simulations/outputs/confirmation_v2/figures/baseline_original_four_pane
+l.pdf>]
+[34 <../simulations/outputs/confirmation_v2/figures/rich6d_four_panel.pdf>]
+[35 <../simulations/outputs/confirmation_v2/figures/baseline_original_risk_comp
+lexity.pdf>]
+[36 <../simulations/outputs/confirmation_v2/figures/rich6d_risk_complexity.pdf>
+]
+[37 <../simulations/outputs/confirmation_v2/figures/baseline_original_theory_pa
+ths.pdf>]
+[38 <../simulations/outputs/confirmation_v2/figures/rich6d_theory_paths.pdf>]
+[39 <../simulations/outputs/confirmation_v2/figures/rich6d_minus_baseline.pdf>]
+(/private/tmp/portfolio-confirmation-v2-local/paper/empirics.tex
+(/private/tmp/portfolio-confirmation-v2-local/paper/tables/performance.tex)
+[40])
+(/private/tmp/portfolio-confirmation-v2-local/paper/complexity_schedule/empiric
+s_schedule.tex
+[41 </private/tmp/portfolio-confirmation-v2-local/paper/figures/fig01_wealth_dr
+awdown.pdf>]
+[42 </private/tmp/portfolio-confirmation-v2-local/paper/figures/fig02_exposure.
+pdf>]
+[43 </private/tmp/portfolio-confirmation-v2-local/paper/figures/fig05_managed_s
+pectrum.pdf>]
+[44 </private/tmp/portfolio-confirmation-v2-local/paper/figures/fig03_complexit
+y_gaussian.pdf>]
+[45 </private/tmp/portfolio-confirmation-v2-local/paper/figures/fig04_complexit
+y_matern32.pdf>])
+[46]
+[47 </private/tmp/portfolio-confirmation-v2-local/paper/complexity_schedule/fig
+01_oos_loss.pdf>]
+[48 </private/tmp/portfolio-confirmation-v2-local/paper/complexity_schedule/fig
+02_oos_sharpe.pdf>]
+[49 </private/tmp/portfolio-confirmation-v2-local/paper/complexity_schedule/fig
+03_oos_loss_heatmap.pdf>]
+[50 </private/tmp/portfolio-confirmation-v2-local/paper/complexity_schedule/fig
+04_complexity_regularization.pdf>]
+(/private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/
+main.bbl
+[51])
+[52]
+(/private/tmp/portfolio-confirmation-v2-local/paper/theory/proofs_learning.tex
+[53]
+[54]
+[55]
+[56]
+[57]
+[58]
+[59]
+[60]
+[61]
+(/private/tmp/portfolio-confirmation-v2-local/paper/theory/unbounded_concentrat
+ion.tex
+[62]
+[63]
+[64]
+[65])
+[66]
+[67]
+[68]
+[69]
+[70]
+[71]
+[72]
+[73]
+[74]
+[75])
+(/private/tmp/portfolio-confirmation-v2-local/paper/theory/representation_table
+s.tex
+
+LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <5.5> not available
+(Font)              size <5> substituted on input line 98.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <5.5> not available
+(Font)              size <5> substituted on input line 98.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <5.5> not available
+(Font)              size <5> substituted on input line 98.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <5.5> not available
+(Font)              size <5> substituted on input line 98.
+
+
+[76]
+[77])
+[78] (../simulations/outputs/confirmation_v2/paper/simulation_appendix.tex
+(../simulations/outputs/confirmation_v2/tables/confirmation_gradient.tex)
+(../simulations/outputs/confirmation_v2/tables/confirmation_rates.tex)
+(../simulations/outputs/confirmation_v2/tables/confirmation_optimism.tex)
+(../simulations/outputs/confirmation_v2/tables/confirmation_unresolved_1.tex)
+(../simulations/outputs/confirmation_v2/tables/confirmation_curve_maximum_basel
+ine_original.tex)
+(../simulations/outputs/confirmation_v2/tables/confirmation_curve_maximum_rich6
+d.tex))
+[79]
+[80]
+[81]
+[82 <../simulations/outputs/confirmation_v2/figures/baseline_original_decomposi
+tion.pdf>]
+[83 <../simulations/outputs/confirmation_v2/figures/baseline_original_selection
+_distributions.pdf>]
+[84 <../simulations/outputs/confirmation_v2/figures/baseline_original_oos_types
+.pdf>]
+[85 <../simulations/outputs/confirmation_v2/figures/baseline_original_rolling_m
+inus_holdout.pdf>]
+[86 <../simulations/outputs/confirmation_v2/figures/baseline_original_numerical
+_resolution.pdf>]
+[87 <../simulations/outputs/confirmation_v2/figures/rich6d_decomposition.pdf>]
+[88 <../simulations/outputs/confirmation_v2/figures/rich6d_selection_distributi
+ons.pdf>]
+[89 <../simulations/outputs/confirmation_v2/figures/rich6d_oos_types.pdf>]
+[90 <../simulations/outputs/confirmation_v2/figures/rich6d_rolling_minus_holdou
+t.pdf>]
+[91 <../simulations/outputs/confirmation_v2/figures/rich6d_numerical_resolution
+.pdf> <../simulations/outputs/confirmation_v2/figures/spectrum_resolution.pdf>]
+
+[92 <../simulations/outputs/confirmation_v2/figures/kernel_sensitivity.pdf>]
+[93 <../simulations/outputs/confirmation_v2/../paper/figures/appendix_N_robustn
+ess.pdf>]
+[94 <../simulations/outputs/confirmation_v2/../paper/figures/appendix_persisten
+ce.pdf>]
+(/private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/
+main.aux)
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 0.5pt have occurred.
+
+ )
+(see the transcript file for additional information)</usr/local/texlive/2024/te
+xmf-dist/fonts/type1/public/newtx/NewTXMI.pfb></usr/local/texlive/2024/texmf-di
+st/fonts/type1/public/newtx/NewTXMI5.pfb></usr/local/texlive/2024/texmf-dist/fo
+nts/type1/public/newtx/NewTXMI7.pfb></usr/local/texlive/2024/texmf-dist/fonts/t
+ype1/public/newtx/stxscr.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/pu
+blic/newtx/txexas.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/ne
+wtx/txexs.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/newtx/txmi
+aX.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/newtx/txsym.pfb><
+/usr/local/texlive/2024/texmf-dist/fonts/type1/public/newtx/txsys.pfb></usr/loc
+al/texlive/2024/texmf-dist/fonts/type1/public/newtx/ztmb.pfb></usr/local/texliv
+e/2024/texmf-dist/fonts/type1/public/newtx/ztmr.pfb></usr/local/texlive/2024/te
+xmf-dist/fonts/type1/public/newtx/ztmri.pfb>
+Output written on /private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirm
+ation_manuscript/main.pdf (94 pages, 2175584 bytes).
+Transcript written on /private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/con
+firmation_manuscript/main.log.
+Latexmk: Getting log file '/private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/main.log'
+Latexmk: Examining '/private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/main.fls'
+Latexmk: Examining '/private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/main.log'
+Latexmk: Found input bbl file '/private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/main.bbl'
+Latexmk: Log file says output to '/private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/main.pdf'
+Latexmk: Found bibliography file(s):
+  ./theory/references.bib
+Latexmk: All targets (/private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/main.pdf) are up-to-date
+
+Latexmk: Missing bbl file '/private/tmp/portfolio-confirmation-v2-local/tmp/pdfs/confirmation_manuscript/main.bbl' in following:
+ No file main.bbl.

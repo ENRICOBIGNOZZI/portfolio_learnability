@@ -16,6 +16,18 @@ from simulations.manuscript import verify_preservation
 from simulations.provenance import ROOT, file_hash, json_write, require, source_hashes, utc_now
 
 
+def full_suite_command(command):
+    """Check pytest arguments separately from Python's module-launch option."""
+    if len(command) >= 3 and command[1:3] == ['-m', 'pytest']:
+        arguments = command[3:]
+    elif command and Path(command[0]).name in ('pytest', 'pytest.exe'):
+        arguments = command[1:]
+    else:
+        return False
+    return 'tests' in arguments and not any(
+        arg.startswith(('-k', '-m', '--ignore', '--deselect')) for arg in arguments)
+
+
 def closeout(output):
     output = Path(output).resolve()
     audit = output/'audit'
@@ -57,7 +69,7 @@ def closeout(output):
     tests = read('audit/test_verification.json')
     require(tests['passed'] and tests['return_code'] == 0 and 'tests' in tests['command'],
             'Executed full-suite test evidence missing')
-    require(not any(arg in tests['command'] for arg in ('-k', '-m', '--ignore')), 'Filtered test suite is not full-suite evidence')
+    require(full_suite_command(tests['command']), 'Filtered test suite is not full-suite evidence')
     hashes(tests['source_hashes'], ROOT)
     log = Path(tests['log'])
     if not log.is_absolute():

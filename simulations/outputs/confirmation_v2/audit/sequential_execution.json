@@ -340,5 +340,12 @@
   "interruption_reason": "Repeated iCloud source reads blocked the pipeline; all scientific sources and 552 immutable NPZ files verified in a local checkout before stopping these jobs.",
   "execution_workspace": "/private/tmp/portfolio-confirmation-v2-local",
   "local_resume_started_utc": "2026-10-08T19:28:31.211207+00:00",
-  "completed_utc": "2026-10-08T19:37:47.882776+00:00"
+  "completed_utc": "2026-10-08T19:37:47.882776+00:00",
+  "final_acceptance": {
+    "completed_utc": "2026-10-08T20:09:21.330998+00:00",
+    "conditions_met": 13,
+    "final_report_sha256": "515f50b22ae6fc348f0e75aa92da9a6be09a6cd0c65a90227757fd3c2fd60a03",
+    "archive_public_download_verified": true,
+    "pdf_pages_visually_reviewed": 94
+  }
 }

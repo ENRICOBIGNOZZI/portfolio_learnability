@@ -8,8 +8,8 @@
     "-q"
   ],
   "cwd": "/private/tmp/portfolio-confirmation-v2-local",
-  "started_utc": "2026-10-08T19:46:41.594422+00:00",
-  "completed_utc": "2026-10-08T19:47:03.585376+00:00",
+  "started_utc": "2026-10-08T20:08:46.404039+00:00",
+  "completed_utc": "2026-10-08T20:09:10.337702+00:00",
   "return_code": 0,
   "passed": true,
   "source_hashes": {
@@ -36,7 +36,7 @@
     "simulations/diagnostics/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "simulations/diagnostics/approximation.py": "55c3b31f256fbfa47518cd80887e7d9282db6ff85af0d859efe64cee212e1fa5",
     "simulations/diagnostics/closeout.py": "01c9e011c537cb1af720cc3f239318f63dc28aeee5bc69dd78b14b1c93102703",
-    "simulations/diagnostics/closeout_v2.py": "37b319a20435000ddc2b97948b6ff0b40a39f7fd8a196b4795c6e0a8273efa18",
+    "simulations/diagnostics/closeout_v2.py": "488885a2b7e61694de23783a630e285124a7f9f39862eb231c4c1da73924a0f7",
     "simulations/diagnostics/exact_kernel.py": "89dbfeacf5a89cdce32d9739f00f66318b932ae3edaa7a74c0518f4ed068feaf",
     "simulations/diagnostics/execution_timing.py": "5b53eaa026e11e392d487a80711dd5ad0a7a661f28a9103ac38fabe557a32cc3",
     "simulations/diagnostics/kernel_storage.py": "4beb552d9ac8c68295ff01c8b352cd418f52b7f98078ef9d9a83e70d23d70ff1",
@@ -77,6 +77,7 @@
     "tests/test_audit.py": "ae493d5f840705868097422aeba6b76d836322d309faa47d5c1f2235aa5d8201",
     "tests/test_empirical_closeout.py": "92d0da3d9379e98dd23c933ffb52ae5d137889eeb85c46db8d9ff471a669a99f",
     "tests/test_kernel_storage.py": "1b3bbd6d24058e3da0b541efb4b3d3530d22ff9c88ebbdb7522b50c45e64c002",
+    "tests/test_confirmation_closeout.py": "beed76f4103a5631945011686b4043543f7e303456c94678658ea1d71c9686c4",
     "tests/test_publication_scope.py": "fa9c93580260ccf5b762d8d7cd026cf4a1f5534339ed5d1397098b6b7bb97879",
     "tests/test_pipeline.py": "05b165bc2dddcd9f4226554567d4fd4a3b6a638069143c60deec670ac617910a",
     "tests/test_low_memory_quadrature.py": "f96696c7356ae6fe6b24a7b261b00e63be400d7f2910cb5de8d177b749742069"
@@ -95,5 +96,5 @@
     "VECLIB_MAXIMUM_THREADS": "1"
   },
   "log": "simulations/outputs/confirmation_v2/audit/test_transcript.txt",
-  "log_sha256": "85ef6fae3a36be1cacdac49b830ac82eef3a9ab32a6c13cdd6c7453469c802f9"
+  "log_sha256": "c45b737b77b0c589a980aa0b68575ca9832cf2550f212a08571a26b1d5bca8ca"
 }

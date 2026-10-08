@@ -48,8 +48,12 @@ actual independent/future payoff arrays and tests the evaluator boundary.
 
 The separately versioned confirmation archive is indexed by
 `simulations/outputs/confirmation_v2/audit/confirmation_raw_archive.json`.
-Once that archive has been published, run the following commands sequentially
-to download it and reconstruct the V2 evidence:
+The public release is
+https://github.com/ENRICOBIGNOZZI/portfolio_learnability/releases/tag/synthetic-confirmation-v2-719034dd1fd3
+with archive SHA256
+`5c96fc50c1f2a77c6f5a7c9338a6fcc39b19c31e8efbbb8d8e7b9d4d4a707b8d`.
+An actual unauthenticated download verified all 561 members on 8 October 2026.
+Run the following commands sequentially to download it and reconstruct the V2 evidence:
 
 ```sh
 python -m simulations.diagnostics.raw_archive fetch --destination . --index simulations/outputs/confirmation_v2/audit/confirmation_raw_archive.json --report simulations/outputs/confirmation_v2/audit/confirmation_raw_archive_download_verification.json
@@ -166,3 +170,20 @@ uncertified by that rank check even if their selected-policy quadrature passes.
 All source/test/compile evidence is versioned; a historical `passed` flag cannot
 certify modified code. CI separates empirical verification, synthetic aggregate
 verification, fresh synthetic smoke and the manually dispatched raw archive job.
+
+## Completed acceptance
+
+The 8 October 2026 final report records all 13 requested conditions as met.
+The final local suite passed 189 tests, and the complete manuscript contains
+94 visually reviewed pages. The original theory, 112 empirical files and
+3,891 historical artifacts retain their recorded bytes. Actual GitHub CI
+evidence, including the public download and full raw reconstruction job, is
+in `outputs/confirmation_v2/audit/ci_verification.json`.
+
+Five practical-grid policy cells remain uncertified by the rank criterion:
+holdout at T=60 and T=360 for both maps, and rolling validation at T=60 for
+rich6d. These are retained in the paper and in
+`audit/claimed_resolution_regions.csv`. All six headline policy cells at T=1440
+pass both rank and quadrature checks. Extra training horizons retain their
+uncertified rank status. Acceptance records completed and honestly scoped
+checks; it does not turn these failed tolerances into numerical passes.
