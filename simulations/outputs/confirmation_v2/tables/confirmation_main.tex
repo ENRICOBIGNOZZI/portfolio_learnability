@@ -1,0 +1,36 @@
+\begin{table}[p]
+\centering
+\caption{Prospective confirmation at T=1440. Population risk uses independent quadrature; independent and contiguous-future test losses remain distinct. Sharpe is per period.}
+\label{tab:confirmation_main}
+\begingroup\small
+\setlength{\tabcolsep}{4pt}
+\ifdefined\simtablebox\else\newsavebox{\simtablebox}\fi
+\sbox{\simtablebox}{%
+\begin{tabular}{llrrrrrr}
+\toprule
+Map & Method & R & Loss & SR & Regret & OOS loss & Future loss \\
+\midrule
+Baseline & Holdout & 100 & 0.9921 & 0.09574 & 0.0063 & 0.9917 & 0.9923 \\
+Baseline & Rolling & 100 & 0.9902 & 0.102 & 0.004419 & 0.9899 & 0.99 \\
+Baseline & Theory a=1 & 100 & 0.989 & 0.1075 & 0.003213 & 0.9883 & 0.9888 \\
+Baseline & Plugin oracle & 100 & 0.9889 & 0.1074 & 0.003161 & 0.9882 & 0.9887 \\
+Baseline & Crossfit oracle & 100 & 0.9889 & 0.1074 & 0.003161 & 0.9882 & 0.9887 \\
+Baseline & Zero & 100 & 1 & 0 & 0.01422 & 1 & 1 \\
+Baseline & Affine & 100 & 0.9985 & 0.05216 & 0.01272 & 0.9984 & 0.9988 \\
+Baseline & Equal weight & 100 & 0.9992 & 0.02972 & 0.01337 & 0.999 & 0.9992 \\
+Rich6D & Holdout & 100 & 0.9923 & 0.09405 & 0.006559 & 0.9922 & 0.9926 \\
+Rich6D & Rolling & 100 & 0.9904 & 0.1012 & 0.004614 & 0.9902 & 0.9903 \\
+Rich6D & Theory a=1 & 100 & 0.9893 & 0.1064 & 0.003474 & 0.9887 & 0.9891 \\
+Rich6D & Plugin oracle & 100 & 0.9892 & 0.1064 & 0.003389 & 0.9885 & 0.9889 \\
+Rich6D & Crossfit oracle & 100 & 0.9892 & 0.1064 & 0.003389 & 0.9885 & 0.9889 \\
+Rich6D & Zero & 100 & 1 & 0 & 0.01422 & 1 & 1 \\
+Rich6D & Affine & 100 & 0.9986 & 0.05131 & 0.01277 & 0.9985 & 0.9987 \\
+Rich6D & Equal weight & 100 & 0.9992 & 0.02972 & 0.01337 & 0.999 & 0.9992 \\
+\bottomrule
+\end{tabular}
+}
+\ifdim\wd\simtablebox>\linewidth
+\resizebox{\linewidth}{!}{\usebox{\simtablebox}}
+\else\usebox{\simtablebox}\fi
+\endgroup
+\end{table}

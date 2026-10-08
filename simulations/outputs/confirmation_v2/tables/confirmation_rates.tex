@@ -1,0 +1,32 @@
+\begin{table}[p]
+\centering
+\caption{Descriptive log-regret slopes for the exact theory path with a=1, in every fixed window and both declared cohorts. The extended cohort uses only its 50 complete paths at all training lengths. Bootstrap intervals resample whole paths; the theoretical exponent is an upper-envelope benchmark, not a required equality. All other path and metric fits are retained in the machine-readable rate tables.}
+\label{tab:confirmation_rates}
+\begingroup\small
+\setlength{\tabcolsep}{4pt}
+\ifdefined\simtablebox\else\newsavebox{\simtablebox}\fi
+\sbox{\simtablebox}{%
+\begin{tabular}{lllrrrrr}
+\toprule
+Map & Cohort & Window & R & Slope & OLS SE & Boot. low & Boot. high \\
+\midrule
+Baseline & practical & full & 100 & -0.7102 & 0.007075 & -0.7684 & -0.6466 \\
+Baseline & practical & upper half & 100 & -0.6839 & 0.02539 & -0.7774 & -0.5841 \\
+Baseline & practical & largest four & 100 & -0.7202 & 0.02881 & -0.828 & -0.5899 \\
+Baseline & extended & full & 50 & -0.7243 & 0.008406 & -0.7729 & -0.6765 \\
+Baseline & extended & upper half & 50 & -0.7366 & 0.02608 & -0.8169 & -0.6584 \\
+Baseline & extended & largest four & 50 & -0.6349 & 0.03727 & -0.7535 & -0.522 \\
+Rich6D & practical & full & 100 & -0.6795 & 0.007969 & -0.7368 & -0.619 \\
+Rich6D & practical & upper half & 100 & -0.6474 & 0.02435 & -0.7382 & -0.5515 \\
+Rich6D & practical & largest four & 100 & -0.6826 & 0.02727 & -0.7912 & -0.5532 \\
+Rich6D & extended & full & 50 & -0.6952 & 0.007665 & -0.74 & -0.6491 \\
+Rich6D & extended & upper half & 50 & -0.7126 & 0.02493 & -0.7894 & -0.6357 \\
+Rich6D & extended & largest four & 50 & -0.6198 & 0.03905 & -0.7347 & -0.511 \\
+\bottomrule
+\end{tabular}
+}
+\ifdim\wd\simtablebox>\linewidth
+\resizebox{\linewidth}{!}{\usebox{\simtablebox}}
+\else\usebox{\simtablebox}\fi
+\endgroup
+\end{table}

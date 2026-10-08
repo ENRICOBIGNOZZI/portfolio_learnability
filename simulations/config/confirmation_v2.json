@@ -1,0 +1,230 @@
+{
+  "schema": "confirmation-protocol/2.0",
+  "status": "frozen_before_production",
+  "frozen_utc": "2026-10-08T12:06:59.539155+00:00",
+  "master_seed": 2026100801,
+  "seeds": {
+    "anchor": 1223482779,
+    "pilot": 1792439183,
+    "quadrature": 2216883481,
+    "train": 752829595,
+    "test": 62332545,
+    "bootstrap": 972247905,
+    "folds": 2996848454,
+    "spectrum": 4101162095
+  },
+  "cases": [
+    {
+      "name": "baseline_original",
+      "code": 0,
+      "N": 600,
+      "rho": 0.95,
+      "signal_multiplier": 1.0,
+      "sigma_eps": 0.08,
+      "nu": 1.5,
+      "rank": 512,
+      "variant": "baseline",
+      "replications": 100,
+      "loading_map": "baseline_original",
+      "eta": 0.0
+    },
+    {
+      "name": "baseline_original_nu05",
+      "code": 0,
+      "N": 600,
+      "rho": 0.95,
+      "signal_multiplier": 1.0,
+      "sigma_eps": 0.08,
+      "nu": 0.5,
+      "rank": 512,
+      "variant": "baseline",
+      "replications": 50,
+      "loading_map": "baseline_original",
+      "eta": 0.0
+    },
+    {
+      "name": "baseline_original_nu25",
+      "code": 0,
+      "N": 600,
+      "rho": 0.95,
+      "signal_multiplier": 1.0,
+      "sigma_eps": 0.08,
+      "nu": 2.5,
+      "rank": 512,
+      "variant": "baseline",
+      "replications": 50,
+      "loading_map": "baseline_original",
+      "eta": 0.0
+    },
+    {
+      "name": "rich6d",
+      "code": 0,
+      "N": 600,
+      "rho": 0.95,
+      "signal_multiplier": 1.0,
+      "sigma_eps": 0.08,
+      "nu": 1.5,
+      "rank": 512,
+      "variant": "baseline",
+      "replications": 100,
+      "loading_map": "rich6d",
+      "eta": 0.35
+    },
+    {
+      "name": "rich6d_nu05",
+      "code": 0,
+      "N": 600,
+      "rho": 0.95,
+      "signal_multiplier": 1.0,
+      "sigma_eps": 0.08,
+      "nu": 0.5,
+      "rank": 512,
+      "variant": "baseline",
+      "replications": 50,
+      "loading_map": "rich6d",
+      "eta": 0.35
+    },
+    {
+      "name": "rich6d_nu25",
+      "code": 0,
+      "N": 600,
+      "rho": 0.95,
+      "signal_multiplier": 1.0,
+      "sigma_eps": 0.08,
+      "nu": 2.5,
+      "rank": 512,
+      "variant": "baseline",
+      "replications": 50,
+      "loading_map": "rich6d",
+      "eta": 0.35
+    }
+  ],
+  "practical_T": [
+    60,
+    90,
+    120,
+    180,
+    240,
+    360,
+    540,
+    720,
+    1080,
+    1440
+  ],
+  "extra_T": [
+    2160,
+    3240,
+    4860,
+    7290
+  ],
+  "extended_replications": 50,
+  "extra_T_applies_to_nu": [
+    1.5
+  ],
+  "oos_periods": 720,
+  "population_groups": 8192,
+  "bootstrap_replications": 1000,
+  "workers": 4,
+  "penalties": {
+    "grid": "geomspace(1e-12,1e-2,96)",
+    "theory_multipliers": [
+      0.25,
+      1,
+      4
+    ],
+    "theory_formula": "a*s_ref*T**(-b/(b+1))",
+    "b": "1+2*nu/6"
+  },
+  "theory_scale": {
+    "baseline_original": 9.990751249415766e-05,
+    "baseline_original_nu05": 8.862230823361947e-05,
+    "baseline_original_nu25": 0.00010291635696787736,
+    "rich6d": 0.00010095029776710705,
+    "rich6d_nu05": 8.921586229035746e-05,
+    "rich6d_nu25": 0.00010415876700063236
+  },
+  "pilot_sha256": "efe6ce274b387c676867b77d3fa0d3c4b5400afd3e0451f5d4a26e33551b579b",
+  "pilot_file": "simulations/outputs/confirmation_v2/audit/cost_accuracy_pilot.json",
+  "theory_calibration_seed": 1165070958,
+  "selection": {
+    "holdout25": "unchanged; first minimum",
+    "rolling3": "floor endpoints at .4,.6,.8,1; min2 train and validation; observation-weighted loss; full refit",
+    "rolling3_tie_absolute_tolerance": 1e-12,
+    "rolling3_tie_rule": "largest lambda",
+    "rolling3_conservative": "omitted: no prospectively justified dependent-data one-SE rule",
+    "zero_policy": "benchmark only; Q=1,C=0,SR=0; excluded from selectors"
+  },
+  "oracle": {
+    "name": "ensemble_plugin_loss_oracle",
+    "crossfit_folds": 5,
+    "fold_unit": "entire economic replication",
+    "Sharpe": "Sharpe at loss-optimal penalty; not a Sharpe oracle"
+  },
+  "accuracy": {
+    "nested_ranks": [
+      256,
+      512,
+      1024
+    ],
+    "optional_rank": 2048,
+    "paired_paths": 50,
+    "maximum_floor_fraction_of_mean_regret": 0.05,
+    "maximum_relative_rank_difference": 0.05,
+    "confidence_rule": "abs(paired mean difference)+1.96*paired MCSE <= .05*reference mean regret; floor <= .05*reference mean regret",
+    "if_failed": "label region unresolved; preserve every point and economy",
+    "quadrature_groups": [
+      8192,
+      32768
+    ],
+    "quadrature_independent_seeds": [
+      2715537141,
+      2169602398,
+      657899912,
+      233452503
+    ],
+    "spectrum_groups": [
+      1024,
+      2048,
+      4096
+    ],
+    "spectrum_seeds": [
+      4101162095,
+      1791613518,
+      1557782884
+    ],
+    "spectrum_windows": [
+      [
+        30,
+        200
+      ],
+      [
+        60,
+        400
+      ],
+      [
+        120,
+        800
+      ]
+    ],
+    "slope_closeness_is_acceptance_gate": false
+  },
+  "resource_decision": {
+    "requested_headline_replications": 500,
+    "actual_headline_replications": 100,
+    "requested_extended_replications": 200,
+    "actual_extended_replications": 50,
+    "requested_sensitivity_replications": 200,
+    "actual_sensitivity_replications": 50,
+    "physical_memory_bytes": 8589934592,
+    "available_disk_bytes_at_pilot": 6860000000,
+    "production_rank": 512,
+    "forecast_full_protocol_date_seconds": 130000,
+    "forecast_reduced_protocol_date_seconds": 39000,
+    "forecast_note": "Pilot per-date timing; sum of serial CPU/wall costs, excluding fits and audits; concurrency wall time is not this sum. Smaller cohort frozen before performance to fit local computation and checkpoint/archive storage.",
+    "scope_label": "resource-limited prospective confirmation; not the requested maximum replication target"
+  },
+  "intervals": "pointwise mean +/-1.96 MCSE and whole-path bootstrap; conditional on fixed anchors/quadrature",
+  "common_random_numbers": "same seed families and replication index across maps, ranks and smoothness; state/factor/epsilon internally independent",
+  "source_condition": "theorem assumption; neither map is claimed least-favourable",
+  "protocol_hash": "719034dd1fd3a9a1c716c7a5fcd6337b006bce60dbb0725997a82e2cea72639a"
+}

@@ -1,0 +1,25 @@
+{
+  "groups": 1024,
+  "nodes": 3072,
+  "seed_index": 1,
+  "seed": 1791613518,
+  "source_sha256": "5f66410dc5affa19ab581cf680426005b0d3a10569c5e2e2eaee0d29658885e6",
+  "completed_utc": "2026-10-08T15:32:00.712987+00:00",
+  "convergence": {
+    "kernel": true,
+    "baseline_original": true,
+    "rich6d": true
+  },
+  "cache_identity": "69ccb83fbd6ba1c6b46d423c98af651bb3f7b6c168d6c9c56252f5434228b0d5",
+  "runtime": {
+    "python": "3.13.3",
+    "numpy": "2.3.5",
+    "scipy": "1.16.3"
+  },
+  "elapsed_seconds": 44.5903479999979,
+  "peak_process_rss_bytes": 526385152,
+  "estimated_kernel_bytes": 75497472,
+  "kernel_storage": "in-memory dense",
+  "maximum_kernel_read_block_bytes": 6291456,
+  "algorithm": "dense partial solve for small matrices; full-kernel file-backed operator and partial Lanczos for larger matrices"
+}

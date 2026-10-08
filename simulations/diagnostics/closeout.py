@@ -7,6 +7,7 @@ import subprocess
 import pandas as pd
 
 from simulations.diagnostics.verify import verify
+from simulations.provenance import require, file_hash
 from simulations.manuscript import ROOT, verify_preservation
 
 
@@ -16,19 +17,25 @@ def closeout():
     preservation = verify_preservation()
     compilation = json.loads((output/'paper/manuscript_compilation.json').read_text())
     pdf = ROOT/compilation['pdf']
-    assert compilation['profile']=='paper' and compilation['compiled']
-    assert hashlib.sha256(pdf.read_bytes()).hexdigest()==compilation['pdf_sha256']
-    assert hashlib.sha256((ROOT/'paper/main.tex').read_bytes()).hexdigest()==compilation['source_main_sha256']
+    require(compilation['profile']=='paper' and compilation['compiled'], 'Closeout verification failed at line 19')
+    require(hashlib.sha256(pdf.read_bytes()).hexdigest()==compilation['pdf_sha256'], 'Closeout verification failed at line 20')
+    require(hashlib.sha256((ROOT/'paper/main.tex').read_bytes()).hexdigest()==compilation['source_main_sha256'], 'Closeout verification failed at line 21')
     for name, expected in compilation['generated_source_hashes'].items():
-        assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==expected, name
+        require(hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==expected, name)
+    require(bool(compilation.get('compiler_input_hashes')), 'Missing compiler dependency hashes')
+    for name, expected in compilation['compiler_input_hashes'].items():
+        require(file_hash(ROOT/name) == expected, 'Stale PDF dependency: '+name)
     visual = json.loads((output/'paper/visual_review.json').read_text())
-    assert visual['profile']=='paper' and visual['passed']
-    assert visual['pdf_sha256']==compilation['pdf_sha256']
+    require(visual['profile']=='paper' and visual['passed'], 'Closeout verification failed at line 25')
+    require(visual['pdf_sha256']==compilation['pdf_sha256'], 'Closeout verification failed at line 26')
     info = subprocess.check_output(['pdfinfo', str(pdf)], text=True)
     pages = int(next(line.split(':')[1] for line in info.splitlines() if line.startswith('Pages:')))
-    assert visual['pages_reviewed']==pages
+    require(visual['pages_reviewed']==pages, 'Closeout verification failed at line 29')
     tests = json.loads((ROOT/'simulations/outputs/audit/test_verification.json').read_text())
-    assert tests['passed']
+    for name, expected in tests.get('source_hashes', {}).items():
+        require(file_hash(ROOT/name) == expected, 'Stale test evidence: '+name)
+    require(bool(tests.get('source_hashes')) and tests.get('return_code') == 0, 'Missing executed test evidence')
+    require(tests['passed'], 'Closeout verification failed at line 31')
     cleanup = json.loads((ROOT/'simulations/outputs/audit/cleanup_inventory.json').read_text())
     main = pd.read_csv(output/'data/baseline/main_results.csv')
     rates = pd.read_csv(output/'data/baseline/rates.csv')

@@ -1,0 +1,26 @@
+\begin{table}[p]
+\centering
+\caption{Squared coordinate derivatives of the rich-map optimal policy. The analytic expectation covers the full uniform cube; Monte Carlo uses 131,072 independent points.}
+\label{tab:confirmation_gradient}
+\begingroup\small
+\setlength{\tabcolsep}{4pt}
+\ifdefined\simtablebox\else\newsavebox{\simtablebox}\fi
+\sbox{\simtablebox}{%
+\begin{tabular}{rrrr}
+\toprule
+Coordinate & Analytic mean square & Uniform-cube MC mean & MCSE \\
+\midrule
+1 & 316 & 317 & 1.148 \\
+2 & 14.82 & 14.81 & 0.04571 \\
+3 & 14.82 & 14.78 & 0.0457 \\
+4 & 14.82 & 14.85 & 0.0458 \\
+5 & 14.82 & 14.82 & 0.04578 \\
+6 & 14.82 & 14.85 & 0.04577 \\
+\bottomrule
+\end{tabular}
+}
+\ifdim\wd\simtablebox>\linewidth
+\resizebox{\linewidth}{!}{\usebox{\simtablebox}}
+\else\usebox{\simtablebox}\fi
+\endgroup
+\end{table}

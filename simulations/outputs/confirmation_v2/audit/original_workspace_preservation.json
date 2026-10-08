@@ -1,0 +1,12 @@
+{
+  "workspace": "/Users/enrico/Desktop/PHD/portfolio/paper_codice",
+  "started_utc": "2026-10-08T19:29:56.025684+00:00",
+  "groups": {
+    "theory": 11,
+    "empirical": 112,
+    "historical": 3891
+  },
+  "mismatches": [],
+  "passed": true,
+  "completed_utc": "2026-10-08T19:37:14.228551+00:00"
+}

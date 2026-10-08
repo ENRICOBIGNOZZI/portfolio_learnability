@@ -1,0 +1,27 @@
+{
+  "recorded_utc": "2026-10-08T14:57:19.375096+00:00",
+  "reason": "Old spectral caches bound only the diagnostic file, not scientific dependencies/runtime/case identity. Preserve and recompute rather than migrate.",
+  "preserved_directory": "simulations/outputs/confirmation_v2/audit/spectrum_before_dependency_binding",
+  "preserved_files": {
+    "spectrum_resolution.json": "8b0d98f482712442237f73d0abb5231762fe77809e8d5219644dd2527c2125b9",
+    "dense_crosscheck.json": "fb7db5155ba4e652303f227d0b03cc38b2e4d216c67e36550cbf4eb9044124ad",
+    "groups2048_seed2.json": "8983e1ecda8b26eaec81739268308ef7c0a36988cb21128798263039fa64d4a3",
+    "groups1024_seed0.json": "102175a1837c2745c27073b013cf8a0101d96fb1fe49152d361965336f6f8b51",
+    "eigenvalues.csv": "1f87bcd58f70ccde660962af906c132f4d99cdf0cebbce69aad8e8f93ecaaed2",
+    "groups1024_seed1.json": "344f3d0ae7ceede040281eed96bc29ca210c5e1791e2212968ddb0817b59013f",
+    "groups2048_seed0.npz": "5b761e7272ebb0d5444dc7caad238070a9b0e936a7a47e63565905d9a511b789",
+    "groups1024_seed2.json": "efa2d2cd528daf8245db0563f166badc7ba77bd4495b6f95a1fe6098c9243c8c",
+    "groups2048_seed0.json": "7823ee6ba810f1184af955e476c928f8bde16fde42e767ee0f869923e1cea248",
+    "groups2048_seed1.npz": "a8d725052af43e6427182c9b0a115c4b5a78230bfb61833c152d0e22ab985915",
+    "groups2048_seed2.npz": "2366dbd0003fcac123810d606a5041b1b34be8cdef7948a6e7916a4ef0011872",
+    "groups2048_seed1.json": "16d28d6dffd52b28b1a94242ff9a3e95becbc84d50bd3f2106bc07acbaaae3d1",
+    "descriptive_fits.csv": "62fe9aec27e6a9c5c3f6545258db7116f6096bb98e0550224933dfad820237da",
+    "groups1024_seed0.npz": "a9bb26ce662d9fac9179d28e6378c63f3c105ed0212a278e54419c53bdb345cb",
+    "groups1024_seed1.npz": "019baa10385a34570a62b773d7581c89226715962ef49d8b182b57048613ca60",
+    "groups1024_seed2.npz": "b715289df973e6407a535481db023dfa73b2ba8f81b788f2ea57e40fc34f5d61"
+  },
+  "recomputed_directory": "simulations/outputs/confirmation_v2/audit/spectrum",
+  "migration_performed": false,
+  "completed_cases_preserved": 6,
+  "protocol_changed": false
+}

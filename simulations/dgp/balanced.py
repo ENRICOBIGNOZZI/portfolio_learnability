@@ -25,8 +25,14 @@ class DGPParameters:
     c_beta: float = 0.04**2
     sigma_eps: float = 0.08
     mu_F: tuple[float, ...] = (0.10, 0.06, 0.03)
+    loading_map: str = 'baseline_original'
+    eta: float = 0.
 
     def __post_init__(self):
+        if self.loading_map not in ('baseline_original', 'rich6d'):
+            raise ValueError('Unknown loading map.')
+        if not np.isfinite(self.eta) or (self.loading_map == 'baseline_original' and self.eta != 0):
+            raise ValueError('Baseline requires eta=0; eta must be finite.')
         if isinstance(self.N, (bool, np.bool_)) or not isinstance(self.N, (int, np.integer)) or self.N < 3 or self.N % 3:
             raise ValueError('N must be a positive integer divisible by three.')
         if self.D != 6 or self.K_F != 3 or self.nu != 1.5:
@@ -121,6 +127,8 @@ def beta(z: np.ndarray, parameters: DGPParameters) -> np.ndarray:
     if z.ndim < 1 or z.shape[-1] != 6 or not np.isfinite(z).all() or np.any(np.abs(z) >= 1):
         raise ValueError('Characteristics must lie in the open six-dimensional cube.')
     angle = np.pi * (z[..., 0] + 1)
+    if parameters.eta != 0:
+        angle = angle + parameters.eta*np.sin(np.pi*(z[..., 1:]-z[..., :1])).sum(axis=-1)
     return np.sqrt(parameters.c_beta) * np.stack((
         np.sqrt(2 / 3) * np.cos(angle), np.sqrt(2 / 3) * np.sin(angle),
         np.full_like(angle, 1 / np.sqrt(3))), axis=-1)
@@ -129,6 +137,17 @@ def beta(z: np.ndarray, parameters: DGPParameters) -> np.ndarray:
 def w_star(z: np.ndarray, parameters: DGPParameters) -> np.ndarray:
     """Scalar characteristic policy W*, not the stock weights W*/N."""
     return beta(z, parameters) @ parameters.policy_coefficients
+
+
+def w_star_gradient(z: np.ndarray, parameters: DGPParameters) -> np.ndarray:
+    """Analytic coordinate derivatives of the scalar policy on the open cube."""
+    z = np.asarray(z, dtype=np.float64)
+    b = beta(z, parameters)  # canonical validation and phase
+    derivative = np.empty_like(z)
+    derivative[..., 1:] = np.pi*parameters.eta*np.cos(np.pi*(z[..., 1:]-z[..., :1]))
+    derivative[..., 0] = np.pi-derivative[..., 1:].sum(axis=-1)
+    a = parameters.policy_coefficients
+    return derivative*(-b[..., 1]*a[0]+b[..., 0]*a[1])[..., None]
 
 
 def kernel_gram(z: np.ndarray, parameters: DGPParameters) -> np.ndarray:

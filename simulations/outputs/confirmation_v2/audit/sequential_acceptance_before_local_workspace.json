@@ -1,0 +1,7 @@
+{
+  "schema": "sequential-acceptance/2.0",
+  "status": "waiting_for_verified_numerical_queue",
+  "watched_pid": 43718,
+  "watched_process": "Thu Oct  8 16:04:00 2026     /Library/Frameworks/Python.framework/Versions/3.13/Resources/Python.app/Contents/MacOS/Python -u tmp/confirmation_low_memory_queue.py",
+  "phases": []
+}

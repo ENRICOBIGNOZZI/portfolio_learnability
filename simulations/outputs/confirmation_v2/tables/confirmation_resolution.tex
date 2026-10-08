@@ -1,0 +1,26 @@
+\begin{table}[p]
+\centering
+\caption{Numerical resolution at T=1440. The rank bound is absolute paired mean difference plus 1.96 MCSE. Both ratios must be at most 0.05, and the independent quadrature check must also pass. False flags retain unresolved results.}
+\label{tab:confirmation_resolution}
+\begingroup\small
+\setlength{\tabcolsep}{4pt}
+\ifdefined\simtablebox\else\newsavebox{\simtablebox}\fi
+\sbox{\simtablebox}{%
+\begin{tabular}{llrrrr}
+\toprule
+Map & Method & Floor / risk & Rank bound / risk & Rank pass & Quadrature pass \\
+\midrule
+Baseline & Holdout & 0.001589 & 0.01825 & True & True \\
+Baseline & Rolling & 0.002294 & 0.01149 & True & True \\
+Baseline & Theory a=1 & 0.00332 & 0.01195 & True & True \\
+Rich6D & Holdout & 0.008085 & 0.02133 & True & True \\
+Rich6D & Rolling & 0.01196 & 0.01091 & True & True \\
+Rich6D & Theory a=1 & 0.01648 & 0.01209 & True & True \\
+\bottomrule
+\end{tabular}
+}
+\ifdim\wd\simtablebox>\linewidth
+\resizebox{\linewidth}{!}{\usebox{\simtablebox}}
+\else\usebox{\simtablebox}\fi
+\endgroup
+\end{table}

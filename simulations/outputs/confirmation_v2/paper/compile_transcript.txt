@@ -1,0 +1,326 @@
+Rc files read:
+  NONE
+Latexmk: This is Latexmk, John Collins, 7 Apr. 2024. Version 4.85.
+Latexmk: applying rule 'pdflatex'...
+Rule 'pdflatex':  Reasons for rerun
+Changed files or newly in use/created:
+  ../figures/baseline_original_four_panel.pdf
+  ../figures/baseline_original_numerical_resolution.pdf
+  ../figures/baseline_original_theory_paths.pdf
+  ../figures/rich6d_four_panel.pdf
+  ../figures/rich6d_numerical_resolution.pdf
+  ../figures/rich6d_theory_paths.pdf
+  simulation_appendix.tex
+  simulation_section.tex
+Category 'changed_user':
+  ../figures/baseline_original_four_panel.pdf
+  ../figures/baseline_original_numerical_resolution.pdf
+  ../figures/baseline_original_theory_paths.pdf
+  ../figures/rich6d_four_panel.pdf
+  ../figures/rich6d_numerical_resolution.pdf
+  ../figures/rich6d_theory_paths.pdf
+  simulation_appendix.tex
+  simulation_section.tex
+
+------------
+Run number 1 of rule 'pdflatex'
+------------
+------------
+Running 'pdflatex  -interaction=nonstopmode -halt-on-error -recorder  "simulation_preview.tex"'
+------------
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./simulation_preview.tex
+LaTeX2e <2024-06-01> patch level 2
+L3 programming layer <2024-08-30>
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2024/02/08 v1.4n Standard LaTeX document class
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/size11.clo))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/fontenc.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/lm/lmodern.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-def/pdftex.def)))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/booktabs/booktabs.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tools/longtable.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tools/array.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/geometry/geometry.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/iftex/ifvtex.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/iftex/iftex.sty)))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/infwarerr/infwarerr.sty)))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hycolor/hycolor.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/refcount/refcount.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/gettitlestring/gettitlestring.s
+ty (/usr/local/texlive/2024/texmf-dist/tex/latex/kvoptions/kvoptions.sty)))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/etoolbox/etoolbox.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/stringenc/stringenc.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/intcalc/intcalc.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/puenc.def)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/url/url.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/bitset/bitset.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/atbegshi-ltx.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/atveryend-ltx.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+
+(/usr/local/texlive/2024/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+))) (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/t1lmr.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def)
+(./simulation_preview.aux)
+(/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+(./simulation_preview.out) (./simulation_preview.out) (./simulation_section.tex
+ (../paper/simulation_numbers.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/lm/ot1lmr.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/lm/omllmm.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/lm/omslmsy.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/lm/omxlmex.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd)
+[1{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/l
+ocal/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/texlive/2
+024/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2024/texmf-
+dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2024/texmf-dist/fonts/enc
+/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/
+lm-mathex.enc}]
+[2] (../tables/confirmation_main.tex) (../tables/confirmation_selection.tex)
+(../tables/confirmation_theory.tex) (../tables/confirmation_resolution.tex))
+(./simulation_appendix.tex
+[3]
+[4]
+[5 <../figures/baseline_original_four_panel.pdf>]
+[6 <../figures/rich6d_four_panel.pdf>]
+[7 <../figures/baseline_original_risk_complexity.pdf>]
+[8 <../figures/rich6d_risk_complexity.pdf>]
+[9 <../figures/baseline_original_theory_paths.pdf>]
+[10 <../figures/rich6d_theory_paths.pdf>]
+[11 <../figures/rich6d_minus_baseline.pdf>]
+(../tables/confirmation_gradient.tex) (../tables/confirmation_rates.tex)
+(../tables/confirmation_optimism.tex) (../tables/confirmation_unresolved_1.tex)
+(../tables/confirmation_curve_maximum_baseline_original.tex)
+(../tables/confirmation_curve_maximum_rich6d.tex)
+Underfull \hbox (badness 1005) in paragraph at lines 38--38
+[]\T1/lmr/m/n/10.95 Figure 9: []Baseline: sep-a-rate penalty lo-ca-tion sum-mar
+ies, end-point fre-quen-cies, and me-
+
+Underfull \hbox (badness 1259) in paragraph at lines 63--63
+[]\T1/lmr/m/n/10.95 Figure 14: []Rich6D: sep-a-rate penalty lo-ca-tion sum-mari
+es, end-point fre-quen-cies, and me-
+)
+[12]
+[13]
+[14]
+[15 <../figures/baseline_original_decomposition.pdf>]
+[16 <../figures/baseline_original_selection_distributions.pdf> <../figures/base
+line_original_oos_types.pdf>]
+[17 <../figures/baseline_original_rolling_minus_holdout.pdf>]
+[18 <../figures/baseline_original_numerical_resolution.pdf>]
+[19 <../figures/rich6d_decomposition.pdf>]
+[20 <../figures/rich6d_selection_distributions.pdf> <../figures/rich6d_oos_type
+s.pdf>]
+[21 <../figures/rich6d_rolling_minus_holdout.pdf>]
+[22 <../figures/rich6d_numerical_resolution.pdf> <../figures/spectrum_resolutio
+n.pdf>]
+[23 <../figures/kernel_sensitivity.pdf> <../../paper/figures/appendix_N_robustn
+ess.pdf>]
+[24 <../../paper/figures/appendix_persistence.pdf>] (./simulation_preview.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `simulation_preview.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+ )
+(see the transcript file for additional information)</usr/local/texlive/2024/te
+xmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/2024/texmf-dist/f
+onts/type1/public/lm/lmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1
+/public/lm/lmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm
+/lmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmr10.pfb>
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/
+texlive/2024/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/20
+24/texmf-dist/fonts/type1/public/lm/lmsy8.pfb>
+Output written on simulation_preview.pdf (24 pages, 905354 bytes).
+Transcript written on simulation_preview.log.
+Latexmk: Getting log file 'simulation_preview.log'
+Latexmk: Examining 'simulation_preview.fls'
+Latexmk: Examining 'simulation_preview.log'
+Latexmk: References changed.
+Latexmk: References changed.
+Latexmk: Log file says output to 'simulation_preview.pdf'
+Latexmk: applying rule 'pdflatex'...
+Rule 'pdflatex':  Reasons for rerun
+Changed files or newly in use/created:
+  simulation_preview.aux
+  simulation_preview.out
+
+------------
+Run number 2 of rule 'pdflatex'
+------------
+------------
+Running 'pdflatex  -interaction=nonstopmode -halt-on-error -recorder  "simulation_preview.tex"'
+------------
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./simulation_preview.tex
+LaTeX2e <2024-06-01> patch level 2
+L3 programming layer <2024-08-30>
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2024/02/08 v1.4n Standard LaTeX document class
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/size11.clo))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/fontenc.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/lm/lmodern.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-def/pdftex.def)))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/booktabs/booktabs.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tools/longtable.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tools/array.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/geometry/geometry.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/iftex/ifvtex.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/iftex/iftex.sty)))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/infwarerr/infwarerr.sty)))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hycolor/hycolor.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/refcount/refcount.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/gettitlestring/gettitlestring.s
+ty (/usr/local/texlive/2024/texmf-dist/tex/latex/kvoptions/kvoptions.sty)))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/etoolbox/etoolbox.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/stringenc/stringenc.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/intcalc/intcalc.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/puenc.def)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/url/url.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/bitset/bitset.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/atbegshi-ltx.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/atveryend-ltx.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+
+(/usr/local/texlive/2024/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+))) (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/t1lmr.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def)
+(./simulation_preview.aux)
+(/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+(./simulation_preview.out) (./simulation_preview.out) (./simulation_section.tex
+ (../paper/simulation_numbers.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/lm/ot1lmr.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/lm/omllmm.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/lm/omslmsy.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/lm/omxlmex.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd)
+[1{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/l
+ocal/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/texlive/2
+024/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2024/texmf-
+dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2024/texmf-dist/fonts/enc
+/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/
+lm-mathex.enc}]
+[2] (../tables/confirmation_main.tex) (../tables/confirmation_selection.tex)
+(../tables/confirmation_theory.tex) (../tables/confirmation_resolution.tex))
+(./simulation_appendix.tex
+[3]
+[4]
+[5 <../figures/baseline_original_four_panel.pdf>]
+[6 <../figures/rich6d_four_panel.pdf>]
+[7 <../figures/baseline_original_risk_complexity.pdf>]
+[8 <../figures/rich6d_risk_complexity.pdf>]
+[9 <../figures/baseline_original_theory_paths.pdf>]
+[10 <../figures/rich6d_theory_paths.pdf>]
+[11 <../figures/rich6d_minus_baseline.pdf>]
+(../tables/confirmation_gradient.tex) (../tables/confirmation_rates.tex)
+(../tables/confirmation_optimism.tex) (../tables/confirmation_unresolved_1.tex)
+(../tables/confirmation_curve_maximum_baseline_original.tex)
+(../tables/confirmation_curve_maximum_rich6d.tex)
+Underfull \hbox (badness 1005) in paragraph at lines 38--38
+[]\T1/lmr/m/n/10.95 Figure 9: []Baseline: sep-a-rate penalty lo-ca-tion sum-mar
+ies, end-point fre-quen-cies, and me-
+
+Underfull \hbox (badness 1259) in paragraph at lines 63--63
+[]\T1/lmr/m/n/10.95 Figure 14: []Rich6D: sep-a-rate penalty lo-ca-tion sum-mari
+es, end-point fre-quen-cies, and me-
+)
+[12]
+[13]
+[14]
+[15 <../figures/baseline_original_decomposition.pdf>]
+[16 <../figures/baseline_original_selection_distributions.pdf> <../figures/base
+line_original_oos_types.pdf>]
+[17 <../figures/baseline_original_rolling_minus_holdout.pdf>]
+[18 <../figures/baseline_original_numerical_resolution.pdf>]
+[19 <../figures/rich6d_decomposition.pdf>]
+[20 <../figures/rich6d_selection_distributions.pdf> <../figures/rich6d_oos_type
+s.pdf>]
+[21 <../figures/rich6d_rolling_minus_holdout.pdf>]
+[22 <../figures/rich6d_numerical_resolution.pdf> <../figures/spectrum_resolutio
+n.pdf>]
+[23 <../figures/kernel_sensitivity.pdf> <../../paper/figures/appendix_N_robustn
+ess.pdf>]
+[24 <../../paper/figures/appendix_persistence.pdf>] (./simulation_preview.aux) 
+)
+(see the transcript file for additional information)</usr/local/texlive/2024/te
+xmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/2024/texmf-dist/f
+onts/type1/public/lm/lmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1
+/public/lm/lmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm
+/lmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmr10.pfb>
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/
+texlive/2024/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/20
+24/texmf-dist/fonts/type1/public/lm/lmsy8.pfb>
+Output written on simulation_preview.pdf (24 pages, 905352 bytes).
+Transcript written on simulation_preview.log.
+Latexmk: Getting log file 'simulation_preview.log'
+Latexmk: Examining 'simulation_preview.fls'
+Latexmk: Examining 'simulation_preview.log'
+Latexmk: Log file says output to 'simulation_preview.pdf'
+Latexmk: All targets (simulation_preview.pdf) are up-to-date
+

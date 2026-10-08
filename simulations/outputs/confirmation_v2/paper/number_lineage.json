@@ -1,0 +1,5713 @@
+{
+  "schema": "publication-cell-lineage/2.0",
+  "protocol_hash": "719034dd1fd3a9a1c716c7a5fcd6337b006bce60dbb0725997a82e2cea72639a",
+  "cells": [
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 0,
+      "target_column": "R",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "holdout25"
+      },
+      "column": "replications"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 0,
+      "target_column": "Loss",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "holdout25"
+      },
+      "column": "population_loss_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 0,
+      "target_column": "SR",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "holdout25"
+      },
+      "column": "population_sharpe_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 0,
+      "target_column": "Regret",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "holdout25"
+      },
+      "column": "regret_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 0,
+      "target_column": "OOS loss",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "holdout25"
+      },
+      "column": "oos_loss_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 0,
+      "target_column": "Future loss",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "holdout25"
+      },
+      "column": "forward_loss_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 1,
+      "target_column": "R",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "rolling3"
+      },
+      "column": "replications"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 1,
+      "target_column": "Loss",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "rolling3"
+      },
+      "column": "population_loss_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 1,
+      "target_column": "SR",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "rolling3"
+      },
+      "column": "population_sharpe_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 1,
+      "target_column": "Regret",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "rolling3"
+      },
+      "column": "regret_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 1,
+      "target_column": "OOS loss",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "rolling3"
+      },
+      "column": "oos_loss_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 1,
+      "target_column": "Future loss",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "rolling3"
+      },
+      "column": "forward_loss_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 2,
+      "target_column": "R",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "theory_1"
+      },
+      "column": "replications"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 2,
+      "target_column": "Loss",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "theory_1"
+      },
+      "column": "population_loss_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 2,
+      "target_column": "SR",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "theory_1"
+      },
+      "column": "population_sharpe_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 2,
+      "target_column": "Regret",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "theory_1"
+      },
+      "column": "regret_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 2,
+      "target_column": "OOS loss",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "theory_1"
+      },
+      "column": "oos_loss_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 2,
+      "target_column": "Future loss",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "theory_1"
+      },
+      "column": "forward_loss_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 3,
+      "target_column": "R",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "ensemble_plugin_loss_oracle"
+      },
+      "column": "replications"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 3,
+      "target_column": "Loss",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "ensemble_plugin_loss_oracle"
+      },
+      "column": "population_loss_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 3,
+      "target_column": "SR",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "ensemble_plugin_loss_oracle"
+      },
+      "column": "population_sharpe_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 3,
+      "target_column": "Regret",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "ensemble_plugin_loss_oracle"
+      },
+      "column": "regret_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 3,
+      "target_column": "OOS loss",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "ensemble_plugin_loss_oracle"
+      },
+      "column": "oos_loss_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 3,
+      "target_column": "Future loss",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "ensemble_plugin_loss_oracle"
+      },
+      "column": "forward_loss_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 4,
+      "target_column": "R",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "crossfit_loss_oracle"
+      },
+      "column": "replications"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 4,
+      "target_column": "Loss",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "crossfit_loss_oracle"
+      },
+      "column": "population_loss_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 4,
+      "target_column": "SR",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "crossfit_loss_oracle"
+      },
+      "column": "population_sharpe_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 4,
+      "target_column": "Regret",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "crossfit_loss_oracle"
+      },
+      "column": "regret_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 4,
+      "target_column": "OOS loss",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "crossfit_loss_oracle"
+      },
+      "column": "oos_loss_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 4,
+      "target_column": "Future loss",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "crossfit_loss_oracle"
+      },
+      "column": "forward_loss_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 5,
+      "target_column": "R",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "zero"
+      },
+      "column": "replications"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 5,
+      "target_column": "Loss",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "zero"
+      },
+      "column": "population_loss_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 5,
+      "target_column": "SR",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "zero"
+      },
+      "column": "population_sharpe_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 5,
+      "target_column": "Regret",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "zero"
+      },
+      "column": "regret_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 5,
+      "target_column": "OOS loss",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "zero"
+      },
+      "column": "oos_loss_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 5,
+      "target_column": "Future loss",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "zero"
+      },
+      "column": "forward_loss_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 6,
+      "target_column": "R",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "linear_validation"
+      },
+      "column": "replications"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 6,
+      "target_column": "Loss",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "linear_validation"
+      },
+      "column": "population_loss_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 6,
+      "target_column": "SR",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "linear_validation"
+      },
+      "column": "population_sharpe_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 6,
+      "target_column": "Regret",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "linear_validation"
+      },
+      "column": "regret_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 6,
+      "target_column": "OOS loss",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "linear_validation"
+      },
+      "column": "oos_loss_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 6,
+      "target_column": "Future loss",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "linear_validation"
+      },
+      "column": "forward_loss_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 7,
+      "target_column": "R",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "equal_weight"
+      },
+      "column": "replications"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 7,
+      "target_column": "Loss",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "equal_weight"
+      },
+      "column": "population_loss_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 7,
+      "target_column": "SR",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "equal_weight"
+      },
+      "column": "population_sharpe_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 7,
+      "target_column": "Regret",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "equal_weight"
+      },
+      "column": "regret_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 7,
+      "target_column": "OOS loss",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "equal_weight"
+      },
+      "column": "oos_loss_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 7,
+      "target_column": "Future loss",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "equal_weight"
+      },
+      "column": "forward_loss_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 8,
+      "target_column": "R",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "holdout25"
+      },
+      "column": "replications"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 8,
+      "target_column": "Loss",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "holdout25"
+      },
+      "column": "population_loss_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 8,
+      "target_column": "SR",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "holdout25"
+      },
+      "column": "population_sharpe_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 8,
+      "target_column": "Regret",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "holdout25"
+      },
+      "column": "regret_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 8,
+      "target_column": "OOS loss",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "holdout25"
+      },
+      "column": "oos_loss_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 8,
+      "target_column": "Future loss",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "holdout25"
+      },
+      "column": "forward_loss_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 9,
+      "target_column": "R",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "rolling3"
+      },
+      "column": "replications"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 9,
+      "target_column": "Loss",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "rolling3"
+      },
+      "column": "population_loss_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 9,
+      "target_column": "SR",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "rolling3"
+      },
+      "column": "population_sharpe_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 9,
+      "target_column": "Regret",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "rolling3"
+      },
+      "column": "regret_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 9,
+      "target_column": "OOS loss",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "rolling3"
+      },
+      "column": "oos_loss_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 9,
+      "target_column": "Future loss",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "rolling3"
+      },
+      "column": "forward_loss_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 10,
+      "target_column": "R",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "theory_1"
+      },
+      "column": "replications"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 10,
+      "target_column": "Loss",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "theory_1"
+      },
+      "column": "population_loss_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 10,
+      "target_column": "SR",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "theory_1"
+      },
+      "column": "population_sharpe_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 10,
+      "target_column": "Regret",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "theory_1"
+      },
+      "column": "regret_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 10,
+      "target_column": "OOS loss",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "theory_1"
+      },
+      "column": "oos_loss_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 10,
+      "target_column": "Future loss",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "theory_1"
+      },
+      "column": "forward_loss_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 11,
+      "target_column": "R",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "ensemble_plugin_loss_oracle"
+      },
+      "column": "replications"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 11,
+      "target_column": "Loss",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "ensemble_plugin_loss_oracle"
+      },
+      "column": "population_loss_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 11,
+      "target_column": "SR",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "ensemble_plugin_loss_oracle"
+      },
+      "column": "population_sharpe_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 11,
+      "target_column": "Regret",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "ensemble_plugin_loss_oracle"
+      },
+      "column": "regret_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 11,
+      "target_column": "OOS loss",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "ensemble_plugin_loss_oracle"
+      },
+      "column": "oos_loss_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 11,
+      "target_column": "Future loss",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "ensemble_plugin_loss_oracle"
+      },
+      "column": "forward_loss_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 12,
+      "target_column": "R",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "crossfit_loss_oracle"
+      },
+      "column": "replications"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 12,
+      "target_column": "Loss",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "crossfit_loss_oracle"
+      },
+      "column": "population_loss_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 12,
+      "target_column": "SR",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "crossfit_loss_oracle"
+      },
+      "column": "population_sharpe_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 12,
+      "target_column": "Regret",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "crossfit_loss_oracle"
+      },
+      "column": "regret_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 12,
+      "target_column": "OOS loss",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "crossfit_loss_oracle"
+      },
+      "column": "oos_loss_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 12,
+      "target_column": "Future loss",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "crossfit_loss_oracle"
+      },
+      "column": "forward_loss_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 13,
+      "target_column": "R",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "zero"
+      },
+      "column": "replications"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 13,
+      "target_column": "Loss",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "zero"
+      },
+      "column": "population_loss_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 13,
+      "target_column": "SR",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "zero"
+      },
+      "column": "population_sharpe_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 13,
+      "target_column": "Regret",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "zero"
+      },
+      "column": "regret_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 13,
+      "target_column": "OOS loss",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "zero"
+      },
+      "column": "oos_loss_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 13,
+      "target_column": "Future loss",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "zero"
+      },
+      "column": "forward_loss_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 14,
+      "target_column": "R",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "linear_validation"
+      },
+      "column": "replications"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 14,
+      "target_column": "Loss",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "linear_validation"
+      },
+      "column": "population_loss_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 14,
+      "target_column": "SR",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "linear_validation"
+      },
+      "column": "population_sharpe_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 14,
+      "target_column": "Regret",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "linear_validation"
+      },
+      "column": "regret_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 14,
+      "target_column": "OOS loss",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "linear_validation"
+      },
+      "column": "oos_loss_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 14,
+      "target_column": "Future loss",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "linear_validation"
+      },
+      "column": "forward_loss_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 15,
+      "target_column": "R",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "equal_weight"
+      },
+      "column": "replications"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 15,
+      "target_column": "Loss",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "equal_weight"
+      },
+      "column": "population_loss_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 15,
+      "target_column": "SR",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "equal_weight"
+      },
+      "column": "population_sharpe_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 15,
+      "target_column": "Regret",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "equal_weight"
+      },
+      "column": "regret_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 15,
+      "target_column": "OOS loss",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "equal_weight"
+      },
+      "column": "oos_loss_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_main.csv",
+      "row": 15,
+      "target_column": "Future loss",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "equal_weight"
+      },
+      "column": "forward_loss_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_selection.csv",
+      "row": 0,
+      "target_column": "Mean lambda",
+      "file": "data/baseline_original/selection_diagnostics.csv",
+      "filters": {
+        "T": 1440,
+        "selector": "holdout25"
+      },
+      "column": "lambda_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_selection.csv",
+      "row": 0,
+      "target_column": "Median",
+      "file": "data/baseline_original/selection_diagnostics.csv",
+      "filters": {
+        "T": 1440,
+        "selector": "holdout25"
+      },
+      "column": "lambda_median"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_selection.csv",
+      "row": 0,
+      "target_column": "Geometric mean",
+      "file": "data/baseline_original/selection_diagnostics.csv",
+      "filters": {
+        "T": 1440,
+        "selector": "holdout25"
+      },
+      "column": "lambda_geometric_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_selection.csv",
+      "row": 0,
+      "target_column": "Lower freq.",
+      "file": "data/baseline_original/selection_diagnostics.csv",
+      "filters": {
+        "T": 1440,
+        "selector": "holdout25"
+      },
+      "column": "lower_frequency"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_selection.csv",
+      "row": 0,
+      "target_column": "Upper freq.",
+      "file": "data/baseline_original/selection_diagnostics.csv",
+      "filters": {
+        "T": 1440,
+        "selector": "holdout25"
+      },
+      "column": "upper_frequency"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_selection.csv",
+      "row": 1,
+      "target_column": "Mean lambda",
+      "file": "data/baseline_original/selection_diagnostics.csv",
+      "filters": {
+        "T": 1440,
+        "selector": "rolling3"
+      },
+      "column": "lambda_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_selection.csv",
+      "row": 1,
+      "target_column": "Median",
+      "file": "data/baseline_original/selection_diagnostics.csv",
+      "filters": {
+        "T": 1440,
+        "selector": "rolling3"
+      },
+      "column": "lambda_median"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_selection.csv",
+      "row": 1,
+      "target_column": "Geometric mean",
+      "file": "data/baseline_original/selection_diagnostics.csv",
+      "filters": {
+        "T": 1440,
+        "selector": "rolling3"
+      },
+      "column": "lambda_geometric_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_selection.csv",
+      "row": 1,
+      "target_column": "Lower freq.",
+      "file": "data/baseline_original/selection_diagnostics.csv",
+      "filters": {
+        "T": 1440,
+        "selector": "rolling3"
+      },
+      "column": "lower_frequency"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_selection.csv",
+      "row": 1,
+      "target_column": "Upper freq.",
+      "file": "data/baseline_original/selection_diagnostics.csv",
+      "filters": {
+        "T": 1440,
+        "selector": "rolling3"
+      },
+      "column": "upper_frequency"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_selection.csv",
+      "row": 2,
+      "target_column": "Mean lambda",
+      "file": "data/rich6d/selection_diagnostics.csv",
+      "filters": {
+        "T": 1440,
+        "selector": "holdout25"
+      },
+      "column": "lambda_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_selection.csv",
+      "row": 2,
+      "target_column": "Median",
+      "file": "data/rich6d/selection_diagnostics.csv",
+      "filters": {
+        "T": 1440,
+        "selector": "holdout25"
+      },
+      "column": "lambda_median"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_selection.csv",
+      "row": 2,
+      "target_column": "Geometric mean",
+      "file": "data/rich6d/selection_diagnostics.csv",
+      "filters": {
+        "T": 1440,
+        "selector": "holdout25"
+      },
+      "column": "lambda_geometric_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_selection.csv",
+      "row": 2,
+      "target_column": "Lower freq.",
+      "file": "data/rich6d/selection_diagnostics.csv",
+      "filters": {
+        "T": 1440,
+        "selector": "holdout25"
+      },
+      "column": "lower_frequency"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_selection.csv",
+      "row": 2,
+      "target_column": "Upper freq.",
+      "file": "data/rich6d/selection_diagnostics.csv",
+      "filters": {
+        "T": 1440,
+        "selector": "holdout25"
+      },
+      "column": "upper_frequency"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_selection.csv",
+      "row": 3,
+      "target_column": "Mean lambda",
+      "file": "data/rich6d/selection_diagnostics.csv",
+      "filters": {
+        "T": 1440,
+        "selector": "rolling3"
+      },
+      "column": "lambda_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_selection.csv",
+      "row": 3,
+      "target_column": "Median",
+      "file": "data/rich6d/selection_diagnostics.csv",
+      "filters": {
+        "T": 1440,
+        "selector": "rolling3"
+      },
+      "column": "lambda_median"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_selection.csv",
+      "row": 3,
+      "target_column": "Geometric mean",
+      "file": "data/rich6d/selection_diagnostics.csv",
+      "filters": {
+        "T": 1440,
+        "selector": "rolling3"
+      },
+      "column": "lambda_geometric_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_selection.csv",
+      "row": 3,
+      "target_column": "Lower freq.",
+      "file": "data/rich6d/selection_diagnostics.csv",
+      "filters": {
+        "T": 1440,
+        "selector": "rolling3"
+      },
+      "column": "lower_frequency"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_selection.csv",
+      "row": 3,
+      "target_column": "Upper freq.",
+      "file": "data/rich6d/selection_diagnostics.csv",
+      "filters": {
+        "T": 1440,
+        "selector": "rolling3"
+      },
+      "column": "upper_frequency"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_theory.csv",
+      "row": 0,
+      "target_column": "R",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 7290,
+        "method": "theory_0.25"
+      },
+      "column": "replications"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_theory.csv",
+      "row": 0,
+      "target_column": "lambda",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 7290,
+        "method": "theory_0.25"
+      },
+      "column": "lambda_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_theory.csv",
+      "row": 0,
+      "target_column": "Regret",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 7290,
+        "method": "theory_0.25"
+      },
+      "column": "regret_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_theory.csv",
+      "row": 0,
+      "target_column": "Scaled regret",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 7290,
+        "method": "theory_0.25"
+      },
+      "column": "scaled_regret_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_theory.csv",
+      "row": 0,
+      "target_column": "C / T",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 7290,
+        "method": "theory_0.25"
+      },
+      "column": "complexity_over_T_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_theory.csv",
+      "row": 1,
+      "target_column": "R",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 7290,
+        "method": "theory_1"
+      },
+      "column": "replications"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_theory.csv",
+      "row": 1,
+      "target_column": "lambda",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 7290,
+        "method": "theory_1"
+      },
+      "column": "lambda_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_theory.csv",
+      "row": 1,
+      "target_column": "Regret",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 7290,
+        "method": "theory_1"
+      },
+      "column": "regret_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_theory.csv",
+      "row": 1,
+      "target_column": "Scaled regret",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 7290,
+        "method": "theory_1"
+      },
+      "column": "scaled_regret_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_theory.csv",
+      "row": 1,
+      "target_column": "C / T",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 7290,
+        "method": "theory_1"
+      },
+      "column": "complexity_over_T_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_theory.csv",
+      "row": 2,
+      "target_column": "R",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 7290,
+        "method": "theory_4"
+      },
+      "column": "replications"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_theory.csv",
+      "row": 2,
+      "target_column": "lambda",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 7290,
+        "method": "theory_4"
+      },
+      "column": "lambda_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_theory.csv",
+      "row": 2,
+      "target_column": "Regret",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 7290,
+        "method": "theory_4"
+      },
+      "column": "regret_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_theory.csv",
+      "row": 2,
+      "target_column": "Scaled regret",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 7290,
+        "method": "theory_4"
+      },
+      "column": "scaled_regret_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_theory.csv",
+      "row": 2,
+      "target_column": "C / T",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 7290,
+        "method": "theory_4"
+      },
+      "column": "complexity_over_T_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_theory.csv",
+      "row": 3,
+      "target_column": "R",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 7290,
+        "method": "theory_0.25"
+      },
+      "column": "replications"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_theory.csv",
+      "row": 3,
+      "target_column": "lambda",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 7290,
+        "method": "theory_0.25"
+      },
+      "column": "lambda_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_theory.csv",
+      "row": 3,
+      "target_column": "Regret",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 7290,
+        "method": "theory_0.25"
+      },
+      "column": "regret_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_theory.csv",
+      "row": 3,
+      "target_column": "Scaled regret",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 7290,
+        "method": "theory_0.25"
+      },
+      "column": "scaled_regret_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_theory.csv",
+      "row": 3,
+      "target_column": "C / T",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 7290,
+        "method": "theory_0.25"
+      },
+      "column": "complexity_over_T_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_theory.csv",
+      "row": 4,
+      "target_column": "R",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 7290,
+        "method": "theory_1"
+      },
+      "column": "replications"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_theory.csv",
+      "row": 4,
+      "target_column": "lambda",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 7290,
+        "method": "theory_1"
+      },
+      "column": "lambda_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_theory.csv",
+      "row": 4,
+      "target_column": "Regret",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 7290,
+        "method": "theory_1"
+      },
+      "column": "regret_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_theory.csv",
+      "row": 4,
+      "target_column": "Scaled regret",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 7290,
+        "method": "theory_1"
+      },
+      "column": "scaled_regret_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_theory.csv",
+      "row": 4,
+      "target_column": "C / T",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 7290,
+        "method": "theory_1"
+      },
+      "column": "complexity_over_T_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_theory.csv",
+      "row": 5,
+      "target_column": "R",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 7290,
+        "method": "theory_4"
+      },
+      "column": "replications"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_theory.csv",
+      "row": 5,
+      "target_column": "lambda",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 7290,
+        "method": "theory_4"
+      },
+      "column": "lambda_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_theory.csv",
+      "row": 5,
+      "target_column": "Regret",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 7290,
+        "method": "theory_4"
+      },
+      "column": "regret_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_theory.csv",
+      "row": 5,
+      "target_column": "Scaled regret",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 7290,
+        "method": "theory_4"
+      },
+      "column": "scaled_regret_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_theory.csv",
+      "row": 5,
+      "target_column": "C / T",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 7290,
+        "method": "theory_4"
+      },
+      "column": "complexity_over_T_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_resolution.csv",
+      "row": 0,
+      "target_column": "Floor / risk",
+      "file": "audit/baseline_original_rank_policy_resolution.csv",
+      "filters": {
+        "T": 1440,
+        "method": "holdout25"
+      },
+      "column": "floor_fraction"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_resolution.csv",
+      "row": 0,
+      "target_column": "Rank bound / risk",
+      "file": "audit/baseline_original_rank_policy_resolution.csv",
+      "filters": {
+        "T": 1440,
+        "method": "holdout25"
+      },
+      "column": "difference_confidence_fraction"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_resolution.csv",
+      "row": 0,
+      "target_column": "Rank pass",
+      "file": "audit/baseline_original_rank_policy_resolution.csv",
+      "filters": {
+        "T": 1440,
+        "method": "holdout25"
+      },
+      "column": "certified"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_resolution.csv",
+      "row": 0,
+      "target_column": "Quadrature pass",
+      "file": "audit/baseline_original_quadrature_resolution.csv",
+      "filters": {
+        "T": 1440,
+        "method": "holdout25"
+      },
+      "column": "certified"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_resolution.csv",
+      "row": 1,
+      "target_column": "Floor / risk",
+      "file": "audit/baseline_original_rank_policy_resolution.csv",
+      "filters": {
+        "T": 1440,
+        "method": "rolling3"
+      },
+      "column": "floor_fraction"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_resolution.csv",
+      "row": 1,
+      "target_column": "Rank bound / risk",
+      "file": "audit/baseline_original_rank_policy_resolution.csv",
+      "filters": {
+        "T": 1440,
+        "method": "rolling3"
+      },
+      "column": "difference_confidence_fraction"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_resolution.csv",
+      "row": 1,
+      "target_column": "Rank pass",
+      "file": "audit/baseline_original_rank_policy_resolution.csv",
+      "filters": {
+        "T": 1440,
+        "method": "rolling3"
+      },
+      "column": "certified"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_resolution.csv",
+      "row": 1,
+      "target_column": "Quadrature pass",
+      "file": "audit/baseline_original_quadrature_resolution.csv",
+      "filters": {
+        "T": 1440,
+        "method": "rolling3"
+      },
+      "column": "certified"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_resolution.csv",
+      "row": 2,
+      "target_column": "Floor / risk",
+      "file": "audit/baseline_original_rank_policy_resolution.csv",
+      "filters": {
+        "T": 1440,
+        "method": "theory_1"
+      },
+      "column": "floor_fraction"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_resolution.csv",
+      "row": 2,
+      "target_column": "Rank bound / risk",
+      "file": "audit/baseline_original_rank_policy_resolution.csv",
+      "filters": {
+        "T": 1440,
+        "method": "theory_1"
+      },
+      "column": "difference_confidence_fraction"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_resolution.csv",
+      "row": 2,
+      "target_column": "Rank pass",
+      "file": "audit/baseline_original_rank_policy_resolution.csv",
+      "filters": {
+        "T": 1440,
+        "method": "theory_1"
+      },
+      "column": "certified"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_resolution.csv",
+      "row": 2,
+      "target_column": "Quadrature pass",
+      "file": "audit/baseline_original_quadrature_resolution.csv",
+      "filters": {
+        "T": 1440,
+        "method": "theory_1"
+      },
+      "column": "certified"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_resolution.csv",
+      "row": 3,
+      "target_column": "Floor / risk",
+      "file": "audit/rich6d_rank_policy_resolution.csv",
+      "filters": {
+        "T": 1440,
+        "method": "holdout25"
+      },
+      "column": "floor_fraction"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_resolution.csv",
+      "row": 3,
+      "target_column": "Rank bound / risk",
+      "file": "audit/rich6d_rank_policy_resolution.csv",
+      "filters": {
+        "T": 1440,
+        "method": "holdout25"
+      },
+      "column": "difference_confidence_fraction"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_resolution.csv",
+      "row": 3,
+      "target_column": "Rank pass",
+      "file": "audit/rich6d_rank_policy_resolution.csv",
+      "filters": {
+        "T": 1440,
+        "method": "holdout25"
+      },
+      "column": "certified"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_resolution.csv",
+      "row": 3,
+      "target_column": "Quadrature pass",
+      "file": "audit/rich6d_quadrature_resolution.csv",
+      "filters": {
+        "T": 1440,
+        "method": "holdout25"
+      },
+      "column": "certified"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_resolution.csv",
+      "row": 4,
+      "target_column": "Floor / risk",
+      "file": "audit/rich6d_rank_policy_resolution.csv",
+      "filters": {
+        "T": 1440,
+        "method": "rolling3"
+      },
+      "column": "floor_fraction"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_resolution.csv",
+      "row": 4,
+      "target_column": "Rank bound / risk",
+      "file": "audit/rich6d_rank_policy_resolution.csv",
+      "filters": {
+        "T": 1440,
+        "method": "rolling3"
+      },
+      "column": "difference_confidence_fraction"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_resolution.csv",
+      "row": 4,
+      "target_column": "Rank pass",
+      "file": "audit/rich6d_rank_policy_resolution.csv",
+      "filters": {
+        "T": 1440,
+        "method": "rolling3"
+      },
+      "column": "certified"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_resolution.csv",
+      "row": 4,
+      "target_column": "Quadrature pass",
+      "file": "audit/rich6d_quadrature_resolution.csv",
+      "filters": {
+        "T": 1440,
+        "method": "rolling3"
+      },
+      "column": "certified"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_resolution.csv",
+      "row": 5,
+      "target_column": "Floor / risk",
+      "file": "audit/rich6d_rank_policy_resolution.csv",
+      "filters": {
+        "T": 1440,
+        "method": "theory_1"
+      },
+      "column": "floor_fraction"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_resolution.csv",
+      "row": 5,
+      "target_column": "Rank bound / risk",
+      "file": "audit/rich6d_rank_policy_resolution.csv",
+      "filters": {
+        "T": 1440,
+        "method": "theory_1"
+      },
+      "column": "difference_confidence_fraction"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_resolution.csv",
+      "row": 5,
+      "target_column": "Rank pass",
+      "file": "audit/rich6d_rank_policy_resolution.csv",
+      "filters": {
+        "T": 1440,
+        "method": "theory_1"
+      },
+      "column": "certified"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_resolution.csv",
+      "row": 5,
+      "target_column": "Quadrature pass",
+      "file": "audit/rich6d_quadrature_resolution.csv",
+      "filters": {
+        "T": 1440,
+        "method": "theory_1"
+      },
+      "column": "certified"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_unresolved_1.csv",
+      "row": 0,
+      "target_column": "Method",
+      "file": "audit/baseline_original_rank_policy_resolution.csv",
+      "filters": {
+        "T": 60,
+        "method": "holdout25"
+      },
+      "column": "method"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_unresolved_1.csv",
+      "row": 0,
+      "target_column": "T",
+      "file": "audit/baseline_original_rank_policy_resolution.csv",
+      "filters": {
+        "T": 60,
+        "method": "holdout25"
+      },
+      "column": "T"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_unresolved_1.csv",
+      "row": 0,
+      "target_column": "Floor / risk",
+      "file": "audit/baseline_original_rank_policy_resolution.csv",
+      "filters": {
+        "T": 60,
+        "method": "holdout25"
+      },
+      "column": "floor_fraction"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_unresolved_1.csv",
+      "row": 0,
+      "target_column": "Rank bound / risk",
+      "file": "audit/baseline_original_rank_policy_resolution.csv",
+      "filters": {
+        "T": 60,
+        "method": "holdout25"
+      },
+      "column": "difference_confidence_fraction"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_unresolved_1.csv",
+      "row": 0,
+      "target_column": "Rank pass",
+      "file": "audit/baseline_original_rank_policy_resolution.csv",
+      "filters": {
+        "T": 60,
+        "method": "holdout25"
+      },
+      "column": "certified"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_unresolved_1.csv",
+      "row": 0,
+      "target_column": "Quadrature pass",
+      "file": "audit/baseline_original_quadrature_resolution.csv",
+      "filters": {
+        "T": 60,
+        "method": "holdout25"
+      },
+      "column": "certified"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_unresolved_1.csv",
+      "row": 1,
+      "target_column": "Method",
+      "file": "audit/baseline_original_rank_policy_resolution.csv",
+      "filters": {
+        "T": 360,
+        "method": "holdout25"
+      },
+      "column": "method"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_unresolved_1.csv",
+      "row": 1,
+      "target_column": "T",
+      "file": "audit/baseline_original_rank_policy_resolution.csv",
+      "filters": {
+        "T": 360,
+        "method": "holdout25"
+      },
+      "column": "T"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_unresolved_1.csv",
+      "row": 1,
+      "target_column": "Floor / risk",
+      "file": "audit/baseline_original_rank_policy_resolution.csv",
+      "filters": {
+        "T": 360,
+        "method": "holdout25"
+      },
+      "column": "floor_fraction"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_unresolved_1.csv",
+      "row": 1,
+      "target_column": "Rank bound / risk",
+      "file": "audit/baseline_original_rank_policy_resolution.csv",
+      "filters": {
+        "T": 360,
+        "method": "holdout25"
+      },
+      "column": "difference_confidence_fraction"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_unresolved_1.csv",
+      "row": 1,
+      "target_column": "Rank pass",
+      "file": "audit/baseline_original_rank_policy_resolution.csv",
+      "filters": {
+        "T": 360,
+        "method": "holdout25"
+      },
+      "column": "certified"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_unresolved_1.csv",
+      "row": 1,
+      "target_column": "Quadrature pass",
+      "file": "audit/baseline_original_quadrature_resolution.csv",
+      "filters": {
+        "T": 360,
+        "method": "holdout25"
+      },
+      "column": "certified"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_unresolved_1.csv",
+      "row": 2,
+      "target_column": "Method",
+      "file": "audit/rich6d_rank_policy_resolution.csv",
+      "filters": {
+        "T": 60,
+        "method": "holdout25"
+      },
+      "column": "method"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_unresolved_1.csv",
+      "row": 2,
+      "target_column": "T",
+      "file": "audit/rich6d_rank_policy_resolution.csv",
+      "filters": {
+        "T": 60,
+        "method": "holdout25"
+      },
+      "column": "T"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_unresolved_1.csv",
+      "row": 2,
+      "target_column": "Floor / risk",
+      "file": "audit/rich6d_rank_policy_resolution.csv",
+      "filters": {
+        "T": 60,
+        "method": "holdout25"
+      },
+      "column": "floor_fraction"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_unresolved_1.csv",
+      "row": 2,
+      "target_column": "Rank bound / risk",
+      "file": "audit/rich6d_rank_policy_resolution.csv",
+      "filters": {
+        "T": 60,
+        "method": "holdout25"
+      },
+      "column": "difference_confidence_fraction"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_unresolved_1.csv",
+      "row": 2,
+      "target_column": "Rank pass",
+      "file": "audit/rich6d_rank_policy_resolution.csv",
+      "filters": {
+        "T": 60,
+        "method": "holdout25"
+      },
+      "column": "certified"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_unresolved_1.csv",
+      "row": 2,
+      "target_column": "Quadrature pass",
+      "file": "audit/rich6d_quadrature_resolution.csv",
+      "filters": {
+        "T": 60,
+        "method": "holdout25"
+      },
+      "column": "certified"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_unresolved_1.csv",
+      "row": 3,
+      "target_column": "Method",
+      "file": "audit/rich6d_rank_policy_resolution.csv",
+      "filters": {
+        "T": 60,
+        "method": "rolling3"
+      },
+      "column": "method"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_unresolved_1.csv",
+      "row": 3,
+      "target_column": "T",
+      "file": "audit/rich6d_rank_policy_resolution.csv",
+      "filters": {
+        "T": 60,
+        "method": "rolling3"
+      },
+      "column": "T"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_unresolved_1.csv",
+      "row": 3,
+      "target_column": "Floor / risk",
+      "file": "audit/rich6d_rank_policy_resolution.csv",
+      "filters": {
+        "T": 60,
+        "method": "rolling3"
+      },
+      "column": "floor_fraction"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_unresolved_1.csv",
+      "row": 3,
+      "target_column": "Rank bound / risk",
+      "file": "audit/rich6d_rank_policy_resolution.csv",
+      "filters": {
+        "T": 60,
+        "method": "rolling3"
+      },
+      "column": "difference_confidence_fraction"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_unresolved_1.csv",
+      "row": 3,
+      "target_column": "Rank pass",
+      "file": "audit/rich6d_rank_policy_resolution.csv",
+      "filters": {
+        "T": 60,
+        "method": "rolling3"
+      },
+      "column": "certified"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_unresolved_1.csv",
+      "row": 3,
+      "target_column": "Quadrature pass",
+      "file": "audit/rich6d_quadrature_resolution.csv",
+      "filters": {
+        "T": 60,
+        "method": "rolling3"
+      },
+      "column": "certified"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_unresolved_1.csv",
+      "row": 4,
+      "target_column": "Method",
+      "file": "audit/rich6d_rank_policy_resolution.csv",
+      "filters": {
+        "T": 360,
+        "method": "holdout25"
+      },
+      "column": "method"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_unresolved_1.csv",
+      "row": 4,
+      "target_column": "T",
+      "file": "audit/rich6d_rank_policy_resolution.csv",
+      "filters": {
+        "T": 360,
+        "method": "holdout25"
+      },
+      "column": "T"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_unresolved_1.csv",
+      "row": 4,
+      "target_column": "Floor / risk",
+      "file": "audit/rich6d_rank_policy_resolution.csv",
+      "filters": {
+        "T": 360,
+        "method": "holdout25"
+      },
+      "column": "floor_fraction"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_unresolved_1.csv",
+      "row": 4,
+      "target_column": "Rank bound / risk",
+      "file": "audit/rich6d_rank_policy_resolution.csv",
+      "filters": {
+        "T": 360,
+        "method": "holdout25"
+      },
+      "column": "difference_confidence_fraction"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_unresolved_1.csv",
+      "row": 4,
+      "target_column": "Rank pass",
+      "file": "audit/rich6d_rank_policy_resolution.csv",
+      "filters": {
+        "T": 360,
+        "method": "holdout25"
+      },
+      "column": "certified"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_unresolved_1.csv",
+      "row": 4,
+      "target_column": "Quadrature pass",
+      "file": "audit/rich6d_quadrature_resolution.csv",
+      "filters": {
+        "T": 360,
+        "method": "holdout25"
+      },
+      "column": "certified"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 0,
+      "target_column": "T",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 60,
+        "lambda_index": 0
+      },
+      "column": "T"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 0,
+      "target_column": "lambda",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 60,
+        "lambda_index": 0
+      },
+      "column": "lambda"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 0,
+      "target_column": "Max regret512",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 60,
+        "lambda_index": 0
+      },
+      "column": "regret512"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 0,
+      "target_column": "Same lambda regret1024",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 60,
+        "lambda_index": 0
+      },
+      "column": "regret1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 0,
+      "target_column": "C512",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 60,
+        "lambda_index": 0
+      },
+      "column": "complexity512"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 0,
+      "target_column": "C1024",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 60,
+        "lambda_index": 0
+      },
+      "column": "complexity1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 0,
+      "target_column": "Payoff error",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 60,
+        "lambda_index": 0
+      },
+      "column": "payoff_squared_difference_512_1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 0,
+      "target_column": "Rank pass",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 60,
+        "lambda_index": 0
+      },
+      "column": "certified"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 1,
+      "target_column": "T",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 90,
+        "lambda_index": 0
+      },
+      "column": "T"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 1,
+      "target_column": "lambda",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 90,
+        "lambda_index": 0
+      },
+      "column": "lambda"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 1,
+      "target_column": "Max regret512",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 90,
+        "lambda_index": 0
+      },
+      "column": "regret512"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 1,
+      "target_column": "Same lambda regret1024",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 90,
+        "lambda_index": 0
+      },
+      "column": "regret1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 1,
+      "target_column": "C512",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 90,
+        "lambda_index": 0
+      },
+      "column": "complexity512"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 1,
+      "target_column": "C1024",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 90,
+        "lambda_index": 0
+      },
+      "column": "complexity1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 1,
+      "target_column": "Payoff error",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 90,
+        "lambda_index": 0
+      },
+      "column": "payoff_squared_difference_512_1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 1,
+      "target_column": "Rank pass",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 90,
+        "lambda_index": 0
+      },
+      "column": "certified"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 2,
+      "target_column": "T",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 120,
+        "lambda_index": 0
+      },
+      "column": "T"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 2,
+      "target_column": "lambda",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 120,
+        "lambda_index": 0
+      },
+      "column": "lambda"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 2,
+      "target_column": "Max regret512",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 120,
+        "lambda_index": 0
+      },
+      "column": "regret512"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 2,
+      "target_column": "Same lambda regret1024",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 120,
+        "lambda_index": 0
+      },
+      "column": "regret1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 2,
+      "target_column": "C512",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 120,
+        "lambda_index": 0
+      },
+      "column": "complexity512"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 2,
+      "target_column": "C1024",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 120,
+        "lambda_index": 0
+      },
+      "column": "complexity1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 2,
+      "target_column": "Payoff error",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 120,
+        "lambda_index": 0
+      },
+      "column": "payoff_squared_difference_512_1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 2,
+      "target_column": "Rank pass",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 120,
+        "lambda_index": 0
+      },
+      "column": "certified"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 3,
+      "target_column": "T",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 180,
+        "lambda_index": 0
+      },
+      "column": "T"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 3,
+      "target_column": "lambda",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 180,
+        "lambda_index": 0
+      },
+      "column": "lambda"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 3,
+      "target_column": "Max regret512",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 180,
+        "lambda_index": 0
+      },
+      "column": "regret512"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 3,
+      "target_column": "Same lambda regret1024",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 180,
+        "lambda_index": 0
+      },
+      "column": "regret1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 3,
+      "target_column": "C512",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 180,
+        "lambda_index": 0
+      },
+      "column": "complexity512"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 3,
+      "target_column": "C1024",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 180,
+        "lambda_index": 0
+      },
+      "column": "complexity1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 3,
+      "target_column": "Payoff error",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 180,
+        "lambda_index": 0
+      },
+      "column": "payoff_squared_difference_512_1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 3,
+      "target_column": "Rank pass",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 180,
+        "lambda_index": 0
+      },
+      "column": "certified"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 4,
+      "target_column": "T",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 240,
+        "lambda_index": 0
+      },
+      "column": "T"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 4,
+      "target_column": "lambda",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 240,
+        "lambda_index": 0
+      },
+      "column": "lambda"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 4,
+      "target_column": "Max regret512",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 240,
+        "lambda_index": 0
+      },
+      "column": "regret512"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 4,
+      "target_column": "Same lambda regret1024",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 240,
+        "lambda_index": 0
+      },
+      "column": "regret1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 4,
+      "target_column": "C512",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 240,
+        "lambda_index": 0
+      },
+      "column": "complexity512"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 4,
+      "target_column": "C1024",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 240,
+        "lambda_index": 0
+      },
+      "column": "complexity1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 4,
+      "target_column": "Payoff error",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 240,
+        "lambda_index": 0
+      },
+      "column": "payoff_squared_difference_512_1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 4,
+      "target_column": "Rank pass",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 240,
+        "lambda_index": 0
+      },
+      "column": "certified"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 5,
+      "target_column": "T",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 360,
+        "lambda_index": 0
+      },
+      "column": "T"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 5,
+      "target_column": "lambda",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 360,
+        "lambda_index": 0
+      },
+      "column": "lambda"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 5,
+      "target_column": "Max regret512",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 360,
+        "lambda_index": 0
+      },
+      "column": "regret512"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 5,
+      "target_column": "Same lambda regret1024",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 360,
+        "lambda_index": 0
+      },
+      "column": "regret1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 5,
+      "target_column": "C512",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 360,
+        "lambda_index": 0
+      },
+      "column": "complexity512"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 5,
+      "target_column": "C1024",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 360,
+        "lambda_index": 0
+      },
+      "column": "complexity1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 5,
+      "target_column": "Payoff error",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 360,
+        "lambda_index": 0
+      },
+      "column": "payoff_squared_difference_512_1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 5,
+      "target_column": "Rank pass",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 360,
+        "lambda_index": 0
+      },
+      "column": "certified"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 6,
+      "target_column": "T",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 540,
+        "lambda_index": 0
+      },
+      "column": "T"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 6,
+      "target_column": "lambda",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 540,
+        "lambda_index": 0
+      },
+      "column": "lambda"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 6,
+      "target_column": "Max regret512",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 540,
+        "lambda_index": 0
+      },
+      "column": "regret512"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 6,
+      "target_column": "Same lambda regret1024",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 540,
+        "lambda_index": 0
+      },
+      "column": "regret1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 6,
+      "target_column": "C512",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 540,
+        "lambda_index": 0
+      },
+      "column": "complexity512"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 6,
+      "target_column": "C1024",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 540,
+        "lambda_index": 0
+      },
+      "column": "complexity1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 6,
+      "target_column": "Payoff error",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 540,
+        "lambda_index": 0
+      },
+      "column": "payoff_squared_difference_512_1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 6,
+      "target_column": "Rank pass",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 540,
+        "lambda_index": 0
+      },
+      "column": "certified"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 7,
+      "target_column": "T",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 720,
+        "lambda_index": 0
+      },
+      "column": "T"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 7,
+      "target_column": "lambda",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 720,
+        "lambda_index": 0
+      },
+      "column": "lambda"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 7,
+      "target_column": "Max regret512",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 720,
+        "lambda_index": 0
+      },
+      "column": "regret512"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 7,
+      "target_column": "Same lambda regret1024",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 720,
+        "lambda_index": 0
+      },
+      "column": "regret1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 7,
+      "target_column": "C512",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 720,
+        "lambda_index": 0
+      },
+      "column": "complexity512"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 7,
+      "target_column": "C1024",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 720,
+        "lambda_index": 0
+      },
+      "column": "complexity1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 7,
+      "target_column": "Payoff error",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 720,
+        "lambda_index": 0
+      },
+      "column": "payoff_squared_difference_512_1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 7,
+      "target_column": "Rank pass",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 720,
+        "lambda_index": 0
+      },
+      "column": "certified"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 8,
+      "target_column": "T",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 1080,
+        "lambda_index": 0
+      },
+      "column": "T"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 8,
+      "target_column": "lambda",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 1080,
+        "lambda_index": 0
+      },
+      "column": "lambda"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 8,
+      "target_column": "Max regret512",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 1080,
+        "lambda_index": 0
+      },
+      "column": "regret512"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 8,
+      "target_column": "Same lambda regret1024",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 1080,
+        "lambda_index": 0
+      },
+      "column": "regret1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 8,
+      "target_column": "C512",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 1080,
+        "lambda_index": 0
+      },
+      "column": "complexity512"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 8,
+      "target_column": "C1024",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 1080,
+        "lambda_index": 0
+      },
+      "column": "complexity1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 8,
+      "target_column": "Payoff error",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 1080,
+        "lambda_index": 0
+      },
+      "column": "payoff_squared_difference_512_1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 8,
+      "target_column": "Rank pass",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 1080,
+        "lambda_index": 0
+      },
+      "column": "certified"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 9,
+      "target_column": "T",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 1440,
+        "lambda_index": 0
+      },
+      "column": "T"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 9,
+      "target_column": "lambda",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 1440,
+        "lambda_index": 0
+      },
+      "column": "lambda"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 9,
+      "target_column": "Max regret512",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 1440,
+        "lambda_index": 0
+      },
+      "column": "regret512"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 9,
+      "target_column": "Same lambda regret1024",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 1440,
+        "lambda_index": 0
+      },
+      "column": "regret1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 9,
+      "target_column": "C512",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 1440,
+        "lambda_index": 0
+      },
+      "column": "complexity512"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 9,
+      "target_column": "C1024",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 1440,
+        "lambda_index": 0
+      },
+      "column": "complexity1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 9,
+      "target_column": "Payoff error",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 1440,
+        "lambda_index": 0
+      },
+      "column": "payoff_squared_difference_512_1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_baseline_original.csv",
+      "row": 9,
+      "target_column": "Rank pass",
+      "file": "audit/baseline_original_rank_resolution.csv",
+      "filters": {
+        "T": 1440,
+        "lambda_index": 0
+      },
+      "column": "certified"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 0,
+      "target_column": "T",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 60,
+        "lambda_index": 0
+      },
+      "column": "T"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 0,
+      "target_column": "lambda",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 60,
+        "lambda_index": 0
+      },
+      "column": "lambda"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 0,
+      "target_column": "Max regret512",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 60,
+        "lambda_index": 0
+      },
+      "column": "regret512"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 0,
+      "target_column": "Same lambda regret1024",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 60,
+        "lambda_index": 0
+      },
+      "column": "regret1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 0,
+      "target_column": "C512",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 60,
+        "lambda_index": 0
+      },
+      "column": "complexity512"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 0,
+      "target_column": "C1024",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 60,
+        "lambda_index": 0
+      },
+      "column": "complexity1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 0,
+      "target_column": "Payoff error",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 60,
+        "lambda_index": 0
+      },
+      "column": "payoff_squared_difference_512_1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 0,
+      "target_column": "Rank pass",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 60,
+        "lambda_index": 0
+      },
+      "column": "certified"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 1,
+      "target_column": "T",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 90,
+        "lambda_index": 0
+      },
+      "column": "T"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 1,
+      "target_column": "lambda",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 90,
+        "lambda_index": 0
+      },
+      "column": "lambda"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 1,
+      "target_column": "Max regret512",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 90,
+        "lambda_index": 0
+      },
+      "column": "regret512"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 1,
+      "target_column": "Same lambda regret1024",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 90,
+        "lambda_index": 0
+      },
+      "column": "regret1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 1,
+      "target_column": "C512",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 90,
+        "lambda_index": 0
+      },
+      "column": "complexity512"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 1,
+      "target_column": "C1024",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 90,
+        "lambda_index": 0
+      },
+      "column": "complexity1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 1,
+      "target_column": "Payoff error",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 90,
+        "lambda_index": 0
+      },
+      "column": "payoff_squared_difference_512_1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 1,
+      "target_column": "Rank pass",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 90,
+        "lambda_index": 0
+      },
+      "column": "certified"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 2,
+      "target_column": "T",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 120,
+        "lambda_index": 0
+      },
+      "column": "T"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 2,
+      "target_column": "lambda",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 120,
+        "lambda_index": 0
+      },
+      "column": "lambda"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 2,
+      "target_column": "Max regret512",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 120,
+        "lambda_index": 0
+      },
+      "column": "regret512"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 2,
+      "target_column": "Same lambda regret1024",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 120,
+        "lambda_index": 0
+      },
+      "column": "regret1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 2,
+      "target_column": "C512",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 120,
+        "lambda_index": 0
+      },
+      "column": "complexity512"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 2,
+      "target_column": "C1024",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 120,
+        "lambda_index": 0
+      },
+      "column": "complexity1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 2,
+      "target_column": "Payoff error",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 120,
+        "lambda_index": 0
+      },
+      "column": "payoff_squared_difference_512_1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 2,
+      "target_column": "Rank pass",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 120,
+        "lambda_index": 0
+      },
+      "column": "certified"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 3,
+      "target_column": "T",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 180,
+        "lambda_index": 0
+      },
+      "column": "T"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 3,
+      "target_column": "lambda",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 180,
+        "lambda_index": 0
+      },
+      "column": "lambda"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 3,
+      "target_column": "Max regret512",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 180,
+        "lambda_index": 0
+      },
+      "column": "regret512"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 3,
+      "target_column": "Same lambda regret1024",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 180,
+        "lambda_index": 0
+      },
+      "column": "regret1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 3,
+      "target_column": "C512",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 180,
+        "lambda_index": 0
+      },
+      "column": "complexity512"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 3,
+      "target_column": "C1024",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 180,
+        "lambda_index": 0
+      },
+      "column": "complexity1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 3,
+      "target_column": "Payoff error",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 180,
+        "lambda_index": 0
+      },
+      "column": "payoff_squared_difference_512_1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 3,
+      "target_column": "Rank pass",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 180,
+        "lambda_index": 0
+      },
+      "column": "certified"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 4,
+      "target_column": "T",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 240,
+        "lambda_index": 0
+      },
+      "column": "T"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 4,
+      "target_column": "lambda",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 240,
+        "lambda_index": 0
+      },
+      "column": "lambda"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 4,
+      "target_column": "Max regret512",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 240,
+        "lambda_index": 0
+      },
+      "column": "regret512"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 4,
+      "target_column": "Same lambda regret1024",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 240,
+        "lambda_index": 0
+      },
+      "column": "regret1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 4,
+      "target_column": "C512",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 240,
+        "lambda_index": 0
+      },
+      "column": "complexity512"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 4,
+      "target_column": "C1024",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 240,
+        "lambda_index": 0
+      },
+      "column": "complexity1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 4,
+      "target_column": "Payoff error",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 240,
+        "lambda_index": 0
+      },
+      "column": "payoff_squared_difference_512_1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 4,
+      "target_column": "Rank pass",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 240,
+        "lambda_index": 0
+      },
+      "column": "certified"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 5,
+      "target_column": "T",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 360,
+        "lambda_index": 0
+      },
+      "column": "T"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 5,
+      "target_column": "lambda",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 360,
+        "lambda_index": 0
+      },
+      "column": "lambda"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 5,
+      "target_column": "Max regret512",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 360,
+        "lambda_index": 0
+      },
+      "column": "regret512"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 5,
+      "target_column": "Same lambda regret1024",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 360,
+        "lambda_index": 0
+      },
+      "column": "regret1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 5,
+      "target_column": "C512",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 360,
+        "lambda_index": 0
+      },
+      "column": "complexity512"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 5,
+      "target_column": "C1024",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 360,
+        "lambda_index": 0
+      },
+      "column": "complexity1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 5,
+      "target_column": "Payoff error",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 360,
+        "lambda_index": 0
+      },
+      "column": "payoff_squared_difference_512_1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 5,
+      "target_column": "Rank pass",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 360,
+        "lambda_index": 0
+      },
+      "column": "certified"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 6,
+      "target_column": "T",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 540,
+        "lambda_index": 0
+      },
+      "column": "T"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 6,
+      "target_column": "lambda",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 540,
+        "lambda_index": 0
+      },
+      "column": "lambda"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 6,
+      "target_column": "Max regret512",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 540,
+        "lambda_index": 0
+      },
+      "column": "regret512"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 6,
+      "target_column": "Same lambda regret1024",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 540,
+        "lambda_index": 0
+      },
+      "column": "regret1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 6,
+      "target_column": "C512",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 540,
+        "lambda_index": 0
+      },
+      "column": "complexity512"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 6,
+      "target_column": "C1024",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 540,
+        "lambda_index": 0
+      },
+      "column": "complexity1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 6,
+      "target_column": "Payoff error",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 540,
+        "lambda_index": 0
+      },
+      "column": "payoff_squared_difference_512_1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 6,
+      "target_column": "Rank pass",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 540,
+        "lambda_index": 0
+      },
+      "column": "certified"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 7,
+      "target_column": "T",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 720,
+        "lambda_index": 0
+      },
+      "column": "T"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 7,
+      "target_column": "lambda",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 720,
+        "lambda_index": 0
+      },
+      "column": "lambda"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 7,
+      "target_column": "Max regret512",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 720,
+        "lambda_index": 0
+      },
+      "column": "regret512"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 7,
+      "target_column": "Same lambda regret1024",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 720,
+        "lambda_index": 0
+      },
+      "column": "regret1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 7,
+      "target_column": "C512",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 720,
+        "lambda_index": 0
+      },
+      "column": "complexity512"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 7,
+      "target_column": "C1024",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 720,
+        "lambda_index": 0
+      },
+      "column": "complexity1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 7,
+      "target_column": "Payoff error",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 720,
+        "lambda_index": 0
+      },
+      "column": "payoff_squared_difference_512_1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 7,
+      "target_column": "Rank pass",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 720,
+        "lambda_index": 0
+      },
+      "column": "certified"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 8,
+      "target_column": "T",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 1080,
+        "lambda_index": 0
+      },
+      "column": "T"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 8,
+      "target_column": "lambda",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 1080,
+        "lambda_index": 0
+      },
+      "column": "lambda"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 8,
+      "target_column": "Max regret512",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 1080,
+        "lambda_index": 0
+      },
+      "column": "regret512"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 8,
+      "target_column": "Same lambda regret1024",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 1080,
+        "lambda_index": 0
+      },
+      "column": "regret1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 8,
+      "target_column": "C512",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 1080,
+        "lambda_index": 0
+      },
+      "column": "complexity512"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 8,
+      "target_column": "C1024",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 1080,
+        "lambda_index": 0
+      },
+      "column": "complexity1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 8,
+      "target_column": "Payoff error",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 1080,
+        "lambda_index": 0
+      },
+      "column": "payoff_squared_difference_512_1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 8,
+      "target_column": "Rank pass",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 1080,
+        "lambda_index": 0
+      },
+      "column": "certified"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 9,
+      "target_column": "T",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 1440,
+        "lambda_index": 0
+      },
+      "column": "T"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 9,
+      "target_column": "lambda",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 1440,
+        "lambda_index": 0
+      },
+      "column": "lambda"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 9,
+      "target_column": "Max regret512",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 1440,
+        "lambda_index": 0
+      },
+      "column": "regret512"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 9,
+      "target_column": "Same lambda regret1024",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 1440,
+        "lambda_index": 0
+      },
+      "column": "regret1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 9,
+      "target_column": "C512",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 1440,
+        "lambda_index": 0
+      },
+      "column": "complexity512"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 9,
+      "target_column": "C1024",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 1440,
+        "lambda_index": 0
+      },
+      "column": "complexity1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 9,
+      "target_column": "Payoff error",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 1440,
+        "lambda_index": 0
+      },
+      "column": "payoff_squared_difference_512_1024"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_curve_maximum_rich6d.csv",
+      "row": 9,
+      "target_column": "Rank pass",
+      "file": "audit/rich6d_rank_resolution.csv",
+      "filters": {
+        "T": 1440,
+        "lambda_index": 0
+      },
+      "column": "certified"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_gradient.csv",
+      "row": 0,
+      "target_column": "Analytic mean square",
+      "file": "audit/rich6d_gradient_moments.csv",
+      "filters": {
+        "loading_map": "rich6d",
+        "coordinate": 1
+      },
+      "column": "analytic_squared_derivative_expectation"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_gradient.csv",
+      "row": 0,
+      "target_column": "Uniform-cube MC mean",
+      "file": "audit/rich6d_gradient_moments.csv",
+      "filters": {
+        "loading_map": "rich6d",
+        "coordinate": 1
+      },
+      "column": "uniform_cube_MC_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_gradient.csv",
+      "row": 0,
+      "target_column": "MCSE",
+      "file": "audit/rich6d_gradient_moments.csv",
+      "filters": {
+        "loading_map": "rich6d",
+        "coordinate": 1
+      },
+      "column": "MCSE"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_gradient.csv",
+      "row": 1,
+      "target_column": "Analytic mean square",
+      "file": "audit/rich6d_gradient_moments.csv",
+      "filters": {
+        "loading_map": "rich6d",
+        "coordinate": 2
+      },
+      "column": "analytic_squared_derivative_expectation"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_gradient.csv",
+      "row": 1,
+      "target_column": "Uniform-cube MC mean",
+      "file": "audit/rich6d_gradient_moments.csv",
+      "filters": {
+        "loading_map": "rich6d",
+        "coordinate": 2
+      },
+      "column": "uniform_cube_MC_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_gradient.csv",
+      "row": 1,
+      "target_column": "MCSE",
+      "file": "audit/rich6d_gradient_moments.csv",
+      "filters": {
+        "loading_map": "rich6d",
+        "coordinate": 2
+      },
+      "column": "MCSE"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_gradient.csv",
+      "row": 2,
+      "target_column": "Analytic mean square",
+      "file": "audit/rich6d_gradient_moments.csv",
+      "filters": {
+        "loading_map": "rich6d",
+        "coordinate": 3
+      },
+      "column": "analytic_squared_derivative_expectation"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_gradient.csv",
+      "row": 2,
+      "target_column": "Uniform-cube MC mean",
+      "file": "audit/rich6d_gradient_moments.csv",
+      "filters": {
+        "loading_map": "rich6d",
+        "coordinate": 3
+      },
+      "column": "uniform_cube_MC_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_gradient.csv",
+      "row": 2,
+      "target_column": "MCSE",
+      "file": "audit/rich6d_gradient_moments.csv",
+      "filters": {
+        "loading_map": "rich6d",
+        "coordinate": 3
+      },
+      "column": "MCSE"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_gradient.csv",
+      "row": 3,
+      "target_column": "Analytic mean square",
+      "file": "audit/rich6d_gradient_moments.csv",
+      "filters": {
+        "loading_map": "rich6d",
+        "coordinate": 4
+      },
+      "column": "analytic_squared_derivative_expectation"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_gradient.csv",
+      "row": 3,
+      "target_column": "Uniform-cube MC mean",
+      "file": "audit/rich6d_gradient_moments.csv",
+      "filters": {
+        "loading_map": "rich6d",
+        "coordinate": 4
+      },
+      "column": "uniform_cube_MC_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_gradient.csv",
+      "row": 3,
+      "target_column": "MCSE",
+      "file": "audit/rich6d_gradient_moments.csv",
+      "filters": {
+        "loading_map": "rich6d",
+        "coordinate": 4
+      },
+      "column": "MCSE"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_gradient.csv",
+      "row": 4,
+      "target_column": "Analytic mean square",
+      "file": "audit/rich6d_gradient_moments.csv",
+      "filters": {
+        "loading_map": "rich6d",
+        "coordinate": 5
+      },
+      "column": "analytic_squared_derivative_expectation"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_gradient.csv",
+      "row": 4,
+      "target_column": "Uniform-cube MC mean",
+      "file": "audit/rich6d_gradient_moments.csv",
+      "filters": {
+        "loading_map": "rich6d",
+        "coordinate": 5
+      },
+      "column": "uniform_cube_MC_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_gradient.csv",
+      "row": 4,
+      "target_column": "MCSE",
+      "file": "audit/rich6d_gradient_moments.csv",
+      "filters": {
+        "loading_map": "rich6d",
+        "coordinate": 5
+      },
+      "column": "MCSE"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_gradient.csv",
+      "row": 5,
+      "target_column": "Analytic mean square",
+      "file": "audit/rich6d_gradient_moments.csv",
+      "filters": {
+        "loading_map": "rich6d",
+        "coordinate": 6
+      },
+      "column": "analytic_squared_derivative_expectation"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_gradient.csv",
+      "row": 5,
+      "target_column": "Uniform-cube MC mean",
+      "file": "audit/rich6d_gradient_moments.csv",
+      "filters": {
+        "loading_map": "rich6d",
+        "coordinate": 6
+      },
+      "column": "uniform_cube_MC_mean"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_gradient.csv",
+      "row": 5,
+      "target_column": "MCSE",
+      "file": "audit/rich6d_gradient_moments.csv",
+      "filters": {
+        "loading_map": "rich6d",
+        "coordinate": 6
+      },
+      "column": "MCSE"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 0,
+      "target_column": "R",
+      "file": "data/baseline_original/rates.csv",
+      "filters": {
+        "cohort": "practical",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "full"
+      },
+      "column": "replications"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 0,
+      "target_column": "Slope",
+      "file": "data/baseline_original/rates.csv",
+      "filters": {
+        "cohort": "practical",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "full"
+      },
+      "column": "OLS_slope"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 0,
+      "target_column": "OLS SE",
+      "file": "data/baseline_original/rates.csv",
+      "filters": {
+        "cohort": "practical",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "full"
+      },
+      "column": "OLS_SE"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 0,
+      "target_column": "Boot. low",
+      "file": "data/baseline_original/rates.csv",
+      "filters": {
+        "cohort": "practical",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "full"
+      },
+      "column": "bootstrap_low"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 0,
+      "target_column": "Boot. high",
+      "file": "data/baseline_original/rates.csv",
+      "filters": {
+        "cohort": "practical",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "full"
+      },
+      "column": "bootstrap_high"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 1,
+      "target_column": "R",
+      "file": "data/baseline_original/rates.csv",
+      "filters": {
+        "cohort": "practical",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "upper_half"
+      },
+      "column": "replications"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 1,
+      "target_column": "Slope",
+      "file": "data/baseline_original/rates.csv",
+      "filters": {
+        "cohort": "practical",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "upper_half"
+      },
+      "column": "OLS_slope"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 1,
+      "target_column": "OLS SE",
+      "file": "data/baseline_original/rates.csv",
+      "filters": {
+        "cohort": "practical",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "upper_half"
+      },
+      "column": "OLS_SE"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 1,
+      "target_column": "Boot. low",
+      "file": "data/baseline_original/rates.csv",
+      "filters": {
+        "cohort": "practical",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "upper_half"
+      },
+      "column": "bootstrap_low"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 1,
+      "target_column": "Boot. high",
+      "file": "data/baseline_original/rates.csv",
+      "filters": {
+        "cohort": "practical",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "upper_half"
+      },
+      "column": "bootstrap_high"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 2,
+      "target_column": "R",
+      "file": "data/baseline_original/rates.csv",
+      "filters": {
+        "cohort": "practical",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "largest_four"
+      },
+      "column": "replications"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 2,
+      "target_column": "Slope",
+      "file": "data/baseline_original/rates.csv",
+      "filters": {
+        "cohort": "practical",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "largest_four"
+      },
+      "column": "OLS_slope"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 2,
+      "target_column": "OLS SE",
+      "file": "data/baseline_original/rates.csv",
+      "filters": {
+        "cohort": "practical",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "largest_four"
+      },
+      "column": "OLS_SE"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 2,
+      "target_column": "Boot. low",
+      "file": "data/baseline_original/rates.csv",
+      "filters": {
+        "cohort": "practical",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "largest_four"
+      },
+      "column": "bootstrap_low"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 2,
+      "target_column": "Boot. high",
+      "file": "data/baseline_original/rates.csv",
+      "filters": {
+        "cohort": "practical",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "largest_four"
+      },
+      "column": "bootstrap_high"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 3,
+      "target_column": "R",
+      "file": "data/baseline_original/rates.csv",
+      "filters": {
+        "cohort": "extended",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "full"
+      },
+      "column": "replications"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 3,
+      "target_column": "Slope",
+      "file": "data/baseline_original/rates.csv",
+      "filters": {
+        "cohort": "extended",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "full"
+      },
+      "column": "OLS_slope"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 3,
+      "target_column": "OLS SE",
+      "file": "data/baseline_original/rates.csv",
+      "filters": {
+        "cohort": "extended",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "full"
+      },
+      "column": "OLS_SE"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 3,
+      "target_column": "Boot. low",
+      "file": "data/baseline_original/rates.csv",
+      "filters": {
+        "cohort": "extended",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "full"
+      },
+      "column": "bootstrap_low"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 3,
+      "target_column": "Boot. high",
+      "file": "data/baseline_original/rates.csv",
+      "filters": {
+        "cohort": "extended",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "full"
+      },
+      "column": "bootstrap_high"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 4,
+      "target_column": "R",
+      "file": "data/baseline_original/rates.csv",
+      "filters": {
+        "cohort": "extended",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "upper_half"
+      },
+      "column": "replications"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 4,
+      "target_column": "Slope",
+      "file": "data/baseline_original/rates.csv",
+      "filters": {
+        "cohort": "extended",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "upper_half"
+      },
+      "column": "OLS_slope"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 4,
+      "target_column": "OLS SE",
+      "file": "data/baseline_original/rates.csv",
+      "filters": {
+        "cohort": "extended",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "upper_half"
+      },
+      "column": "OLS_SE"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 4,
+      "target_column": "Boot. low",
+      "file": "data/baseline_original/rates.csv",
+      "filters": {
+        "cohort": "extended",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "upper_half"
+      },
+      "column": "bootstrap_low"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 4,
+      "target_column": "Boot. high",
+      "file": "data/baseline_original/rates.csv",
+      "filters": {
+        "cohort": "extended",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "upper_half"
+      },
+      "column": "bootstrap_high"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 5,
+      "target_column": "R",
+      "file": "data/baseline_original/rates.csv",
+      "filters": {
+        "cohort": "extended",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "largest_four"
+      },
+      "column": "replications"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 5,
+      "target_column": "Slope",
+      "file": "data/baseline_original/rates.csv",
+      "filters": {
+        "cohort": "extended",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "largest_four"
+      },
+      "column": "OLS_slope"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 5,
+      "target_column": "OLS SE",
+      "file": "data/baseline_original/rates.csv",
+      "filters": {
+        "cohort": "extended",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "largest_four"
+      },
+      "column": "OLS_SE"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 5,
+      "target_column": "Boot. low",
+      "file": "data/baseline_original/rates.csv",
+      "filters": {
+        "cohort": "extended",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "largest_four"
+      },
+      "column": "bootstrap_low"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 5,
+      "target_column": "Boot. high",
+      "file": "data/baseline_original/rates.csv",
+      "filters": {
+        "cohort": "extended",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "largest_four"
+      },
+      "column": "bootstrap_high"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 6,
+      "target_column": "R",
+      "file": "data/rich6d/rates.csv",
+      "filters": {
+        "cohort": "practical",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "full"
+      },
+      "column": "replications"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 6,
+      "target_column": "Slope",
+      "file": "data/rich6d/rates.csv",
+      "filters": {
+        "cohort": "practical",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "full"
+      },
+      "column": "OLS_slope"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 6,
+      "target_column": "OLS SE",
+      "file": "data/rich6d/rates.csv",
+      "filters": {
+        "cohort": "practical",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "full"
+      },
+      "column": "OLS_SE"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 6,
+      "target_column": "Boot. low",
+      "file": "data/rich6d/rates.csv",
+      "filters": {
+        "cohort": "practical",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "full"
+      },
+      "column": "bootstrap_low"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 6,
+      "target_column": "Boot. high",
+      "file": "data/rich6d/rates.csv",
+      "filters": {
+        "cohort": "practical",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "full"
+      },
+      "column": "bootstrap_high"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 7,
+      "target_column": "R",
+      "file": "data/rich6d/rates.csv",
+      "filters": {
+        "cohort": "practical",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "upper_half"
+      },
+      "column": "replications"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 7,
+      "target_column": "Slope",
+      "file": "data/rich6d/rates.csv",
+      "filters": {
+        "cohort": "practical",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "upper_half"
+      },
+      "column": "OLS_slope"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 7,
+      "target_column": "OLS SE",
+      "file": "data/rich6d/rates.csv",
+      "filters": {
+        "cohort": "practical",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "upper_half"
+      },
+      "column": "OLS_SE"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 7,
+      "target_column": "Boot. low",
+      "file": "data/rich6d/rates.csv",
+      "filters": {
+        "cohort": "practical",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "upper_half"
+      },
+      "column": "bootstrap_low"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 7,
+      "target_column": "Boot. high",
+      "file": "data/rich6d/rates.csv",
+      "filters": {
+        "cohort": "practical",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "upper_half"
+      },
+      "column": "bootstrap_high"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 8,
+      "target_column": "R",
+      "file": "data/rich6d/rates.csv",
+      "filters": {
+        "cohort": "practical",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "largest_four"
+      },
+      "column": "replications"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 8,
+      "target_column": "Slope",
+      "file": "data/rich6d/rates.csv",
+      "filters": {
+        "cohort": "practical",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "largest_four"
+      },
+      "column": "OLS_slope"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 8,
+      "target_column": "OLS SE",
+      "file": "data/rich6d/rates.csv",
+      "filters": {
+        "cohort": "practical",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "largest_four"
+      },
+      "column": "OLS_SE"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 8,
+      "target_column": "Boot. low",
+      "file": "data/rich6d/rates.csv",
+      "filters": {
+        "cohort": "practical",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "largest_four"
+      },
+      "column": "bootstrap_low"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 8,
+      "target_column": "Boot. high",
+      "file": "data/rich6d/rates.csv",
+      "filters": {
+        "cohort": "practical",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "largest_four"
+      },
+      "column": "bootstrap_high"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 9,
+      "target_column": "R",
+      "file": "data/rich6d/rates.csv",
+      "filters": {
+        "cohort": "extended",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "full"
+      },
+      "column": "replications"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 9,
+      "target_column": "Slope",
+      "file": "data/rich6d/rates.csv",
+      "filters": {
+        "cohort": "extended",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "full"
+      },
+      "column": "OLS_slope"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 9,
+      "target_column": "OLS SE",
+      "file": "data/rich6d/rates.csv",
+      "filters": {
+        "cohort": "extended",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "full"
+      },
+      "column": "OLS_SE"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 9,
+      "target_column": "Boot. low",
+      "file": "data/rich6d/rates.csv",
+      "filters": {
+        "cohort": "extended",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "full"
+      },
+      "column": "bootstrap_low"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 9,
+      "target_column": "Boot. high",
+      "file": "data/rich6d/rates.csv",
+      "filters": {
+        "cohort": "extended",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "full"
+      },
+      "column": "bootstrap_high"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 10,
+      "target_column": "R",
+      "file": "data/rich6d/rates.csv",
+      "filters": {
+        "cohort": "extended",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "upper_half"
+      },
+      "column": "replications"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 10,
+      "target_column": "Slope",
+      "file": "data/rich6d/rates.csv",
+      "filters": {
+        "cohort": "extended",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "upper_half"
+      },
+      "column": "OLS_slope"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 10,
+      "target_column": "OLS SE",
+      "file": "data/rich6d/rates.csv",
+      "filters": {
+        "cohort": "extended",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "upper_half"
+      },
+      "column": "OLS_SE"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 10,
+      "target_column": "Boot. low",
+      "file": "data/rich6d/rates.csv",
+      "filters": {
+        "cohort": "extended",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "upper_half"
+      },
+      "column": "bootstrap_low"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 10,
+      "target_column": "Boot. high",
+      "file": "data/rich6d/rates.csv",
+      "filters": {
+        "cohort": "extended",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "upper_half"
+      },
+      "column": "bootstrap_high"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 11,
+      "target_column": "R",
+      "file": "data/rich6d/rates.csv",
+      "filters": {
+        "cohort": "extended",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "largest_four"
+      },
+      "column": "replications"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 11,
+      "target_column": "Slope",
+      "file": "data/rich6d/rates.csv",
+      "filters": {
+        "cohort": "extended",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "largest_four"
+      },
+      "column": "OLS_slope"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 11,
+      "target_column": "OLS SE",
+      "file": "data/rich6d/rates.csv",
+      "filters": {
+        "cohort": "extended",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "largest_four"
+      },
+      "column": "OLS_SE"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 11,
+      "target_column": "Boot. low",
+      "file": "data/rich6d/rates.csv",
+      "filters": {
+        "cohort": "extended",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "largest_four"
+      },
+      "column": "bootstrap_low"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_rates.csv",
+      "row": 11,
+      "target_column": "Boot. high",
+      "file": "data/rich6d/rates.csv",
+      "filters": {
+        "cohort": "extended",
+        "method": "theory_1",
+        "quantity": "regret",
+        "window": "largest_four"
+      },
+      "column": "bootstrap_high"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_optimism.csv",
+      "row": 0,
+      "target_column": "R",
+      "file": "data/baseline_original/oracle_optimism_bootstrap.csv",
+      "filters": {
+        "T": 1440,
+        "cohort": "practical"
+      },
+      "column": "replications"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_optimism.csv",
+      "row": 0,
+      "target_column": "Crossfit minus plugin",
+      "file": "data/baseline_original/oracle_optimism_bootstrap.csv",
+      "filters": {
+        "T": 1440,
+        "cohort": "practical"
+      },
+      "column": "crossfit_minus_plugin_regret"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_optimism.csv",
+      "row": 0,
+      "target_column": "Boot. low",
+      "file": "data/baseline_original/oracle_optimism_bootstrap.csv",
+      "filters": {
+        "T": 1440,
+        "cohort": "practical"
+      },
+      "column": "bootstrap_low"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_optimism.csv",
+      "row": 0,
+      "target_column": "Boot. high",
+      "file": "data/baseline_original/oracle_optimism_bootstrap.csv",
+      "filters": {
+        "T": 1440,
+        "cohort": "practical"
+      },
+      "column": "bootstrap_high"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_optimism.csv",
+      "row": 1,
+      "target_column": "R",
+      "file": "data/baseline_original/oracle_optimism_bootstrap.csv",
+      "filters": {
+        "T": 7290,
+        "cohort": "extended"
+      },
+      "column": "replications"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_optimism.csv",
+      "row": 1,
+      "target_column": "Crossfit minus plugin",
+      "file": "data/baseline_original/oracle_optimism_bootstrap.csv",
+      "filters": {
+        "T": 7290,
+        "cohort": "extended"
+      },
+      "column": "crossfit_minus_plugin_regret"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_optimism.csv",
+      "row": 1,
+      "target_column": "Boot. low",
+      "file": "data/baseline_original/oracle_optimism_bootstrap.csv",
+      "filters": {
+        "T": 7290,
+        "cohort": "extended"
+      },
+      "column": "bootstrap_low"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_optimism.csv",
+      "row": 1,
+      "target_column": "Boot. high",
+      "file": "data/baseline_original/oracle_optimism_bootstrap.csv",
+      "filters": {
+        "T": 7290,
+        "cohort": "extended"
+      },
+      "column": "bootstrap_high"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_optimism.csv",
+      "row": 2,
+      "target_column": "R",
+      "file": "data/rich6d/oracle_optimism_bootstrap.csv",
+      "filters": {
+        "T": 1440,
+        "cohort": "practical"
+      },
+      "column": "replications"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_optimism.csv",
+      "row": 2,
+      "target_column": "Crossfit minus plugin",
+      "file": "data/rich6d/oracle_optimism_bootstrap.csv",
+      "filters": {
+        "T": 1440,
+        "cohort": "practical"
+      },
+      "column": "crossfit_minus_plugin_regret"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_optimism.csv",
+      "row": 2,
+      "target_column": "Boot. low",
+      "file": "data/rich6d/oracle_optimism_bootstrap.csv",
+      "filters": {
+        "T": 1440,
+        "cohort": "practical"
+      },
+      "column": "bootstrap_low"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_optimism.csv",
+      "row": 2,
+      "target_column": "Boot. high",
+      "file": "data/rich6d/oracle_optimism_bootstrap.csv",
+      "filters": {
+        "T": 1440,
+        "cohort": "practical"
+      },
+      "column": "bootstrap_high"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_optimism.csv",
+      "row": 3,
+      "target_column": "R",
+      "file": "data/rich6d/oracle_optimism_bootstrap.csv",
+      "filters": {
+        "T": 7290,
+        "cohort": "extended"
+      },
+      "column": "replications"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_optimism.csv",
+      "row": 3,
+      "target_column": "Crossfit minus plugin",
+      "file": "data/rich6d/oracle_optimism_bootstrap.csv",
+      "filters": {
+        "T": 7290,
+        "cohort": "extended"
+      },
+      "column": "crossfit_minus_plugin_regret"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_optimism.csv",
+      "row": 3,
+      "target_column": "Boot. low",
+      "file": "data/rich6d/oracle_optimism_bootstrap.csv",
+      "filters": {
+        "T": 7290,
+        "cohort": "extended"
+      },
+      "column": "bootstrap_low"
+    },
+    {
+      "kind": "table",
+      "table": "tables/confirmation_optimism.csv",
+      "row": 3,
+      "target_column": "Boot. high",
+      "file": "data/rich6d/oracle_optimism_bootstrap.csv",
+      "filters": {
+        "T": 7290,
+        "cohort": "extended"
+      },
+      "column": "bootstrap_high"
+    },
+    {
+      "kind": "prose",
+      "macro": "simNumberA",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "holdout25"
+      },
+      "column": "regret_mean",
+      "format": ".6f",
+      "rendered": "0.006300"
+    },
+    {
+      "kind": "prose",
+      "macro": "simNumberB",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "rolling3"
+      },
+      "column": "regret_mean",
+      "format": ".6f",
+      "rendered": "0.004419"
+    },
+    {
+      "kind": "prose",
+      "macro": "simNumberC",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "ensemble_plugin_loss_oracle"
+      },
+      "column": "regret_mean",
+      "format": ".6f",
+      "rendered": "0.003161"
+    },
+    {
+      "kind": "prose",
+      "macro": "simNumberD",
+      "file": "data/baseline_original/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "crossfit_loss_oracle"
+      },
+      "column": "regret_mean",
+      "format": ".6f",
+      "rendered": "0.003161"
+    },
+    {
+      "kind": "prose",
+      "macro": "simNumberE",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "holdout25"
+      },
+      "column": "regret_mean",
+      "format": ".6f",
+      "rendered": "0.006559"
+    },
+    {
+      "kind": "prose",
+      "macro": "simNumberF",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "rolling3"
+      },
+      "column": "regret_mean",
+      "format": ".6f",
+      "rendered": "0.004614"
+    },
+    {
+      "kind": "prose",
+      "macro": "simNumberG",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "ensemble_plugin_loss_oracle"
+      },
+      "column": "regret_mean",
+      "format": ".6f",
+      "rendered": "0.003389"
+    },
+    {
+      "kind": "prose",
+      "macro": "simNumberH",
+      "file": "data/rich6d/methods.csv",
+      "filters": {
+        "T": 1440,
+        "method": "crossfit_loss_oracle"
+      },
+      "column": "regret_mean",
+      "format": ".6f",
+      "rendered": "0.003389"
+    }
+  ],
+  "source_hashes": {
+    "data/baseline_original/methods.csv": "018fe056587608fc6548f5f87670507b6f01501f5057a095ceb2b2023b5ccb09",
+    "data/rich6d/methods.csv": "66de428eba7aa3ae59ed60c936917b5b774f9043eb9082f1a28494c302c7d628",
+    "data/baseline_original/selection_diagnostics.csv": "428a1a26b2ab4b83e7f5e68399d4c2f33e420263994f72bd970bec63af39d01c",
+    "data/rich6d/selection_diagnostics.csv": "0b3998c543feaf9945ffe5f87cdb71d0063342dca8cdeed016d42ffcabfd1953",
+    "audit/baseline_original_rank_policy_resolution.csv": "5e621b827d7ff38cfd6f9330df477b603d81c979b7c9c464c211f7e6a370cb81",
+    "audit/baseline_original_quadrature_resolution.csv": "e80efa75cd3f6f48a344ffe091cef71ecb8ceb87c645b9dd38791b464f8e1393",
+    "audit/rich6d_rank_policy_resolution.csv": "120645e2bbd5fdf39df61f9e6e0f057733b08bcbd70fe90d653ce5272949c7ec",
+    "audit/rich6d_quadrature_resolution.csv": "bff117fad01270e37c38b35b11929f17baec035e42d2843fdefa5973c5530752",
+    "audit/baseline_original_rank_resolution.csv": "ae602dc3e3165ec6ff4ebb5d342aa552b01b3b6d4fd6e85402a6d5d0776034de",
+    "audit/rich6d_rank_resolution.csv": "70c001857d34f82c39e223f71cdf72eda8adb6acf932baaf67a2d5bd3d0f4fb0",
+    "audit/rich6d_gradient_moments.csv": "1b0019380e0459ab1fa8678630b563d559aacea06ed6d8324f1570050ecaad4e",
+    "data/baseline_original/rates.csv": "a469c21671f14f20a50abac6f38a27377d0d2562623c7869649a54fbb875e3f9",
+    "data/rich6d/rates.csv": "3fc34842c200b98fe6a8447ff12a1887c46a08911cfef4c7efb16bdc675e5879",
+    "data/baseline_original/oracle_optimism_bootstrap.csv": "88c67123e754f8927f21e146d6c5fad296e7ffec8a4cae062512a8d10aa32a2d",
+    "data/rich6d/oracle_optimism_bootstrap.csv": "590c8abebf7e24cdf7e818dfc4ccc92e2c186240dd0a3a26fdd0ea29dd394209"
+  },
+  "generated_hashes": {
+    "paper/simulation_appendix.tex": "3a5ca725c4414e6b229861658a9e299c0020ddd5222e0904702c860131b5cf4c",
+    "paper/simulation_numbers.tex": "e101454ba0d7e405adf9ac9f3f753b26f469cafada5d38e3d567b69294e66726",
+    "paper/simulation_preview.tex": "3aa2c3d9ac2cb2539efc307cbd2d54733cb027fa09d4cbde279c79ae50f85fc4",
+    "paper/simulation_section.tex": "5d59d7b0423b558a3821e9d7ddaa4a310636e3aceb47f4e19a44205d5bb595c5",
+    "tables/confirmation_curve_maximum_baseline_original.csv": "d012da210a064a36a453ea7ba99cc21fe9f54cb878115b26a3709bfeb9de5062",
+    "tables/confirmation_curve_maximum_baseline_original.tex": "516252d05edb0362d3510af0fad7a9e201eb218297a77a50d63d1e00369c1ba9",
+    "tables/confirmation_curve_maximum_rich6d.csv": "8a067716cf7c1a4f0c52c1ffc7de7224a46867157f2f965556adf7a88aa15084",
+    "tables/confirmation_curve_maximum_rich6d.tex": "87d9dbc5ebf0c4a1300185bbb5fa6fe84dce0c2f4ef36e7cad42b0878a3a9141",
+    "tables/confirmation_gradient.csv": "4f995cbbdfd7a8a055a06f8db8a5071f4d56f1fc4e133607ad893d632d1971c9",
+    "tables/confirmation_gradient.tex": "cb79f84b69fee761a930ed0f388effc17eed1e64250b9048411105c4f2a63785",
+    "tables/confirmation_main.csv": "cc83596b128e0ac0b58e46932f91933f6b59d267d234d5dcc16dc4a2b98f3d15",
+    "tables/confirmation_main.tex": "13bcc6849198d422be5a0ea78166c8f75c5b3c02375ed1c41eb16380a6e9bafb",
+    "tables/confirmation_optimism.csv": "9018d083a74fc3a5210308168e2ae59026d49dab3581fd399fca7cdf89a81a31",
+    "tables/confirmation_optimism.tex": "24eb96d86ceedff69f602daa153e76f907febb1d2de17620235d54e4df3c2d64",
+    "tables/confirmation_rates.csv": "97cc511b9f3fb605e436a86d173d39cf75e327880078cc0583760860744a24a5",
+    "tables/confirmation_rates.tex": "6bdfe1229acbe7cd1a50a0243f6a61c5efb1339c50e6d5a57230716cf773a73e",
+    "tables/confirmation_resolution.csv": "640da35e51cfbadfc695ca956251e1250d32865da9770dc34d7f2e9408cf1971",
+    "tables/confirmation_resolution.tex": "c0cd539143c87e1d095d32c05df86afe4bbd9a53295a8de3a6138e59c964bfbf",
+    "tables/confirmation_selection.csv": "794b4d01376e2afac8b2367fbc82361fa3ca2549e9bb6608b418e791559c21ee",
+    "tables/confirmation_selection.tex": "362a07c1bc46ca78396a19e035f200bfcbac33a7b94a9b536df4b59b2b07b9af",
+    "tables/confirmation_theory.csv": "ebe654552a7d73aaee8e65b16d16795181ab08c65b93a3370281a1d03edb3106",
+    "tables/confirmation_theory.tex": "80f255e692cbb5656f38d2d954cda755c28dff5ff0dff63358b36a86e19b4ed0",
+    "tables/confirmation_unresolved_1.csv": "837b9073544898a27027ff899cf18c7f5e076c4d3c8ebf50d50f8473bfeca561",
+    "tables/confirmation_unresolved_1.tex": "46a7229d08007e7b733bda493c9ee4e6bd57193be9025b4915f80cd24cbc67f7"
+  }
+}

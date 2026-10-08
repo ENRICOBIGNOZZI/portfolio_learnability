@@ -1,0 +1,132 @@
+{
+  "verified": true,
+  "archive_sha256": "a6419bc9cca08d70f67dbbf8cfc044cb8a4049e276b3b7a6586eb436770be86b",
+  "theory": [
+    {
+      "path": "paper/theory/direct_port_learning.tex",
+      "sha256": "e03c416915ae6b35d8f6d1658ed9d9c84fd167af72db0a2d5dd6bb3cea98e260",
+      "git_blob": "f17df8e281c66b31e023ed11004ec21b290f295d",
+      "zip_entry": "Portfolio 7/direct_port_learning.tex",
+      "prefix_bytes": null
+    },
+    {
+      "path": "paper/theory/economomic_spectrum_final.tex",
+      "sha256": "e83a201a6ce34b635a172f088e02a7b3dd0deddfc7b4b1e6ae5a5afd70761002",
+      "git_blob": "4bdc30ad2b317d127d98989b71d2744cea506769",
+      "zip_entry": "Portfolio 7/economomic_spectrum_final.tex",
+      "prefix_bytes": null
+    },
+    {
+      "path": "paper/theory/introduction.tex",
+      "sha256": "22b4960634cd86026e2c3f52327c6011f8d239c4faec7a23fa9adc0db0c62b7b",
+      "git_blob": "05d7c34dea1291ee0fb0d8dcce315166a0a053a9",
+      "zip_entry": "Portfolio 7/introduction.tex",
+      "prefix_bytes": null
+    },
+    {
+      "path": "paper/theory/population_problem.tex",
+      "sha256": "15892ec10028ed6278e7b48904cc828ada6a5f3978ab4560b47fd16b43723e1c",
+      "git_blob": "34a73cfadec819e4a6ba0bfb865bf8fa9cec4eb0",
+      "zip_entry": "Portfolio 7/population_problem.tex",
+      "prefix_bytes": null
+    },
+    {
+      "path": "paper/theory/proofs_learning.tex",
+      "sha256": "96f2cf375a7a951118a38d17e0fc857c35bc364bdcb9c888a21bbac3a31f0731",
+      "git_blob": "5b6ace4a3125475c016995fb513fd8cfce0402e0",
+      "zip_entry": "Portfolio 7/proofs_learning.tex",
+      "prefix_bytes": null
+    },
+    {
+      "path": "paper/theory/references.bib",
+      "sha256": "4b7a0a7538e296998e3e02f58dd1d03d4639a022556d0a4cf3af42611aa160d0",
+      "git_blob": "7726601494d55015f96d0d72b9c2dad4b3d11faa",
+      "zip_entry": "Portfolio 7/references.bib",
+      "prefix_bytes": null
+    },
+    {
+      "path": "paper/theory/representation_learnability.tex",
+      "sha256": "ca13af09082ef3e883942579951c55f5acdb0456b0aaedd48a52ecfbde5303e6",
+      "git_blob": "99690b0bcca348eb238459149103d15ac6406fab",
+      "zip_entry": "Portfolio 7/representation_learnability.tex",
+      "prefix_bytes": null
+    },
+    {
+      "path": "paper/theory/representation_tables.tex",
+      "sha256": "82abc22608e0c6992a8fd9c4b5c543a71f4fb11cbf4e5e1bc91ef0bd794cc0dd",
+      "git_blob": "5305869509301fcb918222f7f5243827a8d6f2b8",
+      "zip_entry": "Portfolio 7/appendice_2.tex",
+      "prefix_bytes": 3648
+    },
+    {
+      "path": "paper/theory/unbounded_concentration.tex",
+      "sha256": "c904b7b7af582837b0b66bfd6dc519b9be276f06ce1f5ba39cfef5a952bdb315",
+      "git_blob": "927bd05dcd555b094bb4f86c88a516089d0de7f8",
+      "zip_entry": "Portfolio 7/unbounded_concentration.tex",
+      "prefix_bytes": null
+    }
+  ],
+  "empirical_count": 112,
+  "protected_entries": [
+    {
+      "source": "/Users/enrico/Downloads/Portfolio 8/introduction.tex",
+      "path": "paper/theory/introduction.tex",
+      "sha256": "22b4960634cd86026e2c3f52327c6011f8d239c4faec7a23fa9adc0db0c62b7b"
+    },
+    {
+      "source": "/Users/enrico/Downloads/Portfolio 8/population_problem.tex",
+      "path": "paper/theory/population_problem.tex",
+      "sha256": "15892ec10028ed6278e7b48904cc828ada6a5f3978ab4560b47fd16b43723e1c"
+    },
+    {
+      "source": "/Users/enrico/Downloads/Portfolio 8/direct_port_learning.tex",
+      "path": "paper/theory/direct_port_learning.tex",
+      "sha256": "e03c416915ae6b35d8f6d1658ed9d9c84fd167af72db0a2d5dd6bb3cea98e260"
+    },
+    {
+      "source": "/Users/enrico/Downloads/Portfolio 8/economomic_spectrum_final.tex",
+      "path": "paper/theory/economomic_spectrum_final.tex",
+      "sha256": "e83a201a6ce34b635a172f088e02a7b3dd0deddfc7b4b1e6ae5a5afd70761002"
+    },
+    {
+      "source": "/Users/enrico/Downloads/Portfolio 8/representation_learnability.tex",
+      "path": "paper/theory/representation_learnability.tex",
+      "sha256": "ca13af09082ef3e883942579951c55f5acdb0456b0aaedd48a52ecfbde5303e6"
+    },
+    {
+      "source": "/Users/enrico/Downloads/Portfolio 8/proofs_learning.tex",
+      "path": "paper/theory/proofs_learning.tex",
+      "sha256": "96f2cf375a7a951118a38d17e0fc857c35bc364bdcb9c888a21bbac3a31f0731"
+    },
+    {
+      "source": "/Users/enrico/Downloads/Portfolio 8/unbounded_concentration.tex",
+      "path": "paper/theory/unbounded_concentration.tex",
+      "sha256": "c904b7b7af582837b0b66bfd6dc519b9be276f06ce1f5ba39cfef5a952bdb315"
+    },
+    {
+      "source": "/Users/enrico/Downloads/Portfolio 8/references.bib",
+      "path": "paper/theory/references.bib",
+      "sha256": "4b7a0a7538e296998e3e02f58dd1d03d4639a022556d0a4cf3af42611aa160d0"
+    },
+    {
+      "source": "/Users/enrico/Downloads/Portfolio 8/appendice_2.tex",
+      "source_byte_range": [
+        0,
+        3648
+      ],
+      "path": "paper/theory/representation_tables.tex",
+      "sha256": "82abc22608e0c6992a8fd9c4b5c543a71f4fb11cbf4e5e1bc91ef0bd794cc0dd"
+    },
+    {
+      "source": "/Users/enrico/Downloads/Portfolio 8/figures/FRONTIER.png",
+      "path": "paper/figures/FRONTIER.png",
+      "sha256": "2d4b9fab91140cf9a1ddb52225a445ac105f4e0f46033633244fd3c13c8b9a6a"
+    },
+    {
+      "source": "/Users/enrico/Downloads/Portfolio 8/figures/Complexity.png",
+      "path": "paper/figures/Complexity.png",
+      "sha256": "c4f68d20e6ace0ced74ec3f94740df770abd6eee569e538c3db86efed45ec7fc"
+    }
+  ],
+  "verification_kind": "Byte comparison against provided reference archive, not inferred folder naming or personal user confirmation."
+}

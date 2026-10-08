@@ -1,0 +1,11 @@
+environment,cohort,T,replications,crossfit_minus_plugin_regret,bootstrap_low,bootstrap_high,bootstrap_draws,interval
+baseline_original_nu25,practical,60,50,5.2882814683328366e-05,1.1349018942465734e-05,0.00021146074835606585,1000,"pointwise percentile; whole-path resampling and oracle recalibration; fixed fold labels, anchors and quadrature"
+baseline_original_nu25,practical,90,50,0.00011589184774770354,1.7756865943292313e-05,0.0012749902002912301,1000,"pointwise percentile; whole-path resampling and oracle recalibration; fixed fold labels, anchors and quadrature"
+baseline_original_nu25,practical,120,50,4.213546752662549e-05,1.3478128871206299e-05,0.001847936266588735,1000,"pointwise percentile; whole-path resampling and oracle recalibration; fixed fold labels, anchors and quadrature"
+baseline_original_nu25,practical,180,50,0.000673698338675378,5.988676332201485e-05,0.0020727679975076295,1000,"pointwise percentile; whole-path resampling and oracle recalibration; fixed fold labels, anchors and quadrature"
+baseline_original_nu25,practical,240,50,6.931331222679443e-05,0.0,0.001289585980921086,1000,"pointwise percentile; whole-path resampling and oracle recalibration; fixed fold labels, anchors and quadrature"
+baseline_original_nu25,practical,360,50,0.0,0.0,7.147945956314468e-05,1000,"pointwise percentile; whole-path resampling and oracle recalibration; fixed fold labels, anchors and quadrature"
+baseline_original_nu25,practical,540,50,0.0,0.0,8.457827423029735e-05,1000,"pointwise percentile; whole-path resampling and oracle recalibration; fixed fold labels, anchors and quadrature"
+baseline_original_nu25,practical,720,50,0.0,0.0,5.8900858563112324e-05,1000,"pointwise percentile; whole-path resampling and oracle recalibration; fixed fold labels, anchors and quadrature"
+baseline_original_nu25,practical,1080,50,0.0,0.0,2.5511600315166186e-05,1000,"pointwise percentile; whole-path resampling and oracle recalibration; fixed fold labels, anchors and quadrature"
+baseline_original_nu25,practical,1440,50,0.0,0.0,3.09624603182054e-05,1000,"pointwise percentile; whole-path resampling and oracle recalibration; fixed fold labels, anchors and quadrature"

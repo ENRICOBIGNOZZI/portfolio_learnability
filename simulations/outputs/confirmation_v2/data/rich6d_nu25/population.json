@@ -1,0 +1,58 @@
+{
+  "q_reference": 0.014215686274509805,
+  "reference_sharpe": 0.12008616167468394,
+  "subspace_regret_floor": 5.099994616676248e-05,
+  "theoretical_b": 1.8333333333333335,
+  "parameters": {
+    "N": 600,
+    "D": 6,
+    "K_F": 3,
+    "rho": [
+      0.95,
+      0.95,
+      0.95,
+      0.95,
+      0.95,
+      0.95
+    ],
+    "nu": 1.5,
+    "ell": 1.0,
+    "c_beta": 0.0016,
+    "sigma_eps": 0.08,
+    "mu_F": [
+      0.1,
+      0.06,
+      0.03
+    ],
+    "loading_map": "rich6d",
+    "eta": 0.35
+  },
+  "environment": {
+    "name": "rich6d_nu25",
+    "code": 0,
+    "N": 600,
+    "rho": 0.95,
+    "signal_multiplier": 1.0,
+    "sigma_eps": 0.08,
+    "nu": 2.5,
+    "rank": 512,
+    "variant": "baseline",
+    "replications": 50,
+    "loading_map": "rich6d",
+    "eta": 0.35
+  },
+  "reference_kind": "exact conditional optimum",
+  "population_groups": 8192,
+  "population_seed": 2216883481,
+  "basis_seed": 1223482779,
+  "run_hash": "96fff9e5bc41bfb3c9f6a3096196c6c259aca11c560d360cef9f06bcf096076c",
+  "effective_kernel_spec": {
+    "family": "Matern",
+    "nu": 2.5,
+    "ell": 1.0,
+    "dimension": 6,
+    "normalization": "K(z,z)=1",
+    "rank": 512,
+    "anchor_seed": 1223482779
+  }
+}

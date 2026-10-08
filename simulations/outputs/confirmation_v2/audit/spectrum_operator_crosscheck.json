@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "loading_map": "baseline_original",
+      "groups": 128,
+      "independent_operator_eigenvalue_max_error": 4.607859233063394e-19,
+      "partial_dense_max_error": 6.776263578034403e-20,
+      "passed": true
+    },
+    {
+      "loading_map": "rich6d",
+      "groups": 128,
+      "independent_operator_eigenvalue_max_error": 4.0657581468206416e-19,
+      "partial_dense_max_error": 4.0657581468206416e-20,
+      "passed": true
+    }
+  ]
+}

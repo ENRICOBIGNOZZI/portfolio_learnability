@@ -1,0 +1,99 @@
+\clearpage
+\section*{Simulation confirmation appendix}
+All aggregates are reconstructed independently from saved path surfaces. The
+five stored training-only and theory policies also retain coefficients and
+actual test payoffs for population and OOS evaluation checks. Public
+synthetic archives contain checksums for each checkpoint; no licensed empirical
+observations are included. Historical checks reconstruct the original 3,500
+evaluations and bootstrap intervals. That archive lacks stock returns and
+coefficients, so its aggregation check is not misrepresented as a fitting replay.
+
+The historical empirical-rank robustness has finite support at fixed N and
+does not meet the baseline infinite-spectrum E5 interpretation. Its original
+one-coordinate loading map is preserved. Bounded heteroskedasticity does not
+impose baseline conditional pricing, and its historical regret reference is the
+finite-subspace optimum, not the unrestricted analytic baseline optimum.
+The licensed empirical exercise elsewhere in the paper is unchanged and
+separate from these artificial economies.
+
+\input{\simoutput/tables/confirmation_gradient.tex}
+
+\input{\simoutput/tables/confirmation_rates.tex}
+
+\input{\simoutput/tables/confirmation_optimism.tex}
+
+\input{\simoutput/tables/confirmation_unresolved_1.tex}
+
+\input{\simoutput/tables/confirmation_curve_maximum_baseline_original.tex}
+
+\input{\simoutput/tables/confirmation_curve_maximum_rich6d.tex}
+
+\begin{figure}[p]\centering
+\includegraphics[width=\textwidth]{\simoutput/figures/baseline_original_decomposition.pdf}
+\caption{Baseline: regularization bias including projection floor, nonnegative estimation norm and signed cross term.}
+\end{figure}
+
+\begin{figure}[p]\centering
+\includegraphics[width=\textwidth]{\simoutput/figures/baseline_original_selection_distributions.pdf}
+\caption{Baseline: separate penalty location summaries, endpoint frequencies, and median/interquartile ranges of complexity and regret.}
+\end{figure}
+
+\begin{figure}[p]\centering
+\includegraphics[width=\textwidth]{\simoutput/figures/baseline_original_oos_types.pdf}
+\caption{Baseline: independent stationary and contiguous future OOS. Negative sample excess losses remain visible.}
+\end{figure}
+
+\begin{figure}[p]\centering
+\includegraphics[width=\textwidth]{\simoutput/figures/baseline_original_rolling_minus_holdout.pdf}
+\caption{Baseline: paired rolling-minus-holdout differences; no selector was redesigned after observing confirmation outcomes.}
+\end{figure}
+
+\begin{figure}[p]\centering
+\includegraphics[width=\textwidth]{\simoutput/figures/baseline_original_numerical_resolution.pdf}
+\caption{Baseline: fixed-penalty rank comparisons and independent quadrature sensitivity. Unresolved cells are retained.}
+\end{figure}
+
+\begin{figure}[p]\centering
+\includegraphics[width=\textwidth]{\simoutput/figures/rich6d_decomposition.pdf}
+\caption{Rich6D: regularization bias including projection floor, nonnegative estimation norm and signed cross term.}
+\end{figure}
+
+\begin{figure}[p]\centering
+\includegraphics[width=\textwidth]{\simoutput/figures/rich6d_selection_distributions.pdf}
+\caption{Rich6D: separate penalty location summaries, endpoint frequencies, and median/interquartile ranges of complexity and regret.}
+\end{figure}
+
+\begin{figure}[p]\centering
+\includegraphics[width=\textwidth]{\simoutput/figures/rich6d_oos_types.pdf}
+\caption{Rich6D: independent stationary and contiguous future OOS. Negative sample excess losses remain visible.}
+\end{figure}
+
+\begin{figure}[p]\centering
+\includegraphics[width=\textwidth]{\simoutput/figures/rich6d_rolling_minus_holdout.pdf}
+\caption{Rich6D: paired rolling-minus-holdout differences; no selector was redesigned after observing confirmation outcomes.}
+\end{figure}
+
+\begin{figure}[p]\centering
+\includegraphics[width=\textwidth]{\simoutput/figures/rich6d_numerical_resolution.pdf}
+\caption{Rich6D: fixed-penalty rank comparisons and independent quadrature sensitivity. Unresolved cells are retained.}
+\end{figure}
+
+\begin{figure}[p]\centering
+\includegraphics[width=\textwidth]{\simoutput/figures/spectrum_resolution.pdf}
+\caption{Three quadrature resolutions and three independent seeds. Shading spans the seed range, not a confidence interval. Fits use fixed windows and do not certify an asymptotic exponent.}
+\end{figure}
+
+\begin{figure}[p]\centering
+\includegraphics[width=\textwidth]{\simoutput/figures/kernel_sensitivity.pdf}
+\caption{Prospective smoothness sensitivities on the practical grid; 50 paths per alternative map/kernel environment.}
+\end{figure}
+
+\begin{figure}[p]\centering
+\includegraphics[width=\textwidth]{\simoutput/../paper/figures/appendix_N_robustness.pdf}
+\caption{Historical cross-sectional-size sensitivity, archived unchanged and independently checked.}
+\end{figure}
+
+\begin{figure}[p]\centering
+\includegraphics[width=\textwidth]{\simoutput/../paper/figures/appendix_persistence.pdf}
+\caption{Historical characteristic-persistence sensitivity, archived unchanged and independently checked.}
+\end{figure}

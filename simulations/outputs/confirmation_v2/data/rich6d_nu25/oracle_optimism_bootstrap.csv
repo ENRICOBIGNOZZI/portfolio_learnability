@@ -1,0 +1,11 @@
+environment,cohort,T,replications,crossfit_minus_plugin_regret,bootstrap_low,bootstrap_high,bootstrap_draws,interval
+rich6d_nu25,practical,60,50,2.8187972421944013e-05,8.057012191059823e-06,0.00012766022430686739,1000,"pointwise percentile; whole-path resampling and oracle recalibration; fixed fold labels, anchors and quadrature"
+rich6d_nu25,practical,90,50,6.099221387289265e-05,1.0474984586052562e-05,0.0012148155095053667,1000,"pointwise percentile; whole-path resampling and oracle recalibration; fixed fold labels, anchors and quadrature"
+rich6d_nu25,practical,120,50,2.4690447169885277e-05,8.067486894209208e-06,0.0020271668292966127,1000,"pointwise percentile; whole-path resampling and oracle recalibration; fixed fold labels, anchors and quadrature"
+rich6d_nu25,practical,180,50,0.0007754717461185834,4.4500994051468144e-05,0.002207579036524193,1000,"pointwise percentile; whole-path resampling and oracle recalibration; fixed fold labels, anchors and quadrature"
+rich6d_nu25,practical,240,50,7.365798858212196e-05,0.0,0.0014392307296410812,1000,"pointwise percentile; whole-path resampling and oracle recalibration; fixed fold labels, anchors and quadrature"
+rich6d_nu25,practical,360,50,0.0,0.0,6.7439833686214e-05,1000,"pointwise percentile; whole-path resampling and oracle recalibration; fixed fold labels, anchors and quadrature"
+rich6d_nu25,practical,540,50,0.0,0.0,8.405381200613222e-05,1000,"pointwise percentile; whole-path resampling and oracle recalibration; fixed fold labels, anchors and quadrature"
+rich6d_nu25,practical,720,50,0.0,0.0,5.942281331924125e-05,1000,"pointwise percentile; whole-path resampling and oracle recalibration; fixed fold labels, anchors and quadrature"
+rich6d_nu25,practical,1080,50,0.0,0.0,0.0,1000,"pointwise percentile; whole-path resampling and oracle recalibration; fixed fold labels, anchors and quadrature"
+rich6d_nu25,practical,1440,50,0.0,0.0,3.109693985527576e-05,1000,"pointwise percentile; whole-path resampling and oracle recalibration; fixed fold labels, anchors and quadrature"

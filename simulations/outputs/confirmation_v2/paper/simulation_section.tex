@@ -1,0 +1,177 @@
+\input{\simoutput/paper/simulation_numbers.tex}
+\section{Simulation: confirmation in two balanced economies}
+\label{sec:balanced_simulation}
+We preserve the original stock-level baseline and add a smooth loading map that
+depends on all six characteristics. The historical experiment contains 3,500
+environment/rank evaluations on 3,100 distinct economic replication seeds;
+the rank comparisons reuse baseline innovations. Its outputs and theoretical
+source bytes are archived unchanged. The following confirmation uses new seeds
+and a protocol frozen before performance was examined.
+
+\subsection{Economy and analytic reference}
+There are $N=600$ stocks in triplets, six characteristics and three return
+factors. Group states start from their stationary Gaussian law and follow
+independent AR(1) dynamics with persistence $0.95$. With
+$U_{g,d,t}=\Phi(S_{g,d,t})$, stock roles $r=0,1,2$ have
+$Z_{g,r,d,t}=2((U_{g,d,t}+r/3)\bmod1)-1$. These population ranks have continuous
+support; persistence is in characteristics, while factor shocks are iid.
+Define
+\[
+\theta_\eta(z)=\pi(z_1+1)+\eta\sum_{d=2}^6\sin\{\pi(z_d-z_1)\},\qquad
+\beta_\eta(z)=\sqrt{c_\beta}
+\begin{pmatrix}\sqrt{2/3}\cos\theta_\eta(z)\\
+\sqrt{2/3}\sin\theta_\eta(z)\\1/\sqrt3\end{pmatrix}.
+\]
+The original map uses $\eta=0$ and the richer map uses $\eta=0.35$.
+The common triplet phase rotates the first two loadings by $2\pi/3$ and
+preserves $\|\beta\|^2=c_\beta$ and $B_t'B_t/N=(c_\beta/3)I_3$.
+Returns are $R_{t+1}=B_tF_{t+1}+\varepsilon_{t+1}$, with
+$F_{t+1}\sim N(\mu_F,I-\mu_F\mu_F')$ and independent
+$\varepsilon_{t+1}\sim N(0,\sigma_\varepsilon^2I_N)$.
+We retain $c_\beta=0.0016$, $\sigma_\varepsilon=0.08$ and
+$\mu_F=(0.10,0.06,0.03)'$. For the paper's weights $W(Z_t)/N$, both maps have
+\[
+W^\star(z)=\frac{\beta_\eta(z)'\mu_F}{c_\beta/3+\sigma_\varepsilon^2/N},\quad
+q^\star=\frac{c_\beta/3}{c_\beta/3+\sigma_\varepsilon^2/N}\|\mu_F\|^2,
+\quad Q^\star=1-q^\star,\quad \SR^\star=\sqrt{q^\star/(1-q^\star)}.
+\]
+The original conditional-pricing and Gaussian-moment audits apply to both
+maps. An independent stock-dimensional solve checks E4, and analytic derivatives
+are compared with finite differences in all six coordinates. Smooth extensions
+with compactly supported cutoffs establish the required Sobolev membership;
+a finite Nystr\"om norm is not used as a proof of infinite-RKHS membership.
+The operator sandwich underlying E5 is retained. Three economic factors do
+not imply rank three after integrating over characteristic states.
+
+\subsection{Frozen design, selectors and evaluation}
+The local-resource protocol uses 100 new paths per map on the practical grid
+\[
+T\in\{60,90,120,180,240,360,540,720,1080,1440\}.
+\]
+The first 50 are coherently
+extended to $T\in\{2160,3240,4860,7290\}$. Smoothness sensitivities
+$\nu\in\{0.5,2.5\}$ use 50 paths per map on the practical grid. These counts
+are a prospective reduction from the proposed maximum 500/200/200 targets,
+recorded after a cost and projection pilot and before confirmation performance.
+Common random numbers pair maps, kernels and ranks; independent paths within
+an environment, rather than all environment evaluations, are the sampling units.
+The 400 environment evaluations cover 200 distinct map/innovation-index pairs:
+the two maps share 100 innovation seed indices, and alternative kernels reuse
+the corresponding economic paths. These are not 400 independent trajectories.
+
+The response-one ridge estimator uses the actual Mat\'ern kernel, unit diagonal,
+length scale one and rank 512 with independent nested Sobol anchors. Its
+uncentered second moment and penalty normalization are unchanged. Holdout25
+uses the last quarter for validation and preserves its first-minimum tie rule.
+Rolling3 uses chronological train/validation endpoints at fractions
+$(0.4,0.6)$, $(0.6,0.8)$ and $(0.8,1)$, rounded down to integers. Validation
+loss is weighted by the number of observations; the selected policy is refitted
+on all $T$ observations. Ties within $10^{-12}$ choose the larger penalty.
+Neither selector receives population moments, the optimum, oracle objects or
+test observations. A conservative one-standard-error variant is omitted
+because no dependent-data uncertainty rule was prospectively justified.
+The zero policy is an explicit benchmark with loss one, complexity zero and
+Sharpe convention zero; it is never silently added to a selector.
+
+The independent stationary test and contiguous future $T+1,\ldots,T+720$
+each contain 720 observations. The latter uses the same long economic path,
+with no future data entering fitting. Sharpe is per period. Whole-path
+resampling preserves overlap across training lengths. Pointwise Monte Carlo
+intervals are conditional on the anchors and population quadrature, whose
+uncertainty is assessed separately.
+
+For $b=1+2\nu/6$, the separate theory experiment evaluates
+$\lambda_T(a)=a s_{\rm ref}T^{-b/(b+1)}$, $a\in\{0.25,1,4\}$, at the actual
+penalties, without grid snapping. The positive scale $s_{\rm ref}$ is fixed
+once per map/kernel from an independent population pilot. It uses population
+calibration information and is not an implementable tuning rule.
+The ensemble plugin loss oracle minimizes mean population regret on the fixed
+96-point grid. Its Sharpe is evaluated at that loss-optimal penalty; it is not
+a Sharpe oracle. A five-fold oracle calibrates on four whole-path folds and
+evaluates on the fifth, exposing Monte Carlo selection optimism.
+
+\subsection{Evidence and numerical limits}
+For Baseline, mean population regret at $T=1440$ is \simNumberA{} for holdout, \simNumberB{} for rolling validation, \simNumberC{} for the plugin loss oracle and \simNumberD{} for the cross-fitted loss oracle. These are observed comparisons, not a promise of a particular selector improvement.
+
+For Rich6D, mean population regret at $T=1440$ is \simNumberE{} for holdout, \simNumberF{} for rolling validation, \simNumberG{} for the plugin loss oracle and \simNumberH{} for the cross-fitted loss oracle. These are observed comparisons, not a promise of a particular selector improvement.
+
+
+Mean, median and geometric-mean penalties are distinct because endpoint choices
+can dominate the mean. The tables and distribution figures report both endpoints
+separately. Negative sample OOS excess losses are retained on a signed linear
+scale. The exact population decomposition is
+\[
+Q(\widehat W_\lambda)-Q^\star
+=\{Q(W_\lambda)-Q^\star\}
++\|\widehat W_\lambda-W_\lambda\|_\Sigma^2
++2\langle\widehat W_\lambda-W_\lambda,\Sigma W_\lambda-\mu\rangle.
+\]
+The cross term is signed. Population bias includes the measured projection
+floor. Sample complexity is at most $\min(T,r_{\rm num})$; population complexity
+divided by $T$ need not be at most one.
+
+Small exact temporal-Gram solves use $N\in\{30,60\}$ and $T\in\{60,120\}$,
+including the indispensable $T\lambda$ dual penalty. The practical-grid
+resolution audit compares ranks 256,512,1024 at fixed penalties on 50 paired
+paths, using common quadrature. Certification requires projection floor below
+5 percent of relevant mean regret and absolute paired rank difference plus
+1.96 MCSE below 5 percent. Fixed selected/theory policies are also evaluated
+with 8,192 and 32,768 groups at four independent quadrature seeds.
+Only regions passing the applicable rank and quadrature checks are described as
+resolved relative to the audited rank-1024 reference and quadrature. This finite
+comparison does not prove equality with the infinite kernel. False flags, near-interpolating
+regions and extra horizons without a corresponding rank check remain explicitly
+unresolved. No points or economic parameters are removed to secure a pass.
+
+Spectrum calculations use 1,024,2,048,4,096 groups at three seeds, with
+independent dense-operator checks and partial eigenpair residuals. The windows
+30--200,60--400,120--800 are fixed; unresolved indices are reported. A slope
+near $-b$ does not prove E5, and a distant finite-window fit does not disprove
+its analytic argument. The historical tolerance band is only descriptive.
+
+The source condition is a theorem assumption. Neither smooth map is claimed
+to be least favourable, so neither must attain the minimax envelope with
+equality. The displayed theory paths, ex-post oracle fits and validation fits
+answer different questions. Their slopes and whole-path bootstrap intervals
+are reported without calibrating the economy or choosing windows after seeing
+the results. Cross-sectional size stays fixed within every rate experiment.
+
+\input{\simoutput/tables/confirmation_main.tex}
+\input{\simoutput/tables/confirmation_selection.tex}
+\input{\simoutput/tables/confirmation_theory.tex}
+\input{\simoutput/tables/confirmation_resolution.tex}
+
+\begin{figure}[p]\centering
+\includegraphics[width=\textwidth]{\simoutput/figures/baseline_original_four_panel.pdf}
+\caption{Baseline: full practical-grid OOS curves and training-only selection in the rank-512 representation. The entire curve is not certified as a full-kernel calculation. Bands are pointwise Monte Carlo intervals. Heatmaps interpolate only inside computed complexity support.}
+\end{figure}
+
+\begin{figure}[p]\centering
+\includegraphics[width=\textwidth]{\simoutput/figures/rich6d_four_panel.pdf}
+\caption{Rich6D: full practical-grid OOS curves and training-only selection in the rank-512 representation. The entire curve is not certified as a full-kernel calculation. Bands are pointwise Monte Carlo intervals. Heatmaps interpolate only inside computed complexity support.}
+\end{figure}
+
+\begin{figure}[p]\centering
+\includegraphics[width=\textwidth]{\simoutput/figures/baseline_original_risk_complexity.pdf}
+\caption{Baseline: raw population loss, regret and normalized regret against sample complexity and complexity per observation, at numerical rank 512. High-complexity regions failing the rank check remain diagnostic.}
+\end{figure}
+
+\begin{figure}[p]\centering
+\includegraphics[width=\textwidth]{\simoutput/figures/rich6d_risk_complexity.pdf}
+\caption{Rich6D: raw population loss, regret and normalized regret against sample complexity and complexity per observation, at numerical rank 512. High-complexity regions failing the rank check remain diagnostic.}
+\end{figure}
+
+\begin{figure}[p]\centering
+\includegraphics[width=\textwidth]{\simoutput/figures/baseline_original_theory_paths.pdf}
+\caption{Baseline: distinct theory, oracle and validation paths. Larger training lengths use the 50-path extended cohort and retain finite-resolution qualifications. Panels labeled symlog preserve confidence intervals crossing zero, with linear threshold $10^{-5}$. A negative penalty interval bound comes from the Gaussian Monte Carlo interval; selected penalties remain positive.}
+\end{figure}
+
+\begin{figure}[p]\centering
+\includegraphics[width=\textwidth]{\simoutput/figures/rich6d_theory_paths.pdf}
+\caption{Rich6D: distinct theory, oracle and validation paths. Larger training lengths use the 50-path extended cohort and retain finite-resolution qualifications. Panels labeled symlog preserve confidence intervals crossing zero, with linear threshold $10^{-5}$. A negative penalty interval bound comes from the Gaussian Monte Carlo interval; selected penalties remain positive.}
+\end{figure}
+
+\begin{figure}[p]\centering
+\includegraphics[width=\textwidth]{\simoutput/figures/rich6d_minus_baseline.pdf}
+\caption{Paired rich-map minus original-map differences on common economic innovations; pointwise intervals use paired path differences as the sampling units.}
+\end{figure}

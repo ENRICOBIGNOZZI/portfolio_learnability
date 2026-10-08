@@ -1,0 +1,30 @@
+\begin{table}[p]
+\centering
+\caption{Baseline: sensitivity at the largest mean population loss on the fixed 96-penalty grid, in the 50-path numerical audit. Maximizing regret is equivalent because the analytic optimum is constant. The rank-1024 comparison uses the same penalty, without reselection. C512 and C1024 show proximity to the sample-rank boundary; payoff error is the squared difference on common quadrature. This is an ex-post diagnostic, not a tuning rule.}
+\label{tab:confirmation_curve_maximum_baseline_original}
+\begingroup\small
+\setlength{\tabcolsep}{4pt}
+\ifdefined\simtablebox\else\newsavebox{\simtablebox}\fi
+\sbox{\simtablebox}{%
+\begin{tabular}{rrrrrrrr}
+\toprule
+T & lambda & Max regret512 & Same lambda regret1024 & C512 & C1024 & Payoff error & Rank pass \\
+\midrule
+60 & 1e-12 & 0.8037 & 0.6477 & 60 & 60 & 0.02426 & False \\
+90 & 1e-12 & 0.9623 & 0.7361 & 90 & 90 & 0.05084 & False \\
+120 & 1e-12 & 1.132 & 0.8287 & 120 & 120 & 0.08881 & False \\
+180 & 1e-12 & 1.431 & 0.9719 & 180 & 180 & 0.2023 & False \\
+240 & 1e-12 & 1.859 & 1.13 & 239.9 & 240 & 0.4105 & False \\
+360 & 1e-12 & 3.413 & 1.468 & 359.5 & 359.8 & 1.536 & False \\
+540 & 1e-12 & 12.07 & 2.173 & 504.8 & 539.2 & 9.843 & False \\
+720 & 1e-12 & 2.418 & 3.422 & 510.4 & 717.2 & 2.821 & False \\
+1080 & 1e-12 & 0.8888 & 8.708 & 511.1 & 994 & 7.831 & False \\
+1440 & 1e-12 & 0.5525 & 2.366 & 511.3 & 1016 & 1.805 & False \\
+\bottomrule
+\end{tabular}
+}
+\ifdim\wd\simtablebox>\linewidth
+\resizebox{\linewidth}{!}{\usebox{\simtablebox}}
+\else\usebox{\simtablebox}\fi
+\endgroup
+\end{table}

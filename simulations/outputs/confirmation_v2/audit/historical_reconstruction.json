@@ -1,0 +1,142 @@
+{
+  "schema": "independent-reconstruction/2.0",
+  "passed": true,
+  "completed_utc": "2026-10-08T19:35:54.433162+00:00",
+  "raw_checkpoint_mode": true,
+  "scope": "full",
+  "aggregate_check": {
+    "passed": true,
+    "scope": "cross-aggregate consistency only; raw checkpoints not accessed"
+  },
+  "publication_table_check": {
+    "passed": true,
+    "verified": [
+      "table3_main_results",
+      "table4_rates",
+      "table5_robustness",
+      "robustness_reference_status",
+      "all_calibrations",
+      "appendix_spectral_rates"
+    ],
+    "scope": "Numeric publication CSVs; formatted TeX/prose must be checked separately"
+  },
+  "verifier_sha256": "2e48c1fbc5923ca96a4b663e8c74c96db4a266061f156849629b2374c4978f89",
+  "environments": [
+    {
+      "environment": "baseline",
+      "raw_replications": 500,
+      "passed": true,
+      "csv_files_reconstructed": 6,
+      "bootstrap_draws": 1000
+    },
+    {
+      "environment": "N99",
+      "raw_replications": 200,
+      "passed": true,
+      "csv_files_reconstructed": 6,
+      "bootstrap_draws": 1000
+    },
+    {
+      "environment": "N300",
+      "raw_replications": 200,
+      "passed": true,
+      "csv_files_reconstructed": 6,
+      "bootstrap_draws": 1000
+    },
+    {
+      "environment": "N501",
+      "raw_replications": 200,
+      "passed": true,
+      "csv_files_reconstructed": 6,
+      "bootstrap_draws": 1000
+    },
+    {
+      "environment": "N999",
+      "raw_replications": 200,
+      "passed": true,
+      "csv_files_reconstructed": 6,
+      "bootstrap_draws": 1000
+    },
+    {
+      "environment": "weak_high_noise",
+      "raw_replications": 200,
+      "passed": true,
+      "csv_files_reconstructed": 6,
+      "bootstrap_draws": 1000
+    },
+    {
+      "environment": "strong_low_noise",
+      "raw_replications": 200,
+      "passed": true,
+      "csv_files_reconstructed": 6,
+      "bootstrap_draws": 1000
+    },
+    {
+      "environment": "rho070",
+      "raw_replications": 200,
+      "passed": true,
+      "csv_files_reconstructed": 6,
+      "bootstrap_draws": 1000
+    },
+    {
+      "environment": "rho090",
+      "raw_replications": 200,
+      "passed": true,
+      "csv_files_reconstructed": 6,
+      "bootstrap_draws": 1000
+    },
+    {
+      "environment": "rho097",
+      "raw_replications": 200,
+      "passed": true,
+      "csv_files_reconstructed": 6,
+      "bootstrap_draws": 1000
+    },
+    {
+      "environment": "slow_spectrum",
+      "raw_replications": 200,
+      "passed": true,
+      "csv_files_reconstructed": 6,
+      "bootstrap_draws": 1000
+    },
+    {
+      "environment": "fast_spectrum",
+      "raw_replications": 200,
+      "passed": true,
+      "csv_files_reconstructed": 6,
+      "bootstrap_draws": 1000
+    },
+    {
+      "environment": "rank128",
+      "raw_replications": 200,
+      "passed": true,
+      "csv_files_reconstructed": 6,
+      "bootstrap_draws": 1000
+    },
+    {
+      "environment": "rank512",
+      "raw_replications": 200,
+      "passed": true,
+      "csv_files_reconstructed": 6,
+      "bootstrap_draws": 1000
+    },
+    {
+      "environment": "empirical_ranks",
+      "raw_replications": 200,
+      "passed": true,
+      "csv_files_reconstructed": 6,
+      "bootstrap_draws": 1000
+    },
+    {
+      "environment": "heteroskedastic",
+      "raw_replications": 200,
+      "passed": true,
+      "csv_files_reconstructed": 6,
+      "bootstrap_draws": 1000
+    }
+  ],
+  "limitations": [
+    "V1 checkpoints store metric surfaces, not stock returns or fitted coefficients; this verifies aggregation, not a new simulation replay.",
+    "Figure pixels, LaTeX prose and formatted publication tables require separate checks."
+  ]
+}

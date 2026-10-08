@@ -1,0 +1,344 @@
+{
+  "schema": "sequential-execution/2.0",
+  "status": "acceptance_commands_completed_pending_archive_publication_and_pdf_review",
+  "watched_process": "Thu Oct  8 15:53:24 2026     /Library/Frameworks/Python.framework/Versions/3.13/Resources/Python.app/Contents/MacOS/Python -u -m simulations.run --profile confirmation_v2 --compute-only --workers 1",
+  "watched_pid": 37632,
+  "phases": [
+    {
+      "name": "rank_baseline",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3",
+        "-u",
+        "-m",
+        "simulations.diagnostics.resolution_v2",
+        "rank",
+        "--environment",
+        "baseline_original",
+        "--workers",
+        "1"
+      ],
+      "started_utc": "2026-10-08T15:01:32.496845+00:00",
+      "log": "simulations/outputs/confirmation_v2/audit/sequential_rank_baseline.log",
+      "module_sha256": "b08569367b5c99805745dc1a8bd0a3bf3ed082c860956112d1b56797216b5db8",
+      "completed_utc": "2026-10-08T15:11:25.883699+00:00",
+      "elapsed_seconds": 593.3691927090113,
+      "return_code": 0,
+      "log_sha256": "18cb2c61e71d42f262197730c7bc442e1aa12390bfee4060dbf6ed815920dda5"
+    },
+    {
+      "name": "rank_rich6d",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3",
+        "-u",
+        "-m",
+        "simulations.diagnostics.resolution_v2",
+        "rank",
+        "--environment",
+        "rich6d",
+        "--workers",
+        "1"
+      ],
+      "started_utc": "2026-10-08T15:11:25.885232+00:00",
+      "log": "simulations/outputs/confirmation_v2/audit/sequential_rank_rich6d.log",
+      "module_sha256": "b08569367b5c99805745dc1a8bd0a3bf3ed082c860956112d1b56797216b5db8",
+      "completed_utc": "2026-10-08T15:29:33.504134+00:00",
+      "elapsed_seconds": 1087.5922538749874,
+      "return_code": 0,
+      "log_sha256": "0e856463027da2ebab7940126618c0f0f13d403b856b88b5a7b5f319346528b9"
+    },
+    {
+      "name": "quadrature_baseline",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3",
+        "-u",
+        "-m",
+        "simulations.diagnostics.resolution_v2",
+        "quadrature",
+        "--environment",
+        "baseline_original"
+      ],
+      "started_utc": "2026-10-08T15:29:33.512367+00:00",
+      "log": "simulations/outputs/confirmation_v2/audit/sequential_quadrature_baseline.log",
+      "module_sha256": "b08569367b5c99805745dc1a8bd0a3bf3ed082c860956112d1b56797216b5db8",
+      "completed_utc": "2026-10-08T15:30:05.998768+00:00",
+      "elapsed_seconds": 32.485117875010474,
+      "return_code": 0,
+      "log_sha256": "710aad2d17edf6cf82cda1c2220967ab59dcab1c471c1a0a582a2e4e3551af14"
+    },
+    {
+      "name": "quadrature_rich6d",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3",
+        "-u",
+        "-m",
+        "simulations.diagnostics.resolution_v2",
+        "quadrature",
+        "--environment",
+        "rich6d"
+      ],
+      "started_utc": "2026-10-08T15:30:06.006627+00:00",
+      "log": "simulations/outputs/confirmation_v2/audit/sequential_quadrature_rich6d.log",
+      "module_sha256": "b08569367b5c99805745dc1a8bd0a3bf3ed082c860956112d1b56797216b5db8",
+      "completed_utc": "2026-10-08T15:30:29.299820+00:00",
+      "elapsed_seconds": 23.29131170801702,
+      "return_code": 0,
+      "log_sha256": "91190d3304f67dbf048eda9685d4c308b71c581a19a9c31d48d71afacbad43ff"
+    },
+    {
+      "name": "spectrum",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3",
+        "-u",
+        "-m",
+        "simulations.diagnostics.spectrum_v2"
+      ],
+      "started_utc": "2026-10-08T15:30:29.301631+00:00",
+      "log": "simulations/outputs/confirmation_v2/audit/sequential_spectrum.log",
+      "module_sha256": "5f66410dc5affa19ab581cf680426005b0d3a10569c5e2e2eaee0d29658885e6",
+      "completed_utc": "2026-10-08T19:01:40.494431+00:00",
+      "elapsed_seconds": 11358.822395582974,
+      "return_code": 0,
+      "log_sha256": "b5a0739a50d902a6ab83ea52b95af35ced84c37782094a0f90fa985108b701cf"
+    },
+    {
+      "name": "aggregate",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3",
+        "-u",
+        "-m",
+        "simulations.run",
+        "--profile",
+        "confirmation_v2",
+        "--render-only",
+        "--workers",
+        "1"
+      ],
+      "started_utc": "2026-10-08T19:01:40.507384+00:00",
+      "log": "simulations/outputs/confirmation_v2/audit/sequential_aggregate.log",
+      "module_sha256": "5ad6c6b7011dbf30bad38ea68ce224d04c345b73cb51d6999e8e32641eb9b4fe",
+      "completed_utc": "2026-10-08T19:25:41.720173+00:00",
+      "elapsed_seconds": 1441.2127888202667,
+      "return_code": 143,
+      "status": "interrupted_for_local_workspace",
+      "log_sha256": "a468afddaf1a43deb6f8005a7e7e2a89fc53b458e412434a84169f59c63b7bb6"
+    },
+    {
+      "name": "aggregate",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3",
+        "-u",
+        "-m",
+        "simulations.run",
+        "--profile",
+        "confirmation_v2",
+        "--render-only",
+        "--workers",
+        "1"
+      ],
+      "cwd": "/private/tmp/portfolio-confirmation-v2-local",
+      "started_utc": "2026-10-08T19:28:31.211899+00:00",
+      "log": "simulations/outputs/confirmation_v2/audit/local_aggregate.log",
+      "module_sha256": "5ad6c6b7011dbf30bad38ea68ce224d04c345b73cb51d6999e8e32641eb9b4fe",
+      "completed_utc": "2026-10-08T19:33:06.925084+00:00",
+      "elapsed_seconds": 275.7170384999481,
+      "return_code": 0,
+      "log_sha256": "d86ed008ce3745871ac486326fa7fda60bebd2715ef3a4521693d44e119d2348"
+    },
+    {
+      "name": "reconstruct_numerical",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3",
+        "-u",
+        "-m",
+        "simulations.diagnostics.reconstruct_resolution"
+      ],
+      "cwd": "/private/tmp/portfolio-confirmation-v2-local",
+      "started_utc": "2026-10-08T19:33:06.930209+00:00",
+      "log": "simulations/outputs/confirmation_v2/audit/local_reconstruct_numerical.log",
+      "module_sha256": "7b1596581b10ebce6e558584ca4022e766d9d256ce104eb49bccaa7f947a2ae8",
+      "completed_utc": "2026-10-08T19:33:23.090045+00:00",
+      "elapsed_seconds": 16.158358875021804,
+      "return_code": 0,
+      "log_sha256": "d6bc670a2ff91a713aa21fab37347bd074465f7da49b67a64b14b8fb218ab372"
+    },
+    {
+      "name": "reconstruct_production",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3",
+        "-u",
+        "-m",
+        "simulations.diagnostics.reconstruct_confirmation"
+      ],
+      "cwd": "/private/tmp/portfolio-confirmation-v2-local",
+      "started_utc": "2026-10-08T19:33:23.091298+00:00",
+      "log": "simulations/outputs/confirmation_v2/audit/local_reconstruct_production.log",
+      "module_sha256": "7ee9140d0b5316dda290496c3f01cd3a56c6e9749ac2127ff1e567e1fffd1f3d",
+      "completed_utc": "2026-10-08T19:34:31.378759+00:00",
+      "elapsed_seconds": 68.28622100001667,
+      "return_code": 0,
+      "log_sha256": "88fb84e7022065545672c007a38211ffb863cab72f453af361197e9655d5ea20"
+    },
+    {
+      "name": "figures",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3",
+        "-u",
+        "-m",
+        "simulations.plotting.confirmation"
+      ],
+      "cwd": "/private/tmp/portfolio-confirmation-v2-local",
+      "started_utc": "2026-10-08T19:34:31.380835+00:00",
+      "log": "simulations/outputs/confirmation_v2/audit/local_figures.log",
+      "module_sha256": "ace1631ece5624c06ea740fb33163c04d276147d077a34294efd469eac7e389e",
+      "completed_utc": "2026-10-08T19:35:02.549687+00:00",
+      "elapsed_seconds": 31.16735483397497,
+      "return_code": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "paper_section",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3",
+        "-u",
+        "-m",
+        "simulations.paper",
+        "--profile",
+        "confirmation_v2"
+      ],
+      "cwd": "/private/tmp/portfolio-confirmation-v2-local",
+      "started_utc": "2026-10-08T19:35:02.551268+00:00",
+      "log": "simulations/outputs/confirmation_v2/audit/local_paper_section.log",
+      "module_sha256": "3eb1e5ba6e1337f4dc6a3a5b1140a53fa66be39afaa3f51f10954ee0c2b829ac",
+      "completed_utc": "2026-10-08T19:35:07.205488+00:00",
+      "elapsed_seconds": 4.6522600000025705,
+      "return_code": 0,
+      "log_sha256": "8c5bee38e996a5820ec57fe7b2614e372c284cd75c1dfd7bcb79983d2a505393"
+    },
+    {
+      "name": "publication_numbers",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3",
+        "-u",
+        "-m",
+        "simulations.diagnostics.publication_v2"
+      ],
+      "cwd": "/private/tmp/portfolio-confirmation-v2-local",
+      "started_utc": "2026-10-08T19:35:07.206576+00:00",
+      "log": "simulations/outputs/confirmation_v2/audit/local_publication_numbers.log",
+      "module_sha256": "55646f1a3771606baea46b7a13afac9c165fe36f3f77511fb1a7d5ad7a1347aa",
+      "completed_utc": "2026-10-08T19:35:09.922114+00:00",
+      "elapsed_seconds": 2.7147630830295384,
+      "return_code": 0,
+      "log_sha256": "06fa937335f565ddbdee69ec8498c093f937440c43a19a08160c7816d2f5322c"
+    },
+    {
+      "name": "historical_download",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3",
+        "-u",
+        "-m",
+        "simulations.diagnostics.raw_archive",
+        "fetch",
+        "--destination",
+        "/private/tmp/portfolio-confirmation-v2-local",
+        "--report",
+        "/private/tmp/portfolio-confirmation-v2-local/simulations/outputs/confirmation_v2/audit/historical_local_download_verification.json"
+      ],
+      "cwd": "/private/tmp/portfolio-confirmation-v2-local",
+      "started_utc": "2026-10-08T19:35:09.924058+00:00",
+      "log": "simulations/outputs/confirmation_v2/audit/local_historical_download.log",
+      "module_sha256": "d9da6dad478caf5b160eb92a5d82abd04c49b17734ce4515fe5088217edae687",
+      "completed_utc": "2026-10-08T19:35:25.691461+00:00",
+      "elapsed_seconds": 15.76638341700891,
+      "return_code": 0,
+      "log_sha256": "17871e345de5bf15a8964c5010b5e40d67238282ea889d50aa38f9c8d9e5bded"
+    },
+    {
+      "name": "historical_reconstruction",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3",
+        "-u",
+        "-m",
+        "simulations.diagnostics.reconstruct",
+        "--full",
+        "--report",
+        "/private/tmp/portfolio-confirmation-v2-local/simulations/outputs/confirmation_v2/audit/historical_reconstruction.json"
+      ],
+      "cwd": "/private/tmp/portfolio-confirmation-v2-local",
+      "started_utc": "2026-10-08T19:35:25.693307+00:00",
+      "log": "simulations/outputs/confirmation_v2/audit/local_historical_reconstruction.log",
+      "module_sha256": "2e48c1fbc5923ca96a4b663e8c74c96db4a266061f156849629b2374c4978f89",
+      "completed_utc": "2026-10-08T19:35:54.546454+00:00",
+      "elapsed_seconds": 28.85196287499275,
+      "return_code": 0,
+      "log_sha256": "1c3d7ed91a62e04546e1ada0bc158bdfa0355e7c95ec5a019a82caaf62c5eec5"
+    },
+    {
+      "name": "fresh_smoke",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3",
+        "-u",
+        "-m",
+        "simulations.run",
+        "--profile",
+        "smoke",
+        "--output",
+        "/private/tmp/portfolio-confirmation-v2-local/tmp/smoke-acceptance-pmjnaaxv",
+        "--workers",
+        "1"
+      ],
+      "cwd": "/private/tmp/portfolio-confirmation-v2-local",
+      "started_utc": "2026-10-08T19:35:54.547933+00:00",
+      "log": "simulations/outputs/confirmation_v2/audit/local_fresh_smoke.log",
+      "module_sha256": "5ad6c6b7011dbf30bad38ea68ce224d04c345b73cb51d6999e8e32641eb9b4fe",
+      "completed_utc": "2026-10-08T19:37:05.798650+00:00",
+      "elapsed_seconds": 71.2487792079919,
+      "return_code": 0,
+      "log_sha256": "b25aafe3520045112bc73218de1efb9fed7107ea2668e9dd6a3379d01ce89efd"
+    },
+    {
+      "name": "package_confirmation",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3",
+        "-u",
+        "-m",
+        "simulations.diagnostics.raw_archive",
+        "pack-confirmation",
+        "--destination",
+        "/private/tmp/portfolio-confirmation-v2-local/tmp/raw_archive_v2"
+      ],
+      "cwd": "/private/tmp/portfolio-confirmation-v2-local",
+      "started_utc": "2026-10-08T19:37:05.809962+00:00",
+      "log": "simulations/outputs/confirmation_v2/audit/local_package_confirmation.log",
+      "module_sha256": "d9da6dad478caf5b160eb92a5d82abd04c49b17734ce4515fe5088217edae687",
+      "completed_utc": "2026-10-08T19:37:47.304559+00:00",
+      "elapsed_seconds": 41.49261129205115,
+      "return_code": 0,
+      "log_sha256": "502a3f4ced2ffd319c230619b42480adc6a674bb199bd32d0718d87752414b14"
+    },
+    {
+      "name": "execution_timing",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3",
+        "-u",
+        "-m",
+        "simulations.diagnostics.execution_timing"
+      ],
+      "cwd": "/private/tmp/portfolio-confirmation-v2-local",
+      "started_utc": "2026-10-08T19:37:47.306622+00:00",
+      "log": "simulations/outputs/confirmation_v2/audit/local_execution_timing.log",
+      "module_sha256": "5b53eaa026e11e392d487a80711dd5ad0a7a661f28a9103ac38fabe557a32cc3",
+      "completed_utc": "2026-10-08T19:37:47.880991+00:00",
+      "elapsed_seconds": 0.571420666994527,
+      "return_code": 0,
+      "log_sha256": "ab0d93cf53faf11dcdf74f1e56745bf47fe3834b0bd7a2a8d06ca509a059b9fb"
+    }
+  ],
+  "resource_policy": "one numerical command at a time; one worker and BLAS thread",
+  "current_phase": "execution_timing",
+  "interrupted_utc": "2026-10-08T19:25:41.720173+00:00",
+  "interruption_reason": "Repeated iCloud source reads blocked the pipeline; all scientific sources and 552 immutable NPZ files verified in a local checkout before stopping these jobs.",
+  "execution_workspace": "/private/tmp/portfolio-confirmation-v2-local",
+  "local_resume_started_utc": "2026-10-08T19:28:31.211207+00:00",
+  "completed_utc": "2026-10-08T19:37:47.882776+00:00"
+}

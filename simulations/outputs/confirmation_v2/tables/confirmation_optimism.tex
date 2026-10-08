@@ -1,0 +1,24 @@
+\begin{table}[p]
+\centering
+\caption{Monte Carlo loss-oracle selection optimism, measured as cross-fitted minus plugin population regret. Pointwise percentile intervals resample whole paths and recalibrate both oracle rules in every draw; fold labels, anchors and population quadrature remain fixed. These intervals include calibration variability, unlike the separately retained descriptive paired-MCSE intervals.}
+\label{tab:confirmation_optimism}
+\begingroup\small
+\setlength{\tabcolsep}{4pt}
+\ifdefined\simtablebox\else\newsavebox{\simtablebox}\fi
+\sbox{\simtablebox}{%
+\begin{tabular}{lrrrrr}
+\toprule
+Map & T & R & Crossfit minus plugin & Boot. low & Boot. high \\
+\midrule
+Baseline & 1440 & 100 & 0 & 0 & 0 \\
+Baseline & 7290 & 50 & 0 & 0 & 1.917e-05 \\
+Rich6D & 1440 & 100 & 0 & 0 & 0 \\
+Rich6D & 7290 & 50 & 0 & 0 & 1.609e-05 \\
+\bottomrule
+\end{tabular}
+}
+\ifdim\wd\simtablebox>\linewidth
+\resizebox{\linewidth}{!}{\usebox{\simtablebox}}
+\else\usebox{\simtablebox}\fi
+\endgroup
+\end{table}

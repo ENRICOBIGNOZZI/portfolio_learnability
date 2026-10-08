@@ -1,0 +1,9 @@
+{
+  "schema": "sequential-acceptance/2.0",
+  "status": "interrupted_for_verified_local_workspace",
+  "watched_pid": 43718,
+  "watched_process": "Thu Oct  8 16:04:00 2026     /Library/Frameworks/Python.framework/Versions/3.13/Resources/Python.app/Contents/MacOS/Python -u tmp/confirmation_low_memory_queue.py",
+  "phases": [],
+  "interrupted_utc": "2026-10-08T19:25:41.720173+00:00",
+  "interruption_reason": "Repeated iCloud source reads blocked the pipeline; all scientific sources and 552 immutable NPZ files verified in a local checkout before stopping these jobs."
+}

@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "scope": "Rank and quadrature only; spectral reconstruction remains pending",
+  "completed_utc": "2026-10-08T15:43:13.508274+00:00",
+  "source_sha256": "7b1596581b10ebce6e558584ca4022e766d9d256ce104eb49bccaa7f947a2ae8",
+  "details": {
+    "baseline_original": {
+      "rank": {
+        "curve_cells": 990,
+        "policy_cells": 60,
+        "paths": 50
+      },
+      "quadrature": {
+        "policy_cells": 80,
+        "raw_policy_evaluations": 32000
+      }
+    },
+    "rich6d": {
+      "rank": {
+        "curve_cells": 990,
+        "policy_cells": 60,
+        "paths": 50
+      },
+      "quadrature": {
+        "policy_cells": 80,
+        "raw_policy_evaluations": 32000
+      }
+    }
+  }
+}

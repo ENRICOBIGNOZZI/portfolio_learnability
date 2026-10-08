@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "source_sha256": "5f66410dc5affa19ab581cf680426005b0d3a10569c5e2e2eaee0d29658885e6",
+  "cases": [
+    {
+      "loading_map": "baseline_original",
+      "groups": 128,
+      "independent_operator_eigenvalue_max_error": 4.607859233063394e-19,
+      "partial_dense_max_error": 6.776263578034403e-20,
+      "passed": true
+    },
+    {
+      "loading_map": "rich6d",
+      "groups": 128,
+      "independent_operator_eigenvalue_max_error": 4.0657581468206416e-19,
+      "partial_dense_max_error": 4.0657581468206416e-20,
+      "passed": true
+    }
+  ]
+}

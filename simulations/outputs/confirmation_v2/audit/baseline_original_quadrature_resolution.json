@@ -1,0 +1,29 @@
+{
+  "schema": "independent-quadrature-audit/2.0",
+  "executed": true,
+  "completed_utc": "2026-10-08T15:30:05.768399+00:00",
+  "source_sha256": "b08569367b5c99805745dc1a8bd0a3bf3ed082c860956112d1b56797216b5db8",
+  "protocol_hash": "719034dd1fd3a9a1c716c7a5fcd6337b006bce60dbb0725997a82e2cea72639a",
+  "paths": 50,
+  "quadrature_source_sha256": "809e6358d8c63c007005e7b1469e301e5b1bb8bffaeeec9f7dec13ae73b44d41",
+  "quadrature_batch_groups": 256,
+  "runtime": {
+    "python": "3.13.3",
+    "numpy": "2.3.5",
+    "scipy": "1.16.3"
+  },
+  "moments_directory": "simulations/outputs/confirmation_v2/audit/quadrature_moments_low_memory/baseline_original",
+  "groups": [
+    8192,
+    32768
+  ],
+  "independent_seeds": [
+    2715537141,
+    2169602398,
+    657899912,
+    233452503
+  ],
+  "certified_cells": 80,
+  "total_cells": 80,
+  "scope": "fixed holdout, rolling and theory policies at all available T; fixed plugin oracle on practical grid; uncertainty across independent quadrature seeds; no reselection"
+}

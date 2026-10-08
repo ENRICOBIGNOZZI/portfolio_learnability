@@ -1,0 +1,27 @@
+{
+  "timestamp_utc": "2026-10-08T13:53:03.592375+00:00",
+  "reason": "User requested reduced memory usage",
+  "terminated_owned_processes": [
+    8852,
+    32685,
+    34441,
+    34535,
+    34551,
+    34700,
+    35856,
+    35857,
+    36017,
+    97520,
+    98972
+  ],
+  "previous_production_workers": 4,
+  "new_production_workers": 1,
+  "heavy_diagnostics": "paused; resume sequentially with reduced memory",
+  "checkpoint_counts_at_interruption": {
+    "baseline_original": 100,
+    "baseline_original_nu25": 50,
+    "baseline_original_nu05": 50,
+    "rich6d": 8
+  },
+  "protocol_changed": false
+}

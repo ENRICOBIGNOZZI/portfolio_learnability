@@ -1,0 +1,11 @@
+environment,cohort,T,replications,crossfit_minus_plugin_regret,bootstrap_low,bootstrap_high,bootstrap_draws,interval
+rich6d_nu05,practical,60,50,3.176856540957132e-05,6.784431211435309e-06,0.0001205794320020988,1000,"pointwise percentile; whole-path resampling and oracle recalibration; fixed fold labels, anchors and quadrature"
+rich6d_nu05,practical,90,50,4.4220842293916235e-05,9.173995928754e-06,0.0012332273442447613,1000,"pointwise percentile; whole-path resampling and oracle recalibration; fixed fold labels, anchors and quadrature"
+rich6d_nu05,practical,120,50,1.6323344788592153e-05,7.020587746050036e-06,0.0020126815196891837,1000,"pointwise percentile; whole-path resampling and oracle recalibration; fixed fold labels, anchors and quadrature"
+rich6d_nu05,practical,180,50,0.0008185914112305744,3.122414581924714e-05,0.0022200767054725975,1000,"pointwise percentile; whole-path resampling and oracle recalibration; fixed fold labels, anchors and quadrature"
+rich6d_nu05,practical,240,50,0.00013634797293061822,0.0,0.0014853550157186335,1000,"pointwise percentile; whole-path resampling and oracle recalibration; fixed fold labels, anchors and quadrature"
+rich6d_nu05,practical,360,50,0.0,0.0,7.149805576134626e-05,1000,"pointwise percentile; whole-path resampling and oracle recalibration; fixed fold labels, anchors and quadrature"
+rich6d_nu05,practical,540,50,2.4444703157686792e-05,0.0,8.619115751116107e-05,1000,"pointwise percentile; whole-path resampling and oracle recalibration; fixed fold labels, anchors and quadrature"
+rich6d_nu05,practical,720,50,0.0,0.0,7.262567257481936e-05,1000,"pointwise percentile; whole-path resampling and oracle recalibration; fixed fold labels, anchors and quadrature"
+rich6d_nu05,practical,1080,50,0.0,0.0,3.6296904997231824e-05,1000,"pointwise percentile; whole-path resampling and oracle recalibration; fixed fold labels, anchors and quadrature"
+rich6d_nu05,practical,1440,50,0.0,0.0,1.3120345157572652e-05,1000,"pointwise percentile; whole-path resampling and oracle recalibration; fixed fold labels, anchors and quadrature"

@@ -1,0 +1,106 @@
+{
+  "schema": "execution-timing/2.0",
+  "recorded_utc": "2026-10-08T19:37:47.865647+00:00",
+  "manifest_sha256": "da693e47ccd6b1ed7b40263be1d04950e74842d723881e44812a823e86dcf260",
+  "execution_events": [
+    {
+      "started_utc": "2026-10-08T12:12:32.908494+00:00",
+      "kind": "initial",
+      "workers": 4,
+      "runtime": {
+        "python": "3.13.3",
+        "numpy": "2.3.5",
+        "scipy": "1.16.3"
+      },
+      "status": "interrupted_by_user_resource_adjustment",
+      "stopped_utc": "2026-10-08T13:53:03.592375+00:00",
+      "wall_clock_seconds": 6030.683881,
+      "end_evidence": "audit/resource_adjustment.json"
+    },
+    {
+      "started_utc": "2026-10-08T13:53:26.838000+00:00",
+      "kind": "resume",
+      "workers": 1,
+      "runtime": {
+        "python": "3.13.3",
+        "numpy": "2.3.5",
+        "scipy": "1.16.3"
+      },
+      "completed_utc": "2026-10-08T15:01:20.975351+00:00",
+      "elapsed_seconds": 4074.0640885419853,
+      "status": "finished",
+      "wall_clock_seconds": 4074.137351
+    },
+    {
+      "started_utc": "2026-10-08T19:04:42.718325+00:00",
+      "kind": "render",
+      "workers": 1,
+      "runtime": {
+        "python": "3.13.3",
+        "numpy": "2.3.5",
+        "scipy": "1.16.3"
+      },
+      "completed_utc": "2026-10-08T19:25:41.720173+00:00",
+      "elapsed_seconds": 1259.0018479824066,
+      "status": "interrupted_for_local_workspace",
+      "return_code": 143,
+      "wall_clock_seconds": 1259.001848
+    },
+    {
+      "started_utc": "2026-10-08T19:28:33.411442+00:00",
+      "kind": "render",
+      "workers": 1,
+      "runtime": {
+        "python": "3.13.3",
+        "numpy": "2.3.5",
+        "scipy": "1.16.3"
+      },
+      "completed_utc": "2026-10-08T19:33:06.631381+00:00",
+      "elapsed_seconds": 273.27328716701595,
+      "status": "finished",
+      "wall_clock_seconds": 273.219939
+    }
+  ],
+  "environments": [
+    {
+      "environment": "baseline_original",
+      "completed_evaluations": 100,
+      "expected_evaluations": 100,
+      "sum_completed_replication_seconds": 9806.934258204012
+    },
+    {
+      "environment": "baseline_original_nu05",
+      "completed_evaluations": 50,
+      "expected_evaluations": 50,
+      "sum_completed_replication_seconds": 1790.2616547110665
+    },
+    {
+      "environment": "baseline_original_nu25",
+      "completed_evaluations": 50,
+      "expected_evaluations": 50,
+      "sum_completed_replication_seconds": 2412.3831202929723
+    },
+    {
+      "environment": "rich6d",
+      "completed_evaluations": 100,
+      "expected_evaluations": 100,
+      "sum_completed_replication_seconds": 3607.358332126023
+    },
+    {
+      "environment": "rich6d_nu05",
+      "completed_evaluations": 50,
+      "expected_evaluations": 50,
+      "sum_completed_replication_seconds": 614.9626279200602
+    },
+    {
+      "environment": "rich6d_nu25",
+      "completed_evaluations": 50,
+      "expected_evaluations": 50,
+      "sum_completed_replication_seconds": 764.1681774180324
+    }
+  ],
+  "sum_completed_replication_seconds": 18996.068170672166,
+  "completed_evaluations": 400,
+  "distinct_economic_seed_indices": 100,
+  "limitations": "Checkpoint times sum individual completed evaluations, including their fitting/evaluation, not wall-clock or CPU time. They exclude aborted work and separate numerical audits. Paired environments reuse innovation seeds. V1 timing is not replaced by this V2 report."
+}

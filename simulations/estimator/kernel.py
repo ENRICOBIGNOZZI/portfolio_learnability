@@ -53,3 +53,11 @@ class NystromBasis:
         # Sum before whitening: identical result, avoids N times rank² work.
         return (np.asarray(returns) @ self.raw(z) / len(z)) @ self.inverse_root
 
+
+class AffineBasis:
+    """Seven fixed affine benchmark functions in their declared Euclidean norm."""
+    rank = 7
+    inverse_root = np.eye(7)
+
+    def raw(self, z):
+        return np.column_stack([np.ones(len(z)), z])

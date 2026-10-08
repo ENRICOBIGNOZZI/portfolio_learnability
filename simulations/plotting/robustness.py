@@ -37,8 +37,8 @@ def comparison(output, names, filename, title):
 
 def render_comparisons(output, profile='paper'):
     output = Path(output)
-    spectrum = pd.read_csv('simulations/outputs/audit/baseline/dgp_spectrum.csv')
-    audit = json.loads(Path('simulations/outputs/audit/baseline/dgp_audit.json').read_text())
+    spectrum = pd.read_csv(output/'audit/baseline/dgp_spectrum.csv')
+    audit = json.loads((output/'audit/baseline/dgp_audit.json').read_text())
     fig, ax = plt.subplots(1, 2, figsize=(10, 4), layout='constrained')
     for a, kind in zip(ax, ('kernel', 'managed')):
         y = spectrum[kind+'_eigenvalue']

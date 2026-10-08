@@ -1,0 +1,17 @@
+{
+  "groups": 1024,
+  "nodes": 3072,
+  "seed_index": 2,
+  "seed": 1557782884,
+  "source_sha256": "9571ca28a0ec71779af4f55f293c1b9f0403faf70b63db6c5db25ac6e089986b",
+  "completed_utc": "2026-10-08T13:11:33.151349+00:00",
+  "convergence": {
+    "kernel": true,
+    "baseline_original": true,
+    "rich6d": true
+  },
+  "elapsed_seconds": 147.99999525002204,
+  "peak_process_rss_bytes": 527892480,
+  "estimated_kernel_bytes": 75497472,
+  "algorithm": "dense partial solve at smaller sizes; full-kernel matrix operator and partial Lanczos at larger sizes"
+}

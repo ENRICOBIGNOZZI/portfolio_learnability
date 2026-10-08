@@ -1,0 +1,282 @@
+{
+  "schema": "spectrum-resolution/2.1",
+  "executed": true,
+  "source_sha256": "5f66410dc5affa19ab581cf680426005b0d3a10569c5e2e2eaee0d29658885e6",
+  "scientific_source_hashes": {
+    "kernels.py": "8515be031e468ffa9f6733afa2d3f661bdb51ccdcd746aac4ce4d4faeb9c6da0",
+    "simulations/config/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "simulations/config/design.py": "218ccca157efa8a6765b0e1d00886bdb9f270d525f4caa9b5a549caeab2683ca",
+    "simulations/dgp/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "simulations/dgp/balanced.py": "e351e14cbda4ecefc0fde6a26ca46701ca1d79f231286daeb3c80ead849f8db9",
+    "simulations/dgp/robustness.py": "2dc8eaecb4ab22bf9d5d68af770038256db931bd600bcffb7e6943a035fac418",
+    "simulations/diagnostics/baseline.py": "2404d4b9d3dd372762aa532e94625dc0db2a5e6065622b3ba7ff7a7f2aa91408",
+    "simulations/diagnostics/confirmation_pilot.py": "50ddafa64a3eec6682f464bd9c7bd7503f15d7273a68a9fb6c9412d4c45ad575",
+    "simulations/diagnostics/path_integrity.py": "01c826e96a12446994d5b72a54bb7c7f2261b5fbae824e7d1bd20820f3d673c1",
+    "simulations/diagnostics/variants.py": "ab59e5d0088a7f86163f7b11440f4f13ede4198137000ba4debb3cf7ef7f623a",
+    "simulations/estimator/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "simulations/estimator/kernel.py": "a824efc02a20ddacc0820c4d3b1df918caad6fb65b612137eff35337b844cd18",
+    "simulations/estimator/ridge.py": "8b4d4b4a3bf0579e12c20513f680bce4cb371d12eb94ea1ec31f7af91164cdf0",
+    "simulations/estimator/selectors.py": "b1f4902299aff0e8726767608268976956981752250d09b417a5ccc5724721c0",
+    "simulations/experiments/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "simulations/experiments/monte_carlo.py": "0fb4eb43a4ebcc6046bbe59daa201d1cf2f5c74cc5c9f7cc11b627cae5801eb7",
+    "simulations/experiments/population.py": "457a59010db31b967b6c5b34b9e886ca8c754e7222c4b83e80f0bbe7a82b222f",
+    "simulations/provenance.py": "23b0b6947df4198d922f658abaa847df5eaea081b03cdd3de2f9b5ed415fc31a",
+    "simulations/run.py": "5ad6c6b7011dbf30bad38ea68ce224d04c345b73cb51d6999e8e32641eb9b4fe"
+  },
+  "kernel_storage_sha256": "4beb552d9ac8c68295ff01c8b352cd418f52b7f98078ef9d9a83e70d23d70ff1",
+  "runtime": {
+    "python": "3.13.3",
+    "numpy": "2.3.5",
+    "scipy": "1.16.3"
+  },
+  "completed_utc": "2026-10-08T19:01:39.799224+00:00",
+  "analytic_E5_status": "operator sandwich and analytic Matern asymptotics; fixed N",
+  "operator_identity_status": "independent dense group-formula and partial-solver crosschecks passed",
+  "quadrature_resolution_status": "multiple independent group quadratures; compare reported eigenvalues and slopes across resolutions",
+  "spectral_fit_descriptive_statistics": "descriptive_fits.csv; no slope-closeness gate",
+  "all_requested_eigenpairs_resolved": true,
+  "cases": [
+    {
+      "groups": 1024,
+      "nodes": 3072,
+      "seed_index": 0,
+      "seed": 4101162095,
+      "source_sha256": "5f66410dc5affa19ab581cf680426005b0d3a10569c5e2e2eaee0d29658885e6",
+      "completed_utc": "2026-10-08T15:31:16.082172+00:00",
+      "convergence": {
+        "kernel": true,
+        "baseline_original": true,
+        "rich6d": true
+      },
+      "cache_identity": "87e1e0d5d4c3ce43524d11531c74132f94fcd4a20cfa3c4e0cc029453fe97950",
+      "runtime": {
+        "python": "3.13.3",
+        "numpy": "2.3.5",
+        "scipy": "1.16.3"
+      },
+      "elapsed_seconds": 44.74601191698457,
+      "peak_process_rss_bytes": 526385152,
+      "estimated_kernel_bytes": 75497472,
+      "kernel_storage": "in-memory dense",
+      "maximum_kernel_read_block_bytes": 6291456,
+      "algorithm": "dense partial solve for small matrices; full-kernel file-backed operator and partial Lanczos for larger matrices"
+    },
+    {
+      "groups": 1024,
+      "nodes": 3072,
+      "seed_index": 1,
+      "seed": 1791613518,
+      "source_sha256": "5f66410dc5affa19ab581cf680426005b0d3a10569c5e2e2eaee0d29658885e6",
+      "completed_utc": "2026-10-08T15:32:00.712987+00:00",
+      "convergence": {
+        "kernel": true,
+        "baseline_original": true,
+        "rich6d": true
+      },
+      "cache_identity": "69ccb83fbd6ba1c6b46d423c98af651bb3f7b6c168d6c9c56252f5434228b0d5",
+      "runtime": {
+        "python": "3.13.3",
+        "numpy": "2.3.5",
+        "scipy": "1.16.3"
+      },
+      "elapsed_seconds": 44.5903479999979,
+      "peak_process_rss_bytes": 526385152,
+      "estimated_kernel_bytes": 75497472,
+      "kernel_storage": "in-memory dense",
+      "maximum_kernel_read_block_bytes": 6291456,
+      "algorithm": "dense partial solve for small matrices; full-kernel file-backed operator and partial Lanczos for larger matrices"
+    },
+    {
+      "groups": 1024,
+      "nodes": 3072,
+      "seed_index": 2,
+      "seed": 1557782884,
+      "source_sha256": "5f66410dc5affa19ab581cf680426005b0d3a10569c5e2e2eaee0d29658885e6",
+      "completed_utc": "2026-10-08T15:32:39.281778+00:00",
+      "convergence": {
+        "kernel": true,
+        "baseline_original": true,
+        "rich6d": true
+      },
+      "cache_identity": "f3f2060dca1feaca3f36ab75fee08a6c2cc9e69a99f054ce18df46674cd7006d",
+      "runtime": {
+        "python": "3.13.3",
+        "numpy": "2.3.5",
+        "scipy": "1.16.3"
+      },
+      "elapsed_seconds": 37.68337437498849,
+      "peak_process_rss_bytes": 526385152,
+      "estimated_kernel_bytes": 75497472,
+      "kernel_storage": "in-memory dense",
+      "maximum_kernel_read_block_bytes": 6291456,
+      "algorithm": "dense partial solve for small matrices; full-kernel file-backed operator and partial Lanczos for larger matrices"
+    },
+    {
+      "groups": 2048,
+      "nodes": 6144,
+      "seed_index": 0,
+      "seed": 4101162095,
+      "source_sha256": "5f66410dc5affa19ab581cf680426005b0d3a10569c5e2e2eaee0d29658885e6",
+      "completed_utc": "2026-10-08T15:39:42.805558+00:00",
+      "convergence": {
+        "kernel": true,
+        "baseline_original": true,
+        "rich6d": true
+      },
+      "cache_identity": "9f782fd1a9f15ed8ef1ed7816748b55d7ed9ba615912ceb24d093b4a2b60db2e",
+      "runtime": {
+        "python": "3.13.3",
+        "numpy": "2.3.5",
+        "scipy": "1.16.3"
+      },
+      "elapsed_seconds": 423.4808375420107,
+      "peak_process_rss_bytes": 742866944,
+      "estimated_kernel_bytes": 301989888,
+      "kernel_storage": "temporary file; bounded row reads",
+      "maximum_kernel_read_block_bytes": 12582912,
+      "algorithm": "dense partial solve for small matrices; full-kernel file-backed operator and partial Lanczos for larger matrices"
+    },
+    {
+      "groups": 2048,
+      "nodes": 6144,
+      "seed_index": 1,
+      "seed": 1791613518,
+      "source_sha256": "5f66410dc5affa19ab581cf680426005b0d3a10569c5e2e2eaee0d29658885e6",
+      "completed_utc": "2026-10-08T15:47:55.365602+00:00",
+      "convergence": {
+        "kernel": true,
+        "baseline_original": true,
+        "rich6d": true
+      },
+      "cache_identity": "e10de238c2ee8f75554e856d111db0a9b4f805cb81eaa6bd7adf6003797b455b",
+      "runtime": {
+        "python": "3.13.3",
+        "numpy": "2.3.5",
+        "scipy": "1.16.3"
+      },
+      "elapsed_seconds": 492.50317499999073,
+      "peak_process_rss_bytes": 742866944,
+      "estimated_kernel_bytes": 301989888,
+      "kernel_storage": "temporary file; bounded row reads",
+      "maximum_kernel_read_block_bytes": 12582912,
+      "algorithm": "dense partial solve for small matrices; full-kernel file-backed operator and partial Lanczos for larger matrices"
+    },
+    {
+      "groups": 2048,
+      "nodes": 6144,
+      "seed_index": 2,
+      "seed": 1557782884,
+      "source_sha256": "5f66410dc5affa19ab581cf680426005b0d3a10569c5e2e2eaee0d29658885e6",
+      "completed_utc": "2026-10-08T15:55:41.516995+00:00",
+      "convergence": {
+        "kernel": true,
+        "baseline_original": true,
+        "rich6d": true
+      },
+      "cache_identity": "12461edc4046e48304e21c1b6d059293a576ead478b8985f91e950db7ad8c271",
+      "runtime": {
+        "python": "3.13.3",
+        "numpy": "2.3.5",
+        "scipy": "1.16.3"
+      },
+      "elapsed_seconds": 466.05558491603006,
+      "peak_process_rss_bytes": 742866944,
+      "estimated_kernel_bytes": 301989888,
+      "kernel_storage": "temporary file; bounded row reads",
+      "maximum_kernel_read_block_bytes": 12582912,
+      "algorithm": "dense partial solve for small matrices; full-kernel file-backed operator and partial Lanczos for larger matrices"
+    },
+    {
+      "groups": 4096,
+      "nodes": 12288,
+      "seed_index": 0,
+      "seed": 4101162095,
+      "source_sha256": "5f66410dc5affa19ab581cf680426005b0d3a10569c5e2e2eaee0d29658885e6",
+      "completed_utc": "2026-10-08T16:47:56.892022+00:00",
+      "convergence": {
+        "kernel": true,
+        "baseline_original": true,
+        "rich6d": true
+      },
+      "cache_identity": "538801a7330a6feaf3aa55cc4cb58cd6cf946d3c2859c63fe54f102200200857",
+      "runtime": {
+        "python": "3.13.3",
+        "numpy": "2.3.5",
+        "scipy": "1.16.3"
+      },
+      "elapsed_seconds": 3135.1972045000293,
+      "peak_process_rss_bytes": 742866944,
+      "estimated_kernel_bytes": 1207959552,
+      "kernel_storage": "temporary file; bounded row reads",
+      "maximum_kernel_read_block_bytes": 25165824,
+      "algorithm": "dense partial solve for small matrices; full-kernel file-backed operator and partial Lanczos for larger matrices"
+    },
+    {
+      "groups": 4096,
+      "nodes": 12288,
+      "seed_index": 1,
+      "seed": 1791613518,
+      "source_sha256": "5f66410dc5affa19ab581cf680426005b0d3a10569c5e2e2eaee0d29658885e6",
+      "completed_utc": "2026-10-08T17:31:09.983858+00:00",
+      "convergence": {
+        "kernel": true,
+        "baseline_original": true,
+        "rich6d": true
+      },
+      "cache_identity": "a5e76b0d335b029a5071c4b23df98a87a3c4a1fcfaa34a5b57d60cdf13357e34",
+      "runtime": {
+        "python": "3.13.3",
+        "numpy": "2.3.5",
+        "scipy": "1.16.3"
+      },
+      "elapsed_seconds": 2582.7608699999982,
+      "peak_process_rss_bytes": 742866944,
+      "estimated_kernel_bytes": 1207959552,
+      "kernel_storage": "temporary file; bounded row reads",
+      "maximum_kernel_read_block_bytes": 25165824,
+      "algorithm": "dense partial solve for small matrices; full-kernel file-backed operator and partial Lanczos for larger matrices"
+    },
+    {
+      "groups": 4096,
+      "nodes": 12288,
+      "seed_index": 2,
+      "seed": 1557782884,
+      "source_sha256": "5f66410dc5affa19ab581cf680426005b0d3a10569c5e2e2eaee0d29658885e6",
+      "completed_utc": "2026-10-08T18:51:26.340753+00:00",
+      "convergence": {
+        "kernel": true,
+        "baseline_original": true,
+        "rich6d": true
+      },
+      "cache_identity": "5cd785d17c4d5541a4290632783dfe8c780883b948a31127022377e5a815bfe4",
+      "runtime": {
+        "python": "3.13.3",
+        "numpy": "2.3.5",
+        "scipy": "1.16.3"
+      },
+      "elapsed_seconds": 3296.338635125023,
+      "peak_process_rss_bytes": 742866944,
+      "estimated_kernel_bytes": 1207959552,
+      "kernel_storage": "temporary file; bounded row reads",
+      "maximum_kernel_read_block_bytes": 25165824,
+      "algorithm": "dense partial solve for small matrices; full-kernel file-backed operator and partial Lanczos for larger matrices"
+    }
+  ],
+  "dense_crosscheck": [
+    {
+      "loading_map": "baseline_original",
+      "groups": 128,
+      "independent_operator_eigenvalue_max_error": 4.607859233063394e-19,
+      "partial_dense_max_error": 6.776263578034403e-20,
+      "passed": true
+    },
+    {
+      "loading_map": "rich6d",
+      "groups": 128,
+      "independent_operator_eigenvalue_max_error": 4.0657581468206416e-19,
+      "partial_dense_max_error": 4.0657581468206416e-20,
+      "passed": true
+    }
+  ],
+  "scope": "headline nu=1.5, both maps; 800 largest eigenpairs, not a complete infinite-dimensional spectrum"
+}

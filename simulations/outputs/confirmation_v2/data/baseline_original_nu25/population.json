@@ -1,0 +1,58 @@
+{
+  "q_reference": 0.014215686274509805,
+  "reference_sharpe": 0.12008616167468394,
+  "subspace_regret_floor": 8.270940698254861e-06,
+  "theoretical_b": 1.8333333333333335,
+  "parameters": {
+    "N": 600,
+    "D": 6,
+    "K_F": 3,
+    "rho": [
+      0.95,
+      0.95,
+      0.95,
+      0.95,
+      0.95,
+      0.95
+    ],
+    "nu": 1.5,
+    "ell": 1.0,
+    "c_beta": 0.0016,
+    "sigma_eps": 0.08,
+    "mu_F": [
+      0.1,
+      0.06,
+      0.03
+    ],
+    "loading_map": "baseline_original",
+    "eta": 0.0
+  },
+  "environment": {
+    "name": "baseline_original_nu25",
+    "code": 0,
+    "N": 600,
+    "rho": 0.95,
+    "signal_multiplier": 1.0,
+    "sigma_eps": 0.08,
+    "nu": 2.5,
+    "rank": 512,
+    "variant": "baseline",
+    "replications": 50,
+    "loading_map": "baseline_original",
+    "eta": 0.0
+  },
+  "reference_kind": "exact conditional optimum",
+  "population_groups": 8192,
+  "population_seed": 2216883481,
+  "basis_seed": 1223482779,
+  "run_hash": "5884fb43d45cdf5fa66e1c3388aa64cd28e472068af332f5540bebcc9ccfd292",
+  "effective_kernel_spec": {
+    "family": "Matern",
+    "nu": 2.5,
+    "ell": 1.0,
+    "dimension": 6,
+    "normalization": "K(z,z)=1",
+    "rank": 512,
+    "anchor_seed": 1223482779
+  }
+}

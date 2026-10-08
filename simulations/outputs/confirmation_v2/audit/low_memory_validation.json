@@ -1,0 +1,40 @@
+{
+  "executed": true,
+  "passed": true,
+  "recorded_utc": "2026-10-08T14:00:40.662659+00:00",
+  "python": "3.13.3",
+  "source_hashes": {
+    "simulations/diagnostics/low_memory.py": "809e6358d8c63c007005e7b1469e301e5b1bb8bffaeeec9f7dec13ae73b44d41",
+    "simulations/diagnostics/resolution_v2.py": "8ef3a8dda36ddde19593beb3cb17b2603e27d58e7d707db9a2ce46f590e104bb",
+    "simulations/diagnostics/reconstruct_resolution.py": "6bae1b1c2aa306a2ae2e034df87241a33f6c05b7059272c1cdd7070f98218f02",
+    "tests/test_low_memory_quadrature.py": "f96696c7356ae6fe6b24a7b261b00e63be400d7f2910cb5de8d177b749742069",
+    "tests/test_resolution_reconstruction.py": "ac37c9a4255fbe7a6edcbab5f0dd912b589dca38f21e7b41cd483c6fa474a9c7"
+  },
+  "commands": [
+    {
+      "command": "python3 -m pytest -q tests/test_low_memory_quadrature.py",
+      "environment": {
+        "PYTHONPYCACHEPREFIX": "/tmp/codex_dgp_pycache",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1"
+      },
+      "return_code": 0,
+      "log": "simulations/outputs/confirmation_v2/audit/low_memory_tests.log",
+      "log_sha256": "6fc1d5c2df9c1372d5ed2f0b0475d89e8df66408d4e0f95205088aa908e0a938"
+    },
+    {
+      "command": "python3 -m pytest -q tests/test_resolution_reconstruction.py",
+      "environment": {
+        "PYTHONPYCACHEPREFIX": "/tmp/codex_dgp_pycache",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1"
+      },
+      "return_code": 0,
+      "log": "simulations/outputs/confirmation_v2/audit/resolution_reconstruction_tests.log",
+      "log_sha256": "66bd7fa757e9a3080bb4cb3ddb015feff13dc79bf209d7dfd7f892c69833960c"
+    }
+  ],
+  "scope": "Five quadrature equivalence tests and seven numerical-summary mutation tests; full production numerical reconstruction remains pending."
+}

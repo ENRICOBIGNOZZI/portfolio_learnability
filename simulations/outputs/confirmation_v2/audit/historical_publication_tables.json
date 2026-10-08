@@ -1,0 +1,29 @@
+{
+  "schema": "independent-reconstruction/2.0",
+  "passed": true,
+  "completed_utc": "2026-10-08T13:18:33.174374+00:00",
+  "raw_checkpoint_mode": false,
+  "scope": "full",
+  "aggregate_check": {
+    "passed": true,
+    "scope": "cross-aggregate consistency only; raw checkpoints not accessed"
+  },
+  "publication_table_check": {
+    "passed": true,
+    "verified": [
+      "table3_main_results",
+      "table4_rates",
+      "table5_robustness",
+      "robustness_reference_status",
+      "all_calibrations",
+      "appendix_spectral_rates"
+    ],
+    "scope": "Numeric publication CSVs; formatted TeX/prose must be checked separately"
+  },
+  "verifier_sha256": "ff5fce838a1f5ccec379bb353b3cebaf1516cddfc503584be2655c0288275758",
+  "environments": [],
+  "limitations": [
+    "V1 checkpoints store metric surfaces, not stock returns or fitted coefficients; this verifies aggregation, not a new simulation replay.",
+    "Figure pixels, LaTeX prose and formatted publication tables require separate checks."
+  ]
+}

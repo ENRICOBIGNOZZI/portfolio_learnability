@@ -1,0 +1,22 @@
+{
+  "checked_utc": "2026-10-08T14:28:51.627026+00:00",
+  "method": "streaming SHA-256 in 1 MiB blocks; original immutable manifests",
+  "groups": {
+    "historical_artifacts": {
+      "files": 3891,
+      "changed_or_missing": [],
+      "passed": true
+    },
+    "protected_theory": {
+      "files": 11,
+      "changed_or_missing": [],
+      "passed": true
+    },
+    "protected_empirics": {
+      "files": 112,
+      "changed_or_missing": [],
+      "passed": true
+    }
+  },
+  "passed": true
+}

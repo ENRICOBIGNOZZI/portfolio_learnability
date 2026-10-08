@@ -1,0 +1,24 @@
+\begin{table}[p]
+\centering
+\caption{Separate penalty summaries and endpoint selection frequencies at T=1440. Frequencies are fractions; the zero policy is not eligible for validation.}
+\label{tab:confirmation_selection}
+\begingroup\small
+\setlength{\tabcolsep}{4pt}
+\ifdefined\simtablebox\else\newsavebox{\simtablebox}\fi
+\sbox{\simtablebox}{%
+\begin{tabular}{llrrrrr}
+\toprule
+Map & Selector & Mean lambda & Median & Geometric mean & Lower freq. & Upper freq. \\
+\midrule
+Baseline & Holdout & 0.0007122 & 1.274e-06 & 2.656e-06 & 0 & 0.07 \\
+Baseline & Rolling & 0.0004034 & 1.624e-06 & 2.586e-06 & 0 & 0.04 \\
+Rich6D & Holdout & 0.0009136 & 1e-06 & 2.708e-06 & 0 & 0.09 \\
+Rich6D & Rolling & 0.0004032 & 1.624e-06 & 2.416e-06 & 0 & 0.04 \\
+\bottomrule
+\end{tabular}
+}
+\ifdim\wd\simtablebox>\linewidth
+\resizebox{\linewidth}{!}{\usebox{\simtablebox}}
+\else\usebox{\simtablebox}\fi
+\endgroup
+\end{table}

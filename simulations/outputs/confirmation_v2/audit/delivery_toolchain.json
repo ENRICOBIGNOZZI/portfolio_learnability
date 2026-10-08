@@ -1,0 +1,48 @@
+{
+  "latexmk": {
+    "available": true,
+    "path": "/Library/TeX/texbin/latexmk",
+    "version_header": [
+      "Latexmk, John Collins, 7 Apr. 2024. Version 4.85"
+    ]
+  },
+  "pdflatex": {
+    "available": true,
+    "path": "/Library/TeX/texbin/pdflatex",
+    "version_header": [
+      "pdfTeX 3.141592653-2.6-1.40.26 (TeX Live 2024)",
+      "kpathsea version 6.4.0"
+    ]
+  },
+  "pdfinfo": {
+    "available": true,
+    "path": "/opt/homebrew/bin/pdfinfo",
+    "version_header": [
+      "pdfinfo version 25.05.0",
+      "Copyright 2005-2025 The Poppler Developers - http://poppler.freedesktop.org"
+    ]
+  },
+  "pdftoppm": {
+    "available": true,
+    "path": "/opt/homebrew/bin/pdftoppm",
+    "version_header": [
+      "pdftoppm version 25.05.0",
+      "Copyright 2005-2025 The Poppler Developers - http://poppler.freedesktop.org"
+    ]
+  },
+  "git": {
+    "available": true,
+    "path": "/usr/bin/git",
+    "version_header": [
+      "git version 2.50.1 (Apple Git-155)"
+    ]
+  },
+  "gh": {
+    "available": true,
+    "path": "/opt/homebrew/bin/gh",
+    "version_header": [
+      "gh version 2.92.0 (2026-04-28)",
+      "https://github.com/cli/cli/releases/tag/v2.92.0"
+    ]
+  }
+}

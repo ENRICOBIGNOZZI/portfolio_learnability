@@ -1,0 +1,3211 @@
+{
+  "source": "/Users/enrico/Desktop/PHD/portfolio/paper_codice",
+  "destination": "/tmp/portfolio-confirmation-v2-local",
+  "files": {
+    "simulations/run.py": {
+      "sha256": "5ad6c6b7011dbf30bad38ea68ce224d04c345b73cb51d6999e8e32641eb9b4fe",
+      "bytes": 16893,
+      "source": "current workspace"
+    },
+    "simulations/manuscript.py": {
+      "sha256": "0b713b1422b6dc7393271ffd08823bf742a7eb41c89523395ea50b9eb91e514f",
+      "bytes": 6175,
+      "source": "current workspace"
+    },
+    "simulations/paper_confirmation.py": {
+      "sha256": "e120e4168c421163fe1f14c67619338ae84e8944639dea62d0dcd7e41f8fd1ad",
+      "bytes": 27580,
+      "source": "current workspace"
+    },
+    "simulations/requirements.txt": {
+      "sha256": "4e3a039d21be305f0388fe088ed5e1ea8a65199f9ecd9ed97df0ebdd73635153",
+      "bytes": 88,
+      "source": "current workspace"
+    },
+    "simulations/paper.py": {
+      "sha256": "3eb1e5ba6e1337f4dc6a3a5b1140a53fa66be39afaa3f51f10954ee0c2b829ac",
+      "bytes": 20831,
+      "source": "current workspace"
+    },
+    "simulations/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "baseline clone matching bound source hash; original mtime predates evidence",
+      "source_mtime": 1791389007.5322983
+    },
+    "simulations/README.md": {
+      "sha256": "8b56fb004b1446a82eb20d5d43c2b33a8c04e7045ab532a115fb3d5fee8f95fb",
+      "bytes": 5388,
+      "source": "current workspace"
+    },
+    "simulations/provenance.py": {
+      "sha256": "23b0b6947df4198d922f658abaa847df5eaea081b03cdd3de2f9b5ed415fc31a",
+      "bytes": 4250,
+      "source": "current workspace"
+    },
+    "simulations/config/design.py": {
+      "sha256": "218ccca157efa8a6765b0e1d00886bdb9f270d525f4caa9b5a549caeab2683ca",
+      "bytes": 4700,
+      "source": "current workspace"
+    },
+    "simulations/config/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "baseline clone matching bound source hash; original mtime predates evidence",
+      "source_mtime": 1791389482.9375353
+    },
+    "simulations/config/confirmation_v2.json": {
+      "sha256": "29c1e3b91bcaccaafb7cbb9031207ce6e0ae15481707250fbbdc2a5ffd948561",
+      "bytes": 6173,
+      "source": "current workspace"
+    },
+    "simulations/dgp/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "baseline clone matching bound source hash; original mtime predates evidence",
+      "source_mtime": 1791389007.532383
+    },
+    "simulations/dgp/robustness.py": {
+      "sha256": "2dc8eaecb4ab22bf9d5d68af770038256db931bd600bcffb7e6943a035fac418",
+      "source": "baseline clone matching bound source hash; original mtime predates evidence",
+      "source_mtime": 1791389360.4645112
+    },
+    "simulations/dgp/balanced.py": {
+      "sha256": "e351e14cbda4ecefc0fde6a26ca46701ca1d79f231286daeb3c80ead849f8db9",
+      "bytes": 9315,
+      "source": "current workspace"
+    },
+    "simulations/experiments/population.py": {
+      "sha256": "457a59010db31b967b6c5b34b9e886ca8c754e7222c4b83e80f0bbe7a82b222f",
+      "source": "baseline clone matching bound source hash; original mtime predates evidence",
+      "source_mtime": 1791389431.92134
+    },
+    "simulations/experiments/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "baseline clone matching bound source hash; original mtime predates evidence",
+      "source_mtime": 1791389007.5326142
+    },
+    "simulations/experiments/monte_carlo.py": {
+      "sha256": "0fb4eb43a4ebcc6046bbe59daa201d1cf2f5c74cc5c9f7cc11b627cae5801eb7",
+      "bytes": 10477,
+      "source": "current workspace"
+    },
+    "simulations/experiments/reporting.py": {
+      "sha256": "70820335e81e4fa18d1692a65cb0a1fa5090ce9469fb2bac7cdf6cb080a9ca2b",
+      "bytes": 24081,
+      "source": "current workspace"
+    },
+    "simulations/estimator/kernel.py": {
+      "sha256": "a824efc02a20ddacc0820c4d3b1df918caad6fb65b612137eff35337b844cd18",
+      "bytes": 2126,
+      "source": "current workspace"
+    },
+    "simulations/estimator/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "baseline clone matching bound source hash; original mtime predates evidence",
+      "source_mtime": 1791389007.5325367
+    },
+    "simulations/estimator/selectors.py": {
+      "sha256": "b1f4902299aff0e8726767608268976956981752250d09b417a5ccc5724721c0",
+      "bytes": 1927,
+      "source": "current workspace"
+    },
+    "simulations/estimator/ridge.py": {
+      "sha256": "8b4d4b4a3bf0579e12c20513f680bce4cb371d12eb94ea1ec31f7af91164cdf0",
+      "bytes": 3112,
+      "source": "current workspace"
+    },
+    "simulations/docs/experiment_methodology.md": {
+      "sha256": "786744226fb4f09648b7bd67b7d3de1fc6c0443a7db37c0c9aab6a940af277b1",
+      "bytes": 7112,
+      "source": "current workspace"
+    },
+    "simulations/docs/CODEX_DGP_IMPLEMENTATION_BRIEF.md": {
+      "sha256": "46ad6de293c300843231bb1577351e2581903135ee7103b4c278235d63de3ba8",
+      "bytes": 12530,
+      "source": "current workspace"
+    },
+    "simulations/docs/dgp_methodology.md": {
+      "sha256": "6970044299188c877f99f7ac0a6aa541ad519b852cca4d8ab8711f0899cc700a",
+      "bytes": 9260,
+      "source": "current workspace"
+    },
+    "simulations/docs/confirmation_v2_protocol.md": {
+      "sha256": "a4884769f24461dd1e5a0a0ec8d0bd2ad87cc2a7fbad15b4d4c2eade559210a8",
+      "bytes": 4472,
+      "source": "current workspace"
+    },
+    "simulations/docs/audit_v2_findings.md": {
+      "sha256": "2dc30601aeb146409585810df91cf2b43fb079f86c1101648fa637ac2c4cab35",
+      "bytes": 7264,
+      "source": "current workspace"
+    },
+    "simulations/docs/rate_interpretation.md": {
+      "sha256": "8257e4bd62cefabfd6dfe387f352cebe7d24aaac20dc6db8d91bff7eb3e97662",
+      "bytes": 2170,
+      "source": "current workspace"
+    },
+    "simulations/docs/rich6d_derivation.md": {
+      "sha256": "d90e35842d3e792858d84bb9bd8b3f38b630945cc2df85c4015a397315e02b90",
+      "bytes": 3265,
+      "source": "current workspace"
+    },
+    "simulations/docs/reproduction_v2.md": {
+      "sha256": "852bafaffd59c152cbf82a5aee74444af1afa95cb1815057e5d2af8f4f994619",
+      "bytes": 8651,
+      "source": "current workspace"
+    },
+    "simulations/docs/requirements_matrix.md": {
+      "sha256": "d007b295cbe435bc917c76a9b6052173c0d5c25b050d0121858d3503a3623866",
+      "bytes": 4971,
+      "source": "current workspace"
+    },
+    "simulations/docs/DGP_Baseline_Spec.pdf": {
+      "sha256": "5d04c33653fb870745c850b2aaeb76173e8cb42f304b6e20e7ecc406688347c8",
+      "bytes": 280882,
+      "source": "current workspace"
+    },
+    "simulations/docs/implementation_request.txt": {
+      "sha256": "aa04342a2fb25305af8488e0b0a9c3e2eced86e9b4b205d48195ca0e3990d6e5",
+      "bytes": 30833,
+      "source": "current workspace"
+    },
+    "simulations/docs/protected_theory_observations.md": {
+      "sha256": "b4d50925ab3381cf0754a9a73f63eef88ab1d7216ecff1710fbd420cced7259c",
+      "bytes": 879,
+      "source": "current workspace"
+    },
+    "simulations/docs/execution_status.md": {
+      "sha256": "a6725fdbbf3193f1dcd77350a7811ad057fd1e7ffced9d9d15d820fb1ca0061d",
+      "bytes": 3856,
+      "source": "current workspace"
+    },
+    "simulations/docs/inputs_v2/PROMPT_CODEX_SIMULAZIONI_V2.md": {
+      "sha256": "16fb5825b69519ba9687553e2f077a4ee893d96b97bd12df87fc0f0f18382fab",
+      "bytes": 35856,
+      "source": "current workspace"
+    },
+    "simulations/docs/inputs_v2/AUDIT_SIMULAZIONI_V2.md": {
+      "sha256": "4c0a8e845cf82f8114272e19d4ffe7729a41910766a5e1f0b2a4d0eddb2a458d",
+      "bytes": 13109,
+      "source": "current workspace"
+    },
+    "simulations/plotting/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "baseline clone matching bound source hash; original mtime predates evidence",
+      "source_mtime": 1791389007.5326886
+    },
+    "simulations/plotting/confirmation.py": {
+      "sha256": "ace1631ece5624c06ea740fb33163c04d276147d077a34294efd469eac7e389e",
+      "bytes": 18899,
+      "source": "current workspace"
+    },
+    "simulations/plotting/robustness.py": {
+      "sha256": "f79715c93be01d96ce39858b6beb0873318d090f1f76f8c1c6dcf15d12625b9a",
+      "bytes": 3935,
+      "source": "current workspace"
+    },
+    "simulations/plotting/figures.py": {
+      "sha256": "790e53b700a3fbc17c72237676b858248afd5ee9628bb28ac7ecbe7a2a760e4a",
+      "source": "baseline clone matching bound source hash; original mtime predates evidence",
+      "source_mtime": 1791400863.3169467
+    },
+    "simulations/plotting/tables.py": {
+      "sha256": "307976b01a9dcd5404adbe5dbfa9df69d6d93a2fb9c2121d70808b607c857216",
+      "bytes": 11684,
+      "source": "current workspace"
+    },
+    "simulations/diagnostics/kernel_storage.py": {
+      "sha256": "4beb552d9ac8c68295ff01c8b352cd418f52b7f98078ef9d9a83e70d23d70ff1",
+      "bytes": 1981,
+      "source": "current workspace"
+    },
+    "simulations/diagnostics/raw_archive.py": {
+      "sha256": "d9da6dad478caf5b160eb92a5d82abd04c49b17734ce4515fe5088217edae687",
+      "bytes": 7881,
+      "source": "current workspace"
+    },
+    "simulations/diagnostics/variants.py": {
+      "sha256": "ab59e5d0088a7f86163f7b11440f4f13ede4198137000ba4debb3cf7ef7f623a",
+      "source": "baseline clone matching bound source hash; original mtime predates evidence",
+      "source_mtime": 1791390905.9075403
+    },
+    "simulations/diagnostics/baseline.py": {
+      "sha256": "2404d4b9d3dd372762aa532e94625dc0db2a5e6065622b3ba7ff7a7f2aa91408",
+      "bytes": 23288,
+      "source": "current workspace"
+    },
+    "simulations/diagnostics/resolution_v2.py": {
+      "sha256": "b08569367b5c99805745dc1a8bd0a3bf3ed082c860956112d1b56797216b5db8",
+      "bytes": 16202,
+      "source": "current workspace"
+    },
+    "simulations/diagnostics/execution_timing.py": {
+      "sha256": "f1af5edd8d9d53557d3e9cdf8795568b8eb938efe0e00698c2225f371dc147cf",
+      "bytes": 3303,
+      "source": "current workspace"
+    },
+    "simulations/diagnostics/quadrature.py": {
+      "sha256": "6a734ba30f3b0d194d9d99b23869fa6208a7da41c0882c7114e53b920ee0e56b",
+      "source": "baseline clone matching bound source hash; original mtime predates evidence",
+      "source_mtime": 1791395234.314112
+    },
+    "simulations/diagnostics/confirmation_pilot.py": {
+      "sha256": "50ddafa64a3eec6682f464bd9c7bd7503f15d7273a68a9fb6c9412d4c45ad575",
+      "bytes": 4192,
+      "source": "current workspace"
+    },
+    "simulations/diagnostics/spectrum_v2.py": {
+      "sha256": "5f66410dc5affa19ab581cf680426005b0d3a10569c5e2e2eaee0d29658885e6",
+      "bytes": 11938,
+      "source": "current workspace"
+    },
+    "simulations/diagnostics/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "baseline clone matching bound source hash; original mtime predates evidence",
+      "source_mtime": 1791389007.5324628
+    },
+    "simulations/diagnostics/path_integrity.py": {
+      "sha256": "01c826e96a12446994d5b72a54bb7c7f2261b5fbae824e7d1bd20820f3d673c1",
+      "bytes": 4351,
+      "source": "current workspace"
+    },
+    "simulations/diagnostics/reconstruct_confirmation.py": {
+      "sha256": "7ee9140d0b5316dda290496c3f01cd3a56c6e9749ac2127ff1e567e1fffd1f3d",
+      "bytes": 25015,
+      "source": "current workspace"
+    },
+    "simulations/diagnostics/rich6d_audit.py": {
+      "sha256": "e64b20c72005e595cc9b9c213c2b9d0ebe1a1c66f58811d317b9d0c2546907ee",
+      "bytes": 3201,
+      "source": "current workspace"
+    },
+    "simulations/diagnostics/approximation.py": {
+      "sha256": "55c3b31f256fbfa47518cd80887e7d9282db6ff85af0d859efe64cee212e1fa5",
+      "source": "baseline clone matching bound source hash; original mtime predates evidence",
+      "source_mtime": 1791390319.0896404
+    },
+    "simulations/diagnostics/test_evidence.py": {
+      "sha256": "c3157e571baa0c9e03a15af30d75a1e810f78c2fa795c6035fcf42b7f2217ce8",
+      "bytes": 1974,
+      "source": "current workspace"
+    },
+    "simulations/diagnostics/closeout.py": {
+      "sha256": "01c9e011c537cb1af720cc3f239318f63dc28aeee5bc69dd78b14b1c93102703",
+      "bytes": 5009,
+      "source": "current workspace"
+    },
+    "simulations/diagnostics/low_memory.py": {
+      "sha256": "809e6358d8c63c007005e7b1469e301e5b1bb8bffaeeec9f7dec13ae73b44d41",
+      "bytes": 1979,
+      "source": "current workspace"
+    },
+    "simulations/diagnostics/publication_v2.py": {
+      "sha256": "55646f1a3771606baea46b7a13afac9c165fe36f3f77511fb1a7d5ad7a1347aa",
+      "bytes": 8348,
+      "source": "current workspace"
+    },
+    "simulations/diagnostics/reconstruct.py": {
+      "sha256": "2e48c1fbc5923ca96a4b663e8c74c96db4a266061f156849629b2374c4978f89",
+      "bytes": 24197,
+      "source": "current workspace"
+    },
+    "simulations/diagnostics/verify.py": {
+      "sha256": "e49a3778557fb543ea9e701b15828f686a47f108b732637f6b0eb4523e055c09",
+      "bytes": 10874,
+      "source": "current workspace"
+    },
+    "simulations/diagnostics/closeout_v2.py": {
+      "sha256": "37b319a20435000ddc2b97948b6ff0b40a39f7fd8a196b4795c6e0a8273efa18",
+      "bytes": 12773,
+      "source": "current workspace"
+    },
+    "simulations/diagnostics/exact_kernel.py": {
+      "sha256": "89dbfeacf5a89cdce32d9739f00f66318b932ae3edaa7a74c0518f4ed068feaf",
+      "bytes": 5761,
+      "source": "current workspace"
+    },
+    "simulations/diagnostics/reconstruct_resolution.py": {
+      "sha256": "7b1596581b10ebce6e558584ca4022e766d9d256ce104eb49bccaa7f947a2ae8",
+      "bytes": 19938,
+      "source": "current workspace"
+    },
+    "tests/test_confirmation_reporting.py": {
+      "sha256": "4a34524a81aa36126f348ce5781c514c2d17497e44ae1fffe2ac81305fba2735",
+      "bytes": 3995,
+      "source": "current workspace"
+    },
+    "tests/test_bandwidth_tuning.py": {
+      "sha256": "412996ccaeb66e2047c4dfef3307688eab71230342ecd9d40e7bbcebf40f6602",
+      "source": "baseline clone matching bound source hash; original mtime predates evidence",
+      "source_mtime": 1791113746.3883197
+    },
+    "tests/test_local_learnability.py": {
+      "sha256": "c08df9c7e4d0835bbd47c52e47c54cbaabf50be010d277dbadb2909893d5e5a5",
+      "source": "baseline clone matching bound source hash; original mtime predates evidence",
+      "source_mtime": 1790981645.3007734
+    },
+    "tests/test_publication_pairs.py": {
+      "sha256": "e0e5da1c3713c4c7237c0cb3aa09f760f729b92397d7489c19714848d583b2a6",
+      "bytes": 1722,
+      "source": "current workspace"
+    },
+    "tests/test_balanced_dgp.py": {
+      "sha256": "7448a609343f22ecbf23b1d5485a9a712500e0fd01c3063f1c05729b42c1c1ab",
+      "source": "baseline clone matching bound source hash; original mtime predates evidence",
+      "source_mtime": 1791389008.6816678
+    },
+    "tests/test_simulation_pipeline.py": {
+      "sha256": "30a2fdaf2a25d09990cfc6302fd728c868617be664e5bd5903d786a58c2cc185",
+      "source": "baseline clone matching bound source hash; original mtime predates evidence",
+      "source_mtime": 1791394193.5015614
+    },
+    "tests/test_rich6d.py": {
+      "sha256": "522813d4b778e145cb2f6c23b31b5a81c0a273254a21036d5cc74351facb349a",
+      "bytes": 2503,
+      "source": "current workspace"
+    },
+    "tests/test_spectrum_cache.py": {
+      "sha256": "d115b24675a7d08dcec2aecb806a4992b02b4a04290ab9ef6562f40b511bda67",
+      "bytes": 1979,
+      "source": "current workspace"
+    },
+    "tests/test_schedule.py": {
+      "sha256": "7b6576571c5d6a9bc01f6157e8ec1cd72a6da1406bba1187457ba7cc098b2993",
+      "source": "baseline clone matching bound source hash; original mtime predates evidence",
+      "source_mtime": 1790978741.46322
+    },
+    "tests/test_simulation_integrity_v2.py": {
+      "sha256": "ab2cd8549cefd0649f51c7dcfa4dba08b98ba655d818d6a0b6cd91a17b7af81b",
+      "bytes": 13004,
+      "source": "current workspace"
+    },
+    "tests/test_resolution_reconstruction.py": {
+      "sha256": "ac37c9a4255fbe7a6edcbab5f0dd912b589dca38f21e7b41cd483c6fa474a9c7",
+      "bytes": 2077,
+      "source": "current workspace"
+    },
+    "tests/test_audit.py": {
+      "sha256": "ae493d5f840705868097422aeba6b76d836322d309faa47d5c1f2235aa5d8201",
+      "source": "baseline clone matching bound source hash; original mtime predates evidence",
+      "source_mtime": 1790891752.445668
+    },
+    "tests/test_empirical_closeout.py": {
+      "sha256": "92d0da3d9379e98dd23c933ffb52ae5d137889eeb85c46db8d9ff471a669a99f",
+      "source": "baseline clone matching bound source hash; original mtime predates evidence",
+      "source_mtime": 1790987696.5192807
+    },
+    "tests/test_kernel_storage.py": {
+      "sha256": "1b3bbd6d24058e3da0b541efb4b3d3530d22ff9c88ebbdb7522b50c45e64c002",
+      "bytes": 1670,
+      "source": "current workspace"
+    },
+    "tests/test_publication_scope.py": {
+      "sha256": "fa9c93580260ccf5b762d8d7cd026cf4a1f5534339ed5d1397098b6b7bb97879",
+      "bytes": 4673,
+      "source": "current workspace"
+    },
+    "tests/test_pipeline.py": {
+      "sha256": "05b165bc2dddcd9f4226554567d4fd4a3b6a638069143c60deec670ac617910a",
+      "source": "baseline clone matching bound source hash; original mtime predates evidence",
+      "source_mtime": 1790892959.7870545
+    },
+    "tests/test_low_memory_quadrature.py": {
+      "sha256": "f96696c7356ae6fe6b24a7b261b00e63be400d7f2910cb5de8d177b749742069",
+      "bytes": 1431,
+      "source": "current workspace"
+    },
+    ".github/workflows/simulations.yml": {
+      "sha256": "8e8acaa26722be4381f5894c40e495deb48dbf3c1534f3d736b59be107e3a8b6",
+      "bytes": 3038,
+      "source": "current workspace"
+    },
+    ".github/workflows/empirics.yml": {
+      "sha256": "4a09844a3b698627607aa44a4435674b67a9103312c22fcd2d846f7085a3655a",
+      "bytes": 1023,
+      "source": "current workspace"
+    },
+    ".gitignore": {
+      "sha256": "212ef4fef28a4936846b0f82a499ca04f28c464cc370e0c4cf7138e26079d05e",
+      "bytes": 608,
+      "source": "current workspace"
+    },
+    "paper/main.tex": {
+      "sha256": "7bba674e8b37d005bf8a6819951fd80dee0ec2b60e5b9b07191c36936b1e3c91",
+      "bytes": 5222,
+      "source": "current workspace"
+    },
+    "kernels.py": {
+      "sha256": "8515be031e468ffa9f6733afa2d3f661bdb51ccdcd746aac4ce4d4faeb9c6da0",
+      "source": "baseline clone matching bound source hash; original mtime predates evidence",
+      "source_mtime": 1790892959.7857535
+    },
+    "simulations/outputs/confirmation_v2/audit/quadrature_moments_low_memory/baseline_original/groups32768_seed0.npz": {
+      "sha256": "8b3740d1db946a4d28c6f69f2ef3aeda08cf3d7abb4d894b01b422e6df327f52",
+      "bytes": 1958068,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/quadrature_moments_low_memory/baseline_original/groups32768_seed1.npz": {
+      "sha256": "c642ebc139cbbf4c0796ffa5c42377c2313f52f27ecaf99cab17b4bfa09915ca",
+      "bytes": 1958119,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/quadrature_moments_low_memory/baseline_original/groups32768_seed2.npz": {
+      "sha256": "c5875976aaa16075116639636b1ad19df99343154978ba1f1a6fd9b38221465c",
+      "bytes": 1958015,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/quadrature_moments_low_memory/baseline_original/groups32768_seed3.npz": {
+      "sha256": "e5996091752f28caae58cec1039710bc20436b96ea5fc68547b39aaa837cabc8",
+      "bytes": 1958042,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/quadrature_moments_low_memory/baseline_original/groups8192_seed0.npz": {
+      "sha256": "cd16c64386f6c49ea90515ad91c2b6dae48d817fbc9b5005ca23338b180a36d2",
+      "bytes": 1958071,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/quadrature_moments_low_memory/baseline_original/groups8192_seed1.npz": {
+      "sha256": "2c2663c72cdebc9e065012773b55bc1eeea82d7b09b253ad28eafefa56fedb9f",
+      "bytes": 1957999,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/quadrature_moments_low_memory/baseline_original/groups8192_seed2.npz": {
+      "sha256": "8eec2b8ee501a252b7ce85379d3ed1d8b89b747ec1538e11e8a355b1b4d11616",
+      "bytes": 1958120,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/quadrature_moments_low_memory/baseline_original/groups8192_seed3.npz": {
+      "sha256": "68d3bb18072560d07235b36825c503268c04a87a7550d521122af982227ea6ae",
+      "bytes": 1958351,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/quadrature_moments_low_memory/rich6d/groups32768_seed0.npz": {
+      "sha256": "97b63ce8c934d08cec1412b5318110a512a23d5e89180ef13d744c46044e83b7",
+      "bytes": 1957715,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/quadrature_moments_low_memory/rich6d/groups32768_seed1.npz": {
+      "sha256": "9b360ae589eb32bc957086a2d15f2ad2326911cad6d9bcbfc603cd08006266af",
+      "bytes": 1957880,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/quadrature_moments_low_memory/rich6d/groups32768_seed2.npz": {
+      "sha256": "51aa9a2a611218567a4bd33f05f550127683333aabc604eb2c8c67b3eef655fc",
+      "bytes": 1957617,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/quadrature_moments_low_memory/rich6d/groups32768_seed3.npz": {
+      "sha256": "4b0b1e7ae9b458c44f09f2acaabcbc8bd6561bc5409625f003480b958b255307",
+      "bytes": 1957764,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/quadrature_moments_low_memory/rich6d/groups8192_seed0.npz": {
+      "sha256": "a1ee3059c6443fb7e79d90e27cc0a0f0ba7abc43886e5e4357cf047d023fdf22",
+      "bytes": 1957642,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/quadrature_moments_low_memory/rich6d/groups8192_seed1.npz": {
+      "sha256": "e271e50c7f15140b8fd3e7956bbe470613252742e2735784eb41efdc44073dda",
+      "bytes": 1957626,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/quadrature_moments_low_memory/rich6d/groups8192_seed2.npz": {
+      "sha256": "df388772993801f1503504afb5b377155b034c99ead2d32e2aeb8327d69ed3df",
+      "bytes": 1957850,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/quadrature_moments_low_memory/rich6d/groups8192_seed3.npz": {
+      "sha256": "7f908e732265e07b794368aa2dd4a8f3c3ee485ab1a6b7c5b7387ff62d02e9dd",
+      "bytes": 1957628,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths/baseline_original/0000.npz": {
+      "sha256": "806eadf3f6e0b97415772383b86109548874ef3b0ae646836a5cda29eba36473",
+      "bytes": 3983065,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths/baseline_original/0001.npz": {
+      "sha256": "200b1a43b3e21abcc97fd06217089488b142e624c19997c47e3d7ecce83e0821",
+      "bytes": 3985381,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths/baseline_original/0002.npz": {
+      "sha256": "4b5d7d9e94e6f99625073a4307d72ba443d6b95e8e1ea49c3834fac24c191ec3",
+      "bytes": 3984730,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths/baseline_original/0003.npz": {
+      "sha256": "d4bd93f6b2ec46075bbc70e323d763a74ab3c8576e888072fdfdfea83d468723",
+      "bytes": 3986457,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths/baseline_original/0004.npz": {
+      "sha256": "5deedffa1bd9c6192831a24454d100aab0dc5ecbe70cf6606e6603c7783936ae",
+      "bytes": 3984225,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths/baseline_original/0005.npz": {
+      "sha256": "5f3ea56c7deacb9565d77f13a647ea220230f3d59ca1f456299e1f0a38ed13bd",
+      "bytes": 3985712,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths/baseline_original/moments.npz": {
+      "sha256": "a042a3d1a3556d96cdc2f20089cb030e1cbb7c1cf1689dc7ffed7bc922a289ca",
+      "bytes": 7860967,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/baseline_original/0000.npz": {
+      "sha256": "3db5fda381f4c78484dc2b4120f4dbd189088943478e99e5123d193bf2d2ed49",
+      "bytes": 3983060,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/baseline_original/0001.npz": {
+      "sha256": "07076795b852b44f39f93f0888c7ac454659e11ecae38689192a6421bc0552ce",
+      "bytes": 3985369,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/baseline_original/0002.npz": {
+      "sha256": "6a477c805a0adf3464f30cc7b71baac4625835165cd1699d0ebe286f0cbc95bf",
+      "bytes": 3984702,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/baseline_original/0003.npz": {
+      "sha256": "97cab2728f0ab911a53aae069354322b2fd2aa6965cb88c9540566d178170385",
+      "bytes": 3986442,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/baseline_original/0004.npz": {
+      "sha256": "4113180420162f3ddf14eb148eaf4dca8166a3f66bede44c2a412bcb1416ea49",
+      "bytes": 3984230,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/baseline_original/0005.npz": {
+      "sha256": "3e5409bf5966eadb72d53adb93d55306e7e1cc7fca8d40fda0e8a8516448f3e2",
+      "bytes": 3985706,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/baseline_original/0006.npz": {
+      "sha256": "0053ac905e645ea05f93bbd5e44872f46f07a30a1a16d7d6b1b99167d6f01222",
+      "bytes": 3985611,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/baseline_original/0007.npz": {
+      "sha256": "b97aae245812aabdc79a2774bb6508d6e45f7651ee77a4e1efacb026fbfa92c3",
+      "bytes": 3984597,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/baseline_original/0008.npz": {
+      "sha256": "3d69c91e5dfcade33fb8d2da8ad994cc95d45b8e0ecd4b8c8e8ec1385bb1c806",
+      "bytes": 3982947,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/baseline_original/0009.npz": {
+      "sha256": "b29b227797698d77574b162a3b936a22d7158dde8584953d5985ee657dc10c0b",
+      "bytes": 3980972,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/baseline_original/0010.npz": {
+      "sha256": "44d95227330c5a3188acd30c880da44b3ffc490da13c8541103492848124079f",
+      "bytes": 3985279,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/baseline_original/0011.npz": {
+      "sha256": "1715d706ef16ad5aa5f5c4835d59420ebfd4746145d02dff4b64346dffbed189",
+      "bytes": 3983996,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/baseline_original/0012.npz": {
+      "sha256": "fac400eea8c518e056bac097ba67e950f80b317ed48bcf4f064f1f2af2ed016e",
+      "bytes": 3983835,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/baseline_original/0013.npz": {
+      "sha256": "5da3c3c2f97c2ccfe2ccf18ef2ec533553ab260efb172ecc49bbe8d7e1d62bb6",
+      "bytes": 3985156,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/baseline_original/0014.npz": {
+      "sha256": "a1584f47fd43db5ebfd358bad94cb17cf4f9bfb119107a7138a86a4271ff016c",
+      "bytes": 3983760,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/baseline_original/0015.npz": {
+      "sha256": "feb8496275cb5682bb252b738b26f73bab3e6b04759164a8b5ce6328571631b3",
+      "bytes": 3985060,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/baseline_original/0016.npz": {
+      "sha256": "4e3ea0d3f20378650c9668c6db7270d6c627955426405cd1c979919b2a021198",
+      "bytes": 3983017,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/baseline_original/0017.npz": {
+      "sha256": "d7647fd6b3a54a46166b0ad7d8ec12ae013a323888224fd638db817e5e5c73d8",
+      "bytes": 3985474,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/baseline_original/0018.npz": {
+      "sha256": "2453ff668f1ae9662525aafbe270fa323c2e81396d7a028c8834f417bc88d068",
+      "bytes": 3984537,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/baseline_original/0019.npz": {
+      "sha256": "570068dc77e1530ad912cac44538f0bf7d7144a768a66216a63509716da1272e",
+      "bytes": 3981011,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/baseline_original/0020.npz": {
+      "sha256": "31317c24469c43283a85103f16f5b96a1e6786e50d0db4da22b0ce7e1aa2aecb",
+      "bytes": 3986485,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/baseline_original/0021.npz": {
+      "sha256": "e5148ef1b48048de534c6882438bbb4b33d025d59b0bef9ac81ab9cd11566405",
+      "bytes": 3980487,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/baseline_original/0022.npz": {
+      "sha256": "faf0b624480ca2829012225571183588beea76e10a7f0f5edf2143c725cd81ab",
+      "bytes": 3983728,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/baseline_original/0023.npz": {
+      "sha256": "9501843632257c4c147869c94437fbcddd48269d6ccf44d09f12f5dd9b650cee",
+      "bytes": 3985410,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/baseline_original/0024.npz": {
+      "sha256": "1d087eab98d09940654484c5d97dfdeeba4e2d02d7a141e111b9c7c3a6b04ad3",
+      "bytes": 3985088,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/baseline_original/0025.npz": {
+      "sha256": "79ddabcefa66cabab21f14f8ffaac5c0f0da396959637b05d2422c8b221d04d7",
+      "bytes": 3981395,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/baseline_original/0026.npz": {
+      "sha256": "3a41f308ce61e8c61e3aff0560d7e6292da5ec4b01e4a95cacdbee90be1f8e0c",
+      "bytes": 3986737,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/baseline_original/0027.npz": {
+      "sha256": "e1907b91e145b4a891576781fae53316257fb7de4795577a783f24fb9d09cae2",
+      "bytes": 3984607,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/baseline_original/0028.npz": {
+      "sha256": "cc0895f5ce542ab3350abd0ee0a441481620bd9ac951233fa89bc1908ceeb519",
+      "bytes": 3982236,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/baseline_original/0029.npz": {
+      "sha256": "bc0d5be5375f72eff573d77e48f244f0554cbc35d6a43070a1f8e0c40417cb82",
+      "bytes": 3985052,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/baseline_original/0030.npz": {
+      "sha256": "a742a8216f36423479c86580d2ab69f90c5559239641112c013bbb429be1ec19",
+      "bytes": 3984612,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/baseline_original/0031.npz": {
+      "sha256": "69ddde4f7a87bb1c244997da9d8a522422367979c3d04d54abe18e667deeedd0",
+      "bytes": 3985410,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/baseline_original/0032.npz": {
+      "sha256": "60cfec298b73abe6941b24a6f4bf375925d631881258e0d8b3754214272e54d9",
+      "bytes": 3981407,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/baseline_original/0033.npz": {
+      "sha256": "45b243413ff16394101d37c2fe060c8a29e51fcd215029b48d4cd36b2902ad39",
+      "bytes": 3986459,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/baseline_original/0034.npz": {
+      "sha256": "ea69279886bed7dd938c465b7fbad5ace7de0cf39fe376eeca21690a3e5606a3",
+      "bytes": 3984640,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/baseline_original/0035.npz": {
+      "sha256": "632782c3b36ba3c530dc35770f71057b71d283df60128f177df6b631940f7230",
+      "bytes": 3983886,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/baseline_original/0036.npz": {
+      "sha256": "20888c69363dafb633e960d0264c313f5e5bad077ba72e9cdbb250aec33f8902",
+      "bytes": 3983158,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/baseline_original/0037.npz": {
+      "sha256": "04d5598cd6aea201c25c035756c8af609dbd2f0232646e3dcbfa214a86c2ba08",
+      "bytes": 3980779,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/baseline_original/0038.npz": {
+      "sha256": "b24c4f59df5eb9e987233054951fa63923920241e3931827963a39db86303d3f",
+      "bytes": 3983297,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/baseline_original/0039.npz": {
+      "sha256": "3eaa12ea2dec435b124f195070adf32462d29a8595f6ee864b45a70dbbff3607",
+      "bytes": 3983750,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/baseline_original/0040.npz": {
+      "sha256": "ae87e925d5f3ae0fa50332c3fa1ab4a51c8a6d9f3c05b1c0c37bc1dc161bf2d8",
+      "bytes": 3985742,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/baseline_original/0041.npz": {
+      "sha256": "99648b125e1a266489abc575da7c3c783387ac41958e08f70d2c553353c6437e",
+      "bytes": 3984817,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/baseline_original/0042.npz": {
+      "sha256": "e0f5cb6e1daa7033790efa28ac820ec4a7e38812ecc495f281f057e1f4638e7a",
+      "bytes": 3979788,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/baseline_original/0043.npz": {
+      "sha256": "950f63dc2de8f1c70a44e571505f3b0603fb8a63f65f3163561791aea6a12937",
+      "bytes": 3985788,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/baseline_original/0044.npz": {
+      "sha256": "9f13b8e4a9df918a74a709e19bf44b9d4fdc49faa36cb42f3c275ccfeade4928",
+      "bytes": 3982427,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/baseline_original/0045.npz": {
+      "sha256": "e6fe56b86345e227bb6039054db5639540e8966771ce15fd58ecd5d24cb08e11",
+      "bytes": 3985902,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/baseline_original/0046.npz": {
+      "sha256": "31e986742305cfe79241a4a3945e546ce6b85961f7977703376b7bb2ccd6b855",
+      "bytes": 3983947,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/baseline_original/0047.npz": {
+      "sha256": "9d51a04dec7a650236dbe81d002332522427608d4834432f815fae10e7603853",
+      "bytes": 3984003,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/baseline_original/0048.npz": {
+      "sha256": "5d7e99ac0fe569912ac59805ac16dea1088afb5369718482aff99e935741e162",
+      "bytes": 3982780,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/baseline_original/0049.npz": {
+      "sha256": "e14cd0dafcf3565121deca51fd871d75c41910c3bdc60477bb8620549195ea74",
+      "bytes": 3984621,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/baseline_original/moments.npz": {
+      "sha256": "c5e007031462238c3d2bb73b77f01da73cbd416b67608f5ab64d5bba0547cb18",
+      "bytes": 22013199,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d/0000.npz": {
+      "sha256": "386344d4dfac725bbcac2b4838f1e4e6ae8dd4e58fa443a5774160bd02370016",
+      "bytes": 3983005,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d/0001.npz": {
+      "sha256": "c35161d9ec87d67956704101d94af549769e2ec60d4c398f6a63072eeb7fb315",
+      "bytes": 3985047,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d/0002.npz": {
+      "sha256": "bb58b9f38f8d0cc64963aa2c9b001fff913fa365908fc197e6bc8c6abfc33cb8",
+      "bytes": 3985612,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d/0003.npz": {
+      "sha256": "1c8f0b6023e42d6ac130629d23fc713159cc8377a3bae414258cc4a6d5633484",
+      "bytes": 3985923,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d/0004.npz": {
+      "sha256": "5db2fe695402de43b2be8ff042b90e37c020957fcbe9e771290a81379e322a05",
+      "bytes": 3983760,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d/0005.npz": {
+      "sha256": "4385fa3a4063f0274312c2f6bff8a02a3a2d237d4dc6b3dc1d3f6c99923fb524",
+      "bytes": 3985648,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d/0006.npz": {
+      "sha256": "762c8edd569fc8576084c51f1950a489a7e66cbf6007a352b79a5a156545763c",
+      "bytes": 3983726,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d/0007.npz": {
+      "sha256": "59f6c3e44f00962ebbf7639acb208643ef6e77b3c52ef68f8eb913fe5192909e",
+      "bytes": 3984148,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d/0008.npz": {
+      "sha256": "3344d6a1dba217e0d49c0250e05d3b6aa2615dfe6ee62f360e314272c15a71a2",
+      "bytes": 3982926,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d/0009.npz": {
+      "sha256": "d3799035d6c370f0724bbed2f5e0f196725f36f2eff9681931c156f98e20346f",
+      "bytes": 3981033,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d/0010.npz": {
+      "sha256": "b18171996a3a3da8ef9dd8b6112a8e5a6495402a4b32bdb73ca1ac74227c42bd",
+      "bytes": 3985451,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d/0011.npz": {
+      "sha256": "6216fb8300f2e20f3558d17eb40634d877212a6ea9232ac17ab834091efa08bb",
+      "bytes": 3983208,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d/0012.npz": {
+      "sha256": "11c5b015400ed9bddbd027aa91e89cab924d6852e6c8be9b11e1265dabb2c9c3",
+      "bytes": 3983642,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d/0013.npz": {
+      "sha256": "bc203a27b387f40a7de077babb483c5f1b81ae77358a0f41a7af50078d24b49e",
+      "bytes": 3985176,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d/0014.npz": {
+      "sha256": "94199beb876f8961cb3f88d75389c8e9c6552d49c5eef379535a2aba7e19dc50",
+      "bytes": 3984417,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d/0015.npz": {
+      "sha256": "3fbf9ea04e0bbd87f6ffb4194698ee10c95e30cb4d33ee45e15a6dec31c829c2",
+      "bytes": 3984985,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d/0016.npz": {
+      "sha256": "7dcb44469fced58e686c0fe41b57f2e48ba1b0c34830b91ed6bd1daad73a0d9c",
+      "bytes": 3983285,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d/0017.npz": {
+      "sha256": "635852ee4a47fb7c3f9ee62e97e6f614507fb3b6949b4f30cbbfd036444231d2",
+      "bytes": 3985264,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d/0018.npz": {
+      "sha256": "a72b56e6101a0279e75bd9fe485779d544d5bf18c39ba143b91d4f91b3a55b9f",
+      "bytes": 3984948,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d/0019.npz": {
+      "sha256": "986a03b21865db56739ca78d4d2d43c7bdf34c1c272d8023c48899838ae9d489",
+      "bytes": 3981324,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d/0020.npz": {
+      "sha256": "afc8508e2ac7655e8925a7e420870c7bf9db2465bb8a0b68d713536cf3d2cbf0",
+      "bytes": 3987161,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d/0021.npz": {
+      "sha256": "04aa8244025179d1a772c32eb1801b02c40c07f561ebc300937fb9f2e0d04a4c",
+      "bytes": 3980476,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d/0022.npz": {
+      "sha256": "e453a55d2d3a4472b1bee214fb7884ef53beecf99822a8c0113f34d012642cc2",
+      "bytes": 3983612,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d/0023.npz": {
+      "sha256": "e7e04d6634d7efea9c8df74b01896ee573dd47c9bd5b4425f6fe5a84c117d378",
+      "bytes": 3985651,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d/0024.npz": {
+      "sha256": "d58ada4adbe3148518de26fefcb5123086796e7653e48b4b5cd96675b29366b1",
+      "bytes": 3984971,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d/0025.npz": {
+      "sha256": "544408d09acadc10c810b5e4c27964fa10139cde326bf41dd6669f92d2420d94",
+      "bytes": 3981016,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d/0026.npz": {
+      "sha256": "6d42326566c105a556cca0468fdeb1c054656fa0611dc62cab945f3daf5f894d",
+      "bytes": 3986736,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d/0027.npz": {
+      "sha256": "e1168192c5ce72ed6f7d1873e3989332c270097d94f068c471720b59cbd07583",
+      "bytes": 3984706,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d/0028.npz": {
+      "sha256": "4c932cbc968b462b9ba41402632889b281a9bcba2b0efe569523fffe61d3921c",
+      "bytes": 3981757,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d/0029.npz": {
+      "sha256": "c1de2626dedba0da978f42f3c06559dc1b29e9ca8e17effbbb57ee2cb196ae54",
+      "bytes": 3984822,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d/0030.npz": {
+      "sha256": "68195da001fcf83ac05f8db6a8c0956dc7c3d8b06851ec2810027b5efba5b498",
+      "bytes": 3984352,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d/0031.npz": {
+      "sha256": "a6dcf5b3a16fe820950ecd8822a35e3d50635b415b62a93017e4ad670516b29d",
+      "bytes": 3985251,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d/0032.npz": {
+      "sha256": "70865be022d15fa8f6f046702328ede9fcad5db54344c900e5d7816cc487fd61",
+      "bytes": 3981553,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d/0033.npz": {
+      "sha256": "68650b378a50aa3232f2f06e9619cceff5cec5bb2387ee0a7b9069805216d047",
+      "bytes": 3985942,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d/0034.npz": {
+      "sha256": "27b5e2bd91e65659940d38c1d4137a42772b4a1f2de276776846b00ecd985b44",
+      "bytes": 3984321,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d/0035.npz": {
+      "sha256": "832baecaa02d2c40af2404367c48211f9f4466f0bd6225498e24488e8b3dff1a",
+      "bytes": 3984167,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d/0036.npz": {
+      "sha256": "b0dcfb04a3ba1543b37752971aa2d3a485ff25643a0f2218125f62f15a55dc99",
+      "bytes": 3982803,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d/0037.npz": {
+      "sha256": "5dd3a8ae701520405fcab9f4e1d48fbcdf456955755a9ca0331a5f33cebc1147",
+      "bytes": 3981442,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d/0038.npz": {
+      "sha256": "2df9c50adb65edf2856bf221f5478d001ecc5c7dcdf172197a2a837f16adc9d0",
+      "bytes": 3983303,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d/0039.npz": {
+      "sha256": "2d1cc74ea3140318bc75de8e079950c976b026d9283c9115ea6cca14e1175239",
+      "bytes": 3984147,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d/0040.npz": {
+      "sha256": "80590ce93004338480ea2a996898639b45f2ee8af93961079462ca1ec1411e68",
+      "bytes": 3985806,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d/0041.npz": {
+      "sha256": "9cd33ab2bf7750207a679ac3a4a6db818533dc8696ded7f570cbaa6acb3231b2",
+      "bytes": 3984790,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d/0042.npz": {
+      "sha256": "2b1a9126163f4ab4daad94ae1ef63bf15a46d25811af7e977d55c04e853333ae",
+      "bytes": 3979834,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d/0043.npz": {
+      "sha256": "847ca5e5007c97cd52a37d6d8fe50d5665b057d9914077d02b039b149bb9ec9a",
+      "bytes": 3985444,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d/0044.npz": {
+      "sha256": "0900da2eaff525c8dd485f789412728d872514c0bc42f390cfc86e87001825fb",
+      "bytes": 3982355,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d/0045.npz": {
+      "sha256": "0140f50c19b696729ca8504719e8f1ad5ad938348d9f22f2ff7a21a379b32b81",
+      "bytes": 3985614,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d/0046.npz": {
+      "sha256": "61501546ed63f1c2e4e73d52fef677653ce11e9896232d1d67c4f7a881cc3d7a",
+      "bytes": 3983501,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d/0047.npz": {
+      "sha256": "af4359b19f8868ccca950507b377596ba00b9a8d4ecd8f3265f5c9ef66051340",
+      "bytes": 3984355,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d/0048.npz": {
+      "sha256": "f1911d85681f8c34b07e3ba0af36ee76e1dbd14d5edd7850144f866e598878d8",
+      "bytes": 3983857,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d/0049.npz": {
+      "sha256": "b197a41aa85072cfbb4d341ae740061cc7d8d9c9eed4d2145755b048a077b825",
+      "bytes": 3984016,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d/moments.npz": {
+      "sha256": "d663febd2b5d4af29b158b812a03dacc19c959355f1dfd5e66835de596ceb412",
+      "bytes": 22011487,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/spectrum/groups1024_seed0.npz": {
+      "sha256": "88c773f4a2d1f0689b2e8e3ff92e6de92ff537b070ff4de122827657f88e52bd",
+      "bytes": 38174,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/spectrum/groups1024_seed1.npz": {
+      "sha256": "226b07f1640d357644df014a8d7aa09ebfda7972861a915b45a8542037553877",
+      "bytes": 38223,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/spectrum/groups1024_seed2.npz": {
+      "sha256": "1a218c5d3c6de3ef12104a2cebf5869a73c80fadfd195ce4b6c3d828f30803ad",
+      "bytes": 38233,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/spectrum/groups2048_seed0.npz": {
+      "sha256": "c69b10d16f48f9a708183487d39214ada16fb510536b8b4895a16dd1b304dc96",
+      "bytes": 38257,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/spectrum/groups2048_seed1.npz": {
+      "sha256": "9017a9dca665940e4d834d388511c474455d7fa6ddff2cefef893e041f1da375",
+      "bytes": 38243,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/spectrum/groups2048_seed2.npz": {
+      "sha256": "e8fb6f9f6776e290d9b5ce9e611e3fde4e230ae9393e8e9edda4e3e9de76b8cc",
+      "bytes": 38234,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/spectrum/groups4096_seed0.npz": {
+      "sha256": "511dc8d05c82369d5fe821911fe8b8094ad6c51166a0f859865ed41fdff6d799",
+      "bytes": 38225,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/spectrum/groups4096_seed1.npz": {
+      "sha256": "6245e3046d7b5f594e4ccfbcedd9cf4a5c873a165a81f6dd9ed96dc992c4c71c",
+      "bytes": 38230,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/spectrum/groups4096_seed2.npz": {
+      "sha256": "6aeb6fe0c188f6317e2169370507995f51ccda1944351873c67add34cb3bc8b7",
+      "bytes": 38280,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/spectrum_before_dependency_binding/groups1024_seed0.npz": {
+      "sha256": "a9bb26ce662d9fac9179d28e6378c63f3c105ed0212a278e54419c53bdb345cb",
+      "bytes": 37886,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/spectrum_before_dependency_binding/groups1024_seed1.npz": {
+      "sha256": "019baa10385a34570a62b773d7581c89226715962ef49d8b182b57048613ca60",
+      "bytes": 37934,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/spectrum_before_dependency_binding/groups1024_seed2.npz": {
+      "sha256": "b715289df973e6407a535481db023dfa73b2ba8f81b788f2ea57e40fc34f5d61",
+      "bytes": 37943,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/spectrum_before_dependency_binding/groups2048_seed0.npz": {
+      "sha256": "5b761e7272ebb0d5444dc7caad238070a9b0e936a7a47e63565905d9a511b789",
+      "bytes": 37959,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/spectrum_before_dependency_binding/groups2048_seed1.npz": {
+      "sha256": "a8d725052af43e6427182c9b0a115c4b5a78230bfb61833c152d0e22ab985915",
+      "bytes": 37934,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/audit/spectrum_before_dependency_binding/groups2048_seed2.npz": {
+      "sha256": "2366dbd0003fcac123810d606a5041b1b34be8cdef7948a6e7916a4ef0011872",
+      "bytes": 37945,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/affine_population.npz": {
+      "sha256": "bd8d45536f544564e70cf145b5313afc2d4e35124dc762e05111d9e780528e04",
+      "bytes": 1010,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/population.npz": {
+      "sha256": "c4586084c37fc73fadb09ccbf398fddd4f14edfe6122c768fce46413e4e7c912",
+      "bytes": 1957689,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0000.npz": {
+      "sha256": "3821bbff65319c2a6779f8815eb4eec2a3ae3b23de1c38ae5b4c899d624d9965",
+      "bytes": 1174436,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0001.npz": {
+      "sha256": "5237b7b4d30b6d70d58f90787435c02a624aba0df9f0e2a0e000556a25a2b0fd",
+      "bytes": 1149312,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0002.npz": {
+      "sha256": "b21d466c58bca7287f8909f9deaf9295120dd76333c4a4f7500426a6cc453945",
+      "bytes": 1188052,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0003.npz": {
+      "sha256": "00413c19f6f303489de6efb32956ca282d40d92966225131a65ccac9751bdbfd",
+      "bytes": 1200977,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0004.npz": {
+      "sha256": "a2c9c099e62e601ea39dc168addc04c1a3cd0da0ebe5b0f0129a0bf16504d01f",
+      "bytes": 1136260,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0005.npz": {
+      "sha256": "1307d30c728e6d1734e8429e8bbb8b16c6618ce0ef0894c1633226019b27b4ac",
+      "bytes": 1161859,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0006.npz": {
+      "sha256": "9641976f37ebc8f5bbe7adc09f393f23f3677110ffd49b10eee4af234209bf17",
+      "bytes": 1161644,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0007.npz": {
+      "sha256": "15363ec27c80fcd681f563133d1124101ed12fcd94a9438627a823e8c748cde1",
+      "bytes": 1200656,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0008.npz": {
+      "sha256": "72d5637448a6c9cee8c1d426f08a669332f12779d8b43367c0a594c31e53fd0a",
+      "bytes": 1149157,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0009.npz": {
+      "sha256": "8c605cdbfbd69d29e8ac23755c80330251623390a77c507bec0314aac27af76b",
+      "bytes": 1174765,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0010.npz": {
+      "sha256": "6cf88b0019e8a094be4b1727c82f20f137943ba16237634ed3c2a1b20eb0ef82",
+      "bytes": 1110659,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0011.npz": {
+      "sha256": "bbc66075a36b2bb38151b4aeb4b6b1b142a1dbbd127c03d24ca9cfc9582ca831",
+      "bytes": 1174463,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0012.npz": {
+      "sha256": "3c66240f061f90ab4648327ee9bd9758b02f32014752e2c2204ad9cd8697ac58",
+      "bytes": 1174556,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0013.npz": {
+      "sha256": "eb7279abdfe9bb438af5f8015ec8a0e03ff3a451f3e96a4ba93ee09367fa3aff",
+      "bytes": 1200534,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0014.npz": {
+      "sha256": "5e5ec9cfd2b3f4632cc2767f5cfb4b2b2fe32e0c1cfd8172872ceacaf1bd3572",
+      "bytes": 1174636,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0015.npz": {
+      "sha256": "4e7214d5bcae0b5d317f4f09f7f020314cbbb5fd8c48be0028fe7238dee06b46",
+      "bytes": 1161852,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0016.npz": {
+      "sha256": "6030e3bba4e8bec95e2b8749386f83934af490c2b14a5548f41b3c5e5d259a00",
+      "bytes": 1187772,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0017.npz": {
+      "sha256": "fc2379f765e4dfb69a5b71440b2f82dca66fa0035436ffb1918df33dd504f879",
+      "bytes": 1123594,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0018.npz": {
+      "sha256": "aba28a3a61ad4504b2581f6d7b256ba209bc8ef708a65120f845e0ded28ed315",
+      "bytes": 1200980,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0019.npz": {
+      "sha256": "f1c0642a327e30ca9df7ac05ff2f588974dcddb1ec729140453d61fd09a92f2d",
+      "bytes": 1200115,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0020.npz": {
+      "sha256": "fe93833651b45d92925657e96aea112dd845284fe8812cd5ece6ffc0c1a62d1d",
+      "bytes": 1136448,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0021.npz": {
+      "sha256": "a38ae1d587206dfebbadbe7af40ec94ed5ef97e2bcac5cc969105f3a543dbf1d",
+      "bytes": 1199836,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0022.npz": {
+      "sha256": "45c2d5fa8e250856a99f89a4788983be4b4df01d6ac9f471959736218fd39e1b",
+      "bytes": 1162672,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0023.npz": {
+      "sha256": "cc8619831a2ac30b16b58be8f688926b8b57479e10ee609b7e4e08302472547c",
+      "bytes": 1187911,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0024.npz": {
+      "sha256": "97a946d0f3c9a1efb77a482342e695225d73a89220761be0e16e7d7ced95d629",
+      "bytes": 1175256,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0025.npz": {
+      "sha256": "88b53ea42a19d35e1779e94e387fc257ec59b034f1112548df2e1aed21b28126",
+      "bytes": 1135689,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0026.npz": {
+      "sha256": "9eefdafc69544ff83b09d920b10406ba2ea895b986e9212d7175ff0e9286b630",
+      "bytes": 1174749,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0027.npz": {
+      "sha256": "73efed7e11e70964e863880ecbd5016cfdc1227d21b5608c1108098dad51201a",
+      "bytes": 1174781,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0028.npz": {
+      "sha256": "97ea13ede63d491c04bca5e57f86d7b55ee7a5d5e55cea0b4f6bcd3229248d23",
+      "bytes": 1174541,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0029.npz": {
+      "sha256": "8b48b693acea7c3cceb2af08ac658f0246afacbfe6b076172651cfd9286857d4",
+      "bytes": 1149145,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0030.npz": {
+      "sha256": "943f154b468b21c16eca585e05fa9f97c9523723f01846090d573e0f3c0f04e1",
+      "bytes": 1174566,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0031.npz": {
+      "sha256": "56627b1ae53fdec62e375060170be337442a6e34882b954d99066dbe9865be92",
+      "bytes": 1161362,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0032.npz": {
+      "sha256": "e01f361828c6ec2bc17b82e5fde990608a2e6a28328c34b19435b5e846bc2a06",
+      "bytes": 1148782,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0033.npz": {
+      "sha256": "579415c7b71729e6210c4d7f482a9f928b3390a04c2673bfa18857f7fa26bcfc",
+      "bytes": 1149162,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0034.npz": {
+      "sha256": "cf72bd668adef327e7b19abe3b9bbcc1498b75c00901af0853e499cc8fa9c3c4",
+      "bytes": 1175421,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0035.npz": {
+      "sha256": "3e855f9dfe335a7d956c4ba26845aabef22aa3ff3fc8fdd4f07664c9f609fe31",
+      "bytes": 1148863,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0036.npz": {
+      "sha256": "706c4dda948bb4bbb3fcf913096be94cd05f453683f4ef7029eb48c7ed3dd1cd",
+      "bytes": 1187549,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0037.npz": {
+      "sha256": "8264167be031e2a654d05a88618d7b25c93563d920a415fc8da035017f47331f",
+      "bytes": 1161785,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0038.npz": {
+      "sha256": "44463a93aae60bb15a968fd605da088a0e029905527f5e51b5802195bad90ca3",
+      "bytes": 1174633,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0039.npz": {
+      "sha256": "c2311e84748c886f69c4f1fee34be230f970eda0ec58b03314fa875f83cafbad",
+      "bytes": 1149314,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0040.npz": {
+      "sha256": "e2a0f98e1380d3149daeb557f4f2fbe8fabdb7e9ffb513a0c62c11e6e7746323",
+      "bytes": 1174803,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0041.npz": {
+      "sha256": "703c07867587d6f55727bb320c4faf9244c1dc372d42d4f70511324adf0f5b60",
+      "bytes": 1161946,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0042.npz": {
+      "sha256": "bc093fff18fb3f13d0f9578d90c83119180d038e18f74146891859667d4bad99",
+      "bytes": 1187111,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0043.npz": {
+      "sha256": "e5c5c4689b38d26dbc146e3ab1f83214ce1204b0b35ba8941857fa595e770e28",
+      "bytes": 1161932,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0044.npz": {
+      "sha256": "c09dcd941059cb0a4a07bf340fec7cb89a6e25656671f0ad99c362237958fb07",
+      "bytes": 1161692,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0045.npz": {
+      "sha256": "4cde340b10dc53460492c60bf29298e6e6afd6bc3756ffc5942bc6c4c505277f",
+      "bytes": 1110476,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0046.npz": {
+      "sha256": "72399ee4b24a7a05705c54972b841d0cae1d73df3f833cf5d8fe2bb42a4423fa",
+      "bytes": 1162532,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0047.npz": {
+      "sha256": "f3c2a91e8db537dee97997a9623cbcd43079b2fbe1001cd5e228fc99a7e46dcd",
+      "bytes": 1136253,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0048.npz": {
+      "sha256": "6fbd941b81e72f7efad60607a6a8120eedba950ad3d8d885196207104f8c778f",
+      "bytes": 1187737,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0049.npz": {
+      "sha256": "b85f060d61383b03999140ebf746a0bc731443d728159d3488cf6c31377f81b2",
+      "bytes": 1187840,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0050.npz": {
+      "sha256": "62eebbd7b7bfb5beff6368940ecd8b878922da1c8e39322ab9a0e0f005a2a13e",
+      "bytes": 848912,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0051.npz": {
+      "sha256": "b6f73e8c3e31f81cec53a8540335e9f6dece7d7b38c47cdf4fd91f4937a61e2f",
+      "bytes": 835576,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0052.npz": {
+      "sha256": "e2173e83c71edefa805bca84d10488f5fdad39456d068b04f0941f1f556d05cc",
+      "bytes": 861079,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0053.npz": {
+      "sha256": "ca3c27eb752c28f19fddc9a5bb2397626d8dac7fddbd591f2685d7ed1ef530e6",
+      "bytes": 848465,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0054.npz": {
+      "sha256": "5ec2de131e6883cbe5ccbee4527281b05a53f9b81d9059b1e39a1a563c4ea440",
+      "bytes": 835034,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0055.npz": {
+      "sha256": "707ee7857b66a5a027bee113554cc477d4fa7d9f823cf8ca95eeb14855a13f45",
+      "bytes": 835403,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0056.npz": {
+      "sha256": "f11a72194ec155a2c1e3333bd5fc012bfb1b845315641f0d8094c51a5f93ab1c",
+      "bytes": 848718,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0057.npz": {
+      "sha256": "89cf067fe969ac553f2649cd145c2ecc869024ead35f18a98d95485063423a7c",
+      "bytes": 848525,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0058.npz": {
+      "sha256": "e9c323076c4ac9627920183f698f2a73e663bdccb9b71d491e1197f1f427269d",
+      "bytes": 822277,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0059.npz": {
+      "sha256": "2c13d3d56fdbed4c0f9c4a7e65247316547909d24aa7b721d84f98634b1fdb70",
+      "bytes": 848450,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0060.npz": {
+      "sha256": "e1f41d4ad658f71cb6da856fd56d5a10294bc7b72c222fc992b69d6c68d020c1",
+      "bytes": 835244,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0061.npz": {
+      "sha256": "22e371c7daa436df22b917644677f183863fc212b3f210a4507079f416322c6d",
+      "bytes": 809779,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0062.npz": {
+      "sha256": "c741eea7be8077f9831dd49d9097328102a11ef6ad28aa31484062b55860091a",
+      "bytes": 783460,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0063.npz": {
+      "sha256": "095299c9228a9121b901b27f764ea05950703616fd163a48a3c3a2be96923c28",
+      "bytes": 822765,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0064.npz": {
+      "sha256": "c0913f925ac8bb14acc1b8a986c6688cfab4ce2491e8df85f02f9f8d1f7534a9",
+      "bytes": 835520,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0065.npz": {
+      "sha256": "4f6a96c576fb867a241bafad57eccf06ada82722c92f9717edfdd3717e65d60f",
+      "bytes": 848044,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0066.npz": {
+      "sha256": "43f9ffc8636ab88aad3c5c9e2fe65bc6df3fb068cffcc9b423e0517a288bae63",
+      "bytes": 822698,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0067.npz": {
+      "sha256": "7558a0d66c23e5b59c7ac322d6cc9fb448f684f758827221632b33ae7726fd48",
+      "bytes": 848576,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0068.npz": {
+      "sha256": "b6c4a424220446983d3caf812c4d380746fd0c89855c4a873c41b96ad4d9a98b",
+      "bytes": 835209,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0069.npz": {
+      "sha256": "b263ff3867c9076339cd68a7b4bb70d61ebf5fcb26c4f301485f77165d5719a9",
+      "bytes": 809510,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0070.npz": {
+      "sha256": "a653a73e386e7d553954a1541932d42c17a29ef6d7d3b0375d4792ef983acdb6",
+      "bytes": 809890,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0071.npz": {
+      "sha256": "3aa20993742b88e672138c42494f3fd63afc81af642f3082733d2aefedd3caff",
+      "bytes": 835685,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0072.npz": {
+      "sha256": "04ffe5ffdb908895ebb155c2075a0c909a21fda1474e7b995713dc20569cc8d4",
+      "bytes": 861338,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0073.npz": {
+      "sha256": "d034f901858459610c95b956a15f7dd508e681a93864b0103af2918b1aea68cb",
+      "bytes": 861354,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0074.npz": {
+      "sha256": "61212a4ffaef2a77f210fb6dceada822f8e67f05bc3431b41417339fba056aab",
+      "bytes": 835490,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0075.npz": {
+      "sha256": "07191d02aa63b94d2177e6c25e58065033ba2c25d01eb051a62c9fd77f128960",
+      "bytes": 835709,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0076.npz": {
+      "sha256": "3afb42d2dcfff0c68bb7c9d77278d9c205f9003ef1daed05a21ff6333a1aa28e",
+      "bytes": 809582,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0077.npz": {
+      "sha256": "6ca0a5a2732e28dd855fb77a9512cf4751dcb012074db481795ecc34b825befa",
+      "bytes": 861639,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0078.npz": {
+      "sha256": "6ddfac9a5811a39a24b0c20579ecbee0fa00e6a7c723748ac822e5ab5d0a04be",
+      "bytes": 848410,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0079.npz": {
+      "sha256": "7b72e6722372cfedbc122877089cb04e6472303cdf1ba48b93b0b53243342155",
+      "bytes": 848505,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0080.npz": {
+      "sha256": "efaf360132549e6bf68bc75189a3226c535c5e4324d99719f8ee25b1d331095b",
+      "bytes": 861596,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0081.npz": {
+      "sha256": "8b1e1d205d77c05fc74ec16feb05ae19411acd9c3b7bf752381adbee196b504e",
+      "bytes": 835825,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0082.npz": {
+      "sha256": "8371c4036b20d8fd2edea58ea139041b9b2774972ce63abacdebd67356c1b476",
+      "bytes": 823154,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0083.npz": {
+      "sha256": "9ad8632f5adc385b4e921fa33495a88e52e5bebfac815163be66bd90ae5f3870",
+      "bytes": 848351,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0084.npz": {
+      "sha256": "9eb5ae5acc129b1dadbb54ba0607f4124f786fb30ce3ae04d6c35cd30df39ede",
+      "bytes": 836013,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0085.npz": {
+      "sha256": "7e9f8f534c6acfbf8d94c20c1371aea065b3ab8f9860f82ffd02d072cbd07e5a",
+      "bytes": 835585,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0086.npz": {
+      "sha256": "df2dfe8cddab8c100939823fa2386682ba6911b7618e67b554e28d1b51e05e05",
+      "bytes": 834961,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0087.npz": {
+      "sha256": "ad1d6211d7bd60e972835cb181c2c5568bd8dec769b45b8475a29e465c0e86d2",
+      "bytes": 848337,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0088.npz": {
+      "sha256": "44fab99c82ca78c7ec7e62362f1bff60da7d082bffb20953badc4c5e46870d24",
+      "bytes": 835664,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0089.npz": {
+      "sha256": "f79ab5c5f818b517b3369f141adf48297e37869ac45de5dceb1e6a0e7c47ac89",
+      "bytes": 809926,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0090.npz": {
+      "sha256": "ed3ef6f26f6fedea42a2f6148c3174b44036a23b2d13ef9a5bb9884893094e3f",
+      "bytes": 822418,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0091.npz": {
+      "sha256": "8bd9ac76f9fd1adf9bc1292db1e345fbc29a4b0f48da5a9b8b24732f94b8c0e0",
+      "bytes": 835568,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0092.npz": {
+      "sha256": "5c73f76a71fea4697fac8dce03bb0c10782221c2421c3c0fa830bb5b8cc876df",
+      "bytes": 848006,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0093.npz": {
+      "sha256": "95e772e8280246ed1b25b42829060714e936fa4f8fdec49aaafe5b33d50d9ce1",
+      "bytes": 834901,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0094.npz": {
+      "sha256": "00f91e3baf9c0c374a06103f8b532415d1902144d8831d3c53626db9d8a18a92",
+      "bytes": 848192,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0095.npz": {
+      "sha256": "3683733cd9e4be555fa138198c650be2c5e39484ba0d243380cf809e70b3d21d",
+      "bytes": 848650,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0096.npz": {
+      "sha256": "18cbf42f7b0447e64f2c909039a4bcb0170e5d75e079aff060ec3f57ce0f4530",
+      "bytes": 861493,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0097.npz": {
+      "sha256": "8db07b4e57bb36ad89da6d7115daaea7b6784cbdd72695b8d6f05010c80eef97",
+      "bytes": 861174,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0098.npz": {
+      "sha256": "11d4f0697dfcded0ba636ebef522ec6e853831106f12cc8144c4e97236152bc0",
+      "bytes": 835277,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original/replications/0099.npz": {
+      "sha256": "9273d244ed15a08a2088ebb76d97619a172cb3d26b5587debff003bfb5d9253c",
+      "bytes": 822764,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/affine_population.npz": {
+      "sha256": "64db5f145d8c2a933a4b5286670501a3ce0411f6b46c66210e78689dfdee5ece",
+      "bytes": 1010,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/population.npz": {
+      "sha256": "f1b7d3c716c4bd3b3df19cea2d9891726d41e514df540e26df6d5020c1334173",
+      "bytes": 1953534,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/replications/0000.npz": {
+      "sha256": "86e8f517f722ee2e95d76c5752e0936fe8dccad5c77e97600f3a3a5365bebe61",
+      "bytes": 861396,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/replications/0001.npz": {
+      "sha256": "ade35de6b8b5ec993a0cb2b2b828f34c6563f06905ed1d94bf04163a14907513",
+      "bytes": 822872,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/replications/0002.npz": {
+      "sha256": "e157e1edd5ddc49e8c53019619826a03950bb655d49caeb2a4e1e76266c35cb1",
+      "bytes": 849082,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/replications/0003.npz": {
+      "sha256": "5a96a1a1cdcf6fb9fbd05d38dfbd82f80d38ef82e017d91c7ed07267cb2b69b1",
+      "bytes": 836085,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/replications/0004.npz": {
+      "sha256": "b3f5e8c7e2a502687501bc2c544065c996a8bf9f4de51c13377f04206cfa835d",
+      "bytes": 796541,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/replications/0005.npz": {
+      "sha256": "ff5e91a799b22b55e9f89707c3df4ff94874691b735be4cc1e99ac05fd93ea10",
+      "bytes": 848228,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/replications/0006.npz": {
+      "sha256": "c505b3ff4dc312d6a9527bc05a8d3869c5d451948e5c9c50408b4d2b70dbf742",
+      "bytes": 822910,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/replications/0007.npz": {
+      "sha256": "8c1c69209e9e0d91286d488e2fad17a4b7dc72703a80f31ed02fbd14ec83164c",
+      "bytes": 861736,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/replications/0008.npz": {
+      "sha256": "a524b9bc058505ddbda3ed085a5d3378c4516f81f155782eddd2d09fa6e5c719",
+      "bytes": 822868,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/replications/0009.npz": {
+      "sha256": "a6954561568bbb9249a461811132953a428411e52d58ce814dd98b026295418e",
+      "bytes": 835386,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/replications/0010.npz": {
+      "sha256": "1a49fa845de697905193902884a8a151d1099bbe15adb5aad62a6dabdd320ba4",
+      "bytes": 810219,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/replications/0011.npz": {
+      "sha256": "306726f32b943a941e091a6ebe359d113cb05b6e9d404aa53f410742f4245b9f",
+      "bytes": 835138,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/replications/0012.npz": {
+      "sha256": "80297853a9c4d5928c27e012c62bf48f549d32fd22cd04eebd55dd2f22f797f2",
+      "bytes": 835241,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/replications/0013.npz": {
+      "sha256": "0dbd52c410fc241115eb4ceee3082e207d805864bcf3d0975687b3ce59fb4a2d",
+      "bytes": 861278,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/replications/0014.npz": {
+      "sha256": "1e59fcaf48a4b557c03a988e2628e4986e4667a55ba78ba0e5608a4a8ee0ed7f",
+      "bytes": 835397,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/replications/0015.npz": {
+      "sha256": "779888fe846fa651011ccbfacb1c503a471efd1bd8173fa7cfca930ceae42b73",
+      "bytes": 810111,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/replications/0016.npz": {
+      "sha256": "701d3b7e84ccd18aad69b650f810d3440ef16c278ddeab80833e365235850f87",
+      "bytes": 848848,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/replications/0017.npz": {
+      "sha256": "ac6a44476dd24cf20885397c87c499fb4b5fb0cece3480d7de092d6bf146e52f",
+      "bytes": 784702,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/replications/0018.npz": {
+      "sha256": "6e2d6cd2d60df2b4b3cbf2c82ed1ed46dbff6caff398ee966f9dad8c34c2f1a1",
+      "bytes": 836047,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/replications/0019.npz": {
+      "sha256": "2efe637fad56057632268f07f085366e024a615dbc48931d40312fbdb46799e6",
+      "bytes": 847821,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/replications/0020.npz": {
+      "sha256": "138a0aa9bfa6ff4c864175c1f558d9c3726ae925fb1a0af34690f15cba447b0d",
+      "bytes": 784050,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/replications/0021.npz": {
+      "sha256": "d011b3356208d7f776d715ca8316768147c99db4fef6cd1af55c7d88aa94bef3",
+      "bytes": 860715,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/replications/0022.npz": {
+      "sha256": "71724cf40523dd18498a83329109323ba7392ec8e4e596378025bb8f1cd9e01f",
+      "bytes": 836350,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/replications/0023.npz": {
+      "sha256": "e9ca04ff9cfe971e25f06e392e771dc3b194763068167ea25a8733df2af4ad30",
+      "bytes": 848817,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/replications/0024.npz": {
+      "sha256": "932b967071cbdd2003521c84d62f58484de136f16cbc2a62990ac9f523712cca",
+      "bytes": 849433,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/replications/0025.npz": {
+      "sha256": "392f84373e82b52d1e51ca246a9206289565f68221b3d1a30ad7c10592687269",
+      "bytes": 822402,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/replications/0026.npz": {
+      "sha256": "174efe2e6090efa411b6e7f5f5ea50dbb1a0f7a54774a6d879d7659b8460e8f3",
+      "bytes": 848404,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/replications/0027.npz": {
+      "sha256": "05c45b944af41fdebb152a2cf2227e8fc0836be4137db04211cff05bab5deaa5",
+      "bytes": 861332,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/replications/0028.npz": {
+      "sha256": "2ebe16d489aad7a04262988bb0a2441b4ff553cab263ef76d50316e8a31f3a12",
+      "bytes": 848428,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/replications/0029.npz": {
+      "sha256": "0936fe3323d9d1119533c74066badb1bc2ef4332766fd1b26df2f2830122c07a",
+      "bytes": 823163,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/replications/0030.npz": {
+      "sha256": "218c7efb54563bafc2f6efd6f4f85c630a68feaed49000f7b00145554064d815",
+      "bytes": 835381,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/replications/0031.npz": {
+      "sha256": "aed996f7a7dfa4ad0eef1bbe57a06cddcae1ddb9e30ee00095df3487a660c0ff",
+      "bytes": 822454,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/replications/0032.npz": {
+      "sha256": "64b2fb94d6d921dfa7c53bec863f26113e15e17c4b0442ecdb23fa92ec556df2",
+      "bytes": 809719,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/replications/0033.npz": {
+      "sha256": "dca074c10c704249fbf672c6ef2780f1202158d864b1b862be95f1940e935cdf",
+      "bytes": 797471,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/replications/0034.npz": {
+      "sha256": "ab0718e61d414e73df1b25d7a17f51ed0af000089d6ea45cda3f379f4880f626",
+      "bytes": 835815,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/replications/0035.npz": {
+      "sha256": "f46917f302b840db65342178fb6a36d9a47e650d785d4b0a35b29440e1b0dfb9",
+      "bytes": 822525,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/replications/0036.npz": {
+      "sha256": "2f779fb2f987decf21c662ed7048df4a27401173c0a2e1546d73a6b623100caa",
+      "bytes": 848143,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/replications/0037.npz": {
+      "sha256": "98b60e5999011fb145c883b6730abe902e152e1bf050caafa6bc0028db354639",
+      "bytes": 834938,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/replications/0038.npz": {
+      "sha256": "90bb5ace887d441ecae12252ba9c30ba4ca9b3b754e9c06ce6fc3f82cb1385d0",
+      "bytes": 848573,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/replications/0039.npz": {
+      "sha256": "a5fa50950bec9916047ccc74ec9f31479387546d47aee79bab02f587b222b893",
+      "bytes": 810036,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/replications/0040.npz": {
+      "sha256": "ef865873501415af54006719676f522df9f6b86903bd8a97fa392f05e33a79a4",
+      "bytes": 848598,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/replications/0041.npz": {
+      "sha256": "e4bb3e5c915f7c175921342af5251a9bd831907d9b715ff4c4cdf63dab17aafa",
+      "bytes": 822839,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/replications/0042.npz": {
+      "sha256": "0e9f69943fbf0d07dc25c0a63e3c5bbeacec6545c4df562b8d9541a4ea444908",
+      "bytes": 847754,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/replications/0043.npz": {
+      "sha256": "c1f5fd8460898e7ab003d58ff175b0ac5a0677d999b01c5b935e81e4662addf6",
+      "bytes": 822916,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/replications/0044.npz": {
+      "sha256": "4f7d6a0213482e42e269d63a3f158ed44223ccc8b5d91fa22fa311681c62bba8",
+      "bytes": 835776,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/replications/0045.npz": {
+      "sha256": "b54fde6dddba70dd96a1fdc6c41ee82721fd67dd38646d22bbf51d8df4360ad7",
+      "bytes": 797362,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/replications/0046.npz": {
+      "sha256": "833cb35f56f3cc9d82a8a336fe2d1a5f4cfb329936fae496e944a99e2ecacc8e",
+      "bytes": 823176,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/replications/0047.npz": {
+      "sha256": "2102d0434c67b61c7c4bdea7190a1ca8bc46c763c885e37be863f919f231b585",
+      "bytes": 822769,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/replications/0048.npz": {
+      "sha256": "c7d3812b90cdbeaf09651ee8b81d20bbe30781ae6ecb652db41f6cbacd7ed0c6",
+      "bytes": 848479,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu05/replications/0049.npz": {
+      "sha256": "acfabcfec0bd1eb2ea191775568f9eb3b3fde2110b2c5ef40dcf942fd3b1e1aa",
+      "bytes": 861221,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/affine_population.npz": {
+      "sha256": "7e2d275b24050b1a0a45a7cdb40b95cc3a9812555accbf7efa507a510c366c34",
+      "bytes": 1006,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/population.npz": {
+      "sha256": "f01cc39735583bd40470839d4dc8d8e022b8c3c71f9670d5037ad05325a6afec",
+      "bytes": 1958872,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/replications/0000.npz": {
+      "sha256": "18548a8dc2dc01328c89aab2d251c9ae42be7725f73fb3eb04b04be68436eb3e",
+      "bytes": 861493,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/replications/0001.npz": {
+      "sha256": "09e79769a33a1b38197a3338fb08bef3e51b05c2c46b1ac5b903a672dda128d3",
+      "bytes": 835736,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/replications/0002.npz": {
+      "sha256": "83b9128b27a8e21c4361c536effd0dc9f10d829ce61a44cdf18c9ae109efefe6",
+      "bytes": 861647,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/replications/0003.npz": {
+      "sha256": "282187bab02712a48c4fab770a4a22b63aaa32c9285597b6c3d9a52eab4d60d8",
+      "bytes": 849010,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/replications/0004.npz": {
+      "sha256": "f3573b90176e81fd02eaeb89783fc0c281dabb9f1bbeef3ba1eec0b212476643",
+      "bytes": 796958,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/replications/0005.npz": {
+      "sha256": "a9658cea3a1eeb8e6eb3ec7a4d8b80c9030a8d16bce68cc06073f7f22261b703",
+      "bytes": 848480,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/replications/0006.npz": {
+      "sha256": "3ca466c9b3e6f8f1d57472c80861c3bbec8e229e06d10a43ea10313ef42b90b4",
+      "bytes": 822735,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/replications/0007.npz": {
+      "sha256": "28d98f2357e21b419dc3aa63ffb6e16f3b8ba367c7bbd711d62c09d3a6b4a032",
+      "bytes": 848766,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/replications/0008.npz": {
+      "sha256": "8142bc40c544bc24b81ca182f450dc439ede93ba167d83ab8dcf51618b4b1044",
+      "bytes": 822812,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/replications/0009.npz": {
+      "sha256": "c4716bf38700aefa1a9f54aae1279a2846c623ff363314d8efbb3f03c109636b",
+      "bytes": 822709,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/replications/0010.npz": {
+      "sha256": "cc20eb0fca3c6ab35886bba1636af65d9aefbe24f43ee0e90944993e2370120f",
+      "bytes": 797160,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/replications/0011.npz": {
+      "sha256": "b181728efd35367813a6549a33fa7bbbc812213fdd111966da310e1d31d8a805",
+      "bytes": 835374,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/replications/0012.npz": {
+      "sha256": "43b6adc5c627348917abb03f4918ac60e1132580f879a968a0657b0e7eeceea0",
+      "bytes": 835473,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/replications/0013.npz": {
+      "sha256": "d393ebd886162845c5db54efbd96b2be00371330579c8acf43c4fb7ce777ac9d",
+      "bytes": 861229,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/replications/0014.npz": {
+      "sha256": "8e79d6aad111937cc3da4c58aeb8fef8da5df378e171a507c952b28e026faa22",
+      "bytes": 835517,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/replications/0015.npz": {
+      "sha256": "003de7692dfa6f3fab7e39ca27979426bc4337a2de013370f47d2afdf3c65b96",
+      "bytes": 835478,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/replications/0016.npz": {
+      "sha256": "9a8b9ccf74294481f6e3800b9b188d7c014cc96faba54094eafbddf042c04b0d",
+      "bytes": 848602,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/replications/0017.npz": {
+      "sha256": "a3f1afb6da5f96028b23f1a8c6fe97b2a2753df2b54cd6c95dc5f139f063d362",
+      "bytes": 784382,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/replications/0018.npz": {
+      "sha256": "41de77fe983fea55115b708dd73f54f1850999cbc9bf09e19e7c023239bd2086",
+      "bytes": 849100,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/replications/0019.npz": {
+      "sha256": "08b5b73e68f48dc5614f638fb3ed1b9a91aa7dc0b11286f9ec6248ac40d4be93",
+      "bytes": 861146,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/replications/0020.npz": {
+      "sha256": "e7915c720b3a2ce50df061b578025b678748b2b007229425af3fd707f1d7c0e6",
+      "bytes": 796945,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/replications/0021.npz": {
+      "sha256": "7ef2fc72eb9944baef453d933dc65c484e8b100032b60c7af0f2759506e3df6b",
+      "bytes": 848148,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/replications/0022.npz": {
+      "sha256": "e932cf49bc5f73218f26426dbfa5d28e30a9be4c565222b94114ffaba8fa3dad",
+      "bytes": 836249,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/replications/0023.npz": {
+      "sha256": "cbbbbad4a3f14f0f647bcb20372ca108fe25d42df6b62324f4b38fd4b1f20490",
+      "bytes": 848766,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/replications/0024.npz": {
+      "sha256": "cd4d9c8a23d12c56a7a7207ff7907cdf709425f32a74e4279862c9db47023a8d",
+      "bytes": 848977,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/replications/0025.npz": {
+      "sha256": "039ff757faeff5030cb3f089f9c110a9a13350f1377d1da8805cfc7130b65cda",
+      "bytes": 822493,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/replications/0026.npz": {
+      "sha256": "a932f2b89286ea8b0ddf5bf25d69867709fd492db02a71f6a3f9e70ef66d5925",
+      "bytes": 848451,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/replications/0027.npz": {
+      "sha256": "74b27b6c63d9f8eee9d1aee5758f262ee41d2ad459fb1b90d81053cb922385f5",
+      "bytes": 861231,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/replications/0028.npz": {
+      "sha256": "3edc9c8a0542d805f421a1f50e31a08964dfa7f21443a775b4de6dbd6f833477",
+      "bytes": 848630,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/replications/0029.npz": {
+      "sha256": "707b1772ae3c9f00fb0ae7f7037ee2c31c57a599e0bb517297c5c98e4e49681e",
+      "bytes": 822945,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/replications/0030.npz": {
+      "sha256": "779d7b23caaf86edff8abaa882cc07255477d498e1199c9f9160d0780bc0f09c",
+      "bytes": 835294,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/replications/0031.npz": {
+      "sha256": "05be4ed38350cb2f56ca2356adc756f6b9f09acd54877a831e2b1636f25c59fb",
+      "bytes": 809307,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/replications/0032.npz": {
+      "sha256": "62025cc2276e52e5fbdbaf36bb04e6816d9fe4c91375fba14d3e0230291d5dc2",
+      "bytes": 809656,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/replications/0033.npz": {
+      "sha256": "7f5bedc646b1c5837733ab76f1e5ea35f32af0ddf946394c4359ca62fe91381b",
+      "bytes": 809874,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/replications/0034.npz": {
+      "sha256": "db2d73ce39e712fa249d47886fde28994421f013284785dddbd19a938b349c2e",
+      "bytes": 836079,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/replications/0035.npz": {
+      "sha256": "88936520d0ac3ec418f677892c25c8732a4ec1cb4d2e95945e5cdae2346dbca1",
+      "bytes": 822675,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/replications/0036.npz": {
+      "sha256": "b73568c1d5ae7f1c5b4e9f25fd15b26c0d3ffb93ddd7468afda8320b69d7166a",
+      "bytes": 848490,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/replications/0037.npz": {
+      "sha256": "399a3e9c6644e8d752d95552e1ee43986af4269725ebf045bb1b2a0bf8a312f4",
+      "bytes": 835588,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/replications/0038.npz": {
+      "sha256": "efa595536cf9baa16a67ea8e0ac99cb833a2911cab43e5cbc73b9b7836e4d704",
+      "bytes": 861640,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/replications/0039.npz": {
+      "sha256": "ab06812c59f09ec6deb879fe72910730429736753b1dfb3cbb4e25190cca0bca",
+      "bytes": 822943,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/replications/0040.npz": {
+      "sha256": "752ebaba2e4fd1975e44bb4a3eb04d4ec934bc439110fbdde5c8cd8ee19ebc64",
+      "bytes": 835530,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/replications/0041.npz": {
+      "sha256": "db9866534ab195c719449a66cc38605768e40abb388eec084f6fc98f2382811f",
+      "bytes": 822944,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/replications/0042.npz": {
+      "sha256": "9693bdbd820e3f9f47b3844029b316d784ced8a68376810430b16133be6a7892",
+      "bytes": 848100,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/replications/0043.npz": {
+      "sha256": "a991f16c32511e1c84c5183710e74579b2bf9eff593a5b084279af8112041b5f",
+      "bytes": 822708,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/replications/0044.npz": {
+      "sha256": "5897426ef3a09e619cf0b7708384c22f06521be8f0554e187a2c80922542b54d",
+      "bytes": 822733,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/replications/0045.npz": {
+      "sha256": "dad8afd66e717c14dc8f65211a2ed0da94200a47f8152724416089f22a92fc01",
+      "bytes": 810161,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/replications/0046.npz": {
+      "sha256": "d82cddae8ce546aa3a508531ee2224edd69e9483eb426a3b91ba07c6171dd295",
+      "bytes": 836334,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/replications/0047.npz": {
+      "sha256": "c5699ac2a12526b5aa61530cdf3ffa3c2fe17a5ba7f6ad133e616ce315905f6f",
+      "bytes": 809968,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/replications/0048.npz": {
+      "sha256": "1ace617ab480c3704e0bdf63782dcabd757563b8039dfdd75698b0f181a1b7df",
+      "bytes": 848597,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/baseline_original_nu25/replications/0049.npz": {
+      "sha256": "e6812bfa396923e056fd9539ce79a7205e56f7fdbfb0b9c2a6a2176c582b09d8",
+      "bytes": 861444,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/affine_population.npz": {
+      "sha256": "51025eaa62d660c908731d41826c5d1fbb3011aa096ee68a342241fee4873bc7",
+      "bytes": 1008,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/population.npz": {
+      "sha256": "8585b531cdbd0e70543a8326e24de3a3dbf024139bae3b5e7d5b29130100e979",
+      "bytes": 1957410,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0000.npz": {
+      "sha256": "74dde914a8177214ba66164665a494e7931527e83dde2433850874be59ba4a37",
+      "bytes": 1161807,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0001.npz": {
+      "sha256": "c7a39ae6b0231026dee665c9d209c6c02181b877dc094386b47031ed6d8ef7fd",
+      "bytes": 1135922,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0002.npz": {
+      "sha256": "2ffb8f09ed017b74ead8b5416fb47d674c4f9e3ff8028e33cbdef07bcba2fd86",
+      "bytes": 1162115,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0003.npz": {
+      "sha256": "97856858d88664fae7a8201a4d9851b1e02a360ce253fda9853f0461a0d4c72d",
+      "bytes": 1201033,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0004.npz": {
+      "sha256": "2ec482d7d8561b434346e9fc4875a1b9916d9c73f7708eee274bfbb58de3273d",
+      "bytes": 1136393,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0005.npz": {
+      "sha256": "e62ea60fc0546428ff2dea0793ac1c6c0ca9f8576402ee92e7599ec85c342c8f",
+      "bytes": 1161421,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0006.npz": {
+      "sha256": "17c8c34459c42c0328aa54bdde81fb1cfc8b3a1b340762174a65c5c5a83bd24c",
+      "bytes": 1161738,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0007.npz": {
+      "sha256": "0e8cfc802d1a303f877518533d16143573b6a12eb337fcc1dd4d012541479fbb",
+      "bytes": 1187783,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0008.npz": {
+      "sha256": "9819aede4977b9cd443d8171f7eec5b23b9c6477b0e3bb6a981d5fd46b91b46b",
+      "bytes": 1161821,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0009.npz": {
+      "sha256": "0363a04442d73870d8a0cb152a0869c78b002be545068e8f4c719c7a0fdd2438",
+      "bytes": 1174716,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0010.npz": {
+      "sha256": "86a154c939b5ec9b2f4bd67c9ddaab03898215c88aa13033e599d0eea7fee8b0",
+      "bytes": 1149504,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0011.npz": {
+      "sha256": "8b0543b90906a77f60bf7d562b64b4f216ff7ce656eff0805d5607dce82e4e94",
+      "bytes": 1174436,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0012.npz": {
+      "sha256": "210fba09c452b39bf1c235356df6178e850ba199fdd28a7a08e1360bb77fe145",
+      "bytes": 1174681,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0013.npz": {
+      "sha256": "aa4f9543456b12568ccb205b58c7e4c237b7ced419b36ce4afa9f3614faecdc6",
+      "bytes": 1187962,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0014.npz": {
+      "sha256": "12c8251047a2c6f87adc483a23f82faa20ef2aa77f49294828bb17ad3392824f",
+      "bytes": 1187697,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0015.npz": {
+      "sha256": "6e648c76dbee3c8990ece1b47c777511186d84ac375c8adff62c0bd219959b55",
+      "bytes": 1174959,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0016.npz": {
+      "sha256": "2fb03b10a669038e66472fe5846e227f81b2cb23c450af67a7969fbc92efa599",
+      "bytes": 1161619,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0017.npz": {
+      "sha256": "13a62468fe8725c3a457b1346f2b9229c05c891cafb188ffa8d07add52f882b7",
+      "bytes": 1137094,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0018.npz": {
+      "sha256": "4461974333a492afdfb0c394e59fdf6e56f71f9bd65f4b9e12b53e3f91f97aca",
+      "bytes": 1188173,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0019.npz": {
+      "sha256": "e64a2ef9d7e3b0de52224eb25d702589b24183b4d0413bafbde9689dd7b74bf9",
+      "bytes": 1199997,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0020.npz": {
+      "sha256": "9753a03730753cc0aaccedb1f5155d35edf554f435ef7138e7da90212f9c47ac",
+      "bytes": 1110711,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0021.npz": {
+      "sha256": "d61db68027c7edab4c85611bb5c83a1c7838cb7c908d7c816febe2ba5cd2d1f7",
+      "bytes": 1187285,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0022.npz": {
+      "sha256": "e97faf398cc478259fd657c1b14e9f63bfeb9da2146467cd7d0cd2562506e142",
+      "bytes": 1175471,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0023.npz": {
+      "sha256": "5ac914126d83d52fca3d39dd65a429775272ff8ac269b455edeb7bddcc81d841",
+      "bytes": 1200753,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0024.npz": {
+      "sha256": "ef27efce911ecae1ccb4f46a415b457bee62ae77ba4ead80d3a690194957f261",
+      "bytes": 1174750,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0025.npz": {
+      "sha256": "91d816cfc15d63af0a99317724765888531c9a2dd6466ebbf1940731cbe40630",
+      "bytes": 1174773,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0026.npz": {
+      "sha256": "26271aafd3464487c22eec6fbd53ba4c7fecdff4947ec7f1a0f9093f34d2b81f",
+      "bytes": 1174656,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0027.npz": {
+      "sha256": "b5aa743e4a192184ee6f81007e44c7e01698fb4a406c4d674862d32ce9188d53",
+      "bytes": 1174489,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0028.npz": {
+      "sha256": "5e91b1db11064a8e567c35159ce7de94ae77cf34afafd0604c24033d48ec4cd7",
+      "bytes": 1174592,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0029.npz": {
+      "sha256": "027f8d4c9dc8304d6f869d16ce7b9dcaa3bceb3497b16fd9306da854b9dec626",
+      "bytes": 1136149,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0030.npz": {
+      "sha256": "30b941283d03a153df8a437d1f2011de01c649cbda4fd9fd1ee1e41a85ee034d",
+      "bytes": 1187576,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0031.npz": {
+      "sha256": "2b859a955d17226fef98d7383686f25bed379eff767bfd04e590f177dc1393dc",
+      "bytes": 1161617,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0032.npz": {
+      "sha256": "74086764c9f166cf6ac70f85bd6903b1616a3e2f6678d35471645fc8d0135987",
+      "bytes": 1161866,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0033.npz": {
+      "sha256": "f27577a3c9e3721b30e878ba207a2e9c1639328dd1360f3cc716cec8e892b118",
+      "bytes": 1149219,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0034.npz": {
+      "sha256": "5ec4e99a23e46ff1cb2f45bb527602929958650f22b44e18e822de59db4e6684",
+      "bytes": 1136578,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0035.npz": {
+      "sha256": "915aa7cc23f43a680949db2f4b91a273aa934e73f35be39bfcf1a73e8d0051b7",
+      "bytes": 1135905,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0036.npz": {
+      "sha256": "2ffdbe2783f6eb6fb60ff1ae3c5c477ac4759b468aabbad0709e47ac50ded4f4",
+      "bytes": 1187324,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0037.npz": {
+      "sha256": "147596cfe1448c0fce679490fbca8046acdbbeaadc66ddcc64ae0c4c9dceaeec",
+      "bytes": 1162068,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0038.npz": {
+      "sha256": "e749e41c47d016a9f3b19a1e62462f880a538e9d464928fab3e631ecd78287cb",
+      "bytes": 1174870,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0039.npz": {
+      "sha256": "e5ad53ca0ef0da492bea4dcd2a84ab31b175302adf5f54a77e642209287b1a29",
+      "bytes": 1162561,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0040.npz": {
+      "sha256": "f9f6e7800409f0d05d0975677bdfe83af873bc1efe09e800bc339e78d3bef2a4",
+      "bytes": 1187943,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0041.npz": {
+      "sha256": "1634773ada91e6ca0bf6e8ef95b478dff4c0365f886fb3eedd36aca702489dfb",
+      "bytes": 1161941,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0042.npz": {
+      "sha256": "29a3f3c09f7600f9124dbd4fe8714f1d4d248bf2659b07748accf5d70cd1f3ea",
+      "bytes": 1187203,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0043.npz": {
+      "sha256": "ae347ac1a873d4a4ee9393c2d4529b5741c11f081c80ffc30f105419952ee5c3",
+      "bytes": 1162146,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0044.npz": {
+      "sha256": "e96071e6de47b0313271882b4e858636094fc3094c1599ed957fec8dd92ee412",
+      "bytes": 1162061,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0045.npz": {
+      "sha256": "dbed9b3136919ffbac738c0f7ce384280177a4d138e73731745ebf24682081b8",
+      "bytes": 1149308,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0046.npz": {
+      "sha256": "961b9ede408ebb52d728c6ba7df8d22be330b494580cabb4b701e9ccfe8a46d7",
+      "bytes": 1175534,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0047.npz": {
+      "sha256": "e3e513b7bbc77e6af8413e16da993e4e27aef355f2c6965bb33eaec8752186e2",
+      "bytes": 1149312,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0048.npz": {
+      "sha256": "ce7f0439493b57c51092ea3f00f94878ac9ede9b6151a86d8b3dade622ef3a40",
+      "bytes": 1200626,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0049.npz": {
+      "sha256": "8f50df9f2f0c9d38f66a04370766177818d7b5120457ced1d9acb906f7b4cf47",
+      "bytes": 1187667,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0050.npz": {
+      "sha256": "5467287c978d3680c09ea39858ade2e753fe71826794a63fe49afe09a108010c",
+      "bytes": 836173,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0051.npz": {
+      "sha256": "b2f9c8e2a72f387beff7a3132eef2279ce9a4a589684ce8f1b8aeecf4ea033b1",
+      "bytes": 822711,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0052.npz": {
+      "sha256": "5b7917c757343d952f196845a0cee80cfc0020757da7638c1a85135a4eb74df3",
+      "bytes": 861159,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0053.npz": {
+      "sha256": "8afa3fd0e29001df8fe6cfe7332c3c5915f335fb3866ac7d9d08fbf19c16ce5e",
+      "bytes": 861444,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0054.npz": {
+      "sha256": "dd6dd8f14baae5514c0dd5a3028d91fe800baa397b025a51e359c8f5a186b4b4",
+      "bytes": 848319,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0055.npz": {
+      "sha256": "5a853cdbbab51d8abd655a6e117ae645cf336d7d4e44a1050c077beaa1d5b376",
+      "bytes": 835459,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0056.npz": {
+      "sha256": "39a3c81fb73943f34131438f844fcabe956c291a776dc18031f4d3dfd7ce596d",
+      "bytes": 848575,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0057.npz": {
+      "sha256": "9994cd3033ba35b79b0b1cd6109a3617ef57e752f77e0f2e114848ca2000ceb7",
+      "bytes": 835492,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0058.npz": {
+      "sha256": "80aeea208a5aec99b12f14069e4097db88ed1d3ed64da191526c77c2cf4c7921",
+      "bytes": 848673,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0059.npz": {
+      "sha256": "c73f18f4beec43f9d9a8c82e27e949f6ff3b3d37a714b3ddba02d4260ca6fa67",
+      "bytes": 861514,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0060.npz": {
+      "sha256": "70792d79bbb32b0d4bc768e8a3581fd6b4c7b7d2214b1cf95fb4fbe0390b5382",
+      "bytes": 835295,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0061.npz": {
+      "sha256": "e0e93ca38b29a28b232c9a93791716729b92d25f9524ead9aec3c39773f8b478",
+      "bytes": 796847,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0062.npz": {
+      "sha256": "6e449a22e579598d81f51d04b1624035ef487e6767144a832109d073551d31e8",
+      "bytes": 809282,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0063.npz": {
+      "sha256": "02402a0a91b9c22fb65cfcd2274a3b123c543995afb3bfea561ea63c47e67c90",
+      "bytes": 835404,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0064.npz": {
+      "sha256": "afd98da1f24955632c5cfd6a6719f8ccebae0a898dca8ebca5cf43713cd0929a",
+      "bytes": 861390,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0065.npz": {
+      "sha256": "3ac51f6a87b8a8992745c7947e01b97ae05a5bca5824ee177acf8fd3e6ce5a4a",
+      "bytes": 848014,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0066.npz": {
+      "sha256": "868751012d54988e7f97af34ab1dc47b2965c65e3b34df16c66cc1c988cf449c",
+      "bytes": 848650,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0067.npz": {
+      "sha256": "cbf921a468a316bf038e80514e2dd5c159aa76c88ff206314c67b098a7d8d79d",
+      "bytes": 848447,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0068.npz": {
+      "sha256": "968fea61e420233b54fa86f60fd0fbd68361303b38560ee7704bc1595871a584",
+      "bytes": 835333,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0069.npz": {
+      "sha256": "d9070f1973e38f703344a2551543be12fbf1a9c1e2103567da0758f61e0d07fc",
+      "bytes": 809582,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0070.npz": {
+      "sha256": "bcf8486cd7770afb8df8eb2d761e9c56ee2273f955f3cda31b95e3cfbe2623f0",
+      "bytes": 809807,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0071.npz": {
+      "sha256": "f262092c192509cd5b13cbb29f7a3988b1562d76ea651069bffba1fb84180b1d",
+      "bytes": 848881,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0072.npz": {
+      "sha256": "5ad3e010e04ebda2ac4bafb082c796ce520c76d25d4d1251a199fde9af28981f",
+      "bytes": 861131,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0073.npz": {
+      "sha256": "ea64b276ac03d7ef2d66e044dcc90419b23d6ae696da68f129c41782f6aef86a",
+      "bytes": 861324,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0074.npz": {
+      "sha256": "d8efd50ac326eb4461bcf3414d2ccc4dc11de009d89abb7c6821aec8adac30ff",
+      "bytes": 835477,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0075.npz": {
+      "sha256": "92af408d966075a73d8b66877e0c1f8b95a5645670d6fcd49e27614d50fea647",
+      "bytes": 822611,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0076.npz": {
+      "sha256": "86d50eae3e60ca745e96b553314ab3c35170dc00c97284f29cb3b9f47da8bc84",
+      "bytes": 809564,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0077.npz": {
+      "sha256": "e6578c1c7a9543922cc544356b9b184de28899e1ce5802106d987e4b7c2b7ae1",
+      "bytes": 848723,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0078.npz": {
+      "sha256": "dc81374f20801debd2ec59cc5804c69c853ea2517eaccb42f170f600ec7006a1",
+      "bytes": 835347,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0079.npz": {
+      "sha256": "8fbc9b7d639a40423c60e858246796a504a8381bd7431c3a0ccebe8a424a7888",
+      "bytes": 861312,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0080.npz": {
+      "sha256": "5135c4df6e68d472412886fd836fd56bee9b565049de442adbb40793e3d09d00",
+      "bytes": 848777,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0081.npz": {
+      "sha256": "ef011168d5650ff51422ffa6c2078510efc0938a9ff339166d4982f909cd1fe8",
+      "bytes": 848795,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0082.npz": {
+      "sha256": "e18acdab3f107f24d64ff3199d5cc117ad9b36c6f50e11f502cede8a4b27f6a0",
+      "bytes": 823409,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0083.npz": {
+      "sha256": "2a02bf4df4fe1bacd21d9504c2275768ccbffdd8e402e77904258af4dd6fdfad",
+      "bytes": 861254,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0084.npz": {
+      "sha256": "804bf98aaa99015fef572232fcc7eb35e130bffd5921bbfaa8eb6137489b1262",
+      "bytes": 848760,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0085.npz": {
+      "sha256": "88608dc45977ce358ecd507db1e84d90184e90bfb84823d4e15982c199824edc",
+      "bytes": 822657,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0086.npz": {
+      "sha256": "87370ac21ce928410075a79c168adb73d63d58f26189f8fe1f5330b7f554c704",
+      "bytes": 835070,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0087.npz": {
+      "sha256": "6c64e7c0bc539e6fedf37c6f793260ccea01d4934b873ee293dc5aa2fe17ea44",
+      "bytes": 861275,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0088.npz": {
+      "sha256": "59c4a19ab3962af45a8306234f53a4e1d48d22fc551e0feba388f7bebd065462",
+      "bytes": 848662,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0089.npz": {
+      "sha256": "4fad590bb5a202ea7343b5341335551f8d8e1810cb0fe8ed710f98e145c786b1",
+      "bytes": 809952,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0090.npz": {
+      "sha256": "a53acb2f554620ebe165f7ffb91e56518df48db6102491b315ac775ad9237981",
+      "bytes": 835405,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0091.npz": {
+      "sha256": "c60dd6c152ffcbc28f8642067307deb8055ff0166b7977ce7956b00049893d8f",
+      "bytes": 822631,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0092.npz": {
+      "sha256": "540312efa7c8a84345e10ffce6045552ae8f49fee0ba42892245b675ee1f38ef",
+      "bytes": 822216,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0093.npz": {
+      "sha256": "dad67f21c7c245b89aec7b8684be121490bc7cb2cf292413f1447b474146e9a0",
+      "bytes": 835009,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0094.npz": {
+      "sha256": "dec9fc96333a9c71145638460075b1fa3b4ed46f3eaf5f03b755f668e4539c9d",
+      "bytes": 860932,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0095.npz": {
+      "sha256": "607925189d9d48de951ecd76cbd1dab45097cc8a72476e307774f400e16ca7fa",
+      "bytes": 848605,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0096.npz": {
+      "sha256": "444813b321f247e77a358a3a1c75b15df85d34d660337b7ec08e33fc7cb751af",
+      "bytes": 861765,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0097.npz": {
+      "sha256": "0b0d3e40f82778fddc6d57eef41a1c9536019efa90cbba4e0203f0f36d082524",
+      "bytes": 848605,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0098.npz": {
+      "sha256": "2337889d00576a0e135b4622a8a242b333e8eb00203451170b434c575b6db0d4",
+      "bytes": 835314,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d/replications/0099.npz": {
+      "sha256": "720dd52f9c5b6e25dd6e15083324e9e4f3b0fa9dfc573c2163866a930e567343",
+      "bytes": 822863,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/affine_population.npz": {
+      "sha256": "905a7b59253dd68248714c41dcf2f214513c2758ce0cf417e596aa73d509c182",
+      "bytes": 1011,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/population.npz": {
+      "sha256": "a700e68b53aea48b5df4c6cc52fec6a240d46b2e2ed534a838a83c313e804305",
+      "bytes": 1953069,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/replications/0000.npz": {
+      "sha256": "d7e1a99c927bcea5c22a0c8f94a5a2307f9014a46b1b8ca50ecef3a80b94fd72",
+      "bytes": 848498,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/replications/0001.npz": {
+      "sha256": "39a19980e9be80682905955c202ea74c440cabc771005ecc77cedd59a673ca56",
+      "bytes": 822592,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/replications/0002.npz": {
+      "sha256": "6f582903886dbfd35c6c5ff7ee01209c36c3c9f524ea047f6d586d8bb9cdb2b6",
+      "bytes": 835827,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/replications/0003.npz": {
+      "sha256": "ac5b1c3332ce081c5782bfd63a6ddde5604cf45281dfc8e57717416b609646d2",
+      "bytes": 861888,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/replications/0004.npz": {
+      "sha256": "564918e43347017f04aac8ca9a69c370d3fc085549bc6da9ca0613c8e2c90aa8",
+      "bytes": 809676,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/replications/0005.npz": {
+      "sha256": "6c2aea6d41ee25d9ccb780eb6071a372ebe1609c62dc6be832020b48ce30841a",
+      "bytes": 848686,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/replications/0006.npz": {
+      "sha256": "ce0d3e618ba9b91cdd0ea9afe3d82c4855e73f0263ef297e4997b91b3f625229",
+      "bytes": 822923,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/replications/0007.npz": {
+      "sha256": "40a1e17a217e679bd450ad61492e914cd9c518582824928d72a01c0b52e96fa8",
+      "bytes": 861722,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/replications/0008.npz": {
+      "sha256": "87fb3e1a9860ec83671ffd240481300b0324041a843de34c5622ab07128b9582",
+      "bytes": 822714,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/replications/0009.npz": {
+      "sha256": "45aee94c41299f76436ab36b257e46f84777a3b492af98d81225509aae40dfef",
+      "bytes": 835310,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/replications/0010.npz": {
+      "sha256": "81158ba9cb3b96b99571701fcd461b9415467ebc490b162742cd9941d60d97fd",
+      "bytes": 823187,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/replications/0011.npz": {
+      "sha256": "cadad3b02b46e6b1236339dd06d062a0dd1a5b3e52d187a9a3837a4a43aeecf5",
+      "bytes": 835137,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/replications/0012.npz": {
+      "sha256": "9189d575538339ec637c17dac5c5d98b873ec1fd741c83a72b2f1e82a75ef296",
+      "bytes": 835174,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/replications/0013.npz": {
+      "sha256": "650e9a4c71d4b2082f53242f67d130781218afd21d5735d8d7d775356e6815f5",
+      "bytes": 848841,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/replications/0014.npz": {
+      "sha256": "a4af3c30c25424221ffe5448f720607093e2d0f7c9d06b144323e8ae079a07e5",
+      "bytes": 848553,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/replications/0015.npz": {
+      "sha256": "9b6660f930cb1494cc58ec961265ae3e30058fdedb6d71a3716951175e15c8e2",
+      "bytes": 822802,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/replications/0016.npz": {
+      "sha256": "cbddf633fb36c8fd8338715ff9fd0e1f5dcd76049738c2d4a19ad53db66e6420",
+      "bytes": 848626,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/replications/0017.npz": {
+      "sha256": "4565e9fbf22cbf2af9c8ac8ddef07925f012b01f2472c64089cdd73d138ffcff",
+      "bytes": 784578,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/replications/0018.npz": {
+      "sha256": "08ebb62132b78bab5a130981c0bf650b6c963ea0413d084642d502eca11f41fa",
+      "bytes": 849099,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/replications/0019.npz": {
+      "sha256": "bbcc1820d7653895c8ab12fb6911ed3970fa1334646248aeaef7be9a70c58db2",
+      "bytes": 860791,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/replications/0020.npz": {
+      "sha256": "0504a2435969a30afb9042a0fcc6310efc7604f99e01d9d948473cc2e0091b76",
+      "bytes": 797410,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/replications/0021.npz": {
+      "sha256": "870812cb6753771327f3c7b5faa6b440ec1793d24b74b0d583427665581c0174",
+      "bytes": 847782,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/replications/0022.npz": {
+      "sha256": "50f8e61d4880c7bb9841046016e17972a6ae08246366e98cabe1fcad4b7ff639",
+      "bytes": 836449,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/replications/0023.npz": {
+      "sha256": "fd4bc5518842a876bde127b847c1b67cac507e066beaedb330229271efaa9093",
+      "bytes": 861720,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/replications/0024.npz": {
+      "sha256": "5cd4ac6f4b1eb11f3abc558bbd16b9af480ac0b29549fe6522946263ce82e2c4",
+      "bytes": 848557,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/replications/0025.npz": {
+      "sha256": "ac6b647a99127be5396e1a67efd09321292c86392602d4eb653dc2cf2a5f567e",
+      "bytes": 835221,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/replications/0026.npz": {
+      "sha256": "5f92c3ab6054de59fadec73436e38029a21d38c2f0e3060c34705c7881d375f0",
+      "bytes": 848231,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/replications/0027.npz": {
+      "sha256": "a80ce4508392fec03faa64de7596d6a3ea747143d42e5ec048ff65ebe471a7fd",
+      "bytes": 848365,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/replications/0028.npz": {
+      "sha256": "cdbb72f5328f350f8e713039ac443f1c81fe5e5dea461afc384a347f5c45e033",
+      "bytes": 847988,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/replications/0029.npz": {
+      "sha256": "e6db99592e64be58b042a42f85d9e18a4b6d5597a791d87364a98c5f7cb0ea3d",
+      "bytes": 836213,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/replications/0030.npz": {
+      "sha256": "9d0a8459f2efffe029f4f1df98f1f9a4894fc9af3e3d01c8de9d009a6ebf0033",
+      "bytes": 848048,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/replications/0031.npz": {
+      "sha256": "fb81923cce4bf39b4e9b76c82c8c1cac350b9bbf3ee7025903a7c0297c63b377",
+      "bytes": 809519,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/replications/0032.npz": {
+      "sha256": "2a2f358831ba2c5b26f069c29f74019de2485dbdd1fae7b0b31cd088ea7f52f2",
+      "bytes": 835909,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/replications/0033.npz": {
+      "sha256": "24ac35f5fa1c2f3a81d9f7dbe5517b29733925134b553eaeb5edf9baf5556604",
+      "bytes": 810223,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/replications/0034.npz": {
+      "sha256": "0ad40ba4d0fa90408d2bf92d9b8d121bd71b9e6743775a66c513b875a1f8151e",
+      "bytes": 823371,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/replications/0035.npz": {
+      "sha256": "570283e9e531b78bf4eafe6ab41737415c19d48bd6d6a2b29fb8aa7c0dc351f5",
+      "bytes": 822627,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/replications/0036.npz": {
+      "sha256": "055cc164a273204b6dab424e534cf8390b657ab0d5fc4461d5812f4bc976170c",
+      "bytes": 848150,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/replications/0037.npz": {
+      "sha256": "5ecaba9d411c21b468d8e0f6ea657f9fb6662968768529f7a3de651b852ce5f3",
+      "bytes": 835323,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/replications/0038.npz": {
+      "sha256": "c3e04b4c0e7e93e392a53e9b92a6147556b515ed13ec64b535b15d45cfda212a",
+      "bytes": 834992,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/replications/0039.npz": {
+      "sha256": "bf64108d97aec4b9a38bd9e81617c14df1777a482fcfe0c004e19b1f0e6e5e91",
+      "bytes": 809976,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/replications/0040.npz": {
+      "sha256": "3812bb8dc4a183758dda95314e37033a62abba4c7208a04512f819960aa189eb",
+      "bytes": 848882,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/replications/0041.npz": {
+      "sha256": "f7e9d364abbfd9f2d83b6d7222cd7ebb91f7c108f4bb3a2b9ddc10b7618190a9",
+      "bytes": 822602,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/replications/0042.npz": {
+      "sha256": "f25a6e28097bb103a0eb0f2624270f019ea5dc23bc296bc42dec2cbbd5e1d15b",
+      "bytes": 847891,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/replications/0043.npz": {
+      "sha256": "e89eb66844a88e08f36abcd42273444891730ccdbc20515519f301c91c10c741",
+      "bytes": 823086,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/replications/0044.npz": {
+      "sha256": "e1a15adfce9f801d3ce073ec84dca1d00431fd1590780220b559ddf18a3463f6",
+      "bytes": 835895,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/replications/0045.npz": {
+      "sha256": "156b6a62caf895d284de0d1d74034c4dd2a2b22961e90e121a93066b7c385e4f",
+      "bytes": 810241,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/replications/0046.npz": {
+      "sha256": "a9da9f950122dfa04f24df7264b78e854b152e8f6bb3f36f6303c54a5c59cad4",
+      "bytes": 836336,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/replications/0047.npz": {
+      "sha256": "4dd84cef3da000002e86ea325ef3cb408cc2c6b8145e8f131face3cee1286473",
+      "bytes": 810079,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/replications/0048.npz": {
+      "sha256": "83c174578d628ad0395b1a52dad5051adac0352b91e9059a9ec61e49db576f46",
+      "bytes": 861326,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu05/replications/0049.npz": {
+      "sha256": "fbc77ea9b81e6d855477c48bde729b8c6ed3f9ec5526d7c36934be540b1443ac",
+      "bytes": 861254,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/affine_population.npz": {
+      "sha256": "7ca92a4cebca59986d6d4b125c4b1e93b6941e6d4179cb2f643ef749c79c73a2",
+      "bytes": 1007,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/population.npz": {
+      "sha256": "7f8c7cf2a2797803d0ef52f0923ba57a127694694247c68758d0584c5fd10ecb",
+      "bytes": 1958975,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/replications/0000.npz": {
+      "sha256": "7e31caf04980071504adef3865d870c90024205ce2903650e5d62ec130c29b75",
+      "bytes": 861400,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/replications/0001.npz": {
+      "sha256": "6c45f819a071d4bcfc01160edb29831d27cbd6076595033f4c4ca46c31495fcd",
+      "bytes": 835296,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/replications/0002.npz": {
+      "sha256": "dc2969d4ef0294cb65b918ba27036b1116120be642c15168e76a2a4346db788c",
+      "bytes": 848804,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/replications/0003.npz": {
+      "sha256": "6b0b53209a27ddcd215fd96c95a0ad5c80401e44cd8ed098a96f6f7c9b272177",
+      "bytes": 861772,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/replications/0004.npz": {
+      "sha256": "5293968c1ddd2f224e7fbf1f192c1cc2c4041ab56a8845ce703145ca04c852c7",
+      "bytes": 796951,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/replications/0005.npz": {
+      "sha256": "ae80b3917f7f4860ae12ad8d5934dbb4834e889bf5a9996bfa8e494e1b09cec1",
+      "bytes": 822234,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/replications/0006.npz": {
+      "sha256": "3e0275444328201d581a3c492221599276a1d8c235b2aeb8005e40be4e83d8d5",
+      "bytes": 822771,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/replications/0007.npz": {
+      "sha256": "bd7a8d650044dce6c0ae26f2be0627a78c2e9ca44c2216564853a1f35851d842",
+      "bytes": 848625,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/replications/0008.npz": {
+      "sha256": "d3c7877ab3a7c28fd39089c5c870632a9c2213966af8d5a5fe6c0becb9425abd",
+      "bytes": 822448,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/replications/0009.npz": {
+      "sha256": "f2449587434f789cbcade707c5ba07234f8266c9943b115e75c105b7131f43df",
+      "bytes": 835494,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/replications/0010.npz": {
+      "sha256": "9e293c9add1b8526e9a6fbbc64f601e6bba74eda86618aea14184d0aaf16934e",
+      "bytes": 822927,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/replications/0011.npz": {
+      "sha256": "c168cc19f7e3a663cfbdbcd7bcd9c9416030dcf51bd0677327049525a4771f37",
+      "bytes": 822334,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/replications/0012.npz": {
+      "sha256": "5cea1a19dc93d8c529a5b88d0116ecb1386bc2a759be827384278df6dec8e6fd",
+      "bytes": 822447,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/replications/0013.npz": {
+      "sha256": "b10489ffe9e817ccb046976893c77c7eb9e011fa42dd78ce75afeb1c6d5adcfa",
+      "bytes": 848638,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/replications/0014.npz": {
+      "sha256": "a35f603bd9315279fa2a7360811261c813734add6b4937810b8348b589cea470",
+      "bytes": 848588,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/replications/0015.npz": {
+      "sha256": "39dfc6e84e54483ca51bad68c4290f10ff53cf4b76826cdd7ab1e13dde31cc28",
+      "bytes": 848682,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/replications/0016.npz": {
+      "sha256": "e4150a8c7a35de77c682d1bd74c8ee4bf9f2e8d2912003de438994c40dc7519b",
+      "bytes": 848507,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/replications/0017.npz": {
+      "sha256": "e63e73e931699befc209ae451aa04549788ddb1405626461cf9b7bd0513068cf",
+      "bytes": 810704,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/replications/0018.npz": {
+      "sha256": "58f4964a44708634c1d368c72b96fe23c5a66cec19efae971f4698d7c5f9c139",
+      "bytes": 848978,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/replications/0019.npz": {
+      "sha256": "439c30424664ed7b11b8738065863bf8b0305a6a20d85aae026de11903688723",
+      "bytes": 861075,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/replications/0020.npz": {
+      "sha256": "f4ba675f204310b94b6d35dcade245b45c57e5550a5ee12a5c3365f5b43dfde2",
+      "bytes": 784029,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/replications/0021.npz": {
+      "sha256": "4658d3bfa01ee8fde5623169181bc880e9a3588656eed8a67942e534e6fece49",
+      "bytes": 848065,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/replications/0022.npz": {
+      "sha256": "064dd5887c2113366d54a32e4a795346c928936e7107f14aa50faf6f088ea733",
+      "bytes": 836112,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/replications/0023.npz": {
+      "sha256": "95fbf12cabebf7706193ea2c7c87c0d59afe796cc142bc6d60965c75d746144b",
+      "bytes": 861633,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/replications/0024.npz": {
+      "sha256": "9718a799abca9ca7ca3538b99e878aadb275d2cb1b3c3de96775f9c640e82a37",
+      "bytes": 848562,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/replications/0025.npz": {
+      "sha256": "5c60287f9aab14707f66b37b268a43df2a284e2d0968ab03dd1fc106590e59c9",
+      "bytes": 848306,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/replications/0026.npz": {
+      "sha256": "f71b5c9a4baf139c97228e8dd5507f6d41729b67c12db5a79dad0ee5ea182587",
+      "bytes": 861247,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/replications/0027.npz": {
+      "sha256": "781c397f03621881b63cd8ec5cbbc51d95ca33035fe3b40239b08738e740af26",
+      "bytes": 861300,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/replications/0028.npz": {
+      "sha256": "5963af721edb39711a1e889defa3c2c72bb22a3d31e2cc21ea3f2b01260ef58b",
+      "bytes": 848520,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/replications/0029.npz": {
+      "sha256": "7b86ddef970c79401a64afdd797abcc992f01972f9336fcaf858d24c44bf9c5d",
+      "bytes": 796967,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/replications/0030.npz": {
+      "sha256": "105a5469421827ed1531ec80c8b82a35d44c1cfc1a18e14903d708eb2b23a13d",
+      "bytes": 835169,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/replications/0031.npz": {
+      "sha256": "abfb29eed17d797f8830b20b6771f4b825c2c7ebe77603fab167ef780538d65b",
+      "bytes": 822501,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/replications/0032.npz": {
+      "sha256": "5ebd2fc2eed40416e149f18fdcafb95284364ea9195fd6c6d9b6c6a10825266f",
+      "bytes": 835570,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/replications/0033.npz": {
+      "sha256": "35255490d9729f54b45bf56160df73f233764b665f11cba834da435b50aed729",
+      "bytes": 809859,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/replications/0034.npz": {
+      "sha256": "67566544c142e855944017892ac64b5c4356d23093959d939bb9ac5796df3e11",
+      "bytes": 823213,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/replications/0035.npz": {
+      "sha256": "663c91e7819d2801135964c620868c89efba67cc1cdf3340b97f12957ed14c7f",
+      "bytes": 809727,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/replications/0036.npz": {
+      "sha256": "b94f174268be394860a582688744ffbc5cf2f4711c6301cbceb78734d33b404e",
+      "bytes": 848238,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/replications/0037.npz": {
+      "sha256": "fb47fe83235686548c1d108ca000c2a3f2b504b31225c594ef487216bd513b30",
+      "bytes": 835933,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/replications/0038.npz": {
+      "sha256": "382aaa369c1148290dceffe9bf6981d45a8d66372f9f88a3e92a61a60e087186",
+      "bytes": 848765,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/replications/0039.npz": {
+      "sha256": "29164f0a86f151d8aa7851b5ef3118a0bcfef51523a8a33fecec065d20a2e0cc",
+      "bytes": 836180,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/replications/0040.npz": {
+      "sha256": "4f6ddd62ef45c69a2216b811f54d4d5050f9adc4cdfdc2fe157a215cf2aec7cc",
+      "bytes": 861513,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/replications/0041.npz": {
+      "sha256": "0a519ea382b0dee515a20ccf56c27fb057a36fa2739174feaaf813440ed70cfd",
+      "bytes": 822737,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/replications/0042.npz": {
+      "sha256": "8d7352720c868449761ee739b48a1ad8b10e81d0708592886e2cedc5ee3f4b2f",
+      "bytes": 848108,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/replications/0043.npz": {
+      "sha256": "6d55b975c89a74867119dad8ca96c8f1e319a09f0935f1ff4226a111a58f408a",
+      "bytes": 822856,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/replications/0044.npz": {
+      "sha256": "d0dc6a0b00248f71b9f4231d825ce4150c86cf5efceb5ee021a67689d0374465",
+      "bytes": 835916,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/replications/0045.npz": {
+      "sha256": "d41ee9e9be9339f6f5fc5d8e3cfa5cfb48248f37577f38c11a4c0cf4aad5a763",
+      "bytes": 796976,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/replications/0046.npz": {
+      "sha256": "9db786b794c7f544902ca94cc98f0e8164e9f945748285535e7e7184f9789acf",
+      "bytes": 836203,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/replications/0047.npz": {
+      "sha256": "f420e7c3f1e56c33c3101bdcce1a49927bde110e5bd0fbab5722cdde0bf0e8db",
+      "bytes": 809893,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/replications/0048.npz": {
+      "sha256": "3504ce667685403c2ae1d5be9add3670f12022df396b7d6e9390337d92213800",
+      "bytes": 861381,
+      "source": "current workspace"
+    },
+    "simulations/outputs/confirmation_v2/data/rich6d_nu25/replications/0049.npz": {
+      "sha256": "09efa201846a2f54649c71813eb0b0bc5e23a5f06f141023739c3b66600919ac",
+      "bytes": 848417,
+      "source": "current workspace"
+    }
+  },
+  "started": 1791487408.188427,
+  "completed": 1791487414.663533,
+  "reason": "Repeated blocking iCloud source reads; no change to scientific parameters or checkpoint contents.",
+  "stopped_processes": {
+    "43718": 143,
+    "58786": 143,
+    "50697": 143
+  },
+  "transition_utc": "2026-10-08T19:25:41.720173+00:00",
+  "baseline_clone_commit": "cdfbd11a5390c15c54cace9b95e7d5e40c2ec35e"
+}

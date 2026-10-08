@@ -9,6 +9,16 @@ def ridge_path(managed, penalties):
         raise ValueError('Need at least two finite managed return observations.')
     if lam.ndim != 1 or not np.isfinite(lam).all() or np.any(lam <= 0):
         raise ValueError('All ridge penalties must be finite and positive.')
+    if len(x) < x.shape[1]:
+        # Exact dual formulation of the same uncentered response-one objective.
+        gram = x@x.T/len(x)
+        values, vectors = eigh(gram)
+        tolerance = max(values[-1], 1e-30)*1e-12
+        if values[0] < -tolerance:
+            raise ValueError('Empirical Gram is not PSD.')
+        values = np.maximum(values, 0)
+        dual = vectors@((vectors.T@np.ones(len(x)))[:, None]/(values[:, None]+lam))
+        return x.T@dual/len(x), np.sum(values[:, None]/(values[:, None]+lam), axis=0)
     second, mean = x.T@x/len(x), x.mean(axis=0)
     values, vectors = eigh(second)
     tolerance = max(values[-1], 1e-30)*1e-12

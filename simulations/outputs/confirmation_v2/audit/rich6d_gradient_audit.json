@@ -1,0 +1,33 @@
+{
+  "schema": "rich6d-gradient-audit/2.0",
+  "passed": true,
+  "completed_utc": "2026-10-08T13:34:25.245184+00:00",
+  "source_sha256": "e64b20c72005e595cc9b9c213c2b9d0ebe1a1c66f58811d317b9d0c2546907ee",
+  "scientific_sources": {
+    "kernels.py": "8515be031e468ffa9f6733afa2d3f661bdb51ccdcd746aac4ce4d4faeb9c6da0",
+    "simulations/config/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "simulations/config/design.py": "218ccca157efa8a6765b0e1d00886bdb9f270d525f4caa9b5a549caeab2683ca",
+    "simulations/dgp/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "simulations/dgp/balanced.py": "e351e14cbda4ecefc0fde6a26ca46701ca1d79f231286daeb3c80ead849f8db9",
+    "simulations/dgp/robustness.py": "2dc8eaecb4ab22bf9d5d68af770038256db931bd600bcffb7e6943a035fac418",
+    "simulations/diagnostics/baseline.py": "2404d4b9d3dd372762aa532e94625dc0db2a5e6065622b3ba7ff7a7f2aa91408",
+    "simulations/diagnostics/confirmation_pilot.py": "50ddafa64a3eec6682f464bd9c7bd7503f15d7273a68a9fb6c9412d4c45ad575",
+    "simulations/diagnostics/path_integrity.py": "01c826e96a12446994d5b72a54bb7c7f2261b5fbae824e7d1bd20820f3d673c1",
+    "simulations/diagnostics/variants.py": "ab59e5d0088a7f86163f7b11440f4f13ede4198137000ba4debb3cf7ef7f623a",
+    "simulations/estimator/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "simulations/estimator/kernel.py": "a824efc02a20ddacc0820c4d3b1df918caad6fb65b612137eff35337b844cd18",
+    "simulations/estimator/ridge.py": "8b4d4b4a3bf0579e12c20513f680bce4cb371d12eb94ea1ec31f7af91164cdf0",
+    "simulations/estimator/selectors.py": "b1f4902299aff0e8726767608268976956981752250d09b417a5ccc5724721c0",
+    "simulations/experiments/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "simulations/experiments/monte_carlo.py": "0fb4eb43a4ebcc6046bbe59daa201d1cf2f5c74cc5c9f7cc11b627cae5801eb7",
+    "simulations/experiments/population.py": "457a59010db31b967b6c5b34b9e886ca8c754e7222c4b83e80f0bbe7a82b222f",
+    "simulations/provenance.py": "23b0b6947df4198d922f658abaa847df5eaea081b03cdd3de2f9b5ed415fc31a",
+    "simulations/run.py": "5ad6c6b7011dbf30bad38ea68ce224d04c345b73cb51d6999e8e32641eb9b4fe"
+  },
+  "seed": 202610080105,
+  "samples": 131072,
+  "distribution": "Uniform on the entire open six-dimensional cube; same one-stock marginal as stationary population ranks",
+  "maximum_finite_difference_error": 6.597943524866423e-09,
+  "analytic_argument": "Conditional on five torus differences, the common phase is uniform. E sine\u00b2 = E cosine\u00b2 = 1/2; difference cosines are independent with mean zero and second moment 1/2.",
+  "preflight_distinction": "The earlier preflight finite-difference diagnostic uses the interior cube [-.9,.9]^6; its sample squared gradients are not the full-population expectation."
+}

@@ -1,0 +1,123 @@
+{
+  "schema": "sequential-execution/2.0",
+  "status": "running",
+  "watched_process": "Thu Oct  8 15:53:24 2026     /Library/Frameworks/Python.framework/Versions/3.13/Resources/Python.app/Contents/MacOS/Python -u -m simulations.run --profile confirmation_v2 --compute-only --workers 1",
+  "watched_pid": 37632,
+  "phases": [
+    {
+      "name": "rank_baseline",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3",
+        "-u",
+        "-m",
+        "simulations.diagnostics.resolution_v2",
+        "rank",
+        "--environment",
+        "baseline_original",
+        "--workers",
+        "1"
+      ],
+      "started_utc": "2026-10-08T15:01:32.496845+00:00",
+      "log": "simulations/outputs/confirmation_v2/audit/sequential_rank_baseline.log",
+      "module_sha256": "b08569367b5c99805745dc1a8bd0a3bf3ed082c860956112d1b56797216b5db8",
+      "completed_utc": "2026-10-08T15:11:25.883699+00:00",
+      "elapsed_seconds": 593.3691927090113,
+      "return_code": 0,
+      "log_sha256": "18cb2c61e71d42f262197730c7bc442e1aa12390bfee4060dbf6ed815920dda5"
+    },
+    {
+      "name": "rank_rich6d",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3",
+        "-u",
+        "-m",
+        "simulations.diagnostics.resolution_v2",
+        "rank",
+        "--environment",
+        "rich6d",
+        "--workers",
+        "1"
+      ],
+      "started_utc": "2026-10-08T15:11:25.885232+00:00",
+      "log": "simulations/outputs/confirmation_v2/audit/sequential_rank_rich6d.log",
+      "module_sha256": "b08569367b5c99805745dc1a8bd0a3bf3ed082c860956112d1b56797216b5db8",
+      "completed_utc": "2026-10-08T15:29:33.504134+00:00",
+      "elapsed_seconds": 1087.5922538749874,
+      "return_code": 0,
+      "log_sha256": "0e856463027da2ebab7940126618c0f0f13d403b856b88b5a7b5f319346528b9"
+    },
+    {
+      "name": "quadrature_baseline",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3",
+        "-u",
+        "-m",
+        "simulations.diagnostics.resolution_v2",
+        "quadrature",
+        "--environment",
+        "baseline_original"
+      ],
+      "started_utc": "2026-10-08T15:29:33.512367+00:00",
+      "log": "simulations/outputs/confirmation_v2/audit/sequential_quadrature_baseline.log",
+      "module_sha256": "b08569367b5c99805745dc1a8bd0a3bf3ed082c860956112d1b56797216b5db8",
+      "completed_utc": "2026-10-08T15:30:05.998768+00:00",
+      "elapsed_seconds": 32.485117875010474,
+      "return_code": 0,
+      "log_sha256": "710aad2d17edf6cf82cda1c2220967ab59dcab1c471c1a0a582a2e4e3551af14"
+    },
+    {
+      "name": "quadrature_rich6d",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3",
+        "-u",
+        "-m",
+        "simulations.diagnostics.resolution_v2",
+        "quadrature",
+        "--environment",
+        "rich6d"
+      ],
+      "started_utc": "2026-10-08T15:30:06.006627+00:00",
+      "log": "simulations/outputs/confirmation_v2/audit/sequential_quadrature_rich6d.log",
+      "module_sha256": "b08569367b5c99805745dc1a8bd0a3bf3ed082c860956112d1b56797216b5db8",
+      "completed_utc": "2026-10-08T15:30:29.299820+00:00",
+      "elapsed_seconds": 23.29131170801702,
+      "return_code": 0,
+      "log_sha256": "91190d3304f67dbf048eda9685d4c308b71c581a19a9c31d48d71afacbad43ff"
+    },
+    {
+      "name": "spectrum",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3",
+        "-u",
+        "-m",
+        "simulations.diagnostics.spectrum_v2"
+      ],
+      "started_utc": "2026-10-08T15:30:29.301631+00:00",
+      "log": "simulations/outputs/confirmation_v2/audit/sequential_spectrum.log",
+      "module_sha256": "5f66410dc5affa19ab581cf680426005b0d3a10569c5e2e2eaee0d29658885e6",
+      "completed_utc": "2026-10-08T19:01:40.494431+00:00",
+      "elapsed_seconds": 11358.822395582974,
+      "return_code": 0,
+      "log_sha256": "b5a0739a50d902a6ab83ea52b95af35ced84c37782094a0f90fa985108b701cf"
+    },
+    {
+      "name": "aggregate",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3",
+        "-u",
+        "-m",
+        "simulations.run",
+        "--profile",
+        "confirmation_v2",
+        "--render-only",
+        "--workers",
+        "1"
+      ],
+      "started_utc": "2026-10-08T19:01:40.507384+00:00",
+      "log": "simulations/outputs/confirmation_v2/audit/sequential_aggregate.log",
+      "module_sha256": "5ad6c6b7011dbf30bad38ea68ce224d04c345b73cb51d6999e8e32641eb9b4fe"
+    }
+  ],
+  "resource_policy": "one simulation worker; one numerical command at a time",
+  "current_phase": "aggregate"
+}

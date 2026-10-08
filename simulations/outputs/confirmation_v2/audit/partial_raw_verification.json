@@ -1,0 +1,17 @@
+{
+  "schema": "confirmation-reconstruction/2.0",
+  "completed_utc": "2026-10-08T12:26:00.512332+00:00",
+  "verifier_sha256": "2c60d8218df5c30fea4ea51e24ff6065725e51a2ec9949ab8120bb46d47e2849",
+  "partial": true,
+  "raw_only": true,
+  "environments": [
+    {
+      "environment": "baseline_original",
+      "raw_paths": 8,
+      "raw_coefficients_and_payoffs_verified": true
+    }
+  ],
+  "passed": true,
+  "rate_bootstrap_verification": "pending independent reconstruction",
+  "limitations": "Coefficient/payoff reconstruction covers the five stored training-only/theory policies; grid metrics are separately aggregated from all saved surfaces."
+}

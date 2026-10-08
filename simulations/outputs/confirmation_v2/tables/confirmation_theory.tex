@@ -1,0 +1,26 @@
+\begin{table}[p]
+\centering
+\caption{Exact theory penalties at T=7290 in the extended cohort. The scaled risk is descriptive; no equality with an asymptotic envelope is required. These extra horizons are not certified by the practical-grid rank audit.}
+\label{tab:confirmation_theory}
+\begingroup\small
+\setlength{\tabcolsep}{4pt}
+\ifdefined\simtablebox\else\newsavebox{\simtablebox}\fi
+\sbox{\simtablebox}{%
+\begin{tabular}{llrrrrr}
+\toprule
+Map & a & R & lambda & Regret & Scaled regret & C / T \\
+\midrule
+Baseline & 0.25 & 50 & 1.202e-07 & 0.001817 & 0.3776 & 0.004907 \\
+Baseline & 1 & 50 & 4.808e-07 & 0.0009122 & 0.1896 & 0.00201 \\
+Baseline & 4 & 50 & 1.923e-06 & 0.002023 & 0.4204 & 0.0008319 \\
+Rich6D & 0.25 & 50 & 1.215e-07 & 0.001876 & 0.3898 & 0.004871 \\
+Rich6D & 1 & 50 & 4.858e-07 & 0.001017 & 0.2113 & 0.001992 \\
+Rich6D & 4 & 50 & 1.943e-06 & 0.002327 & 0.4835 & 0.0008217 \\
+\bottomrule
+\end{tabular}
+}
+\ifdim\wd\simtablebox>\linewidth
+\resizebox{\linewidth}{!}{\usebox{\simtablebox}}
+\else\usebox{\simtablebox}\fi
+\endgroup
+\end{table}

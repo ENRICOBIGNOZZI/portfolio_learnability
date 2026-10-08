@@ -69,7 +69,7 @@ def build_tables(output, profile='paper'):
                                  str(p.mu_F), str(p.sigma_eps), '1.5', '1', '1.5', f'{p.sr_star:.8f}',
                                  str(cases[0].rank), str(cases[0].replications), str(design.oos_periods)]})
     emit(calibration, table_dir, 'table1_calibration', 'Baseline calibration and frozen Monte Carlo design.', 'tab:sim_calibration')
-    audit = json.loads(Path('simulations/outputs/audit/baseline/dgp_audit.json').read_text())
+    audit = json.loads((output/'audit/baseline/dgp_audit.json').read_text())
     if not audit['passed']:
         raise ValueError('Cannot publish an assumption table from a failed audit.')
     cond = audit['conditional_audit']

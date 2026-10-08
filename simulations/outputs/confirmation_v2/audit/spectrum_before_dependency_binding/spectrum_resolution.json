@@ -1,0 +1,47 @@
+{
+  "schema": "spectrum-resolution/2.0",
+  "executed": true,
+  "source_sha256": "9571ca28a0ec71779af4f55f293c1b9f0403faf70b63db6c5db25ac6e089986b",
+  "completed_utc": "2026-10-08T12:34:19.071650+00:00",
+  "analytic_E5_status": "operator sandwich and analytic Matern asymptotics; fixed N",
+  "operator_identity_status": "independent dense group-formula and partial-solver crosschecks passed",
+  "quadrature_resolution_status": "multiple independent group quadratures; compare reported eigenvalues and slopes across resolutions",
+  "spectral_fit_descriptive_statistics": "descriptive_fits.csv; no slope-closeness gate",
+  "all_requested_eigenpairs_resolved": true,
+  "cases": [
+    {
+      "groups": 1024,
+      "nodes": 3072,
+      "seed_index": 0,
+      "seed": 4101162095,
+      "source_sha256": "9571ca28a0ec71779af4f55f293c1b9f0403faf70b63db6c5db25ac6e089986b",
+      "completed_utc": "2026-10-08T12:34:18.942872+00:00",
+      "convergence": {
+        "kernel": true,
+        "baseline_original": true,
+        "rich6d": true
+      },
+      "elapsed_seconds": 108.2397806670051,
+      "peak_process_rss_bytes": 527761408,
+      "estimated_kernel_bytes": 75497472,
+      "algorithm": "dense partial solve at smaller sizes; full-kernel matrix operator and partial Lanczos at larger sizes"
+    }
+  ],
+  "dense_crosscheck": [
+    {
+      "loading_map": "baseline_original",
+      "groups": 128,
+      "independent_operator_eigenvalue_max_error": 4.607859233063394e-19,
+      "partial_dense_max_error": 6.776263578034403e-20,
+      "passed": true
+    },
+    {
+      "loading_map": "rich6d",
+      "groups": 128,
+      "independent_operator_eigenvalue_max_error": 4.0657581468206416e-19,
+      "partial_dense_max_error": 4.0657581468206416e-20,
+      "passed": true
+    }
+  ],
+  "scope": "headline nu=1.5, both maps; 800 largest eigenpairs, not a complete infinite-dimensional spectrum"
+}

@@ -22,10 +22,6 @@ jobs:
           cache: pip
       - run: python -m pip install -r requirements.txt
       - run: python -m pytest -q tests
-      - name: Reproduce and verify canonical simulation smoke profile
-        run: |
-          python -m simulations.run --profile smoke
-          python -m simulations.diagnostics.verify --profile smoke
       - name: Verify published scientific aggregates
         run: python verify_final_outputs.py
       - name: Verify final source scope

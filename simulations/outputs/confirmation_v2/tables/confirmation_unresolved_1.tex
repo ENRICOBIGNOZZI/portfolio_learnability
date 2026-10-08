@@ -1,0 +1,25 @@
+\begin{table}[p]
+\centering
+\caption{Practical-grid policy cells failing at least one predeclared numerical check. Every failing cell is retained here and in the machine-readable results. The extra horizons have no corresponding rank audit and remain outside the certified region regardless of quadrature status.}
+\label{tab:confirmation_unresolved_1}
+\begingroup\small
+\setlength{\tabcolsep}{4pt}
+\ifdefined\simtablebox\else\newsavebox{\simtablebox}\fi
+\sbox{\simtablebox}{%
+\begin{tabular}{llrrrrr}
+\toprule
+Map & Method & T & Floor / risk & Rank bound / risk & Rank pass & Quadrature pass \\
+\midrule
+Baseline & holdout25 & 60 & 0.0001416 & 0.1292 & False & True \\
+Baseline & holdout25 & 360 & 0.000452 & 0.05323 & False & True \\
+Rich6D & holdout25 & 60 & 0.0007494 & 0.1187 & False & True \\
+Rich6D & rolling3 & 60 & 0.001534 & 0.05282 & False & True \\
+Rich6D & holdout25 & 360 & 0.002284 & 0.05838 & False & True \\
+\bottomrule
+\end{tabular}
+}
+\ifdim\wd\simtablebox>\linewidth
+\resizebox{\linewidth}{!}{\usebox{\simtablebox}}
+\else\usebox{\simtablebox}\fi
+\endgroup
+\end{table}

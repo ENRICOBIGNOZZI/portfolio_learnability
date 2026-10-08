@@ -1,0 +1,34 @@
+{
+  "schema": "fixed-lambda-rank-audit/2.0",
+  "executed": true,
+  "identity": "6aa9e09f0fd1b017372ca09b302360f53c5167754a3f7e2046e2760157bca869",
+  "completed_utc": "2026-10-08T15:29:33.254233+00:00",
+  "environment": "rich6d",
+  "paired_paths": 50,
+  "ranks": [
+    256,
+    512,
+    1024
+  ],
+  "population_groups": 32768,
+  "floors": {
+    "256": 7.37712806096278e-05,
+    "512": 5.346549323976754e-05,
+    "1024": 3.3411855345787805e-05
+  },
+  "raw_directory": "simulations/outputs/confirmation_v2/audit/rank_paths_low_memory/rich6d",
+  "quadrature_batch_groups": 256,
+  "quadrature_source_sha256": "809e6358d8c63c007005e7b1469e301e5b1bb8bffaeeec9f7dec13ae73b44d41",
+  "runtime": {
+    "python": "3.13.3",
+    "numpy": "2.3.5",
+    "scipy": "1.16.3"
+  },
+  "certified_cells": 573,
+  "total_cells": 990,
+  "uniform_curve_certified": false,
+  "policy_cells_certified": 57,
+  "policy_cells": 60,
+  "scope": "fixed penalties on practical T grid; extended T not certified by this audit",
+  "criterion": "floor/mean regret <=5%; (abs(mean paired difference)+1.96 MCSE)/mean regret <=5%"
+}

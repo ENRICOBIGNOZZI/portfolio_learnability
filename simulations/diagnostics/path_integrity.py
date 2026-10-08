@@ -69,10 +69,17 @@ def observed_replication(index):
                 return result
             train_seed, test_seed = int(saved['train_seed']), int(saved['test_seed'])
         p, design = _CONTEXT['environment'].parameters(), _CONTEXT['design']
-        for seed, periods in ((train_seed, max(design.T)), (test_seed, design.oos_periods)):
+        sizes = design.T+(design.extra_T if index < design.extended_replications and _CONTEXT['environment'].nu == 1.5 else ())
+        training_periods = max(sizes)+(design.oos_periods if design.profile == 'confirmation_v2' else 0)
+        for seed, periods in ((train_seed, training_periods), (test_seed, design.oos_periods)):
             for _ in BalancedFactorDGP(p, seed).simulate(periods):
                 pass
-    expected = max(_CONTEXT['design'].T)+_CONTEXT['design'].oos_periods
+    design = _CONTEXT['design']
+    if design.profile == 'confirmation_v2':
+        sizes = design.T+(design.extra_T if index < design.extended_replications and _CONTEXT['environment'].nu == 1.5 else ())
+        expected = max(sizes)+2*design.oos_periods
+    else:
+        expected = max(design.T)+design.oos_periods
     if int(_AUDIT[0])!=expected:
         raise ValueError('Production date audit is incomplete.')
     with np.load(path, allow_pickle=False) as saved:

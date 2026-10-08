@@ -174,6 +174,9 @@ ROBUSTNESS_PARAGRAPH
 
 
 def generate_section(output, profile='paper'):
+    if profile == 'confirmation_v2':
+        from simulations.paper_confirmation import generate
+        return generate(output)
     output = Path(output).resolve()
     if profile == 'paper':
         verification = output/'audit/final_numerical_verification.json'
@@ -333,6 +336,6 @@ def compile_preview(output, profile='paper'):
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--profile',choices=['smoke','paper'],default='smoke')
+    parser.add_argument('--profile',choices=['smoke','paper','confirmation_v2'],default='confirmation_v2')
     args=parser.parse_args()
     print(compile_preview(Path('simulations/outputs')/args.profile,args.profile))

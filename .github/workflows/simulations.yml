@@ -1,0 +1,68 @@
+name: Synthetic simulation verification
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  published-aggregates:
+    runs-on: ubuntu-latest
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: python -m pip install -r requirements.txt
+      - name: Independently verify published synthetic aggregate relationships
+        run: python -m simulations.diagnostics.reconstruct
+      - name: Verify prospective confirmation aggregate relationships
+        run: python -m simulations.diagnostics.reconstruct_confirmation --aggregates-only
+  fresh-smoke:
+    runs-on: ubuntu-latest
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MPLBACKEND: Agg
+      PYTEST_DISABLE_PLUGIN_AUTOLOAD: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: python -m pip install -r requirements.txt
+      - name: Mutations, algebra and end-to-end leakage checks
+        run: python -m pytest tests/test_simulation_integrity_v2.py tests/test_rich6d.py tests/test_simulation_pipeline.py tests/test_balanced_dgp.py tests/test_confirmation_reporting.py tests/test_low_memory_quadrature.py tests/test_kernel_storage.py tests/test_resolution_reconstruction.py tests/test_publication_pairs.py tests/test_publication_scope.py tests/test_spectrum_cache.py -q
+      - name: Fresh synthetic computation and independent raw reconstruction
+        run: python -m simulations.run --profile smoke --output /tmp/simulation-smoke
+  archived-raw:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: python -m pip install -r requirements.txt
+      - name: Public download with archive and per-file checksums
+        run: python -m simulations.diagnostics.raw_archive fetch --destination .
+      - name: Reconstruct all historical synthetic raw aggregates and bootstrap intervals
+        run: python -m simulations.diagnostics.reconstruct --full
+      - name: Download the separately versioned confirmation checkpoints
+        run: python -m simulations.diagnostics.raw_archive fetch --destination . --index simulations/outputs/confirmation_v2/audit/confirmation_raw_archive.json
+      - name: Reconstruct confirmation coefficients, OOS payoffs and bootstrap intervals
+        run: python -m simulations.diagnostics.reconstruct_confirmation
+      - name: Reconstruct numerical resolution and publication tables
+        run: |
+          python -m simulations.diagnostics.reconstruct_resolution
+          python -m simulations.diagnostics.publication_v2

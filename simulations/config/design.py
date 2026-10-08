@@ -2,6 +2,7 @@
 from dataclasses import asdict, dataclass, field
 import hashlib
 import json
+from pathlib import Path
 
 import numpy as np
 
@@ -20,10 +21,13 @@ class Environment:
     rank: int = 256
     variant: str = 'baseline'
     replications: int = 200
+    loading_map: str = 'baseline_original'
+    eta: float = 0.
 
     def parameters(self):
         return DGPParameters(N=self.N, rho=(self.rho,)*6, sigma_eps=self.sigma_eps,
-                             mu_F=tuple(self.signal_multiplier*x for x in (.10, .06, .03)))
+                             mu_F=tuple(self.signal_multiplier*x for x in (.10, .06, .03)),
+                             loading_map=self.loading_map, eta=self.eta)
 
     @property
     def theoretical_b(self):
@@ -60,6 +64,10 @@ class Design:
     bootstrap_replications: int = 1000
     workers: int = 2
     approximation_relative_tolerance: float = .10
+    extra_T: tuple[int, ...] = ()
+    extended_replications: int = 0
+    protocol_hash: str = ''
+    theory_scale: tuple[tuple[str, float], ...] = ()
     cases: tuple[Environment, ...] = field(default_factory=lambda: tuple(environments()))
 
     def to_dict(self):
@@ -71,6 +79,21 @@ class Design:
 
 
 def design_for(profile):
+    if profile == 'confirmation_v2':
+        protocol = json.loads((Path(__file__).parent/'confirmation_v2.json').read_text())
+        expected = protocol.pop('protocol_hash')
+        actual = hashlib.sha256(json.dumps(protocol, sort_keys=True, allow_nan=False).encode()).hexdigest()
+        if actual != expected or protocol['status'] != 'frozen_before_production':
+            raise ValueError('Confirmation protocol is missing, unfrozen or modified.')
+        cases = tuple(Environment(**case) for case in protocol['cases'])
+        return Design(profile=profile, master_seed=protocol['master_seed'],
+                      basis_seed=protocol['seeds']['anchor'], population_seed=protocol['seeds']['quadrature'],
+                      bootstrap_seed=protocol['seeds']['bootstrap'], T=tuple(protocol['practical_T']),
+                      extra_T=tuple(protocol['extra_T']), extended_replications=protocol['extended_replications'],
+                      oos_periods=protocol['oos_periods'], population_groups=protocol['population_groups'],
+                      bootstrap_replications=protocol['bootstrap_replications'], workers=protocol['workers'],
+                      approximation_relative_tolerance=.05, cases=cases, protocol_hash=expected,
+                      theory_scale=tuple((name, value) for name, value in protocol['theory_scale'].items()))
     if profile == 'paper':
         return Design()
     if profile == 'smoke':
