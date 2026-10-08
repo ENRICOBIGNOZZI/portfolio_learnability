@@ -1,0 +1,15 @@
+{
+  "reason": "Measured roughly 8 seconds per replication; use four workers on eight physical cores for remaining production.",
+  "scientific_sources_changed": false,
+  "seed_or_T_grid_changed": false,
+  "existing_checkpoints_retained": true,
+  "old_process_pid": 39642,
+  "old_tool_session": 94364,
+  "transition_state": "Old process confirmed exited after draining all 500 baseline replications; resumed with four workers.",
+  "baseline_checkpoints_preserved": 500,
+  "current_resume": {
+    "workers": 4,
+    "python_cache_prefix": "/tmp/codex_dgp_pycache",
+    "reason": "Avoid iCloud dataless bytecode reads; retain every valid checkpoint and all scientific sources/seeds."
+  }
+}

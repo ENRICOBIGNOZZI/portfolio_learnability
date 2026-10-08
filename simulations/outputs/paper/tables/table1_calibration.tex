@@ -1,0 +1,35 @@
+\begin{table}[p]
+\centering
+\caption{Baseline calibration and frozen Monte Carlo design.}
+\label{tab:sim_calibration}
+\begingroup\small
+\setlength{\tabcolsep}{4pt}
+\ifdefined\simtablebox\else\newsavebox{\simtablebox}\fi
+\sbox{\simtablebox}{%
+\begin{tabular}{ll}
+\toprule
+Parameter & Value \\
+\midrule
+N & 600 \\
+T & 60, 90, 120, 180, 240, 360, 540, 720, 1080, 1440 \\
+D & 6 \\
+Economic factors & 3 \\
+$\rho$ & .95 \\
+$c_\beta$ & 0.0016 \\
+$\mu_F$ & (0.1, 0.06, 0.03) \\
+$\sigma_\varepsilon$ & 0.08 \\
+Mat\'ern $\nu$ & 1.5 \\
+Length scale & 1 \\
+Theoretical b & 1.5 \\
+Population Sharpe & 0.12008616 \\
+Nystrom rank & 256 \\
+Headline replications & 500 \\
+Independent OOS length & 720 \\
+\bottomrule
+\end{tabular}
+}
+\ifdim\wd\simtablebox>\linewidth
+\resizebox{\linewidth}{!}{\usebox{\simtablebox}}
+\else\usebox{\simtablebox}\fi
+\endgroup
+\end{table}

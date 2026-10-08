@@ -1,0 +1,8 @@
+Condition,Theoretical status,Diagnostic,Tolerance,Result
+E1,Exact: stationary stable Gaussian AR,spectral radius 0.950,< 1,Pass
+E2(a),Exact Gaussian quadratic MGF,max log MGF 0.0040657,<= 0.5,Pass
+E2(b),Conditional scalar Gaussian,max ratio 3,<= 3,Pass
+E3,Smooth beta in Sobolev H^(9/2),fixed finite linear combination,analytic,Pass
+E4,Exact conditional normal equation,max residual 1.47e-17,< 1e-11,Pass
+E5,Loewner sandwich; theoretical b=1.5,slope -1.2399,-1.5 +/- 0.35,Pass
+E6,Analytic optimal Sharpe,MC 0.12297; exact 0.12009,abs error <= 0.0190,Pass

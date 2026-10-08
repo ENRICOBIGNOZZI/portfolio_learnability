@@ -1,0 +1,217 @@
+\documentclass[12pt,letterpaper]{article}
+% --------------------------------------------------
+% Fonts and typography
+% --------------------------------------------------
+\usepackage[T1]{fontenc}
+
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{bm}
+
+\usepackage{newtxtext,newtxmath}
+
+\usepackage{microtype}
+\usepackage{setspace}
+\usepackage{needspace}
+
+% --------------------------------------------------
+% Page layout
+% -------------------------------------------------s-
+\usepackage[
+    top=1.50in,
+    bottom=1.50in,
+    left=1.00in,
+    right=1.00in
+]{geometry}
+
+% Journal of Finance submission format: at least 1.5 line spacing, 12-point font.
+\setstretch{1.50}
+\setlength{\parindent}{0.25in}
+\setlength{\parskip}{0pt}
+
+% --------------------------------------------------
+% Figures and tables
+% --------------------------------------------------
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[section]{placeins}
+\usepackage{etoolbox}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage[font=small,labelfont=bf,labelsep=period]{caption}
+\captionsetup{skip=8pt}
+\AtBeginEnvironment{figure}{\setstretch{1.05}}
+\AtBeginEnvironment{table}{\setstretch{1.12}}
+
+% --------------------------------------------------
+% TikZ
+% --------------------------------------------------
+\usepackage{tikz}
+\usetikzlibrary{
+    arrows.meta,
+    calc,
+    positioning,
+    matrix,
+    fit
+}
+
+% --------------------------------------------------
+% Lists
+% --------------------------------------------------
+\usepackage{enumitem}
+
+% --------------------------------------------------
+% References
+% --------------------------------------------------
+\usepackage[
+    authoryear,
+    round
+]{natbib}
+
+% --------------------------------------------------
+% Hyperlinks
+% --------------------------------------------------
+\usepackage[
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=black,
+    urlcolor=black
+]{hyperref}
+
+% --------------------------------------------------
+% Mathematical notation
+% --------------------------------------------------
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Pp}{\mathbb{P}}
+\newcommand{\R}{\mathbb{R}}
+
+\newcommand{\Hh}{\mathcal{H}}
+\newcommand{\Gg}{\mathcal{G}}
+\newcommand{\X}{\mathcal{X}}
+\newcommand{\Xx}{\mathcal{X}}
+\newcommand{\Z}{\mathcal{Z}}
+\newcommand{\I}{\mathcal{I}}
+\newcommand{\Nn}{\mathcal{N}}
+
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\Cov}{\operatorname{Cov}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\SR}{\operatorname{SR}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\diag}{\operatorname{diag}}
+
+\newcommand{\argmin}{\operatorname*{arg\,min}}
+\newcommand{\argmax}{\operatorname*{arg\,max}}
+
+\newcommand{\op}{\mathrm{op}}
+\newcommand{\HS}{\mathrm{HS}}
+
+% --------------------------------------------------
+% Theorem environments
+% --------------------------------------------------
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{assumption}{Assumption}
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+\usepackage{titlesec}
+
+\titleformat{\section}
+  {\large\bfseries}
+  {\thesection.}
+  {0.6em}
+  {}
+
+\titleformat{\subsection}
+  {\normalsize\bfseries}
+  {\thesubsection.}
+  {0.6em}
+  {}
+
+\titlespacing*{\section}{0pt}{2.0em}{0.7em}
+\titlespacing*{\subsection}{0pt}{1.5em}{0.5em}
+
+% Journal of Finance-style numbering.
+\renewcommand{\thesection}{\Roman{section}}
+\renewcommand{\thesubsection}{\Alph{subsection}}
+\renewcommand{\thetable}{\Roman{table}}
+
+% --------------------------------------------------
+% Title
+% --------------------------------------------------
+\title{
+    \vspace{-1.5cm}
+    {\LARGE\bfseries The Law of Portfolio Learnability}\\[0.35em]
+    {\Large }
+}
+
+\author{
+    EB
+    \qquad
+    PG
+    \qquad
+    PS
+}
+
+\date{September 2026}
+
+% ==================================================
+% JF submission reminder: add full affiliations and the required author-by-author conflict-of-interest disclosure before submission.
+\newcommand{\simoutput}{../simulations/outputs/paper}
+\begin{document}
+% ==================================================
+
+\maketitle
+
+\vspace{-0.8em}
+
+
+
+\vspace{0.5em}
+
+\clearpage
+\input{theory/introduction}
+\clearpage
+\input{theory/population_problem}
+\clearpage
+\input{theory/direct_port_learning}
+\clearpage
+\input{theory/economomic_spectrum_final}
+\clearpage
+
+\clearpage
+\input{theory/representation_learnability}
+\clearpage
+\input{\simoutput/paper/simulation_section.tex}
+\clearpage
+\input{empirics}
+\input{complexity_schedule/empirics_schedule}
+\clearpage
+
+\bibliographystyle{apalike}
+\bibliography{theory/references}
+
+\clearpage
+\appendix
+\renewcommand{\thesection}{\Alph{section}}
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+\renewcommand{\theHequation}{appendix.\thesection.\arabic{equation}}
+\setcounter{equation}{0}
+
+\clearpage
+\input{theory/proofs_learning}
+\input{theory/representation_tables}
+\clearpage
+
+\input{\simoutput/paper/simulation_appendix.tex}
+
+\end{document}

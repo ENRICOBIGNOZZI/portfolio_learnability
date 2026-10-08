@@ -1,0 +1,40 @@
+\begin{table}[p]\centering\small
+\caption{Monte Carlo mean population performance. Validation uses no population information; the oracle minimizes mean population regret over the fixed grid.}
+\label{tab:sim_main}
+\textit{A. Population performance}\par\smallskip
+\begin{tabular}{rllllr}
+\toprule
+T & Oracle loss & Selected loss & Oracle SR & Selected SR & Regret ratio \\
+\midrule
+60 & 0.999908 & 1.062600 & 0.01388 & 0.02365 & 5.439 \\
+90 & 0.999870 & 1.031790 & 0.01746 & 0.02912 & 3.266 \\
+120 & 0.999803 & 1.022915 & 0.02152 & 0.03762 & 2.649 \\
+180 & 0.999309 & 1.014299 & 0.06182 & 0.04641 & 2.108 \\
+240 & 0.997033 & 1.006801 & 0.07181 & 0.05002 & 1.868 \\
+360 & 0.993995 & 1.002833 & 0.08448 & 0.05938 & 2.076 \\
+540 & 0.991966 & 0.998236 & 0.09378 & 0.07131 & 2.014 \\
+720 & 0.990849 & 0.995804 & 0.09889 & 0.08095 & 1.978 \\
+1080 & 0.989672 & 0.993337 & 0.10413 & 0.09029 & 1.943 \\
+1440 & 0.988906 & 0.991938 & 0.10756 & 0.09595 & 1.972 \\
+\bottomrule
+\end{tabular}
+\par\medskip
+\textit{B. Effective complexity and regularization}\par\smallskip
+\begin{tabular}{rrrrr}
+\toprule
+T & Oracle C & Selected C & Oracle lambda & Selected lambda \\
+\midrule
+60 & 0.1024 & 6.489 & 0.001129 & 0.003784 \\
+90 & 0.1597 & 6.008 & 0.0006952 & 0.003666 \\
+120 & 0.2433 & 6.355 & 0.0004281 & 0.003426 \\
+180 & 3.154 & 7.366 & 5.456e-06 & 0.003124 \\
+240 & 4.056 & 6.642 & 3.36e-06 & 0.00311 \\
+360 & 5.31 & 8.107 & 2.069e-06 & 0.002814 \\
+540 & 6.124 & 7.934 & 1.624e-06 & 0.002162 \\
+720 & 6.139 & 9.488 & 1.624e-06 & 0.001515 \\
+1080 & 7.101 & 10.13 & 1.274e-06 & 0.001016 \\
+1440 & 8.227 & 10.34 & 1e-06 & 0.0008655 \\
+\bottomrule
+\end{tabular}
+\par\medskip
+\end{table}

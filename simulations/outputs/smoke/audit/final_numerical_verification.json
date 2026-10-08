@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "profile": "smoke",
+  "environments": [
+    {
+      "environment": "baseline",
+      "replications_verified": 4,
+      "T_values": 3,
+      "penalties": 32,
+      "oracle_boundary_T_count": 2,
+      "all_production_dates_verified": 1440,
+      "beta_norm_max_error": 8.673617379884035e-19,
+      "balance_max_error": 3.784080287004479e-19,
+      "baseline_policy_normal_equation_max_error": 7.976236395747438e-17,
+      "policy_coordinate_max_error": 6.938893903907228e-18,
+      "pricing_exact_claim": true,
+      "passed": true
+    }
+  ],
+  "total_replications": 4,
+  "legacy_cleanup_verified": true,
+  "paper_integration": "separately verified; not implied by this numerical audit"
+}

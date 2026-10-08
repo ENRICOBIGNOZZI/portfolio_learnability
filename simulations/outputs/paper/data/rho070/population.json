@@ -1,0 +1,45 @@
+{
+  "q_reference": 0.014215686274509805,
+  "reference_sharpe": 0.12008616167468394,
+  "subspace_regret_floor": 2.0982927548259672e-05,
+  "theoretical_b": 1.5,
+  "parameters": {
+    "N": 600,
+    "D": 6,
+    "K_F": 3,
+    "rho": [
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7
+    ],
+    "nu": 1.5,
+    "ell": 1.0,
+    "c_beta": 0.0016,
+    "sigma_eps": 0.08,
+    "mu_F": [
+      0.1,
+      0.06,
+      0.03
+    ]
+  },
+  "environment": {
+    "name": "rho070",
+    "code": 7,
+    "N": 600,
+    "rho": 0.7,
+    "signal_multiplier": 1.0,
+    "sigma_eps": 0.08,
+    "nu": 1.5,
+    "rank": 256,
+    "variant": "baseline",
+    "replications": 200
+  },
+  "reference_kind": "exact conditional optimum",
+  "population_groups": 8192,
+  "population_seed": 202610073,
+  "basis_seed": 202610072,
+  "run_hash": "2a6ef4a8747cbf169a9400fa6025a4fc8224f3f5f89c1b1c91b360959b355607"
+}

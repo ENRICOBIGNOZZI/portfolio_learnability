@@ -1,0 +1,45 @@
+{
+  "q_reference": 0.057711442786069655,
+  "reference_sharpe": 0.24747937313383503,
+  "subspace_regret_floor": 3.461470822344048e-05,
+  "theoretical_b": 1.5,
+  "parameters": {
+    "N": 600,
+    "D": 6,
+    "K_F": 3,
+    "rho": [
+      0.95,
+      0.95,
+      0.95,
+      0.95,
+      0.95,
+      0.95
+    ],
+    "nu": 1.5,
+    "ell": 1.0,
+    "c_beta": 0.0016,
+    "sigma_eps": 0.04,
+    "mu_F": [
+      0.2,
+      0.12,
+      0.06
+    ]
+  },
+  "environment": {
+    "name": "strong_low_noise",
+    "code": 6,
+    "N": 600,
+    "rho": 0.95,
+    "signal_multiplier": 2.0,
+    "sigma_eps": 0.04,
+    "nu": 1.5,
+    "rank": 256,
+    "variant": "baseline",
+    "replications": 200
+  },
+  "reference_kind": "exact conditional optimum",
+  "population_groups": 8192,
+  "population_seed": 202610073,
+  "basis_seed": 202610072,
+  "run_hash": "bdb242923c5f30cb114455bad6c992f6747854ad17e0744a5152348425dad31d"
+}

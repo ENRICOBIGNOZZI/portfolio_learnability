@@ -1,0 +1,16 @@
+{
+  "theory_entries_verified": 11,
+  "empirical_entries_verified": 112,
+  "compiled": true,
+  "profile": "paper",
+  "source_main_sha256": "7bba674e8b37d005bf8a6819951fd80dee0ec2b60e5b9b07191c36936b1e3c91",
+  "pdf_sha256": "b7c94d37efd8ef8a7b702358e5b963ab8afcb044a85bd6d2f78670f949d4b447",
+  "pdf": "simulations/outputs/paper/paper/The_Law_of_Portfolio_Learnability.pdf",
+  "visual_review": "passed",
+  "generated_source_hashes": {
+    "simulations/outputs/paper/paper/simulation_section.tex": "50cbdb5bb6f87020f33d8b69edfbb0d4296c5c5c242c0fe201b600bb1aa94b26",
+    "simulations/outputs/paper/paper/simulation_appendix.tex": "911f47e6ed83e2a44ada8f4d90d3eb135ce16c2c427d76bd6ec75e417dffcea7",
+    "simulations/paper.py": "547399629272057aa4dc38a4a97e40187245c50bce50ab340362506e274711ec",
+    "simulations/manuscript.py": "c844e60e81724a5198fc1324aa232c6589a6ce27fdb4dfb937351251663bde83"
+  }
+}

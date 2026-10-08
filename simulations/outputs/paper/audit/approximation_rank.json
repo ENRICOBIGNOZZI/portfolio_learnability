@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "paired_replications": 200,
+  "headline_rank": 256,
+  "increased_rank": 512,
+  "relative_tolerance": 0.1,
+  "criterion": "All T: oracle and validation mean regret change <=10% when increasing rank 256 to 512.",
+  "lower_rank_diagnostic": 128
+}

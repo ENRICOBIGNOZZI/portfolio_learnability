@@ -1,0 +1,197 @@
+\section{Population Problem Portfolio Choice}
+\label{sec:population_problem}
+
+At date $t$, the portfolio manager faces $N$ risky stocks. The corresponding
+next-period excess-return vector is
+$
+R_{t+1}
+=
+\bigl(R_{1,t+1},\ldots,R_{N,t+1}\bigr)^\prime
+\in\mathbb R^{N}.
+$
+For each stock $i=1,\ldots,N$, the portfolio manager observes a
+$D$-dimensional vector of firm characteristics
+$
+Z_{i,t}\in\mathscr Z\subseteq\mathbb R^D.
+$
+The portfolio manager has to choose the portfolio weights policy, between an infinte number of policies in an Hilbert space $\Hh$, at every time, this maps characteristics into weights: 
+$
+W\in \Hh:\mathscr Z\rightarrow\mathbb R.
+$
+The resulting portfolio return at each time is
+\begin{equation}
+R^p_{t+1}(W)
+=
+\frac{1}{N}
+\sum_{i=1}^{N}
+W(Z_{i,t})R_{i,t+1}.
+\label{eq:portfolio_return}
+\end{equation}
+The factor $1/N$ is a cross-sectional normalization that
+prevents portfolio scale from growing mechanically with the number of available
+stocks.
+
+\begin{definition}[Economy]
+\label{def:economy}
+An economy $\varepsilon$ is a probability law for the stochastic process
+\[
+\left\{
+\left(
+N,Z_t,R_{t+1}
+\right)
+\right\}_{t\in\mathbb Z},
+\]
+defined on a filtered probability space
+$(\Omega,\mathscr F,\{\mathscr F_t\}_{t\in\mathbb Z},\mathbb P_{\varepsilon})$.
+We require $Z_t$ to be $\mathscr F_t$-measurable and
+$R_{t+1}$ to be $\mathscr F_{t+1}$-measurable.
+\end{definition}
+
+
+For a fixed economy, expectations are taken under $\mathbb P_\varepsilon$;
+we suppress the economy subscript when it is unambiguous. The population
+criterion is
+\begin{equation}
+Q(W)
+=
+\E\!\left[
+\left(
+1-R^p_{t+1}(W)
+\right)^2
+\right],
+\qquad
+W^\star\in\argmin_{W\in\Hh}Q(W).
+\label{eq:population_loss}
+\end{equation}
+The following proposition relates this criterion to the maximum squared
+Sharpe ratio. All population statements refer to the same one-period
+state-return distribution.
+\Needspace{7\baselineskip}
+\begin{proposition}[Maximum-Sharpe direction; cf. \citet{brittenjones1999}]
+\label{prop:population_optimal_policy}
+Suppose every policy in $\Hh$ generates a square-integrable payoff, the
+population minimum is attained, and $0<Q(W^\star)<1$.
+Sharpe ratios below are evaluated only for policies with positive payoff
+variance. Every nonzero policy $W\in\Hh$ can be written as
+\[
+W=cU,
+\qquad
+c\in\mathbb R,
+\qquad
+\|U\|_{\Hh}=1.
+\]
+The normalized policy $U$ determines the portfolio direction, namely the
+relative state-dependent allocation rule, whereas $c$ determines the overall
+scale of exposure along that direction.
+Then, with the minimization over $U$ restricted to positive-variance payoffs,
+\[
+\min_{W\in\Hh} Q(W)
+=
+\min_{\substack{U\in\Hh\\ \|U\|_{\Hh}=1}}
+\frac{1}{
+1+\SR^2\!\left(R^p_{t+1}(U)\right)
+},
+\]
+where
+\[
+\SR\!\left(R^p_{t+1}(U)\right)
+:=
+\frac{
+\E\!\left[R^p_{t+1}(U)\right]
+}{
+\sqrt{
+\Var\!\left(R^p_{t+1}(U)\right)
+}
+}.
+\]
+Hence, minimizing $Q$ selects a maximum-Sharpe direction and fixes its
+scale, with positive expected excess return.
+
+\end{proposition}
+
+
+
+We embrace the philosophy of \citet{brandt1999}: rather than estimating expected returns and the covariance matrix as intermediate objects and then solving for the optimal portfolio, we estimate portfolio weights directly. Estimating the mean return vector requires estimating $N$ expected returns, while estimating the covariance matrix requires estimating $N(N+1)/2$ distinct covariance parameters. By contrast, directly estimating the portfolio means estimating the $N$ portfolio weights that are ultimately the object of interest.\\
+The criterion in \eqref{eq:population_loss} deliberately describes a
+frictionless portfolio problem. More generally, the loss should represent the
+economic objective actually faced by the portfolio manager. Transaction costs,
+market impact, short-selling costs, leverage constraints, or other
+implementation frictions should therefore be incorporated directly into the
+portfolio objective whenever they are economically relevant. Estimating the frictionless-optimal policy
+and subtracting costs afterwards generally does not deliver the same decision.
+
+    
+\begin{proposition}[Pricing kernel and Hansen--Jagannathan frontier]
+\label{prop:sdf_hj}
+
+Let $W^\star_\varepsilon$ denote the population-optimal policy in
+Proposition~\ref{prop:population_optimal_policy}, and define
+\[
+m^\star_{t+1,\varepsilon}
+:=
+1-R^p_{t+1}(W^\star_\varepsilon).
+\]
+Then $m^\star_{t+1,\varepsilon}$ prices every managed excess-return portfolio:
+\[
+\E_\varepsilon\!\left[
+m^\star_{t+1,\varepsilon}
+R^p_{t+1}(V)
+\right]
+=
+0,
+\qquad
+\forall\,V\in\Hh.
+\]
+Moreover, letting
+$\SR^\star_\varepsilon
+:=
+\SR(R^p_{t+1}(W^\star_\varepsilon))$,
+\[
+\E_\varepsilon[m^\star_{t+1,\varepsilon}]
+=
+\E_\varepsilon[(m^\star_{t+1,\varepsilon})^2]
+=
+\frac{1}{1+(\SR^\star_\varepsilon)^2}.
+\]
+Hence the normalized pricing kernel
+\[
+\widetilde m_{t+1,\varepsilon}
+:=
+\frac{
+m^\star_{t+1,\varepsilon}
+}{
+\E_\varepsilon[m^\star_{t+1,\varepsilon}]
+}
+\]
+satisfies
+$
+\E_\varepsilon[\widetilde m_{t+1,\varepsilon}]
+=
+1,
+$
+and
+$
+\Var_\varepsilon(\widetilde m_{t+1,\varepsilon})
+=
+(\SR^\star_\varepsilon)^2.
+$
+Equivalently,
+\[
+\frac{
+\sigma_\varepsilon(\widetilde m_{t+1,\varepsilon})
+}{
+\E_\varepsilon[\widetilde m_{t+1,\varepsilon}]
+}
+=
+\SR^\star_\varepsilon,
+\]
+so the Hansen--Jagannathan bound (\citep{hansenjagannathan1991}) holds with equality.
+\end{proposition}
+The proposition provides the asset-pricing dual of
+Proposition~\ref{prop:population_optimal_policy}. The same portfolio that
+maximizes the Sharpe ratio generates, through
+$m^\star_{t+1,\varepsilon}=1-R^p_{t+1}(W^\star_\varepsilon)$, the
+minimum-variance unit-mean pricing kernel for the managed-payoff space.
+Thus the maximum-Sharpe portfolio and the Hansen--Jagannathan frontier are
+two representations of the same population geometry.
+

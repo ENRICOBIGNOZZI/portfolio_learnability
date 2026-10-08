@@ -1,0 +1,40 @@
+\begin{table}[p]
+\centering
+\caption{Fixed-window rate regressions with whole-replication bootstrap intervals. Theoretical slopes are benchmarks, not fitted targets.}
+\label{tab:sim_rates}
+\begingroup\small
+\setlength{\tabcolsep}{4pt}
+\ifdefined\simtablebox\else\newsavebox{\simtablebox}\fi
+\sbox{\simtablebox}{%
+\begin{tabular}{llrrrrr}
+\toprule
+Quantity & Window & Theory & Slope & OLS SE & CI low & CI high \\
+\midrule
+Oracle lambda & Full & -0.6 & -6.43 & 3.712 & -6.43 & 1.072 \\
+Oracle lambda & Largest four & -0.6 & -6.43 & 3.712 & -6.43 & 1.072 \\
+Oracle C (pop.) & Full & 0.4 & 4.398 & 2.539 & -1.052 & 4.398 \\
+Oracle C (pop.) & Largest four & 0.4 & 4.398 & 2.539 & -1.052 & 4.398 \\
+Oracle regret & Full & -0.6 & -0.04855 & 0.02929 & -0.4096 & 0.001818 \\
+Oracle regret & Largest four & -0.6 & -0.04855 & 0.02929 & -0.4096 & 0.001818 \\
+Oracle SR gap & Full & -0.6 & -0.4464 & 0.1688 & -0.7006 & 0.04052 \\
+Oracle SR gap & Largest four & -0.6 & -0.4464 & 0.1688 & -0.7006 & 0.04052 \\
+Selected lambda & Full & -0.6 & 1.95 & 1.692 & 1.616 & 4.411 \\
+Selected lambda & Largest four & -0.6 & 1.95 & 1.692 & 1.616 & 4.411 \\
+Selected C (pop.) & Full & 0.4 & -2.636 & 2.423 & -2.694 & -2.121 \\
+Selected C (pop.) & Largest four & 0.4 & -2.636 & 2.423 & -2.694 & -2.121 \\
+Oracle C (sample) & Full & 0.4 & 4.414 & 2.551 & -1.095 & 4.479 \\
+Oracle C (sample) & Largest four & 0.4 & 4.414 & 2.551 & -1.095 & 4.479 \\
+Selected C (sample) & Full & 0.4 & -2.526 & 2.337 & -2.577 & -2.123 \\
+Selected C (sample) & Largest four & 0.4 & -2.526 & 2.337 & -2.577 & -2.123 \\
+Selected regret & Full & -0.6 & -1.634 & 0.9452 & -2.237 & -0.2497 \\
+Selected regret & Largest four & -0.6 & -1.634 & 0.9452 & -2.237 & -0.2497 \\
+Selected SR gap & Full & -0.6 & 0.05265 & 0.08687 & -0.0408 & 0.2091 \\
+Selected SR gap & Largest four & -0.6 & 0.05265 & 0.08687 & -0.0408 & 0.2091 \\
+\bottomrule
+\end{tabular}
+}
+\ifdim\wd\simtablebox>\linewidth
+\resizebox{\linewidth}{!}{\usebox{\simtablebox}}
+\else\usebox{\simtablebox}\fi
+\endgroup
+\end{table}

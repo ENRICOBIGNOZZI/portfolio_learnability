@@ -1,0 +1,10 @@
+{
+  "profile": "smoke",
+  "scope": "full manuscript layout only, not production acceptance",
+  "pages_reviewed": 80,
+  "method": "All-page rendered contact sheets; separate enlarged simulation tables",
+  "layout_changes": "Split main results into performance and selection panels; shorten rate-table labels",
+  "latest_table_page_reviewed": 33,
+  "theory_modified": false,
+  "remaining": "Render and review final production PDF after all Monte Carlo and numerical acceptance."
+}

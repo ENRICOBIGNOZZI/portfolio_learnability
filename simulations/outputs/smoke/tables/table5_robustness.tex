@@ -1,0 +1,21 @@
+\begin{table}[p]
+\centering
+\caption{Robustness at the largest sample size. Heteroskedastic regret uses a finite-subspace reference; it is not a theorem-baseline result.}
+\label{tab:sim_robustness}
+\begingroup\small
+\setlength{\tabcolsep}{4pt}
+\ifdefined\simtablebox\else\newsavebox{\simtablebox}\fi
+\sbox{\simtablebox}{%
+\begin{tabular}{lrrrrrr}
+\toprule
+Environment & Oracle regret & Selected regret & Oracle C & Selected C & Selected SR & Boundary (\%) \\
+\midrule
+baseline & 0.01329 & 0.01501 & 5.092 & 0.2744 & -0.004555 & 25 \\
+\bottomrule
+\end{tabular}
+}
+\ifdim\wd\simtablebox>\linewidth
+\resizebox{\linewidth}{!}{\usebox{\simtablebox}}
+\else\usebox{\simtablebox}\fi
+\endgroup
+\end{table}

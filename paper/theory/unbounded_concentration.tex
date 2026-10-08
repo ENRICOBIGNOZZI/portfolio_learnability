@@ -1,0 +1,212 @@
+\subsection{Empirical stability with unbounded managed features}
+\label{app:unbounded_concentration}
+
+This subsection replaces the empirical-stability and noise proposition in
+\citet{bignozzigagliardinischneider2026}. The covariance calculation uses
+their alternating-block/Berbee argument, with an analytical truncation of
+the feature norm. The score is controlled by a direct martingale second-moment
+argument. The estimator itself is not truncated, and the remaining
+operator decomposition and source-bias calculation are unchanged.
+
+\begin{lemma}[Unbounded-feature stability and score]
+\label{lem:unbounded_stability}
+Assume Conditions~\ref{ec:dependence}--\ref{ec:pricing} and
+$\Tr\Sigma<\infty$. Put
+\[
+C_{\rm sc}:=\sqrt{8K_4(1+K_4)}.
+\]
+For $0<\lambda\leq1$, put
+\[
+D_\lambda=(\Sigma+\lambda I)^{-1/2},\quad
+C_\lambda=D_\lambda\Sigma D_\lambda,\quad
+ d_\lambda=\Tr C_\lambda=\mathcal C_K(\lambda),
+\]
+\[
+\Delta_{\lambda,T}=D_\lambda(\Sigma-\widehat\Sigma_T)D_\lambda,
+\qquad
+S_{\lambda,T}=\frac1T\sum_{t=1}^T D_\lambda m^\star_{t+1}X_t.
+\]
+Fix $\delta\in(0,1)$ and define
+\[
+\begin{split}
+\ell&=\max\!\left\{1,\left\lceil
+  (8C_\beta T/\delta)^{1/(\gamma+1)}\right\rceil\right\},\\
+H&=\log\!\left(\frac{eT}{\delta\lambda}\right),\qquad
+\tau^2=8B_X^2H,\qquad B_\lambda=\frac{1+\tau^2}{\lambda},\\
+z&=\log\!\left(\frac{112(1+d_\lambda)}{\delta}\right).
+\end{split}
+\]
+If $\ell\leq T/4$, there is a numerical constant $C$ such that, with
+probability at least $1-\delta$,
+\begin{equation}
+\|\Delta_{\lambda,T}\|_{\op}
+\leq C\!\left\{\sqrt{\frac{\ell B_\lambda z}{T}}
+                  +\frac{\ell B_\lambda z}{T}\right\}
+       +\frac{2B_X^2(8H+1)}{\lambda}e^{-8H},
+\label{eq:unbounded_covariance}
+\end{equation}
+and
+\begin{equation}
+\|S_{\lambda,T}\|_{\Hh_K}^2
+\leq\frac{2C_{\rm sc}}{\delta}\frac{d_\lambda}{T}.
+\label{eq:unbounded_score}
+\end{equation}
+Consequently, for each fixed $\delta$ there is a class-uniform $C_\delta$
+such that, for sufficiently large $T$, the sufficient condition
+\begin{equation}
+T^{\gamma/(\gamma+1)}\lambda
+\geq C_\delta\left[\log\!\left(\frac{C_\delta T}{\lambda}\right)\right]^2
+\label{eq:unbounded_admissibility}
+\end{equation}
+implies $\|\Delta_{\lambda,T}\|_{\op}\leq1/2$ and
+\eqref{eq:unbounded_score} with probability at least $1-\delta$.
+\end{lemma}
+
+\begin{proof}
+We suppress the economy index. Only the covariance is truncated in the
+proof. Let
+\[
+A_t=(D_\lambda X_t)\otimes(D_\lambda X_t)
+       \mathbf1_{\{\|X_t\|\leq\tau\}},\qquad
+C_{\lambda,\tau}=\E A_t,\qquad H_t=A_t-C_{\lambda,\tau}.
+\]
+The process $(H_t)$ is centered and has no larger absolute-regularity
+coefficients than $(Z_t,R_{t+1})$. Since
+$0\preceq C_{\lambda,\tau}\preceq C_\lambda\preceq I$ and
+$\|A_t\|_{\op}\leq\tau^2/\lambda$, we have
+\begin{equation}
+\|H_t\|_{\op}\leq B_\lambda,\qquad
+\E H_t^2=\E A_t^2-C_{\lambda,\tau}^2
+\preceq B_\lambda C_\lambda.
+\label{eq:truncated_operator_variance}
+\end{equation}
+The second inequality is an operator inequality; no independence of
+successive observations is used.
+
+Let $n=\lfloor T/(2\ell)\rfloor$ and split the first $2n\ell$
+observations into $2n$ consecutive blocks of length $\ell$.
+Treat the odd and even blocks separately. For an odd-block sum $B_j^o$,
+operator Cauchy--Schwarz gives
+\[
+\|B_j^o\|_{\op}\leq\ell B_\lambda,\qquad
+\E(B_j^o)^2\preceq\ell^2B_\lambda C_\lambda.
+\]
+Indeed, for every $h$, $\|\sum_{t\in I}H_th\|^2
+\leq\ell\sum_{t\in I}\|H_th\|^2$.
+Berbee coupling replaces each family by independent blocks with identical
+block laws. The total probability of a coupling failure for both families is
+at most
+\[
+2n\beta(\ell)\leq C_\beta T\ell^{-(\gamma+1)}\leq\delta/8.
+\]
+For the independent copies, a variance majorant has operator norm at most
+$n\ell^2B_\lambda$ and trace at most $n\ell^2B_\lambda d_\lambda$.
+The trace form of the self-adjoint Bernstein inequality
+\citep[proof of Theorem~3.1 and Section~3.2]{minsker2017}, with this
+variance majorant, yields for each family, with failure probability at most
+$\delta/8$,
+\[
+\left\|\frac1T\sum_{j=1}^n B_j^{o,*}\right\|_{\op}
+\leq C\!\left\{\sqrt{\frac{\ell B_\lambda z}{T}}
+                       +\frac{\ell B_\lambda z}{T}\right\}.
+\]
+The trace-to-variance-majorant ratio is at most $d_\lambda$; no bound on
+the effective rank of the actual variance is inferred by monotonicity.
+Apply the finite-dimensional inequality to increasing finite-rank
+projections and pass to the limit in operator norm, as in that reference.
+The operators here are trace class and bounded after truncation.
+The fewer than $2\ell$ leftover observations contribute at most
+$2\ell B_\lambda/T$, already absorbed because $z\geq1$.
+
+It remains to compare the truncated and original covariances.
+Lemma~\ref{lem:primitive_consequences} gives
+\[
+\mathbb P\!\left(\max_{t\leq T}\|X_t\|>\tau\right)
+\leq2Te^{-8H}\leq\delta/8.
+\]
+On the complementary event, the truncated empirical covariance equals the
+original empirical covariance. The population truncation bias satisfies
+\[
+\begin{aligned}
+\|C_\lambda-C_{\lambda,\tau}\|_{\op}
+&\leq\lambda^{-1}\E[\|X_t\|^2\mathbf1_{\{\|X_t\|>\tau\}}]\\
+&\leq\frac{2}{\lambda}(\tau^2+B_X^2)e^{-\tau^2/B_X^2}
+=\frac{2B_X^2(8H+1)}{\lambda}e^{-8H}.
+\end{aligned}
+\]
+The tail-integration formula justifies the second line. This proves
+\eqref{eq:unbounded_covariance} with total failure probability at most
+$\delta/2$.
+
+For the score, Lemma~\ref{lem:primitive_consequences} gives
+\[
+\E\|D_\lambda m^\star_{t+1}X_t\|^2
+\leq C_{\rm sc}\Tr(D_\lambda\Sigma D_\lambda)
+=C_{\rm sc}d_\lambda.
+\]
+For $s<t$, the score at $s$ is $\mathscr F_t$-measurable, whereas the
+conditional mean of the score at $t$ given $\mathscr F_t$ is zero.
+All cross inner products consequently have zero expectation. Hence
+\[
+\E\|S_{\lambda,T}\|^2
+=\frac1{T^2}\sum_{t=1}^T
+  \E\|D_\lambda m^\star_{t+1}X_t\|^2
+\leq C_{\rm sc}\frac{d_\lambda}{T}.
+\]
+Markov's inequality proves \eqref{eq:unbounded_score} with failure
+probability $\delta/2$. There is no blocking loss in this score bound.
+
+Finally, $d_\lambda\leq B_X^2\log2/\lambda$ and, for fixed $\delta$,
+$\ell\leq C_\delta T^{1/(\gamma+1)}$.
+Thus the leading square-root term in \eqref{eq:unbounded_covariance} is
+bounded by a constant times
+\[
+\left\{
+\frac{[\log(C_\delta T/\lambda)]^2}
+     {T^{\gamma/(\gamma+1)}\lambda}
+\right\}^{1/2}.
+\]
+The linear term is bounded by the corresponding squared expression.
+The truncation bias tends to zero uniformly for $0<\lambda\leq1$ as
+$T\to\infty$. Increasing $C_\delta$ proves the final statement.
+\end{proof}
+
+\begin{corollary}[Finite-sample portfolio loss]
+\label{cor:unbounded_risk}
+Under the assumptions of Lemma~\ref{lem:unbounded_stability}, for each fixed
+$\delta\in(0,1)$ and sufficiently large $T$ satisfying
+\eqref{eq:unbounded_admissibility},
+\[
+Q_\varepsilon(\widehat W_{\lambda,T})-Q_\varepsilon(W^\star_\varepsilon)
+\leq9R^2\lambda+C_\delta\frac{\mathcal C_K(\lambda)}{T}
+\]
+with probability at least $1-\delta$, uniformly over the class.
+\end{corollary}
+\begin{proof}
+Use the error decomposition, source-bias bound and operator-interaction
+bound of \citet{bignozzigagliardinischneider2026}, specialized to $r=1$.
+For completeness, write
+\[
+\begin{split}
+W_\lambda&=(\Sigma+\lambda I)^{-1}\Sigma W^\star,\qquad B=W_\lambda-W^\star,\\
+V_1&=(\widehat\Sigma_T+\lambda I)^{-1}
+          \frac1T\sum_t m^\star_{t+1}X_t,\\
+V_2&=(\widehat\Sigma_T+\lambda I)^{-1}(\Sigma-\widehat\Sigma_T)B.
+\end{split}
+\]
+Then $\widehat W-W^\star=B+V_1+V_2$.
+Spectral calculus gives $\|\Sigma^{1/2}B\|^2\leq R^2\lambda$ and
+$\|(\Sigma+\lambda I)^{1/2}B\|^2\leq2R^2\lambda$.
+On the stability event,
+\[
+\|\Sigma^{1/2}V_1\|^2\leq4\|S_{\lambda,T}\|^2,
+\qquad
+\|\Sigma^{1/2}V_2\|^2\leq2R^2\lambda.
+\]
+The first inequality follows from $\|(I-\Delta_{\lambda,T})^{-1}\|\leq2$;
+the second follows from
+$\|(I-\Delta_{\lambda,T})^{-1}\Delta_{\lambda,T}\|\leq1$.
+Finally, $\|u+v+w\|^2\leq3(\|u\|^2+\|v\|^2+\|w\|^2)$
+and Lemma~\ref{lem:unbounded_stability} give the claim. In particular,
+one may take the score constant $24C_{\rm sc}/\delta$.
+\end{proof}

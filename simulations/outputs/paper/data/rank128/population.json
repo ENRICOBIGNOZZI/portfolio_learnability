@@ -1,0 +1,45 @@
+{
+  "q_reference": 0.014215686274509805,
+  "reference_sharpe": 0.12008616167468394,
+  "subspace_regret_floor": 4.9255106364809106e-05,
+  "theoretical_b": 1.5,
+  "parameters": {
+    "N": 600,
+    "D": 6,
+    "K_F": 3,
+    "rho": [
+      0.95,
+      0.95,
+      0.95,
+      0.95,
+      0.95,
+      0.95
+    ],
+    "nu": 1.5,
+    "ell": 1.0,
+    "c_beta": 0.0016,
+    "sigma_eps": 0.08,
+    "mu_F": [
+      0.1,
+      0.06,
+      0.03
+    ]
+  },
+  "environment": {
+    "name": "rank128",
+    "code": 0,
+    "N": 600,
+    "rho": 0.95,
+    "signal_multiplier": 1.0,
+    "sigma_eps": 0.08,
+    "nu": 1.5,
+    "rank": 128,
+    "variant": "baseline",
+    "replications": 200
+  },
+  "reference_kind": "exact conditional optimum",
+  "population_groups": 8192,
+  "population_seed": 202610073,
+  "basis_seed": 202610072,
+  "run_hash": "b02d8a31c88e568a63c1313cd215a381ca9089b9ed24e15d9d479b2ab0c18c8e"
+}

@@ -1,0 +1,10 @@
+{
+  "theory_entries_verified": 11,
+  "empirical_entries_verified": 112,
+  "compiled": true,
+  "profile": "smoke",
+  "source_main_sha256": "7bba674e8b37d005bf8a6819951fd80dee0ec2b60e5b9b07191c36936b1e3c91",
+  "pdf_sha256": "d988f33184ff283333e9e1b4f68f0fadd2fe7b4fcb54f45b7ddcdb8f6f764a94",
+  "pdf": "simulations/outputs/smoke/paper/full_layout_smoke.pdf",
+  "visual_review": "pending"
+}

@@ -1,0 +1,695 @@
+{
+  "passed": true,
+  "acceptance": {
+    "loading_norm": true,
+    "exact_balance": true,
+    "factor_second_moment": true,
+    "E1": true,
+    "conditional_normal_equation": true,
+    "W_star_coordinates": true,
+    "E2a": true,
+    "E2b": true,
+    "E3": true,
+    "E4": true,
+    "E5": true,
+    "E6": true
+  },
+  "parameters": {
+    "N": 600,
+    "D": 6,
+    "K_F": 3,
+    "rho": [
+      0.95,
+      0.95,
+      0.95,
+      0.95,
+      0.95,
+      0.95
+    ],
+    "nu": 1.5,
+    "ell": 1.0,
+    "c_beta": 0.0016,
+    "sigma_eps": 0.08,
+    "mu_F": [
+      0.1,
+      0.06,
+      0.03
+    ]
+  },
+  "constants": {
+    "G": 200,
+    "Gamma_beta": [
+      [
+        0.0005333333333333334,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0005333333333333334,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0005333333333333334
+      ]
+    ],
+    "factor_covariance": [
+      [
+        0.99,
+        -0.006,
+        -0.003
+      ],
+      [
+        -0.006,
+        0.9964,
+        -0.0018
+      ],
+      [
+        -0.003,
+        -0.0018,
+        0.9991
+      ]
+    ],
+    "factor_second_moment": [
+      [
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "W_star_beta_coefficients": [
+      183.82352941176472,
+      110.29411764705883,
+      55.14705882352941
+    ],
+    "q_star": 0.014215686274509805,
+    "SR_star": 0.12008616167468394,
+    "optimal_loss": 0.9857843137254902,
+    "kappa_K": 1.0,
+    "B_X_squared": 0.032,
+    "K4": 3.0,
+    "b": 1.5,
+    "sobolev_order": 4.5,
+    "spectrum_lower_multiplier": 1.0666666666666667e-05,
+    "spectrum_upper_multiplier": 0.0016106666666666667
+  },
+  "settings": {
+    "date_seed": 1729,
+    "date_selection_seed": 1730,
+    "population_seed": 271828,
+    "monte_carlo_seed": 314159,
+    "policy_seed": 161803,
+    "date_pool": 256,
+    "audited_dates": 24,
+    "population_groups": 1024,
+    "slope_first": 30,
+    "slope_last": 200,
+    "slope_tolerance": 0.35,
+    "eigenvalue_relative_floor": 1e-12,
+    "mc_periods": 100000,
+    "mc_standard_errors": 6.0,
+    "identity_tolerance": 1e-12,
+    "equation_tolerance": 1e-11,
+    "numerical_tolerance": 1e-12
+  },
+  "E1": {
+    "passed": true,
+    "spectral_radius": 0.95,
+    "argument": "Stationary stable Gaussian AR state is geometrically beta-mixing; measurable rank/phase transforms and independent next-period shocks preserve it. Any finite gamma > b=1.5 is admissible."
+  },
+  "conditional_audit": {
+    "passed": true,
+    "all_dates_checked_for_balance": 256,
+    "beta_norm_max_error": 6.505213034913027e-19,
+    "balance_operator_max_error": 2.3244568245226843e-19,
+    "normal_equation_max_absolute_error": 1.4667286301243676e-17,
+    "E2a_max_log_mgf": 0.0040657113607439725,
+    "factor_second_moment_analytic_error": 0.0,
+    "factor_covariance_min_eigenvalue": 0.9855,
+    "dates": [
+      {
+        "date": 2,
+        "normal_equation_relative_error": 1.0450923035341046e-17,
+        "normal_equation_absolute_error": 1.0450923035341046e-17,
+        "conditional_covariance_max_eigenvalue": 0.3264,
+        "W_star_coordinate_max_error": 5.204170427930421e-18,
+        "E4_max_abs_residual": 2.529214674258283e-19,
+        "q_star_moment_max_error": 0.0,
+        "E2a": {
+          "log_mgf": 0.003976185938194073,
+          "maximum_scaled_eigenvalue": 0.006252086145449729,
+          "quadratic_covariance_max_eigenvalue": 0.00010003337832719567
+        },
+        "fourth_to_second_squared_max": 3.0000000000000004,
+        "passed": true
+      },
+      {
+        "date": 12,
+        "normal_equation_relative_error": 1.4414117725269075e-17,
+        "normal_equation_absolute_error": 1.4414117725269075e-17,
+        "conditional_covariance_max_eigenvalue": 0.3264,
+        "W_star_coordinate_max_error": 6.938893903907228e-18,
+        "E4_max_abs_residual": 2.154371674612323e-18,
+        "q_star_moment_max_error": 5.204170427930421e-18,
+        "E2a": {
+          "log_mgf": 0.004006569174195213,
+          "maximum_scaled_eigenvalue": 0.006301121590291887,
+          "quadratic_covariance_max_eigenvalue": 0.00010081794544467019
+        },
+        "fourth_to_second_squared_max": 3.0,
+        "passed": true
+      },
+      {
+        "date": 15,
+        "normal_equation_relative_error": 1.4667286301243676e-17,
+        "normal_equation_absolute_error": 1.4667286301243676e-17,
+        "conditional_covariance_max_eigenvalue": 0.3264,
+        "W_star_coordinate_max_error": 6.938893903907228e-18,
+        "E4_max_abs_residual": 2.2438960729265704e-18,
+        "q_star_moment_max_error": 3.469446951953614e-18,
+        "E2a": {
+          "log_mgf": 0.00402600862622455,
+          "maximum_scaled_eigenvalue": 0.006305021909506444,
+          "quadratic_covariance_max_eigenvalue": 0.0001008803505521031
+        },
+        "fourth_to_second_squared_max": 3.0,
+        "passed": true
+      },
+      {
+        "date": 58,
+        "normal_equation_relative_error": 1.0786483523024648e-17,
+        "normal_equation_absolute_error": 1.0786483523024648e-17,
+        "conditional_covariance_max_eigenvalue": 0.3264,
+        "W_star_coordinate_max_error": 6.938893903907228e-18,
+        "E4_max_abs_residual": 5.475645792419277e-19,
+        "q_star_moment_max_error": 1.734723475976807e-18,
+        "E2a": {
+          "log_mgf": 0.004000659257116318,
+          "maximum_scaled_eigenvalue": 0.0062529108635418825,
+          "quadratic_covariance_max_eigenvalue": 0.00010004657381667012
+        },
+        "fourth_to_second_squared_max": 3.0,
+        "passed": true
+      },
+      {
+        "date": 60,
+        "normal_equation_relative_error": 1.1472868630699774e-17,
+        "normal_equation_absolute_error": 1.1472868630699774e-17,
+        "conditional_covariance_max_eigenvalue": 0.3264,
+        "W_star_coordinate_max_error": 5.204170427930421e-18,
+        "E4_max_abs_residual": 7.996649629821911e-19,
+        "q_star_moment_max_error": 3.469446951953614e-18,
+        "E2a": {
+          "log_mgf": 0.004006699075375644,
+          "maximum_scaled_eigenvalue": 0.006283417685424992,
+          "quadratic_covariance_max_eigenvalue": 0.00010053468296679988
+        },
+        "fourth_to_second_squared_max": 3.0,
+        "passed": true
+      },
+      {
+        "date": 70,
+        "normal_equation_relative_error": 1.0968522909264098e-17,
+        "normal_equation_absolute_error": 1.0968522909264098e-17,
+        "conditional_covariance_max_eigenvalue": 0.3264,
+        "W_star_coordinate_max_error": 5.204170427930421e-18,
+        "E4_max_abs_residual": 3.256317818353665e-19,
+        "q_star_moment_max_error": 0.0,
+        "E2a": {
+          "log_mgf": 0.004034683328137297,
+          "maximum_scaled_eigenvalue": 0.006318901387358899,
+          "quadratic_covariance_max_eigenvalue": 0.00010110242219774239
+        },
+        "fourth_to_second_squared_max": 3.0,
+        "passed": true
+      },
+      {
+        "date": 77,
+        "normal_equation_relative_error": 1.140628543422556e-17,
+        "normal_equation_absolute_error": 1.140628543422556e-17,
+        "conditional_covariance_max_eigenvalue": 0.3264,
+        "W_star_coordinate_max_error": 5.204170427930421e-18,
+        "E4_max_abs_residual": 3.1731486104061055e-19,
+        "q_star_moment_max_error": 1.734723475976807e-18,
+        "E2a": {
+          "log_mgf": 0.0040657113607439725,
+          "maximum_scaled_eigenvalue": 0.006376226260104708,
+          "quadratic_covariance_max_eigenvalue": 0.00010201962016167534
+        },
+        "fourth_to_second_squared_max": 3.0,
+        "passed": true
+      },
+      {
+        "date": 82,
+        "normal_equation_relative_error": 1.054063427763424e-17,
+        "normal_equation_absolute_error": 1.054063427763424e-17,
+        "conditional_covariance_max_eigenvalue": 0.3264,
+        "W_star_coordinate_max_error": 5.204170427930421e-18,
+        "E4_max_abs_residual": 2.820203293280976e-19,
+        "q_star_moment_max_error": 1.734723475976807e-18,
+        "E2a": {
+          "log_mgf": 0.0040060379848306975,
+          "maximum_scaled_eigenvalue": 0.0062798299900973745,
+          "quadratic_covariance_max_eigenvalue": 0.000100477279841558
+        },
+        "fourth_to_second_squared_max": 3.0,
+        "passed": true
+      },
+      {
+        "date": 84,
+        "normal_equation_relative_error": 9.504383043080012e-18,
+        "normal_equation_absolute_error": 9.504383043080012e-18,
+        "conditional_covariance_max_eigenvalue": 0.3264,
+        "W_star_coordinate_max_error": 5.204170427930421e-18,
+        "E4_max_abs_residual": 4.480010615789222e-19,
+        "q_star_moment_max_error": 3.469446951953614e-18,
+        "E2a": {
+          "log_mgf": 0.003984062240644001,
+          "maximum_scaled_eigenvalue": 0.006234680353271367,
+          "quadratic_covariance_max_eigenvalue": 9.975488565234188e-05
+        },
+        "fourth_to_second_squared_max": 2.9999999999999996,
+        "passed": true
+      },
+      {
+        "date": 97,
+        "normal_equation_relative_error": 9.607052317984872e-18,
+        "normal_equation_absolute_error": 9.607052317984872e-18,
+        "conditional_covariance_max_eigenvalue": 0.3264,
+        "W_star_coordinate_max_error": 5.204170427930421e-18,
+        "E4_max_abs_residual": 1.3566825505279233e-19,
+        "q_star_moment_max_error": 0.0,
+        "E2a": {
+          "log_mgf": 0.003985196009626901,
+          "maximum_scaled_eigenvalue": 0.006277485406531765,
+          "quadratic_covariance_max_eigenvalue": 0.00010043976650450824
+        },
+        "fourth_to_second_squared_max": 2.9999999999999996,
+        "passed": true
+      },
+      {
+        "date": 105,
+        "normal_equation_relative_error": 1.0768708794582157e-17,
+        "normal_equation_absolute_error": 1.0768708794582157e-17,
+        "conditional_covariance_max_eigenvalue": 0.3264,
+        "W_star_coordinate_max_error": 6.938893903907228e-18,
+        "E4_max_abs_residual": 5.775647778646128e-19,
+        "q_star_moment_max_error": 3.469446951953614e-18,
+        "E2a": {
+          "log_mgf": 0.004037283659790034,
+          "maximum_scaled_eigenvalue": 0.006322442541783214,
+          "quadratic_covariance_max_eigenvalue": 0.00010115908066853142
+        },
+        "fourth_to_second_squared_max": 3.0,
+        "passed": true
+      },
+      {
+        "date": 106,
+        "normal_equation_relative_error": 1.0876194354848094e-17,
+        "normal_equation_absolute_error": 1.0876194354848094e-17,
+        "conditional_covariance_max_eigenvalue": 0.3264,
+        "W_star_coordinate_max_error": 5.204170427930421e-18,
+        "E4_max_abs_residual": 6.506126275417877e-19,
+        "q_star_moment_max_error": 0.0,
+        "E2a": {
+          "log_mgf": 0.004015776693284553,
+          "maximum_scaled_eigenvalue": 0.006300991403569013,
+          "quadratic_covariance_max_eigenvalue": 0.0001008158624571042
+        },
+        "fourth_to_second_squared_max": 3.0,
+        "passed": true
+      },
+      {
+        "date": 107,
+        "normal_equation_relative_error": 1.0087683187394188e-17,
+        "normal_equation_absolute_error": 1.0087683187394188e-17,
+        "conditional_covariance_max_eigenvalue": 0.3264,
+        "W_star_coordinate_max_error": 5.204170427930421e-18,
+        "E4_max_abs_residual": 5.791916170964794e-19,
+        "q_star_moment_max_error": 0.0,
+        "E2a": {
+          "log_mgf": 0.0040144846500386145,
+          "maximum_scaled_eigenvalue": 0.006304613510114891,
+          "quadratic_covariance_max_eigenvalue": 0.00010087381616183826
+        },
+        "fourth_to_second_squared_max": 3.0,
+        "passed": true
+      },
+      {
+        "date": 136,
+        "normal_equation_relative_error": 1.1474789569114144e-17,
+        "normal_equation_absolute_error": 1.1474789569114144e-17,
+        "conditional_covariance_max_eigenvalue": 0.3264,
+        "W_star_coordinate_max_error": 6.938893903907228e-18,
+        "E4_max_abs_residual": 3.51613205321444e-19,
+        "q_star_moment_max_error": 3.469446951953614e-18,
+        "E2a": {
+          "log_mgf": 0.004023576620375598,
+          "maximum_scaled_eigenvalue": 0.0062838895229948444,
+          "quadratic_covariance_max_eigenvalue": 0.00010054223236791751
+        },
+        "fourth_to_second_squared_max": 3.0,
+        "passed": true
+      },
+      {
+        "date": 154,
+        "normal_equation_relative_error": 9.612162727692425e-18,
+        "normal_equation_absolute_error": 9.612162727692425e-18,
+        "conditional_covariance_max_eigenvalue": 0.3264,
+        "W_star_coordinate_max_error": 5.204170427930421e-18,
+        "E4_max_abs_residual": 1.4861691523484559e-19,
+        "q_star_moment_max_error": 1.734723475976807e-18,
+        "E2a": {
+          "log_mgf": 0.00399975637221322,
+          "maximum_scaled_eigenvalue": 0.006254443670749918,
+          "quadratic_covariance_max_eigenvalue": 0.00010007109873199869
+        },
+        "fourth_to_second_squared_max": 2.9999999999999996,
+        "passed": true
+      },
+      {
+        "date": 163,
+        "normal_equation_relative_error": 1.0741371719692577e-17,
+        "normal_equation_absolute_error": 1.0741371719692577e-17,
+        "conditional_covariance_max_eigenvalue": 0.3264,
+        "W_star_coordinate_max_error": 5.204170427930421e-18,
+        "E4_max_abs_residual": 3.5427597360592743e-19,
+        "q_star_moment_max_error": 0.0,
+        "E2a": {
+          "log_mgf": 0.004031963935094764,
+          "maximum_scaled_eigenvalue": 0.006308944297805026,
+          "quadratic_covariance_max_eigenvalue": 0.00010094310876488042
+        },
+        "fourth_to_second_squared_max": 3.0,
+        "passed": true
+      },
+      {
+        "date": 167,
+        "normal_equation_relative_error": 1.0616093407654645e-17,
+        "normal_equation_absolute_error": 1.0616093407654645e-17,
+        "conditional_covariance_max_eigenvalue": 0.3264,
+        "W_star_coordinate_max_error": 5.204170427930421e-18,
+        "E4_max_abs_residual": 4.0003584466309453e-19,
+        "q_star_moment_max_error": 0.0,
+        "E2a": {
+          "log_mgf": 0.004016559696285228,
+          "maximum_scaled_eigenvalue": 0.006324839046467613,
+          "quadratic_covariance_max_eigenvalue": 0.00010119742474348181
+        },
+        "fourth_to_second_squared_max": 3.0,
+        "passed": true
+      },
+      {
+        "date": 193,
+        "normal_equation_relative_error": 1.1918675214847795e-17,
+        "normal_equation_absolute_error": 1.1918675214847795e-17,
+        "conditional_covariance_max_eigenvalue": 0.3264,
+        "W_star_coordinate_max_error": 5.204170427930421e-18,
+        "E4_max_abs_residual": 5.855851115764951e-19,
+        "q_star_moment_max_error": 3.469446951953614e-18,
+        "E2a": {
+          "log_mgf": 0.0039855578294656,
+          "maximum_scaled_eigenvalue": 0.006233519719216567,
+          "quadratic_covariance_max_eigenvalue": 9.973631550746508e-05
+        },
+        "fourth_to_second_squared_max": 3.0,
+        "passed": true
+      },
+      {
+        "date": 206,
+        "normal_equation_relative_error": 9.552063516778667e-18,
+        "normal_equation_absolute_error": 9.552063516778667e-18,
+        "conditional_covariance_max_eigenvalue": 0.3264,
+        "W_star_coordinate_max_error": 5.204170427930421e-18,
+        "E4_max_abs_residual": 3.585015070222725e-19,
+        "q_star_moment_max_error": 0.0,
+        "E2a": {
+          "log_mgf": 0.00402148085111849,
+          "maximum_scaled_eigenvalue": 0.0062947203020075285,
+          "quadratic_covariance_max_eigenvalue": 0.00010071552483212046
+        },
+        "fourth_to_second_squared_max": 3.0,
+        "passed": true
+      },
+      {
+        "date": 215,
+        "normal_equation_relative_error": 1.117229149417455e-17,
+        "normal_equation_absolute_error": 1.117229149417455e-17,
+        "conditional_covariance_max_eigenvalue": 0.3264,
+        "W_star_coordinate_max_error": 5.204170427930421e-18,
+        "E4_max_abs_residual": 3.767508755616481e-19,
+        "q_star_moment_max_error": 0.0,
+        "E2a": {
+          "log_mgf": 0.004012791471544449,
+          "maximum_scaled_eigenvalue": 0.006259602681620107,
+          "quadratic_covariance_max_eigenvalue": 0.00010015364290592171
+        },
+        "fourth_to_second_squared_max": 3.0,
+        "passed": true
+      },
+      {
+        "date": 224,
+        "normal_equation_relative_error": 1.1689643897569548e-17,
+        "normal_equation_absolute_error": 1.1689643897569548e-17,
+        "conditional_covariance_max_eigenvalue": 0.3264,
+        "W_star_coordinate_max_error": 5.204170427930421e-18,
+        "E4_max_abs_residual": 2.6600294459591977e-19,
+        "q_star_moment_max_error": 3.469446951953614e-18,
+        "E2a": {
+          "log_mgf": 0.0040374121104615225,
+          "maximum_scaled_eigenvalue": 0.006318044348411468,
+          "quadratic_covariance_max_eigenvalue": 0.00010108870957458349
+        },
+        "fourth_to_second_squared_max": 2.9999999999999996,
+        "passed": true
+      },
+      {
+        "date": 232,
+        "normal_equation_relative_error": 1.067493494686322e-17,
+        "normal_equation_absolute_error": 1.067493494686322e-17,
+        "conditional_covariance_max_eigenvalue": 0.3264,
+        "W_star_coordinate_max_error": 6.938893903907228e-18,
+        "E4_max_abs_residual": 2.8882949549388804e-19,
+        "q_star_moment_max_error": 0.0,
+        "E2a": {
+          "log_mgf": 0.00400981795793941,
+          "maximum_scaled_eigenvalue": 0.0062794902627093755,
+          "quadratic_covariance_max_eigenvalue": 0.00010047184420335001
+        },
+        "fourth_to_second_squared_max": 3.0,
+        "passed": true
+      },
+      {
+        "date": 239,
+        "normal_equation_relative_error": 9.962110019685386e-18,
+        "normal_equation_absolute_error": 9.962110019685386e-18,
+        "conditional_covariance_max_eigenvalue": 0.3264,
+        "W_star_coordinate_max_error": 5.204170427930421e-18,
+        "E4_max_abs_residual": 1.585123063018492e-19,
+        "q_star_moment_max_error": 0.0,
+        "E2a": {
+          "log_mgf": 0.0040298352926564284,
+          "maximum_scaled_eigenvalue": 0.0063171481663036495,
+          "quadratic_covariance_max_eigenvalue": 0.0001010743706608584
+        },
+        "fourth_to_second_squared_max": 3.0,
+        "passed": true
+      },
+      {
+        "date": 245,
+        "normal_equation_relative_error": 1.0061179288685629e-17,
+        "normal_equation_absolute_error": 1.0061179288685629e-17,
+        "conditional_covariance_max_eigenvalue": 0.3264,
+        "W_star_coordinate_max_error": 5.204170427930421e-18,
+        "E4_max_abs_residual": 5.081948275640413e-19,
+        "q_star_moment_max_error": 3.469446951953614e-18,
+        "E2a": {
+          "log_mgf": 0.004007177605608607,
+          "maximum_scaled_eigenvalue": 0.0062535358175500625,
+          "quadratic_covariance_max_eigenvalue": 0.000100056573080801
+        },
+        "fourth_to_second_squared_max": 3.0,
+        "passed": true
+      }
+    ]
+  },
+  "E3": {
+    "passed": true,
+    "sobolev_order": 4.5,
+    "argument": "The trigonometric and constant beta components have smooth extensions from the bounded cube, belong to H^(9/2), and hence to the Matern-3/2 RKHS. W_star is their fixed linear combination."
+  },
+  "E5": {
+    "passed": true,
+    "operator_and_eigenvalue_sandwich_passed": true,
+    "sample_kind": "independent iid uniform base groups, each expanded into three phase roles",
+    "nodes": 3072,
+    "independent_groups": 1024,
+    "nodes_sha256": "b82461ab6aa19f864a71880c175bb800c89af20dcfcfd93d9b6fddecf5ca60e6",
+    "economic_groups_G": 200,
+    "lower_multiplier": 1.0666666666666667e-05,
+    "upper_multiplier": 0.0016106666666666667,
+    "generalized_eigenvalue_min": 1.3333333333313445e-05,
+    "generalized_eigenvalue_max": 0.0005440000000000027,
+    "ordered_eigenvalue_ratio_min": 1.3333333334845404e-05,
+    "ordered_eigenvalue_ratio_max": 0.0005258971950490355,
+    "resolved_eigenvalues": 3072,
+    "fit_range_inclusive": [
+      30,
+      200
+    ],
+    "fit_range_fully_resolved": true,
+    "slope_target": -1.5,
+    "slope_absolute_tolerance": 0.35,
+    "fits": {
+      "kernel": {
+        "slope": -1.238742789554868,
+        "r_squared": 0.9891447223850017,
+        "compatible": true
+      },
+      "managed": {
+        "slope": -1.23991025683647,
+        "r_squared": 0.9893734966728995,
+        "compatible": true
+      }
+    },
+    "interpretation": "Finite-quadrature diagnostic; compatibility does not prove the asymptotic exponent.",
+    "predeclared_window_sensitivity": [
+      {
+        "range": [
+          30,
+          200
+        ],
+        "resolved": true,
+        "kernel": {
+          "slope": -1.238742789554868,
+          "OLS_SE": 0.00998224754493934
+        },
+        "managed": {
+          "slope": -1.23991025683647,
+          "OLS_SE": 0.009884665003038345
+        }
+      },
+      {
+        "range": [
+          60,
+          400
+        ],
+        "resolved": true,
+        "kernel": {
+          "slope": -1.3158808091685197,
+          "OLS_SE": 0.003742916560584119
+        },
+        "managed": {
+          "slope": -1.3186032743267213,
+          "OLS_SE": 0.00362354261095644
+        }
+      },
+      {
+        "range": [
+          120,
+          800
+        ],
+        "resolved": true,
+        "kernel": {
+          "slope": -1.3351384650102753,
+          "OLS_SE": 0.0009935915683161967
+        },
+        "managed": {
+          "slope": -1.3356431111343965,
+          "OLS_SE": 0.001007419508185112
+        }
+      }
+    ]
+  },
+  "E6": {
+    "passed": true,
+    "periods": 100000,
+    "all_dates_checked_for_balance": 100000,
+    "beta_norm_max_error": 8.673617379884035e-19,
+    "balance_operator_max_error": 3.2946481978633994e-19,
+    "payoff_mean": 0.014549971049031546,
+    "payoff_second_moment": 0.014210984119116374,
+    "q_star": 0.014215686274509805,
+    "payoff_variance": 0.013999422455813277,
+    "analytic_variance": 0.014013600538254518,
+    "factor_second_moment_frobenius_error": 0.00612008287515923,
+    "SR_estimate": 0.12297223590524535,
+    "SR_star": 0.12008616167468394,
+    "SR_passed": true,
+    "predeclared_absolute_tolerances": {
+      "mean": 0.002246084636377629,
+      "second_moment": 0.0003814083458441252,
+      "SR": 0.019041946421535706
+    },
+    "factor_moments_passed": true,
+    "factor_mean": [
+      0.10541901225754455,
+      0.05824049455049856,
+      0.027997326289435354
+    ],
+    "factor_second_moment": [
+      [
+        1.001872378271254,
+        -0.001294810484012549,
+        -0.0004181017293504774
+      ],
+      [
+        -0.001294810484012549,
+        0.9949275926838597,
+        -0.0008819491375192075
+      ],
+      [
+        -0.0004181017293504774,
+        -0.0008819491375192075,
+        1.0017210296260635
+      ]
+    ],
+    "factor_mean_absolute_tolerances": [
+      0.01887855926706273,
+      0.018939482569489588,
+      0.018965125889379167
+    ],
+    "factor_second_moment_absolute_tolerances": [
+      [
+        0.02683147405566828,
+        0.018972982896740303,
+        0.018973495197248186
+      ],
+      [
+        0.018972982896740303,
+        0.02683264185278818,
+        0.018973604486232972
+      ],
+      [
+        0.018973495197248186,
+        0.018973604486232972,
+        0.026832804862704902
+      ]
+    ],
+    "tolerance_method": "Six analytic standard errors by default; Gaussian Sharpe delta-method SE, unannualized."
+  },
+  "methodology": "simulations/docs/dgp_methodology.md",
+  "provenance": {
+    "source": "DGP_Baseline_Spec.pdf, October 2026",
+    "python": "3.13.3",
+    "numpy": "2.3.5",
+    "scipy": "1.16.3",
+    "source_sha256": {
+      "simulations/dgp/balanced.py": "74dcae2ebca8ae525da899c40359a9ee48b3902320365e0dfbccc825f2293a12",
+      "simulations/diagnostics/baseline.py": "8fe1b130f115fb5dc92b2eadc2cf66470a3f677a8b237f94080fce9baee89b8b",
+      "kernels.py": "8515be031e468ffa9f6733afa2d3f661bdb51ccdcd746aac4ce4d4faeb9c6da0"
+    }
+  }
+}

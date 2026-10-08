@@ -1,8 +1,8 @@
 {
   "reviewed": true,
-  "figures": 15,
-  "pdf_exports": 9,
-  "review": "Ten simulation PNGs visually inspected, including the four-panel overview; all six simulation PDFs rendered with Poppler and inspected. Five empirical PNGs and three PDFs remain byte-identical to the previously reviewed exports. No clipped curves, labels or markers.",
+  "figures": 5,
+  "pdf_exports": 3,
+  "review": "Historical empirical review retained: five PNGs and three PDFs. Simulation review removed with the obsolete simulation outputs.",
   "empirical_exports_unchanged": true,
   "sha256": {
     "empirical_E1_managed_payoff_spectrum.pdf": "a8f5182acfd2e8165526a93345c13b86a846cad5614d4e13bb58b1be7d8dde7f",
@@ -12,22 +12,6 @@
     "empirical_E3_common_period_window_tradeoff.pdf": "8c26a5ccb7bcc97ca01c4bc04460d0c0f0b36a3ae282bb5fdf608a0164840c1d",
     "empirical_E3_common_period_window_tradeoff.png": "d7743397da1b1d6eb2850f67ca22ba739b167c68054ee40f97cb1d6675a0e216",
     "empirical_appendix_log_ratio_heatmap.png": "0bd75ceaa5446c73d94fc40cc701f1d5a540c731c193ba6291c5e52e04176835",
-    "empirical_appendix_raw_heatmap.png": "e48b51212a607c0da6e8bdaef39d9a6c5e3c0fd4301b88f1f5c4835712930c06",
-    "simulation_appendix_smooth_nonlinear_b150.pdf": "37b21ed46054d40f433812da9a31b04172291e5c5b7ec5036345fa20fb89ff7d",
-    "simulation_appendix_smooth_nonlinear_b150.png": "ac2b21a92eb8686b46cdf272b7567610f02a5686a1d0929996dc159e3871a3f2",
-    "simulation_dgp_01_loss_complexity.pdf": "e188a46c95621dc6d51dfa0e82cc7b29e0951440db13e64a9ab300ed2c403059",
-    "simulation_dgp_01_loss_complexity.png": "09cec9feacc6693172a4f3079a53ee33d4df59119d071016e0747fb03203e6f6",
-    "simulation_dgp_02_sharpe_complexity.pdf": "c82cf4984e789e5c4753832dce3e5ccb25bfbb27ed2808e34960753eac6f3dd7",
-    "simulation_dgp_02_sharpe_complexity.png": "b3d31a00aacfea4c6a3be8e8c80e6c96f2d0cc1cda209fb2bc622f2db8dd7d1e",
-    "simulation_dgp_03_loss_heatmap.pdf": "6564afb62bb78a877bc0f760cc433178275957e9bdde2c09dd191dff56db47e6",
-    "simulation_dgp_03_loss_heatmap.png": "8bfe797718feab767ee6fe956f216b99599a83355f93bb5305c970d6022e180e",
-    "simulation_dgp_04_selected_complexity_lambda.pdf": "1c33e24040d73bb4fb91f25c65babffdfcf917ea99abeae27b8ced90c2d38169",
-    "simulation_dgp_04_selected_complexity_lambda.png": "6b865225a6730ed2384a9f4116f897e6d923bf994bf0aec9dd1f2c147905bd57",
-    "simulation_dgp_four_panel_overview.png": "88a9e07948106ccaad17ea4a678a81253a3a636c0dd4ef63104f5d86f3a985eb",
-    "simulation_heatmap_absolute_complexity_b150.png": "d8ae7dddbdb910facd72f59cd564fc71c57e95d3244de8b3b69cc1548c27a88f",
-    "simulation_learnability_law_b150.pdf": "dad6f147e17da1d876906e6f29be50f2fe4413405146af3f82e225579ecf6f11",
-    "simulation_learnability_law_b150.png": "bd15a9a5a4e98f89d339c106dc42134f81fe6ff789dd47dbe7c4a549d76a98f1",
-    "simulation_linear_sanity_check.png": "9c0605c489c637cc6fd6708556063db650d96adaad7abb51e91ae9246c8a293e",
-    "simulation_spectrum_comparison_b125_b150_b200.png": "bbfec0287b8138e9679a2e52d1d46ebdbcdc3cbb88d925162085d76637af8c80"
+    "empirical_appendix_raw_heatmap.png": "e48b51212a607c0da6e8bdaef39d9a6c5e3c0fd4301b88f1f5c4835712930c06"
   }
 }

@@ -1,0 +1,56 @@
+{
+  "reference": "paper/complexity_schedule/manifest.json",
+  "matches": [
+    {
+      "directory": "/Users/enrico/Downloads/Portfolio",
+      "matching_protected_theory_files": [
+        "direct_port_learning.tex"
+      ]
+    },
+    {
+      "directory": "/Users/enrico/Downloads/Portfolio_Learnability_Final_Updated",
+      "matching_protected_theory_files": [
+        "economomic_spectrum_final.tex",
+        "direct_port_learning.tex",
+        "proofs_learning.tex"
+      ]
+    },
+    {
+      "directory": "/Users/enrico/Downloads/Portfolio_Learnability_Overleaf_Minimal (1)",
+      "matching_protected_theory_files": [
+        "economomic_spectrum_final.tex",
+        "direct_port_learning.tex",
+        "proofs_learning.tex"
+      ]
+    },
+    {
+      "directory": "/Users/enrico/Downloads/protfolio (10)/Final_version 9",
+      "matching_protected_theory_files": [
+        "economomic_spectrum_final.tex",
+        "direct_port_learning.tex",
+        "proofs_learning.tex"
+      ]
+    },
+    {
+      "directory": "/Users/enrico/Downloads/protfolio (10)/Portfolio_Learnability_Overleaf_Minimal (1)",
+      "matching_protected_theory_files": [
+        "direct_port_learning.tex"
+      ]
+    },
+    {
+      "directory": "/Users/enrico/Downloads/protfolio (10) 2/Final_version 9",
+      "matching_protected_theory_files": [
+        "economomic_spectrum_final.tex",
+        "direct_port_learning.tex",
+        "proofs_learning.tex"
+      ]
+    },
+    {
+      "directory": "/Users/enrico/Downloads/protfolio (10) 2/Portfolio_Learnability_Overleaf_Minimal (1)",
+      "matching_protected_theory_files": [
+        "direct_port_learning.tex"
+      ]
+    }
+  ],
+  "authoritative_current_source": "unconfirmed"
+}

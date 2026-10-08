@@ -1,46 +1,9 @@
 {
-  "aggregate_consistency_passed": true,
-  "finite_J_stability_passed": true,
-  "simulation_surface_rows": 32400,
-  "simulation_configurations": 9,
-  "simulation_T_values": 10,
-  "positive_lambda_values": 360,
-  "minimum_replications": 200,
-  "headline_replications": 500,
-  "headline_economy": "R1",
-  "performance_figures_verified": true,
-  "total_independent_paths": 2400,
-  "finite_J_by_economy": {
-    "R1": {
-      "max_slope_difference": 0.037358305775782696,
-      "slope_tolerance": 0.08,
-      "max_largest_T_relative_regret_difference": 0.030803284660693375,
-      "regret_tolerance": 0.1,
-      "passed": true
-    },
-    "NL": {
-      "max_slope_difference": 0.03623313160352282,
-      "slope_tolerance": 0.08,
-      "max_largest_T_relative_regret_difference": 0.045248074803436955,
-      "regret_tolerance": 0.1,
-      "passed": true
-    }
-  },
   "empirical_common_months": 372,
   "formation_only_reconstruction_passed": true,
   "unresolved_stock_payoffs": 7489,
   "empirical_evidence_status": "Explicitly isolated complete-payoff sensitivity; pristine real-time evidence unavailable.",
   "figure_files": {
-    "simulation_learnability_law_b150": "bd15a9a5a4e98f89d339c106dc42134f81fe6ff789dd47dbe7c4a549d76a98f1",
-    "simulation_heatmap_absolute_complexity_b150": "d8ae7dddbdb910facd72f59cd564fc71c57e95d3244de8b3b69cc1548c27a88f",
-    "simulation_spectrum_comparison_b125_b150_b200": "bbfec0287b8138e9679a2e52d1d46ebdbcdc3cbb88d925162085d76637af8c80",
-    "simulation_linear_sanity_check": "9c0605c489c637cc6fd6708556063db650d96adaad7abb51e91ae9246c8a293e",
-    "simulation_appendix_smooth_nonlinear_b150": "ac2b21a92eb8686b46cdf272b7567610f02a5686a1d0929996dc159e3871a3f2",
-    "simulation_dgp_01_loss_complexity": "09cec9feacc6693172a4f3079a53ee33d4df59119d071016e0747fb03203e6f6",
-    "simulation_dgp_02_sharpe_complexity": "b3d31a00aacfea4c6a3be8e8c80e6c96f2d0cc1cda209fb2bc622f2db8dd7d1e",
-    "simulation_dgp_03_loss_heatmap": "8bfe797718feab767ee6fe956f216b99599a83355f93bb5305c970d6022e180e",
-    "simulation_dgp_04_selected_complexity_lambda": "6b865225a6730ed2384a9f4116f897e6d923bf994bf0aec9dd1f2c147905bd57",
-    "simulation_dgp_four_panel_overview": "88a9e07948106ccaad17ea4a678a81253a3a636c0dd4ef63104f5d86f3a985eb",
     "empirical_E1_managed_payoff_spectrum": "6132639e1224dd8a41ddc16c3f312c1553008d197cf2029349eafca9b7d2ba32",
     "empirical_E2_row_normalized_heatmap": "8efb126bf951a3a21c81f80ec82072353e3c97fad640daf67fb84a6f8c6bb2eb",
     "empirical_E3_common_period_window_tradeoff": "d7743397da1b1d6eb2850f67ca22ba739b167c68054ee40f97cb1d6675a0e216",

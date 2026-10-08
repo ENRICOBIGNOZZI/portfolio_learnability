@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "replications": 20,
+  "population_groups": [
+    8192,
+    32768
+  ],
+  "relative_tolerance": 0.05,
+  "max_absolute_relative_difference": 0.0157667015898199,
+  "selection_repeated": false,
+  "reason": "Fixed policies and penalties; population evaluation only."
+}

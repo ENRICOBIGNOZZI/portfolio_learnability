@@ -1,0 +1,45 @@
+{
+  "q_reference": 0.012932432432432433,
+  "reference_sharpe": 0.1144634068178521,
+  "subspace_regret_floor": 0.0001045037548561608,
+  "theoretical_b": 1.5,
+  "parameters": {
+    "N": 99,
+    "D": 6,
+    "K_F": 3,
+    "rho": [
+      0.95,
+      0.95,
+      0.95,
+      0.95,
+      0.95,
+      0.95
+    ],
+    "nu": 1.5,
+    "ell": 1.0,
+    "c_beta": 0.0016,
+    "sigma_eps": 0.08,
+    "mu_F": [
+      0.1,
+      0.06,
+      0.03
+    ]
+  },
+  "environment": {
+    "name": "N99",
+    "code": 1,
+    "N": 99,
+    "rho": 0.95,
+    "signal_multiplier": 1.0,
+    "sigma_eps": 0.08,
+    "nu": 1.5,
+    "rank": 256,
+    "variant": "baseline",
+    "replications": 200
+  },
+  "reference_kind": "exact conditional optimum",
+  "population_groups": 8192,
+  "population_seed": 202610073,
+  "basis_seed": 202610072,
+  "run_hash": "f1f981cf9de748eba10cc3fab7521a257f47a73bd7abf328b5915335a2eb4e71"
+}

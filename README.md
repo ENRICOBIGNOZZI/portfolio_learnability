@@ -1,45 +1,8 @@
-# Portfolio learnability: controlled simulation and empirical diagnostics
+# Portfolio learnability: canonical simulations and empirical diagnostics
 
+The balanced three-factor simulation pipeline lives in `simulations/`. See `simulations/README.md` for reproducible smoke and paper commands. The cleanup is documented in `simulation_cleanup_manifest.md`. The new simulation run is complete: 3,500 verified replications, 66 PDF figures, and a 91-page integrated manuscript. Final evidence and deliverables are linked from `simulations/README.md`.
 
-## Current evidence and entry points
-
-Completed: 2,400 Monte Carlo paths across nine configurations, ten T values and
-360 positive penalties. The new boundary-target headline and the original smooth headline use 500 paths each;
-other configurations use 200.
-Stock-level identities, population-moment audits, and J=1,000/2,000/4,000 stability
-checks pass. The current suite passes 88 tests, and CI independently verifies the
-published aggregates. The 7,489 unresolved stock payoffs are explicitly isolated
-as a source limitation of the empirical evidence.
-
-The controlled stock/characteristic simulation is in `simulation_characteristic_factor.py`;
-`render_characteristic_factor.py` produces its publication figures from the saved exact-risk
-surfaces. The artificial economy is separate from the licensed JKP data. Start with
-`outputs/notes/simulation_characteristic_factor_methodology.md` for parameters, audits,
-Monte Carlo uncertainty, finite-rank checks and the distinction between a general r=1
-risk envelope and a DGP-specific oracle rate.
-
-The headline target is now `theta_j = c_theta / [sqrt(j) log(j+1)]`, normalized
-as before to `theta*S*theta = 0.16`. Its infinite sequence belongs to the RKHS
-without any polynomial source improvement beyond r=1. The main figure is
-`outputs/figures/simulation_learnability_law_b150.pdf`. The original `1/j` target
-is preserved as the **smooth nonlinear economy** in
-`outputs/figures/simulation_appendix_smooth_nonlinear_b150.pdf`, with identical
-original Monte Carlo results. Dashed lines are **minimax r=1 benchmarks**, not
-predicted DGP-specific oracle rates. Logarithmic corrections and finite-J effects
-can change the observed slopes even for the new target. Both targets have
-J=1,000/2,000/4,000 sensitivity checks; no tuning against the desired slopes is used.
-
-All four reference-style DGP performance figures are in outputs/figures as
-simulation_dgp_01_loss_complexity, simulation_dgp_02_sharpe_complexity,
-simulation_dgp_03_loss_heatmap and simulation_dgp_04_selected_complexity_lambda
-(PDF and PNG). simulation_dgp_four_panel_overview.png combines them.
-Training sample size T replaces calendar year. Loss and Sharpe integrate exact
-stationary population moments of the fitted policies; these are not observed
-next-year stock returns. Loss includes the optimal baseline 0.84. Sharpe uses
-the conventional sqrt(12) scaling of the monthly ratio. Validation choices
-remain unchanged and never use those population moments. Calculation and plotting
-are separate, in simulation_performance.py and render_simulation_performance.py;
-see outputs/notes/simulation_performance_figures.md for definitions and commands.
+## Empirical evidence and entry points
 
 The empirical close-out is in `empirical_closeout.py`. Proposed figure roles are E1
 (managed spectrum), E2 (row-normalized local learnability), E3 (common-period window
@@ -55,8 +18,6 @@ earlier tables are not the headline performance metric. Ex-post oracle diagnosti
 never enter validation. All new heatmaps use unconnected validation markers.
 
 ```sh
-VECLIB_MAXIMUM_THREADS=1 python3 simulation_characteristic_factor.py --workers 2
-VECLIB_MAXIMUM_THREADS=1 python3 render_characteristic_factor.py
 VECLIB_MAXIMUM_THREADS=1 python3 audit_formation_timing.py --raw data/raw --destination data/formation_only
 VECLIB_MAXIMUM_THREADS=1 python3 empirical_closeout.py
 ```
@@ -91,7 +52,7 @@ coverage sample contains 223,762 observations; restricting feature selection to
 **The real-data run is complete:** all three representations have 47 refits and
 564 OOS monthly payoffs. The five PDF/PNG figures, performance table, empirical
 LaTeX section and reproduction manifest are in `paper/`. All five PDFs were
-rendered and visually inspected. That original rebuild passed 57 tests; the current suite passes 88.
+rendered and visually inspected. That original rebuild passed 57 tests; the current repository suite passes 123.
 
 | Policy | OOS Sharpe | Maximum drawdown |
 |---|---:|---:|

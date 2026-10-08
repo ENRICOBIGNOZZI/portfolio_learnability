@@ -1,0 +1,55 @@
+
+\clearpage
+\section*{Simulation appendix}
+Population evaluation uses independent group quadrature. In orthonormal
+Nystr\"om coordinates $\phi(z)$, write
+$H_g=\frac13\sum_r\phi(Z_{g,r})\beta(Z_{g,r})'$ and
+$\overline H=M^{-1}\sum_g H_g$. Then
+\[
+\widehat\Sigma=\frac{\sigma_\varepsilon^2}{N}\widehat T_K
++\frac1{GM}\sum_g H_gH_g'
++\left(1-\frac1G\right)\overline H\overline H',
+\qquad
+\widehat T_K=\frac1{3M}\sum_{g,r}\phi(Z_{g,r})\phi(Z_{g,r})'.
+\]
+This integrates the factor and idiosyncratic shocks analytically while preserving
+within-triplet dependence. The quadrature distribution is independent of all
+training paths and cannot affect validation choices. For empirical ranks, full
+independent cross-sections are integrated because ranking couples groups.
+For heteroskedasticity, the idiosyncratic term uses the actual bounded
+state-dependent conditional variance.
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=\textwidth]{\simoutput/figures/population_loss_complexity.pdf}
+\caption{Population ridge loss versus population effective complexity.}
+\label{fig:sim_population_loss_complexity}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=\textwidth]{\simoutput/figures/baseline_oos_loss_uncertainty.pdf}
+\caption{OOS loss: Monte Carlo mean, median, and pointwise confidence interval for the mean.}
+\label{fig:sim_baseline_oos_loss_uncertainty}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=\textwidth]{\simoutput/figures/baseline_oos_sharpe_uncertainty.pdf}
+\caption{OOS Sharpe: Monte Carlo mean, median, and pointwise confidence interval for the mean.}
+\label{fig:sim_baseline_oos_sharpe_uncertainty}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=\textwidth]{\simoutput/figures/lambda_complexity.pdf}
+\caption{Population and empirical effective complexity as reparameterizations of regularization.}
+\label{fig:sim_lambda_complexity}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=\textwidth]{\simoutput/figures/selected_complexity_distributions.pdf}
+\caption{Selection distributions and oracle versus selected empirical complexity.}
+\label{fig:sim_selected_complexity_distributions}
+\end{figure}

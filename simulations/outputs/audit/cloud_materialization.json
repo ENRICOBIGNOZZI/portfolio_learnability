@@ -1,0 +1,57 @@
+[
+  {
+    "path": "download.py",
+    "sha256": "ff7a9327387bac177706c73008f40f577dfe498336233466f0dd7b3d5af153aa",
+    "action": "Restore identical verified Git bytes from dataless iCloud placeholder"
+  },
+  {
+    "path": "figures.py",
+    "sha256": "615daf4519e0bb04b0fb89785afdaa3dac32bbe90180b3bfc7bd5593f9061652",
+    "action": "Restore identical verified Git bytes from dataless iCloud placeholder"
+  },
+  {
+    "path": "paper/audit.json",
+    "sha256": "dc89cc3a996d3bfa4b37a139b90ec21872c211b09dac5f1b18c1735c0ec32e33",
+    "action": "Restore identical verified Git bytes from dataless iCloud placeholder"
+  },
+  {
+    "path": "paper/characteristics.json",
+    "sha256": "dfbb2a2b8ea50aa5ed690a8c129dc703fc86611b59bd1d292653c98c006fae97",
+    "action": "Restore identical verified Git bytes from dataless iCloud placeholder"
+  },
+  {
+    "path": "paper/complexity_schedule/empirics_schedule.tex",
+    "sha256": "00975a0691c44c7e812494302273d2081a3a9e9572593864c4bb2f93de74bba4",
+    "action": "Restore identical verified Git bytes from dataless iCloud placeholder"
+  },
+  {
+    "path": "paper/complexity_schedule/grid_audit.json",
+    "sha256": "2813a0454a4efa5e1e7777144bddd2c2d1c58dd3bef4b883ca2f706b8b88022d",
+    "action": "Restore identical verified Git bytes from dataless iCloud placeholder"
+  },
+  {
+    "path": "paper/figures/fig01_wealth_drawdown.pdf",
+    "sha256": "be665b2766618dea18698608e6479ec3dda0bdaf99760b11dd24dba6c3b46fee",
+    "action": "Restore identical verified Git bytes from dataless iCloud placeholder"
+  },
+  {
+    "path": "paper/figures/fig03_complexity_gaussian.pdf",
+    "sha256": "25c9ca07bb6fa40475d2e487d8525c3be507d8124160dfb44ac390b12d7bf450",
+    "action": "Restore identical verified Git bytes from dataless iCloud placeholder"
+  },
+  {
+    "path": "paper/figures/fig04_complexity_matern32.pdf",
+    "sha256": "c3c2a92518d1455c9edadc306be41761b69ffcd46aa9c8ce40e2186d7803b393",
+    "action": "Restore identical verified Git bytes from dataless iCloud placeholder"
+  },
+  {
+    "path": "paper/figures/fig05_managed_spectrum.pdf",
+    "sha256": "197bd8f2b98c3d8a3b156926fb669cf0d951aa111b6e4a468a9524914f1874a1",
+    "action": "Restore identical verified Git bytes from dataless iCloud placeholder"
+  },
+  {
+    "path": "paper/temporal_audit.json",
+    "sha256": "4a1af6560c67501df4431921b30a4c57cd02928feb99c9d9ad7c83c1e776c750",
+    "action": "Restore identical verified Git bytes from dataless iCloud placeholder"
+  }
+]

@@ -1,0 +1,32 @@
+FINAL REPORT — THE LAW OF PORTFOLIO LEARNABILITY
+
+Status: COMPLETE; final independent closeout passed.
+
+Deleted: 75 obsolete simulation paths. The exact inventory and retained-file justifications are in simulation_cleanup_manifest.md. Git history was not rewritten. Empirical JKP inputs, code, figures and results remain separate and protected.
+
+Created: one canonical simulations/ engine, balanced-triplet Gaussian factor DGP, Matérn Nyström ridge estimator, population derivation, E1–E6 analytical/numerical audits, chronological validation, six meaningful benchmarks, whole-path bootstrap rate analysis, deterministic raw checkpoints, reproduction manifests, 66 PDF figures (with PNG counterparts), 11 CSV tables and publication LaTeX tables, an integrated paper/main.tex and a 91-page compiled paper. Tests are in tests/; methodology and exact implementation request are in simulations/docs/.
+
+Executed: 500 baseline plus 200 in each of 15 robustness configurations = 3,500 replications. Every replication includes the ten predeclared T values and 96 penalties. The final verifier checked 7,560,000 production dates. Raw data are under simulations/outputs/paper/data/*/replications/. The smoke profile is independently verified under simulations/outputs/smoke/.
+
+Acceptance: all required baseline algebraic and E1–E6 diagnostics pass, all configuration preflights pass their explicitly stated assumptions, and the rank and quadrature gates pass. Paired rank 256 versus 512 changes oracle/selected mean regret by at most 4.64% (10% tolerance). Increasing population quadrature from 8,192 to 32,768 groups changes evaluated regret by at most 1.58% (5% tolerance). All 123 repository tests passed; nine pipeline tests were rerun after the audit-cache correction. Final smoke and production source/configuration hashes match. git diff --check passed.
+
+At T=1440, baseline oracle population regret is 0.00312119; selected regret is 0.00615412; oracle/selected mean population Sharpe is 0.10756/0.09595. The full-grid oracle-regret slope is -0.518 and the upper-half slope is -0.692, compared with the theoretical benchmark -0.600. All fixed windows and bootstrap intervals are reported, without retuning parameters or seeds.
+
+Preservation: all 11 imported theory/figure entries and all 112 protected empirical files match their recorded SHA-256 hashes. The manuscript has no undefined references or overfull boxes. All 91 pages were visually reviewed; final table repair changed only page 81, and the other 90 final rendered pages match the prior reviewed images exactly.
+
+Unresolved numerical/implementation blockers: none. Provenance qualification: Portfolio 8 was inferred to be the current theory because it uniquely matches the supplied E1–E6, including managed quadratic-MGF E2; explicit user confirmation was requested but not received. This inference is disclosed in manuscript_preservation.json. No theoretical formula was rewritten. Finite rank/quadrature, finite-resolution spectral fits and the fixed smooth target limit asymptotic interpretation. Rank acceptance applies to oracle/selected regret, not uniform stability at every nearly unregularized penalty. Empirical-rank and heteroskedastic variants deliberately depart from specified baseline assumptions.
+
+PDF: simulations/outputs/paper/paper/The_Law_of_Portfolio_Learnability.pdf
+PDF SHA-256: b7c94d37efd8ef8a7b702358e5b963ab8afcb044a85bd6d2f78670f949d4b447
+Machine-readable report: simulations/outputs/paper/audit/final_report.json
+Raw/summarized output provenance: simulations/outputs/paper/run_manifest.json
+Sum of individual replication elapsed times: 50771.7 seconds (parallel work means this is not wall-clock duration).
+
+REPRODUCTION (run from repository root, Python 3.13.3 and simulations/requirements.txt)
+
+PYTHONPYCACHEPREFIX=/tmp/codex_dgp_pycache VECLIB_MAXIMUM_THREADS=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -m simulations.run --profile smoke
+PYTHONPYCACHEPREFIX=/tmp/codex_dgp_pycache VECLIB_MAXIMUM_THREADS=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -m simulations.run --profile paper --workers 4
+python3 -m simulations.manuscript
+python3 -m simulations.diagnostics.closeout
+
+The paper command reuses only checkpoints with matching scientific source/configuration hashes; a fresh --output directory recomputes them. The first command is the cheaper smoke profile. For source-identical cached data, --render-only regenerates derived artifacts. Compile after numerical acceptance. The final closeout deliberately requires a visual_review.json matching the newly compiled PDF hash; re-render and review all pages before recording that review. Raw licensed empirical data remain subject to their existing repository access requirements.

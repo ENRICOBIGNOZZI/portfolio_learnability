@@ -1,0 +1,452 @@
+[
+  {
+    "path": "__pycache__/simulation_characteristic_factor.cpython-313.pyc",
+    "sha256": "b63494fae7317bc3925b322425adc0c13c1a118edf4dbb89a8cbc0f5c4719bba",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "__pycache__/simulation_performance.cpython-313.pyc",
+    "sha256": "ccf9f3718d713848667c26919567ae2ba6436786eff4adf2d981e49b422b9fe3",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "outputs/figures/simulation_appendix_smooth_nonlinear_b150.pdf",
+    "sha256": "37b21ed46054d40f433812da9a31b04172291e5c5b7ec5036345fa20fb89ff7d",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "outputs/figures/simulation_appendix_smooth_nonlinear_b150.png",
+    "sha256": "ac2b21a92eb8686b46cdf272b7567610f02a5686a1d0929996dc159e3871a3f2",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "outputs/figures/simulation_dgp_01_loss_complexity.pdf",
+    "sha256": "e188a46c95621dc6d51dfa0e82cc7b29e0951440db13e64a9ab300ed2c403059",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "outputs/figures/simulation_dgp_01_loss_complexity.png",
+    "sha256": "09cec9feacc6693172a4f3079a53ee33d4df59119d071016e0747fb03203e6f6",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "outputs/figures/simulation_dgp_02_sharpe_complexity.pdf",
+    "sha256": "c82cf4984e789e5c4753832dce3e5ccb25bfbb27ed2808e34960753eac6f3dd7",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "outputs/figures/simulation_dgp_02_sharpe_complexity.png",
+    "sha256": "b3d31a00aacfea4c6a3be8e8c80e6c96f2d0cc1cda209fb2bc622f2db8dd7d1e",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "outputs/figures/simulation_dgp_03_loss_heatmap.pdf",
+    "sha256": "6564afb62bb78a877bc0f760cc433178275957e9bdde2c09dd191dff56db47e6",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "outputs/figures/simulation_dgp_03_loss_heatmap.png",
+    "sha256": "8bfe797718feab767ee6fe956f216b99599a83355f93bb5305c970d6022e180e",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "outputs/figures/simulation_dgp_04_selected_complexity_lambda.pdf",
+    "sha256": "1c33e24040d73bb4fb91f25c65babffdfcf917ea99abeae27b8ced90c2d38169",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "outputs/figures/simulation_dgp_04_selected_complexity_lambda.png",
+    "sha256": "6b865225a6730ed2384a9f4116f897e6d923bf994bf0aec9dd1f2c147905bd57",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "outputs/figures/simulation_dgp_four_panel_overview.png",
+    "sha256": "88a9e07948106ccaad17ea4a678a81253a3a636c0dd4ef63104f5d86f3a985eb",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "outputs/figures/simulation_heatmap_absolute_complexity_b150.png",
+    "sha256": "d8ae7dddbdb910facd72f59cd564fc71c57e95d3244de8b3b69cc1548c27a88f",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "outputs/figures/simulation_learnability_law_b150.pdf",
+    "sha256": "dad6f147e17da1d876906e6f29be50f2fe4413405146af3f82e225579ecf6f11",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "outputs/figures/simulation_learnability_law_b150.png",
+    "sha256": "bd15a9a5a4e98f89d339c106dc42134f81fe6ff789dd47dbe7c4a549d76a98f1",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "outputs/figures/simulation_linear_sanity_check.png",
+    "sha256": "9c0605c489c637cc6fd6708556063db650d96adaad7abb51e91ae9246c8a293e",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "outputs/figures/simulation_spectrum_comparison_b125_b150_b200.png",
+    "sha256": "bbfec0287b8138e9679a2e52d1d46ebdbcdc3cbb88d925162085d76637af8c80",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "outputs/manifest_simulation_figures.json",
+    "sha256": "fac941545d5e62ff6e473efa2a1cbdf036fc64175aebacc430b21172c61979ff",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "outputs/manifest_simulation_performance.json",
+    "sha256": "fd34a99f9868a51fafcf6eb8f17e752b17f36ac363ac952924f297cf98a37d90",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "outputs/notes/boundary_target_execution.md",
+    "sha256": "09078596b63d6b277a1bf75681e2a5b56c644d277ed00e64038df9091d604d14",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "outputs/notes/closeout_execution.md",
+    "sha256": "6bfe013b3adccd82806e0e942a2c375add3fd1742cac2946324d7aa626ad2d87",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "outputs/notes/simulation_characteristic_factor_methodology.md",
+    "sha256": "1a82ad4a110b2375d59e735d43c31d87d45df56bbed2062ebdb9bf1d479ecf2f",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "outputs/notes/simulation_performance_figures.md",
+    "sha256": "ce2ed9d7aafb6bca9fad929b87518eafa5a97de3790488559460a92d02ebf28f",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "outputs/simulations/characteristic_factor_dgp_audit.json",
+    "sha256": "5f92c6c0a7744354813fd25607808233d0b5c8084e1311bb8a07453215925a66",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "outputs/simulations/characteristic_factor_finite_J_check.json",
+    "sha256": "36de20519c2b00110ffbb1a1862290d11189d8fe2382b48b6a39e1d56b2c7043",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "outputs/simulations/characteristic_factor_finite_J_robustness.csv",
+    "sha256": "ac1b637dda5dc42b75cdf1d2dd0c6e3b838ecf5dcbebb5eb62bcee40b6305ac8",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "outputs/simulations/characteristic_factor_full_surface.parquet",
+    "sha256": "cabea110b23d3e3bf6193b37b1375d47ef6a516d12ad833507077e651d96c757",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "outputs/simulations/characteristic_factor_oracle_by_T.csv",
+    "sha256": "87240497140962333bd345a66195e302391b97684ec7d9f15e880903257ff27a",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "outputs/simulations/characteristic_factor_performance_audit.json",
+    "sha256": "22c7dbc98c222722ae8bbc8d5aadd360c28000e19b9a459e1ff63ebf751b9dae",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "outputs/simulations/characteristic_factor_performance_selection.csv",
+    "sha256": "7fb080a6f61ec1402b95c3cbacd3605a5da162541c7d578d9815ea96170a2fd6",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "outputs/simulations/characteristic_factor_performance_surface.parquet",
+    "sha256": "911aec7c9d95a4e0c4257628d5805db131bd55ee93d2d359a9db0090f508e7e5",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "outputs/simulations/characteristic_factor_rate_slopes.csv",
+    "sha256": "3512fb35c83ccf443f226795f572e4c6d71a703bedc3cb9f3a22438599877902",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "outputs/simulations/characteristic_factor_run.json",
+    "sha256": "fa9ed16cfb622856b173bada61ca2d9a34b67b66c1204d8dbb8c7d0528777405",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "outputs/simulations/characteristic_factor_validation_by_T.csv",
+    "sha256": "ab150f17e89fbc95c05b59c21d1143936e9e10a660f0474eccfb00647951ac92",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "render_characteristic_factor.py",
+    "sha256": "cee0720f8d2883d67dc5875a386eb4dbf9768bf4dbc010fda947a4b9f5aee7f8",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "render_simulation_performance.py",
+    "sha256": "d44902414d667f9ab748a0b596fd01fb084cd5adbc22bb52d58858172e97bb10",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "results/characteristic_factor/L_b150_J2000_R200.json",
+    "sha256": "03d62677dadeb81b18aafd965d8f462b6015591ab86fb967f9a2088ac4314b3b",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "results/characteristic_factor/L_b150_J2000_R200.npz",
+    "sha256": "f531176234d15d4d393745de365fa7bfef4b6ce3bb6de9582bbb255a9fe23548",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "results/characteristic_factor/L_b150_J2000_audit.json",
+    "sha256": "dc3051fae2c80c98743b80b275225df41a3bd79d3b46cea2107c29426627a1f2",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "results/characteristic_factor/NL_b125_J2000_R200.json",
+    "sha256": "1cbc557bba39c3b459771ee840268b9f252de7191ca00d1a649c403ea79ffb51",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "results/characteristic_factor/NL_b125_J2000_R200.npz",
+    "sha256": "2be2f5922eba166ebc0b4989cf840c1dc60f36c5702fb3ca9019723db3a9f0e7",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "results/characteristic_factor/NL_b125_J2000_audit.json",
+    "sha256": "2e64afc2434ebc762c82ea6439fda3eedd0e961c266910a71ef12ce63fc673f1",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "results/characteristic_factor/NL_b150_J1000_R200.json",
+    "sha256": "b9099b5199d8936b47184668b6010f455c4592306f944cca8cffe2792a58ab93",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "results/characteristic_factor/NL_b150_J1000_R200.npz",
+    "sha256": "7ba6e5ad209ce45f2c726945e9aa83af4ccf5c20394efac8c57724eb191fdc7e",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "results/characteristic_factor/NL_b150_J1000_audit.json",
+    "sha256": "38807b119a5b09020c75d99e876cee32f07443e52660c0c4734c6cfe8322db3c",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "results/characteristic_factor/NL_b150_J2000_R500.json",
+    "sha256": "ec9cb8c68c231ba95000444539bb2709803a7ff30533cba37f73a502d782a415",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "results/characteristic_factor/NL_b150_J2000_R500.npz",
+    "sha256": "34100bfc34bd4d2a7fbdb4834378fcf8e865bbfc58557fd367717bd4c9f01724",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "results/characteristic_factor/NL_b150_J2000_audit.json",
+    "sha256": "37b0580a6ab4c73b6c9ebf270fdc20707d16274460b30237b72133cee5085a40",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "results/characteristic_factor/NL_b150_J4000_R200.json",
+    "sha256": "e0256ec05b28c25fc786f6a0122b967e79568bb9a7bf05aae95d00f2f8c2fcff",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "results/characteristic_factor/NL_b150_J4000_R200.npz",
+    "sha256": "f266ce36f427f245ff2d2d873661bf77d41c65abb4cff4f32e336a866d88b525",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "results/characteristic_factor/NL_b150_J4000_audit.json",
+    "sha256": "e26e645daf28e4e62989efa6afc7f255755f2b23e30bd3b5a0a10ef2aec4e58c",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "results/characteristic_factor/NL_b200_J2000_R200.json",
+    "sha256": "56af7267eaa097538f1d1e5a6da5314ecd96b8694edf5fbee22e4cb1df935929",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "results/characteristic_factor/NL_b200_J2000_R200.npz",
+    "sha256": "839c0b46d4f022186b97aa7e63c0357ac53e3030f49b505aa90bf9bfc0f12716",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "results/characteristic_factor/NL_b200_J2000_audit.json",
+    "sha256": "64470c4250559b79011adf830ba2197f26a8bdceae0c27cd56745ce93ae8ce8f",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "results/characteristic_factor/R1_b150_J1000_R200.json",
+    "sha256": "2dbc8c320f28a798708d552f2ef263e70eecd501c87175db788db546f5e0e986",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "results/characteristic_factor/R1_b150_J1000_R200.npz",
+    "sha256": "37447c98af0f33ad5c69135c656cfb34b0e2fc72ad9707be93c98e58536c4d6f",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "results/characteristic_factor/R1_b150_J1000_audit.json",
+    "sha256": "0fcffb24985557f6fd911d096a504449ba289731883a7e6e6837ced0c3e8f8f3",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "results/characteristic_factor/R1_b150_J2000_R500.json",
+    "sha256": "7300762f6bbd19a4702cc05081d475af816398aa2e997ab1fe11a67e98276705",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "results/characteristic_factor/R1_b150_J2000_R500.npz",
+    "sha256": "edbe5f20259b0c742becb38db4c393cb6afde05e1eed682a23a24e44572f0cb2",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "results/characteristic_factor/R1_b150_J2000_audit.json",
+    "sha256": "48a3092c9bfd47113ac65c06a600b9e02688392f1b369ac862645bef53a9e592",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "results/characteristic_factor/R1_b150_J4000_R200.json",
+    "sha256": "b53edbe15b60a1afad4e77ecc2b9f78a871973f6387bd150933218ff85c5429a",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "results/characteristic_factor/R1_b150_J4000_R200.npz",
+    "sha256": "7a0365f68e7468eeee0ded38f74cb29babb72431c2b79d8fdad2bd517847c849",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "results/characteristic_factor/R1_b150_J4000_audit.json",
+    "sha256": "607ce15189323f6d3b9375a898ea4c4b1d4be9a66de961072a21ed7953c96631",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "results/characteristic_factor/boundary_execution.log",
+    "sha256": "0d466311dedd27fd9a1bb44c1ba99b9075b5faa5946b8cde479603a9a2b758fe",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "results/characteristic_factor/execution.log",
+    "sha256": "34f01a0b8e64f477e1d1cf0e8d6d874b759ac2ceeb585526b3d066e32a75a49b",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "results/characteristic_factor/performance/R1_b150_J2000_R500.json",
+    "sha256": "1b85c621582744379ce463d5db8c16b2c2b7621325985fc623e75b5f17fc1bf5",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "results/characteristic_factor/performance/R1_b150_J2000_R500.npz",
+    "sha256": "527ef7ee6a41841adcacc799dd8b0da331925eafe210ddae0a91d63613491ad3",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "results/characteristic_factor/performance_execution.log",
+    "sha256": "bc8d48a38edd4304af339e42ad02e39a08c43c869f0828777f64408dd2e2ee5d",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "simulation_characteristic_factor.py",
+    "sha256": "2ebbbbd688e42de9bde097671d650c1d7f14a7282509d0e7c0c19644495252a8",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "simulation_performance.py",
+    "sha256": "2d0526cee82f6eb6a510d8c3e4da85bf15cfeec58d784199a0bb639169bebd5e",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "tests/__pycache__/test_characteristic_factor.cpython-313-pytest-7.4.4.pyc",
+    "sha256": "8694174ccbe0d84280a01b808a0ea93b3010cebe4d4464deeacf3149c5b82fb7",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "tests/__pycache__/test_simulation_performance.cpython-313-pytest-7.4.4.pyc",
+    "sha256": "60ccdc7b934115e5e5ad78c78d30d10478aac68c486599869ae8f2cd391e916d",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "tests/test_characteristic_factor.py",
+    "sha256": "3fbd5f5c8cd881b3f6b147e9a529b4d52a6c862eee981fc2ace86802861572a2",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  },
+  {
+    "path": "tests/test_simulation_performance.py",
+    "sha256": "77c06193de0b742d967c9237ccc1e9ab6196db834e4fa0f4c59c5f920ad93fb5",
+    "action": "deleted",
+    "reason": "Obsolete prescribed-spectrum simulation or its exclusive output/checkpoint."
+  }
+]

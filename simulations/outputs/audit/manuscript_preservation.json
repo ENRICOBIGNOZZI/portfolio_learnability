@@ -1,0 +1,77 @@
+{
+  "status": "compiled_and_visually_verified",
+  "source_tree": "/Users/enrico/Downloads/Portfolio 8",
+  "selection_evidence": "Only available economy-class source with the exact conditional managed quadratic-MGF E2 and E1-E6 in the supplied DGP brief; source dated 2026-10-07. Historical empirical manifest refers to an older bounded-return proof and cannot establish current theory.",
+  "user_confirmation": false,
+  "assumption_disclosed": true,
+  "source_main_sha256": "4d6442ed10cc30daccd45ecebbd3cf3432a8e7be9b88c5215a6f1e8a7548f5a0",
+  "protected_files": [
+    {
+      "source": "/Users/enrico/Downloads/Portfolio 8/introduction.tex",
+      "path": "paper/theory/introduction.tex",
+      "sha256": "22b4960634cd86026e2c3f52327c6011f8d239c4faec7a23fa9adc0db0c62b7b"
+    },
+    {
+      "source": "/Users/enrico/Downloads/Portfolio 8/population_problem.tex",
+      "path": "paper/theory/population_problem.tex",
+      "sha256": "15892ec10028ed6278e7b48904cc828ada6a5f3978ab4560b47fd16b43723e1c"
+    },
+    {
+      "source": "/Users/enrico/Downloads/Portfolio 8/direct_port_learning.tex",
+      "path": "paper/theory/direct_port_learning.tex",
+      "sha256": "e03c416915ae6b35d8f6d1658ed9d9c84fd167af72db0a2d5dd6bb3cea98e260"
+    },
+    {
+      "source": "/Users/enrico/Downloads/Portfolio 8/economomic_spectrum_final.tex",
+      "path": "paper/theory/economomic_spectrum_final.tex",
+      "sha256": "e83a201a6ce34b635a172f088e02a7b3dd0deddfc7b4b1e6ae5a5afd70761002"
+    },
+    {
+      "source": "/Users/enrico/Downloads/Portfolio 8/representation_learnability.tex",
+      "path": "paper/theory/representation_learnability.tex",
+      "sha256": "ca13af09082ef3e883942579951c55f5acdb0456b0aaedd48a52ecfbde5303e6"
+    },
+    {
+      "source": "/Users/enrico/Downloads/Portfolio 8/proofs_learning.tex",
+      "path": "paper/theory/proofs_learning.tex",
+      "sha256": "96f2cf375a7a951118a38d17e0fc857c35bc364bdcb9c888a21bbac3a31f0731"
+    },
+    {
+      "source": "/Users/enrico/Downloads/Portfolio 8/unbounded_concentration.tex",
+      "path": "paper/theory/unbounded_concentration.tex",
+      "sha256": "c904b7b7af582837b0b66bfd6dc519b9be276f06ce1f5ba39cfef5a952bdb315"
+    },
+    {
+      "source": "/Users/enrico/Downloads/Portfolio 8/references.bib",
+      "path": "paper/theory/references.bib",
+      "sha256": "4b7a0a7538e296998e3e02f58dd1d03d4639a022556d0a4cf3af42611aa160d0"
+    },
+    {
+      "source": "/Users/enrico/Downloads/Portfolio 8/appendice_2.tex",
+      "source_byte_range": [
+        0,
+        3648
+      ],
+      "path": "paper/theory/representation_tables.tex",
+      "sha256": "82abc22608e0c6992a8fd9c4b5c543a71f4fb11cbf4e5e1bc91ef0bd794cc0dd"
+    },
+    {
+      "source": "/Users/enrico/Downloads/Portfolio 8/figures/FRONTIER.png",
+      "path": "paper/figures/FRONTIER.png",
+      "sha256": "2d4b9fab91140cf9a1ddb52225a445ac105f4e0f46033633244fd3c13c8b9a6a"
+    },
+    {
+      "source": "/Users/enrico/Downloads/Portfolio 8/figures/Complexity.png",
+      "path": "paper/figures/Complexity.png",
+      "sha256": "c4f68d20e6ace0ced74ec3f94740df770abd6eee569e538c3db86efed45ec7fc"
+    }
+  ],
+  "main_edits": [
+    "Theory and bibliography input paths",
+    "New simulation section and appendix inputs",
+    "Existing repository empirical section and complexity-schedule supplement included unchanged",
+    "Only theoretical tables imported from appendice_2; obsolete external empirical cost subsection not imported, preserving current repository JKP results"
+  ],
+  "legacy_simulations_in_imported_sources": false,
+  "sharpe_reference_exponent": "-b/(b+1), eq:sharpe-level-rate"
+}

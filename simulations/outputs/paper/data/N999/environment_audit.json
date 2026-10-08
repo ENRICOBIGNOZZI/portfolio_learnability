@@ -1,0 +1,187 @@
+{
+  "passed": true,
+  "conditional": {
+    "passed": true,
+    "all_dates_checked_for_balance": 48,
+    "beta_norm_max_error": 6.505213034913027e-19,
+    "balance_operator_max_error": 3.2702482263338367e-19,
+    "normal_equation_max_absolute_error": 3.440492818306301e-17,
+    "E2a_max_log_mgf": 0.003859585818049118,
+    "factor_second_moment_analytic_error": 0.0,
+    "factor_covariance_min_eigenvalue": 0.9855,
+    "dates": [
+      {
+        "date": 0,
+        "normal_equation_relative_error": 1.9343018863487526e-17,
+        "normal_equation_absolute_error": 1.9343018863487526e-17,
+        "conditional_covariance_max_eigenvalue": 0.5392,
+        "W_star_coordinate_max_error": 3.0357660829594124e-18,
+        "E4_max_abs_residual": 1.9524270068587415e-18,
+        "q_star_moment_max_error": 1.734723475976807e-18,
+        "E2a": {
+          "log_mgf": 0.0038272306116166944,
+          "maximum_scaled_eigenvalue": 0.006189195927567606,
+          "quadratic_covariance_max_eigenvalue": 9.90271348410817e-05
+        },
+        "fourth_to_second_squared_max": 3.0,
+        "passed": true
+      },
+      {
+        "date": 16,
+        "normal_equation_relative_error": 3.440492818306301e-17,
+        "normal_equation_absolute_error": 3.440492818306301e-17,
+        "conditional_covariance_max_eigenvalue": 0.5392,
+        "W_star_coordinate_max_error": 4.336808689942018e-18,
+        "E4_max_abs_residual": 1.9165708152745255e-18,
+        "q_star_moment_max_error": 1.734723475976807e-18,
+        "E2a": {
+          "log_mgf": 0.003846617984019083,
+          "maximum_scaled_eigenvalue": 0.006207952284271145,
+          "quadratic_covariance_max_eigenvalue": 9.932723654833832e-05
+        },
+        "fourth_to_second_squared_max": 2.9999999999999996,
+        "passed": true
+      },
+      {
+        "date": 19,
+        "normal_equation_relative_error": 1.4384717219403846e-17,
+        "normal_equation_absolute_error": 1.4384717219403846e-17,
+        "conditional_covariance_max_eigenvalue": 0.5392,
+        "W_star_coordinate_max_error": 2.6020852139652106e-18,
+        "E4_max_abs_residual": 8.184897942878756e-19,
+        "q_star_moment_max_error": 1.734723475976807e-18,
+        "E2a": {
+          "log_mgf": 0.0038390371495231183,
+          "maximum_scaled_eigenvalue": 0.006209029325004118,
+          "quadratic_covariance_max_eigenvalue": 9.934446920006589e-05
+        },
+        "fourth_to_second_squared_max": 3.0,
+        "passed": true
+      },
+      {
+        "date": 29,
+        "normal_equation_relative_error": 2.5459436788178716e-17,
+        "normal_equation_absolute_error": 2.5459436788178716e-17,
+        "conditional_covariance_max_eigenvalue": 0.5392,
+        "W_star_coordinate_max_error": 3.469446951953614e-18,
+        "E4_max_abs_residual": 3.4043403188302033e-18,
+        "q_star_moment_max_error": 3.469446951953614e-18,
+        "E2a": {
+          "log_mgf": 0.003848536491844584,
+          "maximum_scaled_eigenvalue": 0.006225539485938744,
+          "quadratic_covariance_max_eigenvalue": 9.96086317750199e-05
+        },
+        "fourth_to_second_squared_max": 3.0,
+        "passed": true
+      },
+      {
+        "date": 33,
+        "normal_equation_relative_error": 1.5033243166536937e-17,
+        "normal_equation_absolute_error": 1.5033243166536937e-17,
+        "conditional_covariance_max_eigenvalue": 0.5392,
+        "W_star_coordinate_max_error": 2.6020852139652106e-18,
+        "E4_max_abs_residual": 8.556066721398878e-19,
+        "q_star_moment_max_error": 0.0,
+        "E2a": {
+          "log_mgf": 0.003857687563446795,
+          "maximum_scaled_eigenvalue": 0.006216468455961662,
+          "quadratic_covariance_max_eigenvalue": 9.946349529538659e-05
+        },
+        "fourth_to_second_squared_max": 3.0,
+        "passed": true
+      },
+      {
+        "date": 44,
+        "normal_equation_relative_error": 1.454235264088381e-17,
+        "normal_equation_absolute_error": 1.454235264088381e-17,
+        "conditional_covariance_max_eigenvalue": 0.5392,
+        "W_star_coordinate_max_error": 2.6020852139652106e-18,
+        "E4_max_abs_residual": 6.751541468814072e-19,
+        "q_star_moment_max_error": 0.0,
+        "E2a": {
+          "log_mgf": 0.003859585818049118,
+          "maximum_scaled_eigenvalue": 0.006196977094474958,
+          "quadratic_covariance_max_eigenvalue": 9.915163351159933e-05
+        },
+        "fourth_to_second_squared_max": 3.0000000000000004,
+        "passed": true
+      }
+    ]
+  },
+  "monte_carlo": {
+    "passed": true,
+    "periods": 20000,
+    "all_dates_checked_for_balance": 20000,
+    "beta_norm_max_error": 8.673617379884035e-19,
+    "balance_operator_max_error": 3.2909334171402225e-19,
+    "payoff_mean": 0.015801200383101018,
+    "payoff_second_moment": 0.014373450067339704,
+    "q_star": 0.014327893175074186,
+    "payoff_variance": 0.014124478357710678,
+    "analytic_variance": 0.014122604652237847,
+    "factor_second_moment_frobenius_error": 0.015967892562259788,
+    "SR_estimate": 0.13295475432403883,
+    "SR_star": 0.12056602260138022,
+    "SR_passed": true,
+    "predeclared_absolute_tolerances": {
+      "mean": 0.005041893332273911,
+      "second_moment": 0.0008595853454145346,
+      "SR": 0.042580307058842644
+    },
+    "factor_moments_passed": true,
+    "factor_mean": [
+      0.11442726109255594,
+      0.06197687826572227,
+      0.02803834368451205
+    ],
+    "factor_second_moment": [
+      [
+        1.0123124026299346,
+        -0.0012089012514228136,
+        -0.0022329850870964037
+      ],
+      [
+        -0.0012089012514228136,
+        0.993658672236175,
+        -0.00474348008900559
+      ],
+      [
+        -0.0022329850870964037,
+        -0.00474348008900559,
+        1.0022955087825218
+      ]
+    ],
+    "factor_mean_absolute_tolerances": [
+      0.04221374183841086,
+      0.042349970484051105,
+      0.04240731069049298
+    ],
+    "factor_second_moment_absolute_tolerances": [
+      [
+        0.05999699992499624,
+        0.04242487949305219,
+        0.042426025031812725
+      ],
+      [
+        0.04242487949305219,
+        0.05999961119874027,
+        0.042426269409411896
+      ],
+      [
+        0.042426025031812725,
+        0.042426269409411896,
+        0.05999997569999507
+      ]
+    ],
+    "tolerance_method": "Six analytic standard errors by default; Gaussian Sharpe delta-method SE, unannualized."
+  },
+  "conditions": {
+    "E1": "exact",
+    "E2": "exact",
+    "E3": "exact",
+    "E4": "exact",
+    "E5": "exact",
+    "E6": "exact"
+  },
+  "environment_hash": "1e50c8473ab0019965e4bdb2f9a6de37b4dc0372da586207a557121b81e79b0e"
+}

@@ -8,6 +8,5 @@
   "platform": "macOS-26.2-arm64-arm-64bit-Mach-O",
   "physical_memory_GiB": 8,
   "blas_threads_per_worker": 1,
-  "physical_memory_bytes": 8589934592,
-  "final_Monte_Carlo_workers": 2
+  "physical_memory_bytes": 8589934592
 }

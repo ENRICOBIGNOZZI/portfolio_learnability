@@ -1,0 +1,110 @@
+
+\clearpage
+\section*{Simulation appendix}
+Population evaluation uses independent group quadrature. In orthonormal
+Nystr\"om coordinates $\phi(z)$, write
+$H_g=\frac13\sum_r\phi(Z_{g,r})\beta(Z_{g,r})'$ and
+$\overline H=M^{-1}\sum_g H_g$. Then
+\[
+\widehat\Sigma=\frac{\sigma_\varepsilon^2}{N}\widehat T_K
++\frac1{GM}\sum_g H_gH_g'
++\left(1-\frac1G\right)\overline H\overline H',
+\qquad
+\widehat T_K=\frac1{3M}\sum_{g,r}\phi(Z_{g,r})\phi(Z_{g,r})'.
+\]
+This integrates the factor and idiosyncratic shocks analytically while preserving
+within-triplet dependence. The quadrature distribution is independent of all
+training paths and cannot affect validation choices. For empirical ranks, full
+independent cross-sections are integrated because ranking couples groups.
+For heteroskedasticity, the idiosyncratic term uses the actual bounded
+state-dependent conditional variance.
+
+The headline population quadrature estimates the regret floor of the unregularized rank-256 subspace at 0.00002098. This approximation floor is included in every displayed population-bias curve.
+
+The paired numerical-rank check uses the first 200 headline economic paths. Increasing rank from 256 to 512 changes mean oracle or selected regret by at most 4.64 percent across all training lengths, against the predeclared 10 percent tolerance. The lower rank 128 is reported as a separate sensitivity. For the first 20 fixed headline policies, increasing independent population quadrature from 8,192 to 32,768 groups changes mean evaluated regret by at most 1.58 percent (5 percent tolerance). This latter comparison holds fitted policies and penalties fixed; it does not reselect tuning parameters.
+
+\input{\simoutput/tables/appendix_spectral_rates.tex}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=\textwidth]{\simoutput/figures/population_loss_complexity.pdf}
+\caption{Population ridge loss versus population effective complexity.}
+\label{fig:sim_population_loss_complexity}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=\textwidth]{\simoutput/figures/baseline_oos_loss_uncertainty.pdf}
+\caption{OOS loss: Monte Carlo mean, median, and pointwise confidence interval for the mean.}
+\label{fig:sim_baseline_oos_loss_uncertainty}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=\textwidth]{\simoutput/figures/baseline_oos_sharpe_uncertainty.pdf}
+\caption{OOS Sharpe: Monte Carlo mean, median, and pointwise confidence interval for the mean.}
+\label{fig:sim_baseline_oos_sharpe_uncertainty}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=\textwidth]{\simoutput/figures/lambda_complexity.pdf}
+\caption{Population and empirical effective complexity as reparameterizations of regularization.}
+\label{fig:sim_lambda_complexity}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=\textwidth]{\simoutput/figures/selected_complexity_distributions.pdf}
+\caption{Selection distributions and oracle versus selected empirical complexity.}
+\label{fig:sim_selected_complexity_distributions}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=\textwidth]{\simoutput/figures/appendix_N_robustness.pdf}
+\caption{Cross-sectional-size robustness at every fixed training length.}
+\label{fig:sim_appendix_N_robustness}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=\textwidth]{\simoutput/figures/appendix_persistence.pdf}
+\caption{Persistence robustness.}
+\label{fig:sim_appendix_persistence}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=\textwidth]{\simoutput/figures/appendix_SNR.pdf}
+\caption{Signal-to-noise robustness.}
+\label{fig:sim_appendix_SNR}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=\textwidth]{\simoutput/figures/appendix_spectral_b.pdf}
+\caption{Spectral-decay robustness across Mat'ern smoothness values.}
+\label{fig:sim_appendix_spectral_b}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=\textwidth]{\simoutput/figures/appendix_approximation_rank.pdf}
+\caption{Numerical approximation-rank sensitivity; the economic factor dimension remains three.}
+\label{fig:sim_appendix_approximation_rank}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=\textwidth]{\simoutput/figures/appendix_empirical_ranks.pdf}
+\caption{Empirical-rank robustness: E5 has finite support and does not have the baseline asymptotic interpretation.}
+\label{fig:sim_appendix_empirical_ranks}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=\textwidth]{\simoutput/figures/appendix_heteroskedastic.pdf}
+\caption{Bounded heteroskedasticity: conditional pricing is not imposed and regret uses a finite-subspace reference.}
+\label{fig:sim_appendix_heteroskedastic}
+\end{figure}

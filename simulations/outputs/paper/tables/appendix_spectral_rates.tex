@@ -1,0 +1,25 @@
+\begin{table}[p]
+\centering
+\caption{Spectral and learning-rate sensitivity across Matérn smoothness values. Fitted learning exponents use the full predeclared T grid.}
+\label{tab:sim_spectral_rates}
+\begingroup\small
+\setlength{\tabcolsep}{4pt}
+\ifdefined\simtablebox\else\newsavebox{\simtablebox}\fi
+\sbox{\simtablebox}{%
+\begin{tabular}{lrrrrrr}
+\toprule
+ & \multicolumn{2}{c}{Spectral decay} & \multicolumn{2}{c}{Regret exponent} & \multicolumn{2}{c}{Complexity exponent} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}
+Kernel & Theory & Fitted & Theory & Fitted & Theory & Fitted \\
+\midrule
+nu = 1.5 & 1.5 & 1.24 & 0.6 & 0.5177 & 0.4 & 1.441 \\
+nu = 0.5 & 1.167 & 1.004 & 0.5385 & 0.498 & 0.4615 & 1.807 \\
+nu = 2.5 & 1.833 & 1.365 & 0.6471 & 0.5656 & 0.3529 & 1.564 \\
+\bottomrule
+\end{tabular}
+}
+\ifdim\wd\simtablebox>\linewidth
+\resizebox{\linewidth}{!}{\usebox{\simtablebox}}
+\else\usebox{\simtablebox}\fi
+\endgroup
+\end{table}

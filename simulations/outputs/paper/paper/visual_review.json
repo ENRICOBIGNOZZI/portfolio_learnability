@@ -1,0 +1,27 @@
+{
+  "profile": "paper",
+  "passed": true,
+  "pdf_sha256": "b7c94d37efd8ef8a7b702358e5b963ab8afcb044a85bd6d2f78670f949d4b447",
+  "pages_reviewed": 91,
+  "render_dpi": 75,
+  "method": "All 91 pages inspected in six contact sheets; main tables and figures inspected individually. After the spectral-table layout correction, all 91 pages re-rendered; 90 pixel-identical pages retained their prior review, and changed page 81 was inspected individually.",
+  "individually_inspected_pages": [
+    34,
+    35,
+    36,
+    40,
+    81,
+    89
+  ],
+  "unchanged_pages_after_final_correction": 90,
+  "changed_pages_after_final_correction": [
+    81
+  ],
+  "checks": [
+    "No clipped content or overlapping labels",
+    "Readable publication tables and figures",
+    "No undefined references or overfull boxes in final LaTeX log",
+    "Theory and empirical material preserved by hashes"
+  ],
+  "render_directory": "tmp/pdfs/final_render_v2"
+}

@@ -1,0 +1,280 @@
+{
+  "passed": true,
+  "baseline_theorem_claim": false,
+  "conditions": {
+    "E1": "exact: measurable map of stable AR state",
+    "E2": "exact: Gaussian conditional returns and bounded loadings",
+    "E3": "exact: same smooth beta policy",
+    "E4": "exact without ties: equally spaced first-coordinate ranks balance trigonometric loadings",
+    "E5": "violated: fixed-N empirical ranks have finite support",
+    "E6": "exact under rank balance"
+  },
+  "states": [
+    {
+      "date": 0,
+      "balance_error": 3.087130171127396e-19,
+      "beta_norm_error": 6.505213034913027e-19,
+      "baseline_policy_normal_equation_error": 1.1407074434940499e-17,
+      "max_fourth_moment_ratio": 2.999999994104756,
+      "B_X_squared": 0.032,
+      "log_mgf": 0.004015075644389846,
+      "maximum_scaled_eigenvalue": 0.006273746470945668,
+      "quadratic_covariance_max_eigenvalue": 0.00010037994353513069
+    },
+    {
+      "date": 1,
+      "balance_error": 2.68730814288408e-19,
+      "beta_norm_error": 6.505213034913027e-19,
+      "baseline_policy_normal_equation_error": 1.194189141592956e-17,
+      "max_fourth_moment_ratio": 2.999999987083982,
+      "B_X_squared": 0.032,
+      "log_mgf": 0.004001409268679949,
+      "maximum_scaled_eigenvalue": 0.006265537560182008,
+      "quadratic_covariance_max_eigenvalue": 0.00010024860096291213
+    },
+    {
+      "date": 2,
+      "balance_error": 2.450065026699112e-19,
+      "beta_norm_error": 6.505213034913027e-19,
+      "baseline_policy_normal_equation_error": 1.1571128320547065e-17,
+      "max_fourth_moment_ratio": 2.9999999894966902,
+      "B_X_squared": 0.032,
+      "log_mgf": 0.004008946527581519,
+      "maximum_scaled_eigenvalue": 0.006289275579102094,
+      "quadratic_covariance_max_eigenvalue": 0.00010062840926563351
+    },
+    {
+      "date": 3,
+      "balance_error": 2.2030239549219764e-19,
+      "beta_norm_error": 6.505213034913027e-19,
+      "baseline_policy_normal_equation_error": 1.158657058980808e-17,
+      "max_fourth_moment_ratio": 2.9999999936338577,
+      "B_X_squared": 0.032,
+      "log_mgf": 0.004041112454706758,
+      "maximum_scaled_eigenvalue": 0.006321729308109288,
+      "quadratic_covariance_max_eigenvalue": 0.00010114766892974861
+    },
+    {
+      "date": 4,
+      "balance_error": 2.1975118062024825e-19,
+      "beta_norm_error": 6.505213034913027e-19,
+      "baseline_policy_normal_equation_error": 1.1598778169779974e-17,
+      "max_fourth_moment_ratio": 2.9999999929740353,
+      "B_X_squared": 0.032,
+      "log_mgf": 0.004024112809726577,
+      "maximum_scaled_eigenvalue": 0.006287895323705458,
+      "quadratic_covariance_max_eigenvalue": 0.00010060632517928734
+    },
+    {
+      "date": 5,
+      "balance_error": 2.4582237101761375e-19,
+      "beta_norm_error": 6.505213034913027e-19,
+      "baseline_policy_normal_equation_error": 1.1481806265379671e-17,
+      "max_fourth_moment_ratio": 2.9999999986781445,
+      "B_X_squared": 0.032,
+      "log_mgf": 0.0040175904745121315,
+      "maximum_scaled_eigenvalue": 0.006281101427179086,
+      "quadratic_covariance_max_eigenvalue": 0.00010049762283486539
+    },
+    {
+      "date": 6,
+      "balance_error": 2.1987944983606716e-19,
+      "beta_norm_error": 6.505213034913027e-19,
+      "baseline_policy_normal_equation_error": 1.1757565211752338e-17,
+      "max_fourth_moment_ratio": 2.9999999886398445,
+      "B_X_squared": 0.032,
+      "log_mgf": 0.00401121191928494,
+      "maximum_scaled_eigenvalue": 0.006264989972853138,
+      "quadratic_covariance_max_eigenvalue": 0.00010023983956565021
+    },
+    {
+      "date": 7,
+      "balance_error": 2.1904882930990974e-19,
+      "beta_norm_error": 6.505213034913027e-19,
+      "baseline_policy_normal_equation_error": 1.1989215400870588e-17,
+      "max_fourth_moment_ratio": 2.999999997836426,
+      "B_X_squared": 0.032,
+      "log_mgf": 0.004021920622468512,
+      "maximum_scaled_eigenvalue": 0.006311856350659941,
+      "quadratic_covariance_max_eigenvalue": 0.00010098970161055907
+    },
+    {
+      "date": 8,
+      "balance_error": 3.0882881370514266e-19,
+      "beta_norm_error": 6.505213034913027e-19,
+      "baseline_policy_normal_equation_error": 1.110915456652345e-17,
+      "max_fourth_moment_ratio": 2.9999999937283373,
+      "B_X_squared": 0.032,
+      "log_mgf": 0.004022228424769208,
+      "maximum_scaled_eigenvalue": 0.0063074553887355715,
+      "quadratic_covariance_max_eigenvalue": 0.00010091928621976915
+    },
+    {
+      "date": 9,
+      "balance_error": 2.4588310009940555e-19,
+      "beta_norm_error": 6.505213034913027e-19,
+      "baseline_policy_normal_equation_error": 1.187789128396238e-17,
+      "max_fourth_moment_ratio": 2.999999998100308,
+      "B_X_squared": 0.032,
+      "log_mgf": 0.00402430293447461,
+      "maximum_scaled_eigenvalue": 0.0063133058594690775,
+      "quadratic_covariance_max_eigenvalue": 0.00010101289375150525
+    },
+    {
+      "date": 10,
+      "balance_error": 2.455278429773022e-19,
+      "beta_norm_error": 6.505213034913027e-19,
+      "baseline_policy_normal_equation_error": 1.1722814564994409e-17,
+      "max_fourth_moment_ratio": 2.99999998303089,
+      "B_X_squared": 0.032,
+      "log_mgf": 0.003997893453821778,
+      "maximum_scaled_eigenvalue": 0.006273881380973058,
+      "quadratic_covariance_max_eigenvalue": 0.00010038210209556893
+    },
+    {
+      "date": 11,
+      "balance_error": 2.68190730123655e-19,
+      "beta_norm_error": 6.505213034913027e-19,
+      "baseline_policy_normal_equation_error": 1.1282912285781292e-17,
+      "max_fourth_moment_ratio": 2.9999999962527517,
+      "B_X_squared": 0.032,
+      "log_mgf": 0.004036898968657959,
+      "maximum_scaled_eigenvalue": 0.0062975199954970655,
+      "quadratic_covariance_max_eigenvalue": 0.00010076031992795306
+    },
+    {
+      "date": 12,
+      "balance_error": 3.2758030286339495e-19,
+      "beta_norm_error": 6.505213034913027e-19,
+      "baseline_policy_normal_equation_error": 1.17746768703174e-17,
+      "max_fourth_moment_ratio": 2.9999999987310395,
+      "B_X_squared": 0.032,
+      "log_mgf": 0.004046122850554837,
+      "maximum_scaled_eigenvalue": 0.006297861098572481,
+      "quadratic_covariance_max_eigenvalue": 0.0001007657775771597
+    },
+    {
+      "date": 13,
+      "balance_error": 2.462367506763718e-19,
+      "beta_norm_error": 6.505213034913027e-19,
+      "baseline_policy_normal_equation_error": 1.1565019985344435e-17,
+      "max_fourth_moment_ratio": 2.999999995061819,
+      "B_X_squared": 0.032,
+      "log_mgf": 0.004037945289980364,
+      "maximum_scaled_eigenvalue": 0.006293487550751201,
+      "quadratic_covariance_max_eigenvalue": 0.00010069580081201922
+    },
+    {
+      "date": 14,
+      "balance_error": 2.452126550814437e-19,
+      "beta_norm_error": 6.505213034913027e-19,
+      "baseline_policy_normal_equation_error": 1.1829710539671559e-17,
+      "max_fourth_moment_ratio": 2.9999999873618832,
+      "B_X_squared": 0.032,
+      "log_mgf": 0.004023500845669202,
+      "maximum_scaled_eigenvalue": 0.006261676103949823,
+      "quadratic_covariance_max_eigenvalue": 0.00010018681766319717
+    },
+    {
+      "date": 15,
+      "balance_error": 2.4577428180186277e-19,
+      "beta_norm_error": 6.505213034913027e-19,
+      "baseline_policy_normal_equation_error": 1.1870892093923839e-17,
+      "max_fourth_moment_ratio": 2.9999999939498867,
+      "B_X_squared": 0.032,
+      "log_mgf": 0.004017608586943203,
+      "maximum_scaled_eigenvalue": 0.006280328806326975,
+      "quadratic_covariance_max_eigenvalue": 0.00010048526090123159
+    },
+    {
+      "date": 16,
+      "balance_error": 3.0963417003468104e-19,
+      "beta_norm_error": 6.505213034913027e-19,
+      "baseline_policy_normal_equation_error": 1.177466224642036e-17,
+      "max_fourth_moment_ratio": 2.9999999957219803,
+      "B_X_squared": 0.032,
+      "log_mgf": 0.004017336356000643,
+      "maximum_scaled_eigenvalue": 0.00629056553404003,
+      "quadratic_covariance_max_eigenvalue": 0.00010064904854464048
+    },
+    {
+      "date": 17,
+      "balance_error": 2.450001055080161e-19,
+      "beta_norm_error": 6.505213034913027e-19,
+      "baseline_policy_normal_equation_error": 1.107860241492665e-17,
+      "max_fourth_moment_ratio": 2.9999999933329184,
+      "B_X_squared": 0.032,
+      "log_mgf": 0.004020228136388987,
+      "maximum_scaled_eigenvalue": 0.006294117454527576,
+      "quadratic_covariance_max_eigenvalue": 0.00010070587927244123
+    },
+    {
+      "date": 18,
+      "balance_error": 2.4524361292557484e-19,
+      "beta_norm_error": 6.505213034913027e-19,
+      "baseline_policy_normal_equation_error": 1.147121356438078e-17,
+      "max_fourth_moment_ratio": 2.9999999840728417,
+      "B_X_squared": 0.032,
+      "log_mgf": 0.004028806252952995,
+      "maximum_scaled_eigenvalue": 0.006340866247350616,
+      "quadratic_covariance_max_eigenvalue": 0.00010145385995760986
+    },
+    {
+      "date": 19,
+      "balance_error": 2.46002854134904e-19,
+      "beta_norm_error": 6.505213034913027e-19,
+      "baseline_policy_normal_equation_error": 1.1411284200003713e-17,
+      "max_fourth_moment_ratio": 2.999999994594962,
+      "B_X_squared": 0.032,
+      "log_mgf": 0.004030877446534034,
+      "maximum_scaled_eigenvalue": 0.006340872994835995,
+      "quadratic_covariance_max_eigenvalue": 0.00010145396791737592
+    },
+    {
+      "date": 20,
+      "balance_error": 2.208316642681822e-19,
+      "beta_norm_error": 6.505213034913027e-19,
+      "baseline_policy_normal_equation_error": 1.1241647681368573e-17,
+      "max_fourth_moment_ratio": 2.9999999915407862,
+      "B_X_squared": 0.032,
+      "log_mgf": 0.004015554868830105,
+      "maximum_scaled_eigenvalue": 0.006309843810864058,
+      "quadratic_covariance_max_eigenvalue": 0.00010095750097382493
+    },
+    {
+      "date": 21,
+      "balance_error": 2.447857039744469e-19,
+      "beta_norm_error": 6.505213034913027e-19,
+      "baseline_policy_normal_equation_error": 1.1853531473141325e-17,
+      "max_fourth_moment_ratio": 2.9999999987682924,
+      "B_X_squared": 0.032,
+      "log_mgf": 0.004002291368419735,
+      "maximum_scaled_eigenvalue": 0.00628809024721523,
+      "quadratic_covariance_max_eigenvalue": 0.00010060944395544368
+    },
+    {
+      "date": 22,
+      "balance_error": 2.682904774081078e-19,
+      "beta_norm_error": 6.505213034913027e-19,
+      "baseline_policy_normal_equation_error": 1.133469854235526e-17,
+      "max_fourth_moment_ratio": 2.9999999995565423,
+      "B_X_squared": 0.032,
+      "log_mgf": 0.0040025355399211935,
+      "maximum_scaled_eigenvalue": 0.006280957487941866,
+      "quadratic_covariance_max_eigenvalue": 0.00010049531980706986
+    },
+    {
+      "date": 23,
+      "balance_error": 2.2000374831769397e-19,
+      "beta_norm_error": 6.505213034913027e-19,
+      "baseline_policy_normal_equation_error": 1.1433775697216485e-17,
+      "max_fourth_moment_ratio": 2.999999982780511,
+      "B_X_squared": 0.032,
+      "log_mgf": 0.003998635359617914,
+      "maximum_scaled_eigenvalue": 0.006247689873887746,
+      "quadratic_covariance_max_eigenvalue": 9.996303798220393e-05
+    }
+  ],
+  "reference": "balanced analytic optimum",
+  "environment_hash": "418f02189a970da92bd843d3f53bf40a0a228c513e2b62069fe9defb1cfcce3d"
+}

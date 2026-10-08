@@ -1,0 +1,45 @@
+{
+  "q_reference": 0.01420480516951705,
+  "reference_sharpe": 0.12003953163672419,
+  "subspace_regret_floor": 1.5612511283791264e-17,
+  "theoretical_b": 1.5,
+  "parameters": {
+    "N": 600,
+    "D": 6,
+    "K_F": 3,
+    "rho": [
+      0.95,
+      0.95,
+      0.95,
+      0.95,
+      0.95,
+      0.95
+    ],
+    "nu": 1.5,
+    "ell": 1.0,
+    "c_beta": 0.0016,
+    "sigma_eps": 0.08,
+    "mu_F": [
+      0.1,
+      0.06,
+      0.03
+    ]
+  },
+  "environment": {
+    "name": "heteroskedastic",
+    "code": 13,
+    "N": 600,
+    "rho": 0.95,
+    "signal_multiplier": 1.0,
+    "sigma_eps": 0.08,
+    "nu": 1.5,
+    "rank": 256,
+    "variant": "heteroskedastic",
+    "replications": 200
+  },
+  "reference_kind": "finite Nystr\u00f6m-subspace optimum only",
+  "population_groups": 8192,
+  "population_seed": 202610073,
+  "basis_seed": 202610072,
+  "run_hash": "545fcfce1dec9b86f7e2e0352db930f19815b604940e16b9c73940915280bc5f"
+}

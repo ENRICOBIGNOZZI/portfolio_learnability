@@ -1,0 +1,151 @@
+{
+  "status": "numerically_verified_pending_paper_integration",
+  "profile": "smoke",
+  "configuration": {
+    "profile": "smoke",
+    "master_seed": 202610071,
+    "basis_seed": 202610072,
+    "population_seed": 202610073,
+    "bootstrap_seed": 202610074,
+    "T": [
+      60,
+      120,
+      240
+    ],
+    "penalties": [
+      1e-12,
+      2.101748011332487e-12,
+      4.4173447031400646e-12,
+      9.284145445194764e-12,
+      1.9512934226359664e-11,
+      4.1011270705513045e-11,
+      8.619535664753033e-11,
+      1.8116091942004132e-10,
+      3.807546021222368e-10,
+      8.002502278161036e-10,
+      1.6819243248808724e-09,
+      3.5349811050301094e-09,
+      7.42963950759495e-09,
+      1.5615230060004964e-08,
+      3.281927872511471e-08,
+      6.897785379387658e-08,
+      1.4497406703726317e-07,
+      3.046989570903505e-07,
+      6.404004271197283e-07,
+      1.3459603241553642e-06,
+      2.8288694346259667e-06,
+      5.945570708544394e-06,
+      1.2496091412919867e-05,
+      2.62636352765333e-05,
+      5.519954321281573e-05,
+      0.00011601553017399714,
+      0.00024383540982688266,
+      0.0005124805876960926,
+      0.0010771050560367669,
+      0.002263803409521451,
+      0.004757944314009414,
+      0.01
+    ],
+    "validation_fraction": 0.25,
+    "oos_periods": 120,
+    "population_groups": 1024,
+    "bootstrap_replications": 100,
+    "workers": 2,
+    "approximation_relative_tolerance": 0.1,
+    "cases": [
+      {
+        "name": "baseline",
+        "code": 0,
+        "N": 600,
+        "rho": 0.95,
+        "signal_multiplier": 1.0,
+        "sigma_eps": 0.08,
+        "nu": 1.5,
+        "rank": 64,
+        "variant": "baseline",
+        "replications": 4
+      }
+    ]
+  },
+  "config_hash": "f6f199e5649bc0ffe89638af120d051a3b2dec0da23de4d86451b21fcfae1494",
+  "source_hashes": {
+    "simulations/config/design.py": "7c40c4eebe5e444dfc367fffdc107adfe274d19110a3a594a603f6ee3b8ea05d",
+    "simulations/dgp/balanced.py": "74dcae2ebca8ae525da899c40359a9ee48b3902320365e0dfbccc825f2293a12",
+    "simulations/dgp/robustness.py": "2dc8eaecb4ab22bf9d5d68af770038256db931bd600bcffb7e6943a035fac418",
+    "simulations/estimator/kernel.py": "01a4f35ae194c3d778e5209a09a644ce6f71046107eb401ff4f309aebdd9ccd8",
+    "simulations/estimator/ridge.py": "61f36a81f7db3520fa9a37ce12b19a764779ac774af24b97dc0121c5627e1e86",
+    "simulations/experiments/population.py": "457a59010db31b967b6c5b34b9e886ca8c754e7222c4b83e80f0bbe7a82b222f",
+    "simulations/experiments/monte_carlo.py": "6b91678061fb4fb99162ef2bd1f0c721dd71d1650e6417d46a6656f9d16e9cda"
+  },
+  "git_sha": "2c79e4b8b2ba661d7eebc49f658e8daef2b58c01",
+  "working_tree_sources_hashed": true,
+  "python": "3.13.3",
+  "numpy": "2.3.5",
+  "scipy": "1.16.3",
+  "hardware": "macOS-26.2-arm64-arm-64bit-Mach-O",
+  "workers": 1,
+  "completed_environments": [
+    "baseline"
+  ],
+  "logical_cpus": 8,
+  "BLAS_thread_environment": {
+    "VECLIB_MAXIMUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1"
+  },
+  "package_versions": {
+    "numpy": "2.3.5",
+    "scipy": "1.16.3",
+    "pandas": "2.2.3",
+    "matplotlib": "3.10.8",
+    "jinja2": "3.1.6"
+  },
+  "derived_output_source_hashes": {
+    "simulations/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "simulations/config/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "simulations/dgp/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "simulations/diagnostics/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "simulations/diagnostics/approximation.py": "55c3b31f256fbfa47518cd80887e7d9282db6ff85af0d859efe64cee212e1fa5",
+    "simulations/diagnostics/baseline.py": "8fe1b130f115fb5dc92b2eadc2cf66470a3f677a8b237f94080fce9baee89b8b",
+    "simulations/diagnostics/closeout.py": "7d969b4f2e0846e6fe55e7627ce63011dda0ae4fc398fffa40752fc907bfa0a1",
+    "simulations/diagnostics/path_integrity.py": "c48f0b7d7d1ca7111f871afe29cd48055615993c8fca6cd8400cdf245731cc7c",
+    "simulations/diagnostics/quadrature.py": "6a734ba30f3b0d194d9d99b23869fa6208a7da41c0882c7114e53b920ee0e56b",
+    "simulations/diagnostics/variants.py": "ab59e5d0088a7f86163f7b11440f4f13ede4198137000ba4debb3cf7ef7f623a",
+    "simulations/diagnostics/verify.py": "55ace537ed0597d97b1099088e41b268315ea9bdc939d355bdcdea392525077c",
+    "simulations/estimator/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "simulations/experiments/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "simulations/experiments/reporting.py": "5e04c4bec7b284864d0404cfd005f7cfba4c09328e1a3e8d853a9b5dde39c14c",
+    "simulations/manuscript.py": "c844e60e81724a5198fc1324aa232c6589a6ce27fdb4dfb937351251663bde83",
+    "simulations/paper.py": "547399629272057aa4dc38a4a97e40187245c50bce50ab340362506e274711ec",
+    "simulations/plotting/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "simulations/plotting/figures.py": "790e53b700a3fbc17c72237676b858248afd5ee9628bb28ac7ecbe7a2a760e4a",
+    "simulations/plotting/robustness.py": "c2b777fd6307bc7e9b7389eef7233d39140754de6b8191d576439390be7b54d0",
+    "simulations/plotting/tables.py": "99124141c927150baa8aeafe41b82a7ff4407ad06b84f568ac00fd589fe211ca",
+    "simulations/run.py": "66cde8306a63f6e3076a1305f7cff0bc85bf7497fbf6277567e1401b5385047d"
+  },
+  "scope": "full",
+  "elapsed_seconds": 24.03280691697728,
+  "numerical_verification": {
+    "passed": true,
+    "profile": "smoke",
+    "environments": [
+      {
+        "environment": "baseline",
+        "replications_verified": 4,
+        "T_values": 3,
+        "penalties": 32,
+        "oracle_boundary_T_count": 2,
+        "all_production_dates_verified": 1440,
+        "beta_norm_max_error": 8.673617379884035e-19,
+        "balance_max_error": 3.784080287004479e-19,
+        "baseline_policy_normal_equation_max_error": 7.976236395747438e-17,
+        "policy_coordinate_max_error": 6.938893903907228e-18,
+        "pricing_exact_claim": true,
+        "passed": true
+      }
+    ],
+    "total_replications": 4,
+    "legacy_cleanup_verified": true,
+    "paper_integration": "separately verified; not implied by this numerical audit"
+  }
+}

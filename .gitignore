@@ -28,16 +28,16 @@ dist/
 *.out
 *.blg
 *.bbl
+*.fdb_latexmk
+*.fls
+*.synctex.gz
 test_results.xml
 source_manifest.json
 .DS_Store
 
 .mypy_cache/
 .vscode/
+/tmp/
 
 # Public portfolio-level path aggregates; licensed stock-level parquet stays ignored.
 !/outputs/tables/year_lambda_complexity_path_*.parquet
-
-# Artificial-economy aggregate Monte Carlo surface (no licensed observations).
-!/outputs/simulations/characteristic_factor_full_surface.parquet
-!/outputs/simulations/characteristic_factor_performance_surface.parquet

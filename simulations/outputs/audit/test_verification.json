@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "repository_suite": {
+    "command": "python3 -m pytest tests -q",
+    "passed": 123,
+    "duration_seconds": 75.29
+  },
+  "pipeline_after_reporting_changes": {
+    "command": "python3 -m pytest tests/test_simulation_pipeline.py -q",
+    "passed": 9,
+    "duration_seconds": 9.01
+  },
+  "excluded_scope": "Separate untracked non stationarity/adaptive_memory_equities project: bare pytest collection requires its separately installed package.",
+  "pipeline_after_audit_cache_fix": {
+    "command": "python3 -m pytest tests/test_simulation_pipeline.py -q",
+    "passed": 9,
+    "duration_seconds": 2.71
+  }
+}

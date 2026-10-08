@@ -1,0 +1,45 @@
+{
+  "q_reference": 0.014160818713450294,
+  "reference_sharpe": 0.11985085707363763,
+  "subspace_regret_floor": 2.492807432909888e-05,
+  "theoretical_b": 1.5,
+  "parameters": {
+    "N": 501,
+    "D": 6,
+    "K_F": 3,
+    "rho": [
+      0.95,
+      0.95,
+      0.95,
+      0.95,
+      0.95,
+      0.95
+    ],
+    "nu": 1.5,
+    "ell": 1.0,
+    "c_beta": 0.0016,
+    "sigma_eps": 0.08,
+    "mu_F": [
+      0.1,
+      0.06,
+      0.03
+    ]
+  },
+  "environment": {
+    "name": "N501",
+    "code": 3,
+    "N": 501,
+    "rho": 0.95,
+    "signal_multiplier": 1.0,
+    "sigma_eps": 0.08,
+    "nu": 1.5,
+    "rank": 256,
+    "variant": "baseline",
+    "replications": 200
+  },
+  "reference_kind": "exact conditional optimum",
+  "population_groups": 8192,
+  "population_seed": 202610073,
+  "basis_seed": 202610072,
+  "run_hash": "98ffcd2dc8d02074e8382bfb6f63e9eb6c77d070dd5cc7a403c3a0703a1a6649"
+}

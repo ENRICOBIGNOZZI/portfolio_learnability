@@ -1,0 +1,280 @@
+{
+  "passed": true,
+  "baseline_theorem_claim": false,
+  "conditions": {
+    "E1": "exact: measurable map of stable AR state",
+    "E2": "exact with enlarged bound: bounded conditional Gaussian volatility",
+    "E3": "not established for unrestricted optimum; finite-subspace optimum belongs to RKHS",
+    "E4": "deliberately not imposed: conditional inverse varies with cross-section",
+    "E5": "exact sandwich with bounded positive volatility multipliers",
+    "E6": "numerical finite-subspace reference only, not the baseline analytic optimum"
+  },
+  "states": [
+    {
+      "date": 0,
+      "balance_error": 2.7091896131951173e-19,
+      "beta_norm_error": 6.505213034913027e-19,
+      "baseline_policy_normal_equation_error": 0.0005971322251599754,
+      "max_fourth_moment_ratio": 2.9999999882205146,
+      "B_X_squared": 0.057952069311244206,
+      "log_mgf": 0.0022334141796844366,
+      "maximum_scaled_eigenvalue": 0.0034987651873704603,
+      "quadratic_covariance_max_eigenvalue": 0.00010138034132113062
+    },
+    {
+      "date": 1,
+      "balance_error": 2.456260028412727e-19,
+      "beta_norm_error": 6.505213034913027e-19,
+      "baseline_policy_normal_equation_error": 0.0005939020047690158,
+      "max_fourth_moment_ratio": 2.9999999946719784,
+      "B_X_squared": 0.057952069311244206,
+      "log_mgf": 0.0022317103908757268,
+      "maximum_scaled_eigenvalue": 0.0034888226543241317,
+      "quadratic_covariance_max_eigenvalue": 0.00010109224613901553
+    },
+    {
+      "date": 2,
+      "balance_error": 2.468574954332226e-19,
+      "beta_norm_error": 6.505213034913027e-19,
+      "baseline_policy_normal_equation_error": 0.0005711264499725667,
+      "max_fourth_moment_ratio": 2.9999999992241495,
+      "B_X_squared": 0.057952069311244206,
+      "log_mgf": 0.002234825546589793,
+      "maximum_scaled_eigenvalue": 0.00348086063791159,
+      "quadratic_covariance_max_eigenvalue": 0.00010086153847551709
+    },
+    {
+      "date": 3,
+      "balance_error": 2.6683736340712976e-19,
+      "beta_norm_error": 6.505213034913027e-19,
+      "baseline_policy_normal_equation_error": 0.00056028066654288,
+      "max_fourth_moment_ratio": 2.999999999750488,
+      "B_X_squared": 0.057952069311244206,
+      "log_mgf": 0.002262384529889118,
+      "maximum_scaled_eigenvalue": 0.0035078758590055556,
+      "quadratic_covariance_max_eigenvalue": 0.00010164433245816513
+    },
+    {
+      "date": 4,
+      "balance_error": 2.4414113561641386e-19,
+      "beta_norm_error": 8.673617379884035e-19,
+      "baseline_policy_normal_equation_error": 0.000571326216997547,
+      "max_fourth_moment_ratio": 2.9999999995234923,
+      "B_X_squared": 0.057952069311244206,
+      "log_mgf": 0.002246928908982531,
+      "maximum_scaled_eigenvalue": 0.0034987454177482775,
+      "quadratic_covariance_max_eigenvalue": 0.00010137976847587313
+    },
+    {
+      "date": 5,
+      "balance_error": 2.2047373288004945e-19,
+      "beta_norm_error": 6.505213034913027e-19,
+      "baseline_policy_normal_equation_error": 0.0005833162526193074,
+      "max_fourth_moment_ratio": 2.9999999982863876,
+      "B_X_squared": 0.057952069311244206,
+      "log_mgf": 0.002255349442362003,
+      "maximum_scaled_eigenvalue": 0.0035119911107040934,
+      "quadratic_covariance_max_eigenvalue": 0.00010176357613399858
+    },
+    {
+      "date": 6,
+      "balance_error": 2.6911774751423894e-19,
+      "beta_norm_error": 6.505213034913027e-19,
+      "baseline_policy_normal_equation_error": 0.0005940257106662775,
+      "max_fourth_moment_ratio": 2.999999999851579,
+      "B_X_squared": 0.057952069311244206,
+      "log_mgf": 0.002253231178846437,
+      "maximum_scaled_eigenvalue": 0.003524320514894752,
+      "quadratic_covariance_max_eigenvalue": 0.00010212083337711026
+    },
+    {
+      "date": 7,
+      "balance_error": 2.4697743805011137e-19,
+      "beta_norm_error": 6.505213034913027e-19,
+      "baseline_policy_normal_equation_error": 0.0005897993534434563,
+      "max_fourth_moment_ratio": 2.99999999999826,
+      "B_X_squared": 0.057952069311244206,
+      "log_mgf": 0.002261022779525791,
+      "maximum_scaled_eigenvalue": 0.0035128000118838185,
+      "quadratic_covariance_max_eigenvalue": 0.00010178701488261526
+    },
+    {
+      "date": 8,
+      "balance_error": 2.451749344904084e-19,
+      "beta_norm_error": 6.505213034913027e-19,
+      "baseline_policy_normal_equation_error": 0.0005782004333849156,
+      "max_fourth_moment_ratio": 2.9999999947163802,
+      "B_X_squared": 0.057952069311244206,
+      "log_mgf": 0.0022415339170171683,
+      "maximum_scaled_eigenvalue": 0.003500091450386589,
+      "quadratic_covariance_max_eigenvalue": 0.00010141877116424844
+    },
+    {
+      "date": 9,
+      "balance_error": 2.6836983524423247e-19,
+      "beta_norm_error": 6.505213034913027e-19,
+      "baseline_policy_normal_equation_error": 0.0005559798141551214,
+      "max_fourth_moment_ratio": 2.9999999956915584,
+      "B_X_squared": 0.057952069311244206,
+      "log_mgf": 0.002224714896906049,
+      "maximum_scaled_eigenvalue": 0.0034837159589097997,
+      "quadratic_covariance_max_eigenvalue": 0.00010094427435571415
+    },
+    {
+      "date": 10,
+      "balance_error": 2.520331539248709e-19,
+      "beta_norm_error": 6.505213034913027e-19,
+      "baseline_policy_normal_equation_error": 0.000594697978329115,
+      "max_fourth_moment_ratio": 2.9999999980184513,
+      "B_X_squared": 0.057952069311244206,
+      "log_mgf": 0.0022374461258335113,
+      "maximum_scaled_eigenvalue": 0.00349175031170401,
+      "quadratic_covariance_max_eigenvalue": 0.00010117707804071468
+    },
+    {
+      "date": 11,
+      "balance_error": 2.456561443060995e-19,
+      "beta_norm_error": 6.505213034913027e-19,
+      "baseline_policy_normal_equation_error": 0.0005804336843681937,
+      "max_fourth_moment_ratio": 2.9999999971373605,
+      "B_X_squared": 0.057952069311244206,
+      "log_mgf": 0.0022417557209445864,
+      "maximum_scaled_eigenvalue": 0.003480306883362837,
+      "quadratic_covariance_max_eigenvalue": 0.00010084549286452172
+    },
+    {
+      "date": 12,
+      "balance_error": 2.27588501330672e-19,
+      "beta_norm_error": 6.505213034913027e-19,
+      "baseline_policy_normal_equation_error": 0.0005746309370242239,
+      "max_fourth_moment_ratio": 2.999999986327715,
+      "B_X_squared": 0.057952069311244206,
+      "log_mgf": 0.0022319822797462557,
+      "maximum_scaled_eigenvalue": 0.003474041357263579,
+      "quadratic_covariance_max_eigenvalue": 0.00010066394276313391
+    },
+    {
+      "date": 13,
+      "balance_error": 2.4853742089044547e-19,
+      "beta_norm_error": 6.505213034913027e-19,
+      "baseline_policy_normal_equation_error": 0.0005885088769508938,
+      "max_fourth_moment_ratio": 2.9999999972667304,
+      "B_X_squared": 0.057952069311244206,
+      "log_mgf": 0.0022238067750983167,
+      "maximum_scaled_eigenvalue": 0.003464248492328628,
+      "quadratic_covariance_max_eigenvalue": 0.00010038018436940094
+    },
+    {
+      "date": 14,
+      "balance_error": 2.204229280092161e-19,
+      "beta_norm_error": 6.505213034913027e-19,
+      "baseline_policy_normal_equation_error": 0.0005841506792692231,
+      "max_fourth_moment_ratio": 2.9999999988781654,
+      "B_X_squared": 0.057952069311244206,
+      "log_mgf": 0.00223366051491323,
+      "maximum_scaled_eigenvalue": 0.003483514210436038,
+      "quadratic_covariance_max_eigenvalue": 0.0001009384284849467
+    },
+    {
+      "date": 15,
+      "balance_error": 2.199150875183932e-19,
+      "beta_norm_error": 6.505213034913027e-19,
+      "baseline_policy_normal_equation_error": 0.000579806184301444,
+      "max_fourth_moment_ratio": 2.99999999734976,
+      "B_X_squared": 0.057952069311244206,
+      "log_mgf": 0.0022375406906047896,
+      "maximum_scaled_eigenvalue": 0.003488132745039789,
+      "quadratic_covariance_max_eigenvalue": 0.00010107225530368318
+    },
+    {
+      "date": 16,
+      "balance_error": 2.1868865183689325e-19,
+      "beta_norm_error": 6.505213034913027e-19,
+      "baseline_policy_normal_equation_error": 0.0005731382923186974,
+      "max_fourth_moment_ratio": 2.9999999957087775,
+      "B_X_squared": 0.057952069311244206,
+      "log_mgf": 0.0022207562005601774,
+      "maximum_scaled_eigenvalue": 0.003479177951198074,
+      "quadratic_covariance_max_eigenvalue": 0.00010081278088699169
+    },
+    {
+      "date": 17,
+      "balance_error": 2.2275730404422805e-19,
+      "beta_norm_error": 6.505213034913027e-19,
+      "baseline_policy_normal_equation_error": 0.0006117059399840863,
+      "max_fourth_moment_ratio": 2.9999999986551513,
+      "B_X_squared": 0.057952069311244206,
+      "log_mgf": 0.0022369380226397746,
+      "maximum_scaled_eigenvalue": 0.0034884741028840998,
+      "quadratic_covariance_max_eigenvalue": 0.0001010821465004099
+    },
+    {
+      "date": 18,
+      "balance_error": 3.2704678929993472e-19,
+      "beta_norm_error": 6.505213034913027e-19,
+      "baseline_policy_normal_equation_error": 0.0006194154855094254,
+      "max_fourth_moment_ratio": 2.9999999993132196,
+      "B_X_squared": 0.057952069311244206,
+      "log_mgf": 0.0022279052939532216,
+      "maximum_scaled_eigenvalue": 0.00348410517757007,
+      "quadratic_covariance_max_eigenvalue": 0.00010095555236910275
+    },
+    {
+      "date": 19,
+      "balance_error": 3.122197937499567e-19,
+      "beta_norm_error": 6.505213034913027e-19,
+      "baseline_policy_normal_equation_error": 0.0005968535321073753,
+      "max_fourth_moment_ratio": 2.999999997520196,
+      "B_X_squared": 0.057952069311244206,
+      "log_mgf": 0.002233472349014265,
+      "maximum_scaled_eigenvalue": 0.003474393360288353,
+      "quadratic_covariance_max_eigenvalue": 0.00010067414241497865
+    },
+    {
+      "date": 20,
+      "balance_error": 2.454609734088413e-19,
+      "beta_norm_error": 6.505213034913027e-19,
+      "baseline_policy_normal_equation_error": 0.0005849837062829374,
+      "max_fourth_moment_ratio": 2.9999999979280707,
+      "B_X_squared": 0.057952069311244206,
+      "log_mgf": 0.002248948340033057,
+      "maximum_scaled_eigenvalue": 0.0034901023189482547,
+      "quadratic_covariance_max_eigenvalue": 0.00010112932574551169
+    },
+    {
+      "date": 21,
+      "balance_error": 3.265156291094861e-19,
+      "beta_norm_error": 6.505213034913027e-19,
+      "baseline_policy_normal_equation_error": 0.0005946553592410719,
+      "max_fourth_moment_ratio": 2.999999997090017,
+      "B_X_squared": 0.057952069311244206,
+      "log_mgf": 0.0022308088259279124,
+      "maximum_scaled_eigenvalue": 0.0034693266666709324,
+      "quadratic_covariance_max_eigenvalue": 0.00010052732972513085
+    },
+    {
+      "date": 22,
+      "balance_error": 2.245487210989491e-19,
+      "beta_norm_error": 6.505213034913027e-19,
+      "baseline_policy_normal_equation_error": 0.0006241601669131528,
+      "max_fourth_moment_ratio": 2.999999994811923,
+      "B_X_squared": 0.057952069311244206,
+      "log_mgf": 0.0022171853417818723,
+      "maximum_scaled_eigenvalue": 0.003465773524297797,
+      "quadratic_covariance_max_eigenvalue": 0.00010042437374859052
+    },
+    {
+      "date": 23,
+      "balance_error": 2.438717251388418e-19,
+      "beta_norm_error": 6.505213034913027e-19,
+      "baseline_policy_normal_equation_error": 0.0006061393499199253,
+      "max_fourth_moment_ratio": 2.999999993340724,
+      "B_X_squared": 0.057952069311244206,
+      "log_mgf": 0.00222419097004519,
+      "maximum_scaled_eigenvalue": 0.003454198291398929,
+      "quadratic_covariance_max_eigenvalue": 0.00010008896939896603
+    }
+  ],
+  "reference": "finite-subspace population optimum",
+  "environment_hash": "4f7306bd52e35c9acdb4c70f9b7c2c5d9e78a0d50f7b41c24bfbbfd7728ea029"
+}
