@@ -1,0 +1,47 @@
+\clearpage
+\section{Real-data accounting, spectral reconstruction, and audit}
+\label{app:real_audit}
+
+\subsection{Exact sensitivity accounting}
+Let $w_t$ denote target stock weights relative to post-execution NAV, $d_t$ drifted holdings relative to pre-execution NAV, and $\tau$ the proportional trading charge. We solve
+\begin{equation}
+ c_t=\tau\sum_i\left|(1-c_t)w_{i,t}-d_{i,t}\right|.
+\end{equation}
+Cash finances both trades and costs. With annual borrowing parameter $b$, monthly short notional $s_t=\sum_i(-w_{i,t})_+$, stock excess returns $r^e_{i,t+1}$, and the baseline cash return $r_{f,t+1}$, total growth is
+\begin{equation}
+ 1+R^{\mathrm{cost}}_{t+1}=(1-c_t)
+ \left(1+r_{f,t+1}+\sum_iw_{i,t}r^e_{i,t+1}-b s_t/12\right).
+\end{equation}
+Net excess return subtracts the cash return once. End-of-month stock holdings drift using stock total returns and the same portfolio denominator. Entries and exits use the union of current and previous stock identifiers. An unknown return for any nonzero current holding raises an error. Exited names have zero target holdings and do not require fabricated future returns.
+
+The trading fee fraction is $c_t$, while its return drag is $c_t(1+R^{\mathrm{gross}}_{t+1})$; the borrowing-fee fraction is $(1-c_t)b s_t/12$. These sum to the exact difference between gross and cost-adjusted total returns. This distinguishes fees actually charged under the hypothetical rule from their end-period wealth effect. All scenarios use the same risk-free financing rate, and no extra financing spread or market-impact model is assumed.
+
+\subsection{Training spectral filters and numerical identification}
+Write $GG'=U D U'$, where $D_j=T\widehat\mu_j$. For a retained set of the largest training eigenvalues, the nested ridge coefficient is
+\begin{equation}
+ \widehat\beta_k=G'U_k(D_k+T\widehat\lambda I)^{-1}U_k'\mathbf{1}.
+\end{equation}
+The positive-rank threshold is $10^{-12}$ times the largest eigenvalue. Partition sizes are rounded up, and adjacent eigenvalues with relative boundary gaps at most $10^{-8}$ are kept together. The full endpoint includes every computed direction and is reconciled with stored coefficients and payoffs. Annual nested group sizes and boundary gaps remain available in the monthly diagnostic table.
+
+Across the three models, maximum absolute raw-payoff reconstruction error is below $3.2\times10^{-10}$; maximum relative coefficient error is below $4.4\times10^{-11}$. Direct normalized dual solves at five historical cutoffs agree to within $5.1\times10^{-11}$ in raw OOS payoffs. Primal singular-value and dual eigenvalue comparisons on the first 120 historical months agree within $1.1\times10^{-15}$ relative to the leading eigenvalue. Feature-space eigenpair residuals at the leading, middle, and smallest identified direction are below $2.1\times10^{-6}$ across annual fits. Tail precision is therefore weaker than leading-spectrum precision and is reported rather than concealed.
+
+The inspected secondary CTF repository confirms the normalized dual algebra. Its feature map, default feature count, ranking details, and Linear intercept convention differ from the canonical implementation; those defaults are not substituted. No separate CTF strategy selection or performance claim is made.
+
+\subsection{Concentration and descriptive slope}
+We report the share of eigenvalue mass in the ten largest directions and the participation rank $(\sum_j\widehat\mu_j)^2/\sum_j\widehat\mu_j^2$. The descriptive decay slope is minus the least-squares slope of log eigenvalue on log rank over the pre-specified 10\%--60\% interior positive-rank band. Neither the band nor the eigenvectors depend on subsequent payoffs. These diagnostics can move with sampling variation, history length, and the underlying economy; they do not separately identify these mechanisms.
+
+\begin{figure}[p]
+\centering\includegraphics[width=\textwidth]{\empout/figures/A_spectral_diagnostics.pdf}
+\caption{Finite-sample spectral diagnostics. Left: the interior-band log-eigenvalue slope. Right: eigenvalue mass in the ten leading managed-payoff directions. Linear is included as a reference. Every point comes from its own historical operator; neither curve is interpreted as a population parameter path.}
+\label{fig:real_diagnostics}
+\end{figure}
+
+\subsection{Data timing and limits of identification}
+Initial characteristic coverage selection uses 1963--1972 observations, and the nonlinear feature banks and their normalization remain fixed. Historical validation, final fits, and OOS dates are reconciled with the canonical manifests. Source-provided stock and delisting-return conventions are retained; this audit does not recover missing CRSP outcomes from another source. The formation-only audit identifies 638 months containing unavailable forward payoffs and recovers none of the 7,489 unknown outcomes. Its largest complete-sample versus formation-only rank difference is approximately 0.00588 on the rank scale $[-0.5,0.5]$. Counts, cap shares, and small rank changes do not bound a learned strategy's missing-return bias.
+
+The complete-payoff exclusion itself uses next-month availability. Thus chronology checks of regression inputs and coefficient selection do not establish that the historical investment universe was observable in real time. This unresolved selection issue and the retrospective data vintage limit every performance interpretation. The package is auditable, but it is not described as submission-ready or as a verified live trading record.
+
+\subsection{Artifact lineage and reproduction}
+The isolated output package retains the pre-analysis protocol, three phase verification reports, aggregate monthly and annual tables, figure inputs, and a final preservation check. Hashes bind the original manifests, feature caches, stock-weight files, and numerical source code. Existing empirical results and theoretical sources are preserved. Licensed stock-level holdings and returns are not copied into the published aggregate package.
+
+The executable reproduction entry point processes one phase and one kernel at a time with one numerical thread. It requires the authorized private inputs and writes only to a fresh destination. Figure generation reads the resulting aggregate tables and refuses to overwrite a publication revision. The received request ends partway through E3; the delivered empirical scope covers E1--E3 as actually received.

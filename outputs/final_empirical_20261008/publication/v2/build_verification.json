@@ -1,0 +1,35 @@
+{
+  "passed": true,
+  "pdf_sha256": "068f05cdbfd6a09380142406e07d640c2fb5b6728784cc280dcb1ad73224ded4",
+  "inputs": {
+    "outputs/final_empirical_20261008/publication/v2/manuscript_real_data.tex": "a5f6a7a4a03d50e2b2adb030b132bd1be74e72b2446c6745efc4c01b0984cbcb",
+    "paper/theory/introduction.tex": "22b4960634cd86026e2c3f52327c6011f8d239c4faec7a23fa9adc0db0c62b7b",
+    "paper/theory/population_problem.tex": "15892ec10028ed6278e7b48904cc828ada6a5f3978ab4560b47fd16b43723e1c",
+    "paper/theory/direct_port_learning.tex": "e03c416915ae6b35d8f6d1658ed9d9c84fd167af72db0a2d5dd6bb3cea98e260",
+    "paper/theory/economomic_spectrum_final.tex": "e83a201a6ce34b635a172f088e02a7b3dd0deddfc7b4b1e6ae5a5afd70761002",
+    "paper/theory/representation_learnability.tex": "ca13af09082ef3e883942579951c55f5acdb0456b0aaedd48a52ecfbde5303e6",
+    "outputs/final_empirical_20261008/publication/v2/empirical_section.tex": "745c687df9c4cebeaff8fd0bf82f69b85701b2d6bd7e798b17c8aa927486e98a",
+    "outputs/final_empirical_20261008/publication/v2/performance_table.tex": "326d2e882654f39e5ef3cfd12f93998d46282e4a265b8c1ac20a2f7332077ea2",
+    "outputs/final_empirical_20261008/publication/v2/figures/E1_wealth_drawdown.pdf": "11321960eac13f9951143d31e16eac5caccdf3ce826b78bf2c35120f7dc37705",
+    "outputs/final_empirical_20261008/publication/v2/figures/E2_managed_spectra.pdf": "c33d53749461ea1594ad2a59dec1aa70454e789140167f0698f2ec874bfa1ab6",
+    "outputs/final_empirical_20261008/publication/v2/spectral_table.tex": "214a2b0fe8c5ac7cfdee2cb910ca43f07a800c04355083454aed56696a349cc4",
+    "outputs/final_empirical_20261008/publication/v2/figures/E2_nested_value.pdf": "edfa8081fd810305e77028410cccd1dfd7d42bab45c2f5ad0e1417675e9027f6",
+    "outputs/final_empirical_20261008/publication/v2/figures/E3_measured_complexity.pdf": "219b5f37a4adce497d2bf8b15da55646e00455f4b5c80d7f784f6fb99e046124",
+    "paper/theory/proofs_learning.tex": "96f2cf375a7a951118a38d17e0fc857c35bc364bdcb9c888a21bbac3a31f0731",
+    "paper/theory/unbounded_concentration.tex": "c904b7b7af582837b0b66bfd6dc519b9be276f06ce1f5ba39cfef5a952bdb315",
+    "paper/theory/representation_tables.tex": "82abc22608e0c6992a8fd9c4b5c543a71f4fb11cbf4e5e1bc91ef0bd794cc0dd",
+    "outputs/final_empirical_20261008/publication/v2/empirical_appendix.tex": "64cbc003478f7eb534014ccfd224ec61ac763d490bd6e0cb74c130e4c7f375a0",
+    "outputs/final_empirical_20261008/publication/v2/figures/A_spectral_diagnostics.pdf": "00b88e522929835871b31ac73efd5f0f68e94b6910d75d31772f57c74fa847c0"
+  },
+  "command": [
+    "latexmk",
+    "-pdf",
+    "-interaction=nonstopmode",
+    "-halt-on-error",
+    "-outdir=/Users/enrico/Desktop/PHD/portfolio/paper_codice/outputs/final_empirical_20261008/publication/v2/build",
+    "/Users/enrico/Desktop/PHD/portfolio/paper_codice/outputs/final_empirical_20261008/publication/v2/manuscript_real_data.tex"
+  ],
+  "working_directory": "paper",
+  "TEXINPUTS": ".:./theory//:",
+  "layout_scope": "No overfull boxes or unresolved references; inherited font substitutions and underfull introduction paragraphs retained."
+}

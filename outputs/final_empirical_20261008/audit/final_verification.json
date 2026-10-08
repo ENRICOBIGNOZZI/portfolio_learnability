@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "private_inputs_checked": true,
+  "verified_source_and_input_files": 468,
+  "preserved_existing_files": 161,
+  "monthly_policy_scenario_rows": 5076,
+  "annual_refits": 141,
+  "nested_monthly_rows": 6768,
+  "publication_revision": "v2",
+  "aggregate_hashes": {
+    "tables/annual_complexity.csv": "20cb164e5a3d4d587557c1f80f6b6ac7dcefb3c8a1da5104062da151f553d449",
+    "tables/managed_spectra.csv": "78768c37398f2d503b8709000664ecfe81e9e81fb4c712f372fc232d7ad14335",
+    "tables/missing_payoff_materiality.csv": "b74a49f7e5546c4787e4ea500a47372e7c441f48613396fb935a98746421df78",
+    "tables/monthly_accounting.csv": "1c292c344ab202fba7c07dd75be373b4cdbb9365a32238a3353c16aee4597523",
+    "tables/nested_spectral_monthly.csv": "7faef48a41e7e4e4b7a3d65c18d6b07d31d90584db3aec521ed0c0de3c7c49c6",
+    "tables/performance_scenarios.csv": "7eeeb3c1c72f012a0f094731567026c5d3b26b4adb6a6984c7c1dd4e74b29f61",
+    "tables/spectral_contributions.csv": "1f015c08d8b8dc849f53660c2de603f9291362ef880fe3ad454d0beb38e219d0"
+  },
+  "final_pdf_sha256": "068f05cdbfd6a09380142406e07d640c2fb5b6728784cc280dcb1ad73224ded4",
+  "package_sources": {
+    "empirical_final/__init__.py": "4be507f936290ff6047c07277928f9c84aff3113b9d298bbba729a4c3f190b38",
+    "empirical_final/build.py": "eb1f5eeca7062ae26db4743cc2cdd3ae690c1cee8fe802a1757319421cd2f188",
+    "empirical_final/core.py": "2e0ac427be10f5a686adb83d0bb5d29e666df0d29d108111ae0de6e74ef35482",
+    "empirical_final/render.py": "57bf8099d13b458a2e67a452d9f4989e5d99145abde578181481929475443598",
+    "empirical_final/reproduce.py": "35ac46b3a0a8e1d272cc41815b97f6450caaba87309ffa7979576fa5306867f1",
+    "empirical_final/run.py": "d18eafa909230c1620c9b17f9a3fb12c9e7e05bb543841f163a9b01045a581ca",
+    "empirical_final/templates/empirical_appendix.tex": "64cbc003478f7eb534014ccfd224ec61ac763d490bd6e0cb74c130e4c7f375a0",
+    "empirical_final/templates/empirical_section.tex": "745c687df9c4cebeaff8fd0bf82f69b85701b2d6bd7e798b17c8aa927486e98a",
+    "empirical_final/verify.py": "193beecbbd7a81af4657f39d0f4041f4c49c291fc9bd19b396f147bfa89089df"
+  }
+}

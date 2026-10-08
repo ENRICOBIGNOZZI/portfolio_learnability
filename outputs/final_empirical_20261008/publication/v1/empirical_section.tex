@@ -1,0 +1,101 @@
+\section{Portfolio learnability in U.S. equities}
+\label{sec:real_empirics}
+
+We study representation, the economic spectrum, and implementation using three direct portfolio policies on a common sample. The exercise distinguishes the directions a representation makes available from the directions selected by historical response-one learning. All reported comparisons are descriptive point estimates. We do not conduct new resampling or interpret differences as statistically established superiority.
+
+\subsection{Canonical sample and historical decisions}
+
+The canonical implementation uses the repository's U.S. JKP stock data, common-stock and non-nano restrictions, an unbalanced cross-section, and monthly characteristic ranks. The candidate dictionary contains 153 characteristics; the retained 130 are selected using coverage in 1963--1972. Linear includes an intercept and these 130 characteristics. Gaussian and Mat\'ern-3/2 each use 10,000 fixed random Fourier features with seed zero and the original length-scale convention. The feature maps, missing-characteristic treatment, and scalar characteristic-to-weight policy are preserved.
+
+There are 47 January decisions, from 1978 through 2024, and 564 subsequent monthly payoffs, from February 1978 through January 2025. The first inner training sample has 120 monthly observations and validation has 60. Later decisions expand the inner training history while preserving the last 60 historical observations for validation. The selected penalty minimizes historical validation response-one loss on the original model-specific grid. The final fit uses all available historical managed payoffs: $T$ rises from 180 to 732. At each January close, the payoff on December-formed positions is already known. Earlier local-window outputs with January--December payoff years are not pooled with these February--January decision blocks.
+
+The policy assigns raw stock weights $f(z_{i,t})/N_t$ and uses the same fixed scale $\kappa=0.0374000023$ for all three models, established at the initial January 1978 formation. Raw policy payoffs, scaled excess returns, and total returns including cash are kept distinct. The reconstruction checks stock identifiers, dates, stored weights, coefficients, selected penalties, and payoffs against the original outputs.
+
+A material qualification concerns sample construction. The inherited complete-payoff pipeline excludes 7,489 stock-months with unknown forward returns before monthly ranks and $N_t$ are constructed. These are 0.299\% of 2,504,402 otherwise eligible stock-months; the largest monthly count share is 1.026\%, and the largest identified market-cap share is 1.686\%. These small shares do not identify the resulting portfolio-return bias. No missing outcome is replaced by zero or an invented delisting return. Furthermore, the JKP extract is a retrospective snapshot, not a verified historical-vintage database. Consequently, the results below are conditional on the inherited complete-payoff sample; they do not establish fully implementable real-time performance.
+
+\subsection{E1: performance and economic implementation}
+
+Table~\ref{tab:real_performance} consolidates the three policies on identical payoff dates. Mean excess returns are annualized by multiplying by 12; volatility uses the monthly sample standard deviation times $\sqrt{12}$. Wealth and drawdowns use total returns, with the frozen cash rate included once. Figure~\ref{fig:real_wealth} starts from unit wealth immediately before the first payoff.
+
+\begin{table}[p]
+\centering
+\caption{Common-sample performance and declared cost sensitivities}
+\label{tab:real_performance}
+\begingroup\scriptsize\setlength{\tabcolsep}{4pt}
+\input{\empout/performance_table.tex}
+\endgroup
+\par\vspace{7pt}\begin{minipage}{\textwidth}\footnotesize
+February 1978--January 2025; 564 months per policy. Trading costs are a hypothetical 25 bps on both purchases and sales; borrowing is a hypothetical 30 bps per year on short notional. These are sensitivity parameters, not observed fees. Turnover is annualized two-sided traded notional divided by pre-trade NAV, with drift and execution costs accounted for. Annual fees are 12 times the average monthly NAV fraction, not compounded annual wealth losses. Exposure ratios use target weights relative to post-trade NAV. Drawdowns include cash and the initial NAV of one. All results inherit complete-payoff sample selection and retrospective data-vintage limitations.
+\end{minipage}
+\end{table}
+
+Gross Sharpes are 3.091, 3.300, and 3.461 for Linear, Gaussian, and Mat\'ern, respectively. The nonlinear policies have larger mean gross exposures and more trading. Their annual two-sided turnover is approximately 23 and 24 times NAV, compared with 19.5 for Linear. Flexible representations therefore change both investment opportunity and implementation demands.
+
+We evaluate explicit cost assumptions from the supplied historical manuscript: 25 basis points per unit of traded notional and 30 basis points annually on short notional. We reconstruct trading from actual stock weights and drift, including entries and exits, and solve the self-financing proportional-cost equation. We charge the initial entry from cash and mark final holdings to market without a forced terminal liquidation. No observed market impact, stock-specific lending fee, or additional funding spread is available or inferred.
+
+The trading-only Sharpes are 2.511, 2.644, and 2.766. Adding the declared borrowing charge reduces them to 2.476, 2.605, and 2.725. Under these assumptions, the nonlinear policies retain larger full-sample Sharpe point estimates than Linear, while the differences narrow. This is neither a universal kernel ranking nor evidence that the hypothetical net returns are realizable at a specified fund size. The common sample qualification applies equally to gross and cost-adjusted results.
+
+\begin{figure}[p]
+\centering\includegraphics[width=\textwidth]{\empout/figures/E1_wealth_drawdown.pdf}
+\caption{How much performance survives the declared trading and borrowing assumptions? Left: gross total wealth and drawdowns. Right: the 25 bps trading plus 30 bps annual borrowing sensitivity. Colors identify the same three policies in every panel. Wealth includes cash and is displayed on a logarithmic scale; drawdowns include initial wealth. No confidence bands or historical-vintage claim is implied.}
+\label{fig:real_wealth}
+\end{figure}
+
+\subsection{E2: where does the useful portfolio signal lie?}
+
+For each annual final fit, let $G$ be its $T\times P$ matrix of historical managed-feature excess payoffs. The operator is the uncentered second moment $G'G/T$, with positive eigenvalues equivalent to those of $GG'/T$. It is not the covariance of raw characteristics. Figure~\ref{fig:real_spectra} compares Gaussian and Mat\'ern at the same historical cutoffs. Numerical checks compare primal singular values, dual eigenvalues, and feature-space eigenpair residuals without allocating a $10{,}000\times10{,}000$ matrix.
+
+To move beyond eigenvalues, we retain increasingly large sets of the fitted policy's training spectral directions. Before calculating the new OOS comparisons, we fixed cumulative partitions at 10\%, 50\%, 90\%, and the full numerically positive rank, ordered by historical eigenvalue. Near-tied boundary eigenvalues are retained together. Each nested policy uses the original selected ridge penalty and its spectral filter; neither the penalty nor the partition is reselected using subsequent returns. Directions and rank are re-estimated annually, so a given fraction does not describe a single fixed eigenportfolio across decades.
+
+If $q$ is the previous raw policy payoff and $a$ the newly activated payoff, the incremental response-one loss is
+\begin{equation}
+ \Delta Q=-2\,\overline{(1-q)a}+\overline{a^2}.
+\end{equation}
+The cross term measures how the new directions interact with the existing policy. A standalone component's variance or Sharpe cannot substitute for this incremental evaluation. Table~\ref{tab:real_nested} reports nested-policy Sharpes and their differences; the differences are not additive component Sharpe contributions.
+
+\begin{figure}[p]
+\centering\includegraphics[width=\textwidth]{\empout/figures/E2_managed_spectra.pdf}
+\caption{Which managed-payoff directions are large in historical samples? Uncentered empirical operator spectra at three common January decisions, using only payoffs then available. Both axes are logarithmic. The aggregate data also retain the pre-specified 1990 and 2010 cutoffs. No stationary population power law is fitted to these curves.}
+\label{fig:real_spectra}
+\end{figure}
+
+\begin{table}[p]
+\centering
+\caption{Nested spectral policies on the same 564 OOS months}
+\label{tab:real_nested}
+\begingroup\small\setlength{\tabcolsep}{5pt}
+\input{\empout/spectral_table.tex}
+\endgroup
+\par\vspace{7pt}\begin{minipage}{\textwidth}\footnotesize
+Fractions refer to cumulative positive training rank, with tied boundaries kept together. Full uses the exact full ridge policy, including any numerical null-space residual. Loss uses raw payoffs; Sharpes use the common fixed scale, which does not change Sharpe. The first $\Delta$ loss compares with the zero policy (loss one); later rows compare with the preceding nested policy. The zero policy has no defined Sharpe, so its first Sharpe difference is omitted. Subsequent Sharpe differences are descriptive comparisons, not additive contributions. Nested costs are not inferred from aggregate payoffs: cost accounting in Table~\ref{tab:real_performance} is supported by actual full-policy stock weights.
+\end{minipage}
+\end{table}
+
+\begin{figure}[p]
+\centering\includegraphics[width=\textwidth]{\empout/figures/E2_nested_value.pdf}
+\caption{Do weaker directions add economic value? Left: measured OOS response-one losses for the four frozen nested policies. Right: loss changes from adding the next group, including cross terms; negative values indicate improvement. The large initial improvement relative to a zero policy is reported in Table~\ref{tab:real_nested} and omitted from the right panel to preserve the scale of later increments. These are gross, complete-payoff-sample diagnostics.}
+\label{fig:real_nested}
+\end{figure}
+
+The results are heterogeneous. For Gaussian, moving from 90\% of positive training rank to the full policy lowers OOS loss by 0.00312 and raises Sharpe from 3.286 to 3.300. For Mat\'ern, the same extension raises loss by 0.00114 and lowers Sharpe from 3.464 to 3.461. Intermediate groups also differ across models. The data support neither blanket redundancy of weak directions nor a claim that every weaker group improves performance. We retain the full baseline policy and do not promote the best nested fraction chosen after seeing OOS results.
+
+This distinction relates to \citet{kozaknagelsantosh2020}, who study shrinkage across managed-portfolio principal components. Our diagnostic separates the size of a historical managed-payoff direction from its incremental contribution to the response-one objective. The operator is uncentered and the estimator is the canonical direct portfolio policy, so this is not a replication of their centered covariance and stochastic-discount-factor specification.
+
+\subsection{E3: measured effective complexity through time}
+
+At each January decision we evaluate the selected effective complexity
+\begin{equation}
+ \widehat C_t=\sum_j\frac{\widehat\mu_{j,t}}{\widehat\mu_{j,t}+\widehat\lambda_t},
+ \qquad \widehat C_t/T_t.
+\end{equation}
+Here $T_t$ counts historical monthly managed-payoff observations used in the final fit, including the historical validation block after penalty selection. It does not count stocks, stock-months, or random features. The accompanying annual table records the decision and payoff dates, inner training and validation sizes, selected penalty, spectrum concentration, validation loss, and subsequent OOS outcomes for all 141 model-year fits.
+
+Figure~\ref{fig:real_complexity} shows the measured series without smoothing or a theoretical fitted path. Gaussian relative complexity falls from 0.1083 to 0.0156 between the first and last decisions, but rises in 22 annual transitions and falls in 24. Mat\'ern falls from 0.1724 to 0.0197, with 20 rises and 26 falls. Absolute complexity also fluctuates. The large interim peaks are retained rather than treated as plotting outliers.
+
+\begin{figure}[p]
+\centering\includegraphics[width=\textwidth]{\empout/figures/E3_measured_complexity.pdf}
+\caption{How much of the managed-payoff decision space does historical validation select? Top: relative effective complexity at every annual refit. Bottom: absolute effective complexity. Gaussian and Mat\'ern use identical historical cutoffs; $T$ rises from 180 to 732 months. Lines connect actual annual observations and impose no monotonicity. Both changes in estimated spectra and changes in selected penalties can move these series.}
+\label{fig:real_complexity}
+\end{figure}
+
+A descriptive log-eigenvalue slope fitted over a fixed interior rank band also varies: approximately 1.70--1.94 for Gaussian and 1.33--1.43 for Mat\'ern. These are finite-sample diagnostics, not identified population exponents or evidence of a particular economic regime. We do not insert a fixed $b$ into a stationary rate formula to replace the observed complexity path. The evidence instead documents how representation, measured economic directions, historical regularization choices, and declared trading frictions jointly shape the realized sample results.

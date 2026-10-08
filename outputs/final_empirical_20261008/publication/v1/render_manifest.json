@@ -1,0 +1,32 @@
+{
+  "inputs": {
+    "tables/monthly_accounting.csv": "1c292c344ab202fba7c07dd75be373b4cdbb9365a32238a3353c16aee4597523",
+    "tables/performance_scenarios.csv": "7eeeb3c1c72f012a0f094731567026c5d3b26b4adb6a6984c7c1dd4e74b29f61",
+    "tables/annual_complexity.csv": "20cb164e5a3d4d587557c1f80f6b6ac7dcefb3c8a1da5104062da151f553d449",
+    "tables/managed_spectra.csv": "78768c37398f2d503b8709000664ecfe81e9e81fb4c712f372fc232d7ad14335",
+    "tables/spectral_contributions.csv": "1f015c08d8b8dc849f53660c2de603f9291362ef880fe3ad454d0beb38e219d0"
+  },
+  "revision": "v1",
+  "renderer_sha256": "2b95fa3d7020254315c2a7e7235eecea0f3358c76fda031375e82c2a9eb0f75c",
+  "templates": {
+    "empirical_section.tex": "745c687df9c4cebeaff8fd0bf82f69b85701b2d6bd7e798b17c8aa927486e98a",
+    "empirical_appendix.tex": "64cbc003478f7eb534014ccfd224ec61ac763d490bd6e0cb74c130e4c7f375a0"
+  },
+  "generated": {
+    "spectral_table.tex": "214a2b0fe8c5ac7cfdee2cb910ca43f07a800c04355083454aed56696a349cc4",
+    "manuscript_real_data.tex": "8a17cddba0eac1fe0ab3c6940545d18760c80f5accf58cc6c3a03c49f2489646",
+    "performance_table.tex": "326d2e882654f39e5ef3cfd12f93998d46282e4a265b8c1ac20a2f7332077ea2",
+    "empirical_section.tex": "745c687df9c4cebeaff8fd0bf82f69b85701b2d6bd7e798b17c8aa927486e98a",
+    "empirical_appendix.tex": "64cbc003478f7eb534014ccfd224ec61ac763d490bd6e0cb74c130e4c7f375a0",
+    "figures/E2_nested_value.png": "f108b3db5369378fbb951848f3769c0ad9afb671d539fea93b0a0f06a0295722",
+    "figures/E2_managed_spectra.png": "b994ea181a7087465ae960f5101e6a7cb0ac0f1f8b9e2d8e34212f0a70af9244",
+    "figures/E2_nested_value.pdf": "9b518cbafbf01246565376fa1cd0bb7d12c0da17f3ab42bbc884cd1f2a2b47e5",
+    "figures/E2_managed_spectra.pdf": "47564c98d8a5663c3f0487dfdc70f30cf15e02d6e66404e108080bede9a116f1",
+    "figures/E1_wealth_drawdown.pdf": "78e8b946a70b1af042d11cdc58016fe58eb1ea810fc9b3fd74f335d8cf5fc6af",
+    "figures/E1_wealth_drawdown.png": "68730dea3ef59270a105a51f4f63459e5a90521a3d6987962764e6f6ba7b56cd",
+    "figures/A_spectral_diagnostics.pdf": "f63ff8809267972686502a283b6aada04df068a49d2051bcfa0b6a9f0e282ac3",
+    "figures/A_spectral_diagnostics.png": "c2d354290545f1a19ecfeffcfdef9a261dc682cd0de4f1602e240f4f40b24be9",
+    "figures/E3_measured_complexity.png": "1ab74b586e1f93544e220080dc6fb357c4c11800d66216c813db9d2b599cc746",
+    "figures/E3_measured_complexity.pdf": "a46129f563cfe875b68f5c53bedc86e2cd801bc89742f0f030c9be0e03c5527c"
+  }
+}

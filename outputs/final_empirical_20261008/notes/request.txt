@@ -1,0 +1,295 @@
+# CODEX MASTER PROMPT — FINAL EMPIRICAL ANALYSIS
+## The Law of Portfolio Learnability
+### Target: Journal of Finance — Real Data Only
+
+You are acting as a senior quantitative finance researcher, empirical asset-pricing economist, and research software engineer.
+
+Your task is to complete, consolidate, validate, and improve the empirical analysis of *The Law of Portfolio Learnability*.
+
+**Do the work. Do not merely propose a plan.** Inspect the existing implementation, reuse completed experiments, implement the missing analyses, execute everything possible, produce final publication-quality figures and tables, run appropriate numerical checks, and deliver an auditable empirical package.
+
+The objective is a Journal of Finance-quality empirical section. Do not call it publication-ready unless the results, data provenance, and numerical checks actually support that conclusion.
+
+# 1. Repositories and materials
+
+Primary repository:
+
+https://github.com/ENRICOBIGNOZZI/portfolio_learnability
+
+Secondary repository:
+
+https://github.com/ENRICOBIGNOZZI/PORTFOLIO-PAPER
+
+Use the main repository as the canonical empirical implementation unless inspection establishes a concrete reason to change this decision.
+
+Relevant existing modules:
+
+- `data_pipeline.py`
+- `run_empirics.py`
+- `portfolio.py`
+- `kernels.py`
+- `figures.py`
+- `local_learnability.py`
+- `empirical_closeout.py`
+- `complexity_schedule.py`
+- `bandwidth_tuning.py`
+- `audit_formation_timing.py`
+- `protocol.json`
+- `outputs/`
+- `paper/`
+
+Inspect the existing numerical CSVs, parquet outputs, documentation, manifests, and all relevant figures before creating replacements.
+
+The manuscript reference is `Portfolio_Paper (24).pdf`, and an additional archive is `protfolio (11).zip`, if available in the workspace. The archive contains historical paper versions and figures; do not treat every result inside it as belonging to the same empirical experiment.
+
+The secondary repository contains a JKP Common Task Framework implementation. Inspect it for potentially useful independent verification, but do not start a separate CTF research project.
+
+**Do not touch, rerun, modify, remove, or integrate anything in `simulations/`. All simulations are explicitly postponed.**
+
+Do not alter the mathematical theorems or proofs.
+
+# 2. Scientific objective
+
+The paper is not about finding the best kernel.
+
+It is about the distinction between:
+
+1. **Representation:** which portfolio policies and economic opportunities are available within a model class.
+2. **Economic spectrum:** which managed-payoff directions are strongly or weakly identified by historical returns.
+3. **Learnability:** how much of that decision space finite market history can reliably support.
+4. **Economic implementation:** how much of the learned investment opportunity survives turnover, borrowing costs, and other trading frictions.
+
+The central empirical message should be:
+
+*A rich portfolio representation can make many investment opportunities available. Finite market history determines which directions can be learned. Trading frictions further restrict which learned directions are economically worth exploiting.*
+
+Every major figure must answer a specific economic question.
+
+Do not impose a result before examining the data.
+
+# 3. Non-negotiable restrictions
+
+- No simulations or synthetic experimental results in the manuscript.
+- No block bootstrap or new bootstrap inference.
+- No confidence bands or artificial significance claims.
+- No new unrelated algorithms.
+- No feature-selection project.
+- No regime-detection project.
+- No comparison involving ten different kernels.
+- No neural-network benchmark added merely for completeness.
+- No arbitrary smoothing of curves.
+- No artificial monotonicity constraints.
+- No ex-post optimization used to select the reported trading strategy.
+- No use of future returns for training, model selection, characteristic ranking, scaling, or portfolio formation.
+- No overwriting existing results, cached data, or protected source files.
+- No fabricated returns, transaction costs, stock weights, or performance numbers.
+
+Keep the main analysis focused on:
+
+**Linear, Gaussian, and Matérn-3/2.**
+
+Use descriptive point estimates. Clearly distinguish economically interesting differences from statistically established superiority.
+
+Do not introduce an additional theoretical contribution.
+
+# 4. Critical distinction: the spectral exponent changes in empirical samples
+
+Do not assume that the estimated economic spectrum is stable across time.
+
+At different dates and with different estimation windows, both the estimated eigenvalues and their fitted spectral-decay exponent may change.
+
+In particular, do not mechanically impose the stationary rate
+
+C_T ~ T^(1/(b+1))
+
+on the historical data by pretending that b is fixed across periods.
+
+This theoretical rate applies to a fixed stationary economy satisfying its assumptions. Our empirical exercise is different.
+
+Treat each estimation window as having its own estimated managed-payoff operator and spectrum.
+
+If estimating b_t, treat it as a descriptive finite-sample spectral diagnostic. Do not identify changes in estimated b_t with changes in the population exponent without further evidence.
+
+The primary empirical quantity is:
+
+C_hat(t,T,lambda) = sum_j mu_hat_j(t,T) / (mu_hat_j(t,T) + lambda).
+
+Report relative effective complexity:
+
+**C_hat(t,T,lambda) / T**
+
+where T counts historical monthly managed-payoff observations, not stocks, stock-month observations, or random features.
+
+Report absolute C as a complementary quantity.
+
+In the empirical analysis, C/T may rise, fall, or fluctuate. All three outcomes are admissible.
+
+# 5. Establish the canonical real-data experiment
+
+Start by auditing and reproducing the existing primary results.
+
+Dataset: U.S. JKP stock-level data, following the conventions currently implemented in the repository.
+
+Preserve, unless a concrete error is identified:
+
+- the fixed 153-characteristic candidate dictionary;
+- the 130-characteristic selection based on initial-period coverage;
+- the existing non-nano and common-stock restrictions;
+- monthly characteristic rankings;
+- the existing missing-characteristic convention;
+- the unbalanced cross-section and time-varying number of stocks N_t;
+- the scalar characteristic-to-weight portfolio policy;
+- the direct response-one criterion;
+- the established RFF normalization and kernel length-scale convention.
+
+Linear must retain its intercept plus 130 characteristics.
+
+Gaussian and Matérn-3/2 must retain 10,000 random Fourier features for the baseline, with the existing fixed initial seed and feature-bank construction.
+
+The principal expanding-window experiment currently has 47 annual decisions, with formations from 1978–2024 and subsequent returns extending to January 2025.
+
+Preserve the exact established formation/payoff timing and historical validation protocol.
+
+Some existing local-window experiments use January–December realized returns, whereas the baseline annual refits use February–January payoffs. **Do not combine these as if they had identical observation dates.** Align periods explicitly whenever comparing methods.
+
+Maintain a single canonical performance definition. Distinguish raw policy payoff, scaled excess payoff, total portfolio return including cash, and net-of-cost return.
+
+Reproduce the repository's current baseline before modifying it.
+
+The existing results are reference values, not targets to force the new code to match.
+
+# 6. Targeted data and chronology audit
+
+JKP and CRSP are standard financial datasets. Do not redesign their conventional cleaning or start an unnecessarily large data-reconstruction project.
+
+However, verify the material timing and accounting issues.
+
+The repository currently documents approximately 7,489 missing forward payoffs. The earlier complete-payoff pipeline removes these observations before monthly ranking and N_t construction.
+
+Evaluate the size and potential materiality of this sample-selection difference using the already available audit and data.
+
+Do not replace missing outcomes with zero, invented delisting returns, or arbitrary substitutions.
+
+Where identification of a missing return is impossible from authorized sources, report the limitation explicitly. Separate sensitivity results from claims about fully implementable real-time portfolios.
+
+Perform a compact audit of:
+
+- formation and realization dates;
+- characteristic availability;
+- use of initial-period information for variable selection;
+- return and cash units;
+- delisting and missing-payoff conventions;
+- universe membership and stock identifiers;
+- exposure normalization;
+- weight-to-payoff reconciliation.
+
+Do not allow this audit to dominate the research.
+
+# 7. Experiment E1 — Actual portfolio performance
+
+Compare the three core policies:
+
+- Direct Linear
+- Direct Gaussian
+- Direct Matérn-3/2
+
+Use the same information set, universe, formation periods, scaling convention, and OOS dates.
+
+Produce one consolidated performance table containing:
+
+- annualized excess return;
+- annualized volatility;
+- gross Sharpe;
+- net Sharpe;
+- maximum drawdown;
+- annualized turnover;
+- mean gross exposure;
+- mean net exposure;
+- mean short notional;
+- borrowing costs;
+- trading costs.
+
+Use one clearly defined net-return accounting system for all methods.
+
+Produce a main-text figure with cumulative portfolio wealth and, preferably, drawdowns on a second panel.
+
+Distinguish gross from net performance, without overcrowding the chart.
+
+**Financial question:** Do flexible direct portfolio policies generate economically meaningful performance improvements relative to the strong direct-linear benchmark?
+
+Do not conclude that one nonlinear kernel is universally superior based on small full-sample Sharpe differences.
+
+# 8. Experiment E2 — Economic spectrum and investment opportunities
+
+Keep the kernel-specific managed-payoff spectrum, not the spectrum of the raw characteristics alone.
+
+Construct, for every selected historical sample:
+
+G = the T-by-P managed-payoff feature matrix.
+
+The empirical operator's positive eigenvalues must be computed equivalently from G G' / T or G' G / T.
+
+Do not confuse this with a centered covariance matrix.
+
+Compare Gaussian and Matérn under identical historical cutoffs.
+
+Report spectral concentration, but go one step beyond eigenvalues.
+
+**Determine where the economically useful portfolio signal lies within the spectrum.**
+
+For a fitted policy, use a decomposition into the eigenvectors of its training managed-payoff operator.
+
+Construct nested, progressively activated spectral components:
+
+- strongest directions;
+- intermediate directions;
+- weaker directions;
+- full policy.
+
+Define spectral partitions before evaluating future returns. Do not use future data to choose eigenvectors, order directions, or decide partitions.
+
+Reconstruct the corresponding portfolio policies correctly, including the ridge spectral filter.
+
+Evaluate their incremental OOS economic contribution by comparing the same portfolio objective on the same observations.
+
+A convenient diagnostic is the change in OOS response-one loss when an additional group of directions becomes available.
+
+Also report the corresponding changes in Sharpe and, where meaningful, net performance.
+
+Do not incorrectly treat Sharpe contributions as additive. Account for cross terms and explain the distinction between incremental portfolio value and standalone eigenportfolio performance.
+
+If a reliable spectral decomposition is not identifiable numerically, document this rather than manufacturing a visually attractive result.
+
+**Financial question:** Are weakly identified managed-payoff directions economically redundant, or do they contain additional investment opportunities?
+
+Connect the interpretation to Kozak, Nagel, and Santosh.
+
+This is one of the most important potential asset-pricing contributions.
+
+# 9. Experiment E3 — Effective complexity through time
+
+This is the main empirical learning experiment.
+
+For each annual refit, record:
+
+- decision year;
+- training history and T;
+- selected lambda;
+- selected absolute effective complexity C;
+- selected relative complexity C/T;
+- spectral concentration diagnostics;
+- optional fitted b_t;
+- validation loss;
+- subsequent realized OOS performance.
+
+Produce a clear graphical account of how selected complexity evolves through time.
+
+I prefer a clean figure showing C/T rather than a dense display of raw lambda values.
+
+For the baseline expanding experiment, show Gaussian and Matérn together when comparable.
+
+Do not impose that C increases as history accumulates.
+
+Do not impose that C/T decreases.
+
+Do not substitute a fitted theoretical curve for the measured
