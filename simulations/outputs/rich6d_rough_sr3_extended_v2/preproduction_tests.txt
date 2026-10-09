@@ -21,3 +21,8 @@ temporary directory outside the deliverables. Previews were explicitly marked
 PREPRODUCTION and were not substituted for the required 300-path figures.
 This caught and corrected math-text formatting and crowded legends/tick labels.
 Final figures still require separate review after complete production.
+
+After adding full-common-horizon return hashes, the same extended test module
+passed all 9 checks again (2.48s). A separate process-pool smoke check completed
+20 replacement workers with the production module imported in every child,
+confirming the configured worker-recycling mechanism on this Python installation.
