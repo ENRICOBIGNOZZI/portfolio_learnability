@@ -1,0 +1,16 @@
+\begin{table}[htbp]
+\centering\small\setstretch{1.12}
+\caption{Nested ridge attribution and incremental out-of-sample value}\label{tab:nested}
+\begin{tabular}{rrrrr}
+\toprule
+Included ranks & Sharpe & Loss & Incremental loss & 95\% interval \\
+\midrule
+10\% & 3.012 & 0.5977 & -0.4023 & [-0.5230, -0.2602] \\
+50\% & 3.284 & 0.5617 & -0.0360 & [-0.0941, 0.0294] \\
+90\% & 3.286 & 0.5618 & 0.0002 & [-0.0089, 0.0092] \\
+100\% & 3.300 & 0.5587 & -0.0031 & [-0.0071, -0.0001] \\
+\bottomrule
+\end{tabular}
+\par\vspace{5pt}
+\begin{minipage}{\textwidth}\footnotesize The first row compares the leading group with a zero-payoff policy. Later rows compare adjacent nested policies, preserving the selected ridge filter. The final row is the existing full Gaussian policy. Intervals are unadjusted paired block-bootstrap intervals.\end{minipage}
+\end{table}

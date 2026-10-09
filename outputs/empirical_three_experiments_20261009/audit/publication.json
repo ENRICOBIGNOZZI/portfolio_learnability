@@ -1,0 +1,17 @@
+{
+  "reference_path": "/Users/enrico/Downloads/Portfolio_Paper (27).pdf",
+  "reference_sha256": null,
+  "reference_available_at_build": false,
+  "reference_unchanged": null,
+  "original_manuscript_written": false,
+  "section_only": true,
+  "output_sha256": "f8489be4f2a9658c08f959cdf15a6cdc1480f9273e1b49ef73b2132e95a85c08",
+  "template_sha256": "b3fe9d7bf34bdd38ace5e5bc8f3db866c0c5ae919e59611574c7c2578328dc65",
+  "figure_hashes": {
+    "E1_complexity_by_period.pdf": "bc7593e2a292a4218a6757adc773f1e5ae8cc879dd8c0b9edb3258b9dee79acf",
+    "E2_history_comparison.pdf": "8d37d1f46417fb8c77aa1024e52b943a7c29da27be04866fbd8d66ce44fa33c3",
+    "E2_local_spectrum.pdf": "e9511d4fda57b28c4cd22d30a03cddec79c4dd3c5643de98c1c954fc0826f9fd",
+    "E3_economic_spectrum.pdf": "1cb5a554cbd38cacc63dc1fe3a5ef75f34dfb13580f27be607fab711ad28f474",
+    "E3_incremental_value.pdf": "2cb7390da4d9069bbb281f99a39bec707b66c457d248a92a614d2214cd31c38c"
+  }
+}

@@ -1,0 +1,262 @@
+V. Representation, Learnability, and the Virtue of Complexity
+
+Kelly et al. (2024) study an environment in which expanding the model also captures an increasing
+share of the underlying economic signal. In their setting, the improvement in approximation can
+dominate the additional estimation cost. This is the virtue of complexity.
+   Our question is different. We hold the investor’s information set fixed and vary only the richness
+of the portfolio representation. We take the view that a portfolio manager should make available
+all information she considers economically useful and can observe in real time. Regularization,
+rather than ex ante feature exclusion, should then determine how much of the resulting portfolio
+opportunity set can actually be learned from the available data. We therefore study the virtue of
+Complexity, as the virtue of richer representation, separately from the addition of new signals.
+   Our point in this section is that a richer portfolio representation and a better learned portfolio are
+two different objects.
+   Let SR★ denote the maximum population Sharpe ratio over the space of 𝐿 2 portfolio policies,
+
+
+                                        SR★ := sup SR(𝑊),
+                                                 𝑊 ∈𝐿 2
+
+
+and let
+                                        SR★𝐾 := sup SR(𝑊)
+                                                 𝑊 ∈H𝐾
+
+denote the maximum population Sharpe ratio available within representation 𝐾, where H𝐾 ⊆ 𝐿 2 is
+the corresponding policy space. For example, a linear kernel restricts portfolio weights to be linear
+functions of characteristics, whereas a Matérn kernel allows a richer nonlinear class.
+   Finally,
+                                                ˆ︁𝐾,𝜆,𝑇 )
+                                             SR(𝑊
+
+denotes the population Sharpe ratio of the portfolio policy learned within representation 𝐾 from a
+market history of length 𝑇.
+
+
+                                                  25
+       The gap between the unrestricted population opportunity set and the portfolio actually learned
+from the data can be decomposed as
+
+
+                        SR★ − SR(𝑊
+                                 ˆ︁𝐾,𝜆,𝑇 ) = SR★ − SR★ + SR★ − SR(𝑊
+                                                     𝐾     𝐾
+                                                                   ˆ︁𝐾,𝜆,𝑇 ) .                       (12)
+                                             ⏞ ⏟⏟ ⏞ ⏞           ⏟⏟        ⏞
+                                               representation gap       learning gap
+
+
+       The representation gap measures the investment opportunities that cannot be expressed by the
+chosen representation, even if the investment environment were known perfectly. The learning gap
+measures how much of the opportunity set available within that representation cannot be recovered
+from a finite history of returns.
+       Now consider two nested representations,
+
+
+                                                H𝐾1 ⊆ H𝐾2 .
+
+
+At the population level,
+                                               SR★𝐾2 ≥ SR★𝐾1 .
+
+A richer representation can therefore only expand the population investment opportunity set. In this
+precise sense, complexity is a virtue for representation.
+       But this population ordering need not survive estimation from finite data. It is perfectly possible
+that
+                                               SR★𝐾2 > SR★𝐾1
+
+while
+                                         ˆ︁𝐾2 ,𝜆2 ,𝑇 ) < SR(𝑊
+                                      SR(𝑊                  ˆ︁𝐾1 ,𝜆1 ,𝑇 ).
+
+The larger representation contains better population opportunities, but some of those opportunities
+may lie in managed-portfolio directions that are too weakly identified by the available return history.
+       A richer representation therefore expands what the portfolio manager could exploit. Whether
+
+
+                                                      26
+those additional opportunities improve the learned portfolio depends on whether they can actually
+be learned from the available data.
+
+
+
+
+                                               27
+VI. Empirical Portfolio Learnability
+
+We study portfolio learnability using the U.S. monthly stock-level data of Jensen et al. (2023), with
+formation dates from January 1963 through December 2024. We follow the characteristic-panel
+construction of Didisheim et al. (2024). Starting from the 153 JKP characteristics, we exclude
+nano stocks, retain the 130 characteristics with the greatest data coverage, remove stock-months
+for which more than 30% of the retained characteristics are missing, and rank each characteristic
+cross-sectionally each month to [−0.5, 0.5]. Remaining missing characteristic values are assigned
+the neutral value zero. The resulting panel is unbalanced in both the number and identity of available
+stocks.
+    The initial estimation period covers 1963–1972 and the first validation period covers 1973–1977.
+Thereafter, the estimation sample expands, the preceding five years are used for chronological
+validation, and the portfolio policy is re-estimated annually. Portfolio weights change monthly with
+firm characteristics. The out-of-sample period runs from 1978 through 2024, for a total of 564
+monthly portfolio returns.
+    We consider three portfolio representations. The Linear specification serves as a finite-
+dimensional benchmark. The Gaussian representation allows smooth nonlinear characteristic-to-
+weight mappings, while Matérn-3/2 relaxes the strong smoothness restriction of the Gaussian kernel
+and admits a broader nonlinear policy class. On the compact characteristic domain,
+
+
+                                           H𝐺 ⊂ H𝑀,3/2 .
+
+
+Our main representation comparison is therefore between Gaussian and Matérn-3/2: the latter
+makes a larger set of portfolio policies available, but the additional directions must still be learned
+from a finite history of returns.
+    The nonlinear specifications are implemented using 10,000 Random Fourier Features with a fixed
+random draw throughout the backtest. The kernel lengthscale is fixed using the median pairwise
+
+
+                                                  28
+Euclidean distance among characteristic vectors sampled from the initial estimation period. At
+each annual refit, the regularization parameter 𝜆 is selected using the preceding five-year validation
+sample according to the portfolio criterion introduced above. The candidate grid is fixed throughout
+the out-of-sample experiment, and test returns never enter model selection.
+                  Figure 3 reports cumulative out-of-sample wealth and Table I summarizes portfolio performance.
+The Linear policy serves as the benchmark. Both nonlinear specifications improve the full-sample
+point estimates relative to Linear. The annualized Sharpe ratio is 3.20 for Linear, 3.35 for Gaussian,
+and 3.25 for Matérn-3/2, while annualized mean excess returns are approximately 17.9%, 20.6%,
+and 20.2%, respectively. Importantly, performance is not mechanically increasing in the breadth of
+the nonlinear representation. Although Matérn-3/2 admits a broader class of portfolio policies than
+Gaussian, Gaussian delivers the higher Sharpe ratio in this sample.
+
+
+                                           Linear   Gaussian   Matérn-3/2
+                                    104
+  Cumulative excess-return wealth
+
+
+
+
+                                    103
+
+
+
+
+                                    102
+
+
+
+
+                                    101
+
+
+
+
+                                    100
+
+                                          1980       1990       2000         2010             2020
+
+Figure 3. Cumulative out-of-sample excess-return wealth for the Linear, Gaussian, and Matérn-3/2 portfolio
+policies.
+
+
+
+
+                                                                29
+                             Table I. Out-of-sample portfolio performance
+
+            Representation   Mean (%)     Vol. (%)     Sharpe   Max DD (%)           Mean gross
+            Linear                17.87       5.59      3.196          13.63                 1.62
+            Gaussian              20.55       6.13      3.350          14.27                 1.76
+            Matérn-3/2            20.16       6.21      3.247          14.47                 1.75
+
+
+   Figure 4 reports gross and net exposure for the three portfolios. Gross exposure is somewhat
+lower for the Linear benchmark and closely matched for Gaussian and Matérn-3/2, while net
+exposure remains small relative to gross exposure throughout most of the sample.
+
+
+
+
+                                                                              ∑︁
+Figure 4. Out-of-sample gross and net portfolio exposure. Gross exposure is
+∑︁                                                                                 𝑖 |𝑤 𝑖,𝑡 | and net exposure is
+   𝑖 𝑤 𝑖,𝑡 .
+
+
+
+   We next examine the managed-portfolio spectrum generated by the two nonlinear representations.
+
+                                                  30
+Let 𝜇
+    ˆ︁𝑗,𝑇 denote the ordered empirical eigenvalues of the managed-portfolio second-moment operator.
+The spectrum orders portfolio directions by the magnitude of their historical payoff variation.
+Large eigenvalues correspond to dominant managed-portfolio directions, while the tail contains
+progressively smaller directions.
+    Figure 5 reports the spectra for Gaussian and Matérn-3/2 before the final test window. The
+Gaussian spectrum is more concentrated, whereas Matérn-3/2 generates a longer tail of weaker
+managed-portfolio directions. The difference is most visible away from the leading directions, where
+the Matérn representation maintains relatively more spectral mass.
+
+
+
+
+Figure 5. Ordered empirical eigenvalues of the managed-portfolio second-moment operator for Gaussian and
+Matérn-3/2, estimated using the same historical return sample before the final test window.
+
+
+    Representation breadth and the amount of portfolio complexity that should actually be used
+are therefore distinct objects. For a given regularization level 𝜆, we summarize the latter through
+
+
+
+
+                                                  31
+effective portfolio complexity,
+                                                    ∑︁      𝜇
+                                                            ˆ︁𝑗,𝑇
+                                        C
+                                        ˆ︁𝑇 (𝜆) =                  .
+                                                    𝑗
+                                                         ˆ︁𝑗,𝑇 + 𝜆
+                                                         𝜇
+
+Effective complexity measures the breadth of the managed-portfolio spectrum that remains active
+after regularization. A rich representation can make many portfolio directions available, while finite
+return history may support only a much smaller subset of them.
+   Figures 6 and 7 illustrate this distinction. Within the same final estimation window, we hold
+the representation fixed and vary only 𝜆. Relaxing regularization increases effective complexity
+by moving progressively deeper into the managed-portfolio spectrum. Historical performance
+continues to improve as complexity rises. Subsequent out-of-sample performance, however, reaches
+an interior maximum and then declines. In the 2024 test window, the descriptive out-of-sample
+Sharpe peak occurs at effective complexity of approximately 66 for Gaussian and 72 for Matérn-3/2.
+   This is the central empirical pattern. At low complexity, relaxing regularization allows the
+portfolio to exploit additional investment directions and improves subsequent performance. Beyond
+an interior point, additional directions continue to improve historical performance but deteriorate
+out-of-sample results. The marginal directions made active by lower regularization are increasingly
+difficult to learn reliably from the available market history.
+   The comparison between Gaussian and Matérn-3/2 gives this result a direct economic interpre-
+tation. Matérn-3/2 provides access to a broader set of portfolio policies, but its managed-portfolio
+spectrum also contains a longer tail of weaker directions. The value of the larger opportunity set
+therefore depends on whether those additional directions can be learned with sufficient precision.
+   The empirical evidence separates three objects. Representation determines which investment
+opportunities can potentially be expressed. The managed-portfolio spectrum describes the economic
+structure of those opportunities. Effective complexity determines how much of that spectrum is
+used after regularization. A richer representation can therefore improve the available opportunity
+set without implying that all of the additional portfolio complexity should be exploited in finite
+samples.
+
+
+                                                    32
+Figure 6. Historical and subsequent out-of-sample portfolio performance along the Gaussian regularization
+path in the final test window. The horizontal axis reports effective portfolio complexity.
+
+
+
+
+                                                   33
+Figure 7. Historical and subsequent out-of-sample portfolio performance along the Matérn-3/2 regularization
+path in the final test window. The horizontal axis reports effective portfolio complexity.
+
+
+
+
+                                                    34
+

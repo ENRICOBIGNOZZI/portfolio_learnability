@@ -1,0 +1,134 @@
+THREE EMPIRICAL EXPERIMENTS — SECTION VI ONLY
+Reference manuscript: Portfolio_Paper (27).pdf. No other section changed.
+Real JKP stock-level managed payoffs; no simulated empirical observations.
+
+1. HOW MUCH COMPLEXITY CAN BE USED PROFITABLY?
+The Gaussian representation, 10,000 fixed features, initial bandwidth and
+120-candidate penalty grid are unchanged. Forty-seven annual expanding refits
+produce five non-overlapping OOS paths for every fixed penalty. The selected
+policy uses prior five-year validation and is reported separately.
+
+Decision block       Selected SR    Mean selected C    Descriptive peak C
+1978–1989                 5.498               55.6                 154.1
+1990–1999                 5.813              156.2                 145.1
+2000–2009                 2.812              152.1                 130.6
+2010–2019                 2.978              187.3                 288.4
+2020–2024                 0.759               45.9                  16.1
+
+Decision years correspond to February through the following January payoffs.
+The peak is chosen retrospectively and cannot be used as an investment rule.
+Training Sharpe rises sharply near interpolation, without matching OOS gains.
+The last period favors much less complexity, but has only 60 OOS months and
+wide uncertainty. A unique, stable optimal active complexity is not established.
+
+2. DOES MORE HISTORY ACTIVATE MORE USEFUL DIRECTIONS?
+The comparison uses exactly the same 384 OOS months (February 1993–January
+2025) for T=60,120,240,360. Each history has a common 20-month validation
+holdout, then refits on all T months. Fixing this holdout prevents validation
+length from being an additional difference across T. It differs explicitly
+from the five-year holdout in experiments 1 and 3.
+
+T                    60         120         240         360
+Mean C            34.36       59.94      125.79      170.07
+OOS SR             2.367       2.488       2.750       2.629
+Response-one L     0.7780      0.7573      0.6960      0.7270
+
+The C360-C60 difference is positive in 28 of 32 years; its average is 135.7
+with a paired three-year block interval [94.2,177.0]. More history generally
+activates more directions. Performance is not monotone. The full-period
+T360-T240 Sharpe difference is -0.121 with interval [-0.443,0.194].
+
+The 1993–1999 block shows a loss increase when expanding 240 to 360 months;
+2010–2019 shows substantial gains from expanding 60 to 240 months. In the
+2020–2024 block every history has response-one loss above one, worse than a
+zero-payoff benchmark. Local top-ten concentration changes but explains little
+of the variation in the complexity gain (descriptive correlation -0.049).
+The experiment cannot separately identify an observation-count benefit and
+structural staleness. No global spectral exponent or Gaussian polynomial rate
+is fitted. Grid boundaries bind in 28%,19%,16%,16% of annual fits across T,
+so these are results of the frozen candidate procedure, not global optima.
+
+3. WHAT LIES BEHIND THE ECONOMIC SPECTRUM?
+Eigenvectors, signs, normalization and portfolio coefficients use training
+data only. Disjoint groups cover ranks 0–10%,10–50%,50–90%,90–100% of positive
+training eigenvalues. Near ties are not split. Diagnostic baskets have equal
+training second moment; actual ridge policy contributions retain their fitted
+magnitudes. These objects are kept separate throughout.
+
+The leading group carries 99.921% of the training second-moment mass. The next
+group carries only 0.068% but contributes 2.76 percentage points to the annual
+policy mean. The last two groups' mean contributions are small and uncertain.
+Nested policy Sharpe is 3.012,3.284,3.286,3.300; response-one loss is
+0.5977,0.5617,0.5618,0.5587. The final group's small loss improvement includes
+negative OOS covariance; treating the groups as independent would miss it.
+The first intermediate group's loss improvement is not significant under the
+paired pointwise interval; the final improvement is small and exploratory.
+
+The six French factors explain only 2–8% of diagnostic OOS variance. The
+leading basket has a positive profitability loading and the 50–90% group a
+negative momentum loading, with HAC intervals excluding zero. Other loadings
+are mostly uncertain. Full-sample regression residuals and intercepts are
+distinguished from next-year residual payoffs using factor slopes fitted only
+on past data. Low factor R-squared is not proof of a new risk premium.
+
+Actual group policy coefficients have adjacent-refit cosines about 0.91–0.94:
+the analysis does not establish pervasive unstable ridge weights. Equal-risk
+diagnostic coefficient norms are much larger in the tail, indicating weak
+direction amplification, not measured stock turnover. The weakest group has
+an uncertain standalone mean and contributes limited diversification.
+
+INFERENCE AND MATERIAL LIMITATIONS
+All Sharpe ratios are annualized from monthly returns. Payoff loss is unscaled;
+reported economic means/risks use the existing constant kappa=0.0374000.
+There is no new leverage constraint or ex post volatility normalization.
+Returns are before trading and borrowing costs.
+
+Paired circular bootstrap: 5,000 draws, 12-month blocks; three-year blocks for
+annual complexity. Sensitivity tables use 6/24 months and 2/5 years. These
+conditional pointwise intervals do not re-estimate the entire learning pipeline
+and are not simultaneous or adjusted for multiple testing. The final five-year
+block and highly overlapping training histories require caution. The strongest
+qualitative findings persist under the reported block-length checks.
+
+The canonical pipeline excludes unresolved future returns before ranks and
+the cross-sectional denominator are constructed. The prior audit identifies
+7,489 affected stock-months. Characteristics and factor data are retrospective
+snapshots, not certified historical vintages. Therefore the very high early
+Sharpes and factor alphas are conditional backtest evidence, not a certified
+implementable performance record. Missing payoffs have not been invented.
+
+Computational scope: one frozen 10,000-feature Gaussian map; numeric positive
+rank threshold 1e-12 of the leading eigenvalue; no new Matérn exercise, no
+full model-refitting bootstrap, no trading-cost estimates for spectral baskets.
+The existing managed cache avoids rebuilding multi-million-row stock panels.
+Shared portfolio, chronology and provenance utilities are reused directly.
+The full Gaussian policy reproduces the current repository's monthly payoffs
+with maximum absolute discrepancy below 8.8e-11. Its Sharpe is 3.299903;
+the reference manuscript's older 3.350 snapshot is not a calibration target.
+Nineteen targeted numerical and chronology checks passed, including independent
+direct ridge solves on actual early and late history-comparison windows.
+
+FILES AND REPRODUCTION
+publication/Section_VI_Three_Empirical_Experiments.pdf: replacement Section VI.
+figures/: five vector PDFs and matching high-resolution PNGs.
+tables/: fixed-penalty paths, selected policies, all history comparisons,
+spectral contributions, factor loadings/residual returns, covariances and
+block-length sensitivity results, in CSV format.
+audit/: frozen design, factor source URLs/checksums, input and table checksums,
+execution record and publication provenance.
+
+From the repository root, with the existing private stock/cache inputs:
+  python3 -m empirical_final.three_reproduce
+
+The wrapper checks frozen input hashes before rerunning and sets BLAS thread
+counts to one. It uses the included frozen factor table; it does not silently
+download revised factor returns. Dependencies are the existing requirements
+plus the already installed LaTeX toolchain. Individual entry points:
+  python3 -m empirical_final.three_experiments
+  python3 -m empirical_final.three_figures
+  python3 -m empirical_final.three_publication
+
+Factor source: https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html
+Downloaded FF5 and Momentum archive URLs/hashes: audit/factor_sources.json.
+The CSV retains returns only through January 2025; later downloaded values
+are never used in portfolio estimation or evaluation.

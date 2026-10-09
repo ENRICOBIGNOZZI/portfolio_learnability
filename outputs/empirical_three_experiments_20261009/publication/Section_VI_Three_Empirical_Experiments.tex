@@ -1,0 +1,102 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,newtxtext,newtxmath,microtype,setspace}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx,booktabs,array,float,caption,hyperref}
+\hypersetup{hidelinks}
+\captionsetup{font=small,labelfont=bf,labelsep=period}
+\setstretch{1.5}
+\setlength{\parindent}{0.25in}
+\setlength{\parskip}{0pt}
+\setlength{\emergencystretch}{1em}
+\renewcommand{\thesection}{\Roman{section}}
+\renewcommand{\thesubsection}{\Alph{subsection}}
+\renewcommand{\thetable}{\Roman{table}}
+\setcounter{section}{5}
+\setcounter{figure}{2}
+\setcounter{page}{28}
+\newcommand{\C}{\widehat C}
+\newcommand{\SR}{\operatorname{SR}}
+\newcommand{\figpage}[3]{\clearpage\begin{figure}[p]\centering
+\includegraphics[width=\textwidth,height=.84\textheight,keepaspectratio]{../figures/#1.pdf}
+\caption{#2}\label{#3}\end{figure}\clearpage}
+\begin{document}
+\section{Empirical Portfolio Learnability}
+
+Section V distinguishes the opportunities represented by a portfolio policy class from those that can be learned from finite return histories. We investigate this distinction in three empirical experiments. The first holds the Gaussian representation fixed and traces performance as regularization activates additional managed-portfolio directions. The second changes the amount of available history on common evaluation dates. The third examines the expected payoffs, conventional risk exposures, and incremental portfolio value of different parts of the managed-payoff spectrum.
+
+We retain the existing U.S. monthly stock panel of Jensen et al.\ (2023) and the characteristic preprocessing following Didisheim et al.\ (2024). Formation dates cover January 1963 through December 2024. Nano stocks are excluded; 130 characteristics are chosen from the 153-characteristic dictionary using coverage in the initial 1963--1972 period. Stock-months with more than 30\% missing retained characteristics are removed. Monthly cross-sectional ranks lie in $[-0.5,0.5]$, and remaining missing characteristic values receive zero. The managed payoff is the cross-sectional average of characteristic-based feature payoffs, so a fitted coefficient vector defines the policy $W$ through the existing $1/N_t$ stock-weight convention.
+
+The retained panel has an important limitation. Missing forward returns are excluded before monthly ranks and the cross-sectional denominator are constructed; the existing audit identifies 7,489 such stock-months with unresolved payoffs. The characteristic dictionary and observations also come from a retrospective JKP snapshot rather than certified historical vintages. Consequently, the results below are conditional retrospective evidence for the retained universe. Chronological model selection alone does not establish a fully implementable historical strategy, and the unusually high early-period performance should be interpreted with this qualification.
+
+The Gaussian map uses 10,000 fixed Random Fourier Features, seed zero, and the existing initial-sample bandwidth of approximately 4.3921. The 120 positive candidate penalties are frozen using the initial managed-payoff spectrum. We preserve annual refitting and monthly characteristic-dependent weights. In the expanding-history experiments, the previous five formation years provide chronological validation under response-one loss; the policy is then refitted using all available training and validation payoffs. A January formation decision uses returns realized through that January and is evaluated from February through the following January. Thus the 47 decision years 1978--2024 yield 564 returns from February 1978 through January 2025. All period labels below denote decision years.
+
+Sharpe ratios are annualized as $\sqrt{12}$ times the monthly mean divided by its sample standard deviation. Response-one loss is evaluated on the original, unscaled managed payoff. Economic mean returns and volatility use the existing common coefficient scale $\kappa=0.0374000$, frozen at the first decision date; this scaling does not affect Sharpe ratios. Results are before trading and borrowing costs. We do not impose a new leverage cap or ex post volatility normalization.
+
+Uncertainty bands use 5,000 paired circular block-bootstrap resamples of the realized monthly policy returns, with 12-month blocks. Annual complexity comparisons use three-year blocks. These are pointwise, conditional intervals: the entire training and selection process is not re-estimated within each resample. Blocks of 6 and 24 months, and 2 and 5 years for the main complexity contrast, provide sensitivity checks. The five-year final period contains limited independent history, and overlapping estimation windows and changing economic conditions further restrict inference. Neither the period comparisons nor the spectral comparisons are adjusted for multiple testing.
+
+\subsection{Profitable Active Complexity Across Test Periods}
+
+For each fixed penalty $\lambda$, we reconstruct the complete return path by refitting every year. The horizontal coordinate in Figure~\ref{fig:complexity} is the arithmetic mean of $\C_y(\lambda)$ across the annual refits in that test block; every refit contributes twelve evaluation months. The in-sample curve is the mean of the corresponding annual refit-sample Sharpe ratios. These training samples overlap, so this curve is a fit diagnostic rather than the performance of a distinct historical trading strategy. The axes are common across periods; in-sample Sharpe is displayed logarithmically because very weak regularization approaches interpolation.
+
+The policy selected by prior validation can change $\lambda$ each year. Its mean complexity is marked by a vertical line, but its realized Sharpe is reported separately in Table~\ref{tab:selected}; it is not a point on a fixed-penalty performance curve. The crosses in Figure~\ref{fig:complexity} identify descriptive maxima on the test-period grid. Their locations are selected with hindsight and have no investable interpretation.
+
+\input{table_selected.tex}
+
+The descriptive maximizing complexities are approximately 154, 145, 131, 288, and 16 across the five periods. The early periods display large gains from moving away from nearly inactive policies, followed by comparatively modest deterioration at the most weakly regularized end of the grid. In 2000--2009 the curve is flatter, while the 2010--2019 maximum occurs farther into the spectrum. In 2020--2024, the maximum occurs much earlier and the uncertainty band is wide. These are different economic environments rather than estimates of one universal optimal complexity.
+
+Historical fit continues to improve far beyond the range producing material out-of-sample gains. Yet the data do not show that every additional direction is harmful: even the highest-complexity grid endpoint outperforms the lowest-complexity endpoint in the first four blocks. The chronologically selected policy's Sharpe falls from 5.50 and 5.81 in the first two blocks to 2.81, 2.98, and 0.76 subsequently. The fixed representation therefore supports substantially different amounts of useful active complexity across periods. These findings support regularization as a restriction on what can be learned, while leaving substantial uncertainty about the precise location of an economically relevant peak.
+
+\figpage{E1_complexity_by_period}{Fixed-penalty Gaussian performance paths in five disjoint test periods. Left: out-of-sample Sharpe and pointwise 95\% block-bootstrap bands. Right: mean annual refit-sample Sharpe. Dashed lines mark mean validation-selected complexity only; Table~\ref{tab:selected} reports that policy's separate performance.}{fig:complexity}
+
+\subsection{Market History and Learnable Complexity}
+
+We next compare trailing histories $T\in\{60,120,240,360\}$ months. The Gaussian features, bandwidth, candidate penalties, scaling, and evaluation dates are identical. To isolate history length, every specification reserves its last 20 months for chronological validation, estimates candidates on the preceding $T-20$ months, and refits the selected policy on all $T$ observations. This common validation window is an explicit change from the five-year expanding-history protocol: a five-year holdout would leave no training sample when $T=60$. It is held fixed across the four histories rather than being allowed to vary with $T$.
+
+The common sample comprises 32 January decisions, 1993--2024, and 384 payoffs from February 1993 through January 2025. Table~\ref{tab:history} reports mean effective complexity, median selected penalty, Sharpe, and response-one loss. Mean complexity rises from 34.4 to 59.9, 125.8, and 170.1 as history increases. The paired $T=360$ minus $T=60$ complexity difference is 135.7, with a three-year block interval of $[94.2,177.0]$, and is positive in 28 of 32 refits. A within-year regression of complexity on $\log T$ gives a mean slope of 76.7, with interval $[53.3,100.2]$. These statistics measure activation under the fixed empirical selection procedure; they are not estimates of a population complexity law or its exponent.
+
+\input{table_history.tex}
+
+More active directions do not translate mechanically into better portfolio performance. Full-period Sharpe increases through $T=240$ and then falls from 2.75 to 2.63 at $T=360$. The latter change is $-0.12$, with paired interval $[-0.44,0.19]$; response-one loss rises by 0.031, with interval $[-0.058,0.119]$. Thus the full-period evidence does not establish a performance advantage for the longest history. The candidate grid also binds in 28\%, 19\%, 16\%, and 16\% of refits, respectively. Selected complexity is therefore conditional on this frozen grid, not an unconstrained optimum.
+
+Figure~\ref{fig:history} separates historical subperiods. In 1993--1999, extending history from 240 to 360 months lowers Sharpe by 1.49 and raises loss by 0.085; the respective paired intervals are $[-2.73,-0.49]$ and $[0.018,0.170]$. In 2010--2019, moving from 60 to 240 months instead raises Sharpe by 1.09 and lowers loss by 0.262, with intervals $[0.37,1.81]$ and $[-0.472,-0.096]$. Both patterns are conditional, exploratory comparisons. In 2020--2024, all four response-one losses exceed one, the loss of a zero-payoff policy, even though additional history increases the selected number of active directions. Rank activation and reliable economic value are distinct.
+
+Local concentration is measured by the top-ten eigenvalue share and the participation rank, $(\sum_j\widehat\mu_j)^2/\sum_j\widehat\mu_j^2$, of each trailing-history uncentered managed-payoff operator. Figure~\ref{fig:local} shows time variation in the top-ten share, although it remains above 99\% throughout. The average participation rank is close to 1.04, illustrating how a dominant second-moment direction can coexist with many weak directions activated by small penalties. Across refits, the correlation between the $T=60$ top-ten share and $\C_{360}-\C_{60}$ is only $-0.049$. This diagnostic does not explain when a longer history is most useful.
+
+The evidence is consistent with a statistical benefit from additional observations and a cost from incorporating less relevant historical observations, but these effects cannot be separately identified from the window comparison. Changes in selected penalties, estimated means, and the economic spectrum occur together. We therefore do not attribute the deterioration in a particular block exclusively to structural change. Nor do we estimate a global spectral exponent or apply a polynomial-decay formula to the Gaussian kernel. More history generally activates more directions in this sample; neither a monotone performance gain nor a stable economic condition guaranteeing that gain is established.
+
+\figpage{E2_history_comparison}{History length and selected active complexity on common evaluation dates. Each column is a disjoint decision-year block. The top row reports average selected complexity; the bottom row reports realized Sharpe. Table~\ref{tab:history} supplies penalties and response-one loss for the common full sample, and the accompanying data tables report all subperiod values.}{fig:history}
+\figpage{E2_local_spectrum}{Local concentration of the managed-payoff operator and the complexity gain from more history. Concentration is computed before each decision. The scatter compares two outcomes of the same annual window experiment and is descriptive, not a causal or predictive regime classification.}{fig:local}
+
+\subsection{Economic Content of the Managed-Payoff Spectrum}
+
+We return to the expanding-history, five-year-validation policy. At each annual decision, we divide the positive training eigenvalues into disjoint rank groups: the leading 10\%, the next 40\%, the next 40\%, and the final 10\%. Numerically positive eigenvalues exceed $10^{-12}$ times the largest eigenvalue; near ties are retained together at group boundaries. Group definitions are held fixed, and no out-of-sample outcome selects a rank cutoff. The resulting nested policies are attribution diagnostics for the existing ridge filter, not an additional feature-selection rule.
+
+Two objects are needed to interpret these directions. First, the actual policy contribution of a group weights each direction's training mean by $1/(\widehat\mu_j+\widehat\lambda)$. Summing the four contributions exactly reconstructs the selected Gaussian policy. Second, a diagnostic eigenportfolio basket standardizes each direction to unit training second moment, orients its sign toward its training mean, and divides the within-group sum by the square root of the number of directions. The basket is scaled to a 10\% annualized training root mean square. Near-zero training means use a deterministic feature-loading sign convention. This is a past-only second-moment normalization, not an out-of-sample volatility target. Rank groups need not represent identical individual economic directions across annual refits.
+
+Figure~\ref{fig:economic} separates second-moment magnitude from expected-payoff contribution. The leading group accounts for 99.921\% of the average training second-moment mass and contributes 24.32 percentage points to the policy's annual mean excess payoff. The next group accounts for only 0.068\% of that mass yet contributes 2.76 percentage points. The final two groups contribute approximately 0.047 and 0.026 percentage points; their standalone mean-contribution intervals include zero. Large eigenvalues thus identify substantial payoff variation, but do not by themselves measure all economically relevant expected returns.
+
+We regress the genuinely out-of-sample group returns on the market, size, value, profitability, investment, and momentum factors. Factor returns are taken in monthly decimal units from the Kenneth R. French Data Library, with the downloaded vintage frozen in the replication files.\footnote{\href{https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html}{Kenneth R. French Data Library}. The current data reflect retrospective revisions and the transition to CRSP CIZ inputs. They are risk benchmarks, not historical-vintage signals used to choose stock portfolios.} Descriptive full-sample regressions include an intercept and report Bartlett/Newey--West standard errors with twelve lags. Separately, a feasible-in-timing factor hedge estimates slopes using only the training-period payoffs and factor returns, and subtracts those exposures during the next test year. Its residual mean is not the same object as a full-sample regression alpha.
+
+The leading diagnostic basket has a profitability loading of 0.315, with HAC interval $[0.042,0.587]$. The 50--90\% rank group has a momentum loading of $-0.155$, with interval $[-0.285,-0.026]$. Most other loading intervals include zero. The six factors explain only 8.3\%, 2.3\%, 7.2\%, and 3.0\% of diagnostic return variation across the four groups. Full-sample annualized alphas are 16.88\%, 7.52\%, 5.97\%, and $-0.88$\%, with respective HAC intervals $[12.60,21.16]$, $[3.76,11.28]$, $[1.54,10.40]$, and $[-5.55,3.80]$ percentage points. These are conditional spanning results, not evidence that omitted risks or sample-selection effects have been eliminated.
+
+Training-fitted hedges leave diagnostic annual mean payoffs of 18.58\%, 9.09\%, 3.64\%, and 1.23\%. The final group's mean remains uncertain. Thus the weak groups are not well described as simple replications of these six factors, but low explanatory power alone does not establish a new reliably exploitable risk premium. Coefficient comparisons also do not support indiscriminate claims of unstable policy weights: average adjacent-refit cosine similarities of the four ridge contribution vectors are 0.943, 0.934, 0.929, and 0.913. At equal diagnostic training risk, the median feature-coefficient norm rises from about 99 in the leading group to 1,432 in the last group. This indicates greater coefficient amplification in weak directions; it is not a measure of realized stock turnover or trading costs.
+
+\input{table_spectrum.tex}
+
+Figure~\ref{fig:incremental} and Table~\ref{tab:nested} assess incremental portfolio value while leaving the validation-selected ridge penalty unchanged. Using the leading 10\% of positive spectral ranks gives Sharpe 3.012 and response-one loss 0.598. Including the first half raises Sharpe to 3.284 and lowers loss to 0.562. The incremental loss change is $-0.036$, but its paired interval $[-0.094,0.029]$ includes zero. Adding ranks 50--90\% produces almost no further average loss improvement. The final group lowers loss by 0.0031, with an unadjusted pointwise interval of approximately $[-0.0071,-0.0001]$; the full policy's Sharpe is 3.300.
+
+\input{table_nested.tex}
+
+This small final improvement is substantially a diversification effect. Its own annual variance contribution is approximately $7.1\times10^{-6}$, while twice its covariance with the preceding policy is $-5.2\times10^{-5}$. The total variance change is negative. We retain the corresponding cross term in response-one loss,
+\[
+ \Delta L=-2\,\overline{(1-r_{\mathrm{previous}})r_{\mathrm{added}}}
+                +\overline{r_{\mathrm{added}}^2}.
+\]
+Estimation-sample second-moment orthogonality does not imply future covariance independence. The modest final-group result persists under the reported block-length checks, but is exploratory, economically small, and sensitive to the broader sample limitations. It does not justify selecting a new policy using the test-period rank comparison.
+
+The three experiments identify a useful distinction for investors. Additional history generally increases the breadth of the fitted policy, but the amount of complexity that contributes to future portfolio value changes across periods. Most expected payoff comes from stronger spectral groups, with some contribution from directions carrying little second-moment mass. The deepest directions have imprecisely measured standalone mean returns and can still contribute modest diversification. These results support an empirical separation between representation, active complexity, and learned economic value; they do not establish a universal finite-sample optimum or a calibrated asymptotic rate.
+
+\figpage{E3_economic_spectrum}{Economic content of disjoint managed-payoff rank groups. Diagnostic baskets have equal training second moment; policy contributions retain their estimated ridge magnitude and common scale. Factor exposures use out-of-sample returns with HAC uncertainty. Mean-payoff intervals use paired time-series blocks. All slopes used for factor hedges are estimated before the evaluation year.}{fig:economic}
+\figpage{E3_incremental_value}{Incremental value of weaker spectral directions at the previously selected ridge penalty. Nested Sharpe, response-one loss, and paired incremental loss are calculated from complete out-of-sample return paths. The correlation panel uses realized group contributions and makes no future-orthogonality assumption.}{fig:incremental}
+\end{document}

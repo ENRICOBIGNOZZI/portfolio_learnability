@@ -1,0 +1,60 @@
+{
+  "created_utc": "2026-10-09T12:39:56.808372+00:00",
+  "kernel": "gaussian",
+  "feature_count": 10000,
+  "seed": 0,
+  "bandwidth": "existing initial-period baseline, multiplier 1",
+  "lambda_grid": "120 existing candidates frozen on initial 1963-1972 sample",
+  "e1_decision_year_blocks": [
+    [
+      1978,
+      1989
+    ],
+    [
+      1990,
+      1999
+    ],
+    [
+      2000,
+      2009
+    ],
+    [
+      2010,
+      2019
+    ],
+    [
+      2020,
+      2024
+    ]
+  ],
+  "timing": "January-close annual decision; February through next January payoffs",
+  "e1_e3_validation_months": 60,
+  "e2_T": [
+    60,
+    120,
+    240,
+    360
+  ],
+  "e2_validation_months": 20,
+  "e2_common_dates": "intersection of complete annual windows across all T",
+  "e3_nested_rank_fractions": [
+    0.1,
+    0.5,
+    0.9,
+    1.0
+  ],
+  "e3_groups": "disjoint positive-rank quantiles 0-10,10-50,50-90,90-100 percent; tied eigenvalues retained together",
+  "e3_sign": "positive training mean, near-zero mean largest feature loading positive",
+  "e3_diagnostic_scale": "each eigenportfolio unit training second moment, group sum divided by sqrt(number), multiplied by .1/sqrt(12)",
+  "bootstrap": {
+    "replicates": 5000,
+    "months_per_circular_block": 12,
+    "annual_blocks_for_complexity": 3,
+    "seed": 20261009,
+    "confidence": 0.95,
+    "conditional": "realized OOS series and estimated policies; no refit bootstrap; pointwise not simultaneous"
+  },
+  "factors": "French FF5 plus momentum; current retrospective vintage; HAC Bartlett lag 12",
+  "sample_limitation": "canonical complete-payoff sample filters missing lead returns before ranks; historical-vintage investability not certified",
+  "scope": "exactly three real-data experiments; no simulations; Section VI only"
+}

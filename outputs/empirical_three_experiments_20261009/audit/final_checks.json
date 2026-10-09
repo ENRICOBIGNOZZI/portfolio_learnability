@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "targeted_tests": 19,
+  "pdf_pages": 13,
+  "figure_pairs": 5,
+  "csv_tables": 21,
+  "original_manuscript_written": false,
+  "reference_available_at_final_check": false,
+  "reference_note": "Reference PDF was read and its Section VI page visually inspected at task start. Original path is unavailable at final build; no final binary equality claim. Extracted Sections V-VI are preserved for provenance.",
+  "all_empirical_input_and_table_hashes_verified": true,
+  "latex_overfull_or_missing_glyphs": false,
+  "visual_review": "All 13 rendered pages inspected; pages 9-11 re-inspected after final prose edit; figures unchanged.",
+  "python": "3.13.3",
+  "numpy": "2.3.5",
+  "pandas": "2.2.3",
+  "code_files": {
+    "empirical_final/three_reproduce.py": "356b57d4acfbb4ec25b102b59be018c55e97b2413ed03b548d49b01d6c30c74f",
+    "empirical_final/three_figures.py": "d775534a3156ef08fd779c2e6bbe5edd20a2c76ec962194087cc1d7ff7bf3c9c",
+    "empirical_final/three_experiments.py": "e73cdcc9fe30422daf48510fb285b6203d9f80eda240f7547695a1c5dde7ff00",
+    "empirical_final/three_publication.py": "e31eb40c303f05ef518076a236e834dc490425d8a1abc07de7d50f9eea0328d5"
+  }
+}

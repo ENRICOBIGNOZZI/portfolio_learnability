@@ -395,3 +395,26 @@ an exploratory historical comparison with a single RFF seed, no trading costs,
 and the original complete-payoff sample restrictions. Frequent selection at a
 grid edge is a diagnostic of limited search coverage, not evidence of an optimum
 beyond the tested range.
+
+## Three empirical experiments for Section VI (9 October 2026)
+
+The completed [three-experiment package](outputs/empirical_three_experiments_20261009/)
+uses the existing Gaussian managed-payoff cache and estimation utilities to compare
+fixed-penalty complexity paths across disjoint periods, trailing histories on common
+evaluation dates, and the economic contributions and factor exposures of spectral groups.
+It includes five PNG/PDF figures, the underlying CSV tables, a
+[financial report](outputs/empirical_three_experiments_20261009/REPORT.txt), and a
+[replacement Section VI only](outputs/empirical_three_experiments_20261009/publication/Section_VI_Three_Empirical_Experiments.pdf).
+The reference manuscript and other sections are unchanged; no simulations are run.
+
+```sh
+python3 -m empirical_final.three_reproduce
+```
+
+Reproduction checks frozen input hashes before running and requires the existing
+local stock/cache inputs. The French FF5 plus momentum table is frozen with source
+provenance. All history lengths use a common 20-month chronological holdout; the
+expanding-history experiments preserve the original 60-month holdout. Paired block
+intervals and block-length sensitivity checks accompany the results. Interpret these
+as conditional retrospective backtests: the retained stock sample excludes missing
+forward payoffs before ranking, and historical data vintages are not certified.
