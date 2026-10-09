@@ -1,0 +1,23 @@
+{
+  "run_hash": "e918d2956efa2095eff969399c169a5bb3b1872b6effd87de49c337af85306e6",
+  "renderer_sha256": "3bb1d2c80ffaf576e7f99c9bae30633bcff96aa7850dbb3613323be800e61884",
+  "operator_validator_sha256": "49c4c2010c63e48ddfea599514d59c51d3c88b5ab66dee59fac97e7314e1edef",
+  "matplotlib_version": "3.10.8",
+  "backend": "Agg",
+  "population_spectrum_sha256": "497852308f2f6bf53982b719e70f558d72ef2d7ceca8c93525dac5ae6a0186d7",
+  "artifact_sha256": {
+    "figure_2_effective_complexity.png": "258e034022c169018c10e2546c4262a6116d06ad771ab396e9d9f2efe23c8e18",
+    "captions.txt": "c8ad61d161af10471eafa59f56b245f468ae563ce4003c1296518623194144a2",
+    "figure_2_effective_complexity.pdf": "faec9c75f146ee826047c600e2080b41f63b0edb9cb7ceec29c30709a87e549f",
+    "figure_1_sharpe_learnability.pdf": "92723e91e41922750fdba5a772a4815be2b4706969ca4122523d60527e13fc63",
+    "figure_1_sharpe_learnability.png": "b8eabbf0e245411b41436a325efdda53472f58872cd01b60087e170c25165c98",
+    "figure_0_economic_spectrum.png": "fd2032cdf7de8ce0a4d6fbc7b271207bb9781e107e865be0ee6b6b24a0d8df18",
+    "figure_0_economic_spectrum.pdf": "6fe3c723883a644c29983964fb2cc36af0e568ae07d82bf04895ddae66ba0b61",
+    "figure_3_sharpe_complexity.pdf": "685bc4e57a94453c746604c0d849e3569ac6e94257eef418dc02adfea89ed9f7",
+    "figure_3_sharpe_complexity.png": "4c3a90d29b875e6ce5a170e229e3cb965445720af95b99435627e959979f4e80",
+    "source_data/figure_0_spectrum.csv": "139a0189539ab779b38d23a725ca5e23a699baebb648dda4a23ca4c0b6e74cf5",
+    "source_data/figures_1_2_theory.csv": "0223a6cb8499682074f5af4b2e6764d9d99a0d45b505601ccc813ebb9865d65d",
+    "source_data/figure_3_exact_theory.csv": "494a3950600027bf196a112998c8a6df21602a858da1a3ea509a1f4e9e3903cb",
+    "source_data/figure_3_paths.csv": "ec3f4a95bf97d4125bf0e053294eaddd2690ac5d33283114f77b9a7a6c129d51"
+  }
+}

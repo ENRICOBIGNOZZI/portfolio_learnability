@@ -1,0 +1,11 @@
+{
+  "figures_reviewed": 4,
+  "vector_PDF_and_320dpi_PNG": true,
+  "checks": [
+    "All panel labels and legends visible",
+    "No clipped curves or annotations",
+    "Shared finite population spectrum labeled",
+    "All diagnostic penalties retained; dash pattern spans contiguous unresolved segments"
+  ],
+  "scope": "Visual layout review, not a statistical or infinite-spectrum certificate"
+}

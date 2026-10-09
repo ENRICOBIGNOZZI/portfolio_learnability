@@ -1,0 +1,11 @@
+{
+  "a": 9.968332766935744e-05,
+  "rule": "lambda_T=a*T^-0.6",
+  "calibration": "Largest rank-512 population second-moment eigenvalue, existing theory_1 convention",
+  "pilot_groups": 8192,
+  "pilot_seed": 2415449988,
+  "evaluation_seed": 3419043910,
+  "independent_population_pilot": true,
+  "historically_implementable_selector": false,
+  "protocol_sha256": "04372420ca072d6935d073b4e6d97b45eb95503a1d13023bf8e405bb733e18f3"
+}

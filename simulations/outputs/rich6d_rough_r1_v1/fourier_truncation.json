@@ -1,0 +1,51 @@
+{
+  "records": [
+    {
+      "M": 128,
+      "balanced_triplet_max_error": 2.168404344971009e-19,
+      "uniform_psi_tail_bound": 6.699081604539618e-09,
+      "max_policy_difference_to_2048": 2.604797444405449e-08,
+      "max_optimal_payoff_difference_to_2048": 1.7539913965691767e-11,
+      "max_sharpe_difference_to_2048": 1.3580525592971071e-12,
+      "max_regret_difference_to_2048": 4.434230760352875e-13
+    },
+    {
+      "M": 512,
+      "balanced_triplet_max_error": 2.168404344971009e-19,
+      "uniform_psi_tail_bound": 2.0379382488034998e-11,
+      "max_policy_difference_to_2048": 6.398792606887582e-11,
+      "max_optimal_payoff_difference_to_2048": 3.1530333899354446e-14,
+      "max_sharpe_difference_to_2048": 4.371503159461554e-15,
+      "max_regret_difference_to_2048": 8.881784197001252e-16
+    },
+    {
+      "M": 2048,
+      "balanced_triplet_max_error": 2.168404344971009e-19,
+      "uniform_psi_tail_bound": 6.514917071779736e-14,
+      "max_policy_difference_to_2048": 0.0,
+      "max_optimal_payoff_difference_to_2048": 0.0,
+      "max_sharpe_difference_to_2048": 0.0,
+      "max_regret_difference_to_2048": 0.0
+    }
+  ],
+  "selected_M": 128,
+  "normalization": 34.95703934054692,
+  "normalization_rule": "Parseval: 1/sqrt(sum m^-10/log(m+1)^2); deterministic sum through 65536",
+  "normalization_squared_sum_tail_bound": 4.050848793233271e-47,
+  "diagnostic_T": 240,
+  "diagnostic_penalties": [
+    1e-07,
+    1e-06,
+    1e-05
+  ],
+  "selection": "Smallest candidate passing fixed absolute numerical tolerances; no rate examined.",
+  "tolerances": {
+    "policy": 1e-07,
+    "payoff": 1e-09,
+    "sharpe": 1e-08,
+    "regret": 1e-08
+  },
+  "limitation": "Finite M is smooth; no mathematical verification of r=1.",
+  "frozen_utc": "2026-10-09T13:57:18.465149+00:00",
+  "seconds": 25.154899167013355
+}

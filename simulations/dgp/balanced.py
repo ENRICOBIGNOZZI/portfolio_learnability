@@ -27,10 +27,13 @@ class DGPParameters:
     mu_F: tuple[float, ...] = (0.10, 0.06, 0.03)
     loading_map: str = 'baseline_original'
     eta: float = 0.
+    fourier_terms: int = 128
 
     def __post_init__(self):
-        if self.loading_map not in ('baseline_original', 'rich6d'):
+        if self.loading_map not in ('baseline_original', 'rich6d', 'rich6d_rough'):
             raise ValueError('Unknown loading map.')
+        if isinstance(self.fourier_terms, bool) or not isinstance(self.fourier_terms, (int, np.integer)) or self.fourier_terms < 2:
+            raise ValueError('fourier_terms must be an integer at least two.')
         if not np.isfinite(self.eta) or (self.loading_map == 'baseline_original' and self.eta != 0):
             raise ValueError('Baseline requires eta=0; eta must be finite.')
         if isinstance(self.N, (bool, np.bool_)) or not isinstance(self.N, (int, np.integer)) or self.N < 3 or self.N % 3:
@@ -128,7 +131,13 @@ def beta(z: np.ndarray, parameters: DGPParameters) -> np.ndarray:
         raise ValueError('Characteristics must lie in the open six-dimensional cube.')
     angle = np.pi * (z[..., 0] + 1)
     if parameters.eta != 0:
-        angle = angle + parameters.eta*np.sin(np.pi*(z[..., 1:]-z[..., :1])).sum(axis=-1)
+        difference = z[..., 1:]-z[..., :1]
+        if parameters.loading_map == 'rich6d_rough':
+            from simulations.dgp.rough import normalized_psi
+            nonlinear = normalized_psi(difference, parameters.fourier_terms)
+        else:
+            nonlinear = np.sin(np.pi*difference)
+        angle = angle + parameters.eta*nonlinear.sum(axis=-1)
     return np.sqrt(parameters.c_beta) * np.stack((
         np.sqrt(2 / 3) * np.cos(angle), np.sqrt(2 / 3) * np.sin(angle),
         np.full_like(angle, 1 / np.sqrt(3))), axis=-1)
@@ -144,7 +153,11 @@ def w_star_gradient(z: np.ndarray, parameters: DGPParameters) -> np.ndarray:
     z = np.asarray(z, dtype=np.float64)
     b = beta(z, parameters)  # canonical validation and phase
     derivative = np.empty_like(z)
-    derivative[..., 1:] = np.pi*parameters.eta*np.cos(np.pi*(z[..., 1:]-z[..., :1]))
+    if parameters.loading_map == 'rich6d_rough':
+        from simulations.dgp.rough import normalized_psi_gradient
+        derivative[..., 1:] = parameters.eta*normalized_psi_gradient(z[..., 1:]-z[..., :1], parameters.fourier_terms)
+    else:
+        derivative[..., 1:] = np.pi*parameters.eta*np.cos(np.pi*(z[..., 1:]-z[..., :1]))
     derivative[..., 0] = np.pi-derivative[..., 1:].sum(axis=-1)
     a = parameters.policy_coefficients
     return derivative*(-b[..., 1]*a[0]+b[..., 0]*a[1])[..., None]

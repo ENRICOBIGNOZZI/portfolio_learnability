@@ -1,0 +1,12 @@
+{
+  "sharpe_gap": -0.578955538841566,
+  "gap_bootstrap_95": [
+    -0.6209983710944199,
+    -0.5364878597783879
+  ],
+  "population_complexity_1024": 0.3601666458707652,
+  "population_complexity_512": 0.34963023572189295,
+  "empirical_complexity_512": 0.3577996528093858,
+  "relative_population_complexity_1024": -0.6398333541292348,
+  "penalty": -0.5999999999999998
+}
