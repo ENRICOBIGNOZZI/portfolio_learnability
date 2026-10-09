@@ -18,6 +18,25 @@ def command(pid):
     return result.stdout.strip()
 
 
+def disk_reserve(minimum,timeout=60):
+    """Allow exited-child memory/swap to settle without lowering the reserve.
+
+    Three consecutive five-second readings must satisfy the existing threshold.
+    Record every reading so this resource decision remains independently auditable.
+    """
+    started=time.monotonic()
+    samples=[]
+    consecutive=0
+    while True:
+        free=shutil.disk_usage(OUTPUT).free
+        elapsed=time.monotonic()-started
+        samples.append(dict(elapsed_seconds=elapsed,free_bytes=free))
+        consecutive=consecutive+1 if free>=minimum else 0
+        if consecutive>=3 or elapsed>=timeout:
+            return free,consecutive>=3,samples
+        time.sleep(min(5,timeout-elapsed))
+
+
 def run(parent):
     if '-m simulations.extended.preflight' not in command(parent):
         raise ValueError('PID does not identify this study preflight supervisor.')
@@ -41,12 +60,14 @@ def run(parent):
             time.sleep(5)
         if not (OUTPUT/'rank_pilot'/'P4096'/f'rep_{index:03d}.npz').exists():
             raise RuntimeError('Current pilot ended without its full-rank checkpoint.')
-        free=shutil.disk_usage(OUTPUT).free
         selected=[index+1,index+2]
+        minimum=int(1.5*1024**3)
+        free,stable,samples=disk_reserve(minimum)
         report=dict(previous_pilot=index,selected_pilots=selected,
-            disk_free_before_bytes=free,minimum_free_bytes=int(1.5*1024**3),
+            disk_free_before_bytes=free,minimum_free_bytes=minimum,
+            disk_reserve_stable=stable,disk_reserve_samples=samples,
             started_utc=utc_now())
-        if free<report['minimum_free_bytes'] or selected[-1]>=PILOT_PATHS:
+        if not stable or selected[-1]>=PILOT_PATHS:
             report.update(status='not_launched',reason='Insufficient free disk reserve for simultaneous process memory pressure, or fewer than two remaining predeclared pilots.',recommended_workers=1)
             json_write(OUTPUT/'pilot'/'concurrency_probe.json',report)
             json_write(OUTPUT/'pilot'/f'concurrency_probe_after_pilot_{index:03d}.json',report)
