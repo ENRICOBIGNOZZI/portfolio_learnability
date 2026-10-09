@@ -217,14 +217,14 @@ class Figures:
 
     def robustness_path(self,names,kind,filename):
         fig,axes=self.axes(2)
-        for ax,T in zip(axes,self.protocol['robustness_path_T']):
+        for panel,(ax,T) in enumerate(zip(axes,self.protocol['robustness_path_T'])):
             for color,name in zip(self.palette(names),names):
                 self.path(ax,name,T,color,self.label(name,kind))
                 if kind!='rho' or name==names[0]:
                     optimum=parameters(name).sr_star*np.sqrt(12)
                     ax.axhline(optimum,color=color if kind!='rho' else '#333333',ls='--',lw=.9,
                         label=fr'$SR^\star={optimum:.3f}$')
-            ax.set_title(fr'$T={T}$')
+            ax.set_title(fr'({chr(97+panel)}) $T={T}$')
         self.shared_legend(fig,axes,names)
         self.save(fig,filename,
             'Predetermined early and late horizons compare all 96 diagnostic penalties across the specified economies. Means and central 95% replication bands use 300 independent paths; stars are the exact prescribed theory-scaled choices. Population optima remain explicit. The rho comparison uses the same population-complexity coordinate across environments. Dotted overprints identify numerical failures in the paired-rank/floor checks. No maximum along these ex-post curves is used to choose the reported strategy.')
