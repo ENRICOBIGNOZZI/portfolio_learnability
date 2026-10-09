@@ -75,6 +75,7 @@ def render():
         r=paired[(paired.environment==name)&(paired.metric=='annual_gap')&(paired['T']==last)].iloc[0]
         add(f"At T={last}, {name} minus baseline own-optimum gap: {r['mean']:.6f}, paired MCSE {r.mcse:.6f} (Monte Carlo mean interval [{r['mean']-1.96*r.mcse:.6f}, {r['mean']+1.96*r.mcse:.6f}]). A negative difference means better recovery relative to that economy's own opportunity set.")
     add('N changes residual diversification and the analytical opportunity set, with factor means and covariance held fixed. Absolute Sharpe and own-optimum recovery are therefore reported separately. The rho experiments share the same stationary operator, population complexity, analytical optimum and regularization constant; only serial dependence changes. No ad hoc effective-sample-size substitution is made. End-horizon differences and slope tables must not be generalized into a universal monotonic learning-rate ordering.')
+    add('The N-dependent projection floors must also be considered when interpreting cross-sectional comparisons: unequal finite-rank approximation error can contribute to the apparent difference in recovery. The rho comparison has a common population projection floor, but that fact alone does not certify every fitted-policy difference against a larger numerical rank.')
     add('5. MORE REPLICATIONS, MORE HISTORY, AND NUMERICAL APPROXIMATION')
     np.testing.assert_allclose(comparison.new300_selected_rank-comparison.old100_rank512_old_quadrature,
         comparison.quadrature_contribution+comparison.rank_contribution+comparison.additional_replications_contribution,atol=1e-12)
@@ -83,6 +84,15 @@ def render():
         add(f"At T={T}, the previous 100-path mean annual Sharpe {r.old100_rank512_old_quadrature:.6f} becomes {r.new300_selected_rank:.6f}. The additive changes are evaluation quadrature {r.quadrature_contribution:+.6f}, numerical rank on the same first 100 return histories {r.rank_contribution:+.6f}, and the additional 200 paths {r.additional_replications_contribution:+.6f}. All first-100 baseline stock-return hashes agree with the reference run.")
     for _,r in old_slopes[(old_slopes.window=='full')].iterrows():
         add(f"Comparison slope, {r.comparison}: {r.slope:.6f}.")
+    complexity_comparison=pd.read_csv(OUTPUT/'complexity_comparison_previous.csv')
+    reference=complexity_comparison[(complexity_comparison.source=='previous_rank1024')&
+        (complexity_comparison.grid=='original')&(complexity_comparison.window=='full')].iloc[0]
+    add(f"The previous rank-1024 population-complexity slope on the original grid is {reference.slope:.6f}. Population complexity does not change merely because the Monte Carlo replication count increases.")
+    current=complexity_comparison[(complexity_comparison.source=='new_population')&
+        (complexity_comparison['rank']==protocol['rank'])&(complexity_comparison.window=='full')]
+    chosen_grid='required_extended' if protocol['omitted_optional_T7290'] else 'candidate_7290'
+    for _,r in current[current.grid.isin(['original',chosen_grid])].iterrows():
+        add(f"New selected-rank population-complexity slope, {r.grid}: {r.slope:.6f}. The same-grid change reflects numerical resolution; the subsequent grid change reflects the longer range of prescribed penalties.")
     add('The original-grid versus extended-grid comparison at the same 300-path numerical specification isolates the fitting-window/history extension. It is not interchangeable with the effect of more replications or a changed finite-rank approximation.')
     add('6. UNCERTAINTY AND UNSUPPORTED CLAIMS')
     add('All main and robustness bands are central 95% replication-percentile bands, not confidence intervals for the mean. Means, medians, standard deviations, both percentiles and mean MCSE are retained for every T and candidate penalty. Regularization bias, estimation norm and the cross term sum to analytical-optimum regret for the exact theory choice. These quantities remain distinct from the projection floor, quadrature error and serial-dependence effects.')

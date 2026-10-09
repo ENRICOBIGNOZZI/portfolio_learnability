@@ -78,8 +78,8 @@ def raw_managed_history(basis,training_seed,pairing_index,maximum_T,robustness_T
         else:
             z,r=observations['baseline']
             arrays['baseline'][t]=r@basis.raw(z)/len(r)
-        if t+1==1440:
-            checkpoints={name+'_T1440':h for name,h in sim.hashes().items()}
+        if t+1 in (1440,3240):
+            checkpoints.update({name+f'_T{t+1}':h for name,h in sim.hashes().items()})
         if progress is not None and (t+1)%240==0:
             progress(t+1)
     return arrays,{**sim.hashes(),**checkpoints}

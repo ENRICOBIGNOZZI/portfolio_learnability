@@ -65,6 +65,7 @@ def verify(require_figures=True):
         np.testing.assert_allclose(popC,pop['complexity'],rtol=1e-12)
         np.testing.assert_allclose(local,pop['local_T_elasticity'],rtol=1e-12)
         np.testing.assert_allclose(pop['penalties'],protocol['a'][name]*T.astype(float)**(-.6),rtol=1e-14)
+        history_hashes=set()
         for index in range(300):
             with np.load(folder/f'rep_{index:03d}.npz') as z:
                 assert int(z['index'])==index
@@ -74,8 +75,10 @@ def verify(require_figures=True):
                 assert description['run_hash']==protocol['run_hash']
                 assert str(z['identity'])==digest(description)
                 assert float(z['maximum_normal_equation_error'])<=1e-8
+                history_hashes.add(json.loads(str(z['returns_hashes']))[name])
                 np.testing.assert_array_equal(z[name+'_sr']*np.sqrt(12),data['annual_SR'][index])
                 np.testing.assert_array_equal(z[name+'_empirical_complexity'],C[index])
+        assert len(history_hashes)==300
         table=pd.read_csv(OUTPUT/'theory_distributions.csv')
         for metric in ('annual_SR','annual_gap','empirical_complexity'):
             rows=table[(table.environment==name)&(table.metric==metric)].sort_values('T')

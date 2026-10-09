@@ -1,0 +1,13 @@
+{
+  "previous_pilot": 3,
+  "selected_pilots": [
+    4,
+    5
+  ],
+  "disk_free_before_bytes": 1215180800,
+  "minimum_free_bytes": 1610612736,
+  "started_utc": "2026-10-09T21:00:53.813567+00:00",
+  "status": "not_launched",
+  "reason": "Insufficient free disk reserve for simultaneous process memory pressure, or fewer than two remaining predeclared pilots.",
+  "recommended_workers": 1
+}

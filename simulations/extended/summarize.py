@@ -77,6 +77,11 @@ def summarize():
         if name=='baseline':
             continue
         nt=datasets[name]['annual_SR'].shape[1]
+        for index in range(300):
+            if hashes[name][index]['baseline_T1440']!=hashes['baseline'][index]['baseline_T1440']:
+                raise ValueError('Production stages failed economic-history pairing.')
+            if hashes[name][index]['baseline']!=hashes['baseline'][index]['baseline_T3240']:
+                raise ValueError('Production stages failed pairing over the full common horizon.')
         for metric in ('annual_SR','annual_gap','empirical_complexity'):
             diff=datasets[name][metric][:,:,-1]-datasets['baseline'][metric][:,:nt,-1]
             stats=distribution(diff)
@@ -84,9 +89,6 @@ def summarize():
                 paired.append(dict(environment=name,reference='baseline',metric=metric,T=T,
                     comparison='Paired innovation difference across independent replication indices',
                     **{key:float(value[t]) for key,value in stats.items()}))
-            for index in range(300):
-                if hashes[name][index]['baseline_T1440']!=hashes['baseline'][index]['baseline_T1440']:
-                    raise ValueError('Production stages failed economic-history pairing.')
     pd.DataFrame(summary).to_csv(OUTPUT/'full_penalty_distributions.csv',index=False)
     pd.DataFrame(theory).to_csv(OUTPUT/'theory_distributions.csv',index=False)
     pd.DataFrame(slopes).to_csv(OUTPUT/'slopes_all_windows.csv',index=False)

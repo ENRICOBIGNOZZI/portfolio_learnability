@@ -3,7 +3,7 @@ import json
 import numpy as np
 import pandas as pd
 
-from simulations.extended.design import OUTPUT,BASIS_SEED,BASE_A,T_CANDIDATE,seed
+from simulations.extended.design import OUTPUT,REFERENCE,BASIS_SEED,BASE_A,T_CANDIDATE,T_ORIGINAL,T_REQUIRED,seed
 from simulations.extended.population import spectral_path
 from simulations.extended.statistics import deterministic_slopes
 from simulations.provenance import json_write,utc_now
@@ -53,6 +53,21 @@ def run():
         component_warning='Ordered component eigenvalues are not added; managed, kernel, factor and idiosyncratic operators were diagonalized separately (noise is exactly a scalar multiple of the kernel operator).',
         scope='Candidate-horizon diagnostics precede production. Actual final-grid slopes must be recalculated on the frozen production grid. No segment regression is used to infer b.')
     json_write(OUTPUT/'spectrum_geometry_and_saturation.json',report)
+    comparisons=[]
+    cases=[('previous_rank1024',1024,pd.read_csv(REFERENCE/'spectrum.csv')['eigenvalue'].to_numpy())]
+    for rank in (512,1024,2048,4096):
+        path=OUTPUT/'pilot'/f'spectra_baseline_P{rank}_B{BASIS_SEED}_Q32768_S{seed("population")}.npz'
+        with np.load(path) as z:
+            cases.append(('new_population',rank,z['managed']))
+    for source,rank,values in cases:
+        for grid,Ts in (('original',T_ORIGINAL),('required_extended',T_REQUIRED),('candidate_7290',T_CANDIDATE)):
+            T=np.asarray(Ts,dtype=float)
+            complexity,_,elasticity=spectral_path(values,BASE_A*T**(-.6))
+            for slope in deterministic_slopes(T,complexity):
+                comparisons.append(dict(source=source,rank=rank,grid=grid,**slope,
+                    first_complexity=float(complexity[0]),last_complexity=float(complexity[-1]),
+                    first_local_elasticity=float(elasticity[0]),last_local_elasticity=float(elasticity[-1])))
+    pd.DataFrame(comparisons).to_csv(OUTPUT/'complexity_comparison_previous.csv',index=False)
 
 if __name__=='__main__':
     run()

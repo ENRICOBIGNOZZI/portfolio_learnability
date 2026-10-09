@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-10-09T20:38:13.882876+00:00",
+  "created_utc": "2026-10-09T20:54:40.860476+00:00",
   "operator": "Baseline managed payoff",
   "rank": 4096,
   "local_elasticity_at_candidate_T": {
@@ -44,13 +44,6 @@
       "slope": 0.4223557489970896
     }
   ],
-  "complexity_fraction_rank_at_largest_candidate": 0.004352401646927891,
-  "half_rank_diagnostic_T": 10441274056.779308,
-  "saturation_end_complexity": 4095.9999652335314,
-  "saturation_end_local_elasticity": 5.092745374374984e-09,
-  "spectrum_interpretation": "Large adjacent-eigenvalue gaps persist in independent basis and quadrature cases. Kernel clusters also occur before factor weighting, so they cannot all be artifacts of the factor economy. The radial Mat\u00e9rn kernel and uniform six-dimensional cube are invariant under coordinate permutations/reflections; the observed near-multiplicities are consistent with that symmetry. Three leading factor-related directions change the managed spectrum. This is a numerical interpretation, not a proof identifying every eigenspace.",
-  "component_warning": "Ordered component eigenvalues are not added; managed, kernel, factor and idiosyncratic operators were diagonalized separately (noise is exactly a scalar multiple of the kernel operator).",
-  "scope": "Candidate-horizon diagnostics precede production. Actual final-grid slopes must be recalculated on the frozen production grid. No segment regression is used to infer b.",
   "candidate_grid_complexity_fraction_rank": [
     0.0006727404265894711,
     0.0007708334436295748,
@@ -66,5 +59,12 @@
     0.0030798557304038405,
     0.003659251394455314,
     0.004352401646927891
-  ]
+  ],
+  "complexity_fraction_rank_at_largest_candidate": 0.004352401646927891,
+  "half_rank_diagnostic_T": 10441274056.779308,
+  "saturation_end_complexity": 4095.9999652335314,
+  "saturation_end_local_elasticity": 5.092745374374984e-09,
+  "spectrum_interpretation": "Large adjacent-eigenvalue gaps persist in independent basis and quadrature cases. Kernel clusters also occur before factor weighting, so they cannot all be artifacts of the factor economy. The radial Mat\u00e9rn kernel and uniform six-dimensional cube are invariant under coordinate permutations/reflections; the observed near-multiplicities are consistent with that symmetry. Three leading factor-related directions change the managed spectrum. This is a numerical interpretation, not a proof identifying every eigenspace.",
+  "component_warning": "Ordered component eigenvalues are not added; managed, kernel, factor and idiosyncratic operators were diagonalized separately (noise is exactly a scalar multiple of the kernel operator).",
+  "scope": "Candidate-horizon diagnostics precede production. Actual final-grid slopes must be recalculated on the frozen production grid. No segment regression is used to infer b."
 }

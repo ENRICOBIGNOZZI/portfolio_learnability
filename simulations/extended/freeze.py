@@ -72,6 +72,8 @@ def freeze(rank=4096,include_7290=False):
         penalties=PENALTIES.tolist(),exact_theory_choice='a*T**(-0.6), appended to the full 96-point diagnostic grid',
         annualization='sqrt(12) times marginal monthly Sharpe; not compounded annual-return Sharpe',
         periods_per_year=12,primary_bands='Central 95% replication percentiles, never confidence intervals for the mean',
+        theoretical_reference=dict(b=1.5,r=1,penalty_exponent=-.6,complexity_exponent=.4,
+            Sharpe_gap_upper_rate_exponent=-.6,status='Asymptotic reference hypotheses, not finite-sample equalities or simulation proofs.'),
         slope_windows=WINDOWS,slope_uncertainty='Full cross-T covariance delta method, checked by replication jackknife',
         main_path_T=[60,240,720,1440],robustness_path_T=[60,1440],
         omitted_optional_T7290=not include_7290,

@@ -49,6 +49,7 @@ def run(parent):
         if free<report['minimum_free_bytes'] or selected[-1]>=PILOT_PATHS:
             report.update(status='not_launched',reason='Insufficient free disk reserve for simultaneous process memory pressure, or fewer than two remaining predeclared pilots.',recommended_workers=1)
             json_write(OUTPUT/'pilot'/'concurrency_probe.json',report)
+            json_write(OUTPUT/'pilot'/f'concurrency_probe_after_pilot_{index:03d}.json',report)
             print(report,flush=True)
             return
         start=time.perf_counter()
@@ -63,6 +64,7 @@ def run(parent):
             disk_free_after_bytes=shutil.disk_usage(OUTPUT).free,completed_utc=utc_now())
         report['recommended_workers']=2 if all(code==0 for code in codes) and elapsed<1.6*serial and report['disk_free_after_bytes']>=512*1024**2 else 1
         json_write(OUTPUT/'pilot'/'concurrency_probe.json',report)
+        json_write(OUTPUT/'pilot'/f'concurrency_probe_after_pilot_{index:03d}.json',report)
         print(report,flush=True)
     finally:
         # The existing supervisor resumes and validates/skips completed indices.
