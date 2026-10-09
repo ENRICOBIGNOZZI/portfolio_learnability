@@ -2,6 +2,7 @@
 from dataclasses import replace
 from pathlib import Path
 import json
+import os
 
 import numpy as np
 
@@ -9,7 +10,8 @@ from simulations.dgp.balanced import DGPParameters
 
 ROOT = Path(__file__).resolve().parents[2]
 REFERENCE = ROOT/'simulations/outputs/rich6d_rough_sr3_annual_monthly_v1'
-OUTPUT = ROOT/'simulations/outputs/rich6d_rough_sr3_extended_v2'
+OUTPUT = Path(os.environ.get('RICH6D_EXTENDED_OUTPUT',
+              str(ROOT/'simulations/outputs/rich6d_rough_sr3_extended_v2'))).resolve()
 T_ORIGINAL = (60,90,120,180,240,360,540,720,1080,1440)
 T_REQUIRED = T_ORIGINAL + (2160,3240,4860)
 T_CANDIDATE = T_REQUIRED + (7290,)

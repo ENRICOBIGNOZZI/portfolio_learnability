@@ -18,7 +18,7 @@ from simulations.run_rough import seed as legacy_seed
 
 def science_hashes():
     names=['simulations/extended/'+name+'.py' for name in
-           ('design','population','histories','calibration','compute','freeze','production')]
+           ('design','population','histories','calibration','compute','freeze','production','archive')]
     names += ['simulations/dgp/balanced.py','simulations/dgp/rough.py',
               'simulations/estimator/kernel.py','simulations/estimator/ridge.py',
               'simulations/provenance.py','simulations/run_rough.py']
@@ -31,10 +31,14 @@ def freeze(rank=4096,include_7290=False):
     status=json.loads((OUTPUT/'preproduction_audit_status.json').read_text())
     if status['pilot_replications']!=12:
         raise ValueError('Complete all 12 predeclared rank pilots first.')
-    if not status['quadrature_all_pass']:
-        raise ValueError('Resolve failed quadrature cells before freezing production.')
     rank_table=pd.read_csv(OUTPUT/'rank_audit_theory.csv')
     times=list(T_CANDIDATE if include_7290 else T_REQUIRED)
+    quadrature=pd.read_csv(OUTPUT/'quadrature_audit.csv')
+    for name in ENVIRONMENTS:
+        grid=times if name=='baseline' else list(T_ROBUSTNESS)
+        required=quadrature[(quadrature.environment==name)&quadrature['T'].isin(grid)]
+        if len(required)!=len(grid) or not required.quadrature_pass.all() or not (required['rank']==rank).all():
+            raise ValueError('Resolve quadrature for every selected-rank production cell before freezing.')
     forward=rank_table[rank_table.lower_rank==rank]
     backward=rank_table[rank_table.higher_rank==rank]
     # Highest rank has no independent higher-rank reference. Never label its

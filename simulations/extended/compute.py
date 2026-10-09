@@ -23,7 +23,11 @@ def operator_path(name,rank,groups,quadrature_seed,basis_seed=BASIS_SEED):
 
 
 def load_operator(name,rank,groups,quadrature_seed):
-    with np.load(operator_path(name,rank,groups,quadrature_seed)) as z:
+    path=operator_path(name,rank,groups,quadrature_seed)
+    if not path.exists():
+        from simulations.extended.archive import read_archived_operator
+        return read_archived_operator(name,rank,groups,quadrature_seed)
+    with np.load(path) as z:
         return z['mean'],z['second'],float(z['floor'])
 
 
@@ -64,6 +68,7 @@ def run_path(index,ranks,baseline_times,robustness_times,groups=32768,
     for rank in pending:
         basis=high if rank==maxrank else basis_cached(OUTPUT/'pilot',rank,BASIS_SEED)
         outcomes={}
+        maximum_normal_error=0.
         for name in environment_names:
             times=baseline_times if name=='baseline' else robustness_times
             p=parameters(name)
@@ -89,6 +94,12 @@ def run_path(index,ranks,baseline_times,robustness_times,groups=32768,
                 # Independent population quadrature can perturb the analytical
                 # ceiling slightly; retain and quantify any excess in audits.
                 if pop_theory is not None:
+                    checked=np.array([0,32,64,95,96])
+                    fitted=coefficients[:,checked]
+                    residual=X[:T].T@(X[:T]@fitted)/T+fitted*penalties[checked]-X[:T].mean(axis=0)[:,None]
+                    maximum_normal_error=max(maximum_normal_error,float(np.max(np.abs(residual))))
+                    if maximum_normal_error>1e-8:
+                        raise ValueError('Ridge normal-equation residual exceeds the existing numerical tolerance.')
                     delta=coefficients[:,-1]-pop_theory[t_index]
                     norm=float(delta@S@delta)
                     cross=float(2*delta@(S@pop_theory[t_index]-m))
@@ -120,6 +131,7 @@ def run_path(index,ranks,baseline_times,robustness_times,groups=32768,
                   pairing_index=pairing_index,rank=rank,identity=identity,
                   description=json.dumps(description,sort_keys=True),
                   returns_hashes=json.dumps(hashes,sort_keys=True),
+                  maximum_normal_equation_error=maximum_normal_error,
                   generation_seconds=generation_seconds,elapsed_seconds=time.perf_counter()-start,
                   maximum_resident_bytes=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss)
     report=dict(description,elapsed_seconds=time.perf_counter()-start,

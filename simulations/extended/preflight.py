@@ -17,6 +17,21 @@ def execute(module,args):
     subprocess.run(command,check=True)
 
 
+def ensure_population(rank,groups,basis_seed,qseed,spectra_only=False):
+    folder=OUTPUT/'pilot'
+    marker=folder/f'resources_P{rank}_B{basis_seed}_Q{groups}_S{qseed}.json'
+    # A committed completion marker does not recreate ignored local caches.
+    required=[] if spectra_only else [folder/f'operator_{name}_P{P}_B{basis_seed}_Q{groups}_S{qseed}.npz'
+        for P in (512,1024,2048,4096) if P<=rank
+        for name in ('baseline','N300','N1200')]
+    if marker.exists() and all(path.exists() for path in required):
+        return
+    options=['--max-rank',rank,'--groups',groups,'--basis-seed',basis_seed,'--quadrature-seed',qseed]
+    if spectra_only:
+        options.append('--spectra-only')
+    execute('simulations.extended.pilot_population',options)
+
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--wait-pid',type=int)
@@ -29,10 +44,13 @@ def main():
                 except ProcessLookupError:
                     break
                 time.sleep(30)
-        # A disappeared process is not success: verify every expected checkpoint.
-        for rank in (512,1024,2048,4096):
-            if not (OUTPUT/'rank_pilot'/f'P{rank}'/'rep_000.npz').exists():
-                raise RuntimeError('Initial resource/rank pilot did not finish; inspect its actual failure before resuming.')
+        if args.wait_pid:
+            # A disappeared process is not success: verify its checkpoints.
+            for rank in (512,1024,2048,4096):
+                if not (OUTPUT/'rank_pilot'/f'P{rank}'/'rep_000.npz').exists():
+                    raise RuntimeError('Initial resource/rank pilot did not finish; inspect its actual failure before resuming.')
+        ensure_population(4096,32768,BASIS_SEED,seed('population'))
+        execute('simulations.extended.compute',['--index',0])
         population_cases=[
             (4096,131072,BASIS_SEED,seed('quadrature',1),False),
             (2048,32768,seed('spectrum_basis',1),seed('population'),True),
@@ -40,13 +58,7 @@ def main():
             (2048,32768,BASIS_SEED,seed('spectrum_quadrature',1),True),
         ]
         for rank,groups,basis_seed,qseed,spectra_only in population_cases:
-            marker=OUTPUT/'pilot'/f'resources_P{rank}_B{basis_seed}_Q{groups}_S{qseed}.json'
-            if marker.exists():
-                continue
-            options=['--max-rank',rank,'--groups',groups,'--basis-seed',basis_seed,'--quadrature-seed',qseed]
-            if spectra_only:
-                options.append('--spectra-only')
-            execute('simulations.extended.pilot_population',options)
+            ensure_population(rank,groups,basis_seed,qseed,spectra_only)
         # A first-path check can identify a failed quadrature before further fits.
         quadrature_audit(4096,1)
         for index in range(1,PILOT_PATHS):

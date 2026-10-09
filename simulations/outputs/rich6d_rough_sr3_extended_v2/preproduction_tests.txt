@@ -6,3 +6,18 @@ These checks cover paired baseline generation, nested raw integrals, the canonic
 population operator, exact rho invariance, the local-elasticity identity, slope
 uncertainty under common shocks and the existing annual-SR3 calibration checks.
 They do not certify completion of 300 replications or final plot rendering.
+
+Additional current-code check:
+VECLIB_MAXIMUM_THREADS=1 OPENBLAS_NUM_THREADS=1 python3 -m pytest -q tests/test_extended_simulation.py
+Observed result: 9 passed in 3.57s.
+Added coverage exercises both real-DGP production stages on small isolated
+histories, their return-hash pairing, all 97 penalty outcomes, normal equations,
+regret decomposition, rejection of incompatible checkpoints, and lossless archive
+integrity failure on corrupted chunks.
+
+Visual pipeline QA:
+All ten figure types were rendered from two actual completed pilot paths in a
+temporary directory outside the deliverables. Previews were explicitly marked
+PREPRODUCTION and were not substituted for the required 300-path figures.
+This caught and corrected math-text formatting and crowded legends/tick labels.
+Final figures still require separate review after complete production.

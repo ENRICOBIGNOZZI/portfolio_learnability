@@ -1,0 +1,70 @@
+{
+  "created_utc": "2026-10-09T20:38:13.882876+00:00",
+  "operator": "Baseline managed payoff",
+  "rank": 4096,
+  "local_elasticity_at_candidate_T": {
+    "60": 0.33122174045731073,
+    "90": 0.34039703316520076,
+    "120": 0.3476508640458465,
+    "180": 0.3586172084220995,
+    "240": 0.3666991373779108,
+    "360": 0.37812594476790506,
+    "540": 0.3891382598466991,
+    "720": 0.39644505097254923,
+    "1080": 0.40573159622909605,
+    "1440": 0.4114613492340549,
+    "2160": 0.418185705114341,
+    "3240": 0.42326709975468896,
+    "4860": 0.42673240733747847,
+    "7290": 0.4286809331033539
+  },
+  "candidate_grid_complexity_slopes": [
+    {
+      "window": "full",
+      "T_min": 0,
+      "observations": 14,
+      "slope": 0.39029978821456796
+    },
+    {
+      "window": "T_ge_360",
+      "T_min": 360,
+      "observations": 9,
+      "slope": 0.4110687609116833
+    },
+    {
+      "window": "T_ge_720",
+      "T_min": 720,
+      "observations": 7,
+      "slope": 0.41740781295239354
+    },
+    {
+      "window": "T_ge_1440",
+      "T_min": 1440,
+      "observations": 5,
+      "slope": 0.4223557489970896
+    }
+  ],
+  "complexity_fraction_rank_at_largest_candidate": 0.004352401646927891,
+  "half_rank_diagnostic_T": 10441274056.779308,
+  "saturation_end_complexity": 4095.9999652335314,
+  "saturation_end_local_elasticity": 5.092745374374984e-09,
+  "spectrum_interpretation": "Large adjacent-eigenvalue gaps persist in independent basis and quadrature cases. Kernel clusters also occur before factor weighting, so they cannot all be artifacts of the factor economy. The radial Mat\u00e9rn kernel and uniform six-dimensional cube are invariant under coordinate permutations/reflections; the observed near-multiplicities are consistent with that symmetry. Three leading factor-related directions change the managed spectrum. This is a numerical interpretation, not a proof identifying every eigenspace.",
+  "component_warning": "Ordered component eigenvalues are not added; managed, kernel, factor and idiosyncratic operators were diagonalized separately (noise is exactly a scalar multiple of the kernel operator).",
+  "scope": "Candidate-horizon diagnostics precede production. Actual final-grid slopes must be recalculated on the frozen production grid. No segment regression is used to infer b.",
+  "candidate_grid_complexity_fraction_rank": [
+    0.0006727404265894711,
+    0.0007708334436295748,
+    0.0008510144027960272,
+    0.000981997972071339,
+    0.001089981708954538,
+    0.0012676525256518217,
+    0.0014810309533644058,
+    0.0016582286013195272,
+    0.0019511553114655042,
+    0.0021945694202891385,
+    0.0025966892269624732,
+    0.0030798557304038405,
+    0.003659251394455314,
+    0.004352401646927891
+  ]
+}

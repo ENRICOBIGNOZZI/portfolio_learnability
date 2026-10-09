@@ -82,3 +82,64 @@ def test_population_rho_invariance_is_exact():
         np.testing.assert_array_equal(m,m2)
         np.testing.assert_array_equal(S,S2)
         assert parameters(name).sr_star==parameters().sr_star
+
+
+def test_population_archive_detects_corruption(tmp_path,monkeypatch):
+    import pytest
+    from simulations.extended import archive
+    from simulations.provenance import npz_write,json_write,file_hash
+    monkeypatch.setattr(archive,'OUTPUT',tmp_path)
+    folder=archive.archive_folder('baseline',8,99,17)
+    S=np.arange(64,dtype=float).reshape(8,8)
+    m=np.arange(8,dtype=float)
+    chunks=[]
+    for start in (0,4):
+        path=folder/f'rows_{start}.npz'
+        npz_write(path,second_rows=S[start:start+4])
+        chunks.append(dict(file=path.name,first_row=start,rows=4,sha256=file_hash(path)))
+    npz_write(folder/'moments.npz',mean=m,floor=.01)
+    json_write(folder/'index.json',dict(rank=8,groups=99,seed=17,chunks=chunks,
+        moments_sha256=file_hash(folder/'moments.npz')))
+    got=archive.read_archived_operator('baseline',8,99,17)
+    np.testing.assert_array_equal(got[0],m)
+    np.testing.assert_array_equal(got[1],S)
+    assert got[2]==.01
+    npz_write(folder/'rows_0.npz',second_rows=np.zeros((4,8)))
+    with pytest.raises(ValueError,match='integrity'):
+        archive.read_archived_operator('baseline',8,99,17)
+
+
+def test_production_checkpoint_pairing_decomposition_and_identity(tmp_path,monkeypatch):
+    import json
+    import pytest
+    from simulations.extended import compute
+    from simulations.extended.design import ENVIRONMENTS,BASIS_SEED,BASE_A
+    from simulations.extended.population import population_reference
+    from simulations.provenance import npz_write
+    monkeypatch.setattr(compute,'OUTPUT',tmp_path)
+    monkeypatch.setattr(compute,'calibrate',lambda: {'a':{name:BASE_A for name in ENVIRONMENTS}})
+    basis=NystromBasis(rank=32,seed=BASIS_SEED)
+    stats=raw_integrals(parameters(),basis,257,91)
+    T=np.array([12,24]);penalties=BASE_A*T.astype(float)**(-.6)
+    operators_by_name={}
+    for name in ENVIRONMENTS:
+        reference=population_reference(parameters(name),basis,stats,penalties)
+        operators_by_name[name]=(reference['mean'],reference['second'],reference['floor'])
+        npz_write(tmp_path/'population'/f'{name}_theory.npz',T=T,
+            coefficients=reference['coefficients'].T,bias=reference['bias'])
+    monkeypatch.setattr(compute,'load_operator',lambda name,*args:operators_by_name[name])
+    compute.run_path(0,[32],T.tolist(),[],stage='production_baseline',
+        run_hash='isolated-test',environment_names=['baseline'])
+    compute.run_path(0,[32],T.tolist(),T.tolist(),stage='production_robustness',
+        run_hash='isolated-test',environment_names=[n for n in ENVIRONMENTS if n!='baseline'])
+    with np.load(tmp_path/'production_baseline/P32/rep_000.npz') as a,np.load(tmp_path/'production_robustness/P32/rep_000.npz') as b:
+        assert json.loads(str(a['returns_hashes']))['baseline']==json.loads(str(b['returns_hashes']))['baseline']
+        for z,names in ((a,['baseline']),(b,[n for n in ENVIRONMENTS if n!='baseline'])):
+            assert float(z['maximum_normal_equation_error'])<1e-8
+            for name in names:
+                assert z[name+'_sr'].shape==(2,97)
+                np.testing.assert_allclose(z[name+'_loss'][:,-1]-(1-parameters(name).q_star),
+                    z[name+'_theory_decomposition'].sum(axis=1),atol=1e-10)
+    with pytest.raises(ValueError,match='identity mismatch'):
+        compute.run_path(0,[32],T.tolist(),[],stage='production_baseline',
+            run_hash='different-science',environment_names=['baseline'])

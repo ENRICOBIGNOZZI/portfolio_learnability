@@ -5,7 +5,7 @@ import pandas as pd
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-from matplotlib.ticker import ScalarFormatter
+from matplotlib.ticker import ScalarFormatter,LogLocator,LogFormatterSciNotation,NullFormatter
 
 from simulations.extended.design import OUTPUT,ENVIRONMENTS,parameters
 from simulations.extended.statistics import distribution
@@ -30,10 +30,15 @@ class Figures:
                 assert int(z['replications'])==300
             with np.load(OUTPUT/'population'/f'{name}_theory.npz') as z:
                 self.pop[name]={k:z[k] for k in z.files}
-        self.resolution=pd.read_csv(OUTPUT/'production_resolution.csv')
+        final_resolution=OUTPUT/'production_resolution_final.csv'
+        self.resolution=pd.read_csv(final_resolution if final_resolution.exists() else OUTPUT/'production_resolution.csv')
         self.ranks=pd.read_csv(OUTPUT/'rank_audit.csv')
         self.folder=OUTPUT/'figures';self.folder.mkdir(exist_ok=True)
         self.captions=[]
+        self.set_style()
+
+    @staticmethod
+    def set_style():
         plt.rcParams.update({'font.family':'serif','font.serif':['DejaVu Serif'],
             'mathtext.fontset':'dejavuserif','font.size':9,'axes.labelsize':10,
             'axes.titlesize':10,'legend.fontsize':8,'xtick.labelsize':8,'ytick.labelsize':8,
@@ -73,8 +78,26 @@ class Figures:
 
     def time_axis(self,ax):
         ax.set_xscale('log');ax.set_xlabel(r'Training history $T$')
-        ax.set_xticks([t for t in [60,240,720,2160,4860,7290] if t<=ax.get_xlim()[1]])
+        maximum=max(float(np.max(line.get_xdata())) for line in ax.lines)
+        ticks=[t for t in [60,240,720] if t<=maximum]
+        if maximum>=4860:
+            ticks.append(2160)
+        if maximum>720:
+            ticks.append(maximum)
+        ax.set_xticks(ticks)
         ax.get_xaxis().set_major_formatter(ScalarFormatter())
+
+    def shared_legend(self,fig,axes,names):
+        handles,labels=axes[0].get_legend_handles_labels()
+        fig.set_size_inches(7.0,3.5)
+        fig.legend(handles,labels,loc='outside lower center',frameon=False,
+                   ncol=3 if len(handles)>4 else len(handles))
+
+    def quantitative_log_ticks(self,ax):
+        ax.yaxis.set_major_locator(LogLocator(base=10,subs=(1,2,5)))
+        ax.yaxis.set_major_formatter(LogFormatterSciNotation(base=10,labelOnlyBase=False,
+            minor_thresholds=(np.inf,np.inf)))
+        ax.yaxis.set_minor_formatter(NullFormatter())
 
     def unresolved_time(self,ax,names):
         rows=self.resolution[self.resolution.environment.isin(names)]
@@ -118,7 +141,11 @@ class Figures:
             if len(names)==1:
                 axes[1].plot(T,gap['mean'][0]*(T/T[0])**(-.6),'--',color='#666666',label=r'$T^{-0.6}$ reference')
         for ax in axes:
-            self.time_axis(ax);self.unresolved_time(ax,names);ax.legend(frameon=False)
+            self.time_axis(ax);self.unresolved_time(ax,names)
+            if len(names)==1:
+                ax.legend(frameon=False)
+        if len(names)>1:
+            self.shared_legend(fig,axes,names)
         axes[0].set(ylabel='Annualized population Sharpe',title='(a) Sharpe recovery')
         axes[1].set(ylabel=r'Annualized gap $SR^\star-SR(\widehat W)$',title='(b) Gap to the economic optimum')
         self.save(fig,filename,
@@ -133,8 +160,9 @@ class Figures:
         axes[2].loglog(T,C/T,color=COLORS[0],label='Population relative complexity')
         axes[2].loglog(T,(C[0]/T[0])*(T/T[0])**(-.6),'--',color='#777777',label=r'$T^{-0.6}$ reference')
         for k,(title,y) in enumerate([('(a) Prescribed regularization',r'$\lambda_T$'),
-             ('(b) Effective complexity',r'$\mathcal C(\lambda_T)$'),('(c) Relative complexity',r'$\mathcal C(\lambda_T)/T$')]):
+             ('(b) Effective complexity',r'$\mathcal{C}(\lambda_T)$'),('(c) Relative complexity',r'$\mathcal{C}(\lambda_T)/T$')]):
             axes[k].set(title=title,ylabel=y);self.time_axis(axes[k]);axes[k].legend(frameon=False)
+            self.quantitative_log_ticks(axes[k])
         self.save(fig,'Figure2_complexity',
             'Prescribed penalties and deterministic population complexity along the fixed theory-scaled path. There are no Monte Carlo bands or point markers on deterministic curves. Power references are anchored at the first horizon. Exact local logarithmic elasticities, finite-difference verification, all predeclared window slopes and rank/seed sensitivity are tabulated; a window regression slope and a local elasticity are distinct quantities.')
 
@@ -150,9 +178,10 @@ class Figures:
                     axes[k].plot(T,y,ls='--',color=color if kind!='rho' else '#222222',lw=1.1,
                         label=('Population '+label if kind!='rho' else 'Common population reference'))
         for ax in axes:
-            self.time_axis(ax);ax.legend(frameon=False)
-        axes[0].set(title='(a) Empirical effective complexity',ylabel=r'$\widehat{\mathcal C}_T(\lambda_T)$')
-        axes[1].set(title='(b) Relative empirical complexity',ylabel=r'$\widehat{\mathcal C}_T(\lambda_T)/T$')
+            self.time_axis(ax);self.quantitative_log_ticks(ax)
+        self.shared_legend(fig,axes,names)
+        axes[0].set(title='(a) Empirical effective complexity',ylabel=r'$\widehat{\mathcal{C}}_T(\lambda_T)$')
+        axes[1].set(title='(b) Relative empirical complexity',ylabel=r'$\widehat{\mathcal{C}}_T(\lambda_T)/T$')
         self.save(fig,filename,
             'Empirical complexity means and central 95% replication-percentile bands use 300 independent paths per economy. Dashed curves are deterministic population quantities. The rho comparison shows a single common population reference because stationary marginal operators coincide exactly. Population elasticities are reported separately from empirical variation; no effective-sample-size correction is imposed.')
 
@@ -173,7 +202,7 @@ class Figures:
             # Dotted grey overprint identifies diagnostic penalty regions that
             # fail the same checked numerical conditions; no smoothing.
             ax.plot(x,np.where(unresolved,s['mean'],np.nan),':',color='#222222',lw=1.1)
-        ax.set_xscale('log');ax.set_xlabel(r'Population complexity $\mathcal C(\lambda)$')
+        ax.set_xscale('log');ax.set_xlabel(r'Population complexity $\mathcal{C}(\lambda)$')
         ax.set_ylabel('Annualized population Sharpe')
 
     def main_path(self):
@@ -195,7 +224,8 @@ class Figures:
                     optimum=parameters(name).sr_star*np.sqrt(12)
                     ax.axhline(optimum,color=color if kind!='rho' else '#333333',ls='--',lw=.9,
                         label=fr'$SR^\star={optimum:.3f}$')
-            ax.set_title(fr'$T={T}$');ax.legend(frameon=False,ncol=2)
+            ax.set_title(fr'$T={T}$')
+        self.shared_legend(fig,axes,names)
         self.save(fig,filename,
             'Predetermined early and late horizons compare all 96 diagnostic penalties across the specified economies. Means and central 95% replication bands use 300 independent paths; stars are the exact prescribed theory-scaled choices. Population optima remain explicit. The rho comparison uses the same population-complexity coordinate across environments. Dotted overprints identify numerical failures in the paired-rank/floor checks. No maximum along these ex-post curves is used to choose the reported strategy.')
 

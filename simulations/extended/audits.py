@@ -20,7 +20,7 @@ def load_pilots(rank,count=PILOT_PATHS):
     return records
 
 
-def rank_audit(count=PILOT_PATHS):
+def rank_audit(count=PILOT_PATHS,write=True):
     rows=[]
     records={rank:load_pilots(rank,count) for rank in RANKS}
     for lower,higher in zip(RANKS[:-1],RANKS[1:]):
@@ -47,8 +47,9 @@ def rank_audit(count=PILOT_PATHS):
                         paired_pass=bool(discrepancy<=.05*reference),
                         lower_rank_certified=bool(floor<=.05*reference and discrepancy<=.05*reference)))
     table=pd.DataFrame(rows)
-    table.to_csv(OUTPUT/'rank_audit.csv',index=False)
-    table[table.exact_theory_choice].to_csv(OUTPUT/'rank_audit_theory.csv',index=False)
+    if write:
+        table.to_csv(OUTPUT/'rank_audit.csv',index=False)
+        table[table.exact_theory_choice].to_csv(OUTPUT/'rank_audit_theory.csv',index=False)
     return table
 
 

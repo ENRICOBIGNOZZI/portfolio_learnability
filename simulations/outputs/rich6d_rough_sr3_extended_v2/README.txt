@@ -11,12 +11,23 @@ This directory currently contains preproduction evidence and executable workflow
 code. It is NOT the final 300-replication study. No production protocol is valid
 until protocol.json has been frozen after all declared pilots and quadrature gates.
 
+For a fresh independent reproduction, set RICH6D_EXTENDED_OUTPUT to a new empty
+output directory before running these commands. Keep the checked-in reference
+experiment unchanged. The same seed design will be used in that new directory.
+
 Workflow (from the repository root; limit BLAS threads on this 8 GB host):
   VECLIB_MAXIMUM_THREADS=1 OPENBLAS_NUM_THREADS=1 python3 -m simulations.extended.preflight
   python3 -m simulations.extended.freeze --rank <rank selected from audits>
   VECLIB_MAXIMUM_THREADS=1 OPENBLAS_NUM_THREADS=1 python3 -m simulations.extended.production --workers 1
   python3 -m simulations.extended.summarize
+  python3 -m simulations.extended.verify --data-only
+  python3 -m simulations.extended.report
   python3 -m simulations.extended.figures
+  python3 -m simulations.extended.archive
+  python3 -m simulations.extended.verify
+
+Final delivery also requires inspection of all ten rendered figures and the
+critical scientific report; the verifier does not substitute for visual review.
 
 The preflight supervisor resumes completed population cases and replication
 checkpoints. It stops before production, so rank selection and resource evidence
