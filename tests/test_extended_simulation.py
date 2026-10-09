@@ -143,3 +143,39 @@ def test_production_checkpoint_pairing_decomposition_and_identity(tmp_path,monke
     with pytest.raises(ValueError,match='identity mismatch'):
         compute.run_path(0,[32],T.tolist(),[],stage='production_baseline',
             run_hash='different-science',environment_names=['baseline'])
+
+
+def test_pilot_cleanup_requires_frozen_audits_and_preserves_deliverables(tmp_path,monkeypatch):
+    import json
+    import pytest
+    from simulations.extended import advance
+    from simulations.provenance import file_hash,json_write
+    monkeypatch.setattr(advance,'OUTPUT',tmp_path)
+    pilot=tmp_path/'pilot';pilot.mkdir()
+    retained=['basis_P4096_seed7.npz','operator_baseline_P512_B7_Q32768_S9.npz',
+        'spectra_baseline_P512.npz','basis_user_notes.npz']
+    retained += [f'operator_{name}_P4096_B7_Q32768_S9.npz' for name in ('baseline','N300','N1200')]
+    obsolete=['basis_P1024_seed7.npz','operator_N300_P1024_B7_Q32768_S9.npz',
+        'operator_baseline_P4096_B7_Q131072_S10.npz']
+    for name in retained+obsolete:
+        (pilot/name).write_bytes(b'unchanged')
+    checkpoint=tmp_path/'rep_000.npz';checkpoint.write_bytes(b'actual outcomes')
+    with pytest.raises(FileNotFoundError):
+        advance.cleanup_pilot_caches()
+    assert all((pilot/name).exists() for name in obsolete)
+    audit=tmp_path/'quadrature_audit.csv';audit.write_text('verified audit\n')
+    json_write(tmp_path/'protocol.json',dict(rank=4096,basis_seed=7,population_groups=32768,
+        population_seed=9,run_hash='frozen-study',preproduction_files={audit.name:file_hash(audit)}))
+    advance.cleanup_pilot_caches()
+    assert all((pilot/name).read_bytes()==b'unchanged' for name in retained)
+    assert not any((pilot/name).exists() for name in obsolete)
+    assert checkpoint.read_bytes()==b'actual outcomes'
+    record=tmp_path/'preproduction_cache_cleanup.json'
+    assert json.loads(record.read_text())['events'][0]['bytes_released']==3*len(b'unchanged')
+    advance.cleanup_pilot_caches()
+    assert len(json.loads(record.read_text())['events'])==1
+    (pilot/obsolete[0]).write_bytes(b'regenerated')
+    audit.write_text('changed audit\n')
+    with pytest.raises(ValueError,match='evidence changed'):
+        advance.cleanup_pilot_caches()
+    assert (pilot/obsolete[0]).read_bytes()==b'regenerated'

@@ -46,6 +46,12 @@ still requires human-readable scientific review, inspection of all ten figures,
 and committing/pushing the intended deliverables before reporting completion.
 Live progress is recorded in preflight_status.json, advance_status.json and
 production_status.json as each corresponding stage becomes available.
+After freezing and checking the recorded audit hashes, the advance supervisor
+removes regenerable pilot-only caches to reserve disk space for production.
+It retains the chosen-rank basis, all production operators and the rank-512
+baseline operator needed for comparison with the previous experiment. Every
+removal is recorded in preproduction_cache_cleanup.json; spectra, pilot outcomes,
+audits, calibration and the frozen protocol are preserved.
 
 Primary uncertainty bands are the central 95% replication percentiles. Mean MCSE
 is distinct. Slopes use complete within-replication cross-T covariance, with a

@@ -8,6 +8,7 @@ Final completion always requires separate visual review and publication checks.
 import argparse
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -20,7 +21,7 @@ import pandas as pd
 from simulations.extended.design import OUTPUT,ENVIRONMENTS,RANKS,T_REQUIRED,T_ROBUSTNESS,BASIS_SEED,seed
 from simulations.extended.audits import quadrature_audit
 from simulations.extended.preflight import ensure_population
-from simulations.provenance import json_write,utc_now,output_lock
+from simulations.provenance import json_write,utc_now,output_lock,file_hash
 
 
 def execute(module,*arguments):
@@ -89,6 +90,35 @@ def cleanup_regenerable_caches():
     print('Released regenerable cache bytes before portable export:',removed,flush=True)
 
 
+def cleanup_pilot_caches():
+    """Release pilot-only caches after the frozen audits have been verified."""
+    protocol=json.loads((OUTPUT/'protocol.json').read_text())
+    for name,expected in protocol['preproduction_files'].items():
+        if file_hash(OUTPUT/name)!=expected:
+            raise ValueError('Preproduction evidence changed after freeze; retain all pilot caches.')
+    rank=protocol['rank'];basis=protocol['basis_seed']
+    groups=protocol['population_groups'];qseed=protocol['population_seed']
+    keep={f'basis_P{rank}_seed{basis}.npz'}
+    cases={(name,rank) for name in ('baseline','N300','N1200')}|{('baseline',512)}
+    keep.update(f'operator_{name}_P{P}_B{basis}_Q{groups}_S{qseed}.npz' for name,P in cases)
+    recognized=re.compile(r'(?:basis_P\d+_seed\d+|integrals_P\d+_basis\d+_Q\d+_seed\d+|operator_(?:baseline|N300|N1200)_P\d+_B\d+_Q\d+_S\d+)\.npz')
+    record=OUTPUT/'preproduction_cache_cleanup.json'
+    history=json.loads(record.read_text()) if record.exists() else dict(run_hash=protocol['run_hash'],events=[])
+    if history['run_hash']!=protocol['run_hash']:
+        raise ValueError('Cache cleanup record belongs to a different frozen study.')
+    removed=[]
+    for path in sorted((OUTPUT/'pilot').glob('*.npz')):
+        if path.name not in keep and recognized.fullmatch(path.name) and not path.is_symlink():
+            removed.append(dict(file=path.name,bytes=path.stat().st_size))
+            path.unlink()
+    if removed or not record.exists():
+        history['events'].append(dict(completed_utc=utc_now(),removed=removed,
+            bytes_released=sum(item['bytes'] for item in removed),retained_cache_names=sorted(keep),
+            scope='Only regenerable pilot caches; spectra, audits, replications and production/legacy-reference operators retained.'))
+        json_write(record,history)
+    print('Released pilot-only cache bytes before production:',sum(item['bytes'] for item in removed),flush=True)
+
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--preflight-pid',type=int,required=True)
@@ -104,6 +134,7 @@ def main():
                 if optional:
                     arguments.append('--include-7290')
                 execute('simulations.extended.freeze',*arguments)
+            cleanup_pilot_caches()
             workers=1
             resource=OUTPUT/'pilot'/'concurrency_probe.json'
             if resource.exists():
