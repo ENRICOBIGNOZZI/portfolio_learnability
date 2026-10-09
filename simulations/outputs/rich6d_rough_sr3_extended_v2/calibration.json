@@ -1,0 +1,24 @@
+{
+  "a": {
+    "baseline": 9.968332766935744e-05,
+    "N300": 0.00010172704114081298,
+    "N1200": 9.866152712230335e-05,
+    "rho000": 9.968332766935744e-05,
+    "rho075": 9.968332766935744e-05
+  },
+  "rule": "Largest rank-512 population second-moment eigenvalue; same legacy pilot rule across N; original baseline a retained exactly.",
+  "groups": 8192,
+  "seed": 2415449988,
+  "basis_seed": 373077418,
+  "independent_of_training_and_evaluation": true,
+  "frozen_utc": "2026-10-09T16:10:44.233548+00:00",
+  "annual_SR_star": {
+    "baseline": 2.9999999999999996,
+    "N300": 2.949817248737261,
+    "N1200": 3.0260712536092402,
+    "rho000": 2.9999999999999996,
+    "rho075": 2.9999999999999996
+  },
+  "N_convention": "Factor means and covariance fixed; no Sharpe recalibration across N.",
+  "rho_convention": "Stationary marginal operator and a identical across rho."
+}

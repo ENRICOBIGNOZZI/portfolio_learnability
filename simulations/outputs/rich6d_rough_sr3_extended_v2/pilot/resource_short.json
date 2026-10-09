@@ -1,0 +1,9 @@
+{
+  "rank": 4096,
+  "T": 120,
+  "environments": 5,
+  "generation_seconds": 37.348413083993364,
+  "baseline_fit_seconds": 2.0723797499667853,
+  "maximum_resident_bytes": 316751872,
+  "completed_utc": "2026-10-09T16:13:20.325544+00:00"
+}

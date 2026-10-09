@@ -1,0 +1,7 @@
+{
+  "elapsed_seconds": 29.72262629098259,
+  "maximum_resident_bytes": 457261056,
+  "disk_free_bytes": 3533111296,
+  "completed_utc": "2026-10-09T20:30:31.556421+00:00",
+  "note": "N robustness a is calibrated separately before production; these preliminary curves use baseline a for diagnostic comparability."
+}

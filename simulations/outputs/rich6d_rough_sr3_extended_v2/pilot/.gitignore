@@ -1,0 +1,6 @@
+# Reproducible, large numerical caches. Deliverables retain spectra, audits,
+# seeds, calibrated constants and replication outcomes; final population
+# operators are exported in sub-100 MB chunks after the production freeze.
+basis_*.npz
+integrals_*.npz
+operator_*.npz
