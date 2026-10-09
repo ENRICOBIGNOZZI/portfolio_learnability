@@ -1,0 +1,9 @@
+{
+  "rank": 4096,
+  "include_7290": false,
+  "forward_certificate_available": false,
+  "rule": "Lowest common rank passing both unchanged 5% conditions at every required horizon/environment; otherwise largest investigated fixed rank with explicit unresolved-cell reporting.",
+  "permitted_limitation": "The study request explicitly requires reporting a limitation if no single fixed investigated rank resolves all cells; the threshold and analytical optimum are not changed.",
+  "no_performance_rate_used": true,
+  "decided_utc": "2026-10-09T22:29:45.084678+00:00"
+}

@@ -1,0 +1,75 @@
+{
+  "run_hash": "e9f1f005be1a58ee736a09cb711d5be87457b9875d1e26dab56c03ccdca61d8d",
+  "events": [
+    {
+      "completed_utc": "2026-10-09T22:31:45.857560+00:00",
+      "removed": [
+        {
+          "file": "basis_P1024_seed373077418.npz",
+          "bytes": 15988509
+        },
+        {
+          "file": "basis_P2048_seed373077418.npz",
+          "bytes": 64029874
+        },
+        {
+          "file": "basis_P512_seed373077418.npz",
+          "bytes": 3982233
+        },
+        {
+          "file": "operator_N1200_P1024_B373077418_Q32768_S1237722080.npz",
+          "bytes": 7862815
+        },
+        {
+          "file": "operator_N1200_P2048_B373077418_Q32768_S1237722080.npz",
+          "bytes": 31431841
+        },
+        {
+          "file": "operator_N1200_P4096_B373077418_Q131072_S306787219.npz",
+          "bytes": 125632278
+        },
+        {
+          "file": "operator_N1200_P512_B373077418_Q32768_S1237722080.npz",
+          "bytes": 1961044
+        },
+        {
+          "file": "operator_N300_P1024_B373077418_Q32768_S1237722080.npz",
+          "bytes": 7864259
+        },
+        {
+          "file": "operator_N300_P2048_B373077418_Q32768_S1237722080.npz",
+          "bytes": 31438041
+        },
+        {
+          "file": "operator_N300_P4096_B373077418_Q131072_S306787219.npz",
+          "bytes": 125656653
+        },
+        {
+          "file": "operator_N300_P512_B373077418_Q32768_S1237722080.npz",
+          "bytes": 1961329
+        },
+        {
+          "file": "operator_baseline_P1024_B373077418_Q32768_S1237722080.npz",
+          "bytes": 7863249
+        },
+        {
+          "file": "operator_baseline_P2048_B373077418_Q32768_S1237722080.npz",
+          "bytes": 31434014
+        },
+        {
+          "file": "operator_baseline_P4096_B373077418_Q131072_S306787219.npz",
+          "bytes": 125638726
+        }
+      ],
+      "bytes_released": 582744865,
+      "retained_cache_names": [
+        "basis_P4096_seed373077418.npz",
+        "operator_N1200_P4096_B373077418_Q32768_S1237722080.npz",
+        "operator_N300_P4096_B373077418_Q32768_S1237722080.npz",
+        "operator_baseline_P4096_B373077418_Q32768_S1237722080.npz",
+        "operator_baseline_P512_B373077418_Q32768_S1237722080.npz"
+      ],
+      "scope": "Only regenerable pilot caches; spectra, audits, replications and production/legacy-reference operators retained."
+    }
+  ]
+}

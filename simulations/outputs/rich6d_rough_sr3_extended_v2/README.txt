@@ -1,4 +1,4 @@
-EXTENDED ROUGH RICH6D STUDY — PREPRODUCTION CHECKPOINT
+EXTENDED ROUGH RICH6D STUDY — PRODUCTION IN PROGRESS
 
 Reference: rich6d_rough_sr3_annual_monthly_v1, commit 2d59c3324569.
 The reference economy keeps annualized optimal Sharpe 3, the existing factor
@@ -7,9 +7,24 @@ N robustness preserves those economic parameters, so its analytical optimum is
 not artificially reset to 3. Persistence robustness preserves the population
 operator exactly.
 
-This directory currently contains preproduction evidence and executable workflow
-code. It is NOT the final 300-replication study. No production protocol is valid
-until protocol.json has been frozen after all declared pilots and quadrature gates.
+All 12 paired rank pilots and their audits are complete. The fixed-rank production
+protocol is frozen, and the baseline Monte Carlo has started. This is NOT yet the
+completed 300-replication study; consult production_status.json for actual progress.
+The frozen run identity is
+e9f1f005be1a58ee736a09cb711d5be87457b9875d1e26dab56c03ccdca61d8d.
+
+Production uses rank 4096 in every environment, the 13 required baseline horizons
+through T=4860, and the common 12-horizon robustness grid through T=3240. Optional
+T=7290 was investigated in the pilots and excluded on numerical grounds. The
+predeclared additional main diagnostic path at T=2160 passed the two pilot 5%
+conditions and the quadrature check; it remains subject to the qualifications below.
+
+All 62 pilot quadrature cells pass the unchanged 5% criterion; the largest paired
+discrepancy bound is approximately 3.26% of regret. The approximation floor still
+fails at baseline T=3240,4860; N300 T=1080,1440,2160,3240; and both alternative-rho
+environments at T=3240. No investigated common rank resolves every required cell.
+Rank 4096 also lacks an independent higher-rank certificate. These limitations
+must remain explicit in the final figures and scientific conclusions.
 
 For a fresh independent reproduction, set RICH6D_EXTENDED_OUTPUT to a new empty
 output directory before running these commands. Keep the checked-in reference
@@ -64,9 +79,9 @@ relevant fitted-policy penalty outcome is retained. Population spectra, audit
 results, seed identities and calibration are retained. No previous experiment
 or unrelated user artifact is deleted or overwritten.
 
-The first 4096-rank pilot completed all required horizons and the optional 7290
-resource horizon. Preliminary projection floors do not establish numerical
-resolution: compare them with actual fitted-policy regret, paired rank differences
-and their uncertainty. A highest investigated rank has no independent larger-rank
-certificate. Finite Fourier truncation is smooth and does not prove the r=1 source
+The pilot integrity check verifies all 48 checkpoints, paired histories across
+ranks, independent replication seeds, separation from the production seeds and
+complete predetermined grids. It does not substitute for numerical acceptance.
+Projection floors, paired rank differences and their uncertainty are separate
+diagnostics. Finite Fourier truncation is smooth and does not prove the r=1 source
 condition; observed rate agreement cannot prove a minimax or asymptotic theorem.
