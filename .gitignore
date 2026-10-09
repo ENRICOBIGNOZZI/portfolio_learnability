@@ -42,3 +42,6 @@ source_manifest.json
 
 # Public portfolio-level path aggregates; licensed stock-level parquet stays ignored.
 !/outputs/tables/year_lambda_complexity_path_*.parquet
+
+# Public group-level exposure and attribution tables; no individual stock weights.
+!/outputs/spectral_economic_content_20261009/tables/*.parquet

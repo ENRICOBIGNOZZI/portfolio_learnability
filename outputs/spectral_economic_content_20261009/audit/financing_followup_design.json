@@ -1,0 +1,21 @@
+{
+  "family": "Debt financing",
+  "members": {
+    "fnl_gr1a": 1,
+    "dbnetis_at": 1
+  },
+  "pairs": [
+    [
+      "Debt financing",
+      "Profitability"
+    ],
+    [
+      "Debt financing",
+      "Issuance"
+    ]
+  ],
+  "rationale": "Dominant group-level holding exposures to financial-liability growth motivated a descriptive follow-up; no portfolio, penalty or security selection changes.",
+  "selection_basis": "Observed characteristic exposures, not ex-post profitability of financing bins",
+  "chronology": "Same existing weights; cells use only contemporaneous characteristics",
+  "no_claim_of_preregistered_financing_hypothesis": true
+}

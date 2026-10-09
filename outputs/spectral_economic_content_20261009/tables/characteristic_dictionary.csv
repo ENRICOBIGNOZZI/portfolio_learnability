@@ -1,0 +1,131 @@
+name,name_new,characteristic
+"Price momentum,  prior 6-month returns",Price momentum t-6 to t-1,ret_6_1
+"Price momentum, prior 11-month returns",Price momentum t-12 to t-1,ret_12_1
+Tax expense surprise,Tax expense surprise,tax_gr1a
+52-week high,Current price to high price over last year,prc_highprc_252d
+"Residual momentum,  prior 6-month returns",Residual momentum t-6 to t-1,resff3_6_1
+"Residual momentum, prior 11-month returns",Residual momentum t-12 to t-1,resff3_12_1
+Book-to-market equity,Book-to-market equity,be_me
+Debt-to-market,Debt-to-market,debt_me
+Assets-to-market,Assets-to-market,at_me
+Long-term reversal,Long-term reversal,ret_60_12
+Earnings-to-price,Earnings-to-price,ni_me
+Cash flow-to-price,Free cash flow-to-price,fcf_me
+Dividend yield,Dividend yield,div12m_me
+5-year sales growth rank,Sales Growth (3 years),sale_gr3
+Annual sales growth,Sales Growth (1 year),sale_gr1
+Enterprise multiple,Ebitda-to-market enterprise value,ebitda_mev
+Sales-to-price,Sales-to-market,sale_me
+Operating cash flow-to-price,Operating cash flow-to-market,ocf_me
+Intrinsic value-to-market,Intrinsic value-to-market,ival_me
+Enterprise book-to-price,Book-to-market enterprise value,bev_mev
+Net debt-to-price,Net debt-to-price,netdebt_me
+Equity duration,Equity duration,eq_dur
+Abnormal corporate investment,Abnormal corporate investment,capex_abn
+Investment-to-assets,Asset Growth,at_gr1
+"Change in property, pant and equiptment and equipment and inventory scaled by book assets",Change PPE and Inventory,ppeinv_gr1a
+Net operating assets,Net operating assets,noa_at
+Change in net operating assets,Change in net operating assets,noa_gr1a
+Change in long-term net operating assets,Change in long-term net operating assets,lnoa_gr1a
+Investment growth,CAPEX growth (1 year),capx_gr1
+2-year investment growth,CAPEX growth (2 years),capx_gr2
+3-year investment growth,CAPEX growth (3 years),capx_gr3
+Net stock issues,Net stock issues,chcsho_12m
+Composite equity issuance,Equity net payout,eqnpo_12m
+Composite debt issuance,Growth in book debt (3 years),debt_gr3
+Inventory growth,Inventory growth,inv_gr1
+Inventory changes,Inventory change,inv_gr1a
+Operating accruals,Operating accruals,oaccruals_at
+Total accruals,Total accruals,taccruals_at
+Change in net noncash working capital,Change in current operating working capital,cowc_gr1a
+Change in current operating assets,Change in current operating assets,coa_gr1a
+Change in current operating liabilities,Change in current operating liabilities,col_gr1a
+Change in net noncurrent operating assets,Change in net noncurrent operating assets,nncoa_gr1a
+Change in noncurrent operating assets,Change in noncurrent operating assets,ncoa_gr1a
+Change in noncurrent operating liabilities,Change in noncurrent operating liabilities,ncol_gr1a
+Change in net financial assets,Change in net financial assets,nfna_gr1a
+Change in long-term investments,Change in long-term investments,lti_gr1a
+Change in financial liabilities,Change in financial liabilities,fnl_gr1a
+Change in common equity,Change in common equity,be_gr1a
+Percent operating accruals,Percent operating accruals,oaccruals_ni
+Percent total accruals,Percent total accruals,taccruals_ni
+Net debt finance,Net debt issuance,dbnetis_at
+Return on net operating assets,Return on net operating assets,ebit_bev
+Profit margin,Profit margin,ebit_sale
+Asset turnover,Asset turnover,sale_bev
+Capital turnover,Capital turnover,at_turnover
+Gross profits-to-assets,Gross profits-to-assets,gp_at
+Gross profits-to-lagged assets,Gross profits-to-lagged assets,gp_atl1
+Operating profits-to-book equity,Operating profits-to-book equity,ope_be
+Operating profits-to-lagged book equity,Operating profits-to-lagged book equity,ope_bel1
+Operating profits-to-book assets,Operating profits-to-book assets,op_at
+Operating profits-to-lagged book assets,Operating profits-to-lagged book assets,op_atl1
+Cash-based operating profits-to-book assets,Cash-based operating profits-to-book assets,cop_at
+Cash-based operating profits-to-lagged book assets,Cash-based operating profits-to-lagged book assets,cop_atl1
+Fundamental score,Pitroski F-score,f_score
+Ohlsonâ€™s (1980) O-score,Ohlson O-score,o_score
+Altmanâ€™s (1968) Z-score,Altman Z-score,z_score
+Taxable income-to-book income,Taxable income-to-book income,pi_nix
+Book leverage,Book leverage,at_be
+Quarterly sales growth,Sales growth (1 quarter),saleq_gr1
+Operating leverage,Operating leverage,opex_at
+Hiring rate,Hiring rate,emp_gr1
+Firm age,Firm age,age
+Percentage change in sales minus percentage change in inventory,Change sales minus change Inventory,dsale_dinv
+Percentage change in sales minus percentage change in accounts receivable,Change sales minus change receivables,dsale_drec
+Percentage change in gross margin minus percentage change in sales,Change gross margin minus change sales,dgp_dsale
+Percentage change in sales minus percentage change in SG&A,Change sales minus change SG&A,dsale_dsga
+Labor force efficiency,Labor force efficiency,sale_emp_gr1
+Tangibility of assets,Asset tangibility,tangibility
+The Kaplan-Zingales (1997) index of financing constraints,Kaplan-Zingales index,kz_index
+Cash-to-assets,Cash-to-assets,cash_at
+Earnings persistence,Earnings persistence,ni_ar1
+Earnings predictability,Earnings volatility,ni_ivol
+Earnings smoothness,Earnings variability,earnings_variability
+Liquidity of book assets,Liquidity of book assets,aliq_at
+Liquidity of market assets,Liquidity of market assets,aliq_mat
+"Year 1-lagged return, annual","Year 1-lagged return, annual",seas_1_1an
+"Year 1-lagged return, nonannual","Year 1-lagged return, nonannual",seas_1_1na
+"Years 2â€“5 lagged returns, annual","Years 2-5 lagged returns, annual",seas_2_5an
+"Years 2â€“5 lagged returns, nonannual","Years 2-5 lagged returns, nonannual",seas_2_5na
+Size (the market equity),Market Equity,market_equity
+Idiosyncratic volatility from the Fama-French 3-factor model,Idiosyncratic volatility from the Fama-French 3-factor model,ivol_ff3_21d
+Idiosyncratic volatility,Idiosyncratic volatility from the CAPM (252 days),ivol_capm_252d
+Idiosyncratic volatility from the CAPM,Idiosyncratic volatility from the CAPM (21 days),ivol_capm_21d
+Total volatility,Return volatility,rvol_21d
+The market beta,Market Beta,beta_60m
+The Frazzini-Pedersen beta,Frazzini-Pedersen market beta,betabab_1260d
+The Dimson beta,Dimson beta,beta_dimson_21d
+Share turnover,Share turnover,turnover_126d
+Coefficient of variation for share turnover,Coefficient of variation for share turnover,turnover_var_126d
+Dollar trading volume,Dollar trading volume,dolvol_126d
+Coefficient of variation for dollar trading volume,Coefficient of variation for dollar trading volume,dolvol_var_126d
+Price per share,Price per share,prc
+Absolute return-to-volume,Amihud Measure,ami_126d
+Prior 1-month turnover-adjusted number of zero daily trading volume,Number of zero trades with turnover as tiebreaker (1 month),zero_trades_21d
+Prior 6-month turnover-adjusted number of zero daily trading volume,Number of zero trades with turnover as tiebreaker (6 months),zero_trades_126d
+Prior 12-month turnover-adjusted number of zero daily trading volume,Number of zero trades with turnover as tiebreaker (12 months),zero_trades_252d
+Maximum daily return,Maximum daily return,rmax1_21d
+Total skewness,Total skewness,rskew_21d
+Idiosyncratic skewness from the CAPM,Idiosyncratic skewness from the CAPM,iskew_capm_21d
+Idiosyncratic skewness from the Fama-French 3-factor model,Idiosyncratic skewness from the Fama-French 3-factor model,iskew_ff3_21d
+Idiosyncratic skewness from the q-factor model,Idiosyncratic skewness from the q-factor model,iskew_hxz4_21d
+Coskewness,Coskewness,coskew_21d
+Short-term reversal,Short-term reversal,ret_1_0
+Downside beta,Downside beta,betadown_252d
+The high-low bid-ask spread,The high-low bid-ask spread,bidaskhl_21d
+Past 3 month return,Price momentum t-3 to t-1,ret_3_1
+Past 9 month return,Price momentum t-9 to t-1,ret_9_1
+Past 12 to 7 month momentum,Price momentum t-12 to t-7,ret_12_7
+Market Correlation,Market correlation,corr_1260d
+Highest 5 days of return,Highest 5 days of return,rmax5_21d
+Highest 5 days of return scaled by volatility,Highest 5 days of return scaled by volatility,rmax5_rvol_21d
+Annual Return on equity,Return on equity,ni_be
+Operating cash flow to assets,Operating cash flow to assets,ocf_at
+1 year change in operating cash flow to assets,Change in operating cash flow to assets,ocf_at_chg1
+Mispricing factor: Performance,Mispricing factor: Performance,mispricing_perf
+Mispricing factor: Management,Mispricing factor: Management,mispricing_mgmt
+Quality minus Junk: Composite,Quality minus Junk: Composite,qmj
+Quality minus Junk: Profitability,Quality minus Junk: Profitability,qmj_prof
+Quality minus Junk: Growth,Quality minus Junk: Growth,qmj_growth
+Quality minus Junk: Safety,Quality minus Junk: Safety,qmj_safety

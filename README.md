@@ -1,5 +1,30 @@
 # Portfolio learnability: canonical simulations and empirical diagnostics
 
+## Economic investment strategies in the spectral groups
+
+The holdings-based interpretation of the existing ridge-selected policy is in
+[`outputs/spectral_economic_content_20261009/REPORT.txt`](outputs/spectral_economic_content_20261009/REPORT.txt).
+It reconstructs 2.20 million stock-months, describes all four groups across the
+five existing historical periods, and attributes returns, factor exposures,
+incremental loss, and covariance contributions without fitting a new portfolio.
+The 10–50% rank group mainly makes financing-related adjustments to the strong
+quality/profitability/momentum portfolio; its tiny spectral mass does not imply
+tiny stock positions. Component mean and incremental loss significance are
+reported separately.
+
+- [Standalone replacement Section VI](outputs/spectral_economic_content_20261009/publication/Section_VI_Economic_Investment_Strategies.pdf)
+- [Dominant named long/short exposures](outputs/spectral_economic_content_20261009/tables/dominant_long_short_exposures_named.csv)
+- [Four publication figures](outputs/spectral_economic_content_20261009/figures/)
+- [Image gallery](IMMAGINI%20PER%20CHAT/outputs/spectral_economic_content_20261009/index.html)
+
+Actual signed stock weights and verified PERMNO identifiers remain locally in
+`results/spectral_economic_content_20261009/year_YYYY/holdings.parquet`;
+`results/spectral_economic_content_20261009/holdings_index.html` shows the latest
+long/short lists and links the complete latest month and historical top positions.
+Only group aggregates are published. Reproduce with existing data and fitted
+caches using `python3 -m empirical_final.economic_reproduce`; this verifies the
+unchanged policy, regenerates the artifacts, and runs the relevant tests.
+
 The balanced three-factor simulation pipeline lives in `simulations/`. See `simulations/README.md` for reproducible smoke and paper commands. The cleanup is documented in `simulation_cleanup_manifest.md`. The new simulation run is complete: 3,500 verified replications, 66 PDF figures, and a 91-page integrated manuscript. Final evidence and deliverables are linked from `simulations/README.md`.
 
 ## Empirical evidence and entry points

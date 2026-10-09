@@ -1,0 +1,16 @@
+{
+  "section_only": true,
+  "original_manuscript_written": false,
+  "reference_available_at_build": false,
+  "reference_sha256": null,
+  "compatibility": "Existing reference-derived 12pt newtx, 1.5 spacing, letter paper, 1-inch margins; Section VI begins on page 28. A/B reused unchanged.",
+  "source_prefix_sha256": "b3fe9d7bf34bdd38ace5e5bc8f3db866c0c5ae919e59611574c7c2578328dc65",
+  "section_c_sha256": "863b7717847d053c502cfaf647dccb62a7226004c95b8a93db4cf788c0753eeb",
+  "output_sha256": "1797d3bf5094a53d553bdde53edd4f527040fa75d8afefeb78a2b11c1b72580d",
+  "figure_hashes": {
+    "EC1_holdings_and_characteristics.pdf": "458d60dfac768fbc4123495b457258493c1c87e40d21753a82f17ff63d772c48",
+    "EC3_group2_joint_strategies.pdf": "a0bb931609cc51ff499ab88476cd00679e943c38a2cef4d6222483100a555f7b",
+    "EC2_economic_stability.pdf": "246ce21a67c679f926a5c8d3d2ecae68c71918b751c4403d964da299bc7e328e",
+    "EC4_group2_incremental_attribution.pdf": "a88d848de1ef3620998bddd1919ee5a1430c472dd5f8161ac854c06157b054b7"
+  }
+}

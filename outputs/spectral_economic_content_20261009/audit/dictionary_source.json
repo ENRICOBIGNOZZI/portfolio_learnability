@@ -1,0 +1,10 @@
+{
+  "url": "https://raw.githubusercontent.com/bkelly-lab/jkp-data/main/src/jkp/data/resources/factor_details.xlsx",
+  "file_sha256": "4c579e4dcb93eed0897941d8f5f84e9cc784a2d3fc696be68a29a24e68206141",
+  "columns_used": [
+    "abr_jkp",
+    "name",
+    "name_new"
+  ],
+  "purpose": "Economic variable names only; no discovery, publication-date, significance or historical-return selection"
+}

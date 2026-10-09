@@ -1,0 +1,191 @@
+ECONOMIC INVESTMENT STRATEGIES IN THE MANAGED-PORTFOLIO SPECTRUM
+Actual ridge-selected holdings; existing empirical experiment, 9 October 2026
+
+WHAT IS BEING LEARNED?
+
+The strongest directions implement a broad, relatively stable combination of
+cash profitability, quality, momentum and value. The next 10–50% of spectral
+ranks makes financing-related and conditional stock-weight adjustments that
+partly offset this dominant portfolio. It adds expected payoff with substantial
+covariance offsets. The deepest directions contribute little precisely measured
+standalone mean return; some provide small diversification benefits. This is
+learning refinements to a multivariate policy, not identifying each eigenvector
+with a unique new anomaly.
+
+Group       Economic description                        Mean/year   Gross
+0–10%       Cash profitability, quality, momentum, value  24.323%    226.68%
+10–50%      Financing/investment; offsets to quality      2.759%    126.29%
+50–90%      Accruals; lower cash profitability/quality    0.047%     32.66%
+90–100%     Mixed asset liquidity, inventory, earnings   0.026%      7.77%
+
+Gross is each component's long-plus-short notional, not additive account
+leverage. All returns are excess-payoff contributions at the existing frozen
+scale, before trading and borrowing costs. Descriptions follow holdings rather
+than selecting profitable characteristic buckets.
+
+WHY THE 10–50% GROUP MATTERS
+
+Its 0.0685% training second-moment mass is not its investment scale. Average long
+and short notionals are 61.48% and 64.81% of NAV. Longs contribute 6.00 annual
+percentage points and shorts -3.24, for 2.759 overall (pointwise 95% block
+interval 1.504–4.066). Summing stock weights before taking absolute values shows
+that it raises account gross from 226.68% to 233.28%, only 6.60 points: much of
+its activity modifies the same stocks already held by the strong group.
+
+Its own annual variance is 0.001547, while twice its covariance with the
+preceding policy is -0.001269. Covariance offsets approximately 82% of own
+variance; total variance nevertheless increases by 0.000278. Nested Sharpe
+rises from 3.012 to 3.284. Response-one loss falls by 0.0360, but its paired
+interval [-0.0941, 0.0294] includes zero. Positive component mean is better
+established here than incremental portfolio-loss improvement.
+
+The holdings favor increased financial liabilities (+16.15 input percentile
+points long minus short) and lower changes in net financial assets (-17.43).
+The debt-financing family tilt is +12.06 points, whereas profitability,
+quality, momentum, and value tilts are -7.60, -8.55, -5.18, and -3.95 points.
+Investment is +5.36 points. Equity issuance is negative: increased debt
+financing and share issuance must not be conflated.
+
+Characteristic terciles partition the actual positions, without new portfolios.
+Low-profitability stocks contribute 2.04 annual percentage points, low-momentum
+stocks 1.86, and recent losers 1.99. These sets overlap: DO NOT ADD THEIR PAYOFFS.
+Low/middle/high financing terciles contribute -0.11/1.42/1.45 points. High
+financing allocates -0.0518 to incremental loss and -0.000406 to annual
+variance; low financing allocates +0.0361 and +0.000571, respectively.
+
+Joint financing–profitability cells temper the additive interpretation.
+High-financing/low-profitability and low-financing/high-profitability cells
+have signed relative weight densities +0.251 and -0.502. Their annual payoffs
+are +0.623 and -0.600 percentage points. Holding-weight nonadditivity is
+described by formation-date cell projections, not return-model estimation;
+these numbers are not evidence of a separately identified interaction premium.
+
+ESTABLISHED FACTOR RISKS VERSUS INCREMENTAL VALUE
+
+Regressions use the actual OOS policy contribution, not equal-risk diagnostic
+eigenportfolios. The market/SMB/HML/RMW/CMA/MOM factors explain 17.90%, 7.14%,
+1.83%, and 4.32% of return variance across the four groups. The strong group has
+positive HML, RMW and MOM exposures. The second group's HML loading is -0.104
+(12-lag HAC interval -0.194 to -0.013); other slope intervals include zero.
+
+The second group's annualized descriptive intercept is 3.55% (HAC interval
+1.94–5.16%), and factor mean contributions sum to approximately -0.79 points.
+The existing training-fitted factor hedge leaves 3.60% annual mean payoff
+(block interval 2.28–4.96%). Those are different estimates with different
+timing; neither is evidence that omitted risks or implementation costs vanish.
+The full period-by-period, factor-by-factor accounting is in the tables.
+
+The 50–90% group contributes almost no marginal loss improvement. The final
+group's mean is imprecise, but it lowers variance by about 0.000045 and loss
+by 0.0031 (unadjusted pointwise interval -0.0071 to -0.0001). This is small
+diversification value, not a well-established autonomous return strategy.
+
+HISTORICAL STABILITY
+
+First-to-last-period cosines of the 13 core family exposure profiles are
+0.914, 0.700, -0.186, and 0.443. The leading group preserves all family signs.
+Group 10–50% preserves positive investment and negative profitability/momentum
+in all period averages, but its value tilt changes sign. Its financing tilt
+is 25.0, 16.2, 2.3, 4.6, and 7.5 points across the five existing periods.
+Component gross is 98.7%, 178.7%, 145.2%, 134.5%, and 33.4%. Composition and
+intensity both change. The 50–90% group's economic content is especially
+unstable; stable feature coefficients would not guarantee a stable economic
+interpretation when the underlying distribution changes.
+
+METHOD AND ACCOUNTING
+
+All 2,198,755 OOS stock-months, 47 annual refits, and 564 monthly payoffs use
+the unchanged representation, selected penalties, annual grouping, feature map,
+stock denominator and common scale. The January decision uses payoffs already
+known at that January close; monthly holdings use formation characteristics.
+Subsequent returns never determine bins, characteristic signs, or stock lists.
+Near-tied spectral boundaries follow the existing grouping. The four weight
+columns reconstruct the original stock policy and group payoffs numerically.
+Maximum absolute stock-weight error is 2.19e-13 and monthly group-payoff error
+is 5.85e-13. The 17 relevant holdings and prior-experiment tests pass.
+
+For characteristic x and group weights w, L=sum(max(w,0)), S=sum(max(-w,0)).
+Long mean=sum(max(w,0)*x)/L; short mean=sum(max(-w,0)*x)/S. Their difference
+is scale-free; actual signed exposure is L*long mean-S*short mean. All use
+the existing [-0.5,0.5] input ranks, including neutral-zero missing inputs.
+Family scores average signed ranks; positive means MORE of the attribute,
+not presumed higher expected return. The family membership dictionary is
+recorded in audit/economic_protocol.json and financing_followup_design.json.
+
+Terciles use contemporaneous average-rank ties, separately each month. Every
+cell is retained. Each family or pair is an ALTERNATIVE exhaustive view of the
+same positions, never a mutually exclusive decomposition across families.
+Financing views were motivated by dominant holdings exposures and are
+exploratory, not preregistered. They do not change any fitted stock weight.
+
+Relative cell weight density = (mean signed stock weight in the cell) /
+(mean absolute stock weight in the group). A stock-count-weighted additive
+row/column projection on the nine formation-date cell densities gives the
+reported nonadditive residual. Empty cells have zero payoff but undefined
+observed density; public density summaries omit those entries. This affects
+120 group-cell-months in Size x Liquidity only; none of the displayed joint
+partitions has empty cells. Immutable raw checkpoints retain zero accumulators
+for empties, normalized explicitly by economic_postprocess.py before summaries.
+
+For preceding raw payoff p, added raw group payoff q and cell payoff q_b,
+loss allocation = mean[-2*(1-p)*q_b + q*q_b]. For scaled excess payoffs,
+annual variance allocation = 12*[2*Cov(p,q_b)+Cov(q,q_b)]. These allocations
+sum to group increments and retain cross-covariances. They are an accounting
+convention, not the causal effect of independently removing a cell. Common-
+sample factor coefficients also add exactly across cells; regression R-squared
+does not. Mean and loss intervals use 5,000 paired circular 12-month blocks;
+factor intervals use 12-lag HAC. All intervals are pointwise and conditional
+on the fitted policy paths, with no multiple-testing or causal interpretation.
+
+The retrospective JKP academic dictionary and the existing complete-payoff
+universe are accepted inputs. No anomaly-discovery or publication-date
+investigation, new portfolio learner, or feature-selection exercise is added.
+
+FILES AND REPRODUCTION
+
+publication/Section_VI_Economic_Investment_Strategies.pdf is the standalone
+replacement Section VI. The prior A/B experiments are reused unchanged. It
+preserves the reference-derived typography and manuscript notation; the rest
+of the manuscript is never written. The reference binary was unavailable at
+this build, so compatibility uses its retained extracted text and prior
+Section VI template rather than a new binary comparison.
+
+figures/ contains four vector PDFs and high-resolution PNGs:
+  EC1: actual holdings, long-minus-short exposures, and leg payoffs
+  EC2: economic content across the five historical periods
+  EC3: joint characteristic content of group 10–50%
+  EC4: mean, loss, and covariance-aware variance attribution
+The same images are copied into IMMAGINI PER CHAT/outputs/
+spectral_economic_content_20261009/ with a gallery index.
+
+tables/dominant_long_short_exposures_named.csv reports named long/short
+exposures for all four groups and six periods (full sample plus five blocks).
+monthly_characteristics.parquet contains every monthly exposure for all 130
+inputs; annual_characteristics.csv provides annual means. Family, cell,
+factor, joint-weight, stock-netting and stability tables preserve both monthly
+inputs and period summaries. Financing follow-up tables carry that prefix.
+factor_mean_accounting.csv separates each factor's contribution to mean return
+from the descriptive intercept. audit/ records input, code and output hashes.
+
+Every actual stock position is in local results/spectral_economic_content_20261009/
+year_YYYY/holdings.parquet, with formation_date, return_date, verified CRSP
+PERMNO, four signed group weights, and total_weight. holdings_index.html opens
+latest-month long and short lists. latest_all_stock_holdings.csv contains all
+latest-month stocks; top_positions_all_months.csv contains the top 20 on each
+side for all months, selected only by absolute position magnitude. Company
+names/tickers are unavailable in the retained extract. Licensed stock-level
+files remain outside Git; the public outputs are group-level aggregates.
+
+From the repository root, with the existing licensed data and fit caches:
+  python3 -m empirical_final.economic_reproduce
+The wrapper forces single-threaded BLAS, verifies reconstruction checkpoints,
+rebuilds summaries, figures and the PDF, and runs relevant tests. For a
+publication-only refresh:
+  python3 -m empirical_final.economic_figures
+  python3 -m empirical_final.economic_publication
+  python3 -m empirical_final.economic_delivery
+
+Definitions: https://jkpfactors-data.s3.amazonaws.com/documents/Documentation.pdf
+Official names: https://github.com/bkelly-lab/jkp-data
+Factors: existing frozen Kenneth R. French Data Library download in the prior
+empirical output; no factor return is used to choose a new stock policy.
