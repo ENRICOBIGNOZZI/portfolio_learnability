@@ -64,6 +64,10 @@ def freeze(rank=4096,include_7290=False):
     if include_7290 and not resolved[(resolved.environment=='baseline')&(resolved['T']==7290)]['certified'].all():
         raise ValueError('Optional T=7290 requires numerical feasibility; it is not certified.')
     calibration=calibrate()
+    main_path_times=[60,240,720,1440]
+    additional=resolved[(resolved.environment=='baseline')&(resolved['T']==2160)]
+    if len(additional)==1 and bool((additional.floor_pass & additional.paired_pass).all()):
+        main_path_times.append(2160)
     spec=dict(schema='rich6d-extended-production/1',reference_commit='2d59c3324569a0e58557ffa03a2c2c0319d65650',
         rank=rank,baseline_T=times,robustness_T=list(T_ROBUSTNESS),replications=300,
         environments={name:parameters(name).to_dict() for name in ENVIRONMENTS},
@@ -75,7 +79,8 @@ def freeze(rank=4096,include_7290=False):
         theoretical_reference=dict(b=1.5,r=1,penalty_exponent=-.6,complexity_exponent=.4,
             Sharpe_gap_upper_rate_exponent=-.6,status='Asymptotic reference hypotheses, not finite-sample equalities or simulation proofs.'),
         slope_windows=WINDOWS,slope_uncertainty='Full cross-T covariance delta method, checked by replication jackknife',
-        main_path_T=[60,240,720,1440],robustness_path_T=[60,1440],
+        main_path_T=main_path_times,robustness_path_T=[60,1440],
+        additional_main_path_rule='Predetermined T=2160 is included only if both unchanged 5% pilot conditions and quadrature pass; forward-reference availability remains separately disclosed.',
         omitted_optional_T7290=not include_7290,
         optional_horizon_rule='Include 7290 only after numerical and resource feasibility; never by fitted slope.',
         one_common_rank=True,numerical_tolerance=.05,

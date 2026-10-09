@@ -11,6 +11,8 @@ from simulations.extended.design import OUTPUT,ENVIRONMENTS,parameters
 from simulations.extended.statistics import distribution
 
 COLORS=['#244b73','#b55f39','#3e806b','#80629b','#ae8a2e']
+TIME_COLORS=dict(zip([60,240,720,1440,2160,3240,4860,7290],
+                     COLORS+['#64859e','#7d5d4f','#8c8371']))
 LABELS={'baseline':r'$N=600$','N300':r'$N=300$','N1200':r'$N=1200$',
         'rho000':r'$\rho=0$','rho075':r'$\rho=0.75$'}
 N_NAMES=['N300','baseline','N1200']
@@ -115,7 +117,8 @@ class Figures:
         axes[0].loglog(j,values,color=COLORS[0],label='Managed-payoff spectrum')
         axes[0].loglog(j,values[63]*(j/64.)**(-1.5),'--',color='#777777',label=r'$j^{-1.5}$ order reference')
         axes[0].set(xlabel='Eigenvalue rank',ylabel=r'$\mu_j$',title='(a) Economic spectrum')
-        for color,T in zip(COLORS,[60,240,720,1440,self.protocol['baseline_T'][-1]]):
+        for T in [60,240,720,1440,self.protocol['baseline_T'][-1]]:
+            color=TIME_COLORS[T]
             lam=self.protocol['a']['baseline']*float(T)**(-.6)
             h=values/(values+lam)
             axes[1].semilogx(j,h,color=color,label=fr'$T={T}$')
@@ -208,7 +211,8 @@ class Figures:
     def main_path(self):
         fig,axes=self.axes(1);ax=axes[0]
         fig.set_size_inches(7.2,3.6)
-        for color,T in zip(COLORS,self.protocol['main_path_T']):
+        for T in self.protocol['main_path_T']:
+            color=TIME_COLORS[T]
             self.path(ax,'baseline',T,color,fr'$T={T}$')
         ax.axhline(3,color='#444444',ls='--',lw=1,label=r'$SR^\star=3$')
         ax.legend(frameon=False,ncol=3)

@@ -20,7 +20,6 @@ import pandas as pd
 from simulations.extended.design import OUTPUT,ENVIRONMENTS,RANKS,T_REQUIRED,T_ROBUSTNESS,BASIS_SEED,seed
 from simulations.extended.audits import quadrature_audit
 from simulations.extended.preflight import ensure_population
-from simulations.extended.freeze import freeze
 from simulations.provenance import json_write,utc_now,output_lock
 
 
@@ -99,7 +98,12 @@ def main():
             wait_for_preflight(args.preflight_pid)
             if not (OUTPUT/'protocol.json').exists():
                 rank,optional=select()
-                freeze(rank,optional)
+                # A long-lived watcher must execute the current, fingerprinted
+                # freezer in a fresh interpreter, not a stale imported body.
+                arguments=['--rank',rank]
+                if optional:
+                    arguments.append('--include-7290')
+                execute('simulations.extended.freeze',*arguments)
             workers=1
             resource=OUTPUT/'pilot'/'concurrency_probe.json'
             if resource.exists():
