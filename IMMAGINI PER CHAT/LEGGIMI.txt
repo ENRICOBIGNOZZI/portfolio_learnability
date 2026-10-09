@@ -1,0 +1,16 @@
+IMMAGINI PER CHAT
+
+Raccolta delle immagini presenti nel progetto, con le sottocartelle originali per distinguere esperimenti e versioni. Gli originali restano al loro posto.
+
+Sono inclusi i PDF dei grafici; sono esclusi i PDF di manoscritti e documenti completi.
+La sottocartella tmp contiene anche le anteprime delle pagine e le immagini di controllo dei documenti.
+
+File raccolti: 715
+non stationarity: 10 file
+outputs: 38 file
+paper: 28 file
+results: 2 file
+simulations: 198 file
+tmp: 439 file
+
+Per sfogliare tutte le immagini, aprire index.html nel browser. La galleria offre ricerca, filtri per provenienza, ingrandimento e collegamenti ai PDF.
