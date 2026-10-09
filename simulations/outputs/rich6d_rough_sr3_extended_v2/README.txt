@@ -34,6 +34,19 @@ checkpoints. It stops before production, so rank selection and resource evidence
 can be reviewed. A failed or missing process is diagnosed before restarting;
 observation timeouts do not imply termination.
 
+An optional advance supervisor can observe an already-running preflight:
+  VECLIB_MAXIMUM_THREADS=1 OPENBLAS_NUM_THREADS=1 python3 -m simulations.extended.advance --preflight-pid <preflight PID>
+It checks all 12 completed paired pilots, applies the declared rank/quadrature
+gates, freezes the current scientific code in a fresh process, and runs production,
+summaries, figures and verification. If no investigated common rank passes the
+rank tests at every required horizon, it retains the highest investigated rank
+and explicitly records the unresolved cells, as required by the study protocol.
+It never relaxes the 5% tolerance. Its terminal ready_for_visual_review status
+still requires human-readable scientific review, inspection of all ten figures,
+and committing/pushing the intended deliverables before reporting completion.
+Live progress is recorded in preflight_status.json, advance_status.json and
+production_status.json as each corresponding stage becomes available.
+
 Primary uncertainty bands are the central 95% replication percentiles. Mean MCSE
 is distinct. Slopes use complete within-replication cross-T covariance, with a
 leave-one-replication-out jackknife cross-check. All predeclared windows remain.
