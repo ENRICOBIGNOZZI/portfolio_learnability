@@ -1,0 +1,14 @@
+{
+  "command": "VECLIB_MAXIMUM_THREADS=1 python3 -m pytest tests/test_rich6d_rough_sr3.py tests/test_rich6d_rough.py tests/test_rich6d.py tests/test_balanced_dgp.py tests/test_low_memory_quadrature.py -q",
+  "passed": 46,
+  "exit_code": 0,
+  "elapsed_seconds": 13.78,
+  "source_hashes": {
+    "tests/test_rich6d_rough_sr3.py": "9b9f6f521beeea96859c7e40fab6fa1da9c417f120bac824043b85f34556d123",
+    "tests/test_rich6d_rough.py": "adc8e6f697b1be8c0128eb17ece8f19387f0248133934261e4f59e5bc91c2aca",
+    "tests/test_rich6d.py": "522813d4b778e145cb2f6c23b31b5a81c0a273254a21036d5cc74351facb349a",
+    "tests/test_balanced_dgp.py": "7448a609343f22ecbf23b1d5485a9a712500e0fd01c3063f1c05729b42c1c1ab",
+    "tests/test_low_memory_quadrature.py": "f96696c7356ae6fe6b24a7b261b00e63be400d7f2910cb5de8d177b749742069"
+  },
+  "recorded_utc": "2026-10-09T14:53:46.311304+00:00"
+}

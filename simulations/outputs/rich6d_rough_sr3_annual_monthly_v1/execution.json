@@ -1,0 +1,17 @@
+{
+  "reason": "Increase process concurrency from 2 to 4; scientific protocol and completed checkpoint contents unchanged",
+  "completed_before_restart": [
+    "0000.npz",
+    "0001.npz",
+    "0002.npz",
+    "0003.npz",
+    "0004.npz",
+    "0005.npz",
+    "0006.npz",
+    "0007.npz"
+  ],
+  "workers": 4,
+  "command": "VECLIB_MAXIMUM_THREADS=1 python3 -m simulations.run_rough_sr3 --workers 4",
+  "incomplete_paths": "Regenerated at identical predeclared seeds on resume; no replication excluded",
+  "updated_utc": "2026-10-09T14:54:34.109987+00:00"
+}

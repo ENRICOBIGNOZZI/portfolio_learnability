@@ -1,0 +1,8 @@
+{
+  "embedding_orthonormality_max_error": 9.192646643896296e-14,
+  "maximum_eigenpair_residual_relative_to_operator_Frobenius_norm": 2.5001023648571098e-15,
+  "spectrum_minimum": 8.505957114527564e-11,
+  "spectrum_maximum": 9.979943439250525e-05,
+  "production_payoff_covariance_minimum_eigenvalue": 2.4369595669081556e-10,
+  "scope": "Finite rank-1024 operator only; residuals do not bound quadrature error or the omitted infinite-spectrum tail."
+}

@@ -73,3 +73,8 @@ The full manuscript is assembled in `../paper/main.tex`, using unchanged theory 
 The final closeout command `python3 -m simulations.diagnostics.closeout` checks numerical acceptance, theory/empirical preservation, the compiled PDF hash and a matching all-page visual review before writing `outputs/paper/audit/final_report.json`. It refuses to certify missing or partial deliverables.
 
 The separate rough-target experiment is documented in [rough_experiment.md](docs/rough_experiment.md). Its `rich6d_rough_r1_v1` outputs preserve the original economy and Sharpe units, with a new independent pilot and 100 fresh replications; it does not edit the manuscript.
+
+The rough target calibrated to **annualized optimal Sharpe 3**, using the explicit
+monthly convention, is documented in [rough_sr3_experiment.md](docs/rough_sr3_experiment.md).
+Run `python3 -m simulations.run_rough_sr3 --workers 2`; results are separate in
+`outputs/rich6d_rough_sr3_annual_monthly_v1/`.

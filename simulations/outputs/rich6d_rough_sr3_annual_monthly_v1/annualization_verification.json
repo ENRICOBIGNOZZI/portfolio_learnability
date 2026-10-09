@@ -1,0 +1,27 @@
+{
+  "annual_target": 3.0,
+  "monthly_reference": 0.8660254037844386,
+  "periods_per_year": 12,
+  "verified_checkpoint_hashes": 100,
+  "annualized_columns_verified": [
+    "methods_annualized.csv:population_sharpe_mean_annualized",
+    "methods_annualized.csv:population_sharpe_mcse_annualized",
+    "methods_annualized.csv:population_sharpe_ci_low_annualized",
+    "methods_annualized.csv:population_sharpe_ci_high_annualized",
+    "methods_annualized.csv:sharpe_gap_mean_annualized",
+    "methods_annualized.csv:sharpe_gap_mcse_annualized",
+    "methods_annualized.csv:sharpe_gap_ci_low_annualized",
+    "methods_annualized.csv:sharpe_gap_ci_high_annualized",
+    "curves_annualized.csv:population_sharpe_mean_annualized",
+    "curves_annualized.csv:population_sharpe_mcse_annualized",
+    "curves_annualized.csv:population_sharpe_ci_low_annualized",
+    "curves_annualized.csv:population_sharpe_ci_high_annualized"
+  ],
+  "source_hashes_match_frozen_protocol": true,
+  "validator_sha256": "e25c570b548e87c0a54bb35671772599e45488b2f37231850c65635da0356993",
+  "changed_stock_return_hashes": 100,
+  "baseline_protocol_sha256": "04372420ca072d6935d073b4e6d97b45eb95503a1d13023bf8e405bb733e18f3",
+  "population_second_moment_difference": 0.0,
+  "population_mean_scaling_error": 5.421010862427522e-20,
+  "explanation": "Same innovations, different economic returns; population second moments invariant because E[FF\u2032]=I. Old operators are read only for this post-run audit, not for production or tuning."
+}

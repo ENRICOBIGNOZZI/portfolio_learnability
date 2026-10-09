@@ -1,0 +1,58 @@
+{
+  "reviewed_utc": "2026-10-09T15:16:58.383620+00:00",
+  "figures": [
+    {
+      "file": "figure_0_economic_spectrum.png",
+      "dimensions": [
+        4389,
+        1381
+      ],
+      "dpi": [
+        319.9892,
+        319.9892
+      ]
+    },
+    {
+      "file": "figure_1_sharpe_learnability.png",
+      "dimensions": [
+        3557,
+        1445
+      ],
+      "dpi": [
+        319.9892,
+        319.9892
+      ]
+    },
+    {
+      "file": "figure_2_effective_complexity.png",
+      "dimensions": [
+        4389,
+        1381
+      ],
+      "dpi": [
+        319.9892,
+        319.9892
+      ]
+    },
+    {
+      "file": "figure_3_sharpe_complexity.png",
+      "dimensions": [
+        3237,
+        1797
+      ],
+      "dpi": [
+        319.9892,
+        319.9892
+      ]
+    }
+  ],
+  "checks": [
+    "All four figures inspected",
+    "Annualized Sharpe reference is three",
+    "Unresolved rank checks at T=1080 and 1440 marked in Figure 1",
+    "All 96 diagnostic penalties retained with unresolved segments dashed",
+    "Population and empirical complexity distinguished",
+    "No clipped labels or curves"
+  ],
+  "scope": "Visual presentation review; not an infinite-spectrum certificate"
+}

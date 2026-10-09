@@ -30,6 +30,21 @@ def save(fig,folder,name):
 
 def render(c,output,tables):
     curves, methods, rank, rates, verification = tables
+    periods = c['spec'].get('periods_per_year',1)
+    sr_scale = np.sqrt(periods)
+    annualized = periods != 1
+    sr_label = 'Annualized population Sharpe ratio' if annualized else 'Sharpe ratio per period'
+    for table in (curves,methods):
+        for name in list(table.columns):
+            if name.startswith(('population_sharpe','sharpe_gap')) and not name.endswith('_annualized') and annualized:
+                table[name+'_annualized'] = table[name]*sr_scale
+    if annualized:
+        methods.to_csv(output/'methods_annualized.csv',index=False)
+        curves.to_csv(output/'curves_annualized.csv',index=False)
+        path_table = pd.read_csv(output/'path_methods.csv')
+        path_table['population_sharpe_annualized'] = path_table.population_sharpe*sr_scale
+        path_table['sharpe_gap_annualized'] = (c['p'].sr_star-path_table.population_sharpe)*sr_scale
+        path_table.to_csv(output/'path_methods_annualized.csv',index=False)
     folder = output/'figures'; folder.mkdir(exist_ok=True)
     data = folder/'source_data'; data.mkdir(exist_ok=True)
     assert len(methods) == 10 and len(curves) == 960
@@ -82,21 +97,21 @@ def render(c,output,tables):
                      transform=axes[2].transAxes,va='top',fontsize=8,color='#555555')
         save(fig,folder,'figure_0_economic_spectrum')
 
-        T = theory['T'].to_numpy(); sr = theory.population_sharpe_mean.to_numpy(); gap = theory.sharpe_gap_mean.to_numpy()
+        T = theory['T'].to_numpy(); sr = theory.population_sharpe_mean.to_numpy()*sr_scale; gap = theory.sharpe_gap_mean.to_numpy()*sr_scale
         fig,axes = plt.subplots(1,2,figsize=(11,4.4),layout='constrained')
         fig.suptitle('Figure 1. Theorem 1: Sharpe learnability',fontsize=15)
         axes[0].plot(T,sr,'o-',color=COLORS[0],label='Learned policy: theory_1',markersize=4)
-        axes[0].fill_between(T,theory.population_sharpe_ci_low,theory.population_sharpe_ci_high,color=COLORS[0],alpha=.16,label='95% Monte Carlo interval')
-        axes[0].axhline(c['p'].sr_star,color='#555555',ls='--',label=r'Analytical $SR^\star$')
-        axes[0].set(title='(a) Population Sharpe ratio',xlabel='Training observations, T',ylabel='Sharpe ratio per period')
+        axes[0].fill_between(T,theory.population_sharpe_ci_low*sr_scale,theory.population_sharpe_ci_high*sr_scale,color=COLORS[0],alpha=.16,label='95% Monte Carlo interval')
+        axes[0].axhline(c['p'].sr_star*sr_scale,color='#555555',ls='--',label=r'Analytical $SR^\star$')
+        axes[0].set(title='(a) Population Sharpe ratio',xlabel='Training observations, T',ylabel=sr_label)
         unresolved_theory = ~(theory.rank_audit_passed & theory.quadrature_audit_passed).to_numpy()
         if np.any(unresolved_theory):
             axes[0].plot(T[unresolved_theory],sr[unresolved_theory],'x',color=COLORS[3],ms=8,label='Numerical check unresolved')
         axes[0].legend(frameon=False,loc='lower right')
         axes[1].loglog(T,gap,'o-',color=COLORS[0],label='Observed mean gap',markersize=4)
-        axes[1].fill_between(T,theory.sharpe_gap_ci_low,theory.sharpe_gap_ci_high,color=COLORS[0],alpha=.16)
+        axes[1].fill_between(T,theory.sharpe_gap_ci_low*sr_scale,theory.sharpe_gap_ci_high*sr_scale,color=COLORS[0],alpha=.16)
         axes[1].loglog(T,gap[0]*(T/T[0])**(-.6),ls='--',color='#555555',label=r'$T^{-0.6}$ reference')
-        axes[1].set(title='(b) Distance from the optimum',xlabel='Training observations, T',ylabel=r'$SR^\star-SR(\widehat W)$')
+        axes[1].set(title='(b) Distance from the optimum',xlabel='Training observations, T',ylabel=('Annualized Sharpe gap' if annualized else r'$SR^\star-SR(\widehat W)$'))
         if np.any(unresolved_theory):
             axes[1].plot(T[unresolved_theory],gap[unresolved_theory],'x',color=COLORS[3],ms=8,label='Numerical check unresolved')
         axes[1].legend(frameon=False)
@@ -127,16 +142,16 @@ def render(c,output,tables):
         fig.suptitle('Figure 3. Sharpe versus effective complexity',fontsize=15)
         for T,color in zip(DISPLAY,COLORS):
             f = paths[paths['T']==T].sort_values('population_complexity_1024')
-            x,y,ok = f.population_complexity_1024.to_numpy(),f.population_sharpe_mean.to_numpy(),f.certified.to_numpy()
+            x,y,ok = f.population_complexity_1024.to_numpy(),f.population_sharpe_mean.to_numpy()*sr_scale,f.certified.to_numpy()
             passed_segments = ok[:-1] & ok[1:]
             boundaries = np.r_[0, np.flatnonzero(passed_segments[1:] != passed_segments[:-1])+1, len(passed_segments)]
             for start,stop in zip(boundaries[:-1],boundaries[1:]):
                 ax.plot(x[start:stop+1],y[start:stop+1],color=color,lw=1.9,
                         ls='-' if passed_segments[start] else (0,(4,2.5)))
             row = theory[theory['T']==T].iloc[0]
-            ax.plot(row.population_complexity_1024,row.population_sharpe_mean,'D',color=color,ms=7,mec='white',zorder=5)
-        ax.axhline(c['p'].sr_star,color='#888888',lw=1,ls=':')
-        ax.set(xscale='log',xlabel=r'Population effective complexity, $\mathcal{C}_{1024}(\lambda)$',ylabel='Population Sharpe ratio per period')
+            ax.plot(row.population_complexity_1024,row.population_sharpe_mean*sr_scale,'D',color=color,ms=7,mec='white',zorder=5)
+        ax.axhline(c['p'].sr_star*sr_scale,color='#888888',lw=1,ls=':')
+        ax.set(xscale='log',xlabel=r'Population effective complexity, $\mathcal{C}_{1024}(\lambda)$',ylabel=('Annualized population Sharpe ratio' if annualized else 'Population Sharpe ratio per period'))
         handles = [Line2D([0],[0],color=co,label=f'T = {t}') for t,co in zip(DISPLAY,COLORS)]
         handles += [Line2D([0],[0],color='#555555',marker='D',ls='None',label='Exact theory penalty'),
                     Line2D([0],[0],color='#555555',label='Rank audit passed'),
@@ -159,23 +174,35 @@ def render(c,output,tables):
         }).to_csv(output/'complexity_rank_sensitivity.csv',index=False)
     from simulations.diagnostics import rough_operators
     rough_operators.validate(c,output)
+    if annualized:
+        from simulations.diagnostics.rough_sr3_verification import verify
+        verify(output)
     write_report(c,output,theory,paths,slopes,gap_rate)
     json_write(folder/'provenance.json', {'run_hash': c['run_hash'],
         'renderer_sha256': file_hash(__file__), 'operator_validator_sha256': file_hash(rough_operators.__file__),
+        'periods_per_year': periods, 'sharpe_display_multiplier': float(sr_scale),
+        'target_annual_sr': c['spec'].get('target_annual_sr'),
         'matplotlib_version': matplotlib.__version__, 'backend': matplotlib.get_backend(), 'population_spectrum_sha256': file_hash(output/'spectrum.csv'),
         'artifact_sha256': {str(f.relative_to(folder)): file_hash(f) for f in folder.rglob('*')
             if f.is_file() and f.name != 'provenance.json'}})
 
 
 def write_report(c,output,theory,paths,slopes,rate):
+    periods = c['spec'].get('periods_per_year',1)
+    sr_scale = np.sqrt(periods)
+    annualized = periods != 1
+    reference_sr = c['p'].sr_star*sr_scale
+    units_note = (f'Sharpe ratios and gaps are annualized as sqrt({periods}) times marginal monthly values, not the Sharpe of compounded annual returns.' if annualized else 'Sharpe ratios retain the original per-period units.')
+    reproduction_module = 'simulations.run_rough_sr3' if annualized else 'simulations.run_rough'
+    calibration_note = (f'The economy is analytically calibrated to annualized optimal Sharpe {reference_sr:.12g}, equivalent to monthly Sharpe {c["p"].sr_star:.12g}. Factor means are multiplied by {c["spec"]["factor_mean_scale"]:.12g}, and their Gaussian covariance is I-mu_F*mu_F′. All training returns, fitted portfolios, pilot and evaluation operators were regenerated under these parameters; historical fitted outcomes were not rescaled. Because E[FF′]=I is preserved, the recomputed population second moments, pilot scale, and population complexity are invariant to the mean calibration. Empirical sample complexity can change. '+units_note if annualized else 'There is no annual Sharpe target or annualization.')
     failures = theory.loc[~theory.rank_audit_passed,'T'].tolist()
     qfail = theory.loc[~theory.quadrature_audit_passed,'T'].tolist()
     unresolved = int((~paths.certified).sum())
     captions = [
         'Figure 0. The economic spectrum. Panel (a) reports the 1,024 eigenvalues of the managed-payoff second-moment operator compressed to a nested Matérn-3/2 Nyström subspace, computed using 32,768 independent balanced groups. Panels (b) and (c) apply the exact theory-scaled penalties at T=60,240,720,1440 to this same fixed spectrum, showing shrinkage weights and their cumulative sums. This finite-rank population approximation neither supplies the infinite spectrum nor extrapolates its omitted tail. Eigenvalues are computed for the new rough loading map only.',
-        f'Figure 1. Sharpe learnability. Panel (a) displays the mean population Sharpe ratio of the rank-512 learned policy across 100 independent economic replications and the analytical optimum {c["p"].sr_star:.9f}. Panel (b) reports the Sharpe gap and a T^(-0.6) theoretical reference anchored at T=60. Shading gives pointwise 95% Monte Carlo intervals conditional on the fixed numerical evaluator. All ten sample sizes and all replications are retained. The full-grid descriptive log-log slope is {slopes["sharpe_gap"]:.6f}, with 1,000-whole-path-bootstrap interval [{rate.bootstrap_low:.6f}, {rate.bootstrap_high:.6f}]. Sharpe ratios retain the original per-period units.',
+        f'Figure 1. Sharpe learnability. Panel (a) displays the mean population Sharpe ratio of the rank-512 learned policy across 100 independent economic replications and the analytical optimum {reference_sr:.9f}. Panel (b) reports the Sharpe gap and a T^(-0.6) theoretical reference anchored at T=60. Shading gives pointwise 95% Monte Carlo intervals conditional on the fixed numerical evaluator. All ten sample sizes and all replications are retained. The full-grid descriptive log-log slope is {slopes["sharpe_gap"]:.6f}, with 1,000-whole-path-bootstrap interval [{rate.bootstrap_low:.6f}, {rate.bootstrap_high:.6f}]. {units_note}',
         f'Figure 2. Effective complexity over time. Panel (a) shows lambda_T={c["spec"]["a"]:.12g} T^(-0.6), fixed by an independent population pilot. Panels (b) and (c) report C_1024(lambda_T) and C_1024(lambda_T)/T using the same population spectrum as Figure 0. The rank-512 population trace and mean empirical rank-512 complexity are labeled separately. The T^(0.4) and T^(-0.6) references are anchored at T=60, without estimating their exponents. The finite-spectrum population complexity slope is {slopes["population_complexity_1024"]:.6f}; the relative-complexity slope is {slopes["relative_population_complexity_1024"]:.6f}.',
-        'Figure 3. Sharpe versus effective complexity. The full 96-penalty diagnostic paths at T=60,240,720,1440 plot 100-replication mean population Sharpe against the fixed population spectral coordinate C_1024(lambda). Diamonds locate policies estimated at the exact theory penalties, without snapping to the grid. Solid segments pass the predeclared 512-versus-1024 regret-based rank diagnostic on 50 matched paths; dashed segments touch a point failing it and remain visible. The audit is a regret-based numerical sensitivity check, not a uniform Sharpe-error guarantee. These paths are diagnostic and do not select a competing strategy.'
+        f'Figure 3. Sharpe versus effective complexity. The full 96-penalty diagnostic paths at T=60,240,720,1440 plot 100-replication mean population Sharpe against the fixed population spectral coordinate C_1024(lambda). Diamonds locate policies estimated at the exact theory penalties, without snapping to the grid. Solid segments pass the predeclared 512-versus-1024 regret-based rank diagnostic on 50 matched paths; dashed segments touch a point failing it and remain visible. The audit is a regret-based numerical sensitivity check, not a uniform Sharpe-error guarantee. These paths are diagnostic and do not select a competing strategy. {units_note}'
     ]
     (output/'figures/captions.txt').write_text('\n\n'.join(captions)+'\n')
     tr = json_load(output/'fourier_truncation.json')
@@ -189,19 +216,20 @@ def write_report(c,output,theory,paths,slopes,rate):
     if upper.OLS_slope < -.6:
         interpretation += ' The faster decay in the upper-half window is compatible with smoother effective behavior at larger accessible sample sizes. It cautions against interpreting the full-grid agreement as identification of critical roughness. All windows are reported; the full grid remains the principal result.'
     pilot_seed = json_load(output/'calibration.json')['pilot_seed']
+    tolerance_note = (f'The policy-value tolerance is {tr["tolerances"]["policy"]:.12g}, obtained before production by multiplying the original 1e-7 tolerance by the analytical factor-mean multiplier. This preserves relative policy precision; other tolerances are unchanged.' if annualized else '')
     report = f'''Rough Rich6D: critical numerical report
 
 Design and scope
-N=600, D=6, three Gaussian economic factors, stationary AR(1) characteristics (rho=.95), balanced triplets, c_beta=.04^2, sigma_eps=.08, mu_F=(.10,.06,.03), Matérn-3/2 with lengthscale 1. The new loading map is rich6d_rough, eta=.35. Original simulations and manuscript are not inputs or outputs. No empirical section is edited. The ideal nonlinear target is sum_(m=2)^infinity cos(pi*m*u)/(m^5 log(m+1)), normalized by Parseval to the sine RMS 1/sqrt(2). The normalization is {tr['normalization']:.15g} and is independent of portfolio performance.
+N=600, D=6, three Gaussian economic factors, stationary AR(1) characteristics (rho=.95), balanced triplets, c_beta=.04^2, sigma_eps=.08, mu_F={tuple(c["p"].mu_F)}, Matérn-3/2 with lengthscale 1. The new loading map is rich6d_rough, eta=.35. Original simulations and manuscript are not inputs or outputs. No empirical section is edited. The ideal nonlinear target is sum_(m=2)^infinity cos(pi*m*u)/(m^5 log(m+1)), normalized by Parseval to the sine RMS 1/sqrt(2). The normalization is {tr['normalization']:.15g} and is independent of portfolio performance.
 
 Numerical Fourier implementation
-M=128 was frozen before production after the 128/512/2048 common-innovation comparison (240 dates, 8,192 independent evaluation groups, fixed penalties 1e-7,1e-6,1e-5). Detailed absolute errors and tolerances are in fourier_truncation.csv/json. Vectorized Clenshaw evaluation does not use interpolation. The selected uniform psi tail bound is {tr['records'][0]['uniform_psi_tail_bound']:.6g}. Finite M is smooth. Agreement of finite-M values, payoffs, Sharpe and regret is not mathematical evidence of the exact source condition r=1 or of critical Sobolev regularity of the composed optimal policy. No proof or theoretical assumption is modified.
+M=128 was frozen before production after the 128/512/2048 common-innovation comparison (240 dates, 8,192 independent evaluation groups, fixed penalties 1e-7,1e-6,1e-5). Detailed absolute errors and tolerances are in fourier_truncation.csv/json. {tolerance_note} Vectorized Clenshaw evaluation does not use interpolation. The selected uniform psi tail bound is {tr['records'][0]['uniform_psi_tail_bound']:.6g}. Finite M is smooth. Agreement of finite-M values, payoffs, Sharpe and regret is not mathematical evidence of the exact source condition r=1 or of critical Sobolev regularity of the composed optimal policy. No proof or theoretical assumption is modified.
 
 Calibration and independent evaluation
-The existing theory_1 scale convention is retained: a is the largest eigenvalue of a fresh rank-512 population second-moment pilot with 8,192 groups, seed {pilot_seed}. a={c['spec']['a']:.15g}; lambda_T=a*T^(-.6). The exponent is prescribed from b=1.5 and r=1, never fitted. The frozen pilot, production evaluation, rank audit, quadrature audit, truncation check and economic replications use separate seed families. The population production evaluator uses 8,192 groups and integrates Gaussian returns analytically; it does not estimate Sharpe from a noisy future return sample. The pilot is a population-calibrated benchmark and is not a historically implementable selector. There is no annual Sharpe target or annualization.
+The existing theory_1 scale convention is retained: a is the largest eigenvalue of a fresh rank-512 population second-moment pilot with 8,192 groups, seed {pilot_seed}. a={c['spec']['a']:.15g}; lambda_T=a*T^(-.6). The exponent is prescribed from b=1.5 and r=1, never fitted. The frozen pilot, production evaluation, rank audit, quadrature audit, truncation check and economic replications use separate seed families. The population production evaluator uses 8,192 groups and integrates Gaussian returns analytically; it does not estimate Sharpe from a noisy future return sample. The pilot is a population-calibrated benchmark and is not a historically implementable selector. {calibration_note}
 
 Results across the complete grid
-All 100 independent replications are used at each of the ten prescribed horizons. Histories are nested within replication; whole-path bootstrapping preserves this dependence. Mean population Sharpe rises from {first.population_sharpe_mean:.8f} at T=60 to {last.population_sharpe_mean:.8f} at T=1440, against analytical SR*={c['p'].sr_star:.8f}. The full-grid Sharpe-gap slope is {slopes['sharpe_gap']:.6f} (95% bootstrap interval [{rate.bootstrap_low:.6f}, {rate.bootstrap_high:.6f}]), compared with the reference -.6. Additional prespecified-window slopes are in rates.csv; no window is selected to improve agreement. C_1024 grows from {first.population_complexity_1024:.6f} to {last.population_complexity_1024:.6f}, with slope {slopes['population_complexity_1024']:.6f}, compared with +.4; its ratio to T has slope {slopes['relative_population_complexity_1024']:.6f}, compared with -.6. Population rank-512 and empirical rank-512 slopes are {slopes['population_complexity_512']:.6f} and {slopes['empirical_complexity_512']:.6f}.
+All 100 independent replications are used at each of the ten prescribed horizons. Histories are nested within replication; whole-path bootstrapping preserves this dependence. Mean reported population Sharpe rises from {first.population_sharpe_mean*sr_scale:.8f} at T=60 to {last.population_sharpe_mean*sr_scale:.8f} at T=1440, against analytical SR*={reference_sr:.8f}. {units_note} The full-grid Sharpe-gap slope is {slopes['sharpe_gap']:.6f} (95% bootstrap interval [{rate.bootstrap_low:.6f}, {rate.bootstrap_high:.6f}]), compared with the reference -.6. Additional prespecified-window slopes are in rates.csv; no window is selected to improve agreement. C_1024 grows from {first.population_complexity_1024:.6f} to {last.population_complexity_1024:.6f}, with slope {slopes['population_complexity_1024']:.6f}, compared with +.4; its ratio to T has slope {slopes['relative_population_complexity_1024']:.6f}, compared with -.6. Population rank-512 and empirical rank-512 slopes are {slopes['population_complexity_512']:.6f} and {slopes['empirical_complexity_512']:.6f}.
 
 Interpretation
 {interpretation} The m=2 harmonic accounts for {100*(tr["normalization"]/(2**5*np.log(3)))**2:.4f}% of the normalized Fourier variance by Parseval. Low-frequency terms therefore dominate target values: rapid convergence of values does not make a roughness-driven rate observable. Neither a descriptive slope nor disagreement with an asymptotic reference proves or disproves an asymptotic theorem. No coefficient, amplitude, sample size, kernel or penalty exponent was adjusted after inspecting the rates. The finite spectrum also need not exhibit the asymptotic +.4 complexity exponent. No fitted spectral exponent replaces b=1.5 and no minimax-optimality claim is made.
@@ -212,10 +240,10 @@ The estimator stays rank 512 throughout the principal 100-path experiment. Fifty
 All population complexity coordinates in Figures 0,2,3 use one fixed rank-1024, 32,768-group spectrum. This is a compressed finite-rank operator, not a list of the exact leading 1,024 infinite-population eigenvalues. The rank-512 trace and empirical sample complexity are explicitly separate. The numerical diagnostics audit policy regret near the exact chosen penalties; they cannot bound an uncomputed infinite-spectrum tail. Monte Carlo bands exclude numerical approximation uncertainty. verification.json independently reconstructs saved theory normal equations and population Sharpe, and checks the signed regret decomposition in every path and penalty cell.
 
 Reproduction and artifacts
-Run VECLIB_MAXIMUM_THREADS=1 python3 -m simulations.run_rough --workers 2. protocol.json is frozen before main replications and binds science source hashes, configuration and truncation checks. calibration.json records the pilot. Replication checkpoints preserve rank-512 managed training histories, exact theory coefficients, every diagnostic metric, matched rank-comparison results, seeds and stock-return hashes. Rank-1024 training histories are reproducible from seeds. No failed economic replication is silently removed. manifest.json hashes output artifacts and records software versions. Four vector PDFs, 320-dpi PNGs, English captions and figure-level source CSVs are in figures/.
+Run VECLIB_MAXIMUM_THREADS=1 python3 -m {reproduction_module} --workers 2. protocol.json is frozen before main replications and binds science source hashes, configuration and truncation checks. calibration.json records the pilot. Replication checkpoints preserve rank-512 managed training histories, exact theory coefficients, every diagnostic metric, matched rank-comparison results, seeds and stock-return hashes. Rank-1024 training histories are reproducible from seeds. No failed economic replication is silently removed. Raw checkpoint metrics remain per period; annualized CSV columns are explicitly suffixed _annualized and losses/regrets are never annualized. manifest.json hashes output artifacts and records software versions. Four vector PDFs, 320-dpi PNGs, English captions and figure-level source CSVs are in figures/.
 '''
     (output/'critical_report.txt').write_text(report)
-    (output/'README.txt').write_text('Rough Rich6D, original per-period Sharpe units.\nRead critical_report.txt and figures/captions.txt for numerical scope and limitations.\nReproduce: VECLIB_MAXIMUM_THREADS=1 python3 -m simulations.run_rough --workers 2\n')
+    (output/'README.txt').write_text(f'Rough Rich6D. {units_note}\nRead critical_report.txt and figures/captions.txt for numerical scope and limitations.\nReproduce: VECLIB_MAXIMUM_THREADS=1 python3 -m {reproduction_module} --workers 2\n')
 
 
 def json_load(path):

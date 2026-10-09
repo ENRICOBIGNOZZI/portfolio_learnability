@@ -1,0 +1,37 @@
+{
+  "a": 9.968332766935744e-05,
+  "rule": "lambda_T=a*T^-0.6",
+  "calibration": "Largest rank-512 population second-moment eigenvalue, existing theory_1 convention",
+  "pilot_groups": 8192,
+  "pilot_seed": 2415449988,
+  "evaluation_seed": 3419043910,
+  "independent_population_pilot": true,
+  "historically_implementable_selector": false,
+  "protocol_sha256": "dbfb703fe1fa065b72830f78f5b1c1d1d0760d18dbf4526c94672751c0adb4f6",
+  "target_annual_sr": 3.0,
+  "periods_per_year": 12,
+  "monthly_sr": 0.8660254037844386,
+  "factor_mean_scale": 5.490699705067791,
+  "factor_means": [
+    0.5490699705067791,
+    0.32944198230406746,
+    0.16472099115203373
+  ],
+  "factor_covariance": [
+    [
+      0.6985221674876847,
+      -0.18088669950738914,
+      -0.09044334975369457
+    ],
+    [
+      -0.18088669950738914,
+      0.8914679802955665,
+      -0.054266009852216746
+    ],
+    [
+      -0.09044334975369457,
+      -0.054266009852216746,
+      0.9728669950738916
+    ]
+  ]
+}
