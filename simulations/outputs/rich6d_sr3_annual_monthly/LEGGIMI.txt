@@ -1,0 +1,26 @@
+Rich6D: SR ottimo annualizzato = 3
+
+Frequenza mensile: SR annuo = sqrt(12) * SR mensile; SR mensile ottimo = 0.866025403784.
+100 nuove repliche; 10 campioni da 60 a 1440 mesi; solo Matern-3/2 e theory_1.
+Medie dei fattori: (0.5490699705067791, 0.32944198230406746, 0.16472099115203373).
+Covarianza dei fattori: I - mu mu trasposto. Le altre specifiche restano quelle canoniche Rich6D.
+Le nuove traiettorie e le stime sono state rigenerate, conservando lo spettro invariato dei secondi momenti.
+
+RISULTATI
+Sharpe annuo medio: 2.171239 a T=60; 2.905630 a T=1440.
+Pendenza del divario di Sharpe: -0.694610; intervallo bootstrap 95% [-0.727728, -0.658429].
+Tutti i 10 punti theory_1 superano i controlli previsti su rango e quadratura. I tratti diagnostici non risolti restano tratteggiati.
+
+FILE
+figures/: cinque PNG a 450 dpi e PDF vettoriali, dati delle curve e didascalie con provenienza.
+protocol.json: specifica congelata prima delle simulazioni e hash delle dipendenze.
+replications/: 100 repliche nuove; tutti i risultati e dati di training di rango 512 in doppia precisione.
+storage_manifest.json: dettagli sulla conservazione dei risultati di confronto 512/1024 e riproducibilita dei dati di rango 1024 dai seed.
+verification.json: controlli delle stime e della decomposizione, hash delle repliche.
+rank_resolution.csv e quadrature_resolution.csv: controlli numerici nuovi.
+rates.csv: pendenze e bootstrap per finestre prestabilite.
+
+RIPRODUZIONE
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 python3 -m simulations.run_sr_target_compact --periods-per-year 12 --annual-sr 3 --output simulations/outputs/rich6d_sr3_annual_monthly
+Per rigenerare solo figure e aggregazioni aggiungere --render-only.
+Il manoscritto non e stato modificato.

@@ -1,0 +1,9 @@
+Proposed exponent: -2*s*r/(2*s*r+d). Here s is the Sobolev/RKHS smoothness, not the Matern parameter nu: nu=1.5, d=6, s=nu+d/2=4.5. Thus b=2s/d=1.5; r=1 gives -0.6 and r=2 gives -0.75.
+
+This figure overlays two benchmark lines on the EXISTING 100-replication theory_1 Sharpe curves, with annual optimum 3, monthly convention sqrt(12), and T>=150 (available points start at 180). Both lines are normalized to the same measured gap at T=180; neither exponent is fitted. The Monte Carlo means, pointwise intervals and trained policies are unchanged. The historical T=60 anchor is deliberately replaced by a common T=180 anchor for this comparison only.
+
+If the population bias were O(lambda^r) and complexity O(lambda^(-1/b)), balancing lambda^r with lambda^(-1/b)/T would give lambda proportional to T^(-b/(br+1)), risk proportional to T^(-br/(br+1)), and complexity proportional to T^(1/(br+1)). For r=2 these exponents are respectively -0.375, -0.75, +0.25; relative complexity has exponent -0.75. The exponent -0.75 is NOT the proposed lambda exponent.
+
+The present manuscript proof establishes source order r=1 (paper/theory/proofs_learning.tex lines 373-375 and 444-445). Its current Rich6D admissibility argument establishes RKHS membership; this does not by itself prove the stronger operator source condition for r=2. This comparison does not extend the theorem, certify r=2 for Rich6D, determine T_0, or refit an r=2 estimator. The observed finite-window bootstrap slope is descriptive and is not a test of an asymptotic big-O bound.
+
+Provenance: methods.csv and path_methods.csv in the parent run, with independent reconstruction of means/MCSE from all 100 saved path evaluations. Formula conventions: paper/theory/representation_tables.tex (Matern smoothness) and simulations/docs/dgp_methodology.md (s=9/2). Complete displayed values are in comparison_curve_data.csv. The manuscript and previous figures are unchanged.

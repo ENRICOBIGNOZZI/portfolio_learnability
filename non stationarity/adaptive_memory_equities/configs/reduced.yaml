@@ -1,0 +1,67 @@
+sample_mode: retrospective_complete_payoff
+history_start: '1963-01-31'
+formation_start: '1993-01-31'
+formation_end: '1995-11-30'
+seeds:
+- 0
+- 1
+minimum_n_eff: 36
+architectures:
+- depth: 0
+  width: 0
+- depth: 1
+  width: 32
+- depth: 2
+  width: 32
+- depth: 3
+  width: 32
+- depth: 4
+  width: 32
+- depth: 1
+  width: 64
+- depth: 2
+  width: 64
+- depth: 3
+  width: 64
+- depth: 4
+  width: 64
+baseline_architecture: L2W32
+optimizer:
+  steps: 10
+  learning_rate: 0.01
+  weight_decay: 0.0
+  checkpoint_rule: final_fixed_step
+  batch_dates: 8
+  stock_block: 512
+  threads: 1
+memories:
+  theory:
+  - - 0.1
+    - 1
+  - - 10
+    - 1
+  taper:
+  - - 120
+    - 1
+  - - 720
+    - 1
+  rolling:
+  - 120
+  - 360
+  exponential:
+  - 60
+  - 180
+guard:
+  window: 60
+  block: 12
+  replicates: 2000
+  seed: 20261003
+  level: 0.95
+cost_bps:
+- 0
+- 10
+- 25
+soft_temperature: 8.0
+resources:
+  rss_limit_mb: 1600
+  minimum_available_mb: 250

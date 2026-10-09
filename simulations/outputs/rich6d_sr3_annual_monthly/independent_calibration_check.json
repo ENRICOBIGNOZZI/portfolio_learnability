@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "direct_stock_weight_annual_sharpe": 3.0000000000000004,
+  "monthly_sharpe": 0.8660254037844386,
+  "annual_periods": 12,
+  "factor_covariance_eigenvalues": [
+    0.562857142857143,
+    1.0,
+    1.0000000000000002
+  ],
+  "first_replication_direct_solve_max_abs_error_T60_T1440": [
+    5.1514348342607263e-14,
+    7.698286452750835e-13
+  ]
+}

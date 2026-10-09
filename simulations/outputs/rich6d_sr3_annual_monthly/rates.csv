@@ -1,0 +1,4 @@
+quantity,window,method,cohort,OLS_slope,bootstrap_low,bootstrap_high,bootstrap_draws
+sharpe_gap,full,theory_1,practical,-0.6946102816189237,-0.7277279187026806,-0.6584290893871944,1000
+sharpe_gap,upper_half,theory_1,practical,-0.6996821394782408,-0.7458069798097094,-0.6450787998235568,1000
+sharpe_gap,largest_four,theory_1,practical,-0.7047046923756631,-0.7665899284454618,-0.6370424048304677,1000

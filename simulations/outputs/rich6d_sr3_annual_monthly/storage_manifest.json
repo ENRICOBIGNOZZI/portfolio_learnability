@@ -1,0 +1,74 @@
+{
+  "scientific_run_hash": "564c1bc1cc5ef72d11d8e1d492b68c94e223609e2feacbfb12e9459e18588432",
+  "unchanged_scientific_runner_sha256": "f635f25ba20af0c3851e9b5ef1a956cdd5d7ac7a24a2af2c92567bf6fba9cc4e",
+  "storage_adapter_sha256": "8ea6ce0ba9aaf9f1c8c67ab20dc4bb13df051d4b704cafe8922dce1c6094dcf4",
+  "training_storage": "Float64 rank-512 histories; first 50 generated at rank 1024 and projected with the verified embedding. All 512/1024 fitted-policy comparison metrics retained unchanged. Rank-1024 histories can be regenerated from saved seeds.",
+  "first_used_utc": "2026-10-09T10:58:54.635907+00:00",
+  "converted_checkpoints": {
+    "0000.npz": {
+      "original_sha256": "196d9c73e74f421a647628de2b057a2aa52bd56a4a0a0ecabdfc76572ed91328",
+      "compact_sha256": "d6741b19bd7ffcab29e12fe352c774b746f6dc421bd0342d74f78ac1f3244969",
+      "all_policy_and_rank_metrics_bitwise_unchanged": true
+    },
+    "0001.npz": {
+      "original_sha256": "09f1a6a4c018edad241d1d97c3f44d0e8a2581fb8cd722baa35072ddda53603e",
+      "compact_sha256": "b941e5c3cd5d30f26cbfa27491cc2601cd6196905520a2cecdecada71b39b9ec",
+      "all_policy_and_rank_metrics_bitwise_unchanged": true
+    },
+    "0002.npz": {
+      "original_sha256": "d9e27b4f6ef5b16703472eea66a33219d2f6832a594646b83f10c78ed6312bc5",
+      "compact_sha256": "d6cc925a00f6324a31dd3a496cc8496711ed4a2e28a0b9912aa6774a19070b2d",
+      "all_policy_and_rank_metrics_bitwise_unchanged": true
+    },
+    "0003.npz": {
+      "original_sha256": "b1e7ed80ab0031400c827d57489a0d908bf3d3913e98a44a2725869273c85a23",
+      "compact_sha256": "7289cec4175296681afd0a94f2d9907a3cc54f66935b161e6694290307f024b0",
+      "all_policy_and_rank_metrics_bitwise_unchanged": true
+    },
+    "0004.npz": {
+      "original_sha256": "98bb7276beb18422105dffa603662b86d3d01e6c226ba70fe3f32b27783fca04",
+      "compact_sha256": "a840022218528366971bac2820604830803f76eafab83a8dfdddc5ad01f4e178",
+      "all_policy_and_rank_metrics_bitwise_unchanged": true
+    },
+    "0005.npz": {
+      "original_sha256": "69ada5dba9f0b05238841f880ff7a51d1c20b9ded4d744ea8ed93f013ebe24ed",
+      "compact_sha256": "af9697001196a8abcef6f00cdbd5fecb39b924bd3e41a51607d0197547b072e3",
+      "all_policy_and_rank_metrics_bitwise_unchanged": true
+    },
+    "0006.npz": {
+      "original_sha256": "eb26b62fc71f09b87d84bf78a511a46aeeaae23719e055debb197307bc7ea810",
+      "compact_sha256": "1f0b810480cb4092aa0752778e82da8b366980c8dc83d714c8074e7d2febf872",
+      "all_policy_and_rank_metrics_bitwise_unchanged": true
+    },
+    "0007.npz": {
+      "original_sha256": "23226871eb149b14aae9d9b8b2083386e48e8d45f6316a94ac028602f8df1120",
+      "compact_sha256": "debef7cc6c9c0ec4b7a3a09a9c125eeea95a19f9e6f4e41c3a8d892a7668fb71",
+      "all_policy_and_rank_metrics_bitwise_unchanged": true
+    },
+    "0008.npz": {
+      "original_sha256": "a85fcdb0da0342836baeda00d75ccbc1a044f7cafddd4c6fa040c7ec04a063b9",
+      "compact_sha256": "90f45fd166bf69c397edcf4c85c14efabd06dff6b506eb2aa31a1ad521924dc0",
+      "all_policy_and_rank_metrics_bitwise_unchanged": true
+    },
+    "0009.npz": {
+      "original_sha256": "ecf699d744f7404c4a7680ad241aea9a3b048b5ae055d94e9c87db416c2599bc",
+      "compact_sha256": "6f488a99bc1328159716e9617d25eb178afacd3e5ece9059ae3dd5ad9dd5a4df",
+      "all_policy_and_rank_metrics_bitwise_unchanged": true
+    },
+    "0010.npz": {
+      "original_sha256": "a2e62a32c647567e404f9b2cf9761372fea0263d145e15672045fc0f907a4ab1",
+      "compact_sha256": "d83c9f5f49a982d28753dc8dd3a80d703074d40c8e8f3af5ddf7046032e61a2a",
+      "all_policy_and_rank_metrics_bitwise_unchanged": true
+    },
+    "0011.npz": {
+      "original_sha256": "f8f71a53bb46cd40233a3ff43e5bf00dd3570fa97bdb20501d02315541dda182",
+      "compact_sha256": "cdad640a4d98a9601befbf7f3b77fa6ca40c781405cef2db23c7d90f308eee4e",
+      "all_policy_and_rank_metrics_bitwise_unchanged": true
+    },
+    "0012.npz": {
+      "original_sha256": "a4b54ffab081d30942731f8d80935149d53dc63b61185d066f1c3b8432eec2ad",
+      "compact_sha256": "2f0cc6d06e4e57b9e0025adb1715f6fd6644758542badc95ccffe514c79a643f",
+      "all_policy_and_rank_metrics_bitwise_unchanged": true
+    }
+  }
+}

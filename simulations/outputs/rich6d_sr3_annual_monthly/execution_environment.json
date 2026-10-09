@@ -1,0 +1,15 @@
+{
+  "command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 python3 -m simulations.run_sr_target_compact --periods-per-year 12 --annual-sr 3 --output simulations/outputs/rich6d_sr3_annual_monthly",
+  "python": "3.13.3 (v3.13.3:6280bb54784, Apr  8 2025, 10:47:54) [Clang 15.0.0 (clang-1500.3.9.4)]",
+  "platform": "macOS-26.2-arm64-arm-64bit-Mach-O",
+  "packages": {
+    "numpy": "2.3.5",
+    "scipy": "1.16.3",
+    "pandas": "2.2.3",
+    "matplotlib": "3.10.8"
+  },
+  "additional_dependency_sha256": {
+    "simulations/diagnostics/low_memory.py": "809e6358d8c63c007005e7b1469e301e5b1bb8bffaeeec9f7dec13ae73b44d41",
+    "simulations/run_sr_target_compact.py": "8ea6ce0ba9aaf9f1c8c67ab20dc4bb13df051d4b704cafe8922dce1c6094dcf4"
+  }
+}

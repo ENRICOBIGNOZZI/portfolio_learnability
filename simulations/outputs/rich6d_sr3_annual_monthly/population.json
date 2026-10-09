@@ -1,0 +1,38 @@
+{
+  "parameters": {
+    "N": 600,
+    "D": 6,
+    "K_F": 3,
+    "rho": [
+      0.95,
+      0.95,
+      0.95,
+      0.95,
+      0.95,
+      0.95
+    ],
+    "nu": 1.5,
+    "ell": 1.0,
+    "c_beta": 0.0016,
+    "sigma_eps": 0.08,
+    "mu_F": [
+      0.5490699705067791,
+      0.32944198230406746,
+      0.16472099115203373
+    ],
+    "loading_map": "rich6d",
+    "eta": 0.35
+  },
+  "reference_sharpe": 0.8660254037844386,
+  "reference_sharpe_annual": 3.0,
+  "q_reference": 0.42857142857142855,
+  "subspace_regret_floor": 0.001591703570266556,
+  "s_ref": 0.00010095029776710695,
+  "population_groups": 8192,
+  "population_seed": 2216883481,
+  "basis_seed": 1223482779,
+  "pilot_seed": 1165070958,
+  "periods_per_year": 12,
+  "run_hash": "564c1bc1cc5ef72d11d8e1d492b68c94e223609e2feacbfb12e9459e18588432",
+  "spectrum_note": "The SAME second-moment spectrum is valid: factor means change, covariance becomes I-mu*mu', and E[FF']=I is invariant. This is verified on recomputed production and pilot moments."
+}

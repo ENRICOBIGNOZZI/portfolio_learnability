@@ -1,0 +1,4 @@
+environment,cohort,method,quantity,window,T_first,T_last,replications,OLS_slope,OLS_SE,bootstrap_low,bootstrap_high,bootstrap_draws,theoretical_slope,interpretation
+rich6d,practical,theory_1,sharpe_gap,full,60,1440,100,-0.6023132792990268,0.0288384985567796,-0.6516652290084656,-0.5473256850261847,1000,-0.6,"descriptive fit; theory is an envelope, not a required equality"
+rich6d,practical,theory_1,sharpe_gap,upper_half,360,1440,100,-0.7415751968233455,0.0223188431716005,-0.851405696029328,-0.6184689939366456,1000,-0.6,"descriptive fit; theory is an envelope, not a required equality"
+rich6d,practical,theory_1,sharpe_gap,largest_four,540,1440,100,-0.7687169479249575,0.0301262278087683,-0.9216649649423412,-0.6155480541231476,1000,-0.6,"descriptive fit; theory is an envelope, not a required equality"

@@ -1,0 +1,40 @@
+{
+  "s_sobolev": 4.5,
+  "matern_nu": 1.5,
+  "d": 6,
+  "b": 1.5,
+  "rate_exponent": {
+    "1": 0.6,
+    "2": 0.75
+  },
+  "hypothetical_lambda_exponent_if_bias_is_lambda_to_r": {
+    "1": 0.6,
+    "2": 0.375
+  },
+  "guide_anchor_T": 180,
+  "existing_policy": "theory_1: lambda=a*T^-0.6",
+  "policies_refitted": false,
+  "source_condition_r2_proved": false,
+  "descriptive_slope": {
+    "window": "T>=150, available T=180..1440",
+    "slope": -0.705155080666897,
+    "bootstrap_95_interval": [
+      -0.746404593903085,
+      -0.6588203043665163
+    ],
+    "bootstrap_draws": 1000
+  },
+  "scientific_run_hash": "564c1bc1cc5ef72d11d8e1d492b68c94e223609e2feacbfb12e9459e18588432",
+  "input_sha256": {
+    "methods.csv": "ce035ca3dff0303c74feec09b2abea3eb7f975de5106eae7a90afb63c4210530",
+    "path_methods.csv": "78ae3e2b49b6a6a1b6e51bd6d98d42b050b8e92652a8153e61c9cf4e34e4cd93",
+    "population.json": "dd522f8d6808e874986e0c7af1834154b7f5407d6d02dea876b1812437217007"
+  },
+  "plotting_source_sha256": "c557fa67d00fc5e2dcd24e4e1cb523867ce23b582645e007595dfee44d01f49e",
+  "output_sha256": {
+    "comparison_curve_data.csv": "ed9e9fe89bc8d569e2adacc2fb5c825254e0dbe84ac2770d8ba5ed1e84c51f4b",
+    "notes.txt": "76861d406c39f76b787c84050e23b0fd20c77af2344f0a86efd0bcdbc78f68b9",
+    "sharpe_rate_comparison_r1_r2.png": "b7f4ea8e4f268d56544c5d009eaba76a4a707680b51eb00e5e0ff6ace08cacc7",
+    "sharpe_rate_comparison_r1_r2.pdf": "dd0ec52abbfa2b5cc52c2dd8b77a46c4136f362a943678ecf3ea511a45928dc1"
+  }
+}

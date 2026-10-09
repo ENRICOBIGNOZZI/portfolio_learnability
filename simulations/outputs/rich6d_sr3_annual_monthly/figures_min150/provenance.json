@@ -1,0 +1,53 @@
+{
+  "presentation_min_T": 150,
+  "first_observed_T": 180,
+  "display_T": [
+    180,
+    360,
+    720,
+    1440
+  ],
+  "rate": {
+    "window": "T>=150, available T=180..1440",
+    "slope": -0.705155080666897,
+    "bootstrap_95_interval": [
+      -0.746404593903085,
+      -0.6588203043665163
+    ],
+    "bootstrap_draws": 1000
+  },
+  "scientific_run_hash": "564c1bc1cc5ef72d11d8e1d492b68c94e223609e2feacbfb12e9459e18588432",
+  "source_sha256": {
+    "simulations/plotting/rich6d_sr3_min150.py": "6ef96f5d55724e3e3102307fa463f01c9cb27d3915b36e0d26a4eb4e003c9a90",
+    "simulations/plotting/journal_rich6d_final.py": "7ff529d8f8067190b28fbe72c515d40d90546ca26305ef8fc2a05c3c46340a17"
+  },
+  "input_sha256": {
+    "curves.csv": "9e1d556bc1e4d9368559559cc51cc85287c33097df219ad0e8acc64e2809a6ed",
+    "methods.csv": "ce035ca3dff0303c74feec09b2abea3eb7f975de5106eae7a90afb63c4210530",
+    "path_methods.csv": "78ae3e2b49b6a6a1b6e51bd6d98d42b050b8e92652a8153e61c9cf4e34e4cd93",
+    "rank_resolution.csv": "b1f72e8428323638e03d9720069b7eaca95ac84360a5d132e21384ff1991b5a9",
+    "population.npz": "218dd5f72a49d7bcd2a51102c95a97888750c38d65f6730038a4f46800f3512a",
+    "population.json": "dd522f8d6808e874986e0c7af1834154b7f5407d6d02dea876b1812437217007",
+    "verification.json": "b13378eac2f8e9bd3be6cc68f6f7e5725d066a1e7f9b9778726d466a84f830ce"
+  },
+  "output_sha256": {
+    "figure_2_complexity_over_time.png": "90d9fdf0657ceb59fc4d1b923de97b3f0866fd92aa07cff164518d0609c178b0",
+    "figure_2_complexity_over_time.pdf": "a06eef696f77366757a4a4f9d58eac50a35a7f1e1e011e50b2fbeb955093a6f7",
+    "figure_4_regret_decomposition.pdf": "6570cafd0c38338776ebf5b25afffb939cd034629ee21b8de9cf1e6518cd8c0e",
+    "stability_by_replication.csv": "e4c57aee05651f87d4a42d36cba78cf011d973dff53a35a7c2fb8868c44ddb11",
+    "stability_summary.csv": "0dfa680edfbaa0049fcab09bee636e208e894160dba839101cebee27581da9c7",
+    "figure_4_regret_decomposition.png": "50a19af8ad29f9755132927c050fc5e6961dd5412da96ab273458b7c746aa55b",
+    "full_penalty_paths.csv": "6b588ae920fa82087e17cc945b4be2d0d4f2a60ce60da700831e393784296dae",
+    "figure_1_sharpe_learnability.pdf": "fa4984b3dbe560925399ad1c0209bf5cba2660ffc995684fec9ea4c4c23265eb",
+    "figure_3_sharpe_versus_complexity.png": "ae5057117c3574ac0c4964b3742b31ad8cb73e70c92db0554007b5041fbab972",
+    "figure_1_sharpe_learnability.png": "d49756993c2e3fd7b06be7f6e5e171ecced9de51f97b56511032fc03576e98e1",
+    "figure_3_sharpe_versus_complexity.pdf": "89c90707430cfcbbcd5f9f18d42247e1acd27d247616d7fe765d91caa6d9c1fb",
+    "rate_window.json": "45973d3035e2e191a22a931b20d0efde3a470c865a041fa1b1388f813fb09cd8",
+    "figure_0_economic_spectrum.png": "c0a35b65999bda1c9fce607f6d5486ed74e2c7bb25dd14b63e824d36ccac21f3",
+    "notes_and_provenance.txt": "8ce820b50203483f635a2061b8491cd22d1ccd177fc021bd23bdeb0568ebd886",
+    "figure_0_economic_spectrum.pdf": "978705b9aefdd2e594ff99209252f23d202fd2cbfb6f829925bbe3ce23007862",
+    "spectrum_filters_cumulative.csv": "4574e9e6903256c0e86e018c47effdad7d6c9afc8fc14841f22fb11e95199276",
+    "theory_sequences.csv": "570d98ead753c8da7f35b74bf1ec0a7cbd44160d0202536d3832605e3d723fd3",
+    "validation.json": "09ef2ae1b58cbac422cc9c101f8169a457c1afd2da966740ac7a3f8b366b3019"
+  }
+}

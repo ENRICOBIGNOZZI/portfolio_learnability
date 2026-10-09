@@ -1,0 +1,50 @@
+[
+  {
+    "file": "figure_0_economic_spectrum.pdf",
+    "embedded_raster_images": 0,
+    "fonts": [
+      "CZRBLR+STIXGeneral-Regular           CID TrueType      Identity-H       yes yes yes     15  0",
+      "FTXWZA+STIXGeneral-Italic            CID TrueType      Identity-H       yes yes yes     22  0"
+    ],
+    "rendered": true
+  },
+  {
+    "file": "figure_1_sharpe_learnability.pdf",
+    "embedded_raster_images": 0,
+    "fonts": [
+      "CZRBLR+STIXGeneral-Regular           CID TrueType      Identity-H       yes yes yes     17  0",
+      "FTXWZA+STIXGeneral-Italic            CID TrueType      Identity-H       yes yes yes     24  0"
+    ],
+    "rendered": true
+  },
+  {
+    "file": "figure_2_complexity_over_time.pdf",
+    "embedded_raster_images": 0,
+    "fonts": [
+      "CZRBLR+STIXGeneral-Regular           CID TrueType      Identity-H       yes yes yes     18  0",
+      "FTXWZA+STIXGeneral-Italic            CID TrueType      Identity-H       yes yes yes     25  0",
+      "EUPODS+STIXNonUnicode-Italic         CID TrueType      Identity-H       yes yes yes     32  0"
+    ],
+    "rendered": true
+  },
+  {
+    "file": "figure_3_sharpe_versus_complexity.pdf",
+    "embedded_raster_images": 0,
+    "fonts": [
+      "CZRBLR+STIXGeneral-Regular           CID TrueType      Identity-H       yes yes yes     15  0",
+      "FTXWZA+STIXGeneral-Italic            CID TrueType      Identity-H       yes yes yes     22  0",
+      "EUPODS+STIXNonUnicode-Italic         CID TrueType      Identity-H       yes yes yes     29  0"
+    ],
+    "rendered": true
+  },
+  {
+    "file": "figure_4_regret_decomposition.pdf",
+    "embedded_raster_images": 0,
+    "fonts": [
+      "CZRBLR+STIXGeneral-Regular           CID TrueType      Identity-H       yes yes yes     15  0",
+      "FTXWZA+STIXGeneral-Italic            CID TrueType      Identity-H       yes yes yes     22  0",
+      "EUPODS+STIXNonUnicode-Italic         CID TrueType      Identity-H       yes yes yes     29  0"
+    ],
+    "rendered": true
+  }
+]

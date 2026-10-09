@@ -1,0 +1,30 @@
+{
+  "independent_stability_max_error": 3.3306690738754696e-16,
+  "pdf_checks": [
+    {
+      "pdf": "figure_0_economic_spectrum.pdf",
+      "vector": true,
+      "fonts_embedded": true
+    },
+    {
+      "pdf": "figure_1_sharpe_learnability.pdf",
+      "vector": true,
+      "fonts_embedded": true
+    },
+    {
+      "pdf": "figure_2_complexity_over_time.pdf",
+      "vector": true,
+      "fonts_embedded": true
+    },
+    {
+      "pdf": "figure_3_sharpe_versus_complexity.pdf",
+      "vector": true,
+      "fonts_embedded": true
+    },
+    {
+      "pdf": "figure_4_regret_decomposition.pdf",
+      "vector": true,
+      "fonts_embedded": true
+    }
+  ]
+}
