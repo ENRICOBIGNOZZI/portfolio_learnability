@@ -12,5 +12,15 @@
       "allocated_bytes": 12689408
     }
   ],
-  "scope": "Only Python bytecode and a downloaded Homebrew installer archive. No source, dependencies, inputs, results or running processes removed."
+  "scope": "Only Python bytecode and a downloaded Homebrew installer archive. No source, dependencies, inputs, results or running processes removed.",
+  "additional_cleanups": [
+    {
+      "utc": "2026-10-10T16:58:16.048197+00:00",
+      "path": "/Users/enrico/Library/Caches/Homebrew/api",
+      "bytes": 31131393,
+      "allocated_bytes": 31154176,
+      "files": 11,
+      "scope": "Regenerable Homebrew API metadata cache only; no Homebrew process active. Installed software, repository code, scientific inputs and results preserved."
+    }
+  ]
 }
