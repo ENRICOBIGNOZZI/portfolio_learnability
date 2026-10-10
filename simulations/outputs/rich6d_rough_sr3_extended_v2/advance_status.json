@@ -1,6 +1,6 @@
 {
   "stage": "remote_robustness_running",
-  "updated_utc": "2026-10-10T20:12:08.508833+00:00",
+  "updated_utc": "2026-10-10T21:39:24.777107+00:00",
   "local_admission_stopped": true,
   "verified_baseline": 300,
   "remaining_baseline": 0,
@@ -8,7 +8,7 @@
   "qualification": "remote_reproduction_results.json",
   "remote_run_id": 38075206545,
   "remote_run_url": "https://github.com/ENRICOBIGNOZZI/portfolio_learnability/actions/runs/38075206545",
-  "completed": 100,
-  "remote_pending": 200,
-  "verified_robustness_per_environment": 100
+  "completed": 120,
+  "remote_pending": 180,
+  "verified_robustness_per_environment": 120
 }
