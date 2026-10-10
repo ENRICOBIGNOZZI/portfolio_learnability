@@ -1,0 +1,11 @@
+{
+  "utc": "2026-10-10T15:27:44.769656+00:00",
+  "command": "python3 -m pytest -q tests/test_remote_ingest.py",
+  "result": "4 passed in 42.11s",
+  "checks": [
+    "Actual canonical checkpoint passes isolated scientific audit and atomic publication",
+    "Corrupt transfer is rejected before publication",
+    "Wrong workflow identity is rejected before publication",
+    "Valid transfer checksum cannot bypass population Sharpe ceiling audit"
+  ]
+}

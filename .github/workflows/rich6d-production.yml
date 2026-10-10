@@ -1,0 +1,102 @@
+name: Frozen Rich6D allocated production
+on:
+  workflow_dispatch:
+    inputs:
+      stage:
+        description: Frozen production stage
+        required: true
+        type: choice
+        options:
+          - production_baseline
+          - production_robustness
+permissions:
+  contents: read
+concurrency:
+  group: rich6d-production-${{ inputs.stage }}
+  cancel-in-progress: false
+jobs:
+  allocation:
+    runs-on: ubuntu-24.04
+    outputs:
+      batches: ${{ steps.read.outputs.batches }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /simulations/outputs/rich6d_rough_sr3_extended_v2/remote_allocation_*.json
+      - id: read
+        env:
+          STAGE: ${{ inputs.stage }}
+        run: |
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          stage = os.environ['STAGE']
+          assert stage in ('production_baseline', 'production_robustness')
+          path = Path('simulations/outputs/rich6d_rough_sr3_extended_v2') / f'remote_allocation_{stage}.json'
+          allocation = json.loads(path.read_text())
+          assert allocation['stage'] == stage
+          batches = [row['id'] for row in allocation['batches']]
+          assert batches and batches == list(range(len(batches)))
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as handle:
+              handle.write('batches=' + json.dumps(batches) + '\n')
+          PY
+  production:
+    needs: allocation
+    runs-on: macos-26
+    timeout-minutes: 330
+    strategy:
+      fail-fast: false
+      max-parallel: 5
+      matrix:
+        batch: ${{ fromJSON(needs.allocation.outputs.batches) }}
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      VECLIB_MAXIMUM_THREADS: '1'
+      PYTHONDONTWRITEBYTECODE: '1'
+      RICH6D_RUNNER_LABEL: macos-26
+      RICH6D_EXTENDED_OUTPUT: /tmp/rich6d-production
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /kernels.py
+            /simulations/*.py
+            /simulations/requirements.txt
+            /simulations/config/
+            /simulations/dgp/
+            /simulations/estimator/
+            /simulations/experiments/
+            /simulations/diagnostics/
+            /simulations/extended/
+            /simulations/outputs/rich6d_rough_sr3_annual_monthly_v1/population.json
+            /simulations/outputs/rich6d_rough_sr3_extended_v2/protocol.json
+            /simulations/outputs/rich6d_rough_sr3_extended_v2/calibration.json
+            /simulations/outputs/rich6d_rough_sr3_extended_v2/seed_manifest.json
+            /simulations/outputs/rich6d_rough_sr3_extended_v2/remote_input_manifest.json
+            /simulations/outputs/rich6d_rough_sr3_extended_v2/remote_reproduction_plan.json
+            /simulations/outputs/rich6d_rough_sr3_extended_v2/remote_reproduction_results.json
+            /simulations/outputs/rich6d_rough_sr3_extended_v2/remote_allocation_*.json
+            /simulations/outputs/rich6d_rough_sr3_extended_v2/remote_baseline_completion.json
+            /simulations/outputs/rich6d_rough_sr3_extended_v2/population/*_theory.npz
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13.3'
+      - name: Install frozen scientific dependency versions
+        run: python -m pip install -r simulations/requirements.txt
+      - name: Verify qualification and compute allocated paths
+        env:
+          STAGE: ${{ inputs.stage }}
+          BATCH: ${{ matrix.batch }}
+        run: python -m simulations.extended.remote_batch --stage "$STAGE" --batch-id "$BATCH" --artifacts /tmp/rich6d-checkpoint-transfer
+      - name: Preserve every completed checkpoint
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rich6d-${{ inputs.stage }}-batch-${{ matrix.batch }}
+          path: /tmp/rich6d-checkpoint-transfer/
+          if-no-files-found: warn
+          retention-days: 1

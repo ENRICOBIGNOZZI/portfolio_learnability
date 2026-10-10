@@ -1,0 +1,8 @@
+{
+  "run_id": 38063499345,
+  "url": "https://github.com/ENRICOBIGNOZZI/portfolio_learnability/actions/runs/38063499345",
+  "source_commit": "6cc45564e9a520f3bc9e57d368d93e676a430905",
+  "status_at_recording": "in_progress",
+  "started_utc": "2026-10-10T15:24:56Z",
+  "scope": "Rerun after correcting legacy pilot hash-key handling; unchanged frozen numerical inputs, comparison plan and tolerance."
+}
