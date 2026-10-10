@@ -1,0 +1,12 @@
+{
+  "run_id": 38062383693,
+  "url": "https://github.com/ENRICOBIGNOZZI/portfolio_learnability/actions/runs/38062383693",
+  "commit": "a6e5ebc12fb0b141f3f5f5e0fb1aff8d31acadf7",
+  "job_conclusion": "failure",
+  "recorded_utc": "2026-10-10T15:23:37.994039+00:00",
+  "error": "Comparator KeyError: 'N1200_T3240'",
+  "diagnosis": "Original pilot stores each nonbaseline terminal T3240 hash under its economy name and predates additional explicitly named T3240 prefixes. The comparator incorrectly iterated the new keys instead of every applicable saved reference key.",
+  "resolution": "Require exact equality for all nine applicable saved pilot history hashes. The four nonbaseline terminal hashes verify all T3240 histories. Record extra prefix keys without a saved reference; retain every fitted metric and every frozen horizon, unchanged tolerances and plan.",
+  "remote_production_authorized": false,
+  "log_sha256": "d15608bbf39431c8994687462b616f072729299cb574aa4e5b798f0ef8e0c122"
+}

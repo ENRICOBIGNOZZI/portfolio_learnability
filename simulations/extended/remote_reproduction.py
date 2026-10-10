@@ -60,13 +60,19 @@ def compare(path, reference, names, rules, production, protocol):
                 raise ValueError('Frozen population projection floor changed.')
         actual_hashes = json.loads(str(got['returns_hashes']))
         expected_hashes = json.loads(str(old['returns_hashes']))
+        # Older pilot checkpoints predate the extra T3240 prefix hashes. Require
+        # every applicable saved reference, including all four terminal T3240
+        # robustness histories; a new prefix without a saved reference cannot
+        # be compared. The baseline terminal horizons differ (7290 vs 4860).
         keys = ('baseline', 'baseline_T1440', 'baseline_T3240') if production else tuple(
-            key for key in actual_hashes if key != 'baseline')
-        hash_checks = {key: actual_hashes[key] == expected_hashes[key] for key in keys}
+            key for key in expected_hashes if key != 'baseline')
+        hash_checks = {key: key in actual_hashes and actual_hashes[key] == expected_hashes[key] for key in keys}
+        extra_hashes = sorted(set(actual_hashes) - set(expected_hashes))
         normal_error = float(got['maximum_normal_equation_error'])
         normal_pass = not production or normal_error <= rules['maximum_production_normal_equation_error']
     return dict(reference=str(reference.relative_to(ROOT)), reference_sha256=file_hash(reference),
         computed_sha256=file_hash(path), metric_checks=checks, history_hash_checks=hash_checks,
+        additional_hashes_without_saved_reference=extra_hashes,
         maximum_normal_equation_error=normal_error, normal_equation_check_applicable=production,
         passed=all(row['passed'] for row in checks) and all(hash_checks.values()) and normal_pass)
 

@@ -44,6 +44,36 @@ def test_changed_sharpe_fails_the_gate(canonical, tmp_path):
     assert not next(row['passed'] for row in result['metric_checks'] if row['metric'] == 'sr')
 
 
+@pytest.mark.parametrize('missing_reference_hash', [False, True])
+def test_legacy_pilot_hashes_are_all_required(tmp_path, missing_reference_hash):
+    reference = CANONICAL / 'rank_pilot/P4096/rep_000.npz'
+    plan = json.loads((CANONICAL / 'remote_reproduction_plan.json').read_text())
+    protocol = json.loads((CANONICAL / 'protocol.json').read_text())
+    names = ['baseline', 'N300', 'N1200', 'rho000', 'rho075']
+    with np.load(reference) as z:
+        arrays = {key: z[key] for key in z.files}
+    old_times = arrays['baseline_T']
+    positions = [int(np.flatnonzero(old_times == t)[0]) for t in protocol['baseline_T']]
+    arrays['baseline_T'] = old_times[positions]
+    for metric in plan['comparison']['metrics']:
+        arrays['baseline_' + metric] = arrays['baseline_' + metric][positions]
+    hashes = json.loads(str(arrays['returns_hashes']))
+    hashes['baseline'] = 'different-terminal-horizon'
+    hashes['baseline_T3240'] = 'new-prefix-without-saved-reference'
+    for name in names[1:]:
+        hashes[name + '_T3240'] = hashes[name]
+    if missing_reference_hash:
+        del hashes['N300']
+    arrays['returns_hashes'] = json.dumps(hashes)
+    arrays['maximum_normal_equation_error'] = 0.0
+    path = tmp_path / 'legacy_pilot.npz'
+    np.savez_compressed(path, **arrays)
+    result = compare(path, reference, names, plan['comparison'], False, protocol)
+    assert result['passed'] is not missing_reference_hash
+    assert len(result['history_hash_checks']) == 9
+    assert len(result['additional_hashes_without_saved_reference']) == 5
+
+
 @pytest.mark.parametrize('corrupt', [False, True])
 def test_download_publishes_only_hash_verified_bytes(tmp_path, monkeypatch, corrupt):
     expected = b'frozen-cache'

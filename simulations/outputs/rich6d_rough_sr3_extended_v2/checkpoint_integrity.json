@@ -1,10 +1,10 @@
 {
   "run_hash": "e9f1f005be1a58ee736a09cb711d5be87457b9875d1e26dab56c03ccdca61d8d",
-  "verified_utc": "2026-10-10T15:05:59.284219+00:00",
+  "verified_utc": "2026-10-10T15:23:29.223256+00:00",
   "scope": "Integrity of completed checkpoints only; no claim about study completion, numerical resolution, final summaries or figures.",
   "completed_checkpoint_checks_passed": true,
   "counts": {
-    "baseline": 59,
+    "baseline": 64,
     "N300": 0,
     "N1200": 0,
     "rho000": 0,
@@ -635,6 +635,76 @@
       "stage": "production_baseline",
       "sha256": "2f1251ccd14b255ed5422aa1c56edf0fac4c2db415e371d0826def8272d93dcb",
       "maximum_normal_equation_error": 1.0657391899287127e-13,
+      "environments": [
+        "baseline"
+      ],
+      "shape_per_environment": [
+        13,
+        97
+      ]
+    },
+    {
+      "path": "production_baseline/P4096/rep_045.npz",
+      "index": 45,
+      "stage": "production_baseline",
+      "sha256": "c89891f4ef6c2bf4865ecebadeb677fb75e6c71f154d072c806d0f2a50aaf1a7",
+      "maximum_normal_equation_error": 5.143692275496464e-14,
+      "environments": [
+        "baseline"
+      ],
+      "shape_per_environment": [
+        13,
+        97
+      ]
+    },
+    {
+      "path": "production_baseline/P4096/rep_046.npz",
+      "index": 46,
+      "stage": "production_baseline",
+      "sha256": "c0f8cf87836a291eaf6592d58bc81fc1b38116db652eab7ced3686a286d2291a",
+      "maximum_normal_equation_error": 5.3075607094282915e-14,
+      "environments": [
+        "baseline"
+      ],
+      "shape_per_environment": [
+        13,
+        97
+      ]
+    },
+    {
+      "path": "production_baseline/P4096/rep_047.npz",
+      "index": 47,
+      "stage": "production_baseline",
+      "sha256": "68b7103bab9a954469a21e74e31221843f16d78051b4a754fe0fdaa42ec96900",
+      "maximum_normal_equation_error": 6.777605955849211e-14,
+      "environments": [
+        "baseline"
+      ],
+      "shape_per_environment": [
+        13,
+        97
+      ]
+    },
+    {
+      "path": "production_baseline/P4096/rep_048.npz",
+      "index": 48,
+      "stage": "production_baseline",
+      "sha256": "3b486b78d43324554c3b05be1d4e976f990754ec69009d9a6ac7e073d3351f85",
+      "maximum_normal_equation_error": 2.0114548996688283e-13,
+      "environments": [
+        "baseline"
+      ],
+      "shape_per_environment": [
+        13,
+        97
+      ]
+    },
+    {
+      "path": "production_baseline/P4096/rep_049.npz",
+      "index": 49,
+      "stage": "production_baseline",
+      "sha256": "fce925dd78b4bcf525c01004690966f79b9bfc9cba5a779525229e01d967e4e3",
+      "maximum_normal_equation_error": 8.17509736697529e-14,
       "environments": [
         "baseline"
       ],
