@@ -21,6 +21,14 @@
       "allocated_bytes": 31154176,
       "files": 11,
       "scope": "Regenerable Homebrew API metadata cache only; no Homebrew process active. Installed software, repository code, scientific inputs and results preserved."
+    },
+    {
+      "utc": "2026-10-10T21:25:50.228557+00:00",
+      "path": "/Users/enrico/Library/Caches/Homebrew/bootsnap",
+      "bytes": 17020310,
+      "allocated_bytes": 21229568,
+      "files": 1859,
+      "scope": "Regenerable Homebrew Bootsnap Ruby compilation cache only. No Homebrew command active; installed software, repository code, scientific inputs, results and simulation processes preserved."
     }
   ]
 }
