@@ -1,9 +1,11 @@
 {
-  "stage": "remote_baseline_allocation_prepared",
-  "updated_utc": "2026-10-10T15:40:48.391150+00:00",
+  "stage": "remote_baseline_running",
+  "updated_utc": "2026-10-10T15:42:25.061375+00:00",
   "local_admission_stopped": true,
   "verified_baseline": 68,
   "remaining_baseline": 232,
   "allocation": "remote_allocation_production_baseline.json",
-  "qualification": "remote_reproduction_results.json"
+  "qualification": "remote_reproduction_results.json",
+  "remote_run_id": 38064621892,
+  "remote_run_url": "https://github.com/ENRICOBIGNOZZI/portfolio_learnability/actions/runs/38064621892"
 }

@@ -1,0 +1,16 @@
+{
+  "rank": 512,
+  "groups": 32768,
+  "seed": 1237722080,
+  "economy": "baseline",
+  "chunks": [
+    {
+      "file": "rows_00000.npz",
+      "first_row": 0,
+      "rows": 512,
+      "sha256": "ce234954071b6f9a8fb92002149967e2d29d65fba99ed96790a7c51410883f07"
+    }
+  ],
+  "moments_sha256": "e3cd6a6fed0cd03977dcfae76280f0ed6c98863ce9f1cf7cd5372d0eb96db6dc",
+  "run_hash": "e9f1f005be1a58ee736a09cb711d5be87457b9875d1e26dab56c03ccdca61d8d"
+}

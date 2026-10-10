@@ -1,0 +1,58 @@
+{
+  "rank": 4096,
+  "groups": 32768,
+  "seed": 1237722080,
+  "economy": "N1200",
+  "chunks": [
+    {
+      "file": "rows_00000.npz",
+      "first_row": 0,
+      "rows": 512,
+      "sha256": "8fc82d3cc4532d627d443b38c0ebe3f99cc34f8750353f0c0e84c1a923e09844"
+    },
+    {
+      "file": "rows_00512.npz",
+      "first_row": 512,
+      "rows": 512,
+      "sha256": "439f39d141e3b81ca49a85bec809625a78082c8847579d8f600782c519492d3f"
+    },
+    {
+      "file": "rows_01024.npz",
+      "first_row": 1024,
+      "rows": 512,
+      "sha256": "91a8b99dc95c8f6ddfd5a3df4a80751e8ec49e96351de56b8c2d6c39a6898e9b"
+    },
+    {
+      "file": "rows_01536.npz",
+      "first_row": 1536,
+      "rows": 512,
+      "sha256": "cf90fe67ca3a721fb918d706c62de43ed029423e02627d70998d39ff6f2b40ae"
+    },
+    {
+      "file": "rows_02048.npz",
+      "first_row": 2048,
+      "rows": 512,
+      "sha256": "7ea34594429351bf6e11c4f3159bc12af2829640c49e9918055a69e37f831046"
+    },
+    {
+      "file": "rows_02560.npz",
+      "first_row": 2560,
+      "rows": 512,
+      "sha256": "9f57452eb2170a6fce0b61d038099e88652366cfa8ad359d40634fe139f2703e"
+    },
+    {
+      "file": "rows_03072.npz",
+      "first_row": 3072,
+      "rows": 512,
+      "sha256": "b7f1b06589f145be67661123426c7d299ae2b7739eff6a7290c2e3de9139ff0e"
+    },
+    {
+      "file": "rows_03584.npz",
+      "first_row": 3584,
+      "rows": 512,
+      "sha256": "895948a7b48ef0d911077c604602c164efd2e9f0ebdde3746eac424567d3d99d"
+    }
+  ],
+  "moments_sha256": "db7d0ab66520a011feb5931e4437e1604800e70309b3bc40492f832fb5c87873",
+  "run_hash": "e9f1f005be1a58ee736a09cb711d5be87457b9875d1e26dab56c03ccdca61d8d"
+}

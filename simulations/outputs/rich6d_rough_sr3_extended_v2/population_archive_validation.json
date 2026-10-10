@@ -1,0 +1,40 @@
+{
+  "completed_utc": "2026-10-10T15:41:47.985854+00:00",
+  "command": "python3 -m simulations.extended.archive",
+  "exit_code": 0,
+  "lossless_roundtrip_checks_passed": true,
+  "checks": "Exporter reconstructs every matrix, mean vector and floor and requires exact equality; every chunk and moments checksum independently rechecked afterward.",
+  "operators": [
+    {
+      "index": "population/operators/N1200_P4096_Q32768_S1237722080/index.json",
+      "index_sha256": "a9afb90f633aa2d13e00d1ded8e5d7b2164621756f810275e6db0ff6596f0b37",
+      "economy": "N1200",
+      "rank": 4096,
+      "chunks": 8
+    },
+    {
+      "index": "population/operators/N300_P4096_Q32768_S1237722080/index.json",
+      "index_sha256": "66da4134deefbb219f90b4271c037a01dd465f45ad2f11dd5dc9d71bc35a505f",
+      "economy": "N300",
+      "rank": 4096,
+      "chunks": 8
+    },
+    {
+      "index": "population/operators/baseline_P4096_Q32768_S1237722080/index.json",
+      "index_sha256": "0407815f59c722fc3117fb94d338c6bb711b82a8beb21d0f6a24b642be3c7013",
+      "economy": "baseline",
+      "rank": 4096,
+      "chunks": 8
+    },
+    {
+      "index": "population/operators/baseline_P512_Q32768_S1237722080/index.json",
+      "index_sha256": "9c7bcfd91341b4c43b36ace1a95eba8f19043e2ce4336a8baadde23287010291",
+      "economy": "baseline",
+      "rank": 512,
+      "chunks": 1
+    }
+  ],
+  "log": "Archived and verified population operator N1200 4096\nArchived and verified population operator N300 4096\nArchived and verified population operator baseline 512\nArchived and verified population operator baseline 4096\n",
+  "cloud_cache_recovery": "Two newly generated chunks were evicted by iCloud and timed out during reread. Recreated them from retained canonical source matrices; encoded SHA256 hashes matched the original chunk manifest exactly before atomic replacement.",
+  "scope": "Portable frozen population operators, independent of incomplete Monte Carlo production; no final-study completion claim."
+}
