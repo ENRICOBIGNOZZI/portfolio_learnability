@@ -1,10 +1,12 @@
 {
   "stage": "remote_baseline_running",
-  "completed": 68,
+  "completed": 148,
   "total": 300,
-  "remote_pending": 232,
-  "updated_utc": "2026-10-10T15:42:25.061375+00:00",
+  "remote_pending": 152,
+  "updated_utc": "2026-10-10T16:30:16.346794+00:00",
   "run_hash": "e9f1f005be1a58ee736a09cb711d5be87457b9875d1e26dab56c03ccdca61d8d",
   "remote_run_id": 38064621892,
-  "remote_run_url": "https://github.com/ENRICOBIGNOZZI/portfolio_learnability/actions/runs/38064621892"
+  "remote_run_url": "https://github.com/ENRICOBIGNOZZI/portfolio_learnability/actions/runs/38064621892",
+  "verified_baseline": 148,
+  "remaining_baseline": 152
 }

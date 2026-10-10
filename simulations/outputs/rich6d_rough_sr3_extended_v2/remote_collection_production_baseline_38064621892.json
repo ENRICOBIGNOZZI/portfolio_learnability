@@ -8,10 +8,47 @@
   "collector_pid": 81250,
   "download_root": "/private/tmp/rich6d-remote-38064621892",
   "status": "polling",
-  "downloaded_artifacts": [],
-  "verified_counts": null,
+  "downloaded_artifacts": [
+    {
+      "id": 11675715036,
+      "name": "rich6d-production_baseline-batch-3",
+      "digest": "sha256:d6e56e3352ef5aff051e31d83722465402931967c7988b0001782ba53fba3c42",
+      "bytes": 671595
+    },
+    {
+      "id": 11674179594,
+      "name": "rich6d-production_baseline-batch-2",
+      "digest": "sha256:2b4a9c1215d97d7694aa7c661700ec28b3da359c6b6f2f4f5979b5b32bb4aaca",
+      "bytes": 671699
+    },
+    {
+      "id": 11675620282,
+      "name": "rich6d-production_baseline-batch-1",
+      "digest": "sha256:4901c2eb149f15b03eb94e018b983ab2e076157b57545a120f0dff71be1d7f43",
+      "bytes": 671656
+    },
+    {
+      "id": 11675495653,
+      "name": "rich6d-production_baseline-batch-4",
+      "digest": "sha256:4d793ea65e8986536db26b3f47a491f82c9fab27cb668164a251308a01d1cd64",
+      "bytes": 671373
+    },
+    {
+      "id": 11675580585,
+      "name": "rich6d-production_baseline-batch-0",
+      "digest": "sha256:5b4b062957f1bb522db69d99ae70e20ad3135e10e2f7d434f6ef578aea0e3b41",
+      "bytes": 671534
+    }
+  ],
+  "verified_counts": {
+    "baseline": 148,
+    "N300": 0,
+    "N1200": 0,
+    "rho000": 0,
+    "rho075": 0
+  },
   "scope": "Import only after transfer validation and independent scientific audit. No final-study completion claim.",
-  "last_poll_utc": "2026-10-10T15:56:16.393517+00:00",
+  "last_poll_utc": "2026-10-10T16:29:21.857871+00:00",
   "remote_status": "queued",
   "remote_conclusion": "",
   "jobs": [
@@ -22,12 +59,12 @@
     },
     {
       "name": "production (2)",
-      "status": "in_progress",
-      "conclusion": ""
+      "status": "completed",
+      "conclusion": "success"
     },
     {
       "name": "production (7)",
-      "status": "queued",
+      "status": "in_progress",
       "conclusion": ""
     },
     {
@@ -37,27 +74,27 @@
     },
     {
       "name": "production (6)",
-      "status": "queued",
+      "status": "in_progress",
       "conclusion": ""
     },
     {
       "name": "production (1)",
-      "status": "in_progress",
-      "conclusion": ""
+      "status": "completed",
+      "conclusion": "success"
     },
     {
       "name": "production (8)",
-      "status": "queued",
+      "status": "in_progress",
       "conclusion": ""
     },
     {
       "name": "production (0)",
-      "status": "in_progress",
-      "conclusion": ""
+      "status": "completed",
+      "conclusion": "success"
     },
     {
       "name": "production (9)",
-      "status": "queued",
+      "status": "in_progress",
       "conclusion": ""
     },
     {
@@ -72,8 +109,8 @@
     },
     {
       "name": "production (4)",
-      "status": "in_progress",
-      "conclusion": ""
+      "status": "completed",
+      "conclusion": "success"
     },
     {
       "name": "production (13)",
@@ -82,7 +119,7 @@
     },
     {
       "name": "production (5)",
-      "status": "queued",
+      "status": "in_progress",
       "conclusion": ""
     },
     {
@@ -92,8 +129,10 @@
     },
     {
       "name": "production (3)",
-      "status": "in_progress",
-      "conclusion": ""
+      "status": "completed",
+      "conclusion": "success"
     }
-  ]
+  ],
+  "last_import_utc": "2026-10-10T16:22:05.292356+00:00",
+  "files_published_in_last_import": 32
 }
