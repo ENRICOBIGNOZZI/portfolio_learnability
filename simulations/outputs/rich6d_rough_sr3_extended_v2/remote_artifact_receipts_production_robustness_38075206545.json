@@ -1,0 +1,152 @@
+{
+  "run_id": 38075206545,
+  "source_commit": "2eb27a92a2153e5c8bd249b3adda46404ba51b48",
+  "recorded_utc": "2026-10-10T20:08:06.599174+00:00",
+  "verified_counts": {
+    "baseline": 300,
+    "N300": 60,
+    "N1200": 60,
+    "rho000": 60,
+    "rho075": 60
+  },
+  "artifacts": [
+    {
+      "github": {
+        "id": 11680244900,
+        "node_id": "MDg6QXJ0aWZhY3QxMTY4MDI0NDkwMA==",
+        "name": "rich6d-production_robustness-batch-2",
+        "size_in_bytes": 2970732,
+        "url": "https://api.github.com/repos/ENRICOBIGNOZZI/portfolio_learnability/actions/artifacts/11680244900",
+        "archive_download_url": "https://api.github.com/repos/ENRICOBIGNOZZI/portfolio_learnability/actions/artifacts/11680244900/zip",
+        "expired": false,
+        "digest": "sha256:f7e10c27ad798bd6afa04f37aee62e5ae1e5c35c9196d70383a51100ffff8463",
+        "created_at": "2026-10-10T19:59:53Z",
+        "updated_at": "2026-10-10T19:59:53Z",
+        "expires_at": "2026-10-11T19:59:51Z",
+        "workflow_run": {
+          "id": 38075206545,
+          "repository_id": 1360994014,
+          "head_repository_id": 1360994014,
+          "head_branch": "main",
+          "head_sha": "2eb27a92a2153e5c8bd249b3adda46404ba51b48"
+        }
+      },
+      "transfer_manifest_sha256": "219bae439e03b117a6b7c90b95fe0086cb13c08f52a36073a26289f6cdd6b0f5",
+      "batch_id": 2,
+      "completed_indices": [
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59
+      ]
+    },
+    {
+      "github": {
+        "id": 11681045843,
+        "node_id": "MDg6QXJ0aWZhY3QxMTY4MTA0NTg0Mw==",
+        "name": "rich6d-production_robustness-batch-3",
+        "size_in_bytes": 2970607,
+        "url": "https://api.github.com/repos/ENRICOBIGNOZZI/portfolio_learnability/actions/artifacts/11681045843",
+        "archive_download_url": "https://api.github.com/repos/ENRICOBIGNOZZI/portfolio_learnability/actions/artifacts/11681045843/zip",
+        "expired": false,
+        "digest": "sha256:95154045cd00ebce73506714183a3a8f18f4cc71e4a357d74f3c2a7dd55cf797",
+        "created_at": "2026-10-10T20:03:21Z",
+        "updated_at": "2026-10-10T20:03:21Z",
+        "expires_at": "2026-10-11T20:03:20Z",
+        "workflow_run": {
+          "id": 38075206545,
+          "repository_id": 1360994014,
+          "head_repository_id": 1360994014,
+          "head_branch": "main",
+          "head_sha": "2eb27a92a2153e5c8bd249b3adda46404ba51b48"
+        }
+      },
+      "transfer_manifest_sha256": "019cdf32eb08ab71f228d1cc3ea51908b43daec090b8d4055ff2d4ee88e1377a",
+      "batch_id": 3,
+      "completed_indices": [
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79
+      ]
+    },
+    {
+      "github": {
+        "id": 11681235423,
+        "node_id": "MDg6QXJ0aWZhY3QxMTY4MTIzNTQyMw==",
+        "name": "rich6d-production_robustness-batch-4",
+        "size_in_bytes": 2970988,
+        "url": "https://api.github.com/repos/ENRICOBIGNOZZI/portfolio_learnability/actions/artifacts/11681235423",
+        "archive_download_url": "https://api.github.com/repos/ENRICOBIGNOZZI/portfolio_learnability/actions/artifacts/11681235423/zip",
+        "expired": false,
+        "digest": "sha256:b83f96283c89200dd0c475e637c3c1939cb1cee28a7cc8f0f82f539c9de83be6",
+        "created_at": "2026-10-10T20:01:37Z",
+        "updated_at": "2026-10-10T20:01:37Z",
+        "expires_at": "2026-10-11T20:01:35Z",
+        "workflow_run": {
+          "id": 38075206545,
+          "repository_id": 1360994014,
+          "head_repository_id": 1360994014,
+          "head_branch": "main",
+          "head_sha": "2eb27a92a2153e5c8bd249b3adda46404ba51b48"
+        }
+      },
+      "transfer_manifest_sha256": "2bafe4f51246d340067902584dd05757253e5afbcbd2ed7dfc0a5ad2050fde2e",
+      "batch_id": 4,
+      "completed_indices": [
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99
+      ]
+    }
+  ]
+}
