@@ -10,6 +10,14 @@ operator exactly.
 All 12 paired rank pilots and their audits are complete. The fixed-rank production
 protocol is frozen, and the baseline Monte Carlo has started. This is NOT yet the
 completed 300-replication study; consult production_status.json for actual progress.
+The read-only checkpoint audit can be rerun during production with
+  python3 -m simulations.extended.verify_checkpoints
+It writes checkpoint_integrity.json with the unique completed count by economy,
+per-file hashes, protocol/seed/shape checks, numerical identities and available
+cross-stage history pairing. It does not replace final numerical verification,
+the approximation audits, statistical summaries or visual review. Its rejection
+of a wrong seed and a missing penalty was checked on isolated temporary copies;
+the evidence is in checkpoint_verifier_validation.json.
 The frozen run identity is
 e9f1f005be1a58ee736a09cb711d5be87457b9875d1e26dab56c03ccdca61d8d.
 
@@ -73,6 +81,14 @@ production_status.json counts checkpoints acknowledged by the primary supervisor
 the number of unique rep_*.npz files includes supplemental completed indices.
 The primary supervisor will validate and reuse those checkpoints when it reaches
 them. Final summaries still require all 300 unique indices in every environment.
+A further single-replication probe at index 288 tested three concurrent workers.
+It completed successfully but took about 425 seconds, versus about 157-184
+seconds in the recent two-worker observations. Two total workers are retained;
+see production_three_worker_probe.json for timings and their operational limits.
+During this probe, a fresh Python import waited on a cloud-backed bytecode file
+that macOS had made dataless. Targeted local-download requests restored the cache
+and source without changing their contents. runtime_read_recovery.json records
+the diagnosis, recovery and confirmation that the source matches committed Git.
 After freezing and checking the recorded audit hashes, the advance supervisor
 removes regenerable pilot-only caches to reserve disk space for production.
 It retains the chosen-rank basis, all production operators and the rank-512

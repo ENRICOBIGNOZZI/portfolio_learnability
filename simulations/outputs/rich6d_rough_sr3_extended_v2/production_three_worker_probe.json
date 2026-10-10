@@ -1,0 +1,61 @@
+{
+  "scope": "One additional predetermined baseline replication with three total workers; unchanged frozen scientific code",
+  "index": 288,
+  "run_hash": "e9f1f005be1a58ee736a09cb711d5be87457b9875d1e26dab56c03ccdca61d8d",
+  "started_utc": "2026-10-10T09:11:15.787756+00:00",
+  "free_disk_bytes": [
+    7732711424,
+    7725871104,
+    7725682688
+  ],
+  "other_supervisor_pids": [
+    95132,
+    23086
+  ],
+  "status": "completed",
+  "completed_utc": "2026-10-10T09:18:20.822829+00:00",
+  "result": {
+    "index": 288,
+    "ranks": [
+      4096
+    ],
+    "baseline_times": [
+      60,
+      90,
+      120,
+      180,
+      240,
+      360,
+      540,
+      720,
+      1080,
+      1440,
+      2160,
+      3240,
+      4860
+    ],
+    "robustness_times": [],
+    "groups": 32768,
+    "quadrature_seed": 1237722080,
+    "stage": "production_baseline",
+    "run_hash": "e9f1f005be1a58ee736a09cb711d5be87457b9875d1e26dab56c03ccdca61d8d",
+    "environment_names": [
+      "baseline"
+    ],
+    "elapsed_seconds": 424.9208727090154,
+    "generation_seconds": 302.3647713329992,
+    "maximum_resident_bytes": 861929472,
+    "completed_utc": "2026-10-10T09:18:20.814862+00:00"
+  },
+  "free_disk_after_bytes": 5327691776,
+  "recommended_total_workers": 2,
+  "operational_decision": "Do not retain a third concurrent production worker: this probe took about 425 seconds, versus about 157-184 seconds for the listed recent two-worker cases. The valid index-288 outcome is retained within the original 300-replication design.",
+  "comparison_scope": "Operational observation, not a controlled hardware benchmark; concurrent application load and the recorded cloud-backed file-read recovery can affect timings.",
+  "recent_two_worker_elapsed_seconds": {
+    "19": 156.71848720801063,
+    "20": 173.74632366700098,
+    "21": 184.02886066702195,
+    "297": 177.60958375001792,
+    "298": 179.4432106660097
+  }
+}

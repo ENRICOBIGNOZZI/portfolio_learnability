@@ -1,0 +1,13 @@
+{
+  "verified_utc": "2026-10-10T09:17:03.430648+00:00",
+  "source_checkpoint": "production_baseline/P4096/rep_299.npz",
+  "source_sha256": "be0f74388ebf641842b56ab70e6f6582c6e5f6acfbd09b304d5f6ac6d60d8824",
+  "verifier_source_sha256": "4f9516fc000c2f17dec9f75c4bdd7faede7e211dccef7e394c9d63c5045b1845",
+  "scope": "Negative checks on temporary copies only; production artifacts unchanged",
+  "checks": [
+    "Valid isolated checkpoint accepted",
+    "Wrong training seed rejected",
+    "Incomplete penalty grid rejected"
+  ],
+  "passed": true
+}
