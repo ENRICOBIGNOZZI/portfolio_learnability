@@ -1,0 +1,99 @@
+{
+  "run_hash": "e9f1f005be1a58ee736a09cb711d5be87457b9875d1e26dab56c03ccdca61d8d",
+  "stage": "production_baseline",
+  "workflow_run_id": "38064621892",
+  "source_commit": "ad9dd55e9f44f58143c6c205e70a75e9a22454b2",
+  "allocation_sha256": "326d85dadf48e753af60433c2bfc258b8f5bc88ce1ec9c7c60e83b1b357f28df",
+  "started_utc": "2026-10-10T15:56:13.695506+00:00",
+  "collector_pid": 81250,
+  "download_root": "/private/tmp/rich6d-remote-38064621892",
+  "status": "polling",
+  "downloaded_artifacts": [],
+  "verified_counts": null,
+  "scope": "Import only after transfer validation and independent scientific audit. No final-study completion claim.",
+  "last_poll_utc": "2026-10-10T15:56:16.393517+00:00",
+  "remote_status": "queued",
+  "remote_conclusion": "",
+  "jobs": [
+    {
+      "name": "allocation",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "production (2)",
+      "status": "in_progress",
+      "conclusion": ""
+    },
+    {
+      "name": "production (7)",
+      "status": "queued",
+      "conclusion": ""
+    },
+    {
+      "name": "production (11)",
+      "status": "queued",
+      "conclusion": ""
+    },
+    {
+      "name": "production (6)",
+      "status": "queued",
+      "conclusion": ""
+    },
+    {
+      "name": "production (1)",
+      "status": "in_progress",
+      "conclusion": ""
+    },
+    {
+      "name": "production (8)",
+      "status": "queued",
+      "conclusion": ""
+    },
+    {
+      "name": "production (0)",
+      "status": "in_progress",
+      "conclusion": ""
+    },
+    {
+      "name": "production (9)",
+      "status": "queued",
+      "conclusion": ""
+    },
+    {
+      "name": "production (12)",
+      "status": "queued",
+      "conclusion": ""
+    },
+    {
+      "name": "production (14)",
+      "status": "queued",
+      "conclusion": ""
+    },
+    {
+      "name": "production (4)",
+      "status": "in_progress",
+      "conclusion": ""
+    },
+    {
+      "name": "production (13)",
+      "status": "queued",
+      "conclusion": ""
+    },
+    {
+      "name": "production (5)",
+      "status": "queued",
+      "conclusion": ""
+    },
+    {
+      "name": "production (10)",
+      "status": "queued",
+      "conclusion": ""
+    },
+    {
+      "name": "production (3)",
+      "status": "in_progress",
+      "conclusion": ""
+    }
+  ]
+}

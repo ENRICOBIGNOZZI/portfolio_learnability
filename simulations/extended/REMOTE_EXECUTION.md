@@ -64,6 +64,22 @@ python -m simulations.extended.remote_ingest \
   --stage production_baseline --run-id RUN_ID --commit COMMIT_SHA
 ```
 
+For prompt retrieval as individual batches finish, run the collector with the
+same pinned run identity and an initially empty download directory outside the
+cloud-backed repository:
+
+```sh
+python -m simulations.extended.remote_collect \
+  --download-root /tmp/rich6d-remote-RUN_ID \
+  --stage production_baseline --run-id RUN_ID --commit COMMIT_SHA
+```
+
+The collector polls the existing run, records GitHub artifact identities,
+retries transient network failures without restarting computation, and invokes
+the same independent importer after new downloads. It preserves partial
+results when a remote run fails and never starts robustness or claims study
+completion. A failed scientific audit stops collection for inspection.
+
 The importer acquires the original production lock to prevent concurrent local
 admission. It first checks transfer provenance, checksums, grid and identities.
 It then stages the candidate checkpoints together with all existing checkpoints

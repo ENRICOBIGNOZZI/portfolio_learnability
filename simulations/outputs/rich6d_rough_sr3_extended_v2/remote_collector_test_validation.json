@@ -1,0 +1,11 @@
+{
+  "utc": "2026-10-10T15:56:10.565449+00:00",
+  "command": "python3 -m pytest -q tests/test_remote_collector.py",
+  "result": "3 passed in 11.47s",
+  "scope": "Collector scheduling with mocked GitHub transport; the independent importer has separate actual-checkpoint tests.",
+  "checks": [
+    "Validate transfer and retain artifact receipt before scientific import",
+    "Transient observation timeout retries the same run without recomputation",
+    "Wrong source commit stops before downloading"
+  ]
+}

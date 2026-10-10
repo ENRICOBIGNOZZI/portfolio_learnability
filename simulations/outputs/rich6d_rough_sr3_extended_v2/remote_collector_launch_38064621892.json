@@ -1,0 +1,22 @@
+{
+  "pid": 81250,
+  "caffeinate_pid": 81251,
+  "started_utc": "2026-10-10T15:56:10.565449+00:00",
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3",
+    "-u",
+    "-m",
+    "simulations.extended.remote_collect",
+    "--stage",
+    "production_baseline",
+    "--run-id",
+    "38064621892",
+    "--commit",
+    "ad9dd55e9f44f58143c6c205e70a75e9a22454b2",
+    "--download-root",
+    "/tmp/rich6d-remote-38064621892"
+  ],
+  "log": "simulations/outputs/rich6d_rough_sr3_extended_v2/execution_logs/remote_collect_baseline_38064621892.log",
+  "collector_source_sha256": "6d79ba0673f021901a87c88596a34f6768ec318e5ec3d45f4ba1ea7b2ee72fe9",
+  "purpose": "Retrieve and independently audit completed artifacts from the already running frozen baseline workflow. Temporary idle-sleep prevention ends with the collector."
+}
