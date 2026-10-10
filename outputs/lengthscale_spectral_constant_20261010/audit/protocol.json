@@ -1,0 +1,128 @@
+{
+  "schema": "lengthscale-spectral/1",
+  "starting_commit": "d5744e045e1803702f051cac4f88aa1f46e80bde",
+  "mission_sha256": "3190a107cac24d707a8e8621d8ac560c72ad166fe998c1416b02d6d1b3e7d5a0",
+  "kernels": [
+    "matern32",
+    "gaussian"
+  ],
+  "primary_kernel": "matern32",
+  "features": 10000,
+  "seed": 0,
+  "ell0": 4.392107784616423,
+  "multipliers": [
+    0.25,
+    0.5,
+    1,
+    2,
+    4
+  ],
+  "initial_anchor": {
+    "decision": 1978,
+    "train_formations": [
+      1963,
+      1972
+    ],
+    "validation_formations": [
+      1973,
+      1977
+    ],
+    "refit_months": 180
+  },
+  "primary_adaptive_years": [
+    1984,
+    2024
+  ],
+  "candidate_history": "Exclude decision 1978; last 60 genuinely OOS monthly observations realized by January close; minimum response-one loss; ties prefer multiplier 1 then nearest log2 distance",
+  "secondary_candidate_window_months": 36,
+  "rank_ranges": [
+    [
+      1,
+      10
+    ],
+    [
+      11,
+      40
+    ],
+    [
+      41,
+      100
+    ],
+    [
+      11,
+      60
+    ],
+    [
+      61,
+      120
+    ],
+    [
+      121,
+      180
+    ]
+  ],
+  "primary_amplitude_ranks": [
+    11,
+    60
+  ],
+  "amplitude": "median(log(mu_j)+b*log(j)); OLS mean and alternate ranges as sensitivities",
+  "primary_transfer_exponent": "For each kernel freeze only its original 1978 baseline finite-range slope on ranks 11-60; never clip b; no Gaussian population exponent is asserted.",
+  "fixed_b_sensitivities": [
+    1.023076923076923,
+    1.5,
+    2,
+    3
+  ],
+  "nominal_dimension": 130,
+  "nominal_b_status": "Only a sensitivity: managed-operator coercivity and full-dimensional Weyl assumptions are not established",
+  "population_amplitude_gate": {
+    "first_history_minimum_R_squared": 0.98,
+    "maximum_absolute_log_residual": 0.35,
+    "maximum_slope_spread_across_ranges": 0.25,
+    "maximum_slope_spread_across_lengths": 0.25,
+    "gate_role": "Failure rejects identified population c; numerical transfers remain labelled finite-range heuristic falsification exercises, without structural estimates"
+  },
+  "diagnostic_years": [
+    1978,
+    2000,
+    2024
+  ],
+  "history_sensitivities": [
+    120,
+    180,
+    360,
+    720
+  ],
+  "feature_prefixes": [
+    1000,
+    5000,
+    10000
+  ],
+  "prefix_normalization": "slice cached features and multiply sqrt(10000/P)",
+  "rank_thresholds": [
+    1e-10,
+    1e-12,
+    1e-14
+  ],
+  "bootstrap": {
+    "replicates": 5000,
+    "blocks": [
+      12,
+      6,
+      24
+    ],
+    "seed": 20261010,
+    "scope": "Paired conditional on fitted paths; no full-pipeline inference"
+  },
+  "penalty_bounds": "Original frozen 120-point initial-training grid separately per kernel/lengthscale; no OOS expansion",
+  "shared_rho": "One baseline 1978 calibration per kernel; shared across lengths is a hypothesis",
+  "adjusted_transfer": "Secondary five-anchor diagnostic using only each lengthscale 1978 CV; explicitly requires extra validation information",
+  "costs": "Actual weights; existing exact self-financing 25-bp trades and 30-bp/year short fees; target-turnover convention supplementary",
+  "net_common_start": "All methods start from cash at January-close 1984, identical initial-entry accounting; full-history fixed controls separately start in 1978",
+  "gaussian_transfer": "Explicitly requested Gaussian extension: fit only a finite-range proxy exponent/amplitude from past spectra, freeze first 1978 baseline slope; no polynomial population law or nominal Matern exponent is attributed to Gaussian.",
+  "hindsight": "Original-grid OOS loss minimizer and Sharpe maximizer retained solely as diagnostic; never in decisions",
+  "representation_ablation": "Hold raw lambda fixed while varying selected representation and vice versa; descriptive 2x2, not causal",
+  "main_manuscript": "Do not modify; any candidate insert remains separate",
+  "gaussian_amendment": "Exploratory extension after the initial Matern-primary results; exact same predeclared ranks/seed/dates/bounds, one 1978 anchor, no OOS tuning.",
+  "fixed_b_sensitivity_scope": "133/130 is Mat\u00e9rn-only; 1.5,2,3 are exploratory finite-range sensitivity choices for both kernels."
+}

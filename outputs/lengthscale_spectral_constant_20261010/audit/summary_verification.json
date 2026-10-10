@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "common_adaptive_months": 492,
+  "common_first_return": "1984-02-29",
+  "common_last_return": "2025-01-31",
+  "bootstrap_conditional": true,
+  "rho_never_recalibrated_for_primary": true,
+  "all_account_numeric_finite": true
+}

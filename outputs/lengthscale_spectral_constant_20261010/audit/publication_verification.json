@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "publication_module_sha256": "ad2b608c99446145bf00b4265eca3e29ba71957435d466885b9bc8dd5e38a567",
+  "mathematical_template_sha256": "fec81e3b746e80fc15120caa9c46a6ba61b09eabaf75367f8e4183d77eb0030b",
+  "source_tables": [
+    "empirical_spectra",
+    "spectral_fits",
+    "monthly_accounts",
+    "paired_comparisons"
+  ],
+  "plots_reconstruct_from_exported_tables": true,
+  "main_manuscript_changed": false
+}

@@ -1,0 +1,27 @@
+{
+  "recommendation": "NO-GO",
+  "amplitude_identification_gate_passed": false,
+  "primary_finite_range_b": 1.4210832304226124,
+  "nominal_b": 1.023076923076923,
+  "scientific_case": "Negative/inconclusive transfer result",
+  "justification": "A structural amplitude transfer requires identified shape plus net evidence. Either requested kernel can support a qualified empirical contribution if a primary adaptive rule beats all three references across 6/12/24-month paired intervals; this still does not establish a population polynomial or oracle theorem.",
+  "kernel_verdicts": {
+    "matern32/spectral_transfer": {
+      "method": "spectral_transfer",
+      "net_positive_against_all_three_with_95pct_intervals_at_all_blocks": false
+    },
+    "matern32/adaptive_spectral": {
+      "method": "adaptive_spectral",
+      "net_positive_against_all_three_with_95pct_intervals_at_all_blocks": false
+    },
+    "gaussian/spectral_transfer": {
+      "method": "spectral_transfer",
+      "net_positive_against_all_three_with_95pct_intervals_at_all_blocks": false
+    },
+    "gaussian/adaptive_spectral": {
+      "method": "adaptive_spectral",
+      "net_positive_against_all_three_with_95pct_intervals_at_all_blocks": false
+    }
+  },
+  "main_manuscript_changed": false
+}

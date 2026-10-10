@@ -1,0 +1,90 @@
+{
+  "passed": true,
+  "latest_pdf_sha256": {
+    "figures/appendix_gaussian_shape.pdf": "23f1aa91071c51cc810a43b68ed4b97b85ba29a1cf4f240e73f9b5d4dcb2cf6c",
+    "figures/appendix_gaussian_transfer.pdf": "4fd0ab1349997683be0003a247f8066fc48ff1d0ed64db52ce1ef044cb204c06",
+    "figures/figure1_spectral_shape.pdf": "def1a6a5dc75ea81adabe96042f23f73914dedae496ffbe3626559a310768ae6",
+    "figures/figure2_amplitude_exponent.pdf": "e8641d8be05727d736f867598c4fefb8cff4be531851ed1dddab484123f839c6",
+    "figures/figure3_penalty_complexity.pdf": "3caffc5844da8da1b4b20681c313884d179030bbe33f1f8207e183fcd985361d",
+    "figures/figure4_financial_results.pdf": "101f6154a2b3ce859bea72a557ba0f1380d402f88266faef57e5efb9d07d30bf",
+    "publication/empirical_report.pdf": "54703417eb33e1df6d45289aa1c60f18532bba6683a1159d11249f6cd1992e7a",
+    "publication/mathematical_note.pdf": "e0d789b56ed492db526694770be9868f10ee64b6bfe40eeae5c930e996334f4a",
+    "publication/one_page_preview.pdf": "cacc9d477ae6de1897a72c69d0a53f4a138d0e2ee3e9fd89d9c36b754f33a6e9"
+  },
+  "page_counts": {
+    "figures/appendix_gaussian_shape.pdf": 1,
+    "figures/appendix_gaussian_transfer.pdf": 1,
+    "figures/figure1_spectral_shape.pdf": 1,
+    "figures/figure2_amplitude_exponent.pdf": 1,
+    "figures/figure3_penalty_complexity.pdf": 1,
+    "figures/figure4_financial_results.pdf": 1,
+    "publication/empirical_report.pdf": 8,
+    "publication/mathematical_note.pdf": 7,
+    "publication/one_page_preview.pdf": 1
+  },
+  "all_22_pdf_pages_rendered_and_visually_inspected": true,
+  "review_directory": "tmp/lengthscale_final_visual (private scratch; not committed)",
+  "findings": "No clipping, overlap, missing glyphs or broken tables. Main and appendix figures have readable labels. Candidate is one manuscript-format page.",
+  "png_exports": {
+    "appendix_gaussian_shape.png": {
+      "pixels": [
+        2224,
+        2194
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    "appendix_gaussian_transfer.png": {
+      "pixels": [
+        2254,
+        1834
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    "figure1_spectral_shape.png": {
+      "pixels": [
+        2224,
+        2194
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    "figure2_amplitude_exponent.png": {
+      "pixels": [
+        2254,
+        1114
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    "figure3_penalty_complexity.png": {
+      "pixels": [
+        2224,
+        2194
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    "figure4_financial_results.png": {
+      "pixels": [
+        2224,
+        2254
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    }
+  }
+}

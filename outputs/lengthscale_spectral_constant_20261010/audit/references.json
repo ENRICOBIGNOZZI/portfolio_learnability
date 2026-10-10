@@ -1,0 +1,5 @@
+{
+  "matern_density": "https://gaussianprocess.org/gpml/chapters/RW4.pdf",
+  "periodized_matern_and_gaussian": "https://arxiv.org/abs/2006.10160",
+  "sobolev_and_restriction": "https://arxiv.org/abs/2309.10918"
+}

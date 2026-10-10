@@ -1,0 +1,21 @@
+kernel,period,method,shorter_method,sharpe_60,sharpe_36,delta_sharpe_36_minus_60,interpretation
+matern32,1984-2024,adaptive_spectral,adaptive_spectral_36,3.2442304920156588,3.2473434010207787,0.003112909005119846,Lag sensitivity of length selection only; does not isolate stale refit observations
+matern32,1984-2024,spectral_transfer,adaptive_transfer_36,3.2894071339462858,3.2836085969624307,-0.0057985369838551293,Lag sensitivity of length selection only; does not isolate stale refit observations
+matern32,1984-1999,adaptive_spectral,adaptive_spectral_36,6.047114224405667,5.9660883376878209,-0.081025886717846163,Lag sensitivity of length selection only; does not isolate stale refit observations
+matern32,1984-1999,spectral_transfer,adaptive_transfer_36,6.0829126901571344,6.0025091077124904,-0.080403582444644073,Lag sensitivity of length selection only; does not isolate stale refit observations
+matern32,2000-2009,adaptive_spectral,adaptive_spectral_36,2.644476868781497,2.6770467677930228,0.032569899011525738,Lag sensitivity of length selection only; does not isolate stale refit observations
+matern32,2000-2009,spectral_transfer,adaptive_transfer_36,2.6799744468706925,2.6968965760938892,0.016922129223196691,Lag sensitivity of length selection only; does not isolate stale refit observations
+matern32,2010-2019,adaptive_spectral,adaptive_spectral_36,3.0063342479365551,3.0049597931135295,-0.0013744548230256726,Lag sensitivity of length selection only; does not isolate stale refit observations
+matern32,2010-2019,spectral_transfer,adaptive_transfer_36,3.1407145412868509,3.1407145412868509,0,Lag sensitivity of length selection only; does not isolate stale refit observations
+matern32,2020-2024,adaptive_spectral,adaptive_spectral_36,1.1585388304133593,1.1773290151436444,0.018790184730285153,Lag sensitivity of length selection only; does not isolate stale refit observations
+matern32,2020-2024,spectral_transfer,adaptive_transfer_36,1.2188039205925238,1.2188039205925238,0,Lag sensitivity of length selection only; does not isolate stale refit observations
+gaussian,1984-2024,adaptive_spectral,adaptive_spectral_36,3.2185250393936964,3.1366180084601445,-0.081907030933551894,Lag sensitivity of length selection only; does not isolate stale refit observations
+gaussian,1984-2024,spectral_transfer,adaptive_transfer_36,3.2441804854479757,3.1967819913151807,-0.047398494132794955,Lag sensitivity of length selection only; does not isolate stale refit observations
+gaussian,1984-1999,adaptive_spectral,adaptive_spectral_36,5.8628578605319852,5.6945444573803012,-0.16831340315168397,Lag sensitivity of length selection only; does not isolate stale refit observations
+gaussian,1984-1999,spectral_transfer,adaptive_transfer_36,5.9270532117321126,5.8591437050899948,-0.067909506642117812,Lag sensitivity of length selection only; does not isolate stale refit observations
+gaussian,2000-2009,adaptive_spectral,adaptive_spectral_36,2.5489455719491128,2.5659521194519064,0.017006547502793623,Lag sensitivity of length selection only; does not isolate stale refit observations
+gaussian,2000-2009,spectral_transfer,adaptive_transfer_36,2.5726899972953365,2.593977447335273,0.021287450039936484,Lag sensitivity of length selection only; does not isolate stale refit observations
+gaussian,2010-2019,adaptive_spectral,adaptive_spectral_36,3.0059929176695386,2.8169803999336649,-0.18901251773587369,Lag sensitivity of length selection only; does not isolate stale refit observations
+gaussian,2010-2019,spectral_transfer,adaptive_transfer_36,3.072462328917291,3.0092860639678536,-0.0631762649494374,Lag sensitivity of length selection only; does not isolate stale refit observations
+gaussian,2020-2024,adaptive_spectral,adaptive_spectral_36,1.2791865708160004,1.0432494581747047,-0.23593711264129569,Lag sensitivity of length selection only; does not isolate stale refit observations
+gaussian,2020-2024,spectral_transfer,adaptive_transfer_36,1.2744560787751646,1.1041956521042879,-0.17026042667087671,Lag sensitivity of length selection only; does not isolate stale refit observations

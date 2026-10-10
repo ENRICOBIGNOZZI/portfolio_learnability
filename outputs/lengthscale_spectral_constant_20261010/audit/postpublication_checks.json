@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "tests_passed": 13,
+  "deselected": 4,
+  "command": "OPENBLAS_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 OMP_NUM_THREADS=1 python3 -B -X pycache_prefix=/private/tmp/lengthscale_final_pycache -m pytest -q tests/test_lengthscale_spectral.py -k 'not real or exported_plot_values or stock_accounts_and_plot or fixed_b_and_transfer'",
+  "full_suite": "50 passed earlier: audit/tests.json and test_results.txt",
+  "purpose": "Final table/plot/algebra/stock-cost regression; no numerical implementation changes after full run",
+  "environment_observation": "macOS iCloud evicted local initializer/bytecode and private calibration metadata after the full experiment. Byte-identical committed initializer was materialized; cache reads in optional full-hash repeat were interrupted before tests completed. Final table tests use public results. Full experiment, baseline and frozen-input validation already passed; no private metadata was fabricated. Reproduction requires original licensed inputs locally resident, plus pdflatex on PATH.",
+  "formatting": "One trailing space in exported TeX removed; unchanged PDF renders already inspected. Estimation and publication source hashes match executed full build."
+}

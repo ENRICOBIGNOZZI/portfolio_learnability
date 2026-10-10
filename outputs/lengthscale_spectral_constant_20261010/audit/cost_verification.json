@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "actual_weights": true,
+  "original_cv_net_reproduced": true,
+  "primary_entry": "Cash at January-close 1984 for every method",
+  "elapsed_seconds": 548.8160848750267,
+  "maximum_payoff_error": 4.3262060600568475e-11,
+  "maximum_weight_error": 4.998189362392935e-12,
+  "maximum_accounting_residual": 4.440892098500626e-16
+}

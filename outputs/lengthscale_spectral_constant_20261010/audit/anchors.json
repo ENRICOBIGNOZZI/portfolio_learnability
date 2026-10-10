@@ -1,0 +1,156 @@
+{
+  "matern32": {
+    "year": 1978,
+    "lam0": 1.5594482461490982e-07,
+    "T0": 180,
+    "rho0": 1.5896429646518706e-06,
+    "S0": 113232973.69445455,
+    "cv_choice": 92,
+    "C0": 31.032365611126533,
+    "relative_anchor_error": 2.4424906541753444e-14,
+    "train_first": "1963-01-31",
+    "train_last": "1972-12-31",
+    "validation_first": "1973-01-31",
+    "validation_last": "1977-12-31",
+    "first_refit_formation": "1963-01-31",
+    "last_refit_formation": "1977-12-31",
+    "first_refit_payoff": "1963-02-28",
+    "last_known_payoff": "1978-01-31",
+    "decision_date": "1978-01-31",
+    "first_test_payoff": "1978-02-28",
+    "calibration_includes_test_payoffs": false,
+    "interior": true,
+    "minimum_unclipped_gram_eigenvalue": 6.951167283598189e-07,
+    "psd_tolerance": 2.978458288301734e-11,
+    "clipped_eigenvalues": 0,
+    "active_rank": 180,
+    "feature_bank": {
+      "kernel": "matern32",
+      "input_dimension": 130,
+      "maximum_features": 10000,
+      "ell": 4.392107784616423,
+      "seed": 0,
+      "cosine_backend": "Apple Accelerate vvcos float64",
+      "frequencies_sha256": "4a779268077561bf14f49f9706a5bb7c73adb4fb8d5dad1f738f3416d8397610",
+      "phases_sha256": "768ae7b928bc78b9bd399902017ce52b6f5e6bbffb19d4c386a21914b6ee9460"
+    },
+    "finite_range_b": 1.4210832304226124,
+    "amplitude_gate_passed": false,
+    "b_is_population_exponent": false,
+    "amplitude_status": "Finite-rank proxy; no population constant identified from finite history",
+    "additional_1978_cv_information": [
+      {
+        "multiplier": 0.25,
+        "penalty": 2.9514393387291196e-10,
+        "rho_foc_endpoint": 3.6404766422539645e-08,
+        "boundary": true,
+        "interpretation": "Extra CV information; boundary FOC values identify only an interval endpoint"
+      },
+      {
+        "multiplier": 0.5,
+        "penalty": 9.317479150192286e-09,
+        "rho_foc_endpoint": 5.777351566868199e-08,
+        "boundary": false,
+        "interpretation": "Extra CV information; boundary FOC values identify only an interval endpoint"
+      },
+      {
+        "multiplier": 1.0,
+        "penalty": 1.5594482461490982e-07,
+        "rho_foc_endpoint": 1.5896429646518886e-06,
+        "boundary": false,
+        "interpretation": "Extra CV information; boundary FOC values identify only an interval endpoint"
+      },
+      {
+        "multiplier": 2.0,
+        "penalty": 1.7344747021907916e-07,
+        "rho_foc_endpoint": 3.3468889627353666e-06,
+        "boundary": false,
+        "interpretation": "Extra CV information; boundary FOC values identify only an interval endpoint"
+      },
+      {
+        "multiplier": 4.0,
+        "penalty": 8.214642190655971e-08,
+        "rho_foc_endpoint": 2.105529105788798e-06,
+        "boundary": false,
+        "interpretation": "Extra CV information; boundary FOC values identify only an interval endpoint"
+      }
+    ]
+  },
+  "gaussian": {
+    "year": 1978,
+    "lam0": 2.515462907417361e-07,
+    "T0": 180,
+    "rho0": 4.344198081857661e-06,
+    "S0": 41434574.71511719,
+    "cv_choice": 102,
+    "C0": 19.494340128938973,
+    "relative_anchor_error": 2.220446049250313e-16,
+    "train_first": "1963-01-31",
+    "train_last": "1972-12-31",
+    "validation_first": "1973-01-31",
+    "validation_last": "1977-12-31",
+    "first_refit_formation": "1963-01-31",
+    "last_refit_formation": "1977-12-31",
+    "first_refit_payoff": "1963-02-28",
+    "last_known_payoff": "1978-01-31",
+    "decision_date": "1978-01-31",
+    "first_test_payoff": "1978-02-28",
+    "calibration_includes_test_payoffs": false,
+    "interior": true,
+    "minimum_unclipped_gram_eigenvalue": 2.545440946837035e-07,
+    "psd_tolerance": 3.730018979818492e-11,
+    "clipped_eigenvalues": 0,
+    "active_rank": 180,
+    "feature_bank": {
+      "kernel": "gaussian",
+      "input_dimension": 130,
+      "maximum_features": 10000,
+      "ell": 4.392107784616423,
+      "seed": 0,
+      "cosine_backend": "Apple Accelerate vvcos float64",
+      "frequencies_sha256": "9f71cff012e46d1063cfaad32d2c8a8b6e58cbc97f1e0cd25b9b759105e7c422",
+      "phases_sha256": "768ae7b928bc78b9bd399902017ce52b6f5e6bbffb19d4c386a21914b6ee9460"
+    },
+    "finite_range_b": 1.6234023578638306,
+    "amplitude_gate_passed": false,
+    "b_is_population_exponent": false,
+    "amplitude_status": "Finite-rank proxy; no population constant identified from finite history",
+    "additional_1978_cv_information": [
+      {
+        "multiplier": 0.25,
+        "penalty": 2.926829545176754e-10,
+        "rho_foc_endpoint": 3.615594546812678e-08,
+        "boundary": true,
+        "interpretation": "Extra CV information; boundary FOC values identify only an interval endpoint"
+      },
+      {
+        "multiplier": 0.5,
+        "penalty": 9.196586540333752e-08,
+        "rho_foc_endpoint": 5.488789961337939e-07,
+        "boundary": false,
+        "interpretation": "Extra CV information; boundary FOC values identify only an interval endpoint"
+      },
+      {
+        "multiplier": 1.0,
+        "penalty": 2.515462907417361e-07,
+        "rho_foc_endpoint": 4.344198081857674e-06,
+        "boundary": false,
+        "interpretation": "Extra CV information; boundary FOC values identify only an interval endpoint"
+      },
+      {
+        "multiplier": 2.0,
+        "penalty": 1.517740886881519e-07,
+        "rho_foc_endpoint": 4.4558397449020155e-06,
+        "boundary": false,
+        "interpretation": "Extra CV information; boundary FOC values identify only an interval endpoint"
+      },
+      {
+        "multiplier": 4.0,
+        "penalty": 3.7743194588942675e-08,
+        "rho_foc_endpoint": 1.160658280519919e-06,
+        "boundary": false,
+        "interpretation": "Extra CV information; boundary FOC values identify only an interval endpoint"
+      }
+    ]
+  }
+}

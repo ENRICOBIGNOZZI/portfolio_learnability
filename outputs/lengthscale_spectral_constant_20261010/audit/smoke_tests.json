@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "initial_pre_execution_tests": 9,
+  "additional_exact_counterexample_tests_passed": 10,
+  "before_expensive_real_data_execution": true,
+  "source": "Deterministic spectrum, scaling, chronological selection and exhaustive finite-law tests; no simulated research portfolios."
+}

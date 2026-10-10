@@ -1,0 +1,408 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm,newtxtext,newtxmath,microtype,booktabs,array}
+\usepackage[margin=1in]{geometry}
+\usepackage[colorlinks=true,urlcolor=blue,linkcolor=black]{hyperref}
+\newtheorem{proposition}{Proposition}
+\newcommand{\Hh}{\mathcal H}
+\newcommand{\E}{\mathbb E}
+\newcommand{\C}{\mathcal C}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\SR}{\operatorname{SR}}
+\setlength{\parskip}{4pt}
+\setlength{\parindent}{0pt}
+\begin{document}
+\begin{center}
+{\Large\bfseries Can kernel lengthscale determine portfolio shrinkage?}\\[5pt]
+{Standalone mathematical note for \emph{The Law of Portfolio Learnability}}\\
+10 October 2026
+\end{center}
+
+\section*{1. What is invariant, and what is not}
+Write $M_t=N_t^{-1}\sum_iR^e_{i,t+1}\delta_{Z_{i,t}}$ for the random signed
+measure of realized managed returns. A policy has payoff $R^p_{t+1}(W)=M_t(W)$.
+Its RKHS Riesz representer is $X_{t,\ell}$, with
+$\Sigma_\ell=\E[X_{t,\ell}\otimes X_{t,\ell}]$ and
+$\mu_{\Hh_\ell}=\E X_{t,\ell}$. These objects include the return law and
+cross-stock covariance; they are not the ordinary characteristic kernel operator.
+Assume the same economy at every lengthscale and $\E\|X_{t,\ell}\|^2<\infty$.
+
+\begin{proposition}[Conditional spectral order and transfer]
+On a bounded full-dimensional Sobolev extension domain, fixed-smoothness
+Euclidean Mat\'ern kernels at positive finite lengthscales have identical
+RKHS sets and equivalent norms. If
+\[
+ a\|W\|_{\Hh_1}^2\leq\|W\|_{\Hh_2}^2\leq d\|W\|_{\Hh_1}^2,
+ \qquad 0<a\leq d<\infty,
+\]
+then their positive managed eigenvalues satisfy
+\[
+ d^{-1}\mu_j(\ell_1)\leq\mu_j(\ell_2)\leq a^{-1}\mu_j(\ell_1).
+\]
+Thus an existing two-sided $j^{-b}$ order is preserved, but neither that
+order nor a unique asymptotic amplitude is supplied by the kernel name.
+If, additionally, $\mu_j(\ell)\sim c(\ell)j^{-b}$ with common $b>1$, the
+asymptotic minimizer of $A(\ell)\lambda+B(\ell)\C_\ell(\lambda)/T$ obeys
+\[
+ \lambda_T^{\rm bound}(\ell)
+ =\left[\frac{\rho(\ell)\kappa_b}{bT}c(\ell)^{1/b}\right]^{b/(b+1)},
+ \quad\rho=B/A,\quad\kappa_b=\frac{\pi}{b\sin(\pi/b)}.
+\]
+This is a bound-proxy statement, not identification of a risk or Sharpe oracle.
+\end{proposition}
+
+\textit{Proof of the operator comparison.} The payoff map
+$J_\ell:W\mapsto M_t(W)$ takes the same function set into $L^2$ of the
+economy. Its squared singular values are the eigenvalues of $J_\ell^*J_\ell=\Sigma_\ell$.
+The common quadratic form $\E[M_t(W)^2]$ has Rayleigh quotient divided by
+$\|W\|_{\Hh_\ell}^2$. Apply the norm inequalities to every finite-dimensional
+subspace and the compact-operator min--max principle. This yields the displayed
+comparison, including equal null-space dimension. The norm equivalence follows
+from the spectral-density ratio on page 2 and restriction with minimum extension
+norm. The transfer calculation is proved on page 3. \hfill$\square$
+
+The ordinary Sobolev correspondence requires appropriate domain regularity;
+more general supports require separate trace/extension results. The 10,000-feature
+empirical kernels are finite-dimensional approximations with changing cosine spans,
+so this infinite-kernel proposition is not literally a theorem for their sample tails.
+
+\newpage
+\section*{2. Ordinary versus managed spectra and the amplitude}
+Let $s=\nu+D/2$. With the Fourier convention $e^{2\pi i\omega\cdot z}$,
+the unit-variance Euclidean Mat\'ern spectral density is
+\[
+ S_\ell(\omega)=\frac{2^D\pi^{D/2}\Gamma(s)(2\nu)^\nu}{\Gamma(\nu)\ell^{2\nu}}
+ \left(\frac{2\nu}{\ell^2}+4\pi^2\|\omega\|^2\right)^{-s}.
+\]
+This normalization and the Gaussian comparison are given in
+\href{https://gaussianprocess.org/gpml/chapters/RW4.pdf}{Rasmussen--Williams,
+Chapter 4, equations (4.9)--(4.15)}. For $r=\ell_2/\ell_1\geq1$,
+$r^{-2\nu}\leq S_{\ell_2}/S_{\ell_1}\leq r^D$. Fourier RKHS norms therefore
+satisfy $r^{-D}\|W\|_1^2\leq\|W\|_2^2\leq r^{2\nu}\|W\|_1^2$.
+Both spaces have the Sobolev order $s$, with lengthscale-dependent norms.
+Restrictions to an extension domain preserve the same comparison constants.
+
+Here is an explicit sufficient model for the nominal exponent. Periodize the
+Euclidean covariance on a unit $D$-torus, \emph{without an extra diagonal
+renormalization}. Its Fourier eigenvalues are $S_\ell(n)$, $n\in\mathbb Z^D$.
+The elementary lattice count $\#\{n:\|n\|\leq R\}\sim v_DR^D$ gives
+\[
+ k_j(\ell)\sim d_\ell j^{-b},\qquad b=\frac{2s}{D}=1+\frac{2\nu}{D},
+ \quad d_\ell\propto\ell^{-2\nu}.
+\]
+If a torus kernel is instead divided by its lengthscale-dependent diagonal,
+the amplitude also divides by that normalizer. This distinction is explicit in
+\href{https://arxiv.org/abs/2006.10160}{Borovitskiy et al. (2020)}; it cannot be
+ignored when comparing kernel conventions.
+
+To pass from $k_j$ to managed eigenvalues, suppose the economic second-moment
+form on $L^2(P)$ is $\E[M_t(f)M_t(h)]=\langle f,Qh\rangle$ for a bounded
+nonnegative operator $Q$. The managed operator is unitarily equivalent to
+$K_\ell^{1/2}QK_\ell^{1/2}$, \emph{not} $K_\ell^2$.
+If $q_-I\preceq Q\preceq q_+I$, min--max gives
+$q_-k_j\leq\mu_j\leq q_+k_j$: the exponent transfers, but not a unique constant.
+If $Q=qI+L$ with $q>0$ and compact $L$, then $\mu_j\sim qk_j$.
+Indeed, approximate $L$ by finite-rank operators; the remaining form is bounded
+by $\epsilon I$. Finite-rank interlacing changes rank by a fixed amount, while
+regular variation makes $k_{j\pm m}/k_j\to1$. Then let $\epsilon\downarrow0$.
+
+Independent characteristic draws and independent zero-mean idiosyncratic
+returns with variance $\sigma^2$ give $Q=(\sigma^2/N)I$. Finite-rank factor
+terms can be added if the idiosyncratic floor remains positive. A finite-factor
+economy without that floor can have finite managed rank regardless of Mat\'ern
+smoothness. Smooth return fields can instead contribute an additional smoothing
+order. Varying $N$, return covariance, characteristic density, support geometry
+or factor loadings requires a separate operator argument.
+For a positive-mean example, constant mean $m$ and independent constant-variance
+stock noise give $Q=((\sigma^2+m^2)/N)I+((N-1)m^2/N)\,1\otimes1$:
+the same exponent survives a rank-one investment signal.
+
+For $\nu=3/2$ and $D=130$, the nominal value is $133/130$, not $1+3/6$.
+The repository's E5 assumes a managed spectral order directly; it does not prove
+full-dimensional density, coercivity or a Weyl constant for the JKP economy.
+No fitted ``effective dimension'' replaces 130 here.
+
+\newpage
+\section*{3. The exact asymptotic calculation, with its conditions}
+Assume $\mu_j\sim cj^{-b}$, $c>0$, $b>1$. Put $J=(c/\lambda)^{1/b}$.
+Riemann-sum comparison, with finite leading terms negligible relative to $J$,
+gives
+\[
+ \C_\ell(\lambda)=\sum_j\frac{\mu_j}{\mu_j+\lambda}
+ \sim J\int_0^\infty\frac{dx}{1+x^b}=\kappa_b(c/\lambda)^{1/b}.
+\]
+The integrability at infinity requires $b>1$. The beta integral evaluates to
+$\pi/[b\sin(\pi/b)]$. Two-sided polynomial domination justifies discarding
+the far tail, while pointwise asymptotic equivalence handles the growing bulk.
+The sensitivity has the corresponding asymptotic
+\[
+ \sum_j\frac{\mu_j}{(\mu_j+\lambda)^2}
+ \sim\frac{\kappa_b}{b}c^{1/b}\lambda^{-1-1/b}.
+\]
+This follows from the same argument with integrand $x^b/(1+x^b)^2$;
+integration by parts evaluates its integral to $\kappa_b/b$.
+Consequently the derivative equation for the approximate envelope is
+$1=(\rho/T)(\kappa_b/b)c^{1/b}\lambda^{-1-1/b}$, giving Proposition 1.
+Strict convexity makes this solution unique for a positive nonzero spectrum.
+
+For the same $T$ and fixed common $b$, the corrected cross-lengthscale formulas are
+\begin{align*}
+ \frac{\lambda_2^{\rm bound}}{\lambda_1^{\rm bound}}
+ &=\left(\frac{c_2}{c_1}\right)^{1/(b+1)}
+   \left(\frac{\rho_2}{\rho_1}\right)^{b/(b+1)},\\
+ \C_\ell(\lambda_\ell^{\rm bound})
+ &\sim\kappa_b^{b/(b+1)}b^{1/(b+1)}
+       \left(\frac{Tc_\ell}{\rho_\ell}\right)^{1/(b+1)},\\
+ \frac{\C_2^{\rm bound}}{\C_1^{\rm bound}}
+ &\sim\left(\frac{c_2}{c_1}\right)^{1/(b+1)}
+       \left(\frac{\rho_2}{\rho_1}\right)^{-1/(b+1)}.
+\end{align*}
+The often proposed amplitude-only transfer is the special hypothesis
+$\rho_2=\rho_1$. Under the additional torus/return assumptions on page 2,
+$c_\ell\propto\ell^{-2\nu}$; then
+$\lambda_2/\lambda_1=(\ell_2/\ell_1)^{-2\nu/(b+1)}$.
+It is not an unconditional law of optimal portfolio shrinkage.
+
+To make these statements uniform over a lengthscale family, require common $b$,
+$c_\ell$ and $\rho_\ell$ bounded away from zero and infinity, uniform relative
+tail equivalence, and uniformly summable dominating tails. A finite five-element
+set permits taking maxima of finitely many tail thresholds. A continuum needs
+genuine uniform assumptions. A family with $b\downarrow1$ needs separate care:
+$\kappa_b$ diverges, convergence can be extremely slow, and uniform tail control
+does not follow from pointwise statements. The numerical implementation evaluates
+$\log\kappa_b$ stably near one; it never clips an invalid fitted $b$.
+
+Constrained fixed penalty bounds can truncate these formulas. Admissibility and
+the empirical stability regime of the paper's fixed-penalty learning bound must
+also hold. Plugging a data-dependent spectrum into an argmin requires a
+uniform-in-penalty theorem to inherit its guarantees. If $b$ itself changes,
+both $\kappa_b$ and the exponents change; the displayed fixed-$b$ ratio is invalid.
+
+\newpage
+\section*{4. Why the spectrum does not identify an oracle constant}
+Here is an exact \emph{Sharpe}-oracle counterexample for the actual response-one
+ridge estimator. Let iid managed vectors take values
+$\pm\sqrt2\,e_1$ and $\pm2\sqrt2\,e_2$, choosing each axis with probability
+$1/2$. On a selected axis, a sign with mean $h\in(0,1)$ has probabilities
+$(1+h)/2,(1-h)/2$. Economy A biases only the first axis; economy B biases only
+the second. Both have $\Sigma=\operatorname{diag}(1,4)$ and identical sample
+second-moment laws. Their means are $(m_1,0)$ and $(0,m_2)$, where
+$m_1=h/\sqrt2$, $m_2=\sqrt2h$.
+
+Fit ridge on $T=2$ observations. When each axis occurs once (probability $1/2$),
+the absolute coefficient ratio is
+\[
+ r(\lambda)=\left|\frac{\widehat W_2}{\widehat W_1}\right|
+ =\frac{2(1+\lambda)}{4+\lambda},\qquad r'(\lambda)>0.
+\]
+Integrating the \emph{population} Sharpe of each trained policy over the sixteen
+ordered training outcomes gives
+\begin{align*}
+ \E\SR_A(\widehat W_\lambda)
+ &=\frac{hm_1}{4\sqrt{1-m_1^2}}+
+   \frac{hm_1}{2\sqrt{1-m_1^2+4r(\lambda)^2}},\\
+ \E\SR_B(\widehat W_\lambda)
+ &=\frac{hm_2}{4\sqrt{4-m_2^2}}+
+   \frac{hm_2}{2\sqrt{4-m_2^2+r(\lambda)^{-2}}}.
+\end{align*}
+The first term in each case comes from drawing the signal axis twice. The
+noise-axis-only payoff has zero population mean; exact zero policies are assigned
+Sharpe zero. Conditional mean signs on the mixed-axis event are $h$, proving the
+second terms. Thus A's expected Sharpe strictly decreases with $\lambda$, while
+B's strictly increases. On any common positive finite interval, their unique
+optimal penalties are opposite boundaries despite identical managed eigenvalues.
+This controlled finite-law proof is not a simulated empirical portfolio result.
+
+An analogous exact risk example has iid $X_t\in\{-1,+1\}$ with mean $m$:
+its second moment is always one, but response-one expected-loss ridge has
+$\lambda_Q^{\rm oracle}=(1-m^2)/(Tm^2)$. The tests verify both examples using
+the existing estimator. Signal orientation and score noise cannot be recovered
+from eigenvalues alone.
+
+The paper's target has $\Sigma_\ell W_\ell^*=\mu_{\Hh_\ell}$. Its score is
+$\zeta_{t,\ell}=(1-R^p_{t+1}(W_\ell^*))X_{t,\ell}$. Both the source norm and
+the covariance of this score enter the learning proof. Changing Mat\'ern
+lengthscale preserves the attainable policy set and hence its infimum population
+loss, but changes the minimum RKHS norm and the regularization geometry.
+If $R_\ell$ is the minimum norm among population minimizers, the page-2 bounds imply
+\[
+ r^{-D}R_1^2\leq R_2^2\leq r^{2\nu}R_1^2,\qquad
+ r^{-2\nu}\|M_t\|_{\Hh_1^*}^2\leq\|M_t\|_{\Hh_2^*}^2
+ \leq r^D\|M_t\|_{\Hh_1^*}^2.
+\]
+Thus a valid managed-tail scale can be transferred with
+$B_{X,2}^2\leq r^D B_{X,1}^2$. The same economy's mixing coefficients are
+unchanged, and the conditional fourth-moment condition concerns the same payoffs.
+Under the paper's pricing condition its score bound is
+$\E[\zeta\otimes\zeta]\preceq\sqrt{8K_4(1+K_4)}\,\Sigma_\ell$.
+These are conservative comparisons, not formulas for sharp $A(\ell),B(\ell)$.
+For $D=130$ the norm/tail bounds can be too wide to support useful transfer.
+
+Moreover, an inequality admits many inflated choices of $A$ and $B$.
+Unless their statistical functionals or a specific sharp bound are defined,
+their ratio is not a unique parameter of the data-generating law. A one-time
+CV anchor calibrates a tuning convention, not two identified structural constants.
+The empirical ``implied rho'' diagnostics also require CV and cannot establish
+a validation-free oracle method.
+
+\newpage
+\section*{5. Amplitude identification and the Gaussian negative control}
+Two-sided bounds do not imply $j^b\mu_j\to c$. For example
+\[
+ \mu_j=j^{-b}\exp\{\epsilon\sin(\log\log(j+e))\},\qquad 0<\epsilon<b,
+\]
+is decreasing, positive and summable for $b>1$, and lies between
+$e^{-\epsilon}j^{-b}$ and $e^{\epsilon}j^{-b}$, yet the normalized sequence
+has no limit. Even regular variation with a slowly varying multiplier does not
+force a convergent amplitude. A limiting principal symbol/Weyl law or explicit
+relative asymptotic equivalence is stronger than the paper's two-sided E5.
+
+An empirical operator has rank at most $\min(T,P)$. Its finite leading spectrum
+can be extended by multiple decreasing summable infinite tails with different
+asymptotic amplitudes. It cannot uniquely identify $c$ without tail assumptions.
+For consistent amplitude estimation with known $b$, one could require growing
+rank windows tending to infinity, uniform relative eigenvalue estimation errors
+tending to zero on those windows, and uniform relative tail equivalence.
+Then averages of $\log\widehat\mu_j+b\log j$ converge to $\log c$.
+Fixed ranks 11--60 do not meet this argument; their intercept is a finite-range
+statistic. Unknown $b$ additionally needs a suitably growing log-rank span and
+control of approximation error. High regression $R^2$ alone supplies none of this.
+
+A defensible \emph{regularized} historical diagnostic is possible. Fit a policy
+on one past block and evaluate its score $(1-R^p(W))X$ on a disjoint later past
+block. Under stationarity, summable dependence and sufficient moments, sample
+averages and a consistent HAC estimator target that fixed regularized policy's
+score covariance. They do not estimate the unregularized population source norm
+or a sharp oracle penalty. Our annual fitted norm and score-trace aggregates are
+explicitly descriptive in-sample versions of these regularized objects, not
+plug-in estimates of $A,B$. Nonstationary economies can have identical entire
+observed past laws and different future signal/noise; no past-only procedure can
+identify both future oracles without additional stability assumptions.
+
+The Gaussian density is proportional to
+$\ell^D\exp(-2\pi^2\ell^2\|\omega\|^2)$ (the cited GPML normalization).
+On the periodized model, lattice counting gives
+\[
+ \log k_j(\ell)=-2\pi^2\ell^2(j/v_D)^{2/D}+O(1)+o(j^{2/D}).
+\]
+The lengthscale changes the leading decay speed, not only an amplitude.
+No polynomial Gaussian $b$ is imposed. Gaussian RKHS norms at different
+lengthscales are generally not equivalent; their spaces can be strictly nested.
+Finite-rank managed spectra and finite random features can obscure all these
+population comparisons. This is why Gaussian is a useful empirical negative
+control. Its explicitly requested transfer extension fits a finite-range surrogate,
+without asserting a polynomial Gaussian population law.
+
+\href{https://arxiv.org/abs/2309.10918}{Rosa et al. (2023)} give the relevant
+Sobolev and restriction framework; they do not identify the JKP support dimension
+or establish the managed-return coercivity required here.
+
+\newpage
+\section*{6. What the leading bound components can actually say}
+One can bound the bias and score contribution without claiming sharp constants.
+For the population ridge policy
+$W_{\lambda,\ell}=(\Sigma_\ell+\lambda I)^{-1}\mu_{\Hh_\ell}$,
+$W_{\lambda,\ell}-W_\ell^*=-\lambda(\Sigma_\ell+\lambda I)^{-1}W_\ell^*$.
+The scalar inequality $\lambda^2x/(x+\lambda)^2\leq\lambda/4$ yields
+\[
+ \|\Sigma_\ell^{1/2}(W_{\lambda,\ell}-W_\ell^*)\|^2
+ \leq\frac{\lambda}{4}\|W_\ell^*\|_{\Hh_\ell}^2.
+\]
+This gives a conservative \emph{population-bias} coefficient $R_\ell^2/4$.
+It is not automatically the full finite-sample envelope's sharp $A(\ell)$.
+
+Let $V_\ell=\E[\zeta_{t,\ell}\otimes\zeta_{t,\ell}]$ for the population
+pricing score, with $V_\ell\preceq C_{\rm sc}\Sigma_\ell$ as on page 4.
+Under iid observations or the paper's martingale-difference score condition,
+the covariance of $\overline\zeta_T$ is $V_\ell/T$. A linearized fluctuation
+using the \emph{population} regularized inverse consequently satisfies
+\begin{align*}
+ \E\|\Sigma_\ell^{1/2}(\Sigma_\ell+\lambda I)^{-1}
+                 \overline\zeta_T\|^2
+ &=\frac1T\Tr\{\Sigma_\ell(\Sigma_\ell+\lambda I)^{-1}
+                      V_\ell(\Sigma_\ell+\lambda I)^{-1}\}\\
+ &\leq\frac{C_{\rm sc}}{T}\sum_j
+       \frac{\mu_j(\ell)^2}{(\mu_j(\ell)+\lambda)^2}
+ \leq\frac{C_{\rm sc}}{T}\C_\ell(\lambda).
+\end{align*}
+Thus the same fourth-moment bound can supply a common conservative leading
+score coefficient. Its sharp value depends on the orientation and size of
+$V_\ell$, not only the eigenvalues of $\Sigma_\ell$.
+
+Even these leading terms would require information about the source norm to
+make their ratio specific. If one deliberately chooses this bias/score proxy,
+its ratio is $4C_{\rm sc}/R_\ell^2$, and the page-4 norm comparisons bound its
+change between $r^{-2\nu}$ and $r^D$. These are computable conservative
+\emph{comparison} bounds given the stated proxy, not identification of the
+unknown constants in a generic high-probability inequality. The actual estimator
+also estimates its operator. Stability events, inverse-operator interaction,
+tail scales, dependence and failure probability enter a full bound; the above
+known-operator calculation cannot erase them or prove uniform data-dependent
+selection guarantees. The repository's fixed-representation assumptions do not
+identify their sharp lengthscale variation.
+
+The regularized fitted norm and centered score-trace tables therefore target
+observable finite-history diagnostics only. Recovering an unregularized source
+norm needs a justified regularization limit and sufficient inverse-problem
+control; a noisy minimum-norm estimate is not the population policy norm.
+No fitted score trace is silently substituted for a structural $B(\ell)$.
+
+\newpage
+\section*{7. A testable algorithm, not a new optimality theorem}
+For each kernel, recover only its baseline-lengthscale 1978 chronological
+anchor: train on 1963--1972 formation months, validate on 1973--1977, and refit
+on all 180 months. Define
+\[
+ \rho_0=\frac{180}{\sum_j\widehat\mu_{j,0}/(\widehat\mu_{j,0}+\lambda_0)^2}.
+\]
+Gaussian has $\lambda_0=GAUSSANCHOR$, $\rho_0=GAUSSRHO$;
+Mat\'ern has $\lambda_0=MATANCHOR$, $\rho_0=MATRHO$.
+Each experiment freezes its own single ratio. Sharing that ratio across its
+five lengthscales is an explicit economic hypothesis.
+
+\begin{center}\small
+\begin{tabular}{p{.23\linewidth}p{.68\linewidth}}
+\toprule Method & Penalty and lengthscale convention\\\midrule
+Fixed lambda & Same raw $\lambda_0$, fixed baseline lengthscale.\\
+Annual CV & Original 120-point grid, baseline lengthscale.\\
+One-anchor spectral & Full past spectrum; unique proxy root, baseline lengthscale.\\
+Joint CV & Original joint chronological lengthscale and penalty selection.\\
+Spectral transfer & Fixed historical finite-range slope and robust amplitude proxy; lengthscale chosen from past performance. Gaussian is exploratory, with no population polynomial claim.\\
+Adaptive full spectrum & Proxy root with frozen $\rho_0$; lengthscale chosen from past candidate performance.\\\bottomrule
+\end{tabular}
+\end{center}
+The primary transfer formula is
+\[
+ \widehat\lambda_{t,\ell}=\lambda_0(180/T_t)^{b/(b+1)}
+ \exp\!\left\{\frac{\widehat{\log c}_{t,\ell}-\widehat{\log c}_{0,\ell_0}}{b+1}\right\}.
+\]
+Each kernel's surrogate $b$ is frozen from its initial baseline ranks 11--60;
+Gaussian has proxy slope GAUSSB0. Gaussian transfer is a documented user-requested
+exploratory amendment after the initial Mat\'ern-primary run, not an imposed
+population decay law. The unverified nominal $133/130$ is Mat\'ern-only;
+$1.5,2,3$ are finite-range sensitivities.
+Rank intervals, prefix counts, numerical thresholds and an amplitude-identification
+gate are frozen before new results. A failed gate rejects a structural interpretation;
+the mechanical transfer remains a labelled falsification exercise. No exponent is
+clipped to make $b>1$. The adjusted-ratio variant is separate and requires five
+1978 CV calibrations; boundary values are identified interval endpoints only.
+
+All candidates are refit from past observations each year. Adaptive lengthscale
+selection first occurs in 1984, using the last 60 genuinely OOS candidate returns
+from decisions 1979--1983 and minimum response-one loss. Anchor validation
+returns are never recycled as fresh candidate evidence. Thirty-six-month selection
+is secondary. Penalty bounds remain each representation's original initial grid.
+The 1984--2024 common sample has 492 returns, February 1984--January 2025.
+All net accounts in that comparison start from cash together, charging entry;
+the old full-history fixed accounts are separately reconciled.
+
+Costs use each policy's actual signed weights and the repository's exact
+self-financing 25-bp two-sided traded notional and 30-bp/year short fee.
+Target-turnover subtraction is separately labelled. Paired circular blocks of
+12 months, with 6 and 24 as sensitivities, use 5,000 shared draws conditional on
+the fitted paths. Hindsight grid minima/maxima are diagnostics only, not
+population oracles or calibration inputs. The initial Mat\'ern identification gate
+GATEWORD; empirical performance and the final GO/NO-GO decision are reported
+separately. Neither a smooth complexity path nor numerical similarity proves a
+population spectral law or financial optimality.
+\end{document}

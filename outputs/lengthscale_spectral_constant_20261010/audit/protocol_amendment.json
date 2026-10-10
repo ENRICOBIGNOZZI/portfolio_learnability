@@ -1,0 +1,7 @@
+{
+  "user_instruction": "fallo anceh con gaussin.. il principio \u00e8 lo stesso!",
+  "interpretation": "Add the same finite-range amplitude-transfer experiment to Gaussian; retain the full-spectrum rule and all six economic controls.",
+  "original_protocol_retained": "protocol_before_gaussian_extension.json",
+  "no_oos_hyperparameter_selection": true,
+  "Gaussian_population_polynomial_assumption": false
+}

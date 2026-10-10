@@ -1,0 +1,125 @@
+{
+  "passed": true,
+  "scope": "Original lengthscale mission plus explicitly requested Gaussian extension",
+  "source_code_verified": true,
+  "frozen_source_inputs_verified": true,
+  "audit_checks": {
+    "estimation": true,
+    "cost_verification": true,
+    "summary_verification": true,
+    "publication_verification": true,
+    "tests": true
+  },
+  "requirements_evidence": {
+    "1_benchmarks": "audit/estimation.json, audit/input_hashes.json; all annual/joint CV choices, monthly payoffs and prior Gaussian spectral path independently reproduced",
+    "2_theoretical_A_to_H": "publication/mathematical_note.pdf pp1-6; conditional managed-order proof, ordinary/managed distinction, covariance assumptions, Weyl example, nonconvergent amplitude, source/noise norms, RKHS equivalence and exact risk/Sharpe counterexamples",
+    "3_correct_transfer": "mathematical note pp1,3-4,6; corrected rho formula, complexity, uniformity and admissibility caveats; exact scaling and near-b=1 unit tests",
+    "4_spectral_diagnostics": "empirical_spectra, spectral_fits, spectral_ratio_diagnostics, amplitude_comparisons, amplitude_scaling_diagnostics, temporal_subspace_diagnostics, finite_sample_sensitivity; predeclared ranks/history/prefix/cutoffs",
+    "5_three_rules": "annual_policies, candidate_policies and penalty_prediction_diagnostics; fixed anchor, full-spectrum and labelled amplitude heuristic for both kernels; adjusted transfer secondary with extra-information boundary intervals",
+    "6_lengthscale_selection": "audit/protocol.json and candidate_policies; previous 60 genuine OOS months excluding1978, primary1984+, 36-month sensitivity; joint CV reproduced",
+    "7_economic_comparison": "monthly_policies, monthly_accounts, annual_policies, performance_summary, paired_comparisons and stock_checks; all six controls for both kernels, same492months and shared cash entry, actual signed weights and original cost utility",
+    "8_penalty_and_representation": "penalty_prediction_diagnostics, candidate_cv_grid_paths, prediction_summary, lengthscale_effect_summary, representation_penalty_contrasts and selection_history_sensitivity; ex-post grid optima diagnostic only; stale history not separately identified",
+    "9_constants": "mathematical note pp4-6, initial_constant_diagnostics and historical norm/score fields; conservative bounds, meaningful regularized target, nonunique envelope constants, exact same-spectrum/different-oracle examples",
+    "10_figures": "four main vector PDF/300dpiPNG figures, Gaussian shape and requested Gaussian transfer appendices; figure source values exported",
+    "11_tests": "audit/tests.json and test_results.txt:50passed; anchors, PSD/uncentered/primaldual/signs/complexity/KKT/scaling/chronology/actualcosts/plots/baselines/nearone",
+    "12_delivery": "isolated public outputs;7page math,8page empirical,onepage candidate; full code, input/source/output hashes, audit and decision memo answeringall10; manuscript untouched; permitted paths committed and pushed after this audit"
+  },
+  "common_month_coverage": {
+    "matern32/fixed_lambda": {
+      "common_months": 492,
+      "first": "1984-02-29",
+      "last": "2025-01-31"
+    },
+    "matern32/annual_cv": {
+      "common_months": 492,
+      "first": "1984-02-29",
+      "last": "2025-01-31"
+    },
+    "matern32/one_anchor": {
+      "common_months": 492,
+      "first": "1984-02-29",
+      "last": "2025-01-31"
+    },
+    "matern32/joint_cv": {
+      "common_months": 492,
+      "first": "1984-02-29",
+      "last": "2025-01-31"
+    },
+    "matern32/spectral_transfer": {
+      "common_months": 492,
+      "first": "1984-02-29",
+      "last": "2025-01-31"
+    },
+    "matern32/adaptive_spectral": {
+      "common_months": 492,
+      "first": "1984-02-29",
+      "last": "2025-01-31"
+    },
+    "gaussian/fixed_lambda": {
+      "common_months": 492,
+      "first": "1984-02-29",
+      "last": "2025-01-31"
+    },
+    "gaussian/annual_cv": {
+      "common_months": 492,
+      "first": "1984-02-29",
+      "last": "2025-01-31"
+    },
+    "gaussian/one_anchor": {
+      "common_months": 492,
+      "first": "1984-02-29",
+      "last": "2025-01-31"
+    },
+    "gaussian/joint_cv": {
+      "common_months": 492,
+      "first": "1984-02-29",
+      "last": "2025-01-31"
+    },
+    "gaussian/spectral_transfer": {
+      "common_months": 492,
+      "first": "1984-02-29",
+      "last": "2025-01-31"
+    },
+    "gaussian/adaptive_spectral": {
+      "common_months": 492,
+      "first": "1984-02-29",
+      "last": "2025-01-31"
+    }
+  },
+  "export_row_counts": {
+    "amplitude_comparisons": 2820,
+    "amplitude_scaling_diagnostics": 564,
+    "annual_policies": 1355,
+    "candidate_cv_grid_paths": 5640,
+    "candidate_policies": 70500,
+    "empirical_spectra": 214320,
+    "figure_spectral_values": 6780,
+    "figure_wealth_values": 5904,
+    "finite_sample_sensitivity": 1080,
+    "initial_constant_diagnostics": 10,
+    "lengthscale_effect_summary": 8,
+    "lengthscale_penalty_effects": 1880,
+    "monthly_accounts": 37584,
+    "monthly_policies": 16260,
+    "paired_comparisons": 2889,
+    "penalty_prediction_diagnostics": 5875,
+    "performance_summary": 363,
+    "prediction_summary": 25,
+    "representation_penalty_contrasts": 42,
+    "selection_history_sensitivity": 20,
+    "spectral_fits": 9030,
+    "spectral_ratio_diagnostics": 1080,
+    "stock_checks": 94,
+    "temporal_subspace_diagnostics": 90
+  },
+  "public_artifacts_contain_only_operator_portfolio_aggregates": true,
+  "licensed_rows_ids_holdings_and_coefficients_unpublished": true,
+  "main_manuscript_unchanged": true,
+  "unrelated_work_preserved": true,
+  "gaussian_amendment_documented": "audit/protocol_amendment.json; no polynomial Gaussian population claim",
+  "scientific_decision": "NO-GO; no convincing paired net improvement, initial amplitude identification fails",
+  "precommit_parent": "2f57d4b13c299bd008b9cccd1edd0ee8615b2fa3",
+  "git_verification": "Final pushed commit hash reported after comparing HEAD and origin/main; excluded from own hashed payload to avoid self-reference",
+  "postpublication_table_tests_passed": 13,
+  "final_environment_notes": "audit/postpublication_checks.json"
+}
