@@ -1,10 +1,10 @@
 {
   "run_hash": "e9f1f005be1a58ee736a09cb711d5be87457b9875d1e26dab56c03ccdca61d8d",
-  "verified_utc": "2026-10-10T13:34:42.762742+00:00",
+  "verified_utc": "2026-10-10T13:43:15.890224+00:00",
   "scope": "Integrity of completed checkpoints only; no claim about study completion, numerical resolution, final summaries or figures.",
   "completed_checkpoint_checks_passed": true,
   "counts": {
-    "baseline": 40,
+    "baseline": 43,
     "N300": 0,
     "N1200": 0,
     "rho000": 0,
@@ -434,11 +434,53 @@
       ]
     },
     {
+      "path": "production_baseline/P4096/rep_030.npz",
+      "index": 30,
+      "stage": "production_baseline",
+      "sha256": "40bf1e4031d6b3894ce56b1d3cd11d07c017887cad2577d139e10f6f572c9d6b",
+      "maximum_normal_equation_error": 5.186388792323654e-14,
+      "environments": [
+        "baseline"
+      ],
+      "shape_per_environment": [
+        13,
+        97
+      ]
+    },
+    {
       "path": "production_baseline/P4096/rep_288.npz",
       "index": 288,
       "stage": "production_baseline",
       "sha256": "8fea46692abe4200770deafe624fbd39a50f48d6f09d9d2f22169f26d6b202d4",
       "maximum_normal_equation_error": 4.160379180918883e-14,
+      "environments": [
+        "baseline"
+      ],
+      "shape_per_environment": [
+        13,
+        97
+      ]
+    },
+    {
+      "path": "production_baseline/P4096/rep_289.npz",
+      "index": 289,
+      "stage": "production_baseline",
+      "sha256": "a585ef6343236b5e0be63ed925280cfe2d67f2f03193f063d7c14f3c0bb015de",
+      "maximum_normal_equation_error": 1.3804024451822584e-13,
+      "environments": [
+        "baseline"
+      ],
+      "shape_per_environment": [
+        13,
+        97
+      ]
+    },
+    {
+      "path": "production_baseline/P4096/rep_290.npz",
+      "index": 290,
+      "stage": "production_baseline",
+      "sha256": "252f5e58665ad88009f832c968603174cbb0da02c556aa367977867bbd09ab78",
+      "maximum_normal_equation_error": 1.969063272351003e-14,
       "environments": [
         "baseline"
       ],

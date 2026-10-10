@@ -1,0 +1,33 @@
+{
+  "index": 290,
+  "ranks": [
+    4096
+  ],
+  "baseline_times": [
+    60,
+    90,
+    120,
+    180,
+    240,
+    360,
+    540,
+    720,
+    1080,
+    1440,
+    2160,
+    3240,
+    4860
+  ],
+  "robustness_times": [],
+  "groups": 32768,
+  "quadrature_seed": 1237722080,
+  "stage": "production_baseline",
+  "run_hash": "e9f1f005be1a58ee736a09cb711d5be87457b9875d1e26dab56c03ccdca61d8d",
+  "environment_names": [
+    "baseline"
+  ],
+  "elapsed_seconds": 390.24343133397633,
+  "generation_seconds": 302.6379753749934,
+  "maximum_resident_bytes": 934166528,
+  "completed_utc": "2026-10-10T13:36:27.931410+00:00"
+}

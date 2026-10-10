@@ -1,0 +1,33 @@
+{
+  "pid": 39867,
+  "started_utc": "20261010T134331Z",
+  "log": "simulations/outputs/rich6d_rough_sr3_extended_v2/execution_logs/batch_287_268_20261010T134331Z.log",
+  "execution_source": "import json,os,shutil,subprocess,time,traceback\nfrom simulations.extended.design import OUTPUT\nfrom simulations.extended.freeze import science_hashes\nfrom simulations.extended.production import execute\nfrom simulations.provenance import json_write,output_lock,utc_now\nprotocol=json.loads((OUTPUT/'protocol.json').read_text())\nassert science_hashes()==protocol['source_hashes']\nrecord=OUTPUT/'production_recovery_batch_287_268.json'\nstate=dict(run_hash=protocol['run_hash'],indices=[287, 286, 285, 284, 283, 282, 281, 280, 279, 278, 277, 276, 275, 274, 273, 272, 271, 270, 269, 268],completed_indices=[],pid=os.getpid(),primary_supervisor_pid=28384,started_utc=utc_now(),minimum_disk_free_bytes=3*1024**3,maximum_additional_workers=1,scope='Twenty existing baseline indices, unchanged frozen production.execute; no additional scientific replications.')\nwith output_lock(OUTPUT/'recovery_supplement'):\n    try:\n        for index in state['indices']:\n            free=shutil.disk_usage(OUTPUT).free\n            state.update(current_index=index,disk_free_before_bytes=free,updated_utc=utc_now())\n            primary=subprocess.run(['ps','-p','28384','-o','command='],capture_output=True,text=True).stdout\n            progress=json.loads((OUTPUT/'production_status.json').read_text())\n            if free<state['minimum_disk_free_bytes'] or '-m simulations.extended.production --workers 1' not in primary or progress['stage']!='production_baseline' or progress['last_index']>=250:\n                state.update(status='stopped_before_next_replication_resource_or_overlap_guard')\n                json_write(record,state)\n                break\n            state.update(status='running')\n            json_write(record,state)\n            print('Supplement starts existing baseline index',index,flush=True)\n            execute(index,protocol,'production_baseline')\n            state['completed_indices'].append(index)\n            state.update(updated_utc=utc_now())\n            json_write(record,state)\n        else:\n            state.update(status='completed',completed_utc=utc_now())\n            json_write(record,state)\n    except Exception:\n        state.update(status='failed',traceback=traceback.format_exc(),updated_utc=utc_now())\n        json_write(record,state)\n        raise\n",
+  "previous_verified_baseline_count": 43,
+  "indices": [
+    287,
+    286,
+    285,
+    284,
+    283,
+    282,
+    281,
+    280,
+    279,
+    278,
+    277,
+    276,
+    275,
+    274,
+    273,
+    272,
+    271,
+    270,
+    269,
+    268
+  ],
+  "maximum_total_production_workers": 2,
+  "minimum_disk_free_before_each_replication_bytes": 3221225472,
+  "disk_free_before_launch_bytes": 8821727232,
+  "evidence": "Both bounded recovery replications 290 and 289 completed and passed the checkpoint audit. Shared-host timings are operational observations, not a controlled performance comparison."
+}

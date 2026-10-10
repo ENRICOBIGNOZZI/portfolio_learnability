@@ -8,40 +8,42 @@ not artificially reset to 3. Persistence robustness preserves the population
 operator exactly.
 
 All 12 paired rank pilots and their audits are complete. The fixed-rank production
-protocol is frozen. Recovery resumed on 2026-10-10 with 38 verified baseline
-checkpoints. The first new recovery result (index 28) has passed the independent
-checkpoint audit, bringing the verified baseline total to 39; the study is NOT
-complete. A subsequent audit includes index 29 and verifies 40 baseline checkpoints.
-The previous production supervisor exited
-with status 120, of undetermined cause. Its supplementary batch remains interrupted.
+protocol is frozen. The latest independent checkpoint audit verifies 43 baseline
+replications and no completed production robustness batches. The study is NOT
+complete: all 300 paths in each economy, final summaries and all ten final figures
+remain required.
 
-After disk availability recovered to approximately 8.3 GiB, the full supervisor
-was restarted with one worker and persistent stdout/stderr file logging. The new
-supervisor and production child were confirmed alive, and the log confirms that
-existing checkpoints are being validated and reused. Missing deterministic indices
-will be computed under the unchanged protocol. production_recovery_current.json
-records the launch, process identifiers, log path and resource reading. The prior
-resource-blocked record remains available in commit 8e2a8b2.
+Recovery resumed on 2026-10-10 after disk availability returned to approximately
+8.3 GiB. The primary supervisor retains one worker and persistent stdout/stderr
+file logging. Its previous exit status 120 remains of undetermined cause; the
+resource-blocked recovery record is preserved in commit 8e2a8b2. Existing completed
+checkpoints are reused under the unchanged frozen identity. Recovery process IDs,
+log path, environment and the latest audit count are recorded in
+production_recovery_current.json.
+
+A bounded supplementary batch completed the missing indices 290 and 289, and
+both passed the independent checkpoint audit. Its state, execution source, log
+path and resource observations are retained in production_recovery_supplement*
+JSON records. The next bounded batch covers the twenty existing baseline indices
+287 down through 268. Its launch source and status are in
+production_recovery_batch_287_268_launch.json and
+production_recovery_batch_287_268.json. This allows at most two production workers.
+The supplement checks a 3 GiB disk reserve before each replication and stops if
+the primary queue approaches its indices. All seeds and numerical calculations
+remain unchanged. Shared-host timings are operational observations, not controlled
+performance benchmarks; process peak RSS in a multi-replication batch is cumulative
+from process start, not a separate per-replication memory measurement.
 
 At the user's request, pip's regenerable download cache was purged, removing 14
 files (23.2 MB reported by pip). This frees disk space, not process RAM. Required
 simulation caches, code, data, completed results and unrelated jobs were preserved.
-The primary supervisor retains one worker. After disk availability remained above
-8 GiB, a bounded supplementary worker was launched for the two still-missing
-baseline indices 290 and 289. It checks a 3 GiB disk reserve before each replication
-and stops if the primary queue approaches those indices. This allows at most two
-production workers during the bounded batch, using the unchanged scientific code.
-The execution source, log path and resource observations are recorded in
-production_recovery_supplement_launch.json; current batch state is recorded in
-production_recovery_supplement_290_289.json. Timing comparisons remain operational
-observations on a shared host, not controlled performance benchmarks.
 
-Frozen scientific source hashes were verified before restart. Process-local
-PYTHONDONTWRITEBYTECODE=1 and a separate PYTHONPYCACHEPREFIX under /tmp bypass the
-cloud-backed bytecode cache that had stalled imports, without changing source.
-The recovery environment is recorded in the JSON. production_status.json counts
-checkpoints acknowledged by the current supervisor, including reused checkpoints;
-checkpoint_integrity.json records the most recent independent completed-file audit.
+Frozen scientific source hashes were verified before restart and in each audit.
+Process-local PYTHONDONTWRITEBYTECODE=1 and a separate PYTHONPYCACHEPREFIX under
+/tmp bypass the cloud-backed bytecode cache that had stalled imports, without
+changing source. production_status.json counts checkpoints acknowledged by the
+primary supervisor, including reused checkpoints; checkpoint_integrity.json
+records the most recent independent audit of all completed files.
 The read-only checkpoint audit can be rerun during production with
   python3 -m simulations.extended.verify_checkpoints
 It writes checkpoint_integrity.json with the unique completed count by economy,
@@ -117,8 +119,8 @@ A further single-replication probe at index 288 tested three concurrent workers.
 It completed successfully but took about 425 seconds, versus about 157-184
 seconds in the recent two-worker observations. That phase retained two total workers;
 see production_three_worker_probe.json for timings and their operational limits.
-The current primary supervisor uses one worker; the bounded two-index supplement
-above temporarily restores two concurrent workers after resource recovery.
+The current primary supervisor uses one worker; the bounded supplements
+above temporarily restore two concurrent workers after resource recovery.
 During this probe, a fresh Python import waited on a cloud-backed bytecode file
 that macOS had made dataless. Targeted local-download requests restored the cache
 and source without changing their contents. runtime_read_recovery.json records
