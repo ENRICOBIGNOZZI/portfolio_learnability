@@ -1,0 +1,48 @@
+{
+  "run_hash": "e9f1f005be1a58ee736a09cb711d5be87457b9875d1e26dab56c03ccdca61d8d",
+  "declared_utc": "2026-10-10T14:50:10.223442+00:00",
+  "runner": "macos-26",
+  "python": "3.13.3",
+  "numpy": "2.3.5",
+  "scipy": "1.16.3",
+  "threads": 1,
+  "inputs": "Exact hash-verified cached basis, calibration, population coefficients and operators from the frozen local run; no recomputation or recalibration.",
+  "baseline_probe": {
+    "index": 0,
+    "stage": "production_baseline",
+    "rank": 4096,
+    "T": "All 13 frozen baseline horizons through 4860",
+    "penalties": 97,
+    "reference": "production_baseline/P4096/rep_000.npz"
+  },
+  "paired_probe": {
+    "index": 0,
+    "stage": "rank_pilot",
+    "rank": 4096,
+    "baseline_T": "Frozen production horizons through 4860, a nested subset of the pilot grid",
+    "robustness_T": "All 12 frozen robustness horizons through 3240",
+    "penalties": 97,
+    "reference": "rank_pilot/P4096/rep_000.npz"
+  },
+  "comparison": {
+    "metrics": [
+      "sr",
+      "loss",
+      "empirical_complexity",
+      "coefficient_norm_squared"
+    ],
+    "rtol": 1e-08,
+    "atol": 1e-10,
+    "return_hashes": "Exact equality at matching horizons; exclude the pilot baseline terminal hash at 7290 when the reproduction stops at 4860.",
+    "maximum_production_normal_equation_error": 1e-08
+  },
+  "gate": "Both complete fitted-policy reproductions and their applicable history hashes must pass before remote production. These are operational numerical-equivalence tolerances; the scientific 5% approximation criteria remain unchanged.",
+  "input_transport_plan": {
+    "repository": "ENRICOBIGNOZZI/portfolio_learnability",
+    "release_tag": "rich6d-extended-inputs-e9f1f005be1a-v1",
+    "status": "not_created_or_uploaded",
+    "description": "A separate prerelease will hold the exact existing large numerical caches, with file sizes and SHA-256 hashes in a checked-in manifest. Do not add large basis/operator caches directly to Git. Download and verify them into an isolated temporary output directory on the standard macOS runner.",
+    "cache_files": "P4096 basis; baseline/N300/N1200 P4096 operators; baseline P512 reference operator. Existing calibration and population coefficient files remain canonical.",
+    "local_production": "Continues until the remote fitted-policy gate passes. Any later switch must preserve completed checkpoints and allocate distinct deterministic indices."
+  }
+}

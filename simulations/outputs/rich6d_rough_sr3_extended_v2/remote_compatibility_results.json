@@ -1,0 +1,147 @@
+{
+  "run_id": "38060881098",
+  "url": "https://github.com/ENRICOBIGNOZZI/portfolio_learnability/actions/runs/38060881098",
+  "commit": "4348003c86e1d2d1b05bd68c145088a1341fd813",
+  "retrieved_utc": "2026-10-10T14:50:10.222594+00:00",
+  "results": [
+    {
+      "baseline_T": 4860,
+      "baseline_hash_checks": {
+        "baseline": false,
+        "baseline_T1440": false,
+        "baseline_T3240": false
+      },
+      "baseline_hashes": {
+        "baseline": "1b0447e56546cef3631d13f20a4b650137481d66b9beaa031e38cb6880771144",
+        "baseline_T1440": "f22fed1bf11fd358273fefd66fcf5f22f0244d0fc559ff7a10b08123b533d006",
+        "baseline_T3240": "9ce598bd8b43b6fe3a77b8f611cf47a66dfed6bb70195b065843f087ddf420da"
+      },
+      "completed_utc": "2026-10-10T14:45:57.035507+00:00",
+      "elapsed_seconds": 4.696005884000002,
+      "host": {
+        "machine": "x86_64",
+        "numpy": "2.3.5",
+        "python": "3.13.3 (main, Apr  9 2025, 01:39:32) [GCC 13.3.0]",
+        "runner_label": "ubuntu-24.04",
+        "scipy": "1.16.3",
+        "system": "Linux"
+      },
+      "index": 0,
+      "paired_prefix_checks": {
+        "N1200": false,
+        "N300": false,
+        "baseline": false,
+        "rho000": false,
+        "rho075": false
+      },
+      "paired_prefix_hashes": {
+        "N1200": "e6761c17ca3e15197b3c20020c4d69fdb6f01dcd36e8b3247ce31bbb62e587bd",
+        "N300": "db23c6ec54091623f5398235a77f4b7a268121512eea27230c98dfe7df349df5",
+        "baseline": "a5964e7676e7baada29733bb176209bce1215165090533f3fc6360d0054e4943",
+        "rho000": "5e63684116f2d0c7de2648b529b119d1b00d33ef02ecc572c3060a4df8364256",
+        "rho075": "673f2de6b2c3df4cfc5f8a2c399a0bdee6a471ca7db23ea22e05923b745ae5e2"
+      },
+      "passed": false,
+      "prefix_T": 16,
+      "probe_source_sha256": "9e0f9a93ec291791fdffc020b3325b270558a55130dc5792a84b6664fde3219d",
+      "reference_sha256": "5b5e100fcca17abc54e7753a66f1f462fef4590e4ff6efe38824cb008ef31a5f",
+      "run_hash": "e9f1f005be1a58ee736a09cb711d5be87457b9875d1e26dab56c03ccdca61d8d",
+      "scope": "One complete baseline history and a 16-period paired prefix in all five economies; no fitted policies or remote production. A full paired fitted-policy reproduction is still required before remote production.",
+      "source_hashes_checked": true
+    },
+    {
+      "baseline_T": 4860,
+      "baseline_hash_checks": {
+        "baseline": true,
+        "baseline_T1440": true,
+        "baseline_T3240": true
+      },
+      "baseline_hashes": {
+        "baseline": "7b994bcd9df1451350ebe2f7ed12580d0a117e4c84341063e6ed9318cb81a774",
+        "baseline_T1440": "2d972388b58e1aaa6dff868090d516978e70167737bbc92931f0f0e0f852d98f",
+        "baseline_T3240": "1477c7152d82e2f370d5aa3ecae58d116a4ce2810cbde22dcbb7925cd0644e6c"
+      },
+      "completed_utc": "2026-10-10T14:46:03.200444+00:00",
+      "elapsed_seconds": 2.9567958750000116,
+      "host": {
+        "machine": "arm64",
+        "numpy": "2.3.5",
+        "python": "3.13.3 (v3.13.3:6280bb54784, Apr  8 2025, 10:47:54) [Clang 15.0.0 (clang-1500.3.9.4)]",
+        "runner_label": "macos-26",
+        "scipy": "1.16.3",
+        "system": "Darwin"
+      },
+      "index": 0,
+      "paired_prefix_checks": {
+        "N1200": true,
+        "N300": true,
+        "baseline": true,
+        "rho000": true,
+        "rho075": true
+      },
+      "paired_prefix_hashes": {
+        "N1200": "058dd69ebdedd1f64c425b7c8bd2366a00c42955bcbf5c765de3fd2bac40f9b4",
+        "N300": "0c524ef5183d6e1394f145408995ab64e0cc3937c32d128711bf3087e03ce1f5",
+        "baseline": "6b2473c4a71f48ffa87f9597b763c7a71f9417836b6295cc8b9df144739d9775",
+        "rho000": "faac1a0af3942bb12a0580e680f39b3c633a232a6c4ad9f3364dae17f7d95c48",
+        "rho075": "ba242d0dbb0fb8b5910fa59a3111a9dcba2b2c3fb4dff3c13e1c7f6a0219d8e4"
+      },
+      "passed": true,
+      "prefix_T": 16,
+      "probe_source_sha256": "9e0f9a93ec291791fdffc020b3325b270558a55130dc5792a84b6664fde3219d",
+      "reference_sha256": "5b5e100fcca17abc54e7753a66f1f462fef4590e4ff6efe38824cb008ef31a5f",
+      "run_hash": "e9f1f005be1a58ee736a09cb711d5be87457b9875d1e26dab56c03ccdca61d8d",
+      "scope": "One complete baseline history and a 16-period paired prefix in all five economies; no fitted policies or remote production. A full paired fitted-policy reproduction is still required before remote production.",
+      "source_hashes_checked": true
+    },
+    {
+      "baseline_T": 4860,
+      "baseline_hash_checks": {
+        "baseline": false,
+        "baseline_T1440": false,
+        "baseline_T3240": false
+      },
+      "baseline_hashes": {
+        "baseline": "ca38f7082eac3886dd4c2ce632aa2d8b1b2181b79d8f0c99b651d8318aadbb80",
+        "baseline_T1440": "3d2b6f094285e75d284c296212c1783944dd2e7a78f20f448d0e66404950af97",
+        "baseline_T3240": "73eb198b51a86e4cbad0ec2e8e607d6ef4d156c3fb944738d1f09cf66d4dfc2c"
+      },
+      "completed_utc": "2026-10-10T14:45:54.727398+00:00",
+      "elapsed_seconds": 3.755297503999998,
+      "host": {
+        "machine": "aarch64",
+        "numpy": "2.3.5",
+        "python": "3.13.3 (main, Apr  9 2025, 01:44:30) [GCC 13.3.0]",
+        "runner_label": "ubuntu-24.04-arm",
+        "scipy": "1.16.3",
+        "system": "Linux"
+      },
+      "index": 0,
+      "paired_prefix_checks": {
+        "N1200": false,
+        "N300": false,
+        "baseline": false,
+        "rho000": false,
+        "rho075": false
+      },
+      "paired_prefix_hashes": {
+        "N1200": "02551ab47eac2306320c71451d4df6b666d15dd5fb96041a070bfe26a1786c98",
+        "N300": "9d7620785943ac06bd103b86b8af281d787ab144671fbfb4dd7f85bdaf3a9a84",
+        "baseline": "cb5922f861ae9a3d775557d97a5079b77732714cef28d4d4bc664bbe72e5a82a",
+        "rho000": "84edfc30796c23c93451dbccea4360b787a3be48c64355831a46a4cbc37d2d8b",
+        "rho075": "02456c882c723768f7cf7e88aa73e7d28f19b2a3f796ea64e7419499995ebb1f"
+      },
+      "passed": false,
+      "prefix_T": 16,
+      "probe_source_sha256": "9e0f9a93ec291791fdffc020b3325b270558a55130dc5792a84b6664fde3219d",
+      "reference_sha256": "5b5e100fcca17abc54e7753a66f1f462fef4590e4ff6efe38824cb008ef31a5f",
+      "run_hash": "e9f1f005be1a58ee736a09cb711d5be87457b9875d1e26dab56c03ccdca61d8d",
+      "scope": "One complete baseline history and a 16-period paired prefix in all five economies; no fitted policies or remote production. A full paired fitted-policy reproduction is still required before remote production.",
+      "source_hashes_checked": true
+    }
+  ],
+  "eligible_for_fitted_policy_probe": [
+    "macos-26"
+  ],
+  "scope": "Host qualification only. No remote production has been run."
+}

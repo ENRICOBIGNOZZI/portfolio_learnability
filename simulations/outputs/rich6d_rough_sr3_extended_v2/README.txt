@@ -8,7 +8,7 @@ not artificially reset to 3. Persistence robustness preserves the population
 operator exactly.
 
 All 12 paired rank pilots and their audits are complete. The fixed-rank production
-protocol is frozen. The latest independent checkpoint audit verifies 48 baseline
+protocol is frozen. The latest independent checkpoint audit verifies 54 baseline
 replications and no completed production robustness batches. The study is NOT
 complete: all 300 paths in each economy, final summaries and all ten final figures
 remain required.
@@ -51,6 +51,13 @@ histories. The local probe passes. This is a host-compatibility diagnostic only:
 a complete paired fitted-policy reproduction is still required before any remote
 production. The probe code is simulations/extended/remote_compatibility.py; the
 manual workflow is .github/workflows/rich6d-compatibility.yml.
+The first remote compatibility run completed: macos-26 matches every checked
+history hash, whereas both Linux runners fail this exact compatibility gate.
+This does not claim that Linux arithmetic is economically incorrect; it excludes
+those hosts from this frozen bitwise history design. Full results and the workflow
+URL are in remote_compatibility_results.json. The next macOS fitted-policy check
+and its tolerances were declared before execution in remote_reproduction_plan.json.
+No remote production has been started.
 
 At the user's request, pip's regenerable download cache was purged, removing 14
 files (23.2 MB reported by pip). This frees disk space, not process RAM. Required
