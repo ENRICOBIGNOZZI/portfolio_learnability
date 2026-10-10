@@ -44,17 +44,29 @@
       "name": "rich6d-production_robustness-batch-5",
       "digest": "sha256:54db40de4d6674ca4eba5d4846cee6c7f8ac2274be8fa3fe50763cc214a5b0fc",
       "bytes": 2970852
+    },
+    {
+      "id": 11683940508,
+      "name": "rich6d-production_robustness-batch-9",
+      "digest": "sha256:09520f9b0e847ddb78f4ee426c2f0d5c86bc5d8341949078698636cdf2d59bac",
+      "bytes": 2970993
+    },
+    {
+      "id": 11683781468,
+      "name": "rich6d-production_robustness-batch-7",
+      "digest": "sha256:e2af9455d7145af671e76f43f6486df587cfe053a19bc8b30ef4ae65f7681864",
+      "bytes": 2970412
     }
   ],
   "verified_counts": {
     "baseline": 300,
-    "N300": 120,
-    "N1200": 120,
-    "rho000": 120,
-    "rho075": 120
+    "N300": 160,
+    "N1200": 160,
+    "rho000": 160,
+    "rho075": 160
   },
   "scope": "Import only after transfer validation and independent scientific audit. No final-study completion claim.",
-  "last_poll_utc": "2026-10-10T21:38:28.414176+00:00",
+  "last_poll_utc": "2026-10-10T21:47:21.602250+00:00",
   "remote_status": "queued",
   "remote_conclusion": "",
   "jobs": [
@@ -75,8 +87,8 @@
     },
     {
       "name": "production (7)",
-      "status": "in_progress",
-      "conclusion": ""
+      "status": "completed",
+      "conclusion": "success"
     },
     {
       "name": "production (3)",
@@ -90,8 +102,8 @@
     },
     {
       "name": "production (9)",
-      "status": "in_progress",
-      "conclusion": ""
+      "status": "completed",
+      "conclusion": "success"
     },
     {
       "name": "production (2)",
@@ -105,7 +117,7 @@
     },
     {
       "name": "production (12)",
-      "status": "queued",
+      "status": "in_progress",
       "conclusion": ""
     },
     {
@@ -115,7 +127,7 @@
     },
     {
       "name": "production (11)",
-      "status": "queued",
+      "status": "in_progress",
       "conclusion": ""
     },
     {
@@ -139,6 +151,6 @@
       "conclusion": ""
     }
   ],
-  "last_import_utc": "2026-10-10T21:38:42.063128+00:00",
-  "files_published_in_last_import": 40
+  "last_import_utc": "2026-10-10T21:46:19.581891+00:00",
+  "files_published_in_last_import": 80
 }
