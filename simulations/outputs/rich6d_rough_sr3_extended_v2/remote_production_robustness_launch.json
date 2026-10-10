@@ -1,0 +1,21 @@
+{
+  "run_id": 38075206545,
+  "url": "https://github.com/ENRICOBIGNOZZI/portfolio_learnability/actions/runs/38075206545",
+  "source_commit": "2eb27a92a2153e5c8bd249b3adda46404ba51b48",
+  "stage": "production_robustness",
+  "allocation_sha256": "a30b5e3f27126adc7056754c272b1122ceb68c12c53fd43f8f8effdfe99bccde",
+  "observed_utc": "2026-10-10T18:18:19.250453+00:00",
+  "status_at_observation": "queued",
+  "verified_baseline_replications": 300,
+  "assigned_remote_replication_indices": 300,
+  "environments_per_index": [
+    "N300",
+    "N1200",
+    "rho000",
+    "rho075"
+  ],
+  "total_batches": 15,
+  "maximum_parallel_jobs": 5,
+  "artifact_retention_days": 1,
+  "note": "Remote results count only after artifact retrieval and independent checkpoint audit."
+}

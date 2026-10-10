@@ -1,0 +1,22 @@
+{
+  "pid": 66359,
+  "caffeinate_pid": 66360,
+  "started_utc": "2026-10-10T18:18:19.250453+00:00",
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3",
+    "-u",
+    "-m",
+    "simulations.extended.remote_collect",
+    "--stage",
+    "production_robustness",
+    "--run-id",
+    "38075206545",
+    "--commit",
+    "2eb27a92a2153e5c8bd249b3adda46404ba51b48",
+    "--download-root",
+    "/tmp/rich6d-remote-38075206545"
+  ],
+  "log": "simulations/outputs/rich6d_rough_sr3_extended_v2/execution_logs/remote_collect_robustness_38075206545.log",
+  "collector_source_sha256": "6d79ba0673f021901a87c88596a34f6768ec318e5ec3d45f4ba1ea7b2ee72fe9",
+  "purpose": "Retrieve and independently audit completed artifacts from the frozen robustness workflow. Temporary idle-sleep prevention ends with the collector."
+}
