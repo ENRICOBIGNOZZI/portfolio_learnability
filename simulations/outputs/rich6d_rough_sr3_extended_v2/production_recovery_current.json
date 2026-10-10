@@ -1,42 +1,33 @@
 {
-  "started_utc": "20261010T125457Z",
-  "run_hash": "e9f1f005be1a58ee736a09cb711d5be87457b9875d1e26dab56c03ccdca61d8d",
-  "index": 28,
-  "scope": "One bounded baseline replication using unchanged production.execute; no full queue or additional parallel simulation worker.",
-  "observed_maximum_resident_bytes": 1106526208,
-  "required_combined_headroom_bytes": 1920028672,
-  "resource_rule": "Free disk plus already allocated free swap must cover 1.25 times observed peak resident memory plus a 512 MiB reserve; free disk itself must exceed 512 MiB.",
-  "samples": [
-    {
-      "free_disk_bytes": 1062846464,
-      "already_allocated_free_swap_bytes": 973078528,
-      "combined_bytes": 2035924992
-    },
-    {
-      "free_disk_bytes": 1070100480,
-      "already_allocated_free_swap_bytes": 875435130,
-      "combined_bytes": 1945535610
-    },
-    {
-      "free_disk_bytes": 1048535040,
-      "already_allocated_free_swap_bytes": 340986429,
-      "combined_bytes": 1389521469
-    }
+  "status": "production_confirmed_live",
+  "started_utc": "20261010T131944Z",
+  "pid": 28259,
+  "caffeinate_pid": 28260,
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3",
+    "-u",
+    "-m",
+    "simulations.extended.advance",
+    "--preflight-pid",
+    "38621"
   ],
-  "previous_supervisor_failure": {
-    "stage": "failed",
-    "error": "Command '['/Library/Frameworks/Python.framework/Versions/3.13/bin/python3', '-m', 'simulations.extended.production', '--workers', '1']' returned non-zero exit status 120.",
-    "traceback": "Traceback (most recent call last):\n  File \"/Users/enrico/Desktop/PHD/portfolio/paper_codice/simulations/extended/advance.py\", line 145, in main\n    execute('simulations.extended.production','--workers',workers)\n    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/enrico/Desktop/PHD/portfolio/paper_codice/simulations/extended/advance.py\", line 30, in execute\n    subprocess.run(command,check=True)\n    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^\n  File \"/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/subprocess.py\", line 577, in run\n    raise CalledProcessError(retcode, process.args,\n                             output=stdout, stderr=stderr)\nsubprocess.CalledProcessError: Command '['/Library/Frameworks/Python.framework/Versions/3.13/bin/python3', '-m', 'simulations.extended.production', '--workers', '1']' returned non-zero exit status 120.\n",
-    "updated_utc": "2026-10-10T11:47:02.349384+00:00"
-  },
-  "status": "not_launched_insufficient_resource_headroom",
-  "tested_resume_environment": {
-    "PYTHONDONTWRITEBYTECODE": "1",
-    "PYTHONPYCACHEPREFIX": "/tmp/rich6d_no_bytecode_cache",
+  "log": "simulations/outputs/rich6d_rough_sr3_extended_v2/execution_logs/recovery_20261010T131944Z.log",
+  "environment": {
     "VECLIB_MAXIMUM_THREADS": "1",
     "OPENBLAS_NUM_THREADS": "1",
     "OMP_NUM_THREADS": "1",
-    "PYTHONUNBUFFERED": "1"
+    "PYTHONUNBUFFERED": "1",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONPYCACHEPREFIX": "/tmp/rich6d_no_bytecode_cache"
   },
-  "resume_environment_validation": "Frozen scientific imports and hashes matched using the separate bytecode-cache prefix; no simulation started because the resource guard failed."
+  "disk_free_before_bytes": 8882626560,
+  "verified_baseline_checkpoints_before": 38,
+  "workers": 1,
+  "pip_cache_removed_bytes_approx": 23200000,
+  "previous_exit_status": 120,
+  "previous_exit_cause": "Undetermined; persistent file logging removes dependency on the tool output pipe.",
+  "confirmed_utc": "2026-10-10T13:20:17.595702+00:00",
+  "production_pid": 28384,
+  "source_hashes_verified_before_launch": true,
+  "reuse_confirmed_in_log": true
 }

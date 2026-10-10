@@ -1,6 +1,5 @@
 {
-  "stage": "failed",
-  "error": "Command '['/Library/Frameworks/Python.framework/Versions/3.13/bin/python3', '-m', 'simulations.extended.production', '--workers', '1']' returned non-zero exit status 120.",
-  "traceback": "Traceback (most recent call last):\n  File \"/Users/enrico/Desktop/PHD/portfolio/paper_codice/simulations/extended/advance.py\", line 145, in main\n    execute('simulations.extended.production','--workers',workers)\n    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/enrico/Desktop/PHD/portfolio/paper_codice/simulations/extended/advance.py\", line 30, in execute\n    subprocess.run(command,check=True)\n    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^\n  File \"/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/subprocess.py\", line 577, in run\n    raise CalledProcessError(retcode, process.args,\n                             output=stdout, stderr=stderr)\nsubprocess.CalledProcessError: Command '['/Library/Frameworks/Python.framework/Versions/3.13/bin/python3', '-m', 'simulations.extended.production', '--workers', '1']' returned non-zero exit status 120.\n",
-  "updated_utc": "2026-10-10T11:47:02.349384+00:00"
+  "stage": "production",
+  "workers": 1,
+  "updated_utc": "2026-10-10T13:19:50.492000+00:00"
 }

@@ -1,4 +1,4 @@
-EXTENDED ROUGH RICH6D STUDY — PARTIAL PRODUCTION, RESOURCE RECOVERY PENDING
+EXTENDED ROUGH RICH6D STUDY — PARTIAL PRODUCTION, SINGLE-WORKER RECOVERY ACTIVE
 
 Reference: rich6d_rough_sr3_annual_monthly_v1, commit 2d59c3324569.
 The reference economy keeps annualized optimal Sharpe 3, the existing factor
@@ -8,30 +8,29 @@ not artificially reset to 3. Persistence robustness preserves the population
 operator exactly.
 
 All 12 paired rank pilots and their audits are complete. The fixed-rank production
-protocol is frozen. There are 38 verified baseline checkpoints; the study is NOT
-complete. The previous production supervisor exited with status 120, and neither
-that supervisor nor the supplementary batch remains alive. The supplementary
-batch record now identifies its unfinished indices explicitly.
+protocol is frozen. Recovery resumed on 2026-10-10 with 38 verified baseline
+checkpoints; the study is NOT complete. The previous production supervisor exited
+with status 120, of undetermined cause. Its supplementary batch remains interrupted.
 
-A bounded single-replication recovery was prepared with persistent file logging,
-but was not launched: free disk and already allocated free swap did not provide
-a stable margin above 1.25 times the measured maximum baseline resident memory
-plus a 512 MiB reserve. production_recovery_current.json records all three resource
-readings and the prior failure. This is an operational resource guard, separate
-from the unchanged scientific 5% approximation gates. Small regenerable preview
-files were inspected but not deleted because their size would not resolve the
-resource shortage. No unrelated processes or artifacts were altered.
+After disk availability recovered to approximately 8.3 GiB, the full supervisor
+was restarted with one worker and persistent stdout/stderr file logging. The new
+supervisor and production child were confirmed alive, and the log confirms that
+existing checkpoints are being validated and reused. Missing deterministic indices
+will be computed under the unchanged protocol. production_recovery_current.json
+records the launch, process identifiers, log path and resource reading. The prior
+resource-blocked record remains available in commit 8e2a8b2.
 
-Until a new worker is confirmed live, the old production_status.json is a
-historical checkpoint counter, not evidence that production is running. Resume
-from the missing deterministic indices once resources permit; retain stdout and
-stderr in an execution log independent of the interactive tool console.
-The cloud-backed bytecode cache caused another import wait during recovery.
-Frozen scientific imports and hashes were successfully checked with
-PYTHONDONTWRITEBYTECODE=1 and a separate PYTHONPYCACHEPREFIX under /tmp. These
-process-local environment settings avoid the old bytecode cache without changing
-scientific sources. The tested resume environment is recorded in the recovery
-JSON; it has not yet been used to start another simulation.
+At the user's request, pip's regenerable download cache was purged, removing 14
+files (23.2 MB reported by pip). This frees disk space, not process RAM. Required
+simulation caches, code, data, completed results and unrelated jobs were preserved.
+The single-worker setting limits additional memory demand on the shared 8 GB host.
+
+Frozen scientific source hashes were verified before restart. Process-local
+PYTHONDONTWRITEBYTECODE=1 and a separate PYTHONPYCACHEPREFIX under /tmp bypass the
+cloud-backed bytecode cache that had stalled imports, without changing source.
+The recovery environment is recorded in the JSON. production_status.json counts
+checkpoints acknowledged by the current supervisor, including reused checkpoints;
+checkpoint_integrity.json records the most recent independent completed-file audit.
 The read-only checkpoint audit can be rerun during production with
   python3 -m simulations.extended.verify_checkpoints
 It writes checkpoint_integrity.json with the unique completed count by economy,
@@ -105,8 +104,9 @@ The primary supervisor will validate and reuse those checkpoints when it reaches
 them. Final summaries still require all 300 unique indices in every environment.
 A further single-replication probe at index 288 tested three concurrent workers.
 It completed successfully but took about 425 seconds, versus about 157-184
-seconds in the recent two-worker observations. Two total workers are retained;
+seconds in the recent two-worker observations. That phase retained two total workers;
 see production_three_worker_probe.json for timings and their operational limits.
+The current recovery uses one worker given the shared host workload.
 During this probe, a fresh Python import waited on a cloud-backed bytecode file
 that macOS had made dataless. Targeted local-download requests restored the cache
 and source without changing their contents. runtime_read_recovery.json records
