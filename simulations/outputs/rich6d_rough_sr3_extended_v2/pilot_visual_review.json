@@ -1,0 +1,26 @@
+{
+  "reviewed_utc": "2026-10-10T08:31:41.248811+00:00",
+  "scope": "All ten watermarked PNG previews using 12 actual pilot histories and the frozen production horizons; not final Monte Carlo figures.",
+  "run_hash": "e9f1f005be1a58ee736a09cb711d5be87457b9875d1e26dab56c03ccdca61d8d",
+  "actual_pilot_replications": 12,
+  "all_ten_previews_visually_inspected": true,
+  "scientific_sources_match_frozen_protocol": true,
+  "final_production_figure_approval": false,
+  "findings": "Legends and time-axis labels no longer overlap in the compact 7.2-inch three-panel figures. All panel labels, shared robustness legends, percentile fills, theoretical-choice stars and numerical-failure markings are legible. The additional T=2160 diagnostic curve is displayed.",
+  "renderer_sha256": "d690106c277fea317fea39a0791b3245d3430bdbaea08986e912cc6f61e95146",
+  "preview_builder_sha256": "0e9c7e42e6fb0df3eb53d6a81663473137c69af81cb0dcf92b3697503459d0ff",
+  "previews_sha256": {
+    "Figure0_economic_spectrum.png": "5b9bd2e158f3e9badc08b5abbed54d7256e5821b517309c68bac70245463d1c5",
+    "Figure1_learnability.png": "519750b256f8f74f9a7e0ea7da256cb3ae285cd0e0ac6732f6c1a05de3e4b823",
+    "Figure2_complexity.png": "73c5b8aa6be9bf7d548a8caec38164f8a9c1150055ee8df43d60cb6fe9df5afd",
+    "Figure3_sharpe_complexity.png": "57e779cdc885e54ef83e754f009ccb843fdb34fc9cd4376da6d8acf903b08fe0",
+    "FigureR1_N_learnability.png": "34c36da0d3ff68416bf332d1b7a8b7979ffa535a9f78c9554e93b8b209d95baf",
+    "FigureR2_rho_learnability.png": "95c09512e9cba905b99ebbd25acc7c94474d8206d2fa0dac4f2f94f545d3b45c",
+    "FigureR3_N_complexity.png": "c104962b5de9a3e8b5e6cfc5a7c438ac03872bf69f64cdf6f25bc05c96cb3941",
+    "FigureR4_rho_complexity.png": "12cd97d7da5315d4d9d5532dc882c6fa0e11e9f2e6be1952028631e017eb6116",
+    "FigureR5_N_sharpe_complexity.png": "b0d1a5c4414bb096cbb94789815c303bc55af20fd4b7af9c504b614383cffd7c",
+    "FigureR6_rho_sharpe_complexity.png": "d7c6bc357afa519222044f4ba04767f05cf69b8c5fdc212dd9866f96192d61b3"
+  },
+  "reproduction_command": "python3 -m simulations.extended.preview_pilot --count 12",
+  "final_review_requirement": "Repeat visual inspection on all ten PNGs and vector PDFs after verified 300-replication production."
+}

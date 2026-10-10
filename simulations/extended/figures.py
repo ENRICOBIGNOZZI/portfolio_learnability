@@ -58,7 +58,7 @@ class Figures:
                 COLORS[1] if name in ('N300','rho075') else COLORS[2] for name in names]
 
     def axes(self,n):
-        fig,axes=plt.subplots(1,n,figsize=(3.5*n,3.0),layout='constrained')
+        fig,axes=plt.subplots(1,n,figsize=(min(3.5*n,7.2),3.0),layout='constrained')
         axes=np.atleast_1d(axes)
         for ax in axes:
             ax.grid(True,which='major',color='#dddddd',lw=.45,alpha=.6)
@@ -78,11 +78,11 @@ class Figures:
             ax.set_yscale('log')
         return s
 
-    def time_axis(self,ax):
+    def time_axis(self,ax,compact=False):
         ax.set_xscale('log');ax.set_xlabel(r'Training history $T$')
         maximum=max(float(np.max(line.get_xdata())) for line in ax.lines)
         ticks=[t for t in [60,240,720] if t<=maximum]
-        if maximum>=4860:
+        if maximum>=4860 and not compact:
             ticks.append(2160)
         if maximum>720:
             ticks.append(maximum)
@@ -114,7 +114,7 @@ class Figures:
         fig,axes=self.axes(3)
         values=self.pop['baseline']['eigenvalues'][::-1]
         j=np.arange(1,len(values)+1)
-        axes[0].loglog(j,values,color=COLORS[0],label='Managed-payoff spectrum')
+        axes[0].loglog(j,values,color=COLORS[0],label='Managed payoffs')
         axes[0].loglog(j,values[63]*(j/64.)**(-1.5),'--',color='#777777',label=r'$j^{-1.5}$ order reference')
         axes[0].set(xlabel='Eigenvalue rank',ylabel=r'$\mu_j$',title='(a) Economic spectrum')
         for T in [60,240,720,1440,self.protocol['baseline_T'][-1]]:
@@ -125,7 +125,7 @@ class Figures:
             axes[2].semilogx(j,np.cumsum(h),color=color,label=fr'$T={T}$')
         axes[1].set(xlabel='Eigenvalue rank',ylabel=r'$\mu_j/(\mu_j+\lambda_T)$',title='(b) Shrinkage filters')
         axes[2].set(xlabel='Eigenvalue rank',ylabel='Cumulative effective complexity',title='(c) Complexity accumulation')
-        axes[0].legend(frameon=False);axes[1].legend(frameon=False,ncol=1)
+        axes[0].legend(frameon=False,loc='lower left');axes[1].legend(frameon=False,ncol=1)
         self.save(fig,'Figure0_economic_spectrum',
             'Population managed-payoff eigenvalues, shrinkage filters and cumulative complexity use one fixed independently evaluated spectrum. The polynomial reference is anchored at rank 64 and is an order comparison, not a fitted spectral law. Curves are unsmoothed. Basis/quadrature and component-operator comparisons are in the spectral audit tables; the finite rank cannot establish an infinite-dimensional tail exponent.')
 
@@ -158,13 +158,14 @@ class Figures:
         fig,axes=self.axes(3)
         p=self.pop['baseline'];T=p['T'];C=p['complexity']
         axes[0].loglog(T,p['penalties'],color=COLORS[0],label=r'$aT^{-0.6}$')
-        axes[1].loglog(T,C,color=COLORS[0],label='Population complexity')
+        axes[1].loglog(T,C,color=COLORS[0],label='Population')
         axes[1].loglog(T,C[0]*(T/T[0])**.4,'--',color='#777777',label=r'$T^{0.4}$ reference')
-        axes[2].loglog(T,C/T,color=COLORS[0],label='Population relative complexity')
+        axes[2].loglog(T,C/T,color=COLORS[0],label='Population')
         axes[2].loglog(T,(C[0]/T[0])*(T/T[0])**(-.6),'--',color='#777777',label=r'$T^{-0.6}$ reference')
         for k,(title,y) in enumerate([('(a) Prescribed regularization',r'$\lambda_T$'),
              ('(b) Effective complexity',r'$\mathcal{C}(\lambda_T)$'),('(c) Relative complexity',r'$\mathcal{C}(\lambda_T)/T$')]):
-            axes[k].set(title=title,ylabel=y);self.time_axis(axes[k]);axes[k].legend(frameon=False)
+            axes[k].set(title=title,ylabel=y);self.time_axis(axes[k],compact=True)
+            axes[k].legend(frameon=False,loc='upper left' if k==1 else 'upper right')
             self.quantitative_log_ticks(axes[k])
         self.save(fig,'Figure2_complexity',
             'Prescribed penalties and deterministic population complexity along the fixed theory-scaled path. There are no Monte Carlo bands or point markers on deterministic curves. Power references are anchored at the first horizon. Exact local logarithmic elasticities, finite-difference verification, all predeclared window slopes and rank/seed sensitivity are tabulated; a window regression slope and a local elasticity are distinct quantities.')
