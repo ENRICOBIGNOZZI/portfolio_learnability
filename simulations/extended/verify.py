@@ -10,6 +10,7 @@ from simulations.extended.design import OUTPUT,ROOT,REFERENCE,ENVIRONMENTS,BASE_
 from simulations.extended.freeze import science_hashes
 from simulations.extended.statistics import gap_slopes
 from simulations.extended.population import spectral_path
+from simulations.extended.verify_summaries import verify as verify_all_summaries
 from simulations.provenance import digest,file_hash,json_write,utc_now
 
 FIGURES=['Figure0_economic_spectrum','Figure1_learnability','Figure2_complexity',
@@ -97,12 +98,14 @@ def verify(require_figures=True):
         with np.load(OUTPUT/'population'/'baseline_theory.npz') as base,np.load(OUTPUT/'population'/f'{name}_theory.npz') as variant:
             np.testing.assert_array_equal(base['eigenvalues'],variant['eigenvalues'])
             np.testing.assert_array_equal(base['complexity'][:len(variant['T'])],variant['complexity'])
+    complete_summary_audit=verify_all_summaries()
     if require_figures:
         for suffix in ('png','pdf'):
             paths=list((OUTPUT/'figures').glob('*.'+suffix))
             assert sorted(p.stem for p in paths)==sorted(FIGURES)
             assert all(p.stat().st_size>10000 for p in paths)
     result=dict(passed=True,run_hash=protocol['run_hash'],checks=checks,
+        complete_summary_audit=complete_summary_audit,
         expected_total_economic_replications=1500,ten_figures_present=require_figures,
         visual_review='Must be recorded separately after inspecting the actual rendered images.',
         numerical_resolution='See production_resolution.csv; passing this verifier does not override failed 5% approximation gates.',

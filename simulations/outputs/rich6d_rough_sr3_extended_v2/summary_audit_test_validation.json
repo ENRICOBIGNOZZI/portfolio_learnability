@@ -1,0 +1,18 @@
+{
+  "utc": "2026-10-10T15:50:47.360293+00:00",
+  "command": "python3 -m pytest -q tests/test_extended_summary_integrity.py",
+  "result": "3 passed in 16.49s",
+  "fixture_scope": "Synthetic statistical fixtures in temporary test directories; these are not production results.",
+  "coverage": {
+    "full_penalty_rows": 35502,
+    "theory_rows": 549,
+    "paired_rows": 144,
+    "slope_rows": 100
+  },
+  "negative_checks": [
+    "Altered non-theory diagnostic percentile rejected",
+    "Diagonal-only slope covariance calculation rejected",
+    "Altered paired difference rejected"
+  ],
+  "production_audit_status": "Pending all 300 replications in every environment."
+}
