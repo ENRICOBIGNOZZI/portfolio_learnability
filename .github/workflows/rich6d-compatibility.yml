@@ -1,0 +1,41 @@
+name: Frozen Rich6D host compatibility
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  economic-history-compatibility:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-24.04, ubuntu-24.04-arm, macos-26]
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 20
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      VECLIB_MAXIMUM_THREADS: '1'
+      PYTHONDONTWRITEBYTECODE: '1'
+      RICH6D_RUNNER_LABEL: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /kernels.py
+            /simulations/__init__.py
+            /simulations/provenance.py
+            /simulations/run_rough.py
+            /simulations/dgp/
+            /simulations/estimator/
+            /simulations/extended/
+            /simulations/outputs/rich6d_rough_sr3_annual_monthly_v1/population.json
+            /simulations/outputs/rich6d_rough_sr3_extended_v2/protocol.json
+            /simulations/outputs/rich6d_rough_sr3_extended_v2/remote_compatibility_reference.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13.3'
+      - name: Install the exact scientific dependency versions used locally
+        run: python -m pip install numpy==2.3.5 scipy==1.16.3
+      - name: Check frozen sources and canonical economic-history hashes
+        run: python -m simulations.extended.remote_compatibility --report /tmp/rich6d-host-compatibility.json

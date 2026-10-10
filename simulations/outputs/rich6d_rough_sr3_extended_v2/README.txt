@@ -8,7 +8,7 @@ not artificially reset to 3. Persistence robustness preserves the population
 operator exactly.
 
 All 12 paired rank pilots and their audits are complete. The fixed-rank production
-protocol is frozen. The latest independent checkpoint audit verifies 46 baseline
+protocol is frozen. The latest independent checkpoint audit verifies 48 baseline
 replications and no completed production robustness batches. The study is NOT
 complete: all 300 paths in each economy, final summaries and all ten final figures
 remain required.
@@ -41,6 +41,16 @@ continues with one worker. production_after_checkpoint_stop.json records whether
 this stop is still pending or has occurred; its launch record preserves the exact
 watcher source. All remaining indices stay in the primary deterministic queue.
 This changes execution concurrency only, not the scientific protocol.
+
+The supplementary stop completed after saving index 286; the primary supervisor
+continues alone. A manual GitHub Actions compatibility workflow now checks the
+frozen source hashes, one full baseline economic history and a sixteen-period
+paired prefix in all five economies on standard Linux and macOS runners. Its
+canonical reference derives from the audited baseline index 0 and local paired
+histories. The local probe passes. This is a host-compatibility diagnostic only:
+a complete paired fitted-policy reproduction is still required before any remote
+production. The probe code is simulations/extended/remote_compatibility.py; the
+manual workflow is .github/workflows/rich6d-compatibility.yml.
 
 At the user's request, pip's regenerable download cache was purged, removing 14
 files (23.2 MB reported by pip). This frees disk space, not process RAM. Required

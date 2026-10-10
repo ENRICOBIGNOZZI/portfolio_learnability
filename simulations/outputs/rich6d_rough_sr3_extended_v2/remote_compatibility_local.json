@@ -1,0 +1,45 @@
+{
+  "run_hash": "e9f1f005be1a58ee736a09cb711d5be87457b9875d1e26dab56c03ccdca61d8d",
+  "source_hashes_checked": true,
+  "reference_sha256": "5b5e100fcca17abc54e7753a66f1f462fef4590e4ff6efe38824cb008ef31a5f",
+  "probe_source_sha256": "9e0f9a93ec291791fdffc020b3325b270558a55130dc5792a84b6664fde3219d",
+  "host": {
+    "system": "Darwin",
+    "machine": "arm64",
+    "python": "3.13.3 (v3.13.3:6280bb54784, Apr  8 2025, 10:47:54) [Clang 15.0.0 (clang-1500.3.9.4)]",
+    "numpy": "2.3.5",
+    "scipy": "1.16.3",
+    "runner_label": "local"
+  },
+  "index": 0,
+  "baseline_T": 4860,
+  "prefix_T": 16,
+  "baseline_hashes": {
+    "baseline_T1440": "2d972388b58e1aaa6dff868090d516978e70167737bbc92931f0f0e0f852d98f",
+    "baseline_T3240": "1477c7152d82e2f370d5aa3ecae58d116a4ce2810cbde22dcbb7925cd0644e6c",
+    "baseline": "7b994bcd9df1451350ebe2f7ed12580d0a117e4c84341063e6ed9318cb81a774"
+  },
+  "paired_prefix_hashes": {
+    "baseline": "6b2473c4a71f48ffa87f9597b763c7a71f9417836b6295cc8b9df144739d9775",
+    "N300": "0c524ef5183d6e1394f145408995ab64e0cc3937c32d128711bf3087e03ce1f5",
+    "N1200": "058dd69ebdedd1f64c425b7c8bd2366a00c42955bcbf5c765de3fd2bac40f9b4",
+    "rho000": "faac1a0af3942bb12a0580e680f39b3c633a232a6c4ad9f3364dae17f7d95c48",
+    "rho075": "ba242d0dbb0fb8b5910fa59a3111a9dcba2b2c3fb4dff3c13e1c7f6a0219d8e4"
+  },
+  "baseline_hash_checks": {
+    "baseline_T1440": true,
+    "baseline_T3240": true,
+    "baseline": true
+  },
+  "paired_prefix_checks": {
+    "baseline": true,
+    "N300": true,
+    "N1200": true,
+    "rho000": true,
+    "rho075": true
+  },
+  "passed": true,
+  "elapsed_seconds": 6.99663570796838,
+  "completed_utc": "2026-10-10T14:17:43.487767+00:00",
+  "scope": "One complete baseline history and a 16-period paired prefix in all five economies; no fitted policies or remote production. A full paired fitted-policy reproduction is still required before remote production."
+}

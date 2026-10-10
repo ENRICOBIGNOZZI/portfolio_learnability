@@ -1,9 +1,13 @@
 {
-  "status": "waiting_for_completed_checkpoint",
+  "status": "stopped_after_checkpoint_saved",
   "watcher_pid": 47332,
   "target_pid": 39867,
   "target_index": 286,
   "started_utc": "2026-10-10T14:06:31.699052+00:00",
   "reason": "Disk reserve fell from about 8 GiB to about 4 GiB while shared-host runtimes lengthened. Return to one production worker after preserving the current supplement result.",
-  "scientific_protocol_unchanged": true
+  "scientific_protocol_unchanged": true,
+  "checkpoint_sha256": "fc64c58befb19428d7b6a7d5e09a06f05985b6028e1820d96880a9cdd4e1c5d8",
+  "checkpoint_completed_utc": "2026-10-10T14:12:30.680142+00:00",
+  "finished_utc": "2026-10-10T14:12:31.325078+00:00",
+  "remaining_total_production_workers": 1
 }

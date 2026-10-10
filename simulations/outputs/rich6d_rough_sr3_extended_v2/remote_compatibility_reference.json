@@ -1,0 +1,21 @@
+{
+  "run_hash": "e9f1f005be1a58ee736a09cb711d5be87457b9875d1e26dab56c03ccdca61d8d",
+  "index": 0,
+  "training_seed": 3976904405,
+  "baseline_T": 4860,
+  "prefix_T": 16,
+  "checkpoint_sha256": "cc39bee446e4a4a09ec2a3174e44e9873f8ccdb70d06de06d8bf92d0e5d532f3",
+  "created_utc": "2026-10-10T14:17:36.417605+00:00",
+  "baseline_hashes": {
+    "baseline_T1440": "2d972388b58e1aaa6dff868090d516978e70167737bbc92931f0f0e0f852d98f",
+    "baseline_T3240": "1477c7152d82e2f370d5aa3ecae58d116a4ce2810cbde22dcbb7925cd0644e6c",
+    "baseline": "7b994bcd9df1451350ebe2f7ed12580d0a117e4c84341063e6ed9318cb81a774"
+  },
+  "paired_prefix_hashes": {
+    "baseline": "6b2473c4a71f48ffa87f9597b763c7a71f9417836b6295cc8b9df144739d9775",
+    "N300": "0c524ef5183d6e1394f145408995ab64e0cc3937c32d128711bf3087e03ce1f5",
+    "N1200": "058dd69ebdedd1f64c425b7c8bd2366a00c42955bcbf5c765de3fd2bac40f9b4",
+    "rho000": "faac1a0af3942bb12a0580e680f39b3c633a232a6c4ad9f3364dae17f7d95c48",
+    "rho075": "ba242d0dbb0fb8b5910fa59a3111a9dcba2b2c3fb4dff3c13e1c7f6a0219d8e4"
+  }
+}
