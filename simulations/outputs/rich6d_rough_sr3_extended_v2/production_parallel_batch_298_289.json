@@ -17,13 +17,14 @@
     298,
     297,
     296,
-    295
+    295,
+    294
   ],
   "started_utc": "2026-10-10T09:02:43.115861+00:00",
   "primary_supervisor_pid": 95132,
   "maximum_additional_workers": 1,
   "scope": "Bounded execution batch of existing production.execute with unchanged frozen protocol; scientific replication count remains 300.",
   "status": "running",
-  "current_index": 294,
-  "updated_utc": "2026-10-10T09:37:08.007349+00:00"
+  "current_index": 293,
+  "updated_utc": "2026-10-10T09:43:35.163589+00:00"
 }
