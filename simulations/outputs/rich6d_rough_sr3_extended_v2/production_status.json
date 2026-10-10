@@ -1,9 +1,8 @@
 {
-  "stage": "production_baseline",
-  "completed": 45,
+  "stage": "remote_baseline_allocation_prepared",
+  "completed": 68,
   "total": 300,
-  "last_index": 44,
-  "elapsed_seconds": 5073.967114375031,
-  "updated_utc": "2026-10-10T15:04:20.329580+00:00",
+  "remote_pending": 232,
+  "updated_utc": "2026-10-10T15:40:48.391150+00:00",
   "run_hash": "e9f1f005be1a58ee736a09cb711d5be87457b9875d1e26dab56c03ccdca61d8d"
 }

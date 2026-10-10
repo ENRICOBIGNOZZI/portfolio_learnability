@@ -1,0 +1,233 @@
+{
+  "run_id": 38063499345,
+  "url": "https://github.com/ENRICOBIGNOZZI/portfolio_learnability/actions/runs/38063499345",
+  "job_id": 114246347237,
+  "job_conclusion": "success",
+  "commit": "6cc45564e9a520f3bc9e57d368d93e676a430905",
+  "recorded_utc": "2026-10-10T15:37:15.853419+00:00",
+  "log_sha256": "ed4a6082a20283d7c13daffd5b2d51faeac55d2c77f3b1e872fedd32686fb791",
+  "result": {
+    "baseline": {
+      "additional_hashes_without_saved_reference": [],
+      "computed_sha256": "819f445d632f1f6f8b89b1c1d01a9997a7e6af3e0b008527a85ee29503a23b5a",
+      "history_hash_checks": {
+        "baseline": true,
+        "baseline_T1440": true,
+        "baseline_T3240": true
+      },
+      "maximum_normal_equation_error": 1.904523766341551e-14,
+      "metric_checks": [
+        {
+          "environment": "baseline",
+          "maximum_absolute_difference": 3.6151415194751735e-11,
+          "maximum_tolerance_fraction": 0.010655134509644457,
+          "metric": "sr",
+          "passed": true
+        },
+        {
+          "environment": "baseline",
+          "maximum_absolute_difference": 5.702327499079729e-11,
+          "maximum_tolerance_fraction": 0.002175057707872572,
+          "metric": "loss",
+          "passed": true
+        },
+        {
+          "environment": "baseline",
+          "maximum_absolute_difference": 4.783942131325603e-10,
+          "maximum_tolerance_fraction": 1.628808228709316e-05,
+          "metric": "empirical_complexity",
+          "passed": true
+        },
+        {
+          "environment": "baseline",
+          "maximum_absolute_difference": 1.027313232421875,
+          "maximum_tolerance_fraction": 0.004116420726628039,
+          "metric": "coefficient_norm_squared",
+          "passed": true
+        }
+      ],
+      "normal_equation_check_applicable": true,
+      "passed": true,
+      "reference": "simulations/outputs/rich6d_rough_sr3_extended_v2/production_baseline/P4096/rep_000.npz",
+      "reference_sha256": "cc39bee446e4a4a09ec2a3174e44e9873f8ccdb70d06de06d8bf92d0e5d532f3"
+    },
+    "completed_utc": "2026-10-10T15:36:20.066966+00:00",
+    "elapsed_seconds": 626.941866375,
+    "input_files_verified": 5,
+    "input_manifest_sha256": "719461f4270ad15320fcbb51d66ea576e8bf138ddb0737a9d603244aae39977b",
+    "paired": {
+      "additional_hashes_without_saved_reference": [
+        "N1200_T3240",
+        "N300_T3240",
+        "baseline_T3240",
+        "rho000_T3240",
+        "rho075_T3240"
+      ],
+      "computed_sha256": "0d8dbf4bc44f30cf8575e86aad477035f19f822e8b81ac67df2fe3806c73a594",
+      "history_hash_checks": {
+        "N1200": true,
+        "N1200_T1440": true,
+        "N300": true,
+        "N300_T1440": true,
+        "baseline_T1440": true,
+        "rho000": true,
+        "rho000_T1440": true,
+        "rho075": true,
+        "rho075_T1440": true
+      },
+      "maximum_normal_equation_error": 0.0,
+      "metric_checks": [
+        {
+          "environment": "baseline",
+          "maximum_absolute_difference": 2.93659541128477e-11,
+          "maximum_tolerance_fraction": 0.008846112126978414,
+          "metric": "sr",
+          "passed": true
+        },
+        {
+          "environment": "baseline",
+          "maximum_absolute_difference": 5.3003379463234523e-11,
+          "maximum_tolerance_fraction": 0.002354882381760338,
+          "metric": "loss",
+          "passed": true
+        },
+        {
+          "environment": "baseline",
+          "maximum_absolute_difference": 1.3596945791505277e-09,
+          "maximum_tolerance_fraction": 3.610731116750769e-05,
+          "metric": "empirical_complexity",
+          "passed": true
+        },
+        {
+          "environment": "baseline",
+          "maximum_absolute_difference": 0.2165241241455078,
+          "maximum_tolerance_fraction": 0.0016680501676845704,
+          "metric": "coefficient_norm_squared",
+          "passed": true
+        },
+        {
+          "environment": "N300",
+          "maximum_absolute_difference": 3.157435424228083e-11,
+          "maximum_tolerance_fraction": 0.0108505413602717,
+          "metric": "sr",
+          "passed": true
+        },
+        {
+          "environment": "N300",
+          "maximum_absolute_difference": 2.941291654678935e-11,
+          "maximum_tolerance_fraction": 0.000978740156924218,
+          "metric": "loss",
+          "passed": true
+        },
+        {
+          "environment": "N300",
+          "maximum_absolute_difference": 2.8194335754960775e-11,
+          "maximum_tolerance_fraction": 1.6175196591117546e-06,
+          "metric": "empirical_complexity",
+          "passed": true
+        },
+        {
+          "environment": "N300",
+          "maximum_absolute_difference": 0.1779804229736328,
+          "maximum_tolerance_fraction": 0.0013482600565282617,
+          "metric": "coefficient_norm_squared",
+          "passed": true
+        },
+        {
+          "environment": "N1200",
+          "maximum_absolute_difference": 8.559236652772029e-11,
+          "maximum_tolerance_fraction": 0.023742710583101737,
+          "metric": "sr",
+          "passed": true
+        },
+        {
+          "environment": "N1200",
+          "maximum_absolute_difference": 1.9733104039687532e-11,
+          "maximum_tolerance_fraction": 0.0009172891268732081,
+          "metric": "loss",
+          "passed": true
+        },
+        {
+          "environment": "N1200",
+          "maximum_absolute_difference": 6.589289114344865e-10,
+          "maximum_tolerance_fraction": 2.3145961885614913e-05,
+          "metric": "empirical_complexity",
+          "passed": true
+        },
+        {
+          "environment": "N1200",
+          "maximum_absolute_difference": 0.37542724609375,
+          "maximum_tolerance_fraction": 0.0014818559471984662,
+          "metric": "coefficient_norm_squared",
+          "passed": true
+        },
+        {
+          "environment": "rho000",
+          "maximum_absolute_difference": 7.913053545749449e-11,
+          "maximum_tolerance_fraction": 0.024700906697244118,
+          "metric": "sr",
+          "passed": true
+        },
+        {
+          "environment": "rho000",
+          "maximum_absolute_difference": 9.559109059864568e-11,
+          "maximum_tolerance_fraction": 0.00415507400930238,
+          "metric": "loss",
+          "passed": true
+        },
+        {
+          "environment": "rho000",
+          "maximum_absolute_difference": 5.911715561524034e-11,
+          "maximum_tolerance_fraction": 2.6066909356793363e-06,
+          "metric": "empirical_complexity",
+          "passed": true
+        },
+        {
+          "environment": "rho000",
+          "maximum_absolute_difference": 0.046230316162109375,
+          "maximum_tolerance_fraction": 0.000400940832746199,
+          "metric": "coefficient_norm_squared",
+          "passed": true
+        },
+        {
+          "environment": "rho075",
+          "maximum_absolute_difference": 1.0218492718649941e-10,
+          "maximum_tolerance_fraction": 0.030371087150789143,
+          "metric": "sr",
+          "passed": true
+        },
+        {
+          "environment": "rho075",
+          "maximum_absolute_difference": 4.9290793668888e-11,
+          "maximum_tolerance_fraction": 0.002029856387926757,
+          "metric": "loss",
+          "passed": true
+        },
+        {
+          "environment": "rho075",
+          "maximum_absolute_difference": 1.0550138540565968e-10,
+          "maximum_tolerance_fraction": 3.847344724531986e-06,
+          "metric": "empirical_complexity",
+          "passed": true
+        },
+        {
+          "environment": "rho075",
+          "maximum_absolute_difference": 0.5314407348632812,
+          "maximum_tolerance_fraction": 0.0025741264449863667,
+          "metric": "coefficient_norm_squared",
+          "passed": true
+        }
+      ],
+      "normal_equation_check_applicable": false,
+      "passed": true,
+      "reference": "simulations/outputs/rich6d_rough_sr3_extended_v2/rank_pilot/P4096/rep_000.npz",
+      "reference_sha256": "b3d29ed1e669613d8a218e18bb6c11cf866b87eb9c02d81542a5c3222745622f"
+    },
+    "passed": true,
+    "plan_sha256": "f0b81eaee66b9f05097a55d536600b76fdb5de744ff3b56e241f3d1f54b25cba",
+    "run_hash": "e9f1f005be1a58ee736a09cb711d5be87457b9875d1e26dab56c03ccdca61d8d",
+    "runner": "macos-26",
+    "scope": "Operational fitted-policy equivalence gate only; no new production indices and no change to the scientific 5% approximation thresholds.",
+    "source_hashes_checked": true
+  }
+}

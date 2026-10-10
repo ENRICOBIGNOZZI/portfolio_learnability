@@ -1,0 +1,11 @@
+{
+  "observed_utc": "2026-10-10T15:40:48.391150+00:00",
+  "expected_controlled_termination": true,
+  "local_advance_status": {
+    "stage": "failed",
+    "error": "Command '['/Library/Frameworks/Python.framework/Versions/3.13/bin/python3', '-m', 'simulations.extended.production', '--workers', '1']' died with <Signals.SIGTERM: 15>.",
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/enrico/Desktop/PHD/portfolio/paper_codice/simulations/extended/advance.py\", line 145, in main\n    execute('simulations.extended.production','--workers',workers)\n    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/enrico/Desktop/PHD/portfolio/paper_codice/simulations/extended/advance.py\", line 30, in execute\n    subprocess.run(command,check=True)\n    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^\n  File \"/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/subprocess.py\", line 577, in run\n    raise CalledProcessError(retcode, process.args,\n                             output=stdout, stderr=stderr)\nsubprocess.CalledProcessError: Command '['/Library/Frameworks/Python.framework/Versions/3.13/bin/python3', '-m', 'simulations.extended.production', '--workers', '1']' died with <Signals.SIGTERM: 15>.\n",
+    "updated_utc": "2026-10-10T15:39:40.239404+00:00"
+  },
+  "handoff_record": "remote_local_handoff.json"
+}
