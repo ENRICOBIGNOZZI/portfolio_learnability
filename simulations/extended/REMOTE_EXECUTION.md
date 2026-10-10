@@ -32,6 +32,9 @@ recalibrate these inputs.
    consecutive batch IDs with disjoint missing indices. Completed and assigned
    indices together must equal exactly 0 through 299. Assign by index and
    operational resource limits; never select indices using outcomes.
+   `python -m simulations.extended.remote_allocate --stage production_baseline`
+   performs the admission checks and writes the declaration from the audited
+   missing-index set. It refuses to overwrite an existing allocation.
 4. Commit and push the allocation, then dispatch `rich6d-production.yml` with
    `stage=production_baseline`. The workflow uses at most five standard macOS
    runners and preserves completed checkpoints even if a batch fails.

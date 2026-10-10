@@ -4,6 +4,7 @@ import copy
 import pytest
 
 from simulations.extended.remote_batch import validate_allocation
+from simulations.extended.remote_allocate import balanced_batches
 
 
 def allocation():
@@ -22,3 +23,13 @@ def test_missing_duplicate_out_of_range_or_noninteger_index_is_rejected(indices)
     bad['batches'][1]['indices'] = indices
     with pytest.raises(ValueError):
         validate_allocation(bad, dict(run_hash='frozen', replications=6), 'production_baseline')
+
+
+@pytest.mark.parametrize('missing', [[], [2], list(range(234)), list(range(300))])
+def test_balancing_preserves_every_index_and_limits_batch_size(missing):
+    batches = balanced_batches(missing, maximum_size=20)
+    assert [i for batch in batches for i in batch['indices']] == missing
+    sizes = [len(batch['indices']) for batch in batches]
+    assert all(1 <= n <= 20 for n in sizes)
+    if sizes:
+        assert max(sizes) - min(sizes) <= 1

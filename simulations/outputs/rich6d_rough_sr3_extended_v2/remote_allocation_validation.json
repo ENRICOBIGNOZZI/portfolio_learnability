@@ -1,0 +1,6 @@
+{
+  "utc": "2026-10-10T15:29:50.461565+00:00",
+  "command": "python3 -m pytest -q tests/test_remote_allocation.py",
+  "result": "9 passed in 8.21s",
+  "scope": "Exact index coverage, rejection of missing/duplicate/noninteger indices, balanced bounded batches for actual-size and edge-case queues."
+}
