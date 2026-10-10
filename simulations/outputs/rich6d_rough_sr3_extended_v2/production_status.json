@@ -1,9 +1,9 @@
 {
   "stage": "production_baseline",
-  "completed": 6,
+  "completed": 29,
   "total": 300,
-  "last_index": 5,
-  "elapsed_seconds": 29.573165874986444,
-  "updated_utc": "2026-10-10T13:20:24.686559+00:00",
+  "last_index": 28,
+  "elapsed_seconds": 485.467732042016,
+  "updated_utc": "2026-10-10T13:28:00.593335+00:00",
   "run_hash": "e9f1f005be1a58ee736a09cb711d5be87457b9875d1e26dab56c03ccdca61d8d"
 }

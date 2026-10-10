@@ -1,10 +1,10 @@
 {
   "run_hash": "e9f1f005be1a58ee736a09cb711d5be87457b9875d1e26dab56c03ccdca61d8d",
-  "verified_utc": "2026-10-10T12:50:31.677683+00:00",
+  "verified_utc": "2026-10-10T13:28:13.980562+00:00",
   "scope": "Integrity of completed checkpoints only; no claim about study completion, numerical resolution, final summaries or figures.",
   "completed_checkpoint_checks_passed": true,
   "counts": {
-    "baseline": 38,
+    "baseline": 39,
     "N300": 0,
     "N1200": 0,
     "rho000": 0,
@@ -397,6 +397,20 @@
       "stage": "production_baseline",
       "sha256": "d1286cfc6b882319e3034abc9d9ee584ff3a2b9375ff315fe417ce2cc4ec785f",
       "maximum_normal_equation_error": 3.18531326498389e-14,
+      "environments": [
+        "baseline"
+      ],
+      "shape_per_environment": [
+        13,
+        97
+      ]
+    },
+    {
+      "path": "production_baseline/P4096/rep_028.npz",
+      "index": 28,
+      "stage": "production_baseline",
+      "sha256": "c5d07b728174418643c4666e162a2f2505c3d31cb4c8b40a14e54306d56ffd89",
+      "maximum_normal_equation_error": 5.203823483235226e-14,
       "environments": [
         "baseline"
       ],

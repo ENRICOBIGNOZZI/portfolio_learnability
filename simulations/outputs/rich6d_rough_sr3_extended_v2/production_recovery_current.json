@@ -1,5 +1,5 @@
 {
-  "status": "production_confirmed_live",
+  "status": "new_checkpoint_verified_production_continues",
   "started_utc": "20261010T131944Z",
   "pid": 28259,
   "caffeinate_pid": 28260,
@@ -29,5 +29,47 @@
   "confirmed_utc": "2026-10-10T13:20:17.595702+00:00",
   "production_pid": 28384,
   "source_hashes_verified_before_launch": true,
-  "reuse_confirmed_in_log": true
+  "reuse_confirmed_in_log": true,
+  "first_new_checkpoint_index": 28,
+  "verified_counts": {
+    "baseline": 39,
+    "N300": 0,
+    "N1200": 0,
+    "rho000": 0,
+    "rho075": 0
+  },
+  "verification_utc": "2026-10-10T13:28:13.980562+00:00",
+  "first_new_checkpoint_resources": {
+    "index": 28,
+    "ranks": [
+      4096
+    ],
+    "baseline_times": [
+      60,
+      90,
+      120,
+      180,
+      240,
+      360,
+      540,
+      720,
+      1080,
+      1440,
+      2160,
+      3240,
+      4860
+    ],
+    "robustness_times": [],
+    "groups": 32768,
+    "quadrature_seed": 1237722080,
+    "stage": "production_baseline",
+    "run_hash": "e9f1f005be1a58ee736a09cb711d5be87457b9875d1e26dab56c03ccdca61d8d",
+    "environment_names": [
+      "baseline"
+    ],
+    "elapsed_seconds": 304.5983757079812,
+    "generation_seconds": 230.09734954102896,
+    "maximum_resident_bytes": 889995264,
+    "completed_utc": "2026-10-10T13:28:00.539680+00:00"
+  }
 }

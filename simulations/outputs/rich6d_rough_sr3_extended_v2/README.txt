@@ -9,7 +9,9 @@ operator exactly.
 
 All 12 paired rank pilots and their audits are complete. The fixed-rank production
 protocol is frozen. Recovery resumed on 2026-10-10 with 38 verified baseline
-checkpoints; the study is NOT complete. The previous production supervisor exited
+checkpoints. The first new recovery result (index 28) has passed the independent
+checkpoint audit, bringing the verified baseline total to 39; the study is NOT
+complete. The previous production supervisor exited
 with status 120, of undetermined cause. Its supplementary batch remains interrupted.
 
 After disk availability recovered to approximately 8.3 GiB, the full supervisor
