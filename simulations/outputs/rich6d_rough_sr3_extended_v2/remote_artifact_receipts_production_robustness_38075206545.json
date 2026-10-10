@@ -1,13 +1,13 @@
 {
   "run_id": 38075206545,
   "source_commit": "2eb27a92a2153e5c8bd249b3adda46404ba51b48",
-  "recorded_utc": "2026-10-10T21:51:52.452365+00:00",
+  "recorded_utc": "2026-10-10T23:32:59.013348+00:00",
   "verified_counts": {
     "baseline": 300,
-    "N300": 200,
-    "N1200": 200,
-    "rho000": 200,
-    "rho075": 200
+    "N300": 220,
+    "N1200": 220,
+    "rho000": 220,
+    "rho075": 220
   },
   "artifacts": [
     {
@@ -468,6 +468,52 @@
         197,
         198,
         199
+      ]
+    },
+    {
+      "github": {
+        "id": 11685872320,
+        "node_id": "MDg6QXJ0aWZhY3QxMTY4NTg3MjMyMA==",
+        "name": "rich6d-production_robustness-batch-10",
+        "size_in_bytes": 2970275,
+        "url": "https://api.github.com/repos/ENRICOBIGNOZZI/portfolio_learnability/actions/artifacts/11685872320",
+        "archive_download_url": "https://api.github.com/repos/ENRICOBIGNOZZI/portfolio_learnability/actions/artifacts/11685872320/zip",
+        "expired": false,
+        "digest": "sha256:f266ea3fcd9719c658c83b5b88891c7059726adae85ec8c2dffd97d5f012acc5",
+        "created_at": "2026-10-10T23:31:04Z",
+        "updated_at": "2026-10-10T23:31:04Z",
+        "expires_at": "2026-10-11T23:31:02Z",
+        "workflow_run": {
+          "id": 38075206545,
+          "repository_id": 1360994014,
+          "head_repository_id": 1360994014,
+          "head_branch": "main",
+          "head_sha": "2eb27a92a2153e5c8bd249b3adda46404ba51b48"
+        }
+      },
+      "transfer_manifest_sha256": "1355af2a42a0d710ddd9c9db4ba82bfe934b1ac3ab1869773c356ea71f426ff4",
+      "batch_id": 10,
+      "completed_indices": [
+        200,
+        201,
+        202,
+        203,
+        204,
+        205,
+        206,
+        207,
+        208,
+        209,
+        210,
+        211,
+        212,
+        213,
+        214,
+        215,
+        216,
+        217,
+        218,
+        219
       ]
     }
   ]

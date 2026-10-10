@@ -1,0 +1,48 @@
+{
+  "index": 211,
+  "ranks": [
+    4096
+  ],
+  "baseline_times": [
+    60,
+    90,
+    120,
+    180,
+    240,
+    360,
+    540,
+    720,
+    1080,
+    1440,
+    2160,
+    3240
+  ],
+  "robustness_times": [
+    60,
+    90,
+    120,
+    180,
+    240,
+    360,
+    540,
+    720,
+    1080,
+    1440,
+    2160,
+    3240
+  ],
+  "groups": 32768,
+  "quadrature_seed": 1237722080,
+  "stage": "production_robustness",
+  "run_hash": "e9f1f005be1a58ee736a09cb711d5be87457b9875d1e26dab56c03ccdca61d8d",
+  "environment_names": [
+    "N300",
+    "N1200",
+    "rho000",
+    "rho075"
+  ],
+  "elapsed_seconds": 338.343056834,
+  "generation_seconds": 283.14729154199995,
+  "maximum_resident_bytes": 1736654848,
+  "completed_utc": "2026-10-10T22:43:12.455230+00:00"
+}
