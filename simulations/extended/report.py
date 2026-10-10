@@ -4,6 +4,7 @@ import numpy as np
 import pandas as pd
 
 from simulations.extended.design import OUTPUT,ENVIRONMENTS,parameters
+from simulations.extended.elasticity_comparison import run as compare_N_elasticities
 
 
 def render():
@@ -56,6 +57,12 @@ def render():
     for name in ('baseline','N300','N1200'):
         r=pop[pop.environment==name].sort_values('T')
         add(f"{name}: exact local T elasticity runs from {r.local_T_elasticity.iloc[0]:.6f} at T={int(r['T'].iloc[0])} to {r.local_T_elasticity.iloc[-1]:.6f} at T={int(r['T'].iloc[-1])}. It is computed from the same finite population spectrum and independently checked by finite differences.")
+    elasticities=compare_N_elasticities()
+    for T in (min(protocol['robustness_T']),max(protocol['robustness_T'])):
+        cases=elasticities[elasticities['T']==T]
+        r=cases[cases.primary].iloc[0]
+        add(f"At the common T={T}, local population-complexity elasticities for N=300,600,1200 are {r.N300:.6f}, {r.baseline:.6f}, {r.N1200:.6f}; the cross-N spread is {r.cross_N_range:.6f}. Across the {len(cases)} matched rank/basis/quadrature cases, the N300-minus-N600 difference ranges from {cases.N300_minus_baseline.min():.6f} to {cases.N300_minus_baseline.max():.6f}, and N1200-minus-N600 ranges from {cases.N1200_minus_baseline.min():.6f} to {cases.N1200_minus_baseline.max():.6f}.")
+    add('These finite-window differences across N are economically distinct population geometries under the fixed factor economy and independently calibrated constants. The tabulated numerical-case ranges are sensitivity diagnostics, not confidence intervals or a certificate against the infinite-dimensional operator. They do not establish different asymptotic spectral exponents. The full common-grid comparison is in population_elasticity_N_comparison.csv; each source spectrum and hash is recorded in population_elasticity_N_audit.csv.')
     add('The baseline local elasticity passes near 0.4 and then exceeds it over the extended candidate horizons. This does not establish convergence to 0.4. A full-window log-log slope, a local population elasticity and the empirical-complexity distribution are different objects. The saturation diagnostic extends only the finite matrix, not the simulated economic histories: eventually C approaches P and its local elasticity approaches zero. Actual-study C/P is small, so the pronounced policy projection floor must not be confused with global trace saturation.')
     add('Unsmoothed clusters persist across basis and quadrature seeds and multiple ranks. Similar clusters occur in the kernel operator before factor weighting. They are consistent with permutation/reflection symmetries of a radial Matérn kernel on the uniform six-dimensional cube; the factor economy changes the leading directions. This is an interpretation of the operator comparisons, not a proof identifying every eigenspace. Component eigenvalues were never added as if the component operators shared eigenvectors. The j^(-1.5) curve is an order reference, not a fitted law.')
     add('3. ALL PREDECLARED SLOPES')
