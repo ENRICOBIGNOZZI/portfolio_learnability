@@ -1,10 +1,10 @@
 {
   "run_hash": "e9f1f005be1a58ee736a09cb711d5be87457b9875d1e26dab56c03ccdca61d8d",
-  "verified_utc": "2026-10-10T14:52:56.923515+00:00",
+  "verified_utc": "2026-10-10T15:00:09.347267+00:00",
   "scope": "Integrity of completed checkpoints only; no claim about study completion, numerical resolution, final summaries or figures.",
   "completed_checkpoint_checks_passed": true,
   "counts": {
-    "baseline": 54,
+    "baseline": 57,
     "N300": 0,
     "N1200": 0,
     "rho000": 0,
@@ -565,6 +565,48 @@
       "stage": "production_baseline",
       "sha256": "efae1cd74dd898495bc2bcd00014ff073d001f5c326c043eedb0f27fab2ad28c",
       "maximum_normal_equation_error": 1.0742497047618559e-13,
+      "environments": [
+        "baseline"
+      ],
+      "shape_per_environment": [
+        13,
+        97
+      ]
+    },
+    {
+      "path": "production_baseline/P4096/rep_040.npz",
+      "index": 40,
+      "stage": "production_baseline",
+      "sha256": "d740369a7b66b604ceb074e122871ab7a6ddd46562e4db74b3a7f587d59be0bd",
+      "maximum_normal_equation_error": 2.6776605428378494e-14,
+      "environments": [
+        "baseline"
+      ],
+      "shape_per_environment": [
+        13,
+        97
+      ]
+    },
+    {
+      "path": "production_baseline/P4096/rep_041.npz",
+      "index": 41,
+      "stage": "production_baseline",
+      "sha256": "26edf1917bd6f908ad616173db04a79c16ee6a8e04a9b47f6a233966bac2552b",
+      "maximum_normal_equation_error": 4.823352260487562e-14,
+      "environments": [
+        "baseline"
+      ],
+      "shape_per_environment": [
+        13,
+        97
+      ]
+    },
+    {
+      "path": "production_baseline/P4096/rep_042.npz",
+      "index": 42,
+      "stage": "production_baseline",
+      "sha256": "0e9e8fb0acb58da745f17b15a9067d3a1a15c59738614d82e618372bc41cbbde",
+      "maximum_normal_equation_error": 7.65667673848728e-14,
       "environments": [
         "baseline"
       ],

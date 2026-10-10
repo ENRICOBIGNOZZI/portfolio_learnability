@@ -1,0 +1,17 @@
+{
+  "completed_utc": "2026-10-10T15:00:05.880129+00:00",
+  "command": "PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python3 -m pytest tests/test_remote_reproduction.py -q",
+  "passed": 3,
+  "elapsed_seconds": 9.69,
+  "checks": [
+    "Canonical complete fitted outcomes accepted",
+    "Missing frozen horizon rejected",
+    "Materially changed Sharpe rejected"
+  ],
+  "source_sha256": {
+    "simulations/extended/remote_inputs.py": "1eeca6ba139259db6d473ea462abcc7de63938d42c94960d6657ef8f557c181d",
+    "simulations/extended/remote_reproduction.py": "93df87bb0b73cc64598b7694cba0e503da6d8411707805af3cd81dd2cbadd594",
+    "tests/test_remote_reproduction.py": "7f0ed1e884edffc7c1b2b7a7e016eb7a5907021e4427f5b05bf751986b044e9c"
+  },
+  "scope": "Local admission-gate tests; not remote numerical equivalence or study completion."
+}

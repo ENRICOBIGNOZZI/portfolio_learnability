@@ -13,7 +13,8 @@
     "rank": 4096,
     "T": "All 13 frozen baseline horizons through 4860",
     "penalties": 97,
-    "reference": "production_baseline/P4096/rep_000.npz"
+    "reference": "production_baseline/P4096/rep_000.npz",
+    "reference_sha256": "cc39bee446e4a4a09ec2a3174e44e9873f8ccdb70d06de06d8bf92d0e5d532f3"
   },
   "paired_probe": {
     "index": 0,
@@ -22,7 +23,8 @@
     "baseline_T": "Frozen production horizons through 4860, a nested subset of the pilot grid",
     "robustness_T": "All 12 frozen robustness horizons through 3240",
     "penalties": 97,
-    "reference": "rank_pilot/P4096/rep_000.npz"
+    "reference": "rank_pilot/P4096/rep_000.npz",
+    "reference_sha256": "b3d29ed1e669613d8a218e18bb6c11cf866b87eb9c02d81542a5c3222745622f"
   },
   "comparison": {
     "metrics": [
@@ -40,9 +42,11 @@
   "input_transport_plan": {
     "repository": "ENRICOBIGNOZZI/portfolio_learnability",
     "release_tag": "rich6d-extended-inputs-e9f1f005be1a-v1",
-    "status": "not_created_or_uploaded",
+    "status": "manifest_prepared",
     "description": "A separate prerelease will hold the exact existing large numerical caches, with file sizes and SHA-256 hashes in a checked-in manifest. Do not add large basis/operator caches directly to Git. Download and verify them into an isolated temporary output directory on the standard macOS runner.",
     "cache_files": "P4096 basis; baseline/N300/N1200 P4096 operators; baseline P512 reference operator. Existing calibration and population coefficient files remain canonical.",
-    "local_production": "Continues until the remote fitted-policy gate passes. Any later switch must preserve completed checkpoints and allocate distinct deterministic indices."
+    "local_production": "Continues until the remote fitted-policy gate passes. Any later switch must preserve completed checkpoints and allocate distinct deterministic indices.",
+    "input_manifest_sha256": "719461f4270ad15320fcbb51d66ea576e8bf138ddb0737a9d603244aae39977b",
+    "total_cache_bytes": 635392144
   }
 }

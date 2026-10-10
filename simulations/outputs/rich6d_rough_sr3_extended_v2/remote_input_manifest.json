@@ -1,0 +1,76 @@
+{
+  "run_hash": "e9f1f005be1a58ee736a09cb711d5be87457b9875d1e26dab56c03ccdca61d8d",
+  "repository": "ENRICOBIGNOZZI/portfolio_learnability",
+  "release_tag": "rich6d-extended-inputs-e9f1f005be1a-v1",
+  "prepared_utc": "2026-10-10T14:58:11.539792+00:00",
+  "files": [
+    {
+      "path": "pilot/basis_P4096_seed373077418.npz",
+      "asset": "basis_P4096_seed373077418.npz",
+      "bytes": 256504048,
+      "sha256": "12a2d15d65eb5e6b6d0f980f255e5cf647489a13261558e7a91732984f2b9239"
+    },
+    {
+      "path": "pilot/operator_baseline_P4096_B373077418_Q32768_S1237722080.npz",
+      "asset": "operator_baseline_P4096_B373077418_Q32768_S1237722080.npz",
+      "bytes": 125639742,
+      "sha256": "b6f5e0c4b77ce5d1e263c3cbcfcc4c175bf843fe4105f639e180c96e37fcaef2"
+    },
+    {
+      "path": "pilot/operator_N300_P4096_B373077418_Q32768_S1237722080.npz",
+      "asset": "operator_N300_P4096_B373077418_Q32768_S1237722080.npz",
+      "bytes": 125656332,
+      "sha256": "63b6131242ee393f9b4d46f9fb1499e3f1ac20fe385b21547826938030e2c6de"
+    },
+    {
+      "path": "pilot/operator_N1200_P4096_B373077418_Q32768_S1237722080.npz",
+      "asset": "operator_N1200_P4096_B373077418_Q32768_S1237722080.npz",
+      "bytes": 125631035,
+      "sha256": "a467c9c159194c83d62ee80bda7706ed92a228267b0b7b67d9fb5ecbea5343a0"
+    },
+    {
+      "path": "pilot/operator_baseline_P512_B373077418_Q32768_S1237722080.npz",
+      "asset": "operator_baseline_P512_B373077418_Q32768_S1237722080.npz",
+      "bytes": 1960987,
+      "sha256": "797297e1c78899bf9b34a303cc53f7c46e12a52fd21949a707b229807b7748d3"
+    }
+  ],
+  "supporting_files": [
+    {
+      "path": "calibration.json",
+      "bytes": 872,
+      "sha256": "f41cc5c42655be71084e879ae23dc2ad021e8c48e0d0faae9fe3223f8c4c4bea"
+    },
+    {
+      "path": "seed_manifest.json",
+      "bytes": 51313,
+      "sha256": "39427ac619fd68d36bc1a899496234d0a1c165b19507cae9be04a7aa10731b73"
+    },
+    {
+      "path": "population/baseline_theory.npz",
+      "bytes": 448781,
+      "sha256": "56fb973a13296cd10df53c3599cf8ecc2dfca2a726b07f713fa0b4f26a36a4f5"
+    },
+    {
+      "path": "population/N300_theory.npz",
+      "bytes": 416978,
+      "sha256": "72113041e882eff51def40ca604b54bbdf93ff8b4470b2cf171864b1613c30e4"
+    },
+    {
+      "path": "population/N1200_theory.npz",
+      "bytes": 416971,
+      "sha256": "ad5d4a6cdaf2f0849f2cc5589899efcf9783f9ce214398be573379172838880b"
+    },
+    {
+      "path": "population/rho000_theory.npz",
+      "bytes": 416926,
+      "sha256": "c8a27beb86b1b4f30038816d6e852b4b30b0f3d937f76cf9a6d2f1d879713b91"
+    },
+    {
+      "path": "population/rho075_theory.npz",
+      "bytes": 416926,
+      "sha256": "c8a27beb86b1b4f30038816d6e852b4b30b0f3d937f76cf9a6d2f1d879713b91"
+    }
+  ],
+  "scope": "Exact auxiliary numerical inputs for the frozen study, not completed Monte Carlo results."
+}

@@ -1,0 +1,46 @@
+name: Frozen Rich6D fitted-policy reproduction
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  canonical-fitted-policy-reproduction:
+    runs-on: macos-26
+    timeout-minutes: 90
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      VECLIB_MAXIMUM_THREADS: '1'
+      PYTHONDONTWRITEBYTECODE: '1'
+      RICH6D_RUNNER_LABEL: macos-26
+      RICH6D_EXTENDED_OUTPUT: /tmp/rich6d-fitted-reproduction
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /kernels.py
+            /simulations/*.py
+            /simulations/requirements.txt
+            /simulations/config/
+            /simulations/dgp/
+            /simulations/estimator/
+            /simulations/experiments/
+            /simulations/diagnostics/
+            /simulations/extended/
+            /simulations/outputs/rich6d_rough_sr3_annual_monthly_v1/population.json
+            /simulations/outputs/rich6d_rough_sr3_extended_v2/protocol.json
+            /simulations/outputs/rich6d_rough_sr3_extended_v2/calibration.json
+            /simulations/outputs/rich6d_rough_sr3_extended_v2/seed_manifest.json
+            /simulations/outputs/rich6d_rough_sr3_extended_v2/remote_input_manifest.json
+            /simulations/outputs/rich6d_rough_sr3_extended_v2/remote_reproduction_plan.json
+            /simulations/outputs/rich6d_rough_sr3_extended_v2/population/*_theory.npz
+            /simulations/outputs/rich6d_rough_sr3_extended_v2/production_baseline/P4096/rep_000.npz
+            /simulations/outputs/rich6d_rough_sr3_extended_v2/rank_pilot/P4096/rep_000.npz
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13.3'
+      - name: Install frozen scientific dependency versions
+        run: python -m pip install -r simulations/requirements.txt
+      - name: Verify exact inputs and reproduce canonical fitted policies
+        run: python -m simulations.extended.remote_reproduction --report /tmp/rich6d-fitted-reproduction-result.json

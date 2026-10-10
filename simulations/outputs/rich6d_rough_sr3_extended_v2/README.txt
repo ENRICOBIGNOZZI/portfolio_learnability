@@ -8,7 +8,7 @@ not artificially reset to 3. Persistence robustness preserves the population
 operator exactly.
 
 All 12 paired rank pilots and their audits are complete. The fixed-rank production
-protocol is frozen. The latest independent checkpoint audit verifies 54 baseline
+protocol is frozen. The latest independent checkpoint audit verifies 57 baseline
 replications and no completed production robustness batches. The study is NOT
 complete: all 300 paths in each economy, final summaries and all ten final figures
 remain required.
@@ -58,6 +58,12 @@ those hosts from this frozen bitwise history design. Full results and the workfl
 URL are in remote_compatibility_results.json. The next macOS fitted-policy check
 and its tolerances were declared before execution in remote_reproduction_plan.json.
 No remote production has been started.
+The fitted-policy gate and three local boundary tests are implemented. Numerical
+caches are listed by exact size and SHA-256 in remote_input_manifest.json; the
+separate input prerelease will carry those auxiliary files without adding large
+cache blobs to Git. The remote download checks every cache and all supporting
+calibration/population files before fitting. The manual reproduction workflow
+runs only on macos-26 and uses a fresh isolated output directory.
 
 At the user's request, pip's regenerable download cache was purged, removing 14
 files (23.2 MB reported by pip). This frees disk space, not process RAM. Required
