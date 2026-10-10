@@ -3,7 +3,7 @@
   "stage": "production_robustness",
   "workflow_run_id": "38075206545",
   "commit": "2eb27a92a2153e5c8bd249b3adda46404ba51b48",
-  "ingested_utc": "2026-10-10T21:49:41.411257+00:00",
+  "ingested_utc": "2026-10-10T21:50:57.902037+00:00",
   "batches": [
     {
       "run_hash": "e9f1f005be1a58ee736a09cb711d5be87457b9875d1e26dab56c03ccdca61d8d",
@@ -1634,6 +1634,277 @@
     {
       "run_hash": "e9f1f005be1a58ee736a09cb711d5be87457b9875d1e26dab56c03ccdca61d8d",
       "stage": "production_robustness",
+      "batch_id": 6,
+      "requested_indices": [
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139
+      ],
+      "completed_indices": [
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139
+      ],
+      "files": [
+        {
+          "path": "production_robustness/P4096/rep_120.npz",
+          "bytes": 151573,
+          "sha256": "c01343af9b1c115cac7a0dbcf90fd34805ac283f7aef82bbb7369f372268afa2"
+        },
+        {
+          "path": "production_robustness/resources_120.json",
+          "bytes": 751,
+          "sha256": "6869f787c62773b031b9191feca03faec7d5f3993d1ae8f6e7f72133036dd94a"
+        },
+        {
+          "path": "production_robustness/P4096/rep_121.npz",
+          "bytes": 151496,
+          "sha256": "f366c60f7a414591ddf2343caa479dc6f7642c0dd1d3e681427736b0e8776d3c"
+        },
+        {
+          "path": "production_robustness/resources_121.json",
+          "bytes": 751,
+          "sha256": "abfd4702c2a885cb95679f7ec27bdbacb9964ddc972f486789778f536178c38d"
+        },
+        {
+          "path": "production_robustness/P4096/rep_122.npz",
+          "bytes": 151520,
+          "sha256": "b7dbd9d8aa5c0088574b1ba548ec6f84af8fee46fb19875adbba75d20acb0692"
+        },
+        {
+          "path": "production_robustness/resources_122.json",
+          "bytes": 750,
+          "sha256": "49edff0b62a1955a5ec2712e2fc84448809ec9848581c1c1381fd25309b99c09"
+        },
+        {
+          "path": "production_robustness/P4096/rep_123.npz",
+          "bytes": 151538,
+          "sha256": "b12b0faca2ef510c57301487bf944ac15c4ae8460f55014152ee18ce39a6236c"
+        },
+        {
+          "path": "production_robustness/resources_123.json",
+          "bytes": 751,
+          "sha256": "037b9df87edd826d4a949dd0329d23f77aa78d595cb6c0b216db977b78c612b2"
+        },
+        {
+          "path": "production_robustness/P4096/rep_124.npz",
+          "bytes": 151569,
+          "sha256": "d41973882e44138eb3be9f8295028c9928103d01d6bb08c844fdb96cab3eafa1"
+        },
+        {
+          "path": "production_robustness/resources_124.json",
+          "bytes": 747,
+          "sha256": "87b051d1b0a02c37c223be11017e0ff069121969972c10c9dda1eacddb529713"
+        },
+        {
+          "path": "production_robustness/P4096/rep_125.npz",
+          "bytes": 151578,
+          "sha256": "d385b67d7de97aa4fdda33161a5be3cb9f6a65bb72574e9511de4c0d1165f9b3"
+        },
+        {
+          "path": "production_robustness/resources_125.json",
+          "bytes": 751,
+          "sha256": "c9cf3be4cdc40a6ea14b8fbd4e55af2b99f040fffc5dfd5d221b53c388e24b62"
+        },
+        {
+          "path": "production_robustness/P4096/rep_126.npz",
+          "bytes": 151422,
+          "sha256": "96375519a31ce08a3c6721a62208ffa472f485c2d227c64622d6de8575f6dd3d"
+        },
+        {
+          "path": "production_robustness/resources_126.json",
+          "bytes": 742,
+          "sha256": "b40764d2bcd3eb6b4eebbb284f39fae3e702443ee8f331d15ba1f03a3d16da9b"
+        },
+        {
+          "path": "production_robustness/P4096/rep_127.npz",
+          "bytes": 151555,
+          "sha256": "16593da83f98d03a886a54026ca8d3c82a3f31a82e037c6e9b5544a0af840619"
+        },
+        {
+          "path": "production_robustness/resources_127.json",
+          "bytes": 752,
+          "sha256": "c2362f161bdad1f24c34c60bd7e3b3276cb5c5c27281dc07a8b383a15d74d112"
+        },
+        {
+          "path": "production_robustness/P4096/rep_128.npz",
+          "bytes": 151384,
+          "sha256": "2731320eeb968b4cd5082ef1dca388eab36ec3d9f23ed1412caa6c0142c3085a"
+        },
+        {
+          "path": "production_robustness/resources_128.json",
+          "bytes": 751,
+          "sha256": "4b44361f659872e21c6df19674faa03c53eed91c262ce6fecfd9cbf416d02720"
+        },
+        {
+          "path": "production_robustness/P4096/rep_129.npz",
+          "bytes": 151569,
+          "sha256": "2de48ea5b7d4111606281c0da7d4074b2a9c4fac8032a81526e14c22aad1194f"
+        },
+        {
+          "path": "production_robustness/resources_129.json",
+          "bytes": 747,
+          "sha256": "e2c85da19a2c081fb15039f6f158656210e0132c189458e251ed0f14009f2c9f"
+        },
+        {
+          "path": "production_robustness/P4096/rep_130.npz",
+          "bytes": 151590,
+          "sha256": "90885b1a6ddefacd7802b8be4f6213517773f21435554a79adfe65fa9a0de909"
+        },
+        {
+          "path": "production_robustness/resources_130.json",
+          "bytes": 751,
+          "sha256": "1fc0e0e1c34cdb1287c4a571a41e1d6760df3f33257dcf345fe14febfc0c5a6e"
+        },
+        {
+          "path": "production_robustness/P4096/rep_131.npz",
+          "bytes": 151622,
+          "sha256": "b150d45b827ab542c7c1de170fc8cfc0671e5596f9fcc357b509c7af42b3f50c"
+        },
+        {
+          "path": "production_robustness/resources_131.json",
+          "bytes": 747,
+          "sha256": "d752353fbe04f9e4125407fc615dcbc72da6fcc57654b943b37231134e0fd069"
+        },
+        {
+          "path": "production_robustness/P4096/rep_132.npz",
+          "bytes": 151651,
+          "sha256": "7b276fab0b30da7185bbecba7a1aee6e113d7b564ed880484b9dcc01c559a1a4"
+        },
+        {
+          "path": "production_robustness/resources_132.json",
+          "bytes": 752,
+          "sha256": "6c9f3dfa33d21b8a551b9604fc8ef3568f47283351899a6b6be81873f38b1be8"
+        },
+        {
+          "path": "production_robustness/P4096/rep_133.npz",
+          "bytes": 151598,
+          "sha256": "3185a4cc1af41b32de77d64ea6a11f1358d3111ef92a634b79d1982913d3fae4"
+        },
+        {
+          "path": "production_robustness/resources_133.json",
+          "bytes": 751,
+          "sha256": "a043189ad443e193e08419f63d52413ed1a4f4ce1381116f32dc829db43f9b2f"
+        },
+        {
+          "path": "production_robustness/P4096/rep_134.npz",
+          "bytes": 151528,
+          "sha256": "f6582e538ed949625680e5db43506ff26ec471dbd8c306df5899cee14be15930"
+        },
+        {
+          "path": "production_robustness/resources_134.json",
+          "bytes": 751,
+          "sha256": "6f22d287f33e909c01dcdc97b68b3ab98d8b0de757c5c8ee969684471f1991b3"
+        },
+        {
+          "path": "production_robustness/P4096/rep_135.npz",
+          "bytes": 151653,
+          "sha256": "a282ad34a7d5986cf8eca594e8dc4378a8dd975d73e87eb9ac8af9edd5c892ed"
+        },
+        {
+          "path": "production_robustness/resources_135.json",
+          "bytes": 751,
+          "sha256": "5c6c7bb0afd523dfcce51ffb873311d4f88ea8003e180a36094f1a3dee197952"
+        },
+        {
+          "path": "production_robustness/P4096/rep_136.npz",
+          "bytes": 151467,
+          "sha256": "2b2d4ec75ca28c78aca5d2f11a3293b1885d92da161ef3bc5f8c93481afe3765"
+        },
+        {
+          "path": "production_robustness/resources_136.json",
+          "bytes": 751,
+          "sha256": "c2b93a6452f6c687eb185d27bd97dde2d93384df32419c7d28c76d49f22de762"
+        },
+        {
+          "path": "production_robustness/P4096/rep_137.npz",
+          "bytes": 151574,
+          "sha256": "2a32831bbc8bdfa3046e30e1de1e9b037614147ae7f466765c188c434d7a5611"
+        },
+        {
+          "path": "production_robustness/resources_137.json",
+          "bytes": 751,
+          "sha256": "4ce25188ea281b0389356732251c5bdc921b57b39fa5062b7f1df94807485861"
+        },
+        {
+          "path": "production_robustness/P4096/rep_138.npz",
+          "bytes": 151556,
+          "sha256": "83c39cb9019da6db9b73882f6ba24ac478607a50b98f5fb29ee1f18a14627bff"
+        },
+        {
+          "path": "production_robustness/resources_138.json",
+          "bytes": 751,
+          "sha256": "15a47e87e5d342d580c96a3de5e99bd1aaf629a198e21d7338053720735dff3e"
+        },
+        {
+          "path": "production_robustness/P4096/rep_139.npz",
+          "bytes": 151595,
+          "sha256": "6b6b4a396e87113a9c46ca6ed0076dbea48e325d64a6145602e7e35430735ea7"
+        },
+        {
+          "path": "production_robustness/resources_139.json",
+          "bytes": 751,
+          "sha256": "b99c05b7f2257758aeac9e4f3d92b9849790f969bc370a62a8f84a39c9bab602"
+        }
+      ],
+      "status": "completed",
+      "allocation_sha256": "a30b5e3f27126adc7056754c272b1122ceb68c12c53fd43f8f8effdfe99bccde",
+      "qualification_sha256": "54258bbd6e427ccf625dafb25e175e2ef7d662042fa81c28a70dd1e1b837758b",
+      "input_manifest_sha256": "719461f4270ad15320fcbb51d66ea576e8bf138ddb0737a9d603244aae39977b",
+      "started_utc": "2026-10-10T20:02:32.084953+00:00",
+      "workflow_run_id": "38075206545",
+      "commit": "2eb27a92a2153e5c8bd249b3adda46404ba51b48",
+      "host": {
+        "system": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+        "machine": "arm64",
+        "python": "3.13.3",
+        "numpy": "2.3.5",
+        "scipy": "1.16.3",
+        "runner": "macos-26"
+      },
+      "scope": "Frozen core checks plus identity/grid checks; independent complete checkpoint audit is required after retrieval.",
+      "current_index": 139,
+      "updated_utc": "2026-10-10T21:50:17.708840+00:00",
+      "elapsed_seconds": 6465.601243125,
+      "completed_utc": "2026-10-10T21:50:17.710488+00:00"
+    },
+    {
+      "run_hash": "e9f1f005be1a58ee736a09cb711d5be87457b9875d1e26dab56c03ccdca61d8d",
+      "stage": "production_robustness",
       "batch_id": 7,
       "requested_indices": [
         140,
@@ -2446,54 +2717,54 @@
     }
   ],
   "published": [
-    "production_robustness/P4096/rep_160.npz",
-    "production_robustness/P4096/rep_161.npz",
-    "production_robustness/P4096/rep_162.npz",
-    "production_robustness/P4096/rep_163.npz",
-    "production_robustness/P4096/rep_164.npz",
-    "production_robustness/P4096/rep_165.npz",
-    "production_robustness/P4096/rep_166.npz",
-    "production_robustness/P4096/rep_167.npz",
-    "production_robustness/P4096/rep_168.npz",
-    "production_robustness/P4096/rep_169.npz",
-    "production_robustness/P4096/rep_170.npz",
-    "production_robustness/P4096/rep_171.npz",
-    "production_robustness/P4096/rep_172.npz",
-    "production_robustness/P4096/rep_173.npz",
-    "production_robustness/P4096/rep_174.npz",
-    "production_robustness/P4096/rep_175.npz",
-    "production_robustness/P4096/rep_176.npz",
-    "production_robustness/P4096/rep_177.npz",
-    "production_robustness/P4096/rep_178.npz",
-    "production_robustness/P4096/rep_179.npz",
-    "production_robustness/resources_160.json",
-    "production_robustness/resources_161.json",
-    "production_robustness/resources_162.json",
-    "production_robustness/resources_163.json",
-    "production_robustness/resources_164.json",
-    "production_robustness/resources_165.json",
-    "production_robustness/resources_166.json",
-    "production_robustness/resources_167.json",
-    "production_robustness/resources_168.json",
-    "production_robustness/resources_169.json",
-    "production_robustness/resources_170.json",
-    "production_robustness/resources_171.json",
-    "production_robustness/resources_172.json",
-    "production_robustness/resources_173.json",
-    "production_robustness/resources_174.json",
-    "production_robustness/resources_175.json",
-    "production_robustness/resources_176.json",
-    "production_robustness/resources_177.json",
-    "production_robustness/resources_178.json",
-    "production_robustness/resources_179.json"
+    "production_robustness/P4096/rep_120.npz",
+    "production_robustness/P4096/rep_121.npz",
+    "production_robustness/P4096/rep_122.npz",
+    "production_robustness/P4096/rep_123.npz",
+    "production_robustness/P4096/rep_124.npz",
+    "production_robustness/P4096/rep_125.npz",
+    "production_robustness/P4096/rep_126.npz",
+    "production_robustness/P4096/rep_127.npz",
+    "production_robustness/P4096/rep_128.npz",
+    "production_robustness/P4096/rep_129.npz",
+    "production_robustness/P4096/rep_130.npz",
+    "production_robustness/P4096/rep_131.npz",
+    "production_robustness/P4096/rep_132.npz",
+    "production_robustness/P4096/rep_133.npz",
+    "production_robustness/P4096/rep_134.npz",
+    "production_robustness/P4096/rep_135.npz",
+    "production_robustness/P4096/rep_136.npz",
+    "production_robustness/P4096/rep_137.npz",
+    "production_robustness/P4096/rep_138.npz",
+    "production_robustness/P4096/rep_139.npz",
+    "production_robustness/resources_120.json",
+    "production_robustness/resources_121.json",
+    "production_robustness/resources_122.json",
+    "production_robustness/resources_123.json",
+    "production_robustness/resources_124.json",
+    "production_robustness/resources_125.json",
+    "production_robustness/resources_126.json",
+    "production_robustness/resources_127.json",
+    "production_robustness/resources_128.json",
+    "production_robustness/resources_129.json",
+    "production_robustness/resources_130.json",
+    "production_robustness/resources_131.json",
+    "production_robustness/resources_132.json",
+    "production_robustness/resources_133.json",
+    "production_robustness/resources_134.json",
+    "production_robustness/resources_135.json",
+    "production_robustness/resources_136.json",
+    "production_robustness/resources_137.json",
+    "production_robustness/resources_138.json",
+    "production_robustness/resources_139.json"
   ],
   "independent_audit_passed": true,
   "counts": {
     "baseline": 300,
-    "N300": 180,
-    "N1200": 180,
-    "rho000": 180,
-    "rho075": 180
+    "N300": 200,
+    "N1200": 200,
+    "rho000": 200,
+    "rho075": 200
   },
-  "checkpoint_integrity_sha256": "db57b1ff14a437c02bc5d956c0fea97cbe4f4b99a4eb3fc5906c0e28f1526a7a"
+  "checkpoint_integrity_sha256": "ced4f7c88ee647a4681c8682358fc55fcadeb47370e83072c10a726e894f4b39"
 }

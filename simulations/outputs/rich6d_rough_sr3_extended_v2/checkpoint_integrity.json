@@ -1,14 +1,14 @@
 {
   "run_hash": "e9f1f005be1a58ee736a09cb711d5be87457b9875d1e26dab56c03ccdca61d8d",
-  "verified_utc": "2026-10-10T21:49:41.244633+00:00",
+  "verified_utc": "2026-10-10T21:50:57.732085+00:00",
   "scope": "Integrity of completed checkpoints only; no claim about study completion, numerical resolution, final summaries or figures.",
   "completed_checkpoint_checks_passed": true,
   "counts": {
     "baseline": 300,
-    "N300": 180,
-    "N1200": 180,
-    "rho000": 180,
-    "rho075": 180
+    "N300": 200,
+    "N1200": 200,
+    "rho000": 200,
+    "rho075": 200
   },
   "paired_common_history_indices": [
     0,
@@ -131,6 +131,26 @@
     117,
     118,
     119,
+    120,
+    121,
+    122,
+    123,
+    124,
+    125,
+    126,
+    127,
+    128,
+    129,
+    130,
+    131,
+    132,
+    133,
+    134,
+    135,
+    136,
+    137,
+    138,
+    139,
     140,
     141,
     142,
@@ -6423,6 +6443,346 @@
       "stage": "production_robustness",
       "sha256": "2ab536d974ab08dd519ccbdd3a078e8f26a490012b246ab05c81af6fcba6a53b",
       "maximum_normal_equation_error": 2.5672973336522513e-13,
+      "environments": [
+        "N300",
+        "N1200",
+        "rho000",
+        "rho075"
+      ],
+      "shape_per_environment": [
+        12,
+        97
+      ]
+    },
+    {
+      "path": "production_robustness/P4096/rep_120.npz",
+      "index": 120,
+      "stage": "production_robustness",
+      "sha256": "c01343af9b1c115cac7a0dbcf90fd34805ac283f7aef82bbb7369f372268afa2",
+      "maximum_normal_equation_error": 1.2190193160319584e-13,
+      "environments": [
+        "N300",
+        "N1200",
+        "rho000",
+        "rho075"
+      ],
+      "shape_per_environment": [
+        12,
+        97
+      ]
+    },
+    {
+      "path": "production_robustness/P4096/rep_121.npz",
+      "index": 121,
+      "stage": "production_robustness",
+      "sha256": "f366c60f7a414591ddf2343caa479dc6f7642c0dd1d3e681427736b0e8776d3c",
+      "maximum_normal_equation_error": 1.7070197048962323e-13,
+      "environments": [
+        "N300",
+        "N1200",
+        "rho000",
+        "rho075"
+      ],
+      "shape_per_environment": [
+        12,
+        97
+      ]
+    },
+    {
+      "path": "production_robustness/P4096/rep_122.npz",
+      "index": 122,
+      "stage": "production_robustness",
+      "sha256": "b7dbd9d8aa5c0088574b1ba548ec6f84af8fee46fb19875adbba75d20acb0692",
+      "maximum_normal_equation_error": 1.1295342916203821e-13,
+      "environments": [
+        "N300",
+        "N1200",
+        "rho000",
+        "rho075"
+      ],
+      "shape_per_environment": [
+        12,
+        97
+      ]
+    },
+    {
+      "path": "production_robustness/P4096/rep_123.npz",
+      "index": 123,
+      "stage": "production_robustness",
+      "sha256": "b12b0faca2ef510c57301487bf944ac15c4ae8460f55014152ee18ce39a6236c",
+      "maximum_normal_equation_error": 1.0946089293897539e-13,
+      "environments": [
+        "N300",
+        "N1200",
+        "rho000",
+        "rho075"
+      ],
+      "shape_per_environment": [
+        12,
+        97
+      ]
+    },
+    {
+      "path": "production_robustness/P4096/rep_124.npz",
+      "index": 124,
+      "stage": "production_robustness",
+      "sha256": "d41973882e44138eb3be9f8295028c9928103d01d6bb08c844fdb96cab3eafa1",
+      "maximum_normal_equation_error": 2.599868545682905e-13,
+      "environments": [
+        "N300",
+        "N1200",
+        "rho000",
+        "rho075"
+      ],
+      "shape_per_environment": [
+        12,
+        97
+      ]
+    },
+    {
+      "path": "production_robustness/P4096/rep_125.npz",
+      "index": 125,
+      "stage": "production_robustness",
+      "sha256": "d385b67d7de97aa4fdda33161a5be3cb9f6a65bb72574e9511de4c0d1165f9b3",
+      "maximum_normal_equation_error": 1.0956020479918388e-13,
+      "environments": [
+        "N300",
+        "N1200",
+        "rho000",
+        "rho075"
+      ],
+      "shape_per_environment": [
+        12,
+        97
+      ]
+    },
+    {
+      "path": "production_robustness/P4096/rep_126.npz",
+      "index": 126,
+      "stage": "production_robustness",
+      "sha256": "96375519a31ce08a3c6721a62208ffa472f485c2d227c64622d6de8575f6dd3d",
+      "maximum_normal_equation_error": 1.6716140326328635e-13,
+      "environments": [
+        "N300",
+        "N1200",
+        "rho000",
+        "rho075"
+      ],
+      "shape_per_environment": [
+        12,
+        97
+      ]
+    },
+    {
+      "path": "production_robustness/P4096/rep_127.npz",
+      "index": 127,
+      "stage": "production_robustness",
+      "sha256": "16593da83f98d03a886a54026ca8d3c82a3f31a82e037c6e9b5544a0af840619",
+      "maximum_normal_equation_error": 8.890201481035474e-14,
+      "environments": [
+        "N300",
+        "N1200",
+        "rho000",
+        "rho075"
+      ],
+      "shape_per_environment": [
+        12,
+        97
+      ]
+    },
+    {
+      "path": "production_robustness/P4096/rep_128.npz",
+      "index": 128,
+      "stage": "production_robustness",
+      "sha256": "2731320eeb968b4cd5082ef1dca388eab36ec3d9f23ed1412caa6c0142c3085a",
+      "maximum_normal_equation_error": 2.559895417658057e-13,
+      "environments": [
+        "N300",
+        "N1200",
+        "rho000",
+        "rho075"
+      ],
+      "shape_per_environment": [
+        12,
+        97
+      ]
+    },
+    {
+      "path": "production_robustness/P4096/rep_129.npz",
+      "index": 129,
+      "stage": "production_robustness",
+      "sha256": "2de48ea5b7d4111606281c0da7d4074b2a9c4fac8032a81526e14c22aad1194f",
+      "maximum_normal_equation_error": 1.400490475271434e-13,
+      "environments": [
+        "N300",
+        "N1200",
+        "rho000",
+        "rho075"
+      ],
+      "shape_per_environment": [
+        12,
+        97
+      ]
+    },
+    {
+      "path": "production_robustness/P4096/rep_130.npz",
+      "index": 130,
+      "stage": "production_robustness",
+      "sha256": "90885b1a6ddefacd7802b8be4f6213517773f21435554a79adfe65fa9a0de909",
+      "maximum_normal_equation_error": 7.605190730173021e-14,
+      "environments": [
+        "N300",
+        "N1200",
+        "rho000",
+        "rho075"
+      ],
+      "shape_per_environment": [
+        12,
+        97
+      ]
+    },
+    {
+      "path": "production_robustness/P4096/rep_131.npz",
+      "index": 131,
+      "stage": "production_robustness",
+      "sha256": "b150d45b827ab542c7c1de170fc8cfc0671e5596f9fcc357b509c7af42b3f50c",
+      "maximum_normal_equation_error": 1.4392653057858015e-13,
+      "environments": [
+        "N300",
+        "N1200",
+        "rho000",
+        "rho075"
+      ],
+      "shape_per_environment": [
+        12,
+        97
+      ]
+    },
+    {
+      "path": "production_robustness/P4096/rep_132.npz",
+      "index": 132,
+      "stage": "production_robustness",
+      "sha256": "7b276fab0b30da7185bbecba7a1aee6e113d7b564ed880484b9dcc01c559a1a4",
+      "maximum_normal_equation_error": 1.802086312206047e-13,
+      "environments": [
+        "N300",
+        "N1200",
+        "rho000",
+        "rho075"
+      ],
+      "shape_per_environment": [
+        12,
+        97
+      ]
+    },
+    {
+      "path": "production_robustness/P4096/rep_133.npz",
+      "index": 133,
+      "stage": "production_robustness",
+      "sha256": "3185a4cc1af41b32de77d64ea6a11f1358d3111ef92a634b79d1982913d3fae4",
+      "maximum_normal_equation_error": 1.916521445938322e-13,
+      "environments": [
+        "N300",
+        "N1200",
+        "rho000",
+        "rho075"
+      ],
+      "shape_per_environment": [
+        12,
+        97
+      ]
+    },
+    {
+      "path": "production_robustness/P4096/rep_134.npz",
+      "index": 134,
+      "stage": "production_robustness",
+      "sha256": "f6582e538ed949625680e5db43506ff26ec471dbd8c306df5899cee14be15930",
+      "maximum_normal_equation_error": 9.86060666170567e-14,
+      "environments": [
+        "N300",
+        "N1200",
+        "rho000",
+        "rho075"
+      ],
+      "shape_per_environment": [
+        12,
+        97
+      ]
+    },
+    {
+      "path": "production_robustness/P4096/rep_135.npz",
+      "index": 135,
+      "stage": "production_robustness",
+      "sha256": "a282ad34a7d5986cf8eca594e8dc4378a8dd975d73e87eb9ac8af9edd5c892ed",
+      "maximum_normal_equation_error": 1.200386564779131e-13,
+      "environments": [
+        "N300",
+        "N1200",
+        "rho000",
+        "rho075"
+      ],
+      "shape_per_environment": [
+        12,
+        97
+      ]
+    },
+    {
+      "path": "production_robustness/P4096/rep_136.npz",
+      "index": 136,
+      "stage": "production_robustness",
+      "sha256": "2b2d4ec75ca28c78aca5d2f11a3293b1885d92da161ef3bc5f8c93481afe3765",
+      "maximum_normal_equation_error": 2.0199463393199993e-13,
+      "environments": [
+        "N300",
+        "N1200",
+        "rho000",
+        "rho075"
+      ],
+      "shape_per_environment": [
+        12,
+        97
+      ]
+    },
+    {
+      "path": "production_robustness/P4096/rep_137.npz",
+      "index": 137,
+      "stage": "production_robustness",
+      "sha256": "2a32831bbc8bdfa3046e30e1de1e9b037614147ae7f466765c188c434d7a5611",
+      "maximum_normal_equation_error": 1.1062021931058583e-13,
+      "environments": [
+        "N300",
+        "N1200",
+        "rho000",
+        "rho075"
+      ],
+      "shape_per_environment": [
+        12,
+        97
+      ]
+    },
+    {
+      "path": "production_robustness/P4096/rep_138.npz",
+      "index": 138,
+      "stage": "production_robustness",
+      "sha256": "83c39cb9019da6db9b73882f6ba24ac478607a50b98f5fb29ee1f18a14627bff",
+      "maximum_normal_equation_error": 1.2772131561324422e-13,
+      "environments": [
+        "N300",
+        "N1200",
+        "rho000",
+        "rho075"
+      ],
+      "shape_per_environment": [
+        12,
+        97
+      ]
+    },
+    {
+      "path": "production_robustness/P4096/rep_139.npz",
+      "index": 139,
+      "stage": "production_robustness",
+      "sha256": "6b6b4a396e87113a9c46ca6ed0076dbea48e325d64a6145602e7e35430735ea7",
+      "maximum_normal_equation_error": 2.7958342767113974e-13,
       "environments": [
         "N300",
         "N1200",
