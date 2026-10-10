@@ -1,7 +1,7 @@
 {
   "run_id": 38064621892,
   "source_commit": "ad9dd55e9f44f58143c6c205e70a75e9a22454b2",
-  "recorded_utc": "2026-10-10T16:30:16.346794+00:00",
+  "recorded_utc": "2026-10-10T18:17:36.538445+00:00",
   "artifacts": [
     {
       "github": {
@@ -211,6 +211,418 @@
         131,
         132,
         133
+      ]
+    },
+    {
+      "github": {
+        "id": 11676039012,
+        "node_id": "MDg6QXJ0aWZhY3QxMTY3NjAzOTAxMg==",
+        "name": "rich6d-production_baseline-batch-5",
+        "size_in_bytes": 671721,
+        "url": "https://api.github.com/repos/ENRICOBIGNOZZI/portfolio_learnability/actions/artifacts/11676039012",
+        "archive_download_url": "https://api.github.com/repos/ENRICOBIGNOZZI/portfolio_learnability/actions/artifacts/11676039012/zip",
+        "expired": false,
+        "digest": "sha256:30c3f213cb1df574ff4dfde5719ea1aa5d35c796857777382a1399df48401132",
+        "created_at": "2026-10-10T16:54:07Z",
+        "updated_at": "2026-10-10T16:54:07Z",
+        "expires_at": "2026-10-11T16:54:06Z",
+        "workflow_run": {
+          "id": 38064621892,
+          "repository_id": 1360994014,
+          "head_repository_id": 1360994014,
+          "head_branch": "main",
+          "head_sha": "ad9dd55e9f44f58143c6c205e70a75e9a22454b2"
+        }
+      },
+      "transfer_manifest_sha256": "17939f8bbdb18c4040ef683404f217fb10691653920ee9e57255a199d06f9641",
+      "batch_id": 5,
+      "completed_indices": [
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149
+      ]
+    },
+    {
+      "github": {
+        "id": 11675514018,
+        "node_id": "MDg6QXJ0aWZhY3QxMTY3NTUxNDAxOA==",
+        "name": "rich6d-production_baseline-batch-6",
+        "size_in_bytes": 671492,
+        "url": "https://api.github.com/repos/ENRICOBIGNOZZI/portfolio_learnability/actions/artifacts/11675514018",
+        "archive_download_url": "https://api.github.com/repos/ENRICOBIGNOZZI/portfolio_learnability/actions/artifacts/11675514018/zip",
+        "expired": false,
+        "digest": "sha256:0492849f18b0a241fd755c466578b4e08445cc3ec2324b659ecd6eced4105dc8",
+        "created_at": "2026-10-10T16:50:26Z",
+        "updated_at": "2026-10-10T16:50:26Z",
+        "expires_at": "2026-10-11T16:50:25Z",
+        "workflow_run": {
+          "id": 38064621892,
+          "repository_id": 1360994014,
+          "head_repository_id": 1360994014,
+          "head_branch": "main",
+          "head_sha": "ad9dd55e9f44f58143c6c205e70a75e9a22454b2"
+        }
+      },
+      "transfer_manifest_sha256": "71132d5a5299dc888d70ebf8b9c85e2c952e087388902f5b39801e5f2b809e63",
+      "batch_id": 6,
+      "completed_indices": [
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159,
+        160,
+        161,
+        162,
+        163,
+        164,
+        165
+      ]
+    },
+    {
+      "github": {
+        "id": 11675969346,
+        "node_id": "MDg6QXJ0aWZhY3QxMTY3NTk2OTM0Ng==",
+        "name": "rich6d-production_baseline-batch-7",
+        "size_in_bytes": 629838,
+        "url": "https://api.github.com/repos/ENRICOBIGNOZZI/portfolio_learnability/actions/artifacts/11675969346",
+        "archive_download_url": "https://api.github.com/repos/ENRICOBIGNOZZI/portfolio_learnability/actions/artifacts/11675969346/zip",
+        "expired": false,
+        "digest": "sha256:109d1d6a260692e7986682a15b848b1915d13d4c33a1d174312c44dd22f57bbd",
+        "created_at": "2026-10-10T16:56:33Z",
+        "updated_at": "2026-10-10T16:56:33Z",
+        "expires_at": "2026-10-11T16:56:32Z",
+        "workflow_run": {
+          "id": 38064621892,
+          "repository_id": 1360994014,
+          "head_repository_id": 1360994014,
+          "head_branch": "main",
+          "head_sha": "ad9dd55e9f44f58143c6c205e70a75e9a22454b2"
+        }
+      },
+      "transfer_manifest_sha256": "f208fb37cd5318201c842c6f60761e174c7597b26d474896d98c3e7ac95ef920",
+      "batch_id": 7,
+      "completed_indices": [
+        166,
+        167,
+        168,
+        169,
+        170,
+        171,
+        172,
+        173,
+        174,
+        175,
+        176,
+        177,
+        178,
+        179,
+        180
+      ]
+    },
+    {
+      "github": {
+        "id": 11676149162,
+        "node_id": "MDg6QXJ0aWZhY3QxMTY3NjE0OTE2Mg==",
+        "name": "rich6d-production_baseline-batch-8",
+        "size_in_bytes": 629769,
+        "url": "https://api.github.com/repos/ENRICOBIGNOZZI/portfolio_learnability/actions/artifacts/11676149162",
+        "archive_download_url": "https://api.github.com/repos/ENRICOBIGNOZZI/portfolio_learnability/actions/artifacts/11676149162/zip",
+        "expired": false,
+        "digest": "sha256:6aa2c66fd6488673cf38a3a1d6d34119621c7a9a10cd2c0d86bbc3385543b2c0",
+        "created_at": "2026-10-10T16:55:54Z",
+        "updated_at": "2026-10-10T16:55:54Z",
+        "expires_at": "2026-10-11T16:55:52Z",
+        "workflow_run": {
+          "id": 38064621892,
+          "repository_id": 1360994014,
+          "head_repository_id": 1360994014,
+          "head_branch": "main",
+          "head_sha": "ad9dd55e9f44f58143c6c205e70a75e9a22454b2"
+        }
+      },
+      "transfer_manifest_sha256": "408217b18763601af743916f2848a676c939be8c37be69f9d3bea62fb22bf728",
+      "batch_id": 8,
+      "completed_indices": [
+        181,
+        182,
+        183,
+        184,
+        185,
+        186,
+        187,
+        188,
+        189,
+        190,
+        191,
+        192,
+        193,
+        194,
+        195
+      ]
+    },
+    {
+      "github": {
+        "id": 11676925144,
+        "node_id": "MDg6QXJ0aWZhY3QxMTY3NjkyNTE0NA==",
+        "name": "rich6d-production_baseline-batch-9",
+        "size_in_bytes": 629878,
+        "url": "https://api.github.com/repos/ENRICOBIGNOZZI/portfolio_learnability/actions/artifacts/11676925144",
+        "archive_download_url": "https://api.github.com/repos/ENRICOBIGNOZZI/portfolio_learnability/actions/artifacts/11676925144/zip",
+        "expired": false,
+        "digest": "sha256:f03d3fb912cd64ef70617c1a601ad7acf42d2a3ca1071cb7aee0227c60437074",
+        "created_at": "2026-10-10T17:03:06Z",
+        "updated_at": "2026-10-10T17:03:06Z",
+        "expires_at": "2026-10-11T17:03:05Z",
+        "workflow_run": {
+          "id": 38064621892,
+          "repository_id": 1360994014,
+          "head_repository_id": 1360994014,
+          "head_branch": "main",
+          "head_sha": "ad9dd55e9f44f58143c6c205e70a75e9a22454b2"
+        }
+      },
+      "transfer_manifest_sha256": "3e36529b6120f8485f0b7fdacc3097ae8bd8592b026382cb46b73ba737c97af7",
+      "batch_id": 9,
+      "completed_indices": [
+        196,
+        197,
+        198,
+        199,
+        200,
+        201,
+        202,
+        203,
+        204,
+        205,
+        206,
+        207,
+        208,
+        209,
+        210
+      ]
+    },
+    {
+      "github": {
+        "id": 11677315185,
+        "node_id": "MDg6QXJ0aWZhY3QxMTY3NzMxNTE4NQ==",
+        "name": "rich6d-production_baseline-batch-10",
+        "size_in_bytes": 629619,
+        "url": "https://api.github.com/repos/ENRICOBIGNOZZI/portfolio_learnability/actions/artifacts/11677315185",
+        "archive_download_url": "https://api.github.com/repos/ENRICOBIGNOZZI/portfolio_learnability/actions/artifacts/11677315185/zip",
+        "expired": false,
+        "digest": "sha256:1bd9f1a4ce3ebdaab4ec7fbc6f790d0cad19115d8fe2476bb1e873dca88239f2",
+        "created_at": "2026-10-10T17:25:19Z",
+        "updated_at": "2026-10-10T17:25:19Z",
+        "expires_at": "2026-10-11T17:25:19Z",
+        "workflow_run": {
+          "id": 38064621892,
+          "repository_id": 1360994014,
+          "head_repository_id": 1360994014,
+          "head_branch": "main",
+          "head_sha": "ad9dd55e9f44f58143c6c205e70a75e9a22454b2"
+        }
+      },
+      "transfer_manifest_sha256": "f028aa1f139edd84152ac50ed39e65b8a10f3dc0e638bbe6a173b8480023142f",
+      "batch_id": 10,
+      "completed_indices": [
+        211,
+        212,
+        213,
+        214,
+        215,
+        216,
+        217,
+        218,
+        219,
+        220,
+        221,
+        222,
+        223,
+        224,
+        225
+      ]
+    },
+    {
+      "github": {
+        "id": 11676678613,
+        "node_id": "MDg6QXJ0aWZhY3QxMTY3NjY3ODYxMw==",
+        "name": "rich6d-production_baseline-batch-11",
+        "size_in_bytes": 629605,
+        "url": "https://api.github.com/repos/ENRICOBIGNOZZI/portfolio_learnability/actions/artifacts/11676678613",
+        "archive_download_url": "https://api.github.com/repos/ENRICOBIGNOZZI/portfolio_learnability/actions/artifacts/11676678613/zip",
+        "expired": false,
+        "digest": "sha256:53ceb748550c849245ba133b39d0c872910d97e508f2896e5bde239dad4b8a1e",
+        "created_at": "2026-10-10T17:29:41Z",
+        "updated_at": "2026-10-10T17:29:41Z",
+        "expires_at": "2026-10-11T17:29:39Z",
+        "workflow_run": {
+          "id": 38064621892,
+          "repository_id": 1360994014,
+          "head_repository_id": 1360994014,
+          "head_branch": "main",
+          "head_sha": "ad9dd55e9f44f58143c6c205e70a75e9a22454b2"
+        }
+      },
+      "transfer_manifest_sha256": "a1da5a55b491f3128e69dc3181b6fbdc872d7091aed2851e31c493d91eb0f706",
+      "batch_id": 11,
+      "completed_indices": [
+        226,
+        227,
+        228,
+        229,
+        230,
+        231,
+        232,
+        233,
+        234,
+        235,
+        236,
+        237,
+        238,
+        239,
+        240
+      ]
+    },
+    {
+      "github": {
+        "id": 11676953750,
+        "node_id": "MDg6QXJ0aWZhY3QxMTY3Njk1Mzc1MA==",
+        "name": "rich6d-production_baseline-batch-12",
+        "size_in_bytes": 629808,
+        "url": "https://api.github.com/repos/ENRICOBIGNOZZI/portfolio_learnability/actions/artifacts/11676953750",
+        "archive_download_url": "https://api.github.com/repos/ENRICOBIGNOZZI/portfolio_learnability/actions/artifacts/11676953750/zip",
+        "expired": false,
+        "digest": "sha256:9c77cef06e31a5a381cead2eaa757fe36d05322427fdd10bd2a3a36daec7b400",
+        "created_at": "2026-10-10T17:35:31Z",
+        "updated_at": "2026-10-10T17:35:31Z",
+        "expires_at": "2026-10-11T17:35:29Z",
+        "workflow_run": {
+          "id": 38064621892,
+          "repository_id": 1360994014,
+          "head_repository_id": 1360994014,
+          "head_branch": "main",
+          "head_sha": "ad9dd55e9f44f58143c6c205e70a75e9a22454b2"
+        }
+      },
+      "transfer_manifest_sha256": "2ccf3532b78c4e97734becfc9aa193a49ed068e57d7e6060f7123349a822bd2b",
+      "batch_id": 12,
+      "completed_indices": [
+        241,
+        242,
+        243,
+        244,
+        245,
+        246,
+        247,
+        248,
+        249,
+        250,
+        251,
+        252,
+        253,
+        254,
+        255
+      ]
+    },
+    {
+      "github": {
+        "id": 11676658709,
+        "node_id": "MDg6QXJ0aWZhY3QxMTY3NjY1ODcwOQ==",
+        "name": "rich6d-production_baseline-batch-13",
+        "size_in_bytes": 629769,
+        "url": "https://api.github.com/repos/ENRICOBIGNOZZI/portfolio_learnability/actions/artifacts/11676658709",
+        "archive_download_url": "https://api.github.com/repos/ENRICOBIGNOZZI/portfolio_learnability/actions/artifacts/11676658709/zip",
+        "expired": false,
+        "digest": "sha256:f0f77357c726988637618e25688828ddc69c69574dcf49f9ca861df8b8b5ab46",
+        "created_at": "2026-10-10T17:30:12Z",
+        "updated_at": "2026-10-10T17:30:12Z",
+        "expires_at": "2026-10-11T17:30:10Z",
+        "workflow_run": {
+          "id": 38064621892,
+          "repository_id": 1360994014,
+          "head_repository_id": 1360994014,
+          "head_branch": "main",
+          "head_sha": "ad9dd55e9f44f58143c6c205e70a75e9a22454b2"
+        }
+      },
+      "transfer_manifest_sha256": "fa15f0aca632b092f14d90aeb0c90c869b9898b0790167cd7a0bc09efceca469",
+      "batch_id": 13,
+      "completed_indices": [
+        256,
+        257,
+        258,
+        259,
+        260,
+        261,
+        262,
+        263,
+        264,
+        265,
+        266,
+        267,
+        268,
+        269,
+        270
+      ]
+    },
+    {
+      "github": {
+        "id": 11677053931,
+        "node_id": "MDg6QXJ0aWZhY3QxMTY3NzA1MzkzMQ==",
+        "name": "rich6d-production_baseline-batch-14",
+        "size_in_bytes": 629623,
+        "url": "https://api.github.com/repos/ENRICOBIGNOZZI/portfolio_learnability/actions/artifacts/11677053931",
+        "archive_download_url": "https://api.github.com/repos/ENRICOBIGNOZZI/portfolio_learnability/actions/artifacts/11677053931/zip",
+        "expired": false,
+        "digest": "sha256:1e0c1d53e68bc9c62943ab4b988228fbc3aab1246534d9b609c48485c2609afd",
+        "created_at": "2026-10-10T17:37:25Z",
+        "updated_at": "2026-10-10T17:37:25Z",
+        "expires_at": "2026-10-11T17:37:24Z",
+        "workflow_run": {
+          "id": 38064621892,
+          "repository_id": 1360994014,
+          "head_repository_id": 1360994014,
+          "head_branch": "main",
+          "head_sha": "ad9dd55e9f44f58143c6c205e70a75e9a22454b2"
+        }
+      },
+      "transfer_manifest_sha256": "cae5578638820e94bf57866d9d89e08e372ad15c0d872d25799a6dbba18cb0d8",
+      "batch_id": 14,
+      "completed_indices": [
+        271,
+        272,
+        273,
+        274,
+        275,
+        276,
+        277,
+        278,
+        279,
+        280,
+        281,
+        282,
+        283,
+        284,
+        285
       ]
     }
   ]

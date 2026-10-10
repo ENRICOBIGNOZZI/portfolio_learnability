@@ -42,6 +42,8 @@ def check_slope_rows(rows, times, values, windows=WINDOWS):
         count = int(keep.sum())
         if int(row.observations) != count or float(row.T_min) != minimum:
             raise ValueError('Slope window has incorrect horizon membership.')
+        if 'T_max' in rows and int(row.T_max) != int(times[-1]):
+            raise ValueError('Slope window has incorrect maximum horizon.')
         if count < 3:
             if bool(row.available):
                 raise ValueError('An unavailable slope window was reported as available.')
@@ -86,6 +88,7 @@ def verify():
     full = pd.read_csv(OUTPUT / 'full_penalty_distributions.csv')
     theory = pd.read_csv(OUTPUT / 'theory_distributions.csv')
     slopes = pd.read_csv(OUTPUT / 'slopes_all_windows.csv')
+    common_slopes = pd.read_csv(OUTPUT / 'slopes_robustness_common_grid.csv')
     paired = pd.read_csv(OUTPUT / 'paired_robustness.csv')
     if (set(full.environment) != set(ENVIRONMENTS) or set(full.metric) != set(METRICS)
             or set(theory.environment) != set(ENVIRONMENTS)
@@ -93,8 +96,10 @@ def verify():
         raise ValueError('Distribution tables contain missing or unexpected environments/metrics.')
     expected_quantities = {'annual_gap', 'empirical_complexity', 'relative_complexity',
                            'population_complexity', 'population_relative_complexity'}
-    if set(slopes.environment) != set(ENVIRONMENTS) or set(slopes.quantity) != expected_quantities:
-        raise ValueError('Slope table has missing or unexpected environments/quantities.')
+    for table, grid in [(slopes, 'environment_full'), (common_slopes, 'robustness_common')]:
+        if (set(table.environment) != set(ENVIRONMENTS) or set(table.quantity) != expected_quantities
+                or set(table.grid) != {grid}):
+            raise ValueError('Slope table has missing or unexpected environments, quantities or grids.')
     datasets, horizons = {}, {}
     for name in ENVIRONMENTS:
         with np.load(OUTPUT / 'distributions' / f'{name}.npz') as z:
@@ -129,11 +134,18 @@ def verify():
         for metric in ('annual_gap', 'empirical_complexity', 'relative_complexity'):
             rows = slopes[(slopes.environment == name) & (slopes.quantity == metric)]
             check_slope_rows(rows, times, data[metric][:, :, -1])
+            keep = np.isin(times, protocol['robustness_T'])
+            np.testing.assert_array_equal(times[keep], protocol['robustness_T'])
+            rows = common_slopes[(common_slopes.environment == name) & (common_slopes.quantity == metric)]
+            check_slope_rows(rows, times[keep], data[metric][:, keep, -1])
         with np.load(OUTPUT / 'population' / f'{name}_theory.npz') as pop:
             for metric, values in [('complexity', pop['complexity']),
                                    ('relative_complexity', pop['complexity'] / times)]:
                 rows = slopes[(slopes.environment == name) & (slopes.quantity == 'population_' + metric)]
                 check_slope_rows(rows, times, values)
+                rows = common_slopes[(common_slopes.environment == name) &
+                                     (common_slopes.quantity == 'population_' + metric)]
+                check_slope_rows(rows, times[keep], values[keep])
     others = set(ENVIRONMENTS) - {'baseline'}
     if (set(paired.environment) != others or set(paired.reference) != {'baseline'}
             or set(paired.metric) != {'annual_SR', 'annual_gap', 'empirical_complexity'}):
@@ -149,6 +161,7 @@ def verify():
             check_statistics(rows, difference)
     result = dict(passed=True, run_hash=protocol['run_hash'], verified_utc=utc_now(),
         full_penalty_rows=len(full), theory_rows=len(theory), paired_rows=len(paired), slope_rows=len(slopes),
+        common_grid_slope_rows=len(common_slopes),
         statistics='All means, medians, sample SDs, linear 2.5/97.5 percentiles and mean MCSEs independently recomputed.',
         slopes='All predeclared windows, OLS slopes, full-cross-T influence MCSEs, leave-one-path jackknife MCSEs and Monte Carlo intervals independently recomputed.')
     json_write(OUTPUT / 'summary_integrity.json', result)

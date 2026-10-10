@@ -28,9 +28,28 @@ def read_environment(name,protocol):
     return records,T
 
 
+def make_slopes(name,T,data,population,selected_times=None,grid='environment_full'):
+    """Keep full-baseline slopes distinct from matched-grid robustness comparisons."""
+    T=np.asarray(T)
+    times=T if selected_times is None else np.asarray(selected_times)
+    keep=np.isin(T,times)
+    np.testing.assert_array_equal(T[keep],times)
+    pop=population[population['T'].isin(times)].sort_values('T')
+    np.testing.assert_array_equal(pop['T'],times)
+    rows=[]
+    metadata=dict(environment=name,grid=grid,T_max=int(times[-1]))
+    for metric in ('annual_gap','empirical_complexity','relative_complexity'):
+        rows.extend(dict(**metadata,quantity=metric,**row)
+                    for row in gap_slopes(times,data[metric][:,keep,-1]))
+    for metric in ('complexity','relative_complexity'):
+        rows.extend(dict(**metadata,quantity='population_'+metric,**row)
+                    for row in deterministic_slopes(times,pop[metric].values))
+    return rows
+
+
 def summarize():
     protocol=json.loads((OUTPUT/'protocol.json').read_text())
-    summary=[];theory=[];slopes=[];paired=[];datasets={};hashes={}
+    summary=[];theory=[];slopes=[];common_slopes=[];paired=[];datasets={};hashes={}
     population=pd.read_csv(OUTPUT/'population_summary.csv')
     for name in ENVIRONMENTS:
         records,T=read_environment(name,protocol)
@@ -66,13 +85,10 @@ def summarize():
                 theory.append(dict(environment=name,T=int(horizon),metric=key,penalty_index=96,
                     penalty=protocol['a'][name]*float(horizon)**(-.6),exact_theory_choice=True,
                     replications=300,**{field:float(value[t]) for field,value in stats.items()}))
-        for metric in ('annual_gap','empirical_complexity','relative_complexity'):
-            for row in gap_slopes(T,data[metric][:,:,-1]):
-                slopes.append(dict(environment=name,quantity=metric,**row))
         pop=population[population.environment==name].sort_values('T')
-        for metric in ('complexity','relative_complexity'):
-            for row in deterministic_slopes(pop['T'].values,pop[metric].values):
-                slopes.append(dict(environment=name,quantity='population_'+metric,**row))
+        slopes.extend(make_slopes(name,T,data,pop))
+        common_slopes.extend(make_slopes(name,T,data,pop,protocol['robustness_T'],
+                                        grid='robustness_common'))
     for name in ENVIRONMENTS:
         if name=='baseline':
             continue
@@ -92,6 +108,7 @@ def summarize():
     pd.DataFrame(summary).to_csv(OUTPUT/'full_penalty_distributions.csv',index=False)
     pd.DataFrame(theory).to_csv(OUTPUT/'theory_distributions.csv',index=False)
     pd.DataFrame(slopes).to_csv(OUTPUT/'slopes_all_windows.csv',index=False)
+    pd.DataFrame(common_slopes).to_csv(OUTPUT/'slopes_robustness_common_grid.csv',index=False)
     pd.DataFrame(paired).to_csv(OUTPUT/'paired_robustness.csv',index=False)
     legacy_comparison(protocol,datasets['baseline'],hashes['baseline'])
     json_write(OUTPUT/'summary_verification.json',dict(replications_per_environment=300,

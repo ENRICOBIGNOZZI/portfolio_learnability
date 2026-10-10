@@ -1,0 +1,12 @@
+{
+  "verified_utc": "2026-10-10T18:17:36.538445+00:00",
+  "command": "python3 -m pytest -q tests/test_extended_summary_integrity.py",
+  "result": "3 passed in 4.96s",
+  "scope": "Synthetic 300-path fixtures only. Independently checks all distribution statistics and slope windows, including rejection of full-baseline slopes substituted into the common robustness grid; not validation of unfinished production summaries.",
+  "source_sha256": {
+    "simulations/extended/summarize.py": "3fafe13e970790f307321610c24b268cfdac67e54abb9583dcc779416a3f2119",
+    "simulations/extended/verify_summaries.py": "005a47a4884f99358950ee58275c95917c2586dc9884f7f81a8c8a3450e670b4",
+    "simulations/extended/report.py": "29e5c5f8aecbe7a815ea5f8101bfeaafc29ec7773a6a41414da6a59bd12c479c",
+    "tests/test_extended_summary_integrity.py": "f780b9aa5a02f652530235d3520198eb4ee83c61f6b1d8742f423f043f95b385"
+  }
+}

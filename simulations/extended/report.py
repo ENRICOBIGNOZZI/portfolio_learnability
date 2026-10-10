@@ -14,6 +14,7 @@ def render():
     protocol=json.loads((OUTPUT/'protocol.json').read_text())
     methods=pd.read_csv(OUTPUT/'theory_distributions.csv')
     slopes=pd.read_csv(OUTPUT/'slopes_all_windows.csv')
+    common_slopes=pd.read_csv(OUTPUT/'slopes_robustness_common_grid.csv')
     pop=pd.read_csv(OUTPUT/'population_summary.csv')
     resolution=pd.read_csv(OUTPUT/'production_resolution.csv')
     quad=pd.read_csv(OUTPUT/'quadrature_audit.csv')
@@ -66,11 +67,16 @@ def render():
     add('The baseline local elasticity passes near 0.4 and then exceeds it over the extended candidate horizons. This does not establish convergence to 0.4. A full-window log-log slope, a local population elasticity and the empirical-complexity distribution are different objects. The saturation diagnostic extends only the finite matrix, not the simulated economic histories: eventually C approaches P and its local elasticity approaches zero. Actual-study C/P is small, so the pronounced policy projection floor must not be confused with global trace saturation.')
     add('Unsmoothed clusters persist across basis and quadrature seeds and multiple ranks. Similar clusters occur in the kernel operator before factor weighting. They are consistent with permutation/reflection symmetries of a radial Matérn kernel on the uniform six-dimensional cube; the factor economy changes the leading directions. This is an interpretation of the operator comparisons, not a proof identifying every eigenspace. Component eigenvalues were never added as if the component operators shared eigenvectors. The j^(-1.5) curve is an order reference, not a fitted law.')
     add('3. ALL PREDECLARED SLOPES')
-    for _,r in slopes.iterrows():
+    add('The baseline extended-grid slopes are reported first. All five economies are then compared on their identical frozen robustness grid; for nonbaseline economies that common grid is also their full production grid.')
+    for _,r in slopes[slopes.environment=='baseline'].iterrows():
         if pd.isna(r.get('slope',np.nan)):
             continue
         uncertainty='' if pd.isna(r.get('MCSE_delta',np.nan)) else f"; delta MCSE {r.MCSE_delta:.6f}, 95% Monte Carlo interval [{r.CI_low:.6f}, {r.CI_high:.6f}], jackknife MCSE {r.MCSE_jackknife:.6f}"
-        add(f"{r.environment}, {r.quantity}, {r.window}: {r.slope:.6f}{uncertainty}.")
+        add(f"{r.environment}, {r.quantity}, {r.window}, T <= {int(r.T_max)}: {r.slope:.6f}{uncertainty}.")
+    add('Matched-grid robustness slopes use the same frozen horizons through T=3240 for every economy, including the baseline. They are reported separately from the baseline full-grid analysis through T=4860; differences across economies are not inferred from unequal fitting ranges.')
+    for _,r in common_slopes.iterrows():
+        uncertainty='' if pd.isna(r.get('MCSE_delta',np.nan)) else f"; delta MCSE {r.MCSE_delta:.6f}, 95% Monte Carlo interval [{r.CI_low:.6f}, {r.CI_high:.6f}], jackknife MCSE {r.MCSE_jackknife:.6f}"
+        add(f"Common grid, {r.environment}, {r.quantity}, {r.window}, T <= {int(r.T_max)}: {r.slope:.6f}{uncertainty}.")
     add('These are descriptive finite-window exponents. Monte Carlo intervals quantify uncertainty from 300 independent paths, preserving full within-path cross-T covariance. They do not include population quadrature or finite-rank error. An O_P(T^(-0.6)) upper-rate prediction does not require a finite-grid regression slope to equal -0.6; a faster observed slope can be compatible with that bound. Failed high-T numerical checks preclude a decisive infinite-dimensional asymptotic interpretation, irrespective of proximity to -0.6.')
     add('4. CROSS-SECTIONAL BREADTH AND TEMPORAL DEPENDENCE')
     first=min(protocol['robustness_T']);last=max(protocol['robustness_T'])

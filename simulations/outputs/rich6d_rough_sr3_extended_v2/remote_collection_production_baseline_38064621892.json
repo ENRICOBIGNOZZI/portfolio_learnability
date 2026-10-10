@@ -7,7 +7,7 @@
   "started_utc": "2026-10-10T15:56:13.695506+00:00",
   "collector_pid": 81250,
   "download_root": "/private/tmp/rich6d-remote-38064621892",
-  "status": "polling",
+  "status": "all_stage_checkpoints_collected",
   "downloaded_artifacts": [
     {
       "id": 11675715036,
@@ -38,19 +38,79 @@
       "name": "rich6d-production_baseline-batch-0",
       "digest": "sha256:5b4b062957f1bb522db69d99ae70e20ad3135e10e2f7d434f6ef578aea0e3b41",
       "bytes": 671534
+    },
+    {
+      "id": 11675514018,
+      "name": "rich6d-production_baseline-batch-6",
+      "digest": "sha256:0492849f18b0a241fd755c466578b4e08445cc3ec2324b659ecd6eced4105dc8",
+      "bytes": 671492
+    },
+    {
+      "id": 11676039012,
+      "name": "rich6d-production_baseline-batch-5",
+      "digest": "sha256:30c3f213cb1df574ff4dfde5719ea1aa5d35c796857777382a1399df48401132",
+      "bytes": 671721
+    },
+    {
+      "id": 11676149162,
+      "name": "rich6d-production_baseline-batch-8",
+      "digest": "sha256:6aa2c66fd6488673cf38a3a1d6d34119621c7a9a10cd2c0d86bbc3385543b2c0",
+      "bytes": 629769
+    },
+    {
+      "id": 11675969346,
+      "name": "rich6d-production_baseline-batch-7",
+      "digest": "sha256:109d1d6a260692e7986682a15b848b1915d13d4c33a1d174312c44dd22f57bbd",
+      "bytes": 629838
+    },
+    {
+      "id": 11676925144,
+      "name": "rich6d-production_baseline-batch-9",
+      "digest": "sha256:f03d3fb912cd64ef70617c1a601ad7acf42d2a3ca1071cb7aee0227c60437074",
+      "bytes": 629878
+    },
+    {
+      "id": 11677315185,
+      "name": "rich6d-production_baseline-batch-10",
+      "digest": "sha256:1bd9f1a4ce3ebdaab4ec7fbc6f790d0cad19115d8fe2476bb1e873dca88239f2",
+      "bytes": 629619
+    },
+    {
+      "id": 11676678613,
+      "name": "rich6d-production_baseline-batch-11",
+      "digest": "sha256:53ceb748550c849245ba133b39d0c872910d97e508f2896e5bde239dad4b8a1e",
+      "bytes": 629605
+    },
+    {
+      "id": 11676658709,
+      "name": "rich6d-production_baseline-batch-13",
+      "digest": "sha256:f0f77357c726988637618e25688828ddc69c69574dcf49f9ca861df8b8b5ab46",
+      "bytes": 629769
+    },
+    {
+      "id": 11676953750,
+      "name": "rich6d-production_baseline-batch-12",
+      "digest": "sha256:9c77cef06e31a5a381cead2eaa757fe36d05322427fdd10bd2a3a36daec7b400",
+      "bytes": 629808
+    },
+    {
+      "id": 11677053931,
+      "name": "rich6d-production_baseline-batch-14",
+      "digest": "sha256:1e0c1d53e68bc9c62943ab4b988228fbc3aab1246534d9b609c48485c2609afd",
+      "bytes": 629623
     }
   ],
   "verified_counts": {
-    "baseline": 148,
+    "baseline": 300,
     "N300": 0,
     "N1200": 0,
     "rho000": 0,
     "rho075": 0
   },
   "scope": "Import only after transfer validation and independent scientific audit. No final-study completion claim.",
-  "last_poll_utc": "2026-10-10T16:29:21.857871+00:00",
-  "remote_status": "queued",
-  "remote_conclusion": "",
+  "last_poll_utc": "2026-10-10T17:39:31.094210+00:00",
+  "remote_status": "completed",
+  "remote_conclusion": "success",
   "jobs": [
     {
       "name": "allocation",
@@ -64,18 +124,18 @@
     },
     {
       "name": "production (7)",
-      "status": "in_progress",
-      "conclusion": ""
+      "status": "completed",
+      "conclusion": "success"
     },
     {
       "name": "production (11)",
-      "status": "queued",
-      "conclusion": ""
+      "status": "completed",
+      "conclusion": "success"
     },
     {
       "name": "production (6)",
-      "status": "in_progress",
-      "conclusion": ""
+      "status": "completed",
+      "conclusion": "success"
     },
     {
       "name": "production (1)",
@@ -84,8 +144,8 @@
     },
     {
       "name": "production (8)",
-      "status": "in_progress",
-      "conclusion": ""
+      "status": "completed",
+      "conclusion": "success"
     },
     {
       "name": "production (0)",
@@ -94,18 +154,18 @@
     },
     {
       "name": "production (9)",
-      "status": "in_progress",
-      "conclusion": ""
+      "status": "completed",
+      "conclusion": "success"
     },
     {
       "name": "production (12)",
-      "status": "queued",
-      "conclusion": ""
+      "status": "completed",
+      "conclusion": "success"
     },
     {
       "name": "production (14)",
-      "status": "queued",
-      "conclusion": ""
+      "status": "completed",
+      "conclusion": "success"
     },
     {
       "name": "production (4)",
@@ -114,18 +174,18 @@
     },
     {
       "name": "production (13)",
-      "status": "queued",
-      "conclusion": ""
+      "status": "completed",
+      "conclusion": "success"
     },
     {
       "name": "production (5)",
-      "status": "in_progress",
-      "conclusion": ""
+      "status": "completed",
+      "conclusion": "success"
     },
     {
       "name": "production (10)",
-      "status": "queued",
-      "conclusion": ""
+      "status": "completed",
+      "conclusion": "success"
     },
     {
       "name": "production (3)",
@@ -133,6 +193,7 @@
       "conclusion": "success"
     }
   ],
-  "last_import_utc": "2026-10-10T16:22:05.292356+00:00",
-  "files_published_in_last_import": 32
+  "last_import_utc": "2026-10-10T17:38:29.061395+00:00",
+  "files_published_in_last_import": 30,
+  "finished_utc": "2026-10-10T17:39:31.098792+00:00"
 }

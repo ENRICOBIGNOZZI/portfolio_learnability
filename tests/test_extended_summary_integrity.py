@@ -7,7 +7,8 @@ import pytest
 
 from simulations.extended import verify_summaries as audit
 from simulations.extended.design import ENVIRONMENTS, T_REQUIRED, T_ROBUSTNESS, PENALTIES
-from simulations.extended.statistics import distribution, gap_slopes, deterministic_slopes
+from simulations.extended.statistics import distribution, gap_slopes
+from simulations.extended.summarize import make_slopes
 
 
 def penalty_table(values, times, penalties):
@@ -52,8 +53,8 @@ def test_all_complete_table_shapes_and_paired_statistics(tmp_path, monkeypatch):
     (tmp_path / 'population').mkdir()
     constants = {name: .0001 for name in ENVIRONMENTS}
     (tmp_path / 'protocol.json').write_text(json.dumps(dict(run_hash='synthetic-audit-fixture',
-        penalties=PENALTIES.tolist(), a=constants)))
-    full, theory, slopes, datasets = [], [], [], {}
+        penalties=PENALTIES.tolist(), a=constants, robustness_T=list(T_ROBUSTNESS))))
+    full, theory, slopes, common_slopes, datasets = [], [], [], [], {}
     rng = np.random.default_rng(7)
     base = rng.uniform(.8, 1.2, (300, len(T_REQUIRED), 97))
     for number, name in enumerate(ENVIRONMENTS):
@@ -74,14 +75,11 @@ def test_all_complete_table_shapes_and_paired_statistics(tmp_path, monkeypatch):
             theory.append(pd.DataFrame(dict(environment=name, metric=metric, T=times,
                 penalty_index=96, penalty=penalties[:, -1], replications=300, exact_theory_choice=True,
                 **distribution(data['theory_' + metric]))))
-        for metric in ('annual_gap', 'empirical_complexity', 'relative_complexity'):
-            slopes.extend(dict(environment=name, quantity=metric, **row)
-                          for row in gap_slopes(times, data[metric][:, :, -1]))
         complexity = (times / 60.) ** .38
         np.savez(tmp_path / 'population' / f'{name}_theory.npz', complexity=complexity)
-        for metric, y in [('complexity', complexity), ('relative_complexity', complexity / times)]:
-            slopes.extend(dict(environment=name, quantity='population_' + metric, **row)
-                          for row in deterministic_slopes(times, y))
+        pop = pd.DataFrame(dict(T=times, complexity=complexity, relative_complexity=complexity/times))
+        slopes.extend(make_slopes(name, times, data, pop))
+        common_slopes.extend(make_slopes(name, times, data, pop, T_ROBUSTNESS, grid='robustness_common'))
         datasets[name] = data
     paired = []
     for name in set(ENVIRONMENTS) - {'baseline'}:
@@ -92,16 +90,27 @@ def test_all_complete_table_shapes_and_paired_statistics(tmp_path, monkeypatch):
     pd.concat(full).to_csv(tmp_path / 'full_penalty_distributions.csv', index=False)
     pd.concat(theory).to_csv(tmp_path / 'theory_distributions.csv', index=False)
     pd.DataFrame(slopes).to_csv(tmp_path / 'slopes_all_windows.csv', index=False)
+    pd.DataFrame(common_slopes).to_csv(tmp_path / 'slopes_robustness_common_grid.csv', index=False)
     pd.concat(paired).to_csv(tmp_path / 'paired_robustness.csv', index=False)
     result = audit.verify()
     assert result['full_penalty_rows'] == 35502
     assert result['theory_rows'] == 549
     assert result['paired_rows'] == 144
     assert result['slope_rows'] == 100
+    assert result['common_grid_slope_rows'] == 100
     # A plausible but wrong paired difference must fail even when all marginal
     # distributions and every slope still pass.
     table = pd.read_csv(tmp_path / 'paired_robustness.csv')
     table.loc[0, 'mean'] += .01
     table.to_csv(tmp_path / 'paired_robustness.csv', index=False)
+    with pytest.raises(AssertionError):
+        audit.verify()
+    pd.concat(paired).to_csv(tmp_path / 'paired_robustness.csv', index=False)
+    table = pd.DataFrame(common_slopes)
+    full_table = pd.DataFrame(slopes)
+    mask = (table.environment == 'baseline') & (table.quantity == 'annual_gap')
+    assert not np.allclose(table.loc[mask, 'slope'], full_table.loc[mask, 'slope'])
+    table.loc[mask, 'slope'] = full_table.loc[mask, 'slope'].to_numpy()
+    table.to_csv(tmp_path / 'slopes_robustness_common_grid.csv', index=False)
     with pytest.raises(AssertionError):
         audit.verify()
