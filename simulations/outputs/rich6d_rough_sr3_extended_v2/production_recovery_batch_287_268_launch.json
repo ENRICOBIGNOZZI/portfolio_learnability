@@ -78,7 +78,9 @@
         ".git/config"
       ],
       "action": "Retain the existing commit/push helper while File Provider downloads the original metadata. No branch or reference modification.",
-      "status": "download_in_progress_at_observation"
+      "status": "download_in_progress_at_observation",
+      "resolution": "Original metadata materialized and the original helper completed its commit and push; no alternate repository was created.",
+      "resolved_by_verified_commit": "e9d3b9e331360db36fbfb3ff8370d5c2f2b1f8a1"
     }
   ]
 }

@@ -8,7 +8,7 @@ not artificially reset to 3. Persistence robustness preserves the population
 operator exactly.
 
 All 12 paired rank pilots and their audits are complete. The fixed-rank production
-protocol is frozen. The latest independent checkpoint audit verifies 45 baseline
+protocol is frozen. The latest independent checkpoint audit verifies 46 baseline
 replications and no completed production robustness batches. The study is NOT
 complete: all 300 paths in each economy, final summaries and all ten final figures
 remain required.
@@ -33,6 +33,14 @@ the primary queue approaches its indices. All seeds and numerical calculations
 remain unchanged. Shared-host timings are operational observations, not controlled
 performance benchmarks; process peak RSS in a multi-replication batch is cumulative
 from process start, not a separate per-replication memory measurement.
+
+As the shared host became busier and disk availability fell to about 4 GiB, an
+operational watcher was started to stop the supplement immediately after index
+286 has saved both its outcome and resource record. The primary supervisor
+continues with one worker. production_after_checkpoint_stop.json records whether
+this stop is still pending or has occurred; its launch record preserves the exact
+watcher source. All remaining indices stay in the primary deterministic queue.
+This changes execution concurrency only, not the scientific protocol.
 
 At the user's request, pip's regenerable download cache was purged, removing 14
 files (23.2 MB reported by pip). This frees disk space, not process RAM. Required

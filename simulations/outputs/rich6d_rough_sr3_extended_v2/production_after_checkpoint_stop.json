@@ -1,0 +1,9 @@
+{
+  "status": "waiting_for_completed_checkpoint",
+  "watcher_pid": 47332,
+  "target_pid": 39867,
+  "target_index": 286,
+  "started_utc": "2026-10-10T14:06:31.699052+00:00",
+  "reason": "Disk reserve fell from about 8 GiB to about 4 GiB while shared-host runtimes lengthened. Return to one production worker after preserving the current supplement result.",
+  "scientific_protocol_unchanged": true
+}
