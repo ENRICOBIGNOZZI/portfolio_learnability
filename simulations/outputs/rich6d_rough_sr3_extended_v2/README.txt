@@ -29,8 +29,9 @@ a*T^(-0.6) choice. No Monte Carlo outcomes select the reported strategy.
 
 Numerical interpretation
 
-All 12 paired rank pilots and their audits are complete. The 62 required
-selected-rank population-quadrature cells pass the unchanged 5% criterion.
+All 12 paired rank pilots and their audits are complete. All 62 selected-rank
+pilot quadrature cells, including the 61 production cells, pass the unchanged
+5% criterion.
 The largest recorded pilot quadrature discrepancy bound, including optional
 T=7290, is approximately 3.26% of regret. The pilot projection-floor criterion
 fails at baseline T=3240,4860; N300 T=1080,1440,2160,3240; and both alternative-rho
