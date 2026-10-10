@@ -3,7 +3,7 @@
   "stage": "production_robustness",
   "workflow_run_id": "38075206545",
   "commit": "2eb27a92a2153e5c8bd249b3adda46404ba51b48",
-  "ingested_utc": "2026-10-10T23:32:13.143933+00:00",
+  "ingested_utc": "2026-10-10T23:34:35.115372+00:00",
   "batches": [
     {
       "run_hash": "e9f1f005be1a58ee736a09cb711d5be87457b9875d1e26dab56c03ccdca61d8d",
@@ -817,6 +817,548 @@
       "updated_utc": "2026-10-10T23:31:02.227485+00:00",
       "elapsed_seconds": 6758.639940999999,
       "completed_utc": "2026-10-10T23:31:02.229172+00:00"
+    },
+    {
+      "run_hash": "e9f1f005be1a58ee736a09cb711d5be87457b9875d1e26dab56c03ccdca61d8d",
+      "stage": "production_robustness",
+      "batch_id": 11,
+      "requested_indices": [
+        220,
+        221,
+        222,
+        223,
+        224,
+        225,
+        226,
+        227,
+        228,
+        229,
+        230,
+        231,
+        232,
+        233,
+        234,
+        235,
+        236,
+        237,
+        238,
+        239
+      ],
+      "completed_indices": [
+        220,
+        221,
+        222,
+        223,
+        224,
+        225,
+        226,
+        227,
+        228,
+        229,
+        230,
+        231,
+        232,
+        233,
+        234,
+        235,
+        236,
+        237,
+        238,
+        239
+      ],
+      "files": [
+        {
+          "path": "production_robustness/P4096/rep_220.npz",
+          "bytes": 151625,
+          "sha256": "3bf767dd6d7ed57f0c53bf578e4fe51a4bb7f272c89648e79b72c2bd2c77dff6"
+        },
+        {
+          "path": "production_robustness/resources_220.json",
+          "bytes": 751,
+          "sha256": "f9b279ea3ec94837aaafaf5fd0e8b0fc33b873291d362c1b5a7221b175cc4900"
+        },
+        {
+          "path": "production_robustness/P4096/rep_221.npz",
+          "bytes": 151512,
+          "sha256": "81ef3eb42cff5c5d517c8f61f9eee21819e7ccb7543d567adb4592f7a302d5ec"
+        },
+        {
+          "path": "production_robustness/resources_221.json",
+          "bytes": 747,
+          "sha256": "cd69f519cc5ccf39bbe96a1cb0f4d4908f70d802a16879903f3a9d75a08d4fca"
+        },
+        {
+          "path": "production_robustness/P4096/rep_222.npz",
+          "bytes": 151575,
+          "sha256": "91a9ef684c0b872e2b0e2a3eb9c03ce5021feb069f33fddb4ec269a0f547b9dc"
+        },
+        {
+          "path": "production_robustness/resources_222.json",
+          "bytes": 750,
+          "sha256": "7aec4f1d3a8becd6e0fc286b89ca2806fb7c269a3fe6f9c35f5cdff3f4c957fb"
+        },
+        {
+          "path": "production_robustness/P4096/rep_223.npz",
+          "bytes": 151618,
+          "sha256": "4bd85e7949ce91e3e9521b9f542fcda9ca4c8379bc835e709331d34248395d6b"
+        },
+        {
+          "path": "production_robustness/resources_223.json",
+          "bytes": 751,
+          "sha256": "9d32b78f2f75adcb904115aa3da58523bd953f3a88d3260f2acde8877a2492b8"
+        },
+        {
+          "path": "production_robustness/P4096/rep_224.npz",
+          "bytes": 151571,
+          "sha256": "54f7a6e4a48843e9b9176c9f7673976780c460b2505094373a7b88020309fa32"
+        },
+        {
+          "path": "production_robustness/resources_224.json",
+          "bytes": 746,
+          "sha256": "36514c624fcfc6aaae9fc85a120f0ad48b7e79a3ec66110b6ca2fb1b006c0b3a"
+        },
+        {
+          "path": "production_robustness/P4096/rep_225.npz",
+          "bytes": 151550,
+          "sha256": "53f0d67ccd46dc9d7d1a7d53fec38ba663db77a08b3ecce775aa879e8388bf51"
+        },
+        {
+          "path": "production_robustness/resources_225.json",
+          "bytes": 747,
+          "sha256": "932fa88d64a4f9aee23df45e7837fae886db0393a01f94d52b9ff6c8914d5755"
+        },
+        {
+          "path": "production_robustness/P4096/rep_226.npz",
+          "bytes": 151424,
+          "sha256": "242474d37bdc83caf8b246d9b410cd2e0461cc0a265e41e4434f85c5e373e860"
+        },
+        {
+          "path": "production_robustness/resources_226.json",
+          "bytes": 750,
+          "sha256": "32a40b4cc70c55d6aed67bf6c6c274eddd0b97d000f834ffc97cfacc38cb7f16"
+        },
+        {
+          "path": "production_robustness/P4096/rep_227.npz",
+          "bytes": 151576,
+          "sha256": "6b0315ace6215f38c62109bd47019bdbdaa4e87d3378dafc896c32efe2165677"
+        },
+        {
+          "path": "production_robustness/resources_227.json",
+          "bytes": 750,
+          "sha256": "6e9d0ee8c849ab51ae4eff9f0137260c86d336c031938e27086bc3dc1c760d4b"
+        },
+        {
+          "path": "production_robustness/P4096/rep_228.npz",
+          "bytes": 151533,
+          "sha256": "2e70a82e2cdd6378d869e410ad66a73dcb463cff059c63cd3e5a9bba0db0a247"
+        },
+        {
+          "path": "production_robustness/resources_228.json",
+          "bytes": 750,
+          "sha256": "0190911d27d42149cce015f0e4d58c24972bb57fabcbac7f8a45e2e3e79bb331"
+        },
+        {
+          "path": "production_robustness/P4096/rep_229.npz",
+          "bytes": 151540,
+          "sha256": "b5e97845149cfab07aeaa22d1ed63cacd8b1947ef974266f67fa534afd21b3aa"
+        },
+        {
+          "path": "production_robustness/resources_229.json",
+          "bytes": 750,
+          "sha256": "e9adf3e71095be3d6c1d112bd00cdca7df2532067098bae4c549a1fbad6211ec"
+        },
+        {
+          "path": "production_robustness/P4096/rep_230.npz",
+          "bytes": 151515,
+          "sha256": "ab4540f533224b7ceda14449a7e774ad0a76e089eef1e04b6f478d595674e20b"
+        },
+        {
+          "path": "production_robustness/resources_230.json",
+          "bytes": 746,
+          "sha256": "11ec64ac2d371636e33a6eeda29831f2a693ff4930ca28d26f345b3d16b611c4"
+        },
+        {
+          "path": "production_robustness/P4096/rep_231.npz",
+          "bytes": 151571,
+          "sha256": "4625ce2ede22ff0e2ce34f41399e70d1b2d5ee7a5bddc41a4b8a1fc000763cb3"
+        },
+        {
+          "path": "production_robustness/resources_231.json",
+          "bytes": 751,
+          "sha256": "e03e889475151464082aacd579d222a22bc7a360b6ff1424096a00218e75a52a"
+        },
+        {
+          "path": "production_robustness/P4096/rep_232.npz",
+          "bytes": 151570,
+          "sha256": "96085279a1c49b1173256280cc43da51dfff25c0293fe52b7878275bf154526b"
+        },
+        {
+          "path": "production_robustness/resources_232.json",
+          "bytes": 752,
+          "sha256": "5d88f94112e804f4c0ef2990c30c816ed0ed1f773a60bb76785736464f8b80c9"
+        },
+        {
+          "path": "production_robustness/P4096/rep_233.npz",
+          "bytes": 151511,
+          "sha256": "7ca6d032c8fd0986fec1bf4fafb803bb4eaae029a92c7fd95eb88e7a8a95f964"
+        },
+        {
+          "path": "production_robustness/resources_233.json",
+          "bytes": 746,
+          "sha256": "491839aaec5bf82886ac104e4dbcce00c811b92523fe8d1dac5a2bb2e300173b"
+        },
+        {
+          "path": "production_robustness/P4096/rep_234.npz",
+          "bytes": 151555,
+          "sha256": "1e8d1749913e8ddc7eeeaf0f520a4eb831cbecfdb38abf6b1c873dc6227bd86c"
+        },
+        {
+          "path": "production_robustness/resources_234.json",
+          "bytes": 747,
+          "sha256": "688b69b3e2c2d663333cd3f7a8086dc19a00830444a4d23aaf658692aacb9357"
+        },
+        {
+          "path": "production_robustness/P4096/rep_235.npz",
+          "bytes": 151545,
+          "sha256": "0dcbc337006a99c1ebaaf413aaee0daad1bb2b4534d09bf4b5192ab0abb8842d"
+        },
+        {
+          "path": "production_robustness/resources_235.json",
+          "bytes": 750,
+          "sha256": "04544767e027dbd2060a288b124fdc955a64e730d7264676edd33cc66167ac90"
+        },
+        {
+          "path": "production_robustness/P4096/rep_236.npz",
+          "bytes": 151469,
+          "sha256": "411bef8453f7d2e0e3af7c2ff0240afaedeb975073c150fe18985b83543f6116"
+        },
+        {
+          "path": "production_robustness/resources_236.json",
+          "bytes": 751,
+          "sha256": "5cc4f29b5d013fcbdf7284b0999f95afc044be76220e2495fac1ae33bfb22b2d"
+        },
+        {
+          "path": "production_robustness/P4096/rep_237.npz",
+          "bytes": 151539,
+          "sha256": "4cefac608bbeb0f99aff5e7b1e9280b2d8349db7531daf62e6279751890cc8d9"
+        },
+        {
+          "path": "production_robustness/resources_237.json",
+          "bytes": 752,
+          "sha256": "ec1fe8271408d0f6c576efd0fd73cf745d9c4606d5dc61b33559dddfbd2a7b28"
+        },
+        {
+          "path": "production_robustness/P4096/rep_238.npz",
+          "bytes": 151429,
+          "sha256": "8be857788521c132a266571501ea65787182ca7977f93d6b02ee5e7c5806139e"
+        },
+        {
+          "path": "production_robustness/resources_238.json",
+          "bytes": 750,
+          "sha256": "39dae8549ce91fc3fdcc91a1746d0f954ed10bbfed9deaaea8392bcd4f0e1af4"
+        },
+        {
+          "path": "production_robustness/P4096/rep_239.npz",
+          "bytes": 151483,
+          "sha256": "a63030a3a6a728a3c520a02d579b2c1e12b334eeaabb9a7117c312d1caa6eacb"
+        },
+        {
+          "path": "production_robustness/resources_239.json",
+          "bytes": 751,
+          "sha256": "13e54545d9cae8cc08893091591c2b751504255124bf6a66bf2b65fbe667c060"
+        }
+      ],
+      "status": "completed",
+      "allocation_sha256": "a30b5e3f27126adc7056754c272b1122ceb68c12c53fd43f8f8effdfe99bccde",
+      "qualification_sha256": "54258bbd6e427ccf625dafb25e175e2ef7d662042fa81c28a70dd1e1b837758b",
+      "input_manifest_sha256": "719461f4270ad15320fcbb51d66ea576e8bf138ddb0737a9d603244aae39977b",
+      "started_utc": "2026-10-10T21:46:12.496652+00:00",
+      "workflow_run_id": "38075206545",
+      "commit": "2eb27a92a2153e5c8bd249b3adda46404ba51b48",
+      "host": {
+        "system": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+        "machine": "arm64",
+        "python": "3.13.3",
+        "numpy": "2.3.5",
+        "scipy": "1.16.3",
+        "runner": "macos-26"
+      },
+      "scope": "Frozen core checks plus identity/grid checks; independent complete checkpoint audit is required after retrieval.",
+      "current_index": 239,
+      "updated_utc": "2026-10-10T23:33:18.169354+00:00",
+      "elapsed_seconds": 6425.414039125,
+      "completed_utc": "2026-10-10T23:33:18.171375+00:00"
+    },
+    {
+      "run_hash": "e9f1f005be1a58ee736a09cb711d5be87457b9875d1e26dab56c03ccdca61d8d",
+      "stage": "production_robustness",
+      "batch_id": 12,
+      "requested_indices": [
+        240,
+        241,
+        242,
+        243,
+        244,
+        245,
+        246,
+        247,
+        248,
+        249,
+        250,
+        251,
+        252,
+        253,
+        254,
+        255,
+        256,
+        257,
+        258,
+        259
+      ],
+      "completed_indices": [
+        240,
+        241,
+        242,
+        243,
+        244,
+        245,
+        246,
+        247,
+        248,
+        249,
+        250,
+        251,
+        252,
+        253,
+        254,
+        255,
+        256,
+        257,
+        258,
+        259
+      ],
+      "files": [
+        {
+          "path": "production_robustness/P4096/rep_240.npz",
+          "bytes": 151528,
+          "sha256": "69793b059bac8812a72dd0036fdaebfdc049e5fb591da56dcd56e770b040ac83"
+        },
+        {
+          "path": "production_robustness/resources_240.json",
+          "bytes": 752,
+          "sha256": "a6533484761de014a76b9d9afae4cddfcf7b530597966e9bc9b53903b1e068b8"
+        },
+        {
+          "path": "production_robustness/P4096/rep_241.npz",
+          "bytes": 151607,
+          "sha256": "2ae7feeb06448811d6d95ed36695c02cdba5ee519b8d3b29d0e03cd7d91e9625"
+        },
+        {
+          "path": "production_robustness/resources_241.json",
+          "bytes": 739,
+          "sha256": "d4f85fca675582eb4c565e2080bf3eac74b29a7f1553e62f5c0c5634dc46f568"
+        },
+        {
+          "path": "production_robustness/P4096/rep_242.npz",
+          "bytes": 151606,
+          "sha256": "4c59a0a503f4f917062c33df2810d9ea83850f4d6e744c0563d24900c2637645"
+        },
+        {
+          "path": "production_robustness/resources_242.json",
+          "bytes": 751,
+          "sha256": "2cefd000a1d4172e565687cb5fefe0e59f55be7c1735e48159d9605d8397b63c"
+        },
+        {
+          "path": "production_robustness/P4096/rep_243.npz",
+          "bytes": 151593,
+          "sha256": "d408737e6fdabbef26d0527f876bea7c759afefc3d9b9f98b5cc35c8ac9961ba"
+        },
+        {
+          "path": "production_robustness/resources_243.json",
+          "bytes": 750,
+          "sha256": "97c2fcc697b28632093eac284c0eec51d7a8783dcb2e33045dd2e7503a5a8335"
+        },
+        {
+          "path": "production_robustness/P4096/rep_244.npz",
+          "bytes": 151467,
+          "sha256": "61e8bc36d4263d9819fbbbc4a22ebd123e6a63d9e497caeb65a74e04ba3b233f"
+        },
+        {
+          "path": "production_robustness/resources_244.json",
+          "bytes": 752,
+          "sha256": "95c83baf5244b977141dd1733d0d9b6206cdf6a868206d06c5260a7cbd56b24b"
+        },
+        {
+          "path": "production_robustness/P4096/rep_245.npz",
+          "bytes": 151493,
+          "sha256": "69f6c3665a3102bbfe52506bff32bd35f25cca142748de8b8c80c0187083163e"
+        },
+        {
+          "path": "production_robustness/resources_245.json",
+          "bytes": 751,
+          "sha256": "a289c3996f582ba058b6ad4e8cb28afa81770853b648feaeafc04e86a9a926da"
+        },
+        {
+          "path": "production_robustness/P4096/rep_246.npz",
+          "bytes": 151644,
+          "sha256": "a04eddd7ded85fcb92cdff20ccbbed7948448cfcd8d8db67dfbb1d32c14030b4"
+        },
+        {
+          "path": "production_robustness/resources_246.json",
+          "bytes": 751,
+          "sha256": "f6836f7b65277005c9e894bb0798e8ea0e08925deeb9c33f9532029286d14e11"
+        },
+        {
+          "path": "production_robustness/P4096/rep_247.npz",
+          "bytes": 151513,
+          "sha256": "5a23a8872d452e13ec5fcdb92f24900922eb970d4c7ea440c560af6384c24cb5"
+        },
+        {
+          "path": "production_robustness/resources_247.json",
+          "bytes": 751,
+          "sha256": "365b7e551e9fe1af13ffe2f3287c34834ca3792580ebde16b06f4d4bbf3e3659"
+        },
+        {
+          "path": "production_robustness/P4096/rep_248.npz",
+          "bytes": 151430,
+          "sha256": "dd42db44c3e9de079be09bb4896ec7da45fdb55a8b2866f7d8490e7290e1fce7"
+        },
+        {
+          "path": "production_robustness/resources_248.json",
+          "bytes": 751,
+          "sha256": "060268634687b3c1751845e6894a6d4647b2324338830b0d3a2eb6bd5ca0f7e9"
+        },
+        {
+          "path": "production_robustness/P4096/rep_249.npz",
+          "bytes": 151511,
+          "sha256": "5ff9915d3ef3ebb1428e9bb2d1a0c75579e26be229c92c034971e7c78412f562"
+        },
+        {
+          "path": "production_robustness/resources_249.json",
+          "bytes": 747,
+          "sha256": "c1214dae1e997b5c7c67288c7c95fdee54eedc1dfdbb616a9bc9b4a0d95eab18"
+        },
+        {
+          "path": "production_robustness/P4096/rep_250.npz",
+          "bytes": 151595,
+          "sha256": "450dbd69c12ab56a924066c13e7368e618ba3557a2bc53084909fac382e2b42d"
+        },
+        {
+          "path": "production_robustness/resources_250.json",
+          "bytes": 751,
+          "sha256": "f44e8dcfd691d9709829b09740f2eee9886ada76ec30ade4063adf44b55e7f35"
+        },
+        {
+          "path": "production_robustness/P4096/rep_251.npz",
+          "bytes": 151593,
+          "sha256": "f732c1e86496ac5a2091fcfd807bc2c80552282f1e86902bd9917b3b4d22e531"
+        },
+        {
+          "path": "production_robustness/resources_251.json",
+          "bytes": 750,
+          "sha256": "25c1603824a40262103932c524415213a09a8a0e050881cded8eae95ba7bfe1d"
+        },
+        {
+          "path": "production_robustness/P4096/rep_252.npz",
+          "bytes": 151583,
+          "sha256": "ae00f06c7948cb5bc740fb00b80db384de36d912938d12bb596fb5fb0ef0b147"
+        },
+        {
+          "path": "production_robustness/resources_252.json",
+          "bytes": 751,
+          "sha256": "6bc04d771f3704f3459ba1c828724547b33f7ac9c0bab1a73265543b24c46f8b"
+        },
+        {
+          "path": "production_robustness/P4096/rep_253.npz",
+          "bytes": 151558,
+          "sha256": "bc32c6bd0fa293b3cb35f3dc9743bd3fd9be56a18dc1931c8b65f96f6406e5bc"
+        },
+        {
+          "path": "production_robustness/resources_253.json",
+          "bytes": 751,
+          "sha256": "7cbab28930dad5d4a072b1758f89d68fbb60832d84ffb0fcac49963ebc62b6c9"
+        },
+        {
+          "path": "production_robustness/P4096/rep_254.npz",
+          "bytes": 151541,
+          "sha256": "18bef7b8112f81f00f4552b70961769205d83b94cb6e3f7867f15985e1251fa7"
+        },
+        {
+          "path": "production_robustness/resources_254.json",
+          "bytes": 752,
+          "sha256": "be0932379d393e89761590e31aac459d0180e48268ebaff2f0e7311c30fe2bdc"
+        },
+        {
+          "path": "production_robustness/P4096/rep_255.npz",
+          "bytes": 151559,
+          "sha256": "6fc58cc2ddb01e9570357736b2743efdaa1e9a360911ee07667c9c874f349fe3"
+        },
+        {
+          "path": "production_robustness/resources_255.json",
+          "bytes": 751,
+          "sha256": "73630957cef197e185551f0495e68b5715d57541b508a5cd4c352a12352509cc"
+        },
+        {
+          "path": "production_robustness/P4096/rep_256.npz",
+          "bytes": 151544,
+          "sha256": "9acf25b390b22f715463c7b57320272bbaaa3887f7778c9fab7007b1ef11bcdd"
+        },
+        {
+          "path": "production_robustness/resources_256.json",
+          "bytes": 752,
+          "sha256": "bcd05175906b9bb3b8dce92df4bd472f259dd0fa4b8593e94a1feaa5384b575d"
+        },
+        {
+          "path": "production_robustness/P4096/rep_257.npz",
+          "bytes": 151527,
+          "sha256": "343cc47709a888bb7c50f0d035c360b34f7fc58f1c738ac491801e45f8d7cc4d"
+        },
+        {
+          "path": "production_robustness/resources_257.json",
+          "bytes": 751,
+          "sha256": "56f9d8d67855745bc55895ef0dc1237cf1ab702c578e81b62b3c6ffb06963550"
+        },
+        {
+          "path": "production_robustness/P4096/rep_258.npz",
+          "bytes": 151548,
+          "sha256": "d73aeacd4e66871102719cba395da56b6fafa5714b36e9d2ae022f74e1ea4af8"
+        },
+        {
+          "path": "production_robustness/resources_258.json",
+          "bytes": 751,
+          "sha256": "7703fd9d6a0517b425687feeebd60701e95719ed375ff06b1f1e5fd20dd254e5"
+        },
+        {
+          "path": "production_robustness/P4096/rep_259.npz",
+          "bytes": 151553,
+          "sha256": "d1ebe44b1ee655790bc025f953496cdd01fe583fb98513ad568077d29913c93f"
+        },
+        {
+          "path": "production_robustness/resources_259.json",
+          "bytes": 751,
+          "sha256": "eb93e3db2588a63126f922d6cf9ae41424332f3096379fb71dd4d5c0b8457647"
+        }
+      ],
+      "status": "completed",
+      "allocation_sha256": "a30b5e3f27126adc7056754c272b1122ceb68c12c53fd43f8f8effdfe99bccde",
+      "qualification_sha256": "54258bbd6e427ccf625dafb25e175e2ef7d662042fa81c28a70dd1e1b837758b",
+      "input_manifest_sha256": "719461f4270ad15320fcbb51d66ea576e8bf138ddb0737a9d603244aae39977b",
+      "started_utc": "2026-10-10T21:46:32.971240+00:00",
+      "workflow_run_id": "38075206545",
+      "commit": "2eb27a92a2153e5c8bd249b3adda46404ba51b48",
+      "host": {
+        "system": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+        "machine": "arm64",
+        "python": "3.13.3",
+        "numpy": "2.3.5",
+        "scipy": "1.16.3",
+        "runner": "macos-26"
+      },
+      "scope": "Frozen core checks plus identity/grid checks; independent complete checkpoint audit is required after retrieval.",
+      "current_index": 259,
+      "updated_utc": "2026-10-10T23:34:04.348365+00:00",
+      "elapsed_seconds": 6451.356387375,
+      "completed_utc": "2026-10-10T23:34:04.349819+00:00"
     },
     {
       "run_hash": "e9f1f005be1a58ee736a09cb711d5be87457b9875d1e26dab56c03ccdca61d8d",
@@ -2988,54 +3530,94 @@
     }
   ],
   "published": [
-    "production_robustness/P4096/rep_200.npz",
-    "production_robustness/P4096/rep_201.npz",
-    "production_robustness/P4096/rep_202.npz",
-    "production_robustness/P4096/rep_203.npz",
-    "production_robustness/P4096/rep_204.npz",
-    "production_robustness/P4096/rep_205.npz",
-    "production_robustness/P4096/rep_206.npz",
-    "production_robustness/P4096/rep_207.npz",
-    "production_robustness/P4096/rep_208.npz",
-    "production_robustness/P4096/rep_209.npz",
-    "production_robustness/P4096/rep_210.npz",
-    "production_robustness/P4096/rep_211.npz",
-    "production_robustness/P4096/rep_212.npz",
-    "production_robustness/P4096/rep_213.npz",
-    "production_robustness/P4096/rep_214.npz",
-    "production_robustness/P4096/rep_215.npz",
-    "production_robustness/P4096/rep_216.npz",
-    "production_robustness/P4096/rep_217.npz",
-    "production_robustness/P4096/rep_218.npz",
-    "production_robustness/P4096/rep_219.npz",
-    "production_robustness/resources_200.json",
-    "production_robustness/resources_201.json",
-    "production_robustness/resources_202.json",
-    "production_robustness/resources_203.json",
-    "production_robustness/resources_204.json",
-    "production_robustness/resources_205.json",
-    "production_robustness/resources_206.json",
-    "production_robustness/resources_207.json",
-    "production_robustness/resources_208.json",
-    "production_robustness/resources_209.json",
-    "production_robustness/resources_210.json",
-    "production_robustness/resources_211.json",
-    "production_robustness/resources_212.json",
-    "production_robustness/resources_213.json",
-    "production_robustness/resources_214.json",
-    "production_robustness/resources_215.json",
-    "production_robustness/resources_216.json",
-    "production_robustness/resources_217.json",
-    "production_robustness/resources_218.json",
-    "production_robustness/resources_219.json"
+    "production_robustness/P4096/rep_220.npz",
+    "production_robustness/P4096/rep_221.npz",
+    "production_robustness/P4096/rep_222.npz",
+    "production_robustness/P4096/rep_223.npz",
+    "production_robustness/P4096/rep_224.npz",
+    "production_robustness/P4096/rep_225.npz",
+    "production_robustness/P4096/rep_226.npz",
+    "production_robustness/P4096/rep_227.npz",
+    "production_robustness/P4096/rep_228.npz",
+    "production_robustness/P4096/rep_229.npz",
+    "production_robustness/P4096/rep_230.npz",
+    "production_robustness/P4096/rep_231.npz",
+    "production_robustness/P4096/rep_232.npz",
+    "production_robustness/P4096/rep_233.npz",
+    "production_robustness/P4096/rep_234.npz",
+    "production_robustness/P4096/rep_235.npz",
+    "production_robustness/P4096/rep_236.npz",
+    "production_robustness/P4096/rep_237.npz",
+    "production_robustness/P4096/rep_238.npz",
+    "production_robustness/P4096/rep_239.npz",
+    "production_robustness/P4096/rep_240.npz",
+    "production_robustness/P4096/rep_241.npz",
+    "production_robustness/P4096/rep_242.npz",
+    "production_robustness/P4096/rep_243.npz",
+    "production_robustness/P4096/rep_244.npz",
+    "production_robustness/P4096/rep_245.npz",
+    "production_robustness/P4096/rep_246.npz",
+    "production_robustness/P4096/rep_247.npz",
+    "production_robustness/P4096/rep_248.npz",
+    "production_robustness/P4096/rep_249.npz",
+    "production_robustness/P4096/rep_250.npz",
+    "production_robustness/P4096/rep_251.npz",
+    "production_robustness/P4096/rep_252.npz",
+    "production_robustness/P4096/rep_253.npz",
+    "production_robustness/P4096/rep_254.npz",
+    "production_robustness/P4096/rep_255.npz",
+    "production_robustness/P4096/rep_256.npz",
+    "production_robustness/P4096/rep_257.npz",
+    "production_robustness/P4096/rep_258.npz",
+    "production_robustness/P4096/rep_259.npz",
+    "production_robustness/resources_220.json",
+    "production_robustness/resources_221.json",
+    "production_robustness/resources_222.json",
+    "production_robustness/resources_223.json",
+    "production_robustness/resources_224.json",
+    "production_robustness/resources_225.json",
+    "production_robustness/resources_226.json",
+    "production_robustness/resources_227.json",
+    "production_robustness/resources_228.json",
+    "production_robustness/resources_229.json",
+    "production_robustness/resources_230.json",
+    "production_robustness/resources_231.json",
+    "production_robustness/resources_232.json",
+    "production_robustness/resources_233.json",
+    "production_robustness/resources_234.json",
+    "production_robustness/resources_235.json",
+    "production_robustness/resources_236.json",
+    "production_robustness/resources_237.json",
+    "production_robustness/resources_238.json",
+    "production_robustness/resources_239.json",
+    "production_robustness/resources_240.json",
+    "production_robustness/resources_241.json",
+    "production_robustness/resources_242.json",
+    "production_robustness/resources_243.json",
+    "production_robustness/resources_244.json",
+    "production_robustness/resources_245.json",
+    "production_robustness/resources_246.json",
+    "production_robustness/resources_247.json",
+    "production_robustness/resources_248.json",
+    "production_robustness/resources_249.json",
+    "production_robustness/resources_250.json",
+    "production_robustness/resources_251.json",
+    "production_robustness/resources_252.json",
+    "production_robustness/resources_253.json",
+    "production_robustness/resources_254.json",
+    "production_robustness/resources_255.json",
+    "production_robustness/resources_256.json",
+    "production_robustness/resources_257.json",
+    "production_robustness/resources_258.json",
+    "production_robustness/resources_259.json"
   ],
   "independent_audit_passed": true,
   "counts": {
     "baseline": 300,
-    "N300": 220,
-    "N1200": 220,
-    "rho000": 220,
-    "rho075": 220
+    "N300": 260,
+    "N1200": 260,
+    "rho000": 260,
+    "rho075": 260
   },
-  "checkpoint_integrity_sha256": "d672ad6a724210da16bde1c09fd4d61e77e536185f95f9c83223741718b06bdf"
+  "checkpoint_integrity_sha256": "f4128a14691a6fa468fa92c797f2e5f1afd67d5e22f804c4a2a0ac4b421427de"
 }
