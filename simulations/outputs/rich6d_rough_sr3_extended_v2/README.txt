@@ -1,4 +1,4 @@
-EXTENDED ROUGH RICH6D STUDY — PRODUCTION IN PROGRESS
+EXTENDED ROUGH RICH6D STUDY — PARTIAL PRODUCTION, RESOURCE RECOVERY PENDING
 
 Reference: rich6d_rough_sr3_annual_monthly_v1, commit 2d59c3324569.
 The reference economy keeps annualized optimal Sharpe 3, the existing factor
@@ -8,8 +8,30 @@ not artificially reset to 3. Persistence robustness preserves the population
 operator exactly.
 
 All 12 paired rank pilots and their audits are complete. The fixed-rank production
-protocol is frozen, and the baseline Monte Carlo has started. This is NOT yet the
-completed 300-replication study; consult production_status.json for actual progress.
+protocol is frozen. There are 38 verified baseline checkpoints; the study is NOT
+complete. The previous production supervisor exited with status 120, and neither
+that supervisor nor the supplementary batch remains alive. The supplementary
+batch record now identifies its unfinished indices explicitly.
+
+A bounded single-replication recovery was prepared with persistent file logging,
+but was not launched: free disk and already allocated free swap did not provide
+a stable margin above 1.25 times the measured maximum baseline resident memory
+plus a 512 MiB reserve. production_recovery_current.json records all three resource
+readings and the prior failure. This is an operational resource guard, separate
+from the unchanged scientific 5% approximation gates. Small regenerable preview
+files were inspected but not deleted because their size would not resolve the
+resource shortage. No unrelated processes or artifacts were altered.
+
+Until a new worker is confirmed live, the old production_status.json is a
+historical checkpoint counter, not evidence that production is running. Resume
+from the missing deterministic indices once resources permit; retain stdout and
+stderr in an execution log independent of the interactive tool console.
+The cloud-backed bytecode cache caused another import wait during recovery.
+Frozen scientific imports and hashes were successfully checked with
+PYTHONDONTWRITEBYTECODE=1 and a separate PYTHONPYCACHEPREFIX under /tmp. These
+process-local environment settings avoid the old bytecode cache without changing
+scientific sources. The tested resume environment is recorded in the recovery
+JSON; it has not yet been used to start another simulation.
 The read-only checkpoint audit can be rerun during production with
   python3 -m simulations.extended.verify_checkpoints
 It writes checkpoint_integrity.json with the unique completed count by economy,

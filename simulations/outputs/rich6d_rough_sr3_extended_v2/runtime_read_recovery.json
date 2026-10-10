@@ -10,5 +10,18 @@
   "source_git_blob": "cf2f54bf844b75ca886184b78af18202c90e19ed",
   "source_matches_committed_HEAD": true,
   "verification": "The waiting checkpoint verifier completed successfully after cache download; ls -lO then showed both paths locally materialized.",
-  "scope": "Runtime I/O recovery only; no scientific protocol or simulation changes."
+  "scope": "Runtime I/O recovery only; no scientific protocol or simulation changes.",
+  "additional_events": [
+    {
+      "recorded_utc": "2026-10-10T13:02:17.125173+00:00",
+      "issue": "The same bytecode cache was dataless again while staging verified outputs.",
+      "action": "Stopped only the staging helper waiting in that import, then staged outcomes using standard-library-only hash checks. Independently verified frozen scientific imports and hashes with a separate cache prefix and bytecode writes disabled.",
+      "tested_environment": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONPYCACHEPREFIX": "/tmp/rich6d_no_bytecode_cache"
+      },
+      "scientific_source_hashes_match": true,
+      "simulation_restarted": false
+    }
+  ]
 }

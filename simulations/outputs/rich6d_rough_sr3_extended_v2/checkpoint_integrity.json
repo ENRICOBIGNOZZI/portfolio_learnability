@@ -1,10 +1,10 @@
 {
   "run_hash": "e9f1f005be1a58ee736a09cb711d5be87457b9875d1e26dab56c03ccdca61d8d",
-  "verified_utc": "2026-10-10T09:46:37.804706+00:00",
+  "verified_utc": "2026-10-10T12:50:31.677683+00:00",
   "scope": "Integrity of completed checkpoints only; no claim about study completion, numerical resolution, final summaries or figures.",
   "completed_checkpoint_checks_passed": true,
   "counts": {
-    "baseline": 32,
+    "baseline": 38,
     "N300": 0,
     "N1200": 0,
     "rho000": 0,
@@ -364,11 +364,95 @@
       ]
     },
     {
+      "path": "production_baseline/P4096/rep_025.npz",
+      "index": 25,
+      "stage": "production_baseline",
+      "sha256": "c7dccb79e176420f23c0067321d86bf81b705934a1a4460b3e599d5b381ce29a",
+      "maximum_normal_equation_error": 2.3265348930148408e-14,
+      "environments": [
+        "baseline"
+      ],
+      "shape_per_environment": [
+        13,
+        97
+      ]
+    },
+    {
+      "path": "production_baseline/P4096/rep_026.npz",
+      "index": 26,
+      "stage": "production_baseline",
+      "sha256": "b8f5a80518d82571224707b860c1af02d64c41ce6da6daa4f3d36091e29209c7",
+      "maximum_normal_equation_error": 2.0467934530414567e-14,
+      "environments": [
+        "baseline"
+      ],
+      "shape_per_environment": [
+        13,
+        97
+      ]
+    },
+    {
+      "path": "production_baseline/P4096/rep_027.npz",
+      "index": 27,
+      "stage": "production_baseline",
+      "sha256": "d1286cfc6b882319e3034abc9d9ee584ff3a2b9375ff315fe417ce2cc4ec785f",
+      "maximum_normal_equation_error": 3.18531326498389e-14,
+      "environments": [
+        "baseline"
+      ],
+      "shape_per_environment": [
+        13,
+        97
+      ]
+    },
+    {
       "path": "production_baseline/P4096/rep_288.npz",
       "index": 288,
       "stage": "production_baseline",
       "sha256": "8fea46692abe4200770deafe624fbd39a50f48d6f09d9d2f22169f26d6b202d4",
       "maximum_normal_equation_error": 4.160379180918883e-14,
+      "environments": [
+        "baseline"
+      ],
+      "shape_per_environment": [
+        13,
+        97
+      ]
+    },
+    {
+      "path": "production_baseline/P4096/rep_291.npz",
+      "index": 291,
+      "stage": "production_baseline",
+      "sha256": "cbbf5f81753b02e494e1f8d7f3bf56eef623ff0171ecab933d178244de583322",
+      "maximum_normal_equation_error": 1.923212362476591e-14,
+      "environments": [
+        "baseline"
+      ],
+      "shape_per_environment": [
+        13,
+        97
+      ]
+    },
+    {
+      "path": "production_baseline/P4096/rep_292.npz",
+      "index": 292,
+      "stage": "production_baseline",
+      "sha256": "34c70db43cb0904bfcbcbf7bba68912165f1a3d0c30bb1e142c6fad57d63c19b",
+      "maximum_normal_equation_error": 1.1862678808011173e-13,
+      "environments": [
+        "baseline"
+      ],
+      "shape_per_environment": [
+        13,
+        97
+      ]
+    },
+    {
+      "path": "production_baseline/P4096/rep_293.npz",
+      "index": 293,
+      "stage": "production_baseline",
+      "sha256": "ca3883b76cbbeb6e3f7c1229892f8ad2d1e675640c04cde72c4211ace38e230b",
+      "maximum_normal_equation_error": 1.4456336382964383e-13,
       "environments": [
         "baseline"
       ],
