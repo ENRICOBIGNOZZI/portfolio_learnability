@@ -1,0 +1,343 @@
+EXTENDED ROUGH RICH6D STUDY: CRITICAL REPORT
+
+Run identity: e9f1f005be1a58ee736a09cb711d5be87457b9875d1e26dab56c03ccdca61d8d. Fixed Nyström rank 4096; 32768 independent evaluation groups. There are 300 independent replications in each of five unique economies (1,500 economy-replications). Histories are nested across T and innovations are paired across economies. The baseline and rho variants have analytical annualized optimal Sharpe 3. All annualization is sqrt(12) times monthly marginal Sharpe, not compounded annual-return Sharpe.
+
+1. NUMERICAL RESOLUTION
+
+baseline: failed checked 5% conditions at T = 3240, 4860; largest floor/production-regret fraction 8.00%. The acceptance threshold remains 5%.
+
+N300: failed checked 5% conditions at T = 1080, 1440, 2160, 3240; largest floor/production-regret fraction 10.04%. The acceptance threshold remains 5%.
+
+N1200: failed checked 5% conditions at T = none; largest floor/production-regret fraction 3.43%. The acceptance threshold remains 5%.
+
+rho000: failed checked 5% conditions at T = 3240; largest floor/production-regret fraction 6.12%. The acceptance threshold remains 5%.
+
+rho075: failed checked 5% conditions at T = 3240; largest floor/production-regret fraction 6.11%. The acceptance threshold remains 5%.
+
+High-T Nyström errors are NOT fully resolved. In addition to failed floor cells, the largest investigated rank has no independent larger-rank reference; its backward rank comparison is an agreement diagnostic, not an upper-rank certificate. The analytical economic optimum is retained everywhere. Increasing Monte Carlo replication count does not eliminate this approximation error.
+
+The optional T=7290 was investigated in the resource/rank pilots. It was omitted from production because the numerical feasibility requirement was not met; the decision was not based on a fitted rate.
+
+The largest quadrature discrepancy bound/regret fraction across the recorded pilot cells is 3.26%; consult the cell-specific quadrature table. Full-penalty quadrature diagnostics on the first pilot are exploratory and do not have replication-based uncertainty. The selected theory rule is checked across all 12 independent pilot policies.
+
+2. COMPLEXITY GEOMETRY
+
+baseline: exact local T elasticity runs from 0.331222 at T=60 to 0.426732 at T=4860. It is computed from the same finite population spectrum and independently checked by finite differences.
+
+N300: exact local T elasticity runs from 0.391986 at T=60 to 0.434953 at T=3240. It is computed from the same finite population spectrum and independently checked by finite differences.
+
+N1200: exact local T elasticity runs from 0.273500 at T=60 to 0.386739 at T=3240. It is computed from the same finite population spectrum and independently checked by finite differences.
+
+At the common T=60, local population-complexity elasticities for N=300,600,1200 are 0.391986, 0.331222, 0.273500; the cross-N spread is 0.118487. Across the 17 matched rank/basis/quadrature cases, the N300-minus-N600 difference ranges from 0.058295 to 0.060775, and N1200-minus-N600 ranges from -0.057722 to -0.053053.
+
+At the common T=3240, local population-complexity elasticities for N=300,600,1200 are 0.434953, 0.423267, 0.386739; the cross-N spread is 0.048215. Across the 17 matched rank/basis/quadrature cases, the N300-minus-N600 difference ranges from 0.008868 to 0.011724, and N1200-minus-N600 ranges from -0.036573 to -0.035464.
+
+These finite-window differences across N are economically distinct population geometries under the fixed factor economy and independently calibrated constants. The tabulated numerical-case ranges are sensitivity diagnostics, not confidence intervals or a certificate against the infinite-dimensional operator. They do not establish different asymptotic spectral exponents. The full common-grid comparison is in population_elasticity_N_comparison.csv; each source spectrum and hash is recorded in population_elasticity_N_audit.csv.
+
+The baseline local elasticity passes near 0.4 and then exceeds it over the extended candidate horizons. This does not establish convergence to 0.4. A full-window log-log slope, a local population elasticity and the empirical-complexity distribution are different objects. The saturation diagnostic extends only the finite matrix, not the simulated economic histories: eventually C approaches P and its local elasticity approaches zero. Actual-study C/P is small, so the pronounced policy projection floor must not be confused with global trace saturation.
+
+Unsmoothed clusters persist across basis and quadrature seeds and multiple ranks. Similar clusters occur in the kernel operator before factor weighting. They are consistent with permutation/reflection symmetries of a radial Matérn kernel on the uniform six-dimensional cube; the factor economy changes the leading directions. This is an interpretation of the operator comparisons, not a proof identifying every eigenspace. Component eigenvalues were never added as if the component operators shared eigenvectors. The j^(-1.5) curve is an order reference, not a fitted law.
+
+3. ALL PREDECLARED SLOPES
+
+The baseline extended-grid slopes are reported first. All five economies are then compared on their identical frozen robustness grid; for nonbaseline economies that common grid is also their full production grid.
+
+baseline, annual_gap, full, T <= 4860: -0.624831; delta MCSE 0.005909, 95% Monte Carlo interval [-0.636412, -0.613251], jackknife MCSE 0.005909.
+
+baseline, annual_gap, T_ge_360, T <= 4860: -0.637251; delta MCSE 0.007866, 95% Monte Carlo interval [-0.652668, -0.621834], jackknife MCSE 0.007867.
+
+baseline, annual_gap, T_ge_720, T <= 4860: -0.601539; delta MCSE 0.008982, 95% Monte Carlo interval [-0.619143, -0.583935], jackknife MCSE 0.008983.
+
+baseline, annual_gap, T_ge_1440, T <= 4860: -0.550716; delta MCSE 0.010749, 95% Monte Carlo interval [-0.571782, -0.529649], jackknife MCSE 0.010751.
+
+baseline, empirical_complexity, full, T <= 4860: 0.392338; delta MCSE 0.000325, 95% Monte Carlo interval [0.391700, 0.392976], jackknife MCSE 0.000325.
+
+baseline, empirical_complexity, T_ge_360, T <= 4860: 0.411072; delta MCSE 0.000207, 95% Monte Carlo interval [0.410667, 0.411478], jackknife MCSE 0.000207.
+
+baseline, empirical_complexity, T_ge_720, T <= 4860: 0.417422; delta MCSE 0.000183, 95% Monte Carlo interval [0.417063, 0.417782], jackknife MCSE 0.000183.
+
+baseline, empirical_complexity, T_ge_1440, T <= 4860: 0.422721; delta MCSE 0.000180, 95% Monte Carlo interval [0.422369, 0.423073], jackknife MCSE 0.000180.
+
+baseline, relative_complexity, full, T <= 4860: -0.607662; delta MCSE 0.000325, 95% Monte Carlo interval [-0.608300, -0.607024], jackknife MCSE 0.000325.
+
+baseline, relative_complexity, T_ge_360, T <= 4860: -0.588928; delta MCSE 0.000207, 95% Monte Carlo interval [-0.589333, -0.588522], jackknife MCSE 0.000207.
+
+baseline, relative_complexity, T_ge_720, T <= 4860: -0.582578; delta MCSE 0.000183, 95% Monte Carlo interval [-0.582937, -0.582218], jackknife MCSE 0.000183.
+
+baseline, relative_complexity, T_ge_1440, T <= 4860: -0.577279; delta MCSE 0.000180, 95% Monte Carlo interval [-0.577631, -0.576927], jackknife MCSE 0.000180.
+
+baseline, population_complexity, full, T <= 4860: 0.386234.
+
+baseline, population_complexity, T_ge_360, T <= 4860: 0.408006.
+
+baseline, population_complexity, T_ge_720, T <= 4860: 0.414896.
+
+baseline, population_complexity, T_ge_1440, T <= 4860: 0.420372.
+
+baseline, population_relative_complexity, full, T <= 4860: -0.613766.
+
+baseline, population_relative_complexity, T_ge_360, T <= 4860: -0.591994.
+
+baseline, population_relative_complexity, T_ge_720, T <= 4860: -0.585104.
+
+baseline, population_relative_complexity, T_ge_1440, T <= 4860: -0.579628.
+
+Matched-grid robustness slopes use the same frozen horizons through T=3240 for every economy, including the baseline. They are reported separately from the baseline full-grid analysis through T=4860; differences across economies are not inferred from unequal fitting ranges.
+
+Common grid, baseline, annual_gap, full, T <= 3240: -0.631332; delta MCSE 0.006805, 95% Monte Carlo interval [-0.644670, -0.617993], jackknife MCSE 0.006806.
+
+Common grid, baseline, annual_gap, T_ge_360, T <= 3240: -0.664801; delta MCSE 0.009135, 95% Monte Carlo interval [-0.682705, -0.646898], jackknife MCSE 0.009136.
+
+Common grid, baseline, annual_gap, T_ge_720, T <= 3240: -0.636553; delta MCSE 0.010728, 95% Monte Carlo interval [-0.657580, -0.615526], jackknife MCSE 0.010730.
+
+Common grid, baseline, annual_gap, T_ge_1440, T <= 3240: -0.594186; delta MCSE 0.013936, 95% Monte Carlo interval [-0.621500, -0.566872], jackknife MCSE 0.013939.
+
+Common grid, baseline, empirical_complexity, full, T <= 3240: 0.388499; delta MCSE 0.000366, 95% Monte Carlo interval [0.387782, 0.389216], jackknife MCSE 0.000366.
+
+Common grid, baseline, empirical_complexity, T_ge_360, T <= 3240: 0.407743; delta MCSE 0.000244, 95% Monte Carlo interval [0.407266, 0.408221], jackknife MCSE 0.000244.
+
+Common grid, baseline, empirical_complexity, T_ge_720, T <= 3240: 0.414546; delta MCSE 0.000224, 95% Monte Carlo interval [0.414107, 0.414985], jackknife MCSE 0.000224.
+
+Common grid, baseline, empirical_complexity, T_ge_1440, T <= 3240: 0.420463; delta MCSE 0.000242, 95% Monte Carlo interval [0.419989, 0.420937], jackknife MCSE 0.000242.
+
+Common grid, baseline, relative_complexity, full, T <= 3240: -0.611501; delta MCSE 0.000366, 95% Monte Carlo interval [-0.612218, -0.610784], jackknife MCSE 0.000366.
+
+Common grid, baseline, relative_complexity, T_ge_360, T <= 3240: -0.592257; delta MCSE 0.000244, 95% Monte Carlo interval [-0.592734, -0.591779], jackknife MCSE 0.000244.
+
+Common grid, baseline, relative_complexity, T_ge_720, T <= 3240: -0.585454; delta MCSE 0.000224, 95% Monte Carlo interval [-0.585893, -0.585015], jackknife MCSE 0.000224.
+
+Common grid, baseline, relative_complexity, T_ge_1440, T <= 3240: -0.579537; delta MCSE 0.000242, 95% Monte Carlo interval [-0.580011, -0.579063], jackknife MCSE 0.000242.
+
+Common grid, baseline, population_complexity, full, T <= 3240: 0.381846.
+
+Common grid, baseline, population_complexity, T_ge_360, T <= 3240: 0.404441.
+
+Common grid, baseline, population_complexity, T_ge_720, T <= 3240: 0.411866.
+
+Common grid, baseline, population_complexity, T_ge_1440, T <= 3240: 0.417911.
+
+Common grid, baseline, population_relative_complexity, full, T <= 3240: -0.618154.
+
+Common grid, baseline, population_relative_complexity, T_ge_360, T <= 3240: -0.595559.
+
+Common grid, baseline, population_relative_complexity, T_ge_720, T <= 3240: -0.588134.
+
+Common grid, baseline, population_relative_complexity, T_ge_1440, T <= 3240: -0.582089.
+
+Common grid, N300, annual_gap, full, T <= 3240: -0.553704; delta MCSE 0.005925, 95% Monte Carlo interval [-0.565317, -0.542091], jackknife MCSE 0.005926.
+
+Common grid, N300, annual_gap, T_ge_360, T <= 3240: -0.548838; delta MCSE 0.007800, 95% Monte Carlo interval [-0.564125, -0.533551], jackknife MCSE 0.007800.
+
+Common grid, N300, annual_gap, T_ge_720, T <= 3240: -0.504595; delta MCSE 0.008741, 95% Monte Carlo interval [-0.521727, -0.487462], jackknife MCSE 0.008742.
+
+Common grid, N300, annual_gap, T_ge_1440, T <= 3240: -0.453179; delta MCSE 0.010866, 95% Monte Carlo interval [-0.474477, -0.431881], jackknife MCSE 0.010868.
+
+Common grid, N300, empirical_complexity, full, T <= 3240: 0.434611; delta MCSE 0.000351, 95% Monte Carlo interval [0.433923, 0.435299], jackknife MCSE 0.000351.
+
+Common grid, N300, empirical_complexity, T_ge_360, T <= 3240: 0.439603; delta MCSE 0.000243, 95% Monte Carlo interval [0.439127, 0.440079], jackknife MCSE 0.000243.
+
+Common grid, N300, empirical_complexity, T_ge_720, T <= 3240: 0.439965; delta MCSE 0.000219, 95% Monte Carlo interval [0.439537, 0.440394], jackknife MCSE 0.000219.
+
+Common grid, N300, empirical_complexity, T_ge_1440, T <= 3240: 0.439803; delta MCSE 0.000234, 95% Monte Carlo interval [0.439344, 0.440262], jackknife MCSE 0.000234.
+
+Common grid, N300, relative_complexity, full, T <= 3240: -0.565389; delta MCSE 0.000351, 95% Monte Carlo interval [-0.566077, -0.564701], jackknife MCSE 0.000351.
+
+Common grid, N300, relative_complexity, T_ge_360, T <= 3240: -0.560397; delta MCSE 0.000243, 95% Monte Carlo interval [-0.560873, -0.559921], jackknife MCSE 0.000243.
+
+Common grid, N300, relative_complexity, T_ge_720, T <= 3240: -0.560035; delta MCSE 0.000219, 95% Monte Carlo interval [-0.560463, -0.559606], jackknife MCSE 0.000219.
+
+Common grid, N300, relative_complexity, T_ge_1440, T <= 3240: -0.560197; delta MCSE 0.000234, 95% Monte Carlo interval [-0.560656, -0.559738], jackknife MCSE 0.000234.
+
+Common grid, N300, population_complexity, full, T <= 3240: 0.424496.
+
+Common grid, N300, population_complexity, T_ge_360, T <= 3240: 0.433898.
+
+Common grid, N300, population_complexity, T_ge_720, T <= 3240: 0.435397.
+
+Common grid, N300, population_complexity, T_ge_1440, T <= 3240: 0.435772.
+
+Common grid, N300, population_relative_complexity, full, T <= 3240: -0.575504.
+
+Common grid, N300, population_relative_complexity, T_ge_360, T <= 3240: -0.566102.
+
+Common grid, N300, population_relative_complexity, T_ge_720, T <= 3240: -0.564603.
+
+Common grid, N300, population_relative_complexity, T_ge_1440, T <= 3240: -0.564228.
+
+Common grid, N1200, annual_gap, full, T <= 3240: -0.690044; delta MCSE 0.007424, 95% Monte Carlo interval [-0.704594, -0.675494], jackknife MCSE 0.007424.
+
+Common grid, N1200, annual_gap, T_ge_360, T <= 3240: -0.764171; delta MCSE 0.010178, 95% Monte Carlo interval [-0.784119, -0.744222], jackknife MCSE 0.010180.
+
+Common grid, N1200, annual_gap, T_ge_720, T <= 3240: -0.756265; delta MCSE 0.012249, 95% Monte Carlo interval [-0.780272, -0.732257], jackknife MCSE 0.012251.
+
+Common grid, N1200, annual_gap, T_ge_1440, T <= 3240: -0.733860; delta MCSE 0.016448, 95% Monte Carlo interval [-0.766097, -0.701623], jackknife MCSE 0.016451.
+
+Common grid, N1200, empirical_complexity, full, T <= 3240: 0.325411; delta MCSE 0.000377, 95% Monte Carlo interval [0.324672, 0.326151], jackknife MCSE 0.000377.
+
+Common grid, N1200, empirical_complexity, T_ge_360, T <= 3240: 0.351363; delta MCSE 0.000228, 95% Monte Carlo interval [0.350915, 0.351810], jackknife MCSE 0.000228.
+
+Common grid, N1200, empirical_complexity, T_ge_720, T <= 3240: 0.363502; delta MCSE 0.000217, 95% Monte Carlo interval [0.363077, 0.363927], jackknife MCSE 0.000217.
+
+Common grid, N1200, empirical_complexity, T_ge_1440, T <= 3240: 0.375416; delta MCSE 0.000251, 95% Monte Carlo interval [0.374924, 0.375907], jackknife MCSE 0.000251.
+
+Common grid, N1200, relative_complexity, full, T <= 3240: -0.674589; delta MCSE 0.000377, 95% Monte Carlo interval [-0.675328, -0.673849], jackknife MCSE 0.000377.
+
+Common grid, N1200, relative_complexity, T_ge_360, T <= 3240: -0.648637; delta MCSE 0.000228, 95% Monte Carlo interval [-0.649085, -0.648190], jackknife MCSE 0.000228.
+
+Common grid, N1200, relative_complexity, T_ge_720, T <= 3240: -0.636498; delta MCSE 0.000217, 95% Monte Carlo interval [-0.636923, -0.636073], jackknife MCSE 0.000217.
+
+Common grid, N1200, relative_complexity, T_ge_1440, T <= 3240: -0.624584; delta MCSE 0.000251, 95% Monte Carlo interval [-0.625076, -0.624093], jackknife MCSE 0.000251.
+
+Common grid, N1200, population_complexity, full, T <= 3240: 0.320939.
+
+Common grid, N1200, population_complexity, T_ge_360, T <= 3240: 0.349430.
+
+Common grid, N1200, population_complexity, T_ge_720, T <= 3240: 0.361683.
+
+Common grid, N1200, population_complexity, T_ge_1440, T <= 3240: 0.373547.
+
+Common grid, N1200, population_relative_complexity, full, T <= 3240: -0.679061.
+
+Common grid, N1200, population_relative_complexity, T_ge_360, T <= 3240: -0.650570.
+
+Common grid, N1200, population_relative_complexity, T_ge_720, T <= 3240: -0.638317.
+
+Common grid, N1200, population_relative_complexity, T_ge_1440, T <= 3240: -0.626453.
+
+Common grid, rho000, annual_gap, full, T <= 3240: -0.631433; delta MCSE 0.006755, 95% Monte Carlo interval [-0.644672, -0.618193], jackknife MCSE 0.006756.
+
+Common grid, rho000, annual_gap, T_ge_360, T <= 3240: -0.665640; delta MCSE 0.009170, 95% Monte Carlo interval [-0.683612, -0.647668], jackknife MCSE 0.009171.
+
+Common grid, rho000, annual_gap, T_ge_720, T <= 3240: -0.640870; delta MCSE 0.010846, 95% Monte Carlo interval [-0.662127, -0.619613], jackknife MCSE 0.010847.
+
+Common grid, rho000, annual_gap, T_ge_1440, T <= 3240: -0.596621; delta MCSE 0.013873, 95% Monte Carlo interval [-0.623811, -0.569431], jackknife MCSE 0.013875.
+
+Common grid, rho000, empirical_complexity, full, T <= 3240: 0.387556; delta MCSE 0.000355, 95% Monte Carlo interval [0.386860, 0.388252], jackknife MCSE 0.000355.
+
+Common grid, rho000, empirical_complexity, T_ge_360, T <= 3240: 0.407126; delta MCSE 0.000242, 95% Monte Carlo interval [0.406652, 0.407601], jackknife MCSE 0.000242.
+
+Common grid, rho000, empirical_complexity, T_ge_720, T <= 3240: 0.414203; delta MCSE 0.000222, 95% Monte Carlo interval [0.413768, 0.414637], jackknife MCSE 0.000222.
+
+Common grid, rho000, empirical_complexity, T_ge_1440, T <= 3240: 0.420383; delta MCSE 0.000230, 95% Monte Carlo interval [0.419932, 0.420835], jackknife MCSE 0.000230.
+
+Common grid, rho000, relative_complexity, full, T <= 3240: -0.612444; delta MCSE 0.000355, 95% Monte Carlo interval [-0.613140, -0.611748], jackknife MCSE 0.000355.
+
+Common grid, rho000, relative_complexity, T_ge_360, T <= 3240: -0.592874; delta MCSE 0.000242, 95% Monte Carlo interval [-0.593348, -0.592399], jackknife MCSE 0.000242.
+
+Common grid, rho000, relative_complexity, T_ge_720, T <= 3240: -0.585797; delta MCSE 0.000222, 95% Monte Carlo interval [-0.586232, -0.585363], jackknife MCSE 0.000222.
+
+Common grid, rho000, relative_complexity, T_ge_1440, T <= 3240: -0.579617; delta MCSE 0.000230, 95% Monte Carlo interval [-0.580068, -0.579165], jackknife MCSE 0.000230.
+
+Common grid, rho000, population_complexity, full, T <= 3240: 0.381846.
+
+Common grid, rho000, population_complexity, T_ge_360, T <= 3240: 0.404441.
+
+Common grid, rho000, population_complexity, T_ge_720, T <= 3240: 0.411866.
+
+Common grid, rho000, population_complexity, T_ge_1440, T <= 3240: 0.417911.
+
+Common grid, rho000, population_relative_complexity, full, T <= 3240: -0.618154.
+
+Common grid, rho000, population_relative_complexity, T_ge_360, T <= 3240: -0.595559.
+
+Common grid, rho000, population_relative_complexity, T_ge_720, T <= 3240: -0.588134.
+
+Common grid, rho000, population_relative_complexity, T_ge_1440, T <= 3240: -0.582089.
+
+Common grid, rho075, annual_gap, full, T <= 3240: -0.632440; delta MCSE 0.006743, 95% Monte Carlo interval [-0.645655, -0.619224], jackknife MCSE 0.006743.
+
+Common grid, rho075, annual_gap, T_ge_360, T <= 3240: -0.667930; delta MCSE 0.009215, 95% Monte Carlo interval [-0.685992, -0.649869], jackknife MCSE 0.009217.
+
+Common grid, rho075, annual_gap, T_ge_720, T <= 3240: -0.641012; delta MCSE 0.010869, 95% Monte Carlo interval [-0.662315, -0.619709], jackknife MCSE 0.010871.
+
+Common grid, rho075, annual_gap, T_ge_1440, T <= 3240: -0.597079; delta MCSE 0.013988, 95% Monte Carlo interval [-0.624496, -0.569663], jackknife MCSE 0.013990.
+
+Common grid, rho075, empirical_complexity, full, T <= 3240: 0.387711; delta MCSE 0.000376, 95% Monte Carlo interval [0.386974, 0.388449], jackknife MCSE 0.000376.
+
+Common grid, rho075, empirical_complexity, T_ge_360, T <= 3240: 0.407338; delta MCSE 0.000258, 95% Monte Carlo interval [0.406832, 0.407843], jackknife MCSE 0.000258.
+
+Common grid, rho075, empirical_complexity, T_ge_720, T <= 3240: 0.414554; delta MCSE 0.000219, 95% Monte Carlo interval [0.414125, 0.414984], jackknife MCSE 0.000219.
+
+Common grid, rho075, empirical_complexity, T_ge_1440, T <= 3240: 0.420494; delta MCSE 0.000246, 95% Monte Carlo interval [0.420012, 0.420975], jackknife MCSE 0.000246.
+
+Common grid, rho075, relative_complexity, full, T <= 3240: -0.612289; delta MCSE 0.000376, 95% Monte Carlo interval [-0.613026, -0.611551], jackknife MCSE 0.000376.
+
+Common grid, rho075, relative_complexity, T_ge_360, T <= 3240: -0.592662; delta MCSE 0.000258, 95% Monte Carlo interval [-0.593168, -0.592157], jackknife MCSE 0.000258.
+
+Common grid, rho075, relative_complexity, T_ge_720, T <= 3240: -0.585446; delta MCSE 0.000219, 95% Monte Carlo interval [-0.585875, -0.585016], jackknife MCSE 0.000219.
+
+Common grid, rho075, relative_complexity, T_ge_1440, T <= 3240: -0.579506; delta MCSE 0.000246, 95% Monte Carlo interval [-0.579988, -0.579025], jackknife MCSE 0.000246.
+
+Common grid, rho075, population_complexity, full, T <= 3240: 0.381846.
+
+Common grid, rho075, population_complexity, T_ge_360, T <= 3240: 0.404441.
+
+Common grid, rho075, population_complexity, T_ge_720, T <= 3240: 0.411866.
+
+Common grid, rho075, population_complexity, T_ge_1440, T <= 3240: 0.417911.
+
+Common grid, rho075, population_relative_complexity, full, T <= 3240: -0.618154.
+
+Common grid, rho075, population_relative_complexity, T_ge_360, T <= 3240: -0.595559.
+
+Common grid, rho075, population_relative_complexity, T_ge_720, T <= 3240: -0.588134.
+
+Common grid, rho075, population_relative_complexity, T_ge_1440, T <= 3240: -0.582089.
+
+These are descriptive finite-window exponents. Monte Carlo intervals quantify uncertainty from 300 independent paths, preserving full within-path cross-T covariance. They do not include population quadrature or finite-rank error. An O_P(T^(-0.6)) upper-rate prediction does not require a finite-grid regression slope to equal -0.6; a faster observed slope can be compatible with that bound. Failed high-T numerical checks preclude a decisive infinite-dimensional asymptotic interpretation, irrespective of proximity to -0.6.
+
+4. CROSS-SECTIONAL BREADTH AND TEMPORAL DEPENDENCE
+
+baseline: analytical optimum 3.000000; learned mean annual Sharpe 2.067570 at T=60 and 2.921222 at T=3240. At the common last horizon, the own-optimum gap is 0.078778, MCSE 0.000824; the learned-Sharpe central 95% replication interval is [2.888906, 2.943738].
+
+N300: analytical optimum 2.949817; learned mean annual Sharpe 1.988207 at T=60 and 2.838549 at T=3240. At the common last horizon, the own-optimum gap is 0.111268, MCSE 0.000823; the learned-Sharpe central 95% replication interval is [2.809266, 2.862679].
+
+N1200: analytical optimum 3.026071; learned mean annual Sharpe 2.108507 at T=60 and 2.965526 at T=3240. At the common last horizon, the own-optimum gap is 0.060546, MCSE 0.000823; the learned-Sharpe central 95% replication interval is [2.933549, 2.988383].
+
+rho000: analytical optimum 3.000000; learned mean annual Sharpe 2.073199 at T=60 and 2.921605 at T=3240. At the common last horizon, the own-optimum gap is 0.078395, MCSE 0.000823; the learned-Sharpe central 95% replication interval is [2.891122, 2.944224].
+
+rho075: analytical optimum 3.000000; learned mean annual Sharpe 2.069051 at T=60 and 2.921493 at T=3240. At the common last horizon, the own-optimum gap is 0.078507, MCSE 0.000819; the learned-Sharpe central 95% replication interval is [2.888558, 2.944182].
+
+At T=3240, N300 minus baseline own-optimum gap: 0.032490, paired MCSE 0.000226 (Monte Carlo mean interval [0.032047, 0.032934]). A negative difference means better recovery relative to that economy's own opportunity set.
+
+At T=3240, N1200 minus baseline own-optimum gap: -0.018232, paired MCSE 0.000144 (Monte Carlo mean interval [-0.018515, -0.017950]). A negative difference means better recovery relative to that economy's own opportunity set.
+
+At T=3240, rho000 minus baseline own-optimum gap: -0.000383, paired MCSE 0.000269 (Monte Carlo mean interval [-0.000911, 0.000145]). A negative difference means better recovery relative to that economy's own opportunity set.
+
+At T=3240, rho075 minus baseline own-optimum gap: -0.000271, paired MCSE 0.000230 (Monte Carlo mean interval [-0.000723, 0.000181]). A negative difference means better recovery relative to that economy's own opportunity set.
+
+N changes residual diversification and the analytical opportunity set, with factor means and covariance held fixed. Absolute Sharpe and own-optimum recovery are therefore reported separately. The rho experiments share the same stationary operator, population complexity, analytical optimum and regularization constant; only serial dependence changes. No ad hoc effective-sample-size substitution is made. End-horizon differences and slope tables must not be generalized into a universal monotonic learning-rate ordering.
+
+The N-dependent projection floors must also be considered when interpreting cross-sectional comparisons: unequal finite-rank approximation error can contribute to the apparent difference in recovery. The rho comparison has a common population projection floor, but that fact alone does not certify every fitted-policy difference against a larger numerical rank.
+
+5. MORE REPLICATIONS, MORE HISTORY, AND NUMERICAL APPROXIMATION
+
+At T=60, the previous 100-path mean annual Sharpe 2.081491 becomes 2.067570. The additive changes are evaluation quadrature -0.009468, numerical rank on the same first 100 return histories +0.022355, and the additional 200 paths -0.026808. All first-100 baseline stock-return hashes agree with the reference run.
+
+At T=1440, the previous 100-path mean annual Sharpe 2.868092 becomes 2.872454. The additive changes are evaluation quadrature -0.004126, numerical rank on the same first 100 return histories +0.007138, and the additional 200 paths +0.001351. All first-100 baseline stock-return hashes agree with the reference run.
+
+Comparison slope, old100_rank512_old_Q: -0.615945.
+
+Comparison slope, old100_rank512_new_Q: -0.609260.
+
+Comparison slope, new100_selected_rank_original_grid: -0.619114.
+
+Comparison slope, new300_selected_rank_original_grid: -0.625599.
+
+Comparison slope, new300_selected_rank_extended_grid: -0.624831.
+
+The previous rank-1024 population-complexity slope on the original grid is 0.360167. Population complexity does not change merely because the Monte Carlo replication count increases.
+
+New selected-rank population-complexity slope, original: 0.372670. The same-grid change reflects numerical resolution; the subsequent grid change reflects the longer range of prescribed penalties.
+
+New selected-rank population-complexity slope, required_extended: 0.386234. The same-grid change reflects numerical resolution; the subsequent grid change reflects the longer range of prescribed penalties.
+
+The original-grid versus extended-grid comparison at the same 300-path numerical specification isolates the fitting-window/history extension. It is not interchangeable with the effect of more replications or a changed finite-rank approximation.
+
+6. UNCERTAINTY AND UNSUPPORTED CLAIMS
+
+All main and robustness bands are central 95% replication-percentile bands, not confidence intervals for the mean. Means, medians, standard deviations, both percentiles and mean MCSE are retained for every T and candidate penalty. Regularization bias, estimation norm and the cross term sum to analytical-optimum regret for the exact theory choice. These quantities remain distinct from the projection floor, quadrature error and serial-dependence effects.
+
+The 300-path distributions provide Monte Carlo evidence for the finite, stated experiment. They do not cure numerical under-resolution. Unsupported claims include a proof of the r=1 source condition (the numerical Fourier truncation is finite and smooth), a minimax theorem, an exact power law at every eigenvalue, exact asymptotic exponents inferred from finite windows, an everywhere-optimal multiplicative regularization constant, a universal N or rho ordering, and an independent higher-rank certificate for the largest tested rank. Diagnostic penalty paths are ex post; the reported rule always remains a*T^(-0.6).
+
+No manuscript or existing empirical results were modified. All ten figures require separate visual review in addition to the numerical verifier.

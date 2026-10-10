@@ -1,0 +1,387 @@
+{
+  "audited_utc": "2026-10-10T23:47:00.425650+00:00",
+  "objective_sha256": "84ae5a2703d6adf3ab7fb63f8c982a643c4902034dc4d409d61e4e5f33069369",
+  "run_hash": "e9f1f005be1a58ee736a09cb711d5be87457b9875d1e26dab56c03ccdca61d8d",
+  "scope": "Complete computations, artifacts, numerical checks and visual review; final commit/push and in-chat presentation follow this audit.",
+  "production_counts": {
+    "baseline": 300,
+    "N300": 300,
+    "N1200": 300,
+    "rho000": 300,
+    "rho075": 300
+  },
+  "checks": {
+    "frozen_scientific_source_files": 14,
+    "frozen_preproduction_files": 5,
+    "production_checkpoints": 600,
+    "paired_production_indices": 300,
+    "paired_pilot_checkpoints": 48,
+    "quadrature_cells": 62,
+    "production_resolution_cells": 61,
+    "operator_archive_files_checked": 33,
+    "finite_difference_elasticity_max_abs_error": {
+      "baseline": 1.1147638367958734e-11,
+      "N300": 1.7959189690941457e-11,
+      "N1200": 2.312944280546958e-11,
+      "rho000": 1.1147638367958734e-11,
+      "rho075": 1.1147638367958734e-11
+    },
+    "all_ten_visual_reviews": true,
+    "spectral_source_files_checked": 51,
+    "spectral_elasticity_rows_recomputed": 612,
+    "spectral_elasticity_max_finite_difference_error": 3.8732400620133944e-10,
+    "cluster_boundaries_recomputed": 680
+  },
+  "numerical_resolution_fully_certified": false,
+  "numerical_limitation": "Fixed rank 4096 has unresolved high-T floors and no independent higher-rank certificate. This is the explicitly disclosed fallback allowed by objective section 3, not a successful numerical-resolution claim.",
+  "requirements": [
+    {
+      "objective_section": 1,
+      "finding": "Fixed Rich6D economy, Fourier target/truncation, Matern kernel and analytical optimum preserved. Baseline annual marginal Sharpe is 3; N variants retain fixed economics.",
+      "status": "verified",
+      "evidence": [
+        {
+          "path": "protocol.json",
+          "sha256": "085180d348a6668556d6d580c9605d11611ba35afba8c1019f028203d770e236"
+        },
+        {
+          "path": "calibration.json",
+          "sha256": "f41cc5c42655be71084e879ae23dc2ad021e8c48e0d0faae9fe3223f8c4c4bea"
+        }
+      ]
+    },
+    {
+      "objective_section": 2,
+      "finding": "Only exact a*T^(-0.6) selects the reported rule. Independent population calibration and unchanged baseline a; all diagnostic penalties remain ex post.",
+      "status": "verified",
+      "evidence": [
+        {
+          "path": "protocol.json",
+          "sha256": "085180d348a6668556d6d580c9605d11611ba35afba8c1019f028203d770e236"
+        },
+        {
+          "path": "calibration.json",
+          "sha256": "f41cc5c42655be71084e879ae23dc2ad021e8c48e0d0faae9fe3223f8c4c4bea"
+        },
+        {
+          "path": "full_penalty_distributions.csv",
+          "sha256": "491679d4b47a7d72d0efea49cf830306296512f784a3cdfa7dd334a3e7388f4e"
+        }
+      ]
+    },
+    {
+      "objective_section": 3,
+      "finding": "Ranks 512/1024/2048/4096 compared on 12 paired pilot histories, with floor, fitted-policy discrepancy, MCSE and independent quadrature. Fixed 4096 uses the explicitly permitted disclosed-limitation fallback; high-T resolution is NOT certified.",
+      "status": "fulfilled_with_explicit_numerical_limitation",
+      "evidence": [
+        {
+          "path": "rank_audit.csv",
+          "sha256": "7a1b2691c5ca4fa63739d446e5884713d7635350195cd9331eb44c955ce8f1a0"
+        },
+        {
+          "path": "rank_audit_theory.csv",
+          "sha256": "580c734201f68833ae6d753e5c158f09066c5b9f8b30b582b7a91852056b3518"
+        },
+        {
+          "path": "quadrature_audit.csv",
+          "sha256": "1dbdea8c4de4d6b9131e9c0580bd8d89101d33992753e539c749d66d5cf02836"
+        },
+        {
+          "path": "rank_selection_decision.json",
+          "sha256": "429eac9477610777cad6f7b0cd171247807fa014a5fbfdb9aeb9440ec17d322e"
+        },
+        {
+          "path": "production_resolution_final.csv",
+          "sha256": "185a45b65bfd7045c2dee72ebfc82725d67d04f19b7c1b3f4c79abe7985a7d7c"
+        }
+      ]
+    },
+    {
+      "objective_section": 4,
+      "finding": "300 independent indices per economy, nested T, paired innovations, independent population evaluation, all 97-penalty outcomes and six statistics. Full cross-T slope uncertainty independently recomputed.",
+      "status": "verified",
+      "evidence": [
+        {
+          "path": "checkpoint_integrity.json",
+          "sha256": "7d58a6499421fe1fe29f30d7b065fd2f77e23723f69120dc8a80691ca9c3ff72"
+        },
+        {
+          "path": "seed_manifest.json",
+          "sha256": "39427ac619fd68d36bc1a899496234d0a1c165b19507cae9be04a7aa10731b73"
+        },
+        {
+          "path": "summary_integrity.json",
+          "sha256": "ef97e8d5a01ad23d82f14d30c8e16b3401e5d4f0d9d82653950c699d4c78476e"
+        },
+        {
+          "path": "full_penalty_distributions.csv",
+          "sha256": "491679d4b47a7d72d0efea49cf830306296512f784a3cdfa7dd334a3e7388f4e"
+        },
+        {
+          "path": "paired_robustness.csv",
+          "sha256": "cc5306ef6b2e6ca8fec881028ec960ace6666a2af3a52e4b31ec670e957ea98d"
+        }
+      ]
+    },
+    {
+      "objective_section": 5,
+      "finding": "All original horizons plus 2160/3240/4860 in baseline; common robustness grid through 3240. Optional 7290 investigated and excluded by numerical feasibility before production.",
+      "status": "verified",
+      "evidence": [
+        {
+          "path": "protocol.json",
+          "sha256": "085180d348a6668556d6d580c9605d11611ba35afba8c1019f028203d770e236"
+        },
+        {
+          "path": "rank_selection_decision.json",
+          "sha256": "429eac9477610777cad6f7b0cd171247807fa014a5fbfdb9aeb9440ec17d322e"
+        },
+        {
+          "path": "pilot_integrity_verification.json",
+          "sha256": "34cddf6c795f317453c3c39bc9849123e2ec5f07530f3f6ba80a9cc172c33459"
+        }
+      ]
+    },
+    {
+      "objective_section": 6,
+      "finding": "Exact spectral elasticity independently finite-differenced, distinguished from all four window slopes and empirical complexity; finite-rank saturation diagnosed without simulated giant histories.",
+      "status": "verified",
+      "evidence": [
+        {
+          "path": "population_summary.csv",
+          "sha256": "5dab8349001625e5b00cfbee35889603dc2884f57a8c09072776ed54acee02f8"
+        },
+        {
+          "path": "population_rank_seed_elasticity_audit.csv",
+          "sha256": "6f8ec86eb7e58290516f6ca97d9fc4706be08fea6aec539ed3a9f076ff302ffd"
+        },
+        {
+          "path": "slopes_all_windows.csv",
+          "sha256": "17623a2a2a9f56ee038e0b25a4af086696a4e766573242b9690092e8deb81f20"
+        },
+        {
+          "path": "slopes_robustness_common_grid.csv",
+          "sha256": "fa0d499c2bbf04548fec5b30d283e56caaf6c9ec623e51c7c731bc5b4f1f4b19"
+        },
+        {
+          "path": "finite_rank_saturation_diagnostic.csv",
+          "sha256": "09eaddbbc268af5e36622fa7fb5aea71a6f4a5a307724ad15e46a49e627facba"
+        },
+        {
+          "path": "spectrum_geometry_and_saturation.json",
+          "sha256": "13c412ecd766a025e189a487e642092e4eb977efbe4448e5cb4556ea7c00741a"
+        }
+      ]
+    },
+    {
+      "objective_section": 7,
+      "finding": "Unsmoothed kernel, managed, factor and idiosyncratic spectra across independent bases/quadratures/ranks. Ordered component eigenvalues are not added. Cube-symmetry interpretation is explicitly tentative; no arbitrary fitted tail exponent.",
+      "status": "verified",
+      "evidence": [
+        {
+          "path": "spectral_cluster_seed_comparison.csv",
+          "sha256": "b476dfc7dfa4c50ba49a4f96bd4b0eeb82a9c522a64009e83690e1901128aa2c"
+        },
+        {
+          "path": "spectral_cluster_range_summary.csv",
+          "sha256": "e729f2fd24f52240d666c3eaac6095237549702184165ea1b6c3073d9d68e8b2"
+        },
+        {
+          "path": "spectrum_geometry_and_saturation.json",
+          "sha256": "13c412ecd766a025e189a487e642092e4eb977efbe4448e5cb4556ea7c00741a"
+        }
+      ]
+    },
+    {
+      "objective_section": 8,
+      "finding": "N=300/600/1200, fixed factor means/covariance and loading parameters, separate analytical optima and same independent calibration rule; 300 paths each and matched-grid comparisons.",
+      "status": "verified",
+      "evidence": [
+        {
+          "path": "calibration.json",
+          "sha256": "f41cc5c42655be71084e879ae23dc2ad021e8c48e0d0faae9fe3223f8c4c4bea"
+        },
+        {
+          "path": "population_summary.csv",
+          "sha256": "5dab8349001625e5b00cfbee35889603dc2884f57a8c09072776ed54acee02f8"
+        },
+        {
+          "path": "paired_robustness.csv",
+          "sha256": "cc5306ef6b2e6ca8fec881028ec960ace6666a2af3a52e4b31ec670e957ea98d"
+        },
+        {
+          "path": "slopes_robustness_common_grid.csv",
+          "sha256": "fa0d499c2bbf04548fec5b30d283e56caaf6c9ec623e51c7c731bc5b4f1f4b19"
+        }
+      ]
+    },
+    {
+      "objective_section": 9,
+      "finding": "rho=0/.75/.95 stationary marginals, identical population operator/optimum/a verified; 300 paths each, paired innovations and no ad hoc effective T.",
+      "status": "verified",
+      "evidence": [
+        {
+          "path": "protocol.json",
+          "sha256": "085180d348a6668556d6d580c9605d11611ba35afba8c1019f028203d770e236"
+        },
+        {
+          "path": "verification.json",
+          "sha256": "708d73cb314cacb6dd46b53c9b66da5aa3c516329528b8664659ff0660ebc4cb"
+        },
+        {
+          "path": "paired_robustness.csv",
+          "sha256": "cc5306ef6b2e6ca8fec881028ec960ace6666a2af3a52e4b31ec670e957ea98d"
+        }
+      ]
+    },
+    {
+      "objective_section": 10,
+      "finding": "Four actual main figures: spectrum/filter/cumulative C; extended Sharpe/gap; lambda/C/C-T; full penalty paths at 60/240/720/1440/2160 with exact-choice stars and numerical-failure markings.",
+      "status": "verified",
+      "evidence": [
+        {
+          "path": "figure_captions.txt",
+          "sha256": "dc61f36f5dffb4d11a39637dd45bfbeb2206dacb6715e71202c45513881aa1e0"
+        },
+        {
+          "path": "final_visual_review.json",
+          "sha256": "cb51a2ef45e187f798201adfecf7a2e5637d9810094ca3c1389922e917387e79"
+        }
+      ]
+    },
+    {
+      "objective_section": 11,
+      "finding": "Six actual robustness figures R1-R6: N and rho learnability, empirical complexity/C-T, and complete penalty paths at 60/1440. Distinct N optima and single rho population references retained.",
+      "status": "verified",
+      "evidence": [
+        {
+          "path": "figure_captions.txt",
+          "sha256": "dc61f36f5dffb4d11a39637dd45bfbeb2206dacb6715e71202c45513881aa1e0"
+        },
+        {
+          "path": "final_visual_review.json",
+          "sha256": "cb51a2ef45e187f798201adfecf7a2e5637d9810094ca3c1389922e917387e79"
+        }
+      ]
+    },
+    {
+      "objective_section": 12,
+      "finding": "All ten native PNGs and PDF renderings visually inspected: consistent serif typography, colors, notation, subtle percentile bands, panel labels, embedded vector PDF fonts and 300-dpi PNGs.",
+      "status": "verified",
+      "evidence": [
+        {
+          "path": "final_visual_review.json",
+          "sha256": "cb51a2ef45e187f798201adfecf7a2e5637d9810094ca3c1389922e917387e79"
+        }
+      ]
+    },
+    {
+      "objective_section": 13,
+      "finding": "Report distinguishes sampling error, regularization bias, estimation error, quadrature, finite-rank floors and dependence. It does not claim source-condition proof, minimax optimality, universal orderings or an optimal constant.",
+      "status": "verified",
+      "evidence": [
+        {
+          "path": "critical_report.txt",
+          "sha256": "d3e18f7c5e4f1dca3e882bcf570a109c98eb4a0b987b5f82ba1cacc69719f4cc"
+        },
+        {
+          "path": "theory_distributions.csv",
+          "sha256": "4cfd7be2d2a8b2df52b0c82b102751f520730252b24436dacabd40de1b79b174"
+        },
+        {
+          "path": "production_resolution_final.csv",
+          "sha256": "185a45b65bfd7045c2dee72ebfc82725d67d04f19b7c1b3f4c79abe7985a7d7c"
+        }
+      ]
+    },
+    {
+      "objective_section": 14,
+      "finding": "Preproduction audits and resource pilots precede frozen protocol; baseline completes before robustness allocation; deterministic seeds, checkpoints, qualified remote reproduction and independent import audits preserved.",
+      "status": "verified",
+      "evidence": [
+        {
+          "path": "preproduction_audit_status.json",
+          "sha256": "a2f64fa51318ab379695407cfc684b9269e4c6cc74b9fc5899f2cad1a2deb4a9"
+        },
+        {
+          "path": "pilot_integrity_verification.json",
+          "sha256": "34cddf6c795f317453c3c39bc9849123e2ec5f07530f3f6ba80a9cc172c33459"
+        },
+        {
+          "path": "remote_baseline_completion.json",
+          "sha256": "942a3f59e9a145d80dca0a6154b8a94082d7f51c287d2364438de201a0286fdc"
+        },
+        {
+          "path": "remote_allocation_production_robustness.json",
+          "sha256": "a30b5e3f27126adc7056754c272b1122ceb68c12c53fd43f8f8effdfe99bccde"
+        },
+        {
+          "path": "remote_reproduction_results.json",
+          "sha256": "54258bbd6e427ccf625dafb25e175e2ef7d662042fa81c28a70dd1e1b837758b"
+        },
+        {
+          "path": "remote_collection_production_robustness_38075206545.json",
+          "sha256": "cdc3db2f3837b5a9bf80af9336c1fe781cf03b45025f8f675e58b1de8e57e986"
+        }
+      ]
+    },
+    {
+      "objective_section": 15,
+      "finding": "Separate output directory contains source/configuration, all replication outcomes, numerical audits, lossless operator archive, tables, ten PDF/PNG figures, English captions and critical report. Old-100 comparison separates quadrature, rank, extra paths and extended fitting grid.",
+      "status": "verified",
+      "evidence": [
+        {
+          "path": "comparison_previous_100.csv",
+          "sha256": "d1c693780df221d981daacf1d9e3e5d48b5e44ccd99a646c50661abc580ab676"
+        },
+        {
+          "path": "comparison_slopes_previous_100.csv",
+          "sha256": "52f163e9cd284be98f651fa9a6283d446bedc0263cb0f305a8feaa954f1b476d"
+        },
+        {
+          "path": "complexity_comparison_previous.csv",
+          "sha256": "921711c22c754e28f8734a615a6801995484eb5b07869fae3884b80d707e5229"
+        },
+        {
+          "path": "population_archive_validation.json",
+          "sha256": "a81be73bdbdc81efd13060e02876ffd0ad394ab64d49f39f5499d0d7c4610855"
+        },
+        {
+          "path": "critical_report.txt",
+          "sha256": "d3e18f7c5e4f1dca3e882bcf570a109c98eb4a0b987b5f82ba1cacc69719f4cc"
+        },
+        {
+          "path": "figure_captions.txt",
+          "sha256": "dc61f36f5dffb4d11a39637dd45bfbeb2206dacb6715e71202c45513881aa1e0"
+        }
+      ]
+    },
+    {
+      "objective_section": 16,
+      "finding": "Ten actual figures have been displayed for review. Final response is organized as four main, three N (R1/R3/R5), three rho (R2/R4/R6), with individual interpretation/limits, all four slope windows and the seven scientific answers.",
+      "status": "verified",
+      "evidence": [
+        {
+          "path": "critical_report.txt",
+          "sha256": "d3e18f7c5e4f1dca3e882bcf570a109c98eb4a0b987b5f82ba1cacc69719f4cc"
+        },
+        {
+          "path": "figure_captions.txt",
+          "sha256": "dc61f36f5dffb4d11a39637dd45bfbeb2206dacb6715e71202c45513881aa1e0"
+        },
+        {
+          "path": "final_visual_review.json",
+          "sha256": "cb51a2ef45e187f798201adfecf7a2e5637d9810094ca3c1389922e917387e79"
+        },
+        {
+          "path": "slopes_all_windows.csv",
+          "sha256": "17623a2a2a9f56ee038e0b25a4af086696a4e766573242b9690092e8deb81f20"
+        },
+        {
+          "path": "slopes_robustness_common_grid.csv",
+          "sha256": "fa0d499c2bbf04548fec5b30d283e56caaf6c9ec623e51c7c731bc5b4f1f4b19"
+        }
+      ]
+    }
+  ]
+}

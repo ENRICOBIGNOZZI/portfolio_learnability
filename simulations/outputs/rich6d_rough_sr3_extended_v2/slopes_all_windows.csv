@@ -1,0 +1,101 @@
+environment,grid,T_max,quantity,window,T_min,observations,available,slope,MCSE_delta,CI_low,CI_high,MCSE_jackknife,uncertainty
+baseline,environment_full,4860,annual_gap,full,0,13,True,-0.6248312725060252,0.005908650375314262,-0.6364120144388803,-0.6132505305731701,0.00590913733545885,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+baseline,environment_full,4860,annual_gap,T_ge_360,360,8,True,-0.6372506194026695,0.007865909370665803,-0.6526675184748306,-0.6218337203305083,0.007866899715767296,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+baseline,environment_full,4860,annual_gap,T_ge_720,720,6,True,-0.601539253145514,0.008981743722390939,-0.619143147359769,-0.583935358931259,0.008982985022266835,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+baseline,environment_full,4860,annual_gap,T_ge_1440,1440,4,True,-0.5507155146228846,0.010748557618108352,-0.5717823004401306,-0.5296487288056386,0.01075065053366322,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+baseline,environment_full,4860,empirical_complexity,full,0,13,True,0.39233794670938,0.00032547973538695456,0.39170001815032396,0.392975875268436,0.0003254789559230713,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+baseline,environment_full,4860,empirical_complexity,T_ge_360,360,8,True,0.4110723809478863,0.000206866517906297,0.4106669300231827,0.41147783187258985,0.000206866445567934,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+baseline,environment_full,4860,empirical_complexity,T_ge_720,720,6,True,0.41742228210706267,0.00018340731151766273,0.4170628103819867,0.4177817538321386,0.0001834074125229753,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+baseline,environment_full,4860,empirical_complexity,T_ge_1440,1440,4,True,0.42272113166305203,0.00017952839749342205,0.42236926246976275,0.4230730008563413,0.00017952868741637876,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+baseline,environment_full,4860,relative_complexity,full,0,13,True,-0.607662053290623,0.00032547973538695456,-0.608299981849679,-0.6070241247315669,0.00032547895592309906,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+baseline,environment_full,4860,relative_complexity,T_ge_360,360,8,True,-0.5889276190521155,0.00020686651790629692,-0.5893330699768191,-0.588522168127412,0.00020686644556790735,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+baseline,environment_full,4860,relative_complexity,T_ge_720,720,6,True,-0.5825777178929239,0.00018340731151766262,-0.5829371896179998,-0.582218246167848,0.00018340741252303764,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+baseline,environment_full,4860,relative_complexity,T_ge_1440,1440,4,True,-0.5772788683369132,0.000179528397493422,-0.5776307375302026,-0.5769269991436239,0.00017952868741631203,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+baseline,environment_full,4860,population_complexity,full,0,13,,0.3862335266815985,,,,,
+baseline,environment_full,4860,population_complexity,T_ge_360,360,8,,0.408005552993972,,,,,
+baseline,environment_full,4860,population_complexity,T_ge_720,720,6,,0.4148960030424919,,,,,
+baseline,environment_full,4860,population_complexity,T_ge_1440,1440,4,,0.420372466046591,,,,,
+baseline,environment_full,4860,population_relative_complexity,full,0,13,,-0.6137664733184057,,,,,
+baseline,environment_full,4860,population_relative_complexity,T_ge_360,360,8,,-0.5919944470060358,,,,,
+baseline,environment_full,4860,population_relative_complexity,T_ge_720,720,6,,-0.5851039969575167,,,,,
+baseline,environment_full,4860,population_relative_complexity,T_ge_1440,1440,4,,-0.5796275339534218,,,,,
+N300,environment_full,3240,annual_gap,full,0,12,True,-0.5537041381585337,0.005924955754308493,-0.5653168380469717,-0.5420914382700956,0.0059256387914902306,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+N300,environment_full,3240,annual_gap,T_ge_360,360,7,True,-0.5488382081938736,0.007799685619817176,-0.5641253110994503,-0.533551105288297,0.007800485408363844,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+N300,environment_full,3240,annual_gap,T_ge_720,720,5,True,-0.5045948904548424,0.00874125697359,-0.5217274393026884,-0.4874623416069964,0.008741897550908487,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+N300,environment_full,3240,annual_gap,T_ge_1440,1440,3,True,-0.45317895179737366,0.01086637351502154,-0.47447665252937576,-0.43188125106537156,0.01086824393471217,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+N300,environment_full,3240,empirical_complexity,full,0,12,True,0.4346107361913523,0.00035093025894562975,0.4339229255227336,0.43529854685997105,0.0003509324806700153,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+N300,environment_full,3240,empirical_complexity,T_ge_360,360,7,True,0.43960276914123264,0.00024291666600489325,0.4391266612246185,0.44007887705784676,0.0002429166121015362,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+N300,environment_full,3240,empirical_complexity,T_ge_720,720,5,True,0.43996544015425854,0.0002187808619832098,0.4395366375442648,0.44039424276425226,0.0002187809566061007,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+N300,environment_full,3240,empirical_complexity,T_ge_1440,1440,3,True,0.4398029572934936,0.0002341937027156326,0.4393439460707649,0.44026196851622235,0.00023419397769909228,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+N300,environment_full,3240,relative_complexity,full,0,12,True,-0.565389263808649,0.0003509302589456298,-0.5660770744772677,-0.5647014531400302,0.0003509324806699445,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+N300,environment_full,3240,relative_complexity,T_ge_360,360,7,True,-0.5603972308587659,0.0002429166660048933,-0.56087333877538,-0.5599211229421518,0.0002429166121014487,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+N300,environment_full,3240,relative_complexity,T_ge_720,720,5,True,-0.560034559845727,0.00021878086198320968,-0.5604633624557207,-0.5596057572357334,0.00021878095660665868,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+N300,environment_full,3240,relative_complexity,T_ge_1440,1440,3,True,-0.5601970427064842,0.0002341937027156326,-0.5606560539292129,-0.5597380314837554,0.00023419397769841214,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+N300,environment_full,3240,population_complexity,full,0,12,,0.42449572751184234,,,,,
+N300,environment_full,3240,population_complexity,T_ge_360,360,7,,0.43389759550269524,,,,,
+N300,environment_full,3240,population_complexity,T_ge_720,720,5,,0.4353970035539856,,,,,
+N300,environment_full,3240,population_complexity,T_ge_1440,1440,3,,0.4357722525997867,,,,,
+N300,environment_full,3240,population_relative_complexity,full,0,12,,-0.5755042724881596,,,,,
+N300,environment_full,3240,population_relative_complexity,T_ge_360,360,7,,-0.5661024044973094,,,,,
+N300,environment_full,3240,population_relative_complexity,T_ge_720,720,5,,-0.5646029964460221,,,,,
+N300,environment_full,3240,population_relative_complexity,T_ge_1440,1440,3,,-0.5642277474002182,,,,,
+N1200,environment_full,3240,annual_gap,full,0,12,True,-0.6900440262924876,0.007423607284100028,-0.7045940292046928,-0.6754940233802824,0.00742439884554801,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+N1200,environment_full,3240,annual_gap,T_ge_360,360,7,True,-0.7641707272290181,0.010177936284618027,-0.7841191157838129,-0.7442223386742234,0.010179646706720046,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+N1200,environment_full,3240,annual_gap,T_ge_720,720,5,True,-0.7562648096966782,0.012249037109692152,-0.7802724812769695,-0.7322571381163869,0.012251181617145779,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+N1200,environment_full,3240,annual_gap,T_ge_1440,1440,3,True,-0.7338604139494276,0.016447711181362994,-0.7660973354930158,-0.7016234924058393,0.01645101842400926,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+N1200,environment_full,3240,empirical_complexity,full,0,12,True,0.3254114996606784,0.000377427242490674,0.3246717558586124,0.3261512434627444,0.00037742497931163635,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+N1200,environment_full,3240,empirical_complexity,T_ge_360,360,7,True,0.35136256094434015,0.00022848623828555694,0.35091473614633745,0.35181038574234286,0.00022848701626311183,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+N1200,environment_full,3240,empirical_complexity,T_ge_720,720,5,True,0.36350205221360943,0.0002167100335210813,0.36307730835281965,0.3639267960743992,0.0002167105541786917,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+N1200,environment_full,3240,empirical_complexity,T_ge_1440,1440,3,True,0.37541554174777536,0.00025090235540086613,0.3749237821675534,0.3759073013279973,0.0002509027589075805,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+N1200,environment_full,3240,relative_complexity,full,0,12,True,-0.6745885003393232,0.00037742724249067403,-0.6753282441413891,-0.6738487565372572,0.00037742497931162025,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+N1200,environment_full,3240,relative_complexity,T_ge_360,360,7,True,-0.648637439055658,0.00022848623828555694,-0.6490852638536607,-0.6481896142576552,0.00022848701626300072,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+N1200,environment_full,3240,relative_complexity,T_ge_720,720,5,True,-0.6364979477863764,0.0002167100335210814,-0.6369226916471662,-0.6360732039255865,0.00021671055417926417,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+N1200,environment_full,3240,relative_complexity,T_ge_1440,1440,3,True,-0.6245844582522038,0.00025090235540086624,-0.6250762178324257,-0.6240926986719818,0.00025090275890864085,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+N1200,environment_full,3240,population_complexity,full,0,12,,0.3209394231457452,,,,,
+N1200,environment_full,3240,population_complexity,T_ge_360,360,7,,0.3494295297707031,,,,,
+N1200,environment_full,3240,population_complexity,T_ge_720,720,5,,0.3616831733000944,,,,,
+N1200,environment_full,3240,population_complexity,T_ge_1440,1440,3,,0.37354659904599774,,,,,
+N1200,environment_full,3240,population_relative_complexity,full,0,12,,-0.6790605768542578,,,,,
+N1200,environment_full,3240,population_relative_complexity,T_ge_360,360,7,,-0.6505704702293004,,,,,
+N1200,environment_full,3240,population_relative_complexity,T_ge_720,720,5,,-0.6383168266999056,,,,,
+N1200,environment_full,3240,population_relative_complexity,T_ge_1440,1440,3,,-0.6264534009539835,,,,,
+rho000,environment_full,3240,annual_gap,full,0,12,True,-0.6314326359722042,0.006754811037529046,-0.6446718223281348,-0.6181934496162736,0.0067555446624733735,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+rho000,environment_full,3240,annual_gap,T_ge_360,360,7,True,-0.6656398658144229,0.009169649950140673,-0.6836120494675382,-0.6476676821613077,0.009170783121948332,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+rho000,environment_full,3240,annual_gap,T_ge_720,720,5,True,-0.6408701224723218,0.010845590879687119,-0.6621270899875646,-0.6196131549570789,0.010846896286272261,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+rho000,environment_full,3240,annual_gap,T_ge_1440,1440,3,True,-0.5966208886757003,0.013872710344750872,-0.6238109013193682,-0.5694308760320324,0.01387466079459848,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+rho000,environment_full,3240,empirical_complexity,full,0,12,True,0.3875556377107406,0.00035505083045096384,0.38685975087037566,0.3882515245511055,0.0003550496643143345,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+rho000,environment_full,3240,empirical_complexity,T_ge_360,360,7,True,0.40712642694169265,0.00024201390657537826,0.40665208840104705,0.40760076548233826,0.00024201419350568424,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+rho000,environment_full,3240,empirical_complexity,T_ge_720,720,5,True,0.41420275847383214,0.00022173083648145868,0.41376817402006655,0.41463734292759774,0.00022173040414311514,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+rho000,environment_full,3240,empirical_complexity,T_ge_1440,1440,3,True,0.4203834959372479,0.00023030750117401943,0.4199321015295774,0.4208348903449184,0.00023030777006506704,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+rho000,environment_full,3240,relative_complexity,full,0,12,True,-0.6124443622892608,0.0003550508304509638,-0.6131402491296257,-0.6117484754488959,0.000355049664314405,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+rho000,environment_full,3240,relative_complexity,T_ge_360,360,7,True,-0.5928735730583061,0.00024201390657537818,-0.5933479115989517,-0.5923992345176605,0.00024201419350565085,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+rho000,environment_full,3240,relative_complexity,T_ge_720,720,5,True,-0.5857972415261541,0.00022173083648145868,-0.5862318259799197,-0.5853626570723884,0.0002217304041431328,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+rho000,environment_full,3240,relative_complexity,T_ge_1440,1440,3,True,-0.5796165040627308,0.00023030750117401954,-0.5800678984704013,-0.5791651096550603,0.0002303077700646135,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+rho000,environment_full,3240,population_complexity,full,0,12,,0.3818457695674486,,,,,
+rho000,environment_full,3240,population_complexity,T_ge_360,360,7,,0.40444129893789527,,,,,
+rho000,environment_full,3240,population_complexity,T_ge_720,720,5,,0.4118662575608652,,,,,
+rho000,environment_full,3240,population_complexity,T_ge_1440,1440,3,,0.4179112886982845,,,,,
+rho000,environment_full,3240,population_relative_complexity,full,0,12,,-0.6181542304325548,,,,,
+rho000,environment_full,3240,population_relative_complexity,T_ge_360,360,7,,-0.5955587010621123,,,,,
+rho000,environment_full,3240,population_relative_complexity,T_ge_720,720,5,,-0.5881337424391452,,,,,
+rho000,environment_full,3240,population_relative_complexity,T_ge_1440,1440,3,,-0.5820887113017355,,,,,
+rho075,environment_full,3240,annual_gap,full,0,12,True,-0.6324398744762638,0.006742712720561794,-0.6456553485666651,-0.6192244003858626,0.006743497893394232,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+rho075,environment_full,3240,annual_gap,T_ge_360,360,7,True,-0.6679304130939832,0.009215295130950412,-0.6859920596575533,-0.649868766530413,0.009216610942594591,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+rho075,environment_full,3240,annual_gap,T_ge_720,720,5,True,-0.6410119773636598,0.010868964657123625,-0.6623147566408608,-0.6197091980864587,0.010870609118264676,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+rho075,environment_full,3240,annual_gap,T_ge_1440,1440,3,True,-0.5970792907233542,0.01398818237627497,-0.624495624390031,-0.5696629570566774,0.013990453869175861,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+rho075,environment_full,3240,empirical_complexity,full,0,12,True,0.38771143608943626,0.0003764182823498294,0.38697366981290815,0.38844920236596436,0.0003764172163604843,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+rho075,environment_full,3240,empirical_complexity,T_ge_360,360,7,True,0.4073378789090576,0.0002578766521464304,0.40683244995839685,0.40784330785971834,0.00025787771820174135,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+rho075,environment_full,3240,empirical_complexity,T_ge_720,720,5,True,0.41455412950417747,0.00021917718847676442,0.4141245501085303,0.41498370889982467,0.0002191773037718239,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+rho075,environment_full,3240,empirical_complexity,T_ge_1440,1440,3,True,0.42049363405363005,0.0002457250272489833,0.42001202185012193,0.42097524625713817,0.0002457253548556431,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+rho075,environment_full,3240,relative_complexity,full,0,12,True,-0.6122885639105653,0.0003764182823498294,-0.6130263301870934,-0.6115507976340372,0.00037641721636050903,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+rho075,environment_full,3240,relative_complexity,T_ge_360,360,7,True,-0.5926621210909409,0.0002578766521464304,-0.5931675500416016,-0.5921566921402801,0.0002578777182018265,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+rho075,environment_full,3240,relative_complexity,T_ge_720,720,5,True,-0.5854458704958088,0.0002191771884767647,-0.585875449891456,-0.5850162911001615,0.00021917730377206746,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+rho075,environment_full,3240,relative_complexity,T_ge_1440,1440,3,True,-0.57950636594635,0.00024572502724898315,-0.5799879781498581,-0.5790247537428418,0.000245725354855383,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+rho075,environment_full,3240,population_complexity,full,0,12,,0.3818457695674486,,,,,
+rho075,environment_full,3240,population_complexity,T_ge_360,360,7,,0.40444129893789527,,,,,
+rho075,environment_full,3240,population_complexity,T_ge_720,720,5,,0.4118662575608652,,,,,
+rho075,environment_full,3240,population_complexity,T_ge_1440,1440,3,,0.4179112886982845,,,,,
+rho075,environment_full,3240,population_relative_complexity,full,0,12,,-0.6181542304325548,,,,,
+rho075,environment_full,3240,population_relative_complexity,T_ge_360,360,7,,-0.5955587010621123,,,,,
+rho075,environment_full,3240,population_relative_complexity,T_ge_720,720,5,,-0.5881337424391452,,,,,
+rho075,environment_full,3240,population_relative_complexity,T_ge_1440,1440,3,,-0.5820887113017355,,,,,

@@ -7,7 +7,7 @@
   "started_utc": "2026-10-10T18:18:21.062399+00:00",
   "collector_pid": 66359,
   "download_root": "/private/tmp/rich6d-remote-38075206545",
-  "status": "polling",
+  "status": "all_stage_checkpoints_collected",
   "downloaded_artifacts": [
     {
       "id": 11681235423,
@@ -108,7 +108,7 @@
     "rho075": 300
   },
   "scope": "Import only after transfer validation and independent scientific audit. No final-study completion claim.",
-  "last_poll_utc": "2026-10-10T23:36:56.628662+00:00",
+  "last_poll_utc": "2026-10-10T23:38:14.447371+00:00",
   "remote_status": "completed",
   "remote_conclusion": "success",
   "jobs": [
@@ -194,5 +194,6 @@
     }
   ],
   "last_import_utc": "2026-10-10T23:37:12.157298+00:00",
-  "files_published_in_last_import": 40
+  "files_published_in_last_import": 40,
+  "finished_utc": "2026-10-10T23:38:14.452959+00:00"
 }

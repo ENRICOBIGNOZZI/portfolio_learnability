@@ -1,0 +1,210 @@
+{
+  "reviewed_utc": "2026-10-10T23:42:59.843544+00:00",
+  "run_hash": "e9f1f005be1a58ee736a09cb711d5be87457b9875d1e26dab56c03ccdca61d8d",
+  "final_300_replication_figures": true,
+  "all_ten_reviewed": true,
+  "passed": true,
+  "figures": [
+    {
+      "figure": "Figure0_economic_spectrum",
+      "reviewed_native_png": true,
+      "reviewed_pdf_render": true,
+      "render_dpi": 150,
+      "png_dpi": [
+        299.9994,
+        299.9994
+      ],
+      "png_dimensions": [
+        2226,
+        934
+      ],
+      "embedded_fonts": true,
+      "vector_pdf_no_embedded_raster": true,
+      "no_clipping_or_overlapping_labels": true,
+      "notes": "All three panels legible; unsmoothed spectrum, filters and cumulative complexity share the stated spectrum.",
+      "pdf_sha256": "201c4b8bd5e55658d4601b5f174ef4cc9966d9893be76cc855539c3f650c043b",
+      "png_sha256": "b3a99897238d21921c610514331574b511f08db4b773ea6672e69b426571eefe"
+    },
+    {
+      "figure": "Figure1_learnability",
+      "reviewed_native_png": true,
+      "reviewed_pdf_render": true,
+      "render_dpi": 150,
+      "png_dpi": [
+        299.9994,
+        299.9994
+      ],
+      "png_dimensions": [
+        2134,
+        934
+      ],
+      "embedded_fonts": true,
+      "vector_pdf_no_embedded_raster": true,
+      "no_clipping_or_overlapping_labels": true,
+      "notes": "Mean, percentile bands, economic optimum and grey unresolved horizons are visible.",
+      "pdf_sha256": "84f4b5282e225dbe6c276b01961425d38d346c8dbf27384e4594c0c6286704c9",
+      "png_sha256": "e2cf37c1e54ee0f36f36c3bc6660b91a04a45c29dac855793e9d3839766819bd"
+    },
+    {
+      "figure": "Figure2_complexity",
+      "reviewed_native_png": true,
+      "reviewed_pdf_render": true,
+      "render_dpi": 150,
+      "png_dpi": [
+        299.9994,
+        299.9994
+      ],
+      "png_dimensions": [
+        2194,
+        934
+      ],
+      "embedded_fonts": true,
+      "vector_pdf_no_embedded_raster": true,
+      "no_clipping_or_overlapping_labels": true,
+      "notes": "Deterministic curves have no percentile bands or observation markers; quantitative logarithmic ticks are legible.",
+      "pdf_sha256": "f49652dbd1fcf73af5fc76346e3db88e07a95872cae5aff664cf7517038b4805",
+      "png_sha256": "f615de3ed369afef591c9d91fe842433243e52f2bcf2bc8d603d3a2913072178"
+    },
+    {
+      "figure": "Figure3_sharpe_complexity",
+      "reviewed_native_png": true,
+      "reviewed_pdf_render": true,
+      "render_dpi": 150,
+      "png_dpi": [
+        299.9994,
+        299.9994
+      ],
+      "png_dimensions": [
+        2194,
+        1114
+      ],
+      "embedded_fonts": true,
+      "vector_pdf_no_embedded_raster": true,
+      "no_clipping_or_overlapping_labels": true,
+      "notes": "All five frozen horizons, exact-choice stars, percentile bands and dotted numerical-failure overprints are visible.",
+      "pdf_sha256": "462a779705cc67dd640c0dc82dd35fc01b51e7a2d29b117e8dc954b88235ceed",
+      "png_sha256": "4370a1b9eca37c50a2153b5e40197298233c5f382c8230197a3aa772dd6d75bd"
+    },
+    {
+      "figure": "FigureR1_N_learnability",
+      "reviewed_native_png": true,
+      "reviewed_pdf_render": true,
+      "render_dpi": 150,
+      "png_dpi": [
+        299.9994,
+        299.9994
+      ],
+      "png_dimensions": [
+        2134,
+        1080
+      ],
+      "embedded_fonts": true,
+      "vector_pdf_no_embedded_raster": true,
+      "no_clipping_or_overlapping_labels": true,
+      "notes": "Three N values and their distinct analytical optima are legible; unresolved high-T region is visible.",
+      "pdf_sha256": "dbfb7ac86161f1cd9becd2d15b1515c3a7b7e48dd85337d8f134d03064aefa14",
+      "png_sha256": "797c633a2efc4f666399237badbac479b122a99b7f26ab38b62391ff41110fb7"
+    },
+    {
+      "figure": "FigureR2_rho_learnability",
+      "reviewed_native_png": true,
+      "reviewed_pdf_render": true,
+      "render_dpi": 150,
+      "png_dpi": [
+        299.9994,
+        299.9994
+      ],
+      "png_dimensions": [
+        2134,
+        1080
+      ],
+      "embedded_fonts": true,
+      "vector_pdf_no_embedded_raster": true,
+      "no_clipping_or_overlapping_labels": true,
+      "notes": "Three empirical curves nearly coincide, consistently with the computed paired differences; common optimum appears once.",
+      "pdf_sha256": "d6937e43095c4b0cc80cd5873964cc4f09cbc234a1d5e442440e05a861b3a58f",
+      "png_sha256": "75c75718620c72f78556707554e2ad57fd4cbb87abdde3f68fb815c01be8c961"
+    },
+    {
+      "figure": "FigureR3_N_complexity",
+      "reviewed_native_png": true,
+      "reviewed_pdf_render": true,
+      "render_dpi": 150,
+      "png_dpi": [
+        299.9994,
+        299.9994
+      ],
+      "png_dimensions": [
+        2134,
+        1080
+      ],
+      "embedded_fonts": true,
+      "vector_pdf_no_embedded_raster": true,
+      "no_clipping_or_overlapping_labels": true,
+      "notes": "Empirical bands and separate deterministic N population references are legible.",
+      "pdf_sha256": "1a3c10f275b917279f37a16354ebd19a6a90c153463e02827be981f9c5fdbf36",
+      "png_sha256": "5376d2cc2dae665a5146a6e384e0600f8131df481589c2010d37caf6be11153f"
+    },
+    {
+      "figure": "FigureR4_rho_complexity",
+      "reviewed_native_png": true,
+      "reviewed_pdf_render": true,
+      "render_dpi": 150,
+      "png_dpi": [
+        299.9994,
+        299.9994
+      ],
+      "png_dimensions": [
+        2134,
+        1080
+      ],
+      "embedded_fonts": true,
+      "vector_pdf_no_embedded_raster": true,
+      "no_clipping_or_overlapping_labels": true,
+      "notes": "Nearly coincident empirical rho curves are retained; only one common population reference is drawn.",
+      "pdf_sha256": "f69bb64a515d49e4450cc849260757faaf11fd99da667737d7bad625f8b0b216",
+      "png_sha256": "c9f44d7bdaa4273f3ce96064cf94dc051b4b9b90e49f80483af9566daf5f6967"
+    },
+    {
+      "figure": "FigureR5_N_sharpe_complexity",
+      "reviewed_native_png": true,
+      "reviewed_pdf_render": true,
+      "render_dpi": 150,
+      "png_dpi": [
+        299.9994,
+        299.9994
+      ],
+      "png_dimensions": [
+        2134,
+        1080
+      ],
+      "embedded_fonts": true,
+      "vector_pdf_no_embedded_raster": true,
+      "no_clipping_or_overlapping_labels": true,
+      "notes": "Both predetermined horizons, three optima, exact-choice stars and unresolved diagnostic regions are visible.",
+      "pdf_sha256": "4d51042201ded45defc5eb2c996f635696e8532763c0f7f23b4fab3f8573b1ad",
+      "png_sha256": "358bf61b6c3c58c9919ff2dacb6d8cd59dea77de6c3c0f5e478c537df9cb1396"
+    },
+    {
+      "figure": "FigureR6_rho_sharpe_complexity",
+      "reviewed_native_png": true,
+      "reviewed_pdf_render": true,
+      "render_dpi": 150,
+      "png_dpi": [
+        299.9994,
+        299.9994
+      ],
+      "png_dimensions": [
+        2134,
+        1080
+      ],
+      "embedded_fonts": true,
+      "vector_pdf_no_embedded_raster": true,
+      "no_clipping_or_overlapping_labels": true,
+      "notes": "Both predetermined horizons and the common population coordinate are visible; overlapping curves reflect the actual data.",
+      "pdf_sha256": "4be802d91f20eaa738278e402e8ccb59000fc888480bbda36d7d687f81ecee22",
+      "png_sha256": "e63a3022b67ddaf1cd5d6be5419f38551dbaef44c064c00e637097a6238613d7"
+    }
+  ],
+  "scope": "Visual/export quality only. Numerical acceptance and unsupported scientific claims remain separate; no higher-rank certificate is implied."
+}

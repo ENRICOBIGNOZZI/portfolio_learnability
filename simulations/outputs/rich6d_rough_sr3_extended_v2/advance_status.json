@@ -1,6 +1,6 @@
 {
-  "stage": "production_collected",
-  "updated_utc": "2026-10-10T23:38:07.886447+00:00",
+  "stage": "ready_for_delivery",
+  "updated_utc": "2026-10-10T23:47:00.425650+00:00",
   "local_admission_stopped": true,
   "verified_baseline": 300,
   "remaining_baseline": 0,

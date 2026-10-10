@@ -1,0 +1,619 @@
+Released pilot-only cache bytes before production: 0
+Executing ['/Library/Frameworks/Python.framework/Versions/3.13/bin/python3', '-m', 'simulations.extended.production', '--workers', '1']
+production_baseline: 1/300 verified checkpoints
+production_baseline: 2/300 verified checkpoints
+production_baseline: 3/300 verified checkpoints
+production_baseline: 4/300 verified checkpoints
+production_baseline: 5/300 verified checkpoints
+production_baseline: 6/300 verified checkpoints
+production_baseline: 7/300 verified checkpoints
+production_baseline: 8/300 verified checkpoints
+production_baseline: 9/300 verified checkpoints
+production_baseline: 10/300 verified checkpoints
+production_baseline: 11/300 verified checkpoints
+production_baseline: 12/300 verified checkpoints
+production_baseline: 13/300 verified checkpoints
+production_baseline: 14/300 verified checkpoints
+production_baseline: 15/300 verified checkpoints
+production_baseline: 16/300 verified checkpoints
+production_baseline: 17/300 verified checkpoints
+production_baseline: 18/300 verified checkpoints
+production_baseline: 19/300 verified checkpoints
+production_baseline: 20/300 verified checkpoints
+production_baseline: 21/300 verified checkpoints
+production_baseline: 22/300 verified checkpoints
+production_baseline: 23/300 verified checkpoints
+production_baseline: 24/300 verified checkpoints
+production_baseline: 25/300 verified checkpoints
+production_baseline: 26/300 verified checkpoints
+production_baseline: 27/300 verified checkpoints
+production_baseline: 28/300 verified checkpoints
+production_baseline path 28: generated 240/4860
+production_baseline path 28: generated 480/4860
+production_baseline path 28: generated 720/4860
+production_baseline path 28: generated 960/4860
+production_baseline path 28: generated 1200/4860
+production_baseline path 28: generated 1440/4860
+production_baseline path 28: generated 1680/4860
+production_baseline path 28: generated 1920/4860
+production_baseline path 28: generated 2160/4860
+production_baseline path 28: generated 2400/4860
+production_baseline path 28: generated 2640/4860
+production_baseline path 28: generated 2880/4860
+production_baseline path 28: generated 3120/4860
+production_baseline path 28: generated 3360/4860
+production_baseline path 28: generated 3600/4860
+production_baseline path 28: generated 3840/4860
+production_baseline path 28: generated 4080/4860
+production_baseline path 28: generated 4320/4860
+production_baseline path 28: generated 4560/4860
+production_baseline path 28: generated 4800/4860
+production_baseline path 28 P=4096 baseline: fits complete
+production_baseline: 29/300 verified checkpoints
+production_baseline path 29: generated 240/4860
+production_baseline path 29: generated 480/4860
+production_baseline path 29: generated 720/4860
+production_baseline path 29: generated 960/4860
+production_baseline path 29: generated 1200/4860
+production_baseline path 29: generated 1440/4860
+production_baseline path 29: generated 1680/4860
+production_baseline path 29: generated 1920/4860
+production_baseline path 29: generated 2160/4860
+production_baseline path 29: generated 2400/4860
+production_baseline path 29: generated 2640/4860
+production_baseline path 29: generated 2880/4860
+production_baseline path 29: generated 3120/4860
+production_baseline path 29: generated 3360/4860
+production_baseline path 29: generated 3600/4860
+production_baseline path 29: generated 3840/4860
+production_baseline path 29: generated 4080/4860
+production_baseline path 29: generated 4320/4860
+production_baseline path 29: generated 4560/4860
+production_baseline path 29: generated 4800/4860
+production_baseline path 29 P=4096 baseline: fits complete
+production_baseline: 30/300 verified checkpoints
+production_baseline path 30: generated 240/4860
+production_baseline path 30: generated 480/4860
+production_baseline path 30: generated 720/4860
+production_baseline path 30: generated 960/4860
+production_baseline path 30: generated 1200/4860
+production_baseline path 30: generated 1440/4860
+production_baseline path 30: generated 1680/4860
+production_baseline path 30: generated 1920/4860
+production_baseline path 30: generated 2160/4860
+production_baseline path 30: generated 2400/4860
+production_baseline path 30: generated 2640/4860
+production_baseline path 30: generated 2880/4860
+production_baseline path 30: generated 3120/4860
+production_baseline path 30: generated 3360/4860
+production_baseline path 30: generated 3600/4860
+production_baseline path 30: generated 3840/4860
+production_baseline path 30: generated 4080/4860
+production_baseline path 30: generated 4320/4860
+production_baseline path 30: generated 4560/4860
+production_baseline path 30: generated 4800/4860
+production_baseline path 30 P=4096 baseline: fits complete
+production_baseline: 31/300 verified checkpoints
+production_baseline path 31: generated 240/4860
+production_baseline path 31: generated 480/4860
+production_baseline path 31: generated 720/4860
+production_baseline path 31: generated 960/4860
+production_baseline path 31: generated 1200/4860
+production_baseline path 31: generated 1440/4860
+production_baseline path 31: generated 1680/4860
+production_baseline path 31: generated 1920/4860
+production_baseline path 31: generated 2160/4860
+production_baseline path 31: generated 2400/4860
+production_baseline path 31: generated 2640/4860
+production_baseline path 31: generated 2880/4860
+production_baseline path 31: generated 3120/4860
+production_baseline path 31: generated 3360/4860
+production_baseline path 31: generated 3600/4860
+production_baseline path 31: generated 3840/4860
+production_baseline path 31: generated 4080/4860
+production_baseline path 31: generated 4320/4860
+production_baseline path 31: generated 4560/4860
+production_baseline path 31: generated 4800/4860
+production_baseline path 31 P=4096 baseline: fits complete
+production_baseline: 32/300 verified checkpoints
+production_baseline path 32: generated 240/4860
+production_baseline path 32: generated 480/4860
+production_baseline path 32: generated 720/4860
+production_baseline path 32: generated 960/4860
+production_baseline path 32: generated 1200/4860
+production_baseline path 32: generated 1440/4860
+production_baseline path 32: generated 1680/4860
+production_baseline path 32: generated 1920/4860
+production_baseline path 32: generated 2160/4860
+production_baseline path 32: generated 2400/4860
+production_baseline path 32: generated 2640/4860
+production_baseline path 32: generated 2880/4860
+production_baseline path 32: generated 3120/4860
+production_baseline path 32: generated 3360/4860
+production_baseline path 32: generated 3600/4860
+production_baseline path 32: generated 3840/4860
+production_baseline path 32: generated 4080/4860
+production_baseline path 32: generated 4320/4860
+production_baseline path 32: generated 4560/4860
+production_baseline path 32: generated 4800/4860
+production_baseline path 32 P=4096 baseline: fits complete
+production_baseline: 33/300 verified checkpoints
+production_baseline path 33: generated 240/4860
+production_baseline path 33: generated 480/4860
+production_baseline path 33: generated 720/4860
+production_baseline path 33: generated 960/4860
+production_baseline path 33: generated 1200/4860
+production_baseline path 33: generated 1440/4860
+production_baseline path 33: generated 1680/4860
+production_baseline path 33: generated 1920/4860
+production_baseline path 33: generated 2160/4860
+production_baseline path 33: generated 2400/4860
+production_baseline path 33: generated 2640/4860
+production_baseline path 33: generated 2880/4860
+production_baseline path 33: generated 3120/4860
+production_baseline path 33: generated 3360/4860
+production_baseline path 33: generated 3600/4860
+production_baseline path 33: generated 3840/4860
+production_baseline path 33: generated 4080/4860
+production_baseline path 33: generated 4320/4860
+production_baseline path 33: generated 4560/4860
+production_baseline path 33: generated 4800/4860
+production_baseline path 33 P=4096 baseline: fits complete
+production_baseline: 34/300 verified checkpoints
+production_baseline path 34: generated 240/4860
+production_baseline path 34: generated 480/4860
+production_baseline path 34: generated 720/4860
+production_baseline path 34: generated 960/4860
+production_baseline path 34: generated 1200/4860
+production_baseline path 34: generated 1440/4860
+production_baseline path 34: generated 1680/4860
+production_baseline path 34: generated 1920/4860
+production_baseline path 34: generated 2160/4860
+production_baseline path 34: generated 2400/4860
+production_baseline path 34: generated 2640/4860
+production_baseline path 34: generated 2880/4860
+production_baseline path 34: generated 3120/4860
+production_baseline path 34: generated 3360/4860
+production_baseline path 34: generated 3600/4860
+production_baseline path 34: generated 3840/4860
+production_baseline path 34: generated 4080/4860
+production_baseline path 34: generated 4320/4860
+production_baseline path 34: generated 4560/4860
+production_baseline path 34: generated 4800/4860
+production_baseline path 34 P=4096 baseline: fits complete
+production_baseline: 35/300 verified checkpoints
+production_baseline path 35: generated 240/4860
+production_baseline path 35: generated 480/4860
+production_baseline path 35: generated 720/4860
+production_baseline path 35: generated 960/4860
+production_baseline path 35: generated 1200/4860
+production_baseline path 35: generated 1440/4860
+production_baseline path 35: generated 1680/4860
+production_baseline path 35: generated 1920/4860
+production_baseline path 35: generated 2160/4860
+production_baseline path 35: generated 2400/4860
+production_baseline path 35: generated 2640/4860
+production_baseline path 35: generated 2880/4860
+production_baseline path 35: generated 3120/4860
+production_baseline path 35: generated 3360/4860
+production_baseline path 35: generated 3600/4860
+production_baseline path 35: generated 3840/4860
+production_baseline path 35: generated 4080/4860
+production_baseline path 35: generated 4320/4860
+production_baseline path 35: generated 4560/4860
+production_baseline path 35: generated 4800/4860
+production_baseline path 35 P=4096 baseline: fits complete
+production_baseline: 36/300 verified checkpoints
+production_baseline path 36: generated 240/4860
+production_baseline path 36: generated 480/4860
+production_baseline path 36: generated 720/4860
+production_baseline path 36: generated 960/4860
+production_baseline path 36: generated 1200/4860
+production_baseline path 36: generated 1440/4860
+production_baseline path 36: generated 1680/4860
+production_baseline path 36: generated 1920/4860
+production_baseline path 36: generated 2160/4860
+production_baseline path 36: generated 2400/4860
+production_baseline path 36: generated 2640/4860
+production_baseline path 36: generated 2880/4860
+production_baseline path 36: generated 3120/4860
+production_baseline path 36: generated 3360/4860
+production_baseline path 36: generated 3600/4860
+production_baseline path 36: generated 3840/4860
+production_baseline path 36: generated 4080/4860
+production_baseline path 36: generated 4320/4860
+production_baseline path 36: generated 4560/4860
+production_baseline path 36: generated 4800/4860
+production_baseline path 36 P=4096 baseline: fits complete
+production_baseline: 37/300 verified checkpoints
+production_baseline path 37: generated 240/4860
+production_baseline path 37: generated 480/4860
+production_baseline path 37: generated 720/4860
+production_baseline path 37: generated 960/4860
+production_baseline path 37: generated 1200/4860
+production_baseline path 37: generated 1440/4860
+production_baseline path 37: generated 1680/4860
+production_baseline path 37: generated 1920/4860
+production_baseline path 37: generated 2160/4860
+production_baseline path 37: generated 2400/4860
+production_baseline path 37: generated 2640/4860
+production_baseline path 37: generated 2880/4860
+production_baseline path 37: generated 3120/4860
+production_baseline path 37: generated 3360/4860
+production_baseline path 37: generated 3600/4860
+production_baseline path 37: generated 3840/4860
+production_baseline path 37: generated 4080/4860
+production_baseline path 37: generated 4320/4860
+production_baseline path 37: generated 4560/4860
+production_baseline path 37: generated 4800/4860
+production_baseline path 37 P=4096 baseline: fits complete
+production_baseline: 38/300 verified checkpoints
+production_baseline path 38: generated 240/4860
+production_baseline path 38: generated 480/4860
+production_baseline path 38: generated 720/4860
+production_baseline path 38: generated 960/4860
+production_baseline path 38: generated 1200/4860
+production_baseline path 38: generated 1440/4860
+production_baseline path 38: generated 1680/4860
+production_baseline path 38: generated 1920/4860
+production_baseline path 38: generated 2160/4860
+production_baseline path 38: generated 2400/4860
+production_baseline path 38: generated 2640/4860
+production_baseline path 38: generated 2880/4860
+production_baseline path 38: generated 3120/4860
+production_baseline path 38: generated 3360/4860
+production_baseline path 38: generated 3600/4860
+production_baseline path 38: generated 3840/4860
+production_baseline path 38: generated 4080/4860
+production_baseline path 38: generated 4320/4860
+production_baseline path 38: generated 4560/4860
+production_baseline path 38: generated 4800/4860
+production_baseline path 38 P=4096 baseline: fits complete
+production_baseline: 39/300 verified checkpoints
+production_baseline path 39: generated 240/4860
+production_baseline path 39: generated 480/4860
+production_baseline path 39: generated 720/4860
+production_baseline path 39: generated 960/4860
+production_baseline path 39: generated 1200/4860
+production_baseline path 39: generated 1440/4860
+production_baseline path 39: generated 1680/4860
+production_baseline path 39: generated 1920/4860
+production_baseline path 39: generated 2160/4860
+production_baseline path 39: generated 2400/4860
+production_baseline path 39: generated 2640/4860
+production_baseline path 39: generated 2880/4860
+production_baseline path 39: generated 3120/4860
+production_baseline path 39: generated 3360/4860
+production_baseline path 39: generated 3600/4860
+production_baseline path 39: generated 3840/4860
+production_baseline path 39: generated 4080/4860
+production_baseline path 39: generated 4320/4860
+production_baseline path 39: generated 4560/4860
+production_baseline path 39: generated 4800/4860
+production_baseline path 39 P=4096 baseline: fits complete
+production_baseline: 40/300 verified checkpoints
+production_baseline path 40: generated 240/4860
+production_baseline path 40: generated 480/4860
+production_baseline path 40: generated 720/4860
+production_baseline path 40: generated 960/4860
+production_baseline path 40: generated 1200/4860
+production_baseline path 40: generated 1440/4860
+production_baseline path 40: generated 1680/4860
+production_baseline path 40: generated 1920/4860
+production_baseline path 40: generated 2160/4860
+production_baseline path 40: generated 2400/4860
+production_baseline path 40: generated 2640/4860
+production_baseline path 40: generated 2880/4860
+production_baseline path 40: generated 3120/4860
+production_baseline path 40: generated 3360/4860
+production_baseline path 40: generated 3600/4860
+production_baseline path 40: generated 3840/4860
+production_baseline path 40: generated 4080/4860
+production_baseline path 40: generated 4320/4860
+production_baseline path 40: generated 4560/4860
+production_baseline path 40: generated 4800/4860
+production_baseline path 40 P=4096 baseline: fits complete
+production_baseline: 41/300 verified checkpoints
+production_baseline path 41: generated 240/4860
+production_baseline path 41: generated 480/4860
+production_baseline path 41: generated 720/4860
+production_baseline path 41: generated 960/4860
+production_baseline path 41: generated 1200/4860
+production_baseline path 41: generated 1440/4860
+production_baseline path 41: generated 1680/4860
+production_baseline path 41: generated 1920/4860
+production_baseline path 41: generated 2160/4860
+production_baseline path 41: generated 2400/4860
+production_baseline path 41: generated 2640/4860
+production_baseline path 41: generated 2880/4860
+production_baseline path 41: generated 3120/4860
+production_baseline path 41: generated 3360/4860
+production_baseline path 41: generated 3600/4860
+production_baseline path 41: generated 3840/4860
+production_baseline path 41: generated 4080/4860
+production_baseline path 41: generated 4320/4860
+production_baseline path 41: generated 4560/4860
+production_baseline path 41: generated 4800/4860
+production_baseline path 41 P=4096 baseline: fits complete
+production_baseline: 42/300 verified checkpoints
+production_baseline path 42: generated 240/4860
+production_baseline path 42: generated 480/4860
+production_baseline path 42: generated 720/4860
+production_baseline path 42: generated 960/4860
+production_baseline path 42: generated 1200/4860
+production_baseline path 42: generated 1440/4860
+production_baseline path 42: generated 1680/4860
+production_baseline path 42: generated 1920/4860
+production_baseline path 42: generated 2160/4860
+production_baseline path 42: generated 2400/4860
+production_baseline path 42: generated 2640/4860
+production_baseline path 42: generated 2880/4860
+production_baseline path 42: generated 3120/4860
+production_baseline path 42: generated 3360/4860
+production_baseline path 42: generated 3600/4860
+production_baseline path 42: generated 3840/4860
+production_baseline path 42: generated 4080/4860
+production_baseline path 42: generated 4320/4860
+production_baseline path 42: generated 4560/4860
+production_baseline path 42: generated 4800/4860
+production_baseline path 42 P=4096 baseline: fits complete
+production_baseline: 43/300 verified checkpoints
+production_baseline path 43: generated 240/4860
+production_baseline path 43: generated 480/4860
+production_baseline path 43: generated 720/4860
+production_baseline path 43: generated 960/4860
+production_baseline path 43: generated 1200/4860
+production_baseline path 43: generated 1440/4860
+production_baseline path 43: generated 1680/4860
+production_baseline path 43: generated 1920/4860
+production_baseline path 43: generated 2160/4860
+production_baseline path 43: generated 2400/4860
+production_baseline path 43: generated 2640/4860
+production_baseline path 43: generated 2880/4860
+production_baseline path 43: generated 3120/4860
+production_baseline path 43: generated 3360/4860
+production_baseline path 43: generated 3600/4860
+production_baseline path 43: generated 3840/4860
+production_baseline path 43: generated 4080/4860
+production_baseline path 43: generated 4320/4860
+production_baseline path 43: generated 4560/4860
+production_baseline path 43: generated 4800/4860
+production_baseline path 43 P=4096 baseline: fits complete
+production_baseline: 44/300 verified checkpoints
+production_baseline path 44: generated 240/4860
+production_baseline path 44: generated 480/4860
+production_baseline path 44: generated 720/4860
+production_baseline path 44: generated 960/4860
+production_baseline path 44: generated 1200/4860
+production_baseline path 44: generated 1440/4860
+production_baseline path 44: generated 1680/4860
+production_baseline path 44: generated 1920/4860
+production_baseline path 44: generated 2160/4860
+production_baseline path 44: generated 2400/4860
+production_baseline path 44: generated 2640/4860
+production_baseline path 44: generated 2880/4860
+production_baseline path 44: generated 3120/4860
+production_baseline path 44: generated 3360/4860
+production_baseline path 44: generated 3600/4860
+production_baseline path 44: generated 3840/4860
+production_baseline path 44: generated 4080/4860
+production_baseline path 44: generated 4320/4860
+production_baseline path 44: generated 4560/4860
+production_baseline path 44: generated 4800/4860
+production_baseline path 44 P=4096 baseline: fits complete
+production_baseline: 45/300 verified checkpoints
+production_baseline path 45: generated 240/4860
+production_baseline path 45: generated 480/4860
+production_baseline path 45: generated 720/4860
+production_baseline path 45: generated 960/4860
+production_baseline path 45: generated 1200/4860
+production_baseline path 45: generated 1440/4860
+production_baseline path 45: generated 1680/4860
+production_baseline path 45: generated 1920/4860
+production_baseline path 45: generated 2160/4860
+production_baseline path 45: generated 2400/4860
+production_baseline path 45: generated 2640/4860
+production_baseline path 45: generated 2880/4860
+production_baseline path 45: generated 3120/4860
+production_baseline path 45: generated 3360/4860
+production_baseline path 45: generated 3600/4860
+production_baseline path 45: generated 3840/4860
+production_baseline path 45: generated 4080/4860
+production_baseline path 45: generated 4320/4860
+production_baseline path 45: generated 4560/4860
+production_baseline path 45: generated 4800/4860
+production_baseline path 45 P=4096 baseline: fits complete
+production_baseline: 46/300 verified checkpoints
+production_baseline path 46: generated 240/4860
+production_baseline path 46: generated 480/4860
+production_baseline path 46: generated 720/4860
+production_baseline path 46: generated 960/4860
+production_baseline path 46: generated 1200/4860
+production_baseline path 46: generated 1440/4860
+production_baseline path 46: generated 1680/4860
+production_baseline path 46: generated 1920/4860
+production_baseline path 46: generated 2160/4860
+production_baseline path 46: generated 2400/4860
+production_baseline path 46: generated 2640/4860
+production_baseline path 46: generated 2880/4860
+production_baseline path 46: generated 3120/4860
+production_baseline path 46: generated 3360/4860
+production_baseline path 46: generated 3600/4860
+production_baseline path 46: generated 3840/4860
+production_baseline path 46: generated 4080/4860
+production_baseline path 46: generated 4320/4860
+production_baseline path 46: generated 4560/4860
+production_baseline path 46: generated 4800/4860
+production_baseline path 46 P=4096 baseline: fits complete
+production_baseline: 47/300 verified checkpoints
+production_baseline path 47: generated 240/4860
+production_baseline path 47: generated 480/4860
+production_baseline path 47: generated 720/4860
+production_baseline path 47: generated 960/4860
+production_baseline path 47: generated 1200/4860
+production_baseline path 47: generated 1440/4860
+production_baseline path 47: generated 1680/4860
+production_baseline path 47: generated 1920/4860
+production_baseline path 47: generated 2160/4860
+production_baseline path 47: generated 2400/4860
+production_baseline path 47: generated 2640/4860
+production_baseline path 47: generated 2880/4860
+production_baseline path 47: generated 3120/4860
+production_baseline path 47: generated 3360/4860
+production_baseline path 47: generated 3600/4860
+production_baseline path 47: generated 3840/4860
+production_baseline path 47: generated 4080/4860
+production_baseline path 47: generated 4320/4860
+production_baseline path 47: generated 4560/4860
+production_baseline path 47: generated 4800/4860
+production_baseline path 47 P=4096 baseline: fits complete
+production_baseline: 48/300 verified checkpoints
+production_baseline path 48: generated 240/4860
+production_baseline path 48: generated 480/4860
+production_baseline path 48: generated 720/4860
+production_baseline path 48: generated 960/4860
+production_baseline path 48: generated 1200/4860
+production_baseline path 48: generated 1440/4860
+production_baseline path 48: generated 1680/4860
+production_baseline path 48: generated 1920/4860
+production_baseline path 48: generated 2160/4860
+production_baseline path 48: generated 2400/4860
+production_baseline path 48: generated 2640/4860
+production_baseline path 48: generated 2880/4860
+production_baseline path 48: generated 3120/4860
+production_baseline path 48: generated 3360/4860
+production_baseline path 48: generated 3600/4860
+production_baseline path 48: generated 3840/4860
+production_baseline path 48: generated 4080/4860
+production_baseline path 48: generated 4320/4860
+production_baseline path 48: generated 4560/4860
+production_baseline path 48: generated 4800/4860
+production_baseline path 48 P=4096 baseline: fits complete
+production_baseline: 49/300 verified checkpoints
+production_baseline path 49: generated 240/4860
+production_baseline path 49: generated 480/4860
+production_baseline path 49: generated 720/4860
+production_baseline path 49: generated 960/4860
+production_baseline path 49: generated 1200/4860
+production_baseline path 49: generated 1440/4860
+production_baseline path 49: generated 1680/4860
+production_baseline path 49: generated 1920/4860
+production_baseline path 49: generated 2160/4860
+production_baseline path 49: generated 2400/4860
+production_baseline path 49: generated 2640/4860
+production_baseline path 49: generated 2880/4860
+production_baseline path 49: generated 3120/4860
+production_baseline path 49: generated 3360/4860
+production_baseline path 49: generated 3600/4860
+production_baseline path 49: generated 3840/4860
+production_baseline path 49: generated 4080/4860
+production_baseline path 49: generated 4320/4860
+production_baseline path 49: generated 4560/4860
+production_baseline path 49: generated 4800/4860
+production_baseline path 49 P=4096 baseline: fits complete
+production_baseline: 50/300 verified checkpoints
+production_baseline path 50: generated 240/4860
+production_baseline path 50: generated 480/4860
+production_baseline path 50: generated 720/4860
+production_baseline path 50: generated 960/4860
+production_baseline path 50: generated 1200/4860
+production_baseline path 50: generated 1440/4860
+production_baseline path 50: generated 1680/4860
+production_baseline path 50: generated 1920/4860
+production_baseline path 50: generated 2160/4860
+production_baseline path 50: generated 2400/4860
+production_baseline path 50: generated 2640/4860
+production_baseline path 50: generated 2880/4860
+production_baseline path 50: generated 3120/4860
+production_baseline path 50: generated 3360/4860
+production_baseline path 50: generated 3600/4860
+production_baseline path 50: generated 3840/4860
+production_baseline path 50: generated 4080/4860
+production_baseline path 50: generated 4320/4860
+production_baseline path 50: generated 4560/4860
+production_baseline path 50: generated 4800/4860
+production_baseline path 50 P=4096 baseline: fits complete
+production_baseline: 51/300 verified checkpoints
+production_baseline path 51: generated 240/4860
+production_baseline path 51: generated 480/4860
+production_baseline path 51: generated 720/4860
+production_baseline path 51: generated 960/4860
+production_baseline path 51: generated 1200/4860
+production_baseline path 51: generated 1440/4860
+production_baseline path 51: generated 1680/4860
+production_baseline path 51: generated 1920/4860
+production_baseline path 51: generated 2160/4860
+production_baseline path 51: generated 2400/4860
+production_baseline path 51: generated 2640/4860
+production_baseline path 51: generated 2880/4860
+production_baseline path 51: generated 3120/4860
+production_baseline path 51: generated 3360/4860
+production_baseline path 51: generated 3600/4860
+production_baseline path 51: generated 3840/4860
+production_baseline path 51: generated 4080/4860
+production_baseline path 51: generated 4320/4860
+production_baseline path 51: generated 4560/4860
+production_baseline path 51: generated 4800/4860
+production_baseline path 51 P=4096 baseline: fits complete
+production_baseline: 52/300 verified checkpoints
+production_baseline path 52: generated 240/4860
+production_baseline path 52: generated 480/4860
+production_baseline path 52: generated 720/4860
+production_baseline path 52: generated 960/4860
+production_baseline path 52: generated 1200/4860
+production_baseline path 52: generated 1440/4860
+production_baseline path 52: generated 1680/4860
+production_baseline path 52: generated 1920/4860
+production_baseline path 52: generated 2160/4860
+production_baseline path 52: generated 2400/4860
+production_baseline path 52: generated 2640/4860
+production_baseline path 52: generated 2880/4860
+production_baseline path 52: generated 3120/4860
+production_baseline path 52: generated 3360/4860
+production_baseline path 52: generated 3600/4860
+production_baseline path 52: generated 3840/4860
+production_baseline path 52: generated 4080/4860
+production_baseline path 52: generated 4320/4860
+production_baseline path 52: generated 4560/4860
+production_baseline path 52: generated 4800/4860
+production_baseline path 52 P=4096 baseline: fits complete
+production_baseline: 53/300 verified checkpoints
+production_baseline path 53: generated 240/4860
+production_baseline path 53: generated 480/4860
+production_baseline path 53: generated 720/4860
+production_baseline path 53: generated 960/4860
+production_baseline path 53: generated 1200/4860
+production_baseline path 53: generated 1440/4860
+production_baseline path 53: generated 1680/4860
+production_baseline path 53: generated 1920/4860
+production_baseline path 53: generated 2160/4860
+production_baseline path 53: generated 2400/4860
+production_baseline path 53: generated 2640/4860
+production_baseline path 53: generated 2880/4860
+production_baseline path 53: generated 3120/4860
+production_baseline path 53: generated 3360/4860
+production_baseline path 53: generated 3600/4860
+production_baseline path 53: generated 3840/4860
+production_baseline path 53: generated 4080/4860
+production_baseline path 53: generated 4320/4860
+production_baseline path 53: generated 4560/4860
+production_baseline path 53: generated 4800/4860
+production_baseline path 53 P=4096 baseline: fits complete
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/resource_tracker.py:301: UserWarning: resource_tracker: There appear to be 5 leaked semaphore objects to clean up at shutdown: {'/mp-7btngxo9', '/mp-xdrbcwvm', '/mp-0p11m52q', '/mp-eqghfjr9', '/mp-pqkyrsrt'}
+  warnings.warn(
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/enrico/Desktop/PHD/portfolio/paper_codice/simulations/extended/advance.py", line 160, in <module>
+    main()
+    ~~~~^^
+  File "/Users/enrico/Desktop/PHD/portfolio/paper_codice/simulations/extended/advance.py", line 145, in main
+    execute('simulations.extended.production','--workers',workers)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/enrico/Desktop/PHD/portfolio/paper_codice/simulations/extended/advance.py", line 30, in execute
+    subprocess.run(command,check=True)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/subprocess.py", line 577, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['/Library/Frameworks/Python.framework/Versions/3.13/bin/python3', '-m', 'simulations.extended.production', '--workers', '1']' died with <Signals.SIGTERM: 15>.

@@ -1,0 +1,29 @@
+Figure0_economic_spectrum
+Population managed-payoff eigenvalues, shrinkage filters and cumulative complexity use one fixed independently evaluated spectrum. The polynomial reference is anchored at rank 64 and is an order comparison, not a fitted spectral law. Curves are unsmoothed. Basis/quadrature and component-operator comparisons are in the spectral audit tables; the finite rank cannot establish an infinite-dimensional tail exponent.
+
+Figure1_learnability
+Means and central 95% replication-percentile bands across 300 independent economic paths. Histories are nested across T and innovations are paired across environments. References are analytical economic optima. Grey high-T regions fail at least one checked 5% regret-based numerical condition in at least one displayed economy. A highest-rank backward comparison is not a higher-rank certificate. Slope estimates for every predeclared window and their full-covariance Monte Carlo uncertainty are reported separately.
+
+Figure2_complexity
+Prescribed penalties and deterministic population complexity along the fixed theory-scaled path. There are no Monte Carlo bands or point markers on deterministic curves. Power references are anchored at the first horizon. Exact local logarithmic elasticities, finite-difference verification, all predeclared window slopes and rank/seed sensitivity are tabulated; a window regression slope and a local elasticity are distinct quantities.
+
+Figure3_sharpe_complexity
+Full predetermined 96-penalty diagnostic paths at the predeclared horizons. Lines are mean population Sharpe and bands are central 95% replication percentiles. Stars identify the exact theory-scaled penalty, which need not coincide with a grid penalty or the ex-post maximum. The coordinate is deterministic population complexity. Dotted overprints mark failed checked numerical conditions; these paths are diagnostics, not a data-driven selection rule. An additional large-T path is included only if the frozen numerical feasibility decision supports it.
+
+FigureR1_N_learnability
+Means and central 95% replication-percentile bands across 300 independent economic paths. Histories are nested across T and innovations are paired across environments. References are analytical economic optima. Grey high-T regions fail at least one checked 5% regret-based numerical condition in at least one displayed economy. A highest-rank backward comparison is not a higher-rank certificate. Slope estimates for every predeclared window and their full-covariance Monte Carlo uncertainty are reported separately.
+
+FigureR2_rho_learnability
+Means and central 95% replication-percentile bands across 300 independent economic paths. Histories are nested across T and innovations are paired across environments. References are analytical economic optima. Grey high-T regions fail at least one checked 5% regret-based numerical condition in at least one displayed economy. A highest-rank backward comparison is not a higher-rank certificate. Slope estimates for every predeclared window and their full-covariance Monte Carlo uncertainty are reported separately.
+
+FigureR3_N_complexity
+Empirical complexity means and central 95% replication-percentile bands use 300 independent paths per economy. Dashed curves are deterministic population quantities. The rho comparison shows a single common population reference because stationary marginal operators coincide exactly. Population elasticities are reported separately from empirical variation; no effective-sample-size correction is imposed.
+
+FigureR4_rho_complexity
+Empirical complexity means and central 95% replication-percentile bands use 300 independent paths per economy. Dashed curves are deterministic population quantities. The rho comparison shows a single common population reference because stationary marginal operators coincide exactly. Population elasticities are reported separately from empirical variation; no effective-sample-size correction is imposed.
+
+FigureR5_N_sharpe_complexity
+Predetermined early and late horizons compare all 96 diagnostic penalties across the specified economies. Means and central 95% replication bands use 300 independent paths; stars are the exact prescribed theory-scaled choices. Population optima remain explicit. The rho comparison uses the same population-complexity coordinate across environments. Dotted overprints identify numerical failures in the paired-rank/floor checks. No maximum along these ex-post curves is used to choose the reported strategy.
+
+FigureR6_rho_sharpe_complexity
+Predetermined early and late horizons compare all 96 diagnostic penalties across the specified economies. Means and central 95% replication bands use 300 independent paths; stars are the exact prescribed theory-scaled choices. Population optima remain explicit. The rho comparison uses the same population-complexity coordinate across environments. Dotted overprints identify numerical failures in the paired-rank/floor checks. No maximum along these ex-post curves is used to choose the reported strategy.

@@ -1,0 +1,21 @@
+comparison,window,T_min,observations,available,slope,MCSE_delta,CI_low,CI_high,MCSE_jackknife,uncertainty
+old100_rank512_old_Q,full,0,10,True,-0.6159451636644415,0.015864732825701843,-0.6470394686271675,-0.5848508587017155,0.015867707397031514,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+old100_rank512_old_Q,T_ge_360,360,5,True,-0.6969771278342868,0.021635601442582225,-0.7393821274456108,-0.6545721282229627,0.021639446008711625,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+old100_rank512_old_Q,T_ge_720,720,3,True,-0.6830320048010385,0.030878744213995998,-0.7435532313482953,-0.6225107782537818,0.03089935138026226,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+old100_rank512_old_Q,T_ge_1440,1440,1,False,,,,,,
+old100_rank512_new_Q,full,0,10,True,-0.6092599683691315,0.015767074098155642,-0.640162865743091,-0.5783570709951721,0.0157697657389541,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+old100_rank512_new_Q,T_ge_360,360,5,True,-0.6908878678677719,0.02156620889680853,-0.7331568605885839,-0.6486188751469599,0.021570045812916654,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+old100_rank512_new_Q,T_ge_720,720,3,True,-0.6780373860012525,0.03053803221686807,-0.7378908293050378,-0.6181839426974672,0.030557491431094264,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+old100_rank512_new_Q,T_ge_1440,1440,1,False,,,,,,
+new100_selected_rank_original_grid,full,0,10,True,-0.6191143827062036,0.016139184725719888,-0.6507466035084535,-0.5874821619039536,0.016142675046853166,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+new100_selected_rank_original_grid,T_ge_360,360,5,True,-0.6952793100788872,0.02206077796600101,-0.738517640363184,-0.6520409797945904,0.022065915299446952,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+new100_selected_rank_original_grid,T_ge_720,720,3,True,-0.6776302609294516,0.03128218791502892,-0.7389422226005223,-0.6163182992583808,0.031304083774025104,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+new100_selected_rank_original_grid,T_ge_1440,1440,1,False,,,,,,
+new300_selected_rank_original_grid,full,0,10,True,-0.625598975710212,0.009005769870947188,-0.6432499603103243,-0.6079479911100996,0.009006757753031724,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+new300_selected_rank_original_grid,T_ge_360,360,5,True,-0.6980550482415554,0.013337357779824198,-0.7241957891389359,-0.6719143073441749,0.013339428075167187,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+new300_selected_rank_original_grid,T_ge_720,720,3,True,-0.6867139231220554,0.018887638717856557,-0.7237330147620585,-0.6496948314820522,0.018892470784807113,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+new300_selected_rank_original_grid,T_ge_1440,1440,1,False,,,,,,
+new300_selected_rank_extended_grid,full,0,13,True,-0.6248312725060239,0.005908650375314253,-0.6364120144388788,-0.6132505305731689,0.0059091373354588006,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+new300_selected_rank_extended_grid,T_ge_360,360,8,True,-0.6372506194026676,0.007865909370665789,-0.6526675184748286,-0.6218337203305065,0.007866899715767406,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+new300_selected_rank_extended_grid,T_ge_720,720,6,True,-0.6015392531455115,0.00898174372239092,-0.6191431473597664,-0.5839353589312566,0.008982985022266951,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"
+new300_selected_rank_extended_grid,T_ge_1440,1440,4,True,-0.5507155146228824,0.01074855761810831,-0.5717823004401283,-0.5296487288056364,0.01075065053366334,"Monte Carlo slope uncertainty; full cross-T covariance, not a rate theorem test"

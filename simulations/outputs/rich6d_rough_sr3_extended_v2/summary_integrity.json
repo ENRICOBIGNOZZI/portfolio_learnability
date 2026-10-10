@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "run_hash": "e9f1f005be1a58ee736a09cb711d5be87457b9875d1e26dab56c03ccdca61d8d",
+  "verified_utc": "2026-10-10T23:39:21.435479+00:00",
+  "full_penalty_rows": 35502,
+  "theory_rows": 549,
+  "paired_rows": 144,
+  "slope_rows": 100,
+  "common_grid_slope_rows": 100,
+  "statistics": "All means, medians, sample SDs, linear 2.5/97.5 percentiles and mean MCSEs independently recomputed.",
+  "slopes": "All predeclared windows, OLS slopes, full-cross-T influence MCSEs, leave-one-path jackknife MCSEs and Monte Carlo intervals independently recomputed."
+}

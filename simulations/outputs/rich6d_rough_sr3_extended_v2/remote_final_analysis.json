@@ -4,7 +4,60 @@
   "source_commit": "2eb27a92a2153e5c8bd249b3adda46404ba51b48",
   "pid": 42395,
   "started_utc": "2026-10-10T21:34:55.264911+00:00",
-  "status": "waiting_for_complete_collection",
-  "completed_commands": [],
-  "remaining": "Review all ten actual figures, audit the full objective, refresh the final manifest, commit/push deliverables and display the ten figures in chat."
+  "status": "ready_for_visual_review",
+  "completed_commands": [
+    [
+      "simulations.extended.summarize"
+    ],
+    [
+      "simulations.extended.verify",
+      "--data-only"
+    ],
+    [
+      "simulations.extended.report"
+    ],
+    [
+      "simulations.extended.figures"
+    ],
+    [
+      "simulations.extended.verify"
+    ]
+  ],
+  "remaining": "Review all ten actual figures, audit the full objective, refresh the final manifest, commit/push deliverables and display the ten figures in chat.",
+  "analysis_source_hashes": {
+    "simulations/extended/spectrum_diagnostics.py": "b20870a2c55b00d0f3eb787db2b7c2e1a5d1a355f12bd61defa8992820050deb",
+    "simulations/extended/remote_reproduction.py": "540c0284731ae39c32b3c40cc45da3dbba0deefd5ebefc902ce920547300f17d",
+    "simulations/extended/audits.py": "ab3c766b3b282ca32330f3ec29a5532cb6024bf59e89f2b517cb7c21aafa53f5",
+    "simulations/extended/remote_finish.py": "85fe0ecf77c6fe65554ef3ef374a7dba332a5fb9fa33791aac22c7819b41c67c",
+    "simulations/extended/remote_collect.py": "6d79ba0673f021901a87c88596a34f6768ec318e5ec3d45f4ba1ea7b2ee72fe9",
+    "simulations/extended/remote_compatibility.py": "9e0f9a93ec291791fdffc020b3325b270558a55130dc5792a84b6664fde3219d",
+    "simulations/extended/population.py": "68c434863deb5907b4a5f4f3310c8d9a81c89c372a7da87caa528e74b8105071",
+    "simulations/extended/design.py": "2159985ed7db5dee3f3658a051a1b40f35f996e179580faabd02923c70cec8ae",
+    "simulations/extended/__init__.py": "0c614ee8386ab9612681cdbaf433f9860cb6d85e25e620cf8ba23606ed1cc9d5",
+    "simulations/extended/remote_inputs.py": "1eeca6ba139259db6d473ea462abcc7de63938d42c94960d6657ef8f557c181d",
+    "simulations/extended/summarize.py": "3fafe13e970790f307321610c24b268cfdac67e54abb9583dcc779416a3f2119",
+    "simulations/extended/histories.py": "4d12d5edea2c7a32687e560e9d7cc069d7201b1c11a090ed37c38d333ad26c48",
+    "simulations/extended/advance.py": "fff272824a2066b74f1e2d5b56d98add25702a9c693f30200196398a04ef52aa",
+    "simulations/extended/figures.py": "d690106c277fea317fea39a0791b3245d3430bdbaea08986e912cc6f61e95146",
+    "simulations/extended/concurrency_probe.py": "84eca043d374762fbc1d3858a48df86a880582eb6e6dabec0e90311cd37f01fb",
+    "simulations/extended/archive.py": "2e85cf8813fd5134b5e343048f9859f4c1cdb426080c27b1f100ae68655418b2",
+    "simulations/extended/verify_summaries.py": "005a47a4884f99358950ee58275c95917c2586dc9884f7f81a8c8a3450e670b4",
+    "simulations/extended/freeze.py": "2e2eacd5c255dc9699a5c0e8a49d4a5f1e376de6050c18a265786af348b29cad",
+    "simulations/extended/statistics.py": "bfa6f1af872994ead2fd353b802d67c8ca6a5b5e6c47644b7101e05aab323754",
+    "simulations/extended/verify.py": "38c827e3d1dea58b204dc9b1ff7af6dbf06ea1c6a5785c22a315125ba24832ed",
+    "simulations/extended/remote_allocate.py": "84eaa71bafc4758653f0a63b1be84c88e80240fe18ad261f541eacd956c6db8b",
+    "simulations/extended/pilot_population.py": "7489be354824a620a00fc630e966ec7ef8fce7a74730547eed21aa9e2626ecf4",
+    "simulations/extended/verify_checkpoints.py": "4f9516fc000c2f17dec9f75c4bdd7faede7e211dccef7e394c9d63c5045b1845",
+    "simulations/extended/elasticity_comparison.py": "37ed27d7fc7379db878b4d7938a3b2743e2c0be71c8f4a56183c200d24d02ca3",
+    "simulations/extended/preview_pilot.py": "0e9c7e42e6fb0df3eb53d6a81663473137c69af81cb0dcf92b3697503459d0ff",
+    "simulations/extended/report.py": "29e5c5f8aecbe7a815ea5f8101bfeaafc29ec7773a6a41414da6a59bd12c479c",
+    "simulations/extended/production.py": "7fefce0ddc4a7e6daabee246f16157d9055c145972c65fb1dbf9a252791b1e4f",
+    "simulations/extended/calibration.py": "3aabb77ea4cb77400e7c673d44a13d966b8bcfacf779a116e45a6eec84255f5c",
+    "simulations/extended/preflight.py": "e32c26d77ee50cc29c7615e53d3322bb4937f082e2bda628a7484fed7840a629",
+    "simulations/extended/compute.py": "b4f02f686be49f4bc8946caedd3e507d1e4fe0e5324a9f872b233c3e01299fa3",
+    "simulations/extended/remote_ingest.py": "1efd9d56edf124c2550d0e2bfef5be2d581e4d056b863feb83ae4ce1a73b3e47",
+    "simulations/extended/remote_batch.py": "3e3f2c134064d351e18dd502af59a6b24b6d50d635fedf05e7b63bf4efccc25f"
+  },
+  "updated_utc": "2026-10-10T23:39:15.843712+00:00",
+  "finished_utc": "2026-10-10T23:39:22.836463+00:00"
 }

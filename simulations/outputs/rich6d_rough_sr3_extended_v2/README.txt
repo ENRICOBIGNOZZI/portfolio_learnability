@@ -1,12 +1,16 @@
-EXTENDED ROUGH RICH6D STUDY — BASELINE COMPLETE, ROBUSTNESS IN PRODUCTION
+EXTENDED ROUGH RICH6D STUDY - COMPLETED COMPUTATIONS AND FINAL FIGURES
 
-Status recorded on 2026-10-10 after the baseline completion audit. All 300
-baseline replications are independently verified and committed. The four paired
-robustness economies are assigned to remote run 38075206545. The study remains
-incomplete until all five economies have 300 verified replications, all summaries
-pass the independent audit, and the ten final figures receive visual review.
-For current counts, consult checkpoint_integrity.json and the corresponding
-remote_collection_production_robustness_38075206545.json, rather than this snapshot.
+All five economies have 300 independently verified replications: 1,500
+economy-replications, with 300 matched innovation indices. The baseline has 13
+horizons through T=4860; the four robustness economies have the common 12-horizon
+grid through T=3240. All 97 penalties are retained at every horizon.
+
+The independent summary audit recomputed 35,502 full-penalty statistic rows,
+549 theory rows, 144 paired-comparison rows, and both sets of 100 slope rows.
+All ten final PDF/PNG figures passed visual review (final_visual_review.json).
+critical_report.txt, figure_captions.txt and completion_audit.json document the
+results, interpretation and evidence. This completed analysis does NOT establish
+that all high-T numerical errors are resolved: the limitations below remain.
 
 Scientific design
 
@@ -93,7 +97,7 @@ are historical execution evidence, not instructions to restart those processes.
 Shared-host timings are operational observations, not controlled benchmarks;
 peak RSS in a batch is cumulative from process start.
 
-Remaining postprocessing
+Completed final analysis and reproduction
 
 The dedicated simulations.extended.remote_finish supervisor waits for the pinned
 robustness collector to finish, requires all five counts to equal 300 and all
@@ -103,11 +107,11 @@ production/ingestion/advance locks. It does not dispatch simulations or re-expor
 the population archive. A missing collector or failed audit stops it; transient
 network errors remain the collector's retry responsibility.
 
-remote_final_analysis.json records progress, analysis source hashes and any
-failure. remote_final_analysis_launch.json records the process and command.
-Do not run a second analysis while this supervisor owns the locks. If running
-the final analysis manually after complete collection instead, use these
-process-local settings from the repository root on the shared Mac:
+remote_final_analysis.json records successful completion of all five commands,
+with analysis source hashes. remote_final_analysis_launch.json retains the
+process and command. Both remote collectors and the final analysis supervisor
+have finished. To reproduce the final analysis from the saved complete data,
+use these process-local settings from the repository root on the shared Mac:
   export PYTHONDONTWRITEBYTECODE=1
   export PYTHONPYCACHEPREFIX=/tmp/rich6d_no_bytecode_cache
   export OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1
@@ -123,12 +127,13 @@ Synthetic integrity tests also reject corrupted percentiles, incorrect paired
 summaries, diagonal-only covariance uncertainty and unequal-grid substitutions.
 Passing those tests is not a claim that unfinished production tables are valid.
 
-Inspect all ten actual PNG/PDF figures, record visual review and refresh the
-manifest after any deliverable changes. Commit and push all intended artifacts.
-Final presentation must show the four main figures, then the three N figures,
-then the three rho figures directly in chat with the seven requested scientific
-answers and all prespecified slope windows. Neither the numerical verifier nor
-pilot previews substitute for this final review and presentation.
+All ten native PNGs and independently rendered PDFs were inspected; the PDFs
+contain embedded fonts and vector plots, and the PNGs use 300 dpi. The final
+presentation orders the four main figures, then R1/R3/R5 for N and R2/R4/R6 for
+rho, with the seven scientific answers and all prespecified slope windows.
+Pilot previews remain historical preproduction evidence and are not final
+figures. After any future artifact changes, repeat the relevant review and
+refresh manifest.json before committing the updated deliverables.
 
 Storage and independent reproduction
 
