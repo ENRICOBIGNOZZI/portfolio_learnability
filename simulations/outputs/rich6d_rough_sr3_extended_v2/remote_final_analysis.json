@@ -1,0 +1,10 @@
+{
+  "run_hash": "e9f1f005be1a58ee736a09cb711d5be87457b9875d1e26dab56c03ccdca61d8d",
+  "workflow_run_id": "38075206545",
+  "source_commit": "2eb27a92a2153e5c8bd249b3adda46404ba51b48",
+  "pid": 42395,
+  "started_utc": "2026-10-10T21:34:55.264911+00:00",
+  "status": "waiting_for_complete_collection",
+  "completed_commands": [],
+  "remaining": "Review all ten actual figures, audit the full objective, refresh the final manifest, commit/push deliverables and display the ten figures in chat."
+}

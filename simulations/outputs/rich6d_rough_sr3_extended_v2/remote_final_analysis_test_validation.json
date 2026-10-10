@@ -1,0 +1,7 @@
+{
+  "command": "python3 -m pytest -q tests/test_remote_finish.py",
+  "result": "7 passed in 1.02s",
+  "source_sha256": "85fe0ecf77c6fe65554ef3ef374a7dba332a5fb9fa33791aac22c7819b41c67c",
+  "test_sha256": "5af565b8c9b0341451594bf5dc55dd9511cafd66e3f893bef0828bffa75d803c",
+  "scope": "Orchestration gate and failure propagation only; no production completion claim."
+}

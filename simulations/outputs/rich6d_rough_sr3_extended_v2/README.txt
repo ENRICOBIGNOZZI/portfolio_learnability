@@ -95,8 +95,19 @@ peak RSS in a batch is cumulative from process start.
 
 Remaining postprocessing
 
-Once the collector has verified 300 paths for every economy, run from the
-repository root with these process-local settings on the shared Mac:
+The dedicated simulations.extended.remote_finish supervisor waits for the pinned
+robustness collector to finish, requires all five counts to equal 300 and all
+300 history pairs to pass, and verifies every checkpoint against the independent
+audit's checksum. It then runs the five commands below under the existing
+production/ingestion/advance locks. It does not dispatch simulations or re-export
+the population archive. A missing collector or failed audit stops it; transient
+network errors remain the collector's retry responsibility.
+
+remote_final_analysis.json records progress, analysis source hashes and any
+failure. remote_final_analysis_launch.json records the process and command.
+Do not run a second analysis while this supervisor owns the locks. If running
+the final analysis manually after complete collection instead, use these
+process-local settings from the repository root on the shared Mac:
   export PYTHONDONTWRITEBYTECODE=1
   export PYTHONPYCACHEPREFIX=/tmp/rich6d_no_bytecode_cache
   export OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1

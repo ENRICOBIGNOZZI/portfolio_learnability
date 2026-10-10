@@ -1,0 +1,18 @@
+{
+  "pid": 42395,
+  "caffeinate_pid": 42396,
+  "started_utc": "2026-10-10T21:34:54.049951+00:00",
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3",
+    "-u",
+    "-m",
+    "simulations.extended.remote_finish",
+    "--run-id",
+    "38075206545",
+    "--commit",
+    "2eb27a92a2153e5c8bd249b3adda46404ba51b48"
+  ],
+  "log": "simulations/outputs/rich6d_rough_sr3_extended_v2/execution_logs/remote_final_analysis_38075206545.log",
+  "source_sha256": "85fe0ecf77c6fe65554ef3ef374a7dba332a5fb9fa33791aac22c7819b41c67c",
+  "scope": "Final summaries and figures only after complete independently audited remote collection. Visual QA, full requirement audit and final delivery remain manual."
+}
