@@ -42,11 +42,12 @@
   "input_transport_plan": {
     "repository": "ENRICOBIGNOZZI/portfolio_learnability",
     "release_tag": "rich6d-extended-inputs-e9f1f005be1a-v1",
-    "status": "manifest_prepared",
+    "status": "published_and_server_checksums_verified",
     "description": "A separate prerelease will hold the exact existing large numerical caches, with file sizes and SHA-256 hashes in a checked-in manifest. Do not add large basis/operator caches directly to Git. Download and verify them into an isolated temporary output directory on the standard macOS runner.",
     "cache_files": "P4096 basis; baseline/N300/N1200 P4096 operators; baseline P512 reference operator. Existing calibration and population coefficient files remain canonical.",
     "local_production": "Continues until the remote fitted-policy gate passes. Any later switch must preserve completed checkpoints and allocate distinct deterministic indices.",
     "input_manifest_sha256": "719461f4270ad15320fcbb51d66ea576e8bf138ddb0737a9d603244aae39977b",
-    "total_cache_bytes": 635392144
+    "total_cache_bytes": 635392144,
+    "url": "https://github.com/ENRICOBIGNOZZI/portfolio_learnability/releases/tag/rich6d-extended-inputs-e9f1f005be1a-v1"
   }
 }

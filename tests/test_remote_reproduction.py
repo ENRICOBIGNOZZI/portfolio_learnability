@@ -1,10 +1,13 @@
 """Remote admission must reject incomplete or materially changed fitted outcomes."""
+import hashlib
+import io
 import json
 
 import numpy as np
 import pytest
 
 from simulations.extended.remote_reproduction import CANONICAL, compare
+from simulations.extended import remote_inputs
 
 
 @pytest.fixture
@@ -39,3 +42,25 @@ def test_changed_sharpe_fails_the_gate(canonical, tmp_path):
     result = compare(path, reference, ['baseline'], rules, True, protocol)
     assert not result['passed']
     assert not next(row['passed'] for row in result['metric_checks'] if row['metric'] == 'sr')
+
+
+@pytest.mark.parametrize('corrupt', [False, True])
+def test_download_publishes_only_hash_verified_bytes(tmp_path, monkeypatch, corrupt):
+    expected = b'frozen-cache'
+    received = b'broken-cache' if corrupt else expected
+    assert len(received) == len(expected)
+    manifest = dict(release_tag='test', files=[dict(path='pilot/cache.npz',
+        asset='cache.npz', bytes=len(expected), sha256=hashlib.sha256(expected).hexdigest())])
+    monkeypatch.setattr(remote_inputs, 'OUTPUT', tmp_path)
+    monkeypatch.setattr(remote_inputs, 'validated_manifest', lambda protocol: manifest)
+    monkeypatch.setattr(remote_inputs, 'urlopen', lambda *args, **kwargs: io.BytesIO(received))
+    monkeypatch.setattr(remote_inputs.time, 'sleep', lambda seconds: None)
+    destination = tmp_path / 'pilot/cache.npz'
+    if corrupt:
+        with pytest.raises(ValueError, match='failed checksum'):
+            remote_inputs.download({})
+        assert not destination.exists()
+        assert not list(destination.parent.glob('.cache.npz.*'))
+    else:
+        remote_inputs.download({})
+        assert destination.read_bytes() == expected

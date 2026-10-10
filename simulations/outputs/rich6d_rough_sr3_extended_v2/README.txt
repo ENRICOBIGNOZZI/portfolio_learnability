@@ -8,7 +8,7 @@ not artificially reset to 3. Persistence robustness preserves the population
 operator exactly.
 
 All 12 paired rank pilots and their audits are complete. The fixed-rank production
-protocol is frozen. The latest independent checkpoint audit verifies 57 baseline
+protocol is frozen. The latest independent checkpoint audit verifies 59 baseline
 replications and no completed production robustness batches. The study is NOT
 complete: all 300 paths in each economy, final summaries and all ten final figures
 remain required.
@@ -58,9 +58,9 @@ those hosts from this frozen bitwise history design. Full results and the workfl
 URL are in remote_compatibility_results.json. The next macOS fitted-policy check
 and its tolerances were declared before execution in remote_reproduction_plan.json.
 No remote production has been started.
-The fitted-policy gate and three local boundary tests are implemented. Numerical
+The fitted-policy gate and five local gate/transport tests are implemented. Numerical
 caches are listed by exact size and SHA-256 in remote_input_manifest.json; the
-separate input prerelease will carry those auxiliary files without adding large
+separate input prerelease carries those auxiliary files without adding large
 cache blobs to Git. The remote download checks every cache and all supporting
 calibration/population files before fitting. The manual reproduction workflow
 runs only on macos-26 and uses a fresh isolated output directory.
@@ -180,3 +180,8 @@ complete predetermined grids. It does not substitute for numerical acceptance.
 Projection floors, paired rank differences and their uncertainty are separate
 diagnostics. Finite Fourier truncation is smooth and does not prove the r=1 source
 condition; observed rate agreement cannot prove a minimax or asymptotic theorem.
+
+The input prerelease is published and all five GitHub server SHA-256 digests and
+asset sizes match the canonical manifest. See remote_input_publication.json for
+the release URL and server evidence. Remote fitted-policy reproduction remains
+a required gate before assigning any production replication to a hosted runner.

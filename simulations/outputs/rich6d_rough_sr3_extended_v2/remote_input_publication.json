@@ -1,0 +1,116 @@
+{
+  "release_tag": "rich6d-extended-inputs-e9f1f005be1a-v1",
+  "repository": "ENRICOBIGNOZZI/portfolio_learnability",
+  "target_commit": "6fc531e73dc96de41e97cbb921b8ee443552e0a5",
+  "status": "published_and_server_checksums_verified",
+  "started_utc": "2026-10-10T15:02:29.557104+00:00",
+  "manifest_sha256": "719461f4270ad15320fcbb51d66ea576e8bf138ddb0737a9d603244aae39977b",
+  "files": [
+    {
+      "path": "pilot/basis_P4096_seed373077418.npz",
+      "asset": "basis_P4096_seed373077418.npz",
+      "bytes": 256504048,
+      "sha256": "12a2d15d65eb5e6b6d0f980f255e5cf647489a13261558e7a91732984f2b9239"
+    },
+    {
+      "path": "pilot/operator_baseline_P4096_B373077418_Q32768_S1237722080.npz",
+      "asset": "operator_baseline_P4096_B373077418_Q32768_S1237722080.npz",
+      "bytes": 125639742,
+      "sha256": "b6f5e0c4b77ce5d1e263c3cbcfcc4c175bf843fe4105f639e180c96e37fcaef2"
+    },
+    {
+      "path": "pilot/operator_N300_P4096_B373077418_Q32768_S1237722080.npz",
+      "asset": "operator_N300_P4096_B373077418_Q32768_S1237722080.npz",
+      "bytes": 125656332,
+      "sha256": "63b6131242ee393f9b4d46f9fb1499e3f1ac20fe385b21547826938030e2c6de"
+    },
+    {
+      "path": "pilot/operator_N1200_P4096_B373077418_Q32768_S1237722080.npz",
+      "asset": "operator_N1200_P4096_B373077418_Q32768_S1237722080.npz",
+      "bytes": 125631035,
+      "sha256": "a467c9c159194c83d62ee80bda7706ed92a228267b0b7b67d9fb5ecbea5343a0"
+    },
+    {
+      "path": "pilot/operator_baseline_P512_B373077418_Q32768_S1237722080.npz",
+      "asset": "operator_baseline_P512_B373077418_Q32768_S1237722080.npz",
+      "bytes": 1960987,
+      "sha256": "797297e1c78899bf9b34a303cc53f7c46e12a52fd21949a707b229807b7748d3"
+    }
+  ],
+  "uploaded_utc": "2026-10-10T15:03:24.485841+00:00",
+  "published_utc": "2026-10-10T15:04:29.149001+00:00",
+  "url": "https://github.com/ENRICOBIGNOZZI/portfolio_learnability/releases/tag/rich6d-extended-inputs-e9f1f005be1a-v1",
+  "server_assets": [
+    {
+      "apiUrl": "https://api.github.com/repos/ENRICOBIGNOZZI/portfolio_learnability/releases/assets/628244439",
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-10-10T15:02:32Z",
+      "digest": "sha256:12a2d15d65eb5e6b6d0f980f255e5cf647489a13261558e7a91732984f2b9239",
+      "downloadCount": 0,
+      "id": "RA_kwDOUR8e3s4lcj_X",
+      "label": "",
+      "name": "basis_P4096_seed373077418.npz",
+      "size": 256504048,
+      "state": "uploaded",
+      "updatedAt": "2026-10-10T15:03:24Z",
+      "url": "https://github.com/ENRICOBIGNOZZI/portfolio_learnability/releases/download/rich6d-extended-inputs-e9f1f005be1a-v1/basis_P4096_seed373077418.npz"
+    },
+    {
+      "apiUrl": "https://api.github.com/repos/ENRICOBIGNOZZI/portfolio_learnability/releases/assets/628244441",
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-10-10T15:02:32Z",
+      "digest": "sha256:b6f5e0c4b77ce5d1e263c3cbcfcc4c175bf843fe4105f639e180c96e37fcaef2",
+      "downloadCount": 0,
+      "id": "RA_kwDOUR8e3s4lcj_Z",
+      "label": "",
+      "name": "operator_baseline_P4096_B373077418_Q32768_S1237722080.npz",
+      "size": 125639742,
+      "state": "uploaded",
+      "updatedAt": "2026-10-10T15:03:13Z",
+      "url": "https://github.com/ENRICOBIGNOZZI/portfolio_learnability/releases/download/rich6d-extended-inputs-e9f1f005be1a-v1/operator_baseline_P4096_B373077418_Q32768_S1237722080.npz"
+    },
+    {
+      "apiUrl": "https://api.github.com/repos/ENRICOBIGNOZZI/portfolio_learnability/releases/assets/628244442",
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-10-10T15:02:32Z",
+      "digest": "sha256:797297e1c78899bf9b34a303cc53f7c46e12a52fd21949a707b229807b7748d3",
+      "downloadCount": 0,
+      "id": "RA_kwDOUR8e3s4lcj_a",
+      "label": "",
+      "name": "operator_baseline_P512_B373077418_Q32768_S1237722080.npz",
+      "size": 1960987,
+      "state": "uploaded",
+      "updatedAt": "2026-10-10T15:02:33Z",
+      "url": "https://github.com/ENRICOBIGNOZZI/portfolio_learnability/releases/download/rich6d-extended-inputs-e9f1f005be1a-v1/operator_baseline_P512_B373077418_Q32768_S1237722080.npz"
+    },
+    {
+      "apiUrl": "https://api.github.com/repos/ENRICOBIGNOZZI/portfolio_learnability/releases/assets/628244443",
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-10-10T15:02:32Z",
+      "digest": "sha256:a467c9c159194c83d62ee80bda7706ed92a228267b0b7b67d9fb5ecbea5343a0",
+      "downloadCount": 0,
+      "id": "RA_kwDOUR8e3s4lcj_b",
+      "label": "",
+      "name": "operator_N1200_P4096_B373077418_Q32768_S1237722080.npz",
+      "size": 125631035,
+      "state": "uploaded",
+      "updatedAt": "2026-10-10T15:03:09Z",
+      "url": "https://github.com/ENRICOBIGNOZZI/portfolio_learnability/releases/download/rich6d-extended-inputs-e9f1f005be1a-v1/operator_N1200_P4096_B373077418_Q32768_S1237722080.npz"
+    },
+    {
+      "apiUrl": "https://api.github.com/repos/ENRICOBIGNOZZI/portfolio_learnability/releases/assets/628244440",
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-10-10T15:02:32Z",
+      "digest": "sha256:63b6131242ee393f9b4d46f9fb1499e3f1ac20fe385b21547826938030e2c6de",
+      "downloadCount": 0,
+      "id": "RA_kwDOUR8e3s4lcj_Y",
+      "label": "",
+      "name": "operator_N300_P4096_B373077418_Q32768_S1237722080.npz",
+      "size": 125656332,
+      "state": "uploaded",
+      "updatedAt": "2026-10-10T15:03:10Z",
+      "url": "https://github.com/ENRICOBIGNOZZI/portfolio_learnability/releases/download/rich6d-extended-inputs-e9f1f005be1a-v1/operator_N300_P4096_B373077418_Q32768_S1237722080.npz"
+    }
+  ],
+  "all_server_sizes_and_sha256_match": true
+}
