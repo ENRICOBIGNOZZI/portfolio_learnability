@@ -1,187 +1,139 @@
-EXTENDED ROUGH RICH6D STUDY — PARTIAL PRODUCTION, PRODUCTION RECOVERY ACTIVE
+EXTENDED ROUGH RICH6D STUDY — BASELINE COMPLETE, ROBUSTNESS IN PRODUCTION
+
+Status recorded on 2026-10-10 after the baseline completion audit. All 300
+baseline replications are independently verified and committed. The four paired
+robustness economies are assigned to remote run 38075206545. The study remains
+incomplete until all five economies have 300 verified replications, all summaries
+pass the independent audit, and the ten final figures receive visual review.
+For current counts, consult checkpoint_integrity.json and the corresponding
+remote_collection_production_robustness_38075206545.json, rather than this snapshot.
+
+Scientific design
 
 Reference: rich6d_rough_sr3_annual_monthly_v1, commit 2d59c3324569.
-The reference economy keeps annualized optimal Sharpe 3, the existing factor
-means/covariance, Fourier truncation 128, and the original baseline ridge constant.
-N robustness preserves those economic parameters, so its analytical optimum is
-not artificially reset to 3. Persistence robustness preserves the population
-operator exactly.
+The baseline retains annualized optimal Sharpe 3, the factor mean and covariance,
+Fourier truncation 128, Matérn-3/2 lengthscale 1 and the original independently
+calibrated ridge constant. Annualization is sqrt(12) times monthly marginal
+Sharpe, not the Sharpe of compounded annual returns. N robustness preserves the
+economic parameters and uses each economy's own analytical optimum; it does not
+force every N optimum to 3. The rho variants share the stationary population
+operator, analytical optimum and penalty constant exactly.
 
-All 12 paired rank pilots and their audits are complete. The fixed-rank production
-protocol is frozen. The latest independent checkpoint audit verifies 59 baseline
-replications and no completed production robustness batches. The study is NOT
-complete: all 300 paths in each economy, final summaries and all ten final figures
-remain required.
-
-Recovery resumed on 2026-10-10 after disk availability returned to approximately
-8.3 GiB. The primary supervisor retains one worker and persistent stdout/stderr
-file logging. Its previous exit status 120 remains of undetermined cause; the
-resource-blocked recovery record is preserved in commit 8e2a8b2. Existing completed
-checkpoints are reused under the unchanged frozen identity. Recovery process IDs,
-log path, environment and the latest audit count are recorded in
-production_recovery_current.json.
-
-A bounded supplementary batch completed the missing indices 290 and 289, and
-both passed the independent checkpoint audit. Its state, execution source, log
-path and resource observations are retained in production_recovery_supplement*
-JSON records. The next bounded batch covers the twenty existing baseline indices
-287 down through 268. Its launch source and status are in
-production_recovery_batch_287_268_launch.json and
-production_recovery_batch_287_268.json. This allows at most two production workers.
-The supplement checks a 3 GiB disk reserve before each replication and stops if
-the primary queue approaches its indices. All seeds and numerical calculations
-remain unchanged. Shared-host timings are operational observations, not controlled
-performance benchmarks; process peak RSS in a multi-replication batch is cumulative
-from process start, not a separate per-replication memory measurement.
-
-As the shared host became busier and disk availability fell to about 4 GiB, an
-operational watcher was started to stop the supplement immediately after index
-286 has saved both its outcome and resource record. The primary supervisor
-continues with one worker. production_after_checkpoint_stop.json records whether
-this stop is still pending or has occurred; its launch record preserves the exact
-watcher source. All remaining indices stay in the primary deterministic queue.
-This changes execution concurrency only, not the scientific protocol.
-
-The supplementary stop completed after saving index 286; the primary supervisor
-continues alone. A manual GitHub Actions compatibility workflow now checks the
-frozen source hashes, one full baseline economic history and a sixteen-period
-paired prefix in all five economies on standard Linux and macOS runners. Its
-canonical reference derives from the audited baseline index 0 and local paired
-histories. The local probe passes. This is a host-compatibility diagnostic only:
-a complete paired fitted-policy reproduction is still required before any remote
-production. The probe code is simulations/extended/remote_compatibility.py; the
-manual workflow is .github/workflows/rich6d-compatibility.yml.
-The first remote compatibility run completed: macos-26 matches every checked
-history hash, whereas both Linux runners fail this exact compatibility gate.
-This does not claim that Linux arithmetic is economically incorrect; it excludes
-those hosts from this frozen bitwise history design. Full results and the workflow
-URL are in remote_compatibility_results.json. The next macOS fitted-policy check
-and its tolerances were declared before execution in remote_reproduction_plan.json.
-No remote production has been started.
-The fitted-policy gate and five local gate/transport tests are implemented. Numerical
-caches are listed by exact size and SHA-256 in remote_input_manifest.json; the
-separate input prerelease carries those auxiliary files without adding large
-cache blobs to Git. The remote download checks every cache and all supporting
-calibration/population files before fitting. The manual reproduction workflow
-runs only on macos-26 and uses a fresh isolated output directory.
-
-At the user's request, pip's regenerable download cache was purged, removing 14
-files (23.2 MB reported by pip). This frees disk space, not process RAM. Required
-simulation caches, code, data, completed results and unrelated jobs were preserved.
-
-Frozen scientific source hashes were verified before restart and in each audit.
-Process-local PYTHONDONTWRITEBYTECODE=1 and a separate PYTHONPYCACHEPREFIX under
-/tmp bypass the cloud-backed bytecode cache that had stalled imports, without
-changing source. production_status.json counts checkpoints acknowledged by the
-primary supervisor, including reused checkpoints; checkpoint_integrity.json
-records the most recent independent audit of all completed files.
-The read-only checkpoint audit can be rerun during production with
-  python3 -m simulations.extended.verify_checkpoints
-It writes checkpoint_integrity.json with the unique completed count by economy,
-per-file hashes, protocol/seed/shape checks, numerical identities and available
-cross-stage history pairing. It does not replace final numerical verification,
-the approximation audits, statistical summaries or visual review. Its rejection
-of a wrong seed and a missing penalty was checked on isolated temporary copies;
-the evidence is in checkpoint_verifier_validation.json.
-The frozen run identity is
+The frozen identity is
 e9f1f005be1a58ee736a09cb711d5be87457b9875d1e26dab56c03ccdca61d8d.
+protocol.json and seed_manifest.json fix 300 independent replication indices,
+paired innovations, nested histories, one common rank 4096, the 13 baseline
+horizons through T=4860 and the common 12-horizon robustness grid through T=3240.
+Each checkpoint retains all 96 predetermined diagnostic penalties plus the exact
+a*T^(-0.6) choice. No Monte Carlo outcomes select the reported strategy.
 
-Production uses rank 4096 in every environment, the 13 required baseline horizons
-through T=4860, and the common 12-horizon robustness grid through T=3240. Optional
-T=7290 was investigated in the pilots and excluded on numerical grounds. The
-predeclared additional main diagnostic path at T=2160 passed the two pilot 5%
-conditions and the quadrature check; it remains subject to the qualifications below.
+Numerical interpretation
 
-All 62 pilot quadrature cells pass the unchanged 5% criterion; the largest paired
-discrepancy bound is approximately 3.26% of regret. The approximation floor still
+All 12 paired rank pilots and their audits are complete. The 62 required
+selected-rank population-quadrature cells pass the unchanged 5% criterion.
+The largest recorded pilot quadrature discrepancy bound, including optional
+T=7290, is approximately 3.26% of regret. The pilot projection-floor criterion
 fails at baseline T=3240,4860; N300 T=1080,1440,2160,3240; and both alternative-rho
 environments at T=3240. No investigated common rank resolves every required cell.
-Rank 4096 also lacks an independent higher-rank certificate. These limitations
-must remain explicit in the final figures and scientific conclusions.
+Rank 4096 also lacks an independent higher-rank certificate. Final reporting
+recomputes the floor fractions using the complete 300-path mean regrets and
+retains the pilot paired-discrepancy evidence separately.
 
-For a fresh independent reproduction, set RICH6D_EXTENDED_OUTPUT to a new empty
-output directory before running these commands. Keep the checked-in reference
-experiment unchanged. The same seed design will be used in that new directory.
+Optional T=7290 was investigated and excluded on numerical grounds. The frozen
+additional main diagnostic path T=2160 passed both checked pilot 5% conditions
+and quadrature; this is not an independent higher-rank certificate. The economic
+optimum is never replaced by the finite-rank optimum. More Monte Carlo paths do
+not remove the approximation floor. Finite Fourier truncation is smooth and does
+not prove the r=1 source condition, minimax optimality or an asymptotic rate.
 
-Workflow (from the repository root; limit BLAS threads on this 8 GB host):
-  VECLIB_MAXIMUM_THREADS=1 OPENBLAS_NUM_THREADS=1 python3 -m simulations.extended.preflight
-  python3 -m simulations.extended.freeze --rank <rank selected from audits>
-  VECLIB_MAXIMUM_THREADS=1 OPENBLAS_NUM_THREADS=1 python3 -m simulations.extended.production --workers 1
+Primary bands are the central 95% replication percentiles, not confidence
+intervals for the mean. Tables retain the mean, median, sample standard deviation,
+both percentiles and mean MCSE for every horizon and penalty. Slope uncertainty
+uses the full within-path cross-T covariance, checked by replication jackknife.
+All four predeclared windows are reported. Full baseline slopes through T=4860
+and matched robustness slopes through T=3240 are separate tables; comparisons
+across economies use identical horizons. Local population elasticity, window
+regression slopes and empirical complexity remain distinct quantities.
+
+Execution and provenance
+
+The completed baseline run is
+https://github.com/ENRICOBIGNOZZI/portfolio_learnability/actions/runs/38064621892
+It preserved 68 locally completed paths and computed the remaining 232 paths in
+15 disjoint batches. All 300 checkpoints passed the independent scientific audit.
+remote_baseline_completion.json freezes the evidence used to admit robustness.
+remote_artifact_receipts_production_baseline_38064621892.json retains all 15
+artifact identities, transfer-manifest hashes and assigned replication indices.
+
+The robustness run is
+https://github.com/ENRICOBIGNOZZI/portfolio_learnability/actions/runs/38075206545
+Its source commit is 2eb27a92a2153e5c8bd249b3adda46404ba51b48. There are 15 batches
+of 20 indices with at most five standard macOS jobs in parallel. Each index
+contains N300, N1200, rho000 and rho075 over the common frozen grid. The collector
+retrieves completed artifacts and independently validates identities, checksums,
+seeds, grids, economic bounds, decomposition, ridge residuals and history pairing
+before publishing checkpoints. Launch and collection JSON files record its PID,
+source hash, exact command and log location. An observation timeout does not
+justify restarting a live job. Do not restart the former local production queue
+alongside this remote allocation.
+
+Remote production was admitted only after full fitted-policy reproduction on
+macos-26 with the exact dependency versions and predeclared numeric tolerances.
+remote_reproduction_results.json records the successful qualification; the
+earlier failed comparator attempt remains in its separate attempt record.
+Linux runners were excluded by the exact history-hash gate, not by a claim that
+their arithmetic is economically incorrect. remote_input_manifest.json and
+remote_input_publication.json identify the five numerical caches, public input
+prerelease and verified server SHA-256 digests. No tolerance was relaxed.
+
+Earlier local recovery, bounded-worker probes, cache cleanup and the completed
+local-to-remote handoff remain documented in their original JSON records. They
+are historical execution evidence, not instructions to restart those processes.
+Shared-host timings are operational observations, not controlled benchmarks;
+peak RSS in a batch is cumulative from process start.
+
+Remaining postprocessing
+
+Once the collector has verified 300 paths for every economy, run from the
+repository root with these process-local settings on the shared Mac:
+  export PYTHONDONTWRITEBYTECODE=1
+  export PYTHONPYCACHEPREFIX=/tmp/rich6d_no_bytecode_cache
+  export OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1
   python3 -m simulations.extended.summarize
   python3 -m simulations.extended.verify --data-only
   python3 -m simulations.extended.report
   python3 -m simulations.extended.figures
-  python3 -m simulations.extended.archive
   python3 -m simulations.extended.verify
 
-Final delivery also requires inspection of all ten rendered figures and the
-critical scientific report; the verifier does not substitute for visual review.
+The summary audit independently recomputes every penalty distribution, paired
+difference and slope window, including all matched-grid robustness slopes.
+Synthetic integrity tests also reject corrupted percentiles, incorrect paired
+summaries, diagonal-only covariance uncertainty and unequal-grid substitutions.
+Passing those tests is not a claim that unfinished production tables are valid.
 
-The preflight supervisor resumes completed population cases and replication
-checkpoints. It stops before production, so rank selection and resource evidence
-can be reviewed. A failed or missing process is diagnosed before restarting;
-observation timeouts do not imply termination.
+Inspect all ten actual PNG/PDF figures, record visual review and refresh the
+manifest after any deliverable changes. Commit and push all intended artifacts.
+Final presentation must show the four main figures, then the three N figures,
+then the three rho figures directly in chat with the seven requested scientific
+answers and all prespecified slope windows. Neither the numerical verifier nor
+pilot previews substitute for this final review and presentation.
 
-An optional advance supervisor can observe an already-running preflight:
-  VECLIB_MAXIMUM_THREADS=1 OPENBLAS_NUM_THREADS=1 python3 -m simulations.extended.advance --preflight-pid <preflight PID>
-It checks all 12 completed paired pilots, applies the declared rank/quadrature
-gates, freezes the current scientific code in a fresh process, and runs production,
-summaries, figures and verification. If no investigated common rank passes the
-rank tests at every required horizon, it retains the highest investigated rank
-and explicitly records the unresolved cells, as required by the study protocol.
-It never relaxes the 5% tolerance. Its terminal ready_for_visual_review status
-still requires human-readable scientific review, inspection of all ten figures,
-and committing/pushing the intended deliverables before reporting completion.
-Live progress is recorded in preflight_status.json, advance_status.json and
-production_status.json as each corresponding stage becomes available.
-The initial production supervisor uses one worker. After disk space recovered,
-a bounded second-worker probe computed the already-declared baseline index 299
-with the unchanged production.execute function and frozen run identity. Its
-timing and memory evidence are in production_concurrency_probe.json. Subsequent
-bounded batches use distinct high indices, with a 2 GiB disk-reserve check before
-each replication and a conservative separation from the primary supervisor.
-They add no seeds or replications to the fixed 300-path scientific design.
-Batch records identify their indices and completion status. During this phase,
-production_status.json counts checkpoints acknowledged by the primary supervisor;
-the number of unique rep_*.npz files includes supplemental completed indices.
-The primary supervisor will validate and reuse those checkpoints when it reaches
-them. Final summaries still require all 300 unique indices in every environment.
-A further single-replication probe at index 288 tested three concurrent workers.
-It completed successfully but took about 425 seconds, versus about 157-184
-seconds in the recent two-worker observations. That phase retained two total workers;
-see production_three_worker_probe.json for timings and their operational limits.
-The current primary supervisor uses one worker; the bounded supplements
-above temporarily restore two concurrent workers after resource recovery.
-During this probe, a fresh Python import waited on a cloud-backed bytecode file
-that macOS had made dataless. Targeted local-download requests restored the cache
-and source without changing their contents. runtime_read_recovery.json records
-the diagnosis, recovery and confirmation that the source matches committed Git.
-After freezing and checking the recorded audit hashes, the advance supervisor
-removes regenerable pilot-only caches to reserve disk space for production.
-It retains the chosen-rank basis, all production operators and the rank-512
-baseline operator needed for comparison with the previous experiment. Every
-removal is recorded in preproduction_cache_cleanup.json; spectra, pilot outcomes,
-audits, calibration and the frozen protocol are preserved.
+Storage and independent reproduction
 
-Primary uncertainty bands are the central 95% replication percentiles. Mean MCSE
-is distinct. Slopes use complete within-replication cross-T covariance, with a
-leave-one-replication-out jackknife cross-check. All predeclared windows remain.
+The portable population-operator archive in population/operators is already
+complete, committed and losslessly checked (population_archive_validation.json).
+It need not be exported again for final postprocessing. The archive includes
+baseline rank 512 for the paired comparison with the previous 100-path study,
+as well as the three unique rank-4096 population operators.
 
-Storage: pilot/basis_*, pilot/integrals_* and pilot/operator_* are regenerable
-numerical caches, excluded from Git. Raw stock/managed histories for all 1,500
-economies are reproducible from seeds and are not duplicated on disk. Every
-relevant fitted-policy penalty outcome is retained. Population spectra, audit
-results, seed identities and calibration are retained. No previous experiment
-or unrelated user artifact is deleted or overwritten.
+Large pilot basis/integral/operator caches are regenerable and excluded from
+Git; frozen seeds, calibration, spectra, audits and every fitted-policy outcome
+are retained. Raw return histories are reproduced from seeds rather than saved
+1,500 times. Previous experiments, manuscript files and empirical results remain
+outside this task's changes.
 
-The pilot integrity check verifies all 48 checkpoints, paired histories across
-ranks, independent replication seeds, separation from the production seeds and
-complete predetermined grids. It does not substitute for numerical acceptance.
-Projection floors, paired rank differences and their uncertainty are separate
-diagnostics. Finite Fourier truncation is smooth and does not prove the r=1 source
-condition; observed rate agreement cannot prove a minimax or asymptotic theorem.
-
-The input prerelease is published and all five GitHub server SHA-256 digests and
-asset sizes match the canonical manifest. See remote_input_publication.json for
-the release URL and server evidence. Remote fitted-policy reproduction remains
-a required gate before assigning any production replication to a hosted runner.
+For a new independent full reproduction, set RICH6D_EXTENDED_OUTPUT to an empty
+directory before invoking preflight, reviewing its numerical/resource evidence,
+freezing the rank and running production. Keep the checked-in reference run
+unchanged. The preflight and advance supervisors are for that separate workflow;
+do not invoke them to duplicate the already allocated production run.
