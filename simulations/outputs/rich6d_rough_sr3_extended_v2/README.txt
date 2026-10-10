@@ -61,6 +61,18 @@ still requires human-readable scientific review, inspection of all ten figures,
 and committing/pushing the intended deliverables before reporting completion.
 Live progress is recorded in preflight_status.json, advance_status.json and
 production_status.json as each corresponding stage becomes available.
+The initial production supervisor uses one worker. After disk space recovered,
+a bounded second-worker probe computed the already-declared baseline index 299
+with the unchanged production.execute function and frozen run identity. Its
+timing and memory evidence are in production_concurrency_probe.json. Subsequent
+bounded batches use distinct high indices, with a 2 GiB disk-reserve check before
+each replication and a conservative separation from the primary supervisor.
+They add no seeds or replications to the fixed 300-path scientific design.
+Batch records identify their indices and completion status. During this phase,
+production_status.json counts checkpoints acknowledged by the primary supervisor;
+the number of unique rep_*.npz files includes supplemental completed indices.
+The primary supervisor will validate and reuse those checkpoints when it reaches
+them. Final summaries still require all 300 unique indices in every environment.
 After freezing and checking the recorded audit hashes, the advance supervisor
 removes regenerable pilot-only caches to reserve disk space for production.
 It retains the chosen-rank basis, all production operators and the rank-512

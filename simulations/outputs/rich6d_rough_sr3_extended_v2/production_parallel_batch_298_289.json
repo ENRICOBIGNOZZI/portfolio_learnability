@@ -1,0 +1,24 @@
+{
+  "run_hash": "e9f1f005be1a58ee736a09cb711d5be87457b9875d1e26dab56c03ccdca61d8d",
+  "stage": "production_baseline",
+  "indices": [
+    298,
+    297,
+    296,
+    295,
+    294,
+    293,
+    292,
+    291,
+    290,
+    289
+  ],
+  "completed_indices": [],
+  "started_utc": "2026-10-10T09:02:43.115861+00:00",
+  "primary_supervisor_pid": 95132,
+  "maximum_additional_workers": 1,
+  "scope": "Bounded execution batch of existing production.execute with unchanged frozen protocol; scientific replication count remains 300.",
+  "status": "running",
+  "current_index": 298,
+  "updated_utc": "2026-10-10T09:02:43.120106+00:00"
+}

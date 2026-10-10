@@ -1,0 +1,48 @@
+{
+  "scope": "One additional predetermined baseline replication, unchanged frozen scientific code",
+  "index": 299,
+  "run_hash": "e9f1f005be1a58ee736a09cb711d5be87457b9875d1e26dab56c03ccdca61d8d",
+  "started_utc": "2026-10-10T08:57:34.568967+00:00",
+  "free_disk_bytes": [
+    6414503936,
+    6413676544,
+    6379536384
+  ],
+  "primary_supervisor_pid": 95132,
+  "status": "completed",
+  "completed_utc": "2026-10-10T09:01:49.831974+00:00",
+  "result": {
+    "index": 299,
+    "ranks": [
+      4096
+    ],
+    "baseline_times": [
+      60,
+      90,
+      120,
+      180,
+      240,
+      360,
+      540,
+      720,
+      1080,
+      1440,
+      2160,
+      3240,
+      4860
+    ],
+    "robustness_times": [],
+    "groups": 32768,
+    "quadrature_seed": 1237722080,
+    "stage": "production_baseline",
+    "run_hash": "e9f1f005be1a58ee736a09cb711d5be87457b9875d1e26dab56c03ccdca61d8d",
+    "environment_names": [
+      "baseline"
+    ],
+    "elapsed_seconds": 255.18967845803127,
+    "generation_seconds": 200.35055912501412,
+    "maximum_resident_bytes": 687357952,
+    "completed_utc": "2026-10-10T09:01:49.766496+00:00"
+  },
+  "free_disk_after_bytes": 5835624448
+}
