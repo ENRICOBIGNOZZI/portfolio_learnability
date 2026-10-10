@@ -1,4 +1,4 @@
-EXTENDED ROUGH RICH6D STUDY — PARTIAL PRODUCTION, SINGLE-WORKER RECOVERY ACTIVE
+EXTENDED ROUGH RICH6D STUDY — PARTIAL PRODUCTION, PRODUCTION RECOVERY ACTIVE
 
 Reference: rich6d_rough_sr3_annual_monthly_v1, commit 2d59c3324569.
 The reference economy keeps annualized optimal Sharpe 3, the existing factor
@@ -11,7 +11,8 @@ All 12 paired rank pilots and their audits are complete. The fixed-rank producti
 protocol is frozen. Recovery resumed on 2026-10-10 with 38 verified baseline
 checkpoints. The first new recovery result (index 28) has passed the independent
 checkpoint audit, bringing the verified baseline total to 39; the study is NOT
-complete. The previous production supervisor exited
+complete. A subsequent audit includes index 29 and verifies 40 baseline checkpoints.
+The previous production supervisor exited
 with status 120, of undetermined cause. Its supplementary batch remains interrupted.
 
 After disk availability recovered to approximately 8.3 GiB, the full supervisor
@@ -25,7 +26,15 @@ resource-blocked record remains available in commit 8e2a8b2.
 At the user's request, pip's regenerable download cache was purged, removing 14
 files (23.2 MB reported by pip). This frees disk space, not process RAM. Required
 simulation caches, code, data, completed results and unrelated jobs were preserved.
-The single-worker setting limits additional memory demand on the shared 8 GB host.
+The primary supervisor retains one worker. After disk availability remained above
+8 GiB, a bounded supplementary worker was launched for the two still-missing
+baseline indices 290 and 289. It checks a 3 GiB disk reserve before each replication
+and stops if the primary queue approaches those indices. This allows at most two
+production workers during the bounded batch, using the unchanged scientific code.
+The execution source, log path and resource observations are recorded in
+production_recovery_supplement_launch.json; current batch state is recorded in
+production_recovery_supplement_290_289.json. Timing comparisons remain operational
+observations on a shared host, not controlled performance benchmarks.
 
 Frozen scientific source hashes were verified before restart. Process-local
 PYTHONDONTWRITEBYTECODE=1 and a separate PYTHONPYCACHEPREFIX under /tmp bypass the
@@ -108,7 +117,8 @@ A further single-replication probe at index 288 tested three concurrent workers.
 It completed successfully but took about 425 seconds, versus about 157-184
 seconds in the recent two-worker observations. That phase retained two total workers;
 see production_three_worker_probe.json for timings and their operational limits.
-The current recovery uses one worker given the shared host workload.
+The current primary supervisor uses one worker; the bounded two-index supplement
+above temporarily restores two concurrent workers after resource recovery.
 During this probe, a fresh Python import waited on a cloud-backed bytecode file
 that macOS had made dataless. Targeted local-download requests restored the cache
 and source without changing their contents. runtime_read_recovery.json records

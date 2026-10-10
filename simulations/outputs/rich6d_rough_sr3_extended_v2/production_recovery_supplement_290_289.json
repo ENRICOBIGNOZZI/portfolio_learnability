@@ -1,0 +1,18 @@
+{
+  "run_hash": "e9f1f005be1a58ee736a09cb711d5be87457b9875d1e26dab56c03ccdca61d8d",
+  "indices": [
+    290,
+    289
+  ],
+  "completed_indices": [],
+  "pid": 34623,
+  "primary_supervisor_pid": 28384,
+  "started_utc": "2026-10-10T13:29:57.649706+00:00",
+  "minimum_disk_free_bytes": 3221225472,
+  "maximum_additional_workers": 1,
+  "scope": "Two existing baseline indices, unchanged frozen production.execute; no additional scientific replications.",
+  "current_index": 290,
+  "disk_free_before_bytes": 7772651520,
+  "updated_utc": "2026-10-10T13:29:57.651119+00:00",
+  "status": "running"
+}

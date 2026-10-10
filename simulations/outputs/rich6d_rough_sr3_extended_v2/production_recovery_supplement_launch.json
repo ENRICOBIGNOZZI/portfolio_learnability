@@ -1,0 +1,26 @@
+{
+  "pid": 34623,
+  "started_utc": "20261010T132944Z",
+  "log": "simulations/outputs/rich6d_rough_sr3_extended_v2/execution_logs/supplement_290_289_20261010T132944Z.log",
+  "execution_source": "import json,os,shutil,subprocess,time,traceback\nfrom simulations.extended.design import OUTPUT\nfrom simulations.extended.freeze import science_hashes\nfrom simulations.extended.production import execute\nfrom simulations.provenance import json_write,output_lock,utc_now\nprotocol=json.loads((OUTPUT/'protocol.json').read_text())\nassert science_hashes()==protocol['source_hashes']\nrecord=OUTPUT/'production_recovery_supplement_290_289.json'\nstate=dict(run_hash=protocol['run_hash'],indices=[290,289],completed_indices=[],pid=os.getpid(),primary_supervisor_pid=28384,started_utc=utc_now(),minimum_disk_free_bytes=3*1024**3,maximum_additional_workers=1,scope='Two existing baseline indices, unchanged frozen production.execute; no additional scientific replications.')\nwith output_lock(OUTPUT/'recovery_supplement'):\n    try:\n        for index in state['indices']:\n            free=shutil.disk_usage(OUTPUT).free\n            state.update(current_index=index,disk_free_before_bytes=free,updated_utc=utc_now())\n            primary=subprocess.run(['ps','-p','28384','-o','command='],capture_output=True,text=True).stdout\n            progress=json.loads((OUTPUT/'production_status.json').read_text())\n            if free<state['minimum_disk_free_bytes'] or '-m simulations.extended.production --workers 1' not in primary or progress['stage']!='production_baseline' or progress['last_index']>=250:\n                state.update(status='stopped_before_next_replication_resource_or_overlap_guard')\n                json_write(record,state)\n                break\n            state.update(status='running')\n            json_write(record,state)\n            print('Supplement starts existing baseline index',index,flush=True)\n            execute(index,protocol,'production_baseline')\n            state['completed_indices'].append(index)\n            state.update(updated_utc=utc_now())\n            json_write(record,state)\n        else:\n            state.update(status='completed',completed_utc=utc_now())\n            json_write(record,state)\n    except Exception:\n        state.update(status='failed',traceback=traceback.format_exc(),updated_utc=utc_now())\n        json_write(record,state)\n        raise\n",
+  "previous_verified_baseline_count": 39,
+  "indices": [
+    290,
+    289
+  ],
+  "maximum_total_production_workers": 2,
+  "resource_observations": [
+    {
+      "utc": "2026-10-10T13:31:48.930592+00:00",
+      "disk_free_bytes": 7766675456,
+      "process_reading": "28384 S      0.0   4896 11:58\n33272 R     85.9  93856 03:47\n34623 Rs    85.3  93952 02:04",
+      "swap_reading": "vm.swapusage: total = 9216.00M  used = 8186.88M  free = 1029.12M  (encrypted)"
+    },
+    {
+      "utc": "2026-10-10T13:35:01.484401+00:00",
+      "disk_free_bytes": 6692319232,
+      "process_reading": "28384 S      0.0   7136 15:11\n34623 Rs    94.0  93104 05:17",
+      "swap_reading": "vm.swapusage: total = 10240.00M  used = 8806.81M  free = 1433.19M  (encrypted)"
+    }
+  ]
+}
