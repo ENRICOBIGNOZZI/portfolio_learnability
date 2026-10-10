@@ -1,0 +1,312 @@
+\section{Empirical Portfolio Learnability}
+\label{sec:empirics}
+
+\subsection{Data, Representation, and Investment Performance}
+
+The empirical exercise asks how a representation of stock characteristics,
+finite return history, and regularization jointly shape a portfolio policy.
+We use one monthly U.S. equity panel, one chronology, and one exposure scale
+for all performance and attribution results. The central comparison remains
+Linear, Gaussian, and Mat\'ern-$3/2$. A single trained neural portfolio policy
+provides a secondary check using a learned representation. The evidence is
+descriptive historical evidence; neither a favorable Sharpe ratio nor an
+estimated number of active directions certifies an implementable opportunity.
+
+Formation observations run from January 1963 through December 2024. Starting
+from the JKP dictionary, we exclude nano stocks, use the 130 characteristics
+with greatest coverage in 1963--1972, and remove observations missing more than
+30\% of those inputs. Observed values receive average cross-sectional ranks
+on $[-0.5,0.5]$; remaining missing inputs receive zero, a neutral value that
+need not equal the median in the presence of ties. We accept the retrospectively
+constructed characteristic dictionary as the academic information set.
+
+There is a separate, material sample limitation. The retained panel excludes
+unavailable subsequent payoffs before ranking and calculating $N_t$. A
+formation-only reconstruction leaves \MissingCount\ unidentified stock-month
+payoffs out of \FormationCount\ (\MissingShare\%). Exact adjacent-calendar
+source matches recover none of these outcomes. Its formation ranks are
+invariant to perturbing future payoff availability, whereas the retained
+complete-payoff sample is explicitly conditional on that availability. We
+preserve this limitation in every result rather than inventing returns or
+calling the record certified real-time trading evidence. The appendix
+quantifies coverage and specifies the missing source information.
+
+The first inner training period uses 1963--1972 formations and validation
+uses 1973--1977. Each subsequent January-close decision reserves the preceding
+60 formation months for validation, then refits using the full available
+history. December's payoff is known at January close. A decision-year block
+therefore realizes returns from February through the following January; the
+common evaluation period is February 1978--January 2025, comprising 564 months.
+This convention governs model selection, holdings, costs, and figure labels.
+
+The Linear policy uses a constant and the characteristic coordinates.
+Gaussian and Mat\'ern-$3/2$ use 10,000 random Fourier features from fixed seed-0
+banks, with lengthscale equal to the initial-sample median distance. Their
+kernel definitions impose different smoothness restrictions, but these finite
+feature banks do not establish a strict nesting of implemented policies.
+An observed performance ranking consequently does not identify a population
+approximation gap. Figure~\ref{fig:equity_kernels} compares their wealth on
+identical realized months.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{figures/fig01_kernel_wealth.pdf}
+\caption{Three representations on a common protocol. Total wealth compounds
+cash returns plus the policy's excess payoff; the right panel adds illustrative
+25-basis-point commissions on both sides of drift-adjusted trades and a
+30-basis-point annual short fee. Initial NAV is one. These are conditional
+research-sample friction sensitivities, not observed execution costs.}
+\label{fig:equity_kernels}
+\end{figure}
+
+Estimation follows the maximum-Sharpe criterion, in its quadratic formulation
+given by the earlier definition of $Q$. The implementation fits response-one
+ridge policies and selects the penalty minimizing validation $Q$ at fitted
+scale. This operation is preserved; maximizing validation Sharpe would be a
+different selection rule. Each representation's 120-candidate penalty grid
+is frozen from its initial training spectrum. An explicit Linear intercept
+is penalized with the other coefficients; Fourier features have no separately
+added unpenalized intercept. These choices enter the managed-payoff operator
+and are retained in every spectral calculation.
+
+Table~\ref{tab:kernel_performance} reports the common-period performance and
+investment scale. A common positive constant, calibrated from the initial
+Linear validation policy's median gross exposure, applies to every policy.
+It is fixed before the first test payoff and involves neither future volatility
+nor full-sample gross exposure. This permits comparison of costs while leaving
+gross Sharpe invariant to the constant. The higher nonlinear point estimates
+are accompanied by substantial trading requirements; representation richness
+alone gives no guarantee of net performance.
+
+\input{tables/performance}
+
+The neural portfolio policy with ridge readout learns two 64-unit tanh hidden
+layers from the same direct monthly maximum-Sharpe criterion. All stocks in
+a month are aggregated before the squared criterion is differentiated.
+Earlier validation chooses between two stopping budgets and five exact-readout
+penalty ratios; the selected specification is refitted before deployment,
+without reselection on incorporated validation observations. Its seed-0
+gross and net Sharpes are \NeuralGross\ and \NeuralNet. Frozen hidden features
+define a positive-semidefinite feature kernel, and the ridge head has an exact
+algebraic kernel interpretation. This is a data-dependent learned-feature
+kernel, distinct from the neural tangent kernel; conditional head complexity
+excludes learning the hidden layers. The policy does not inherit the paper's
+fixed-kernel rate. Optimization and seed diagnostics appear in the appendix.
+
+For Gaussian minus Linear, the gross Sharpe difference is \KernelGrossDelta\;
+the paired 12-month circular-block interval is [\KernelGrossLow,\KernelGrossHigh].
+With the stated frictions, the difference is \KernelNetDelta\, with interval
+[\KernelNetLow,\KernelNetHigh]. These intervals condition on estimated paths,
+use identical resampled months for both policies, and are not full-pipeline or
+multiple-comparison-adjusted inference. They motivate cautious economic
+comparison rather than a claim that one representation uniformly dominates.
+
+\subsection{Economic Spectrum and Active Complexity}
+
+The managed-payoff spectrum orders directions by their uncentered historical
+payoff second moments. An eigenvalue measures the variation supported by a
+specified representation and sample. It is not invested capital, expected
+return, Sharpe, or a uniquely named anomaly. Figure~\ref{fig:spectrum_2024}
+holds the historical cutoff fixed before the final evaluation year. Raw
+eigenvalues preserve representation units; normalized mass provides a
+separate concentration diagnostic and does not rescale the fitted policies.
+Every reported spectrum uses pretest observations. Its dependence on
+representation, sample length, and scale means that different mass pictures
+should be read alongside the fitted penalty and the subsequent portfolio,
+rather than as standalone investment rankings.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{figures/fig02_managed_spectrum.pdf}
+\caption{Gaussian and Mat\'ern-$3/2$ managed-payoff spectra at January 2024.
+The common history contains formations through December 2023 and known payoffs
+through January 2024. The left panel uses raw uncentered second-moment units;
+the right divides by each representation's trace. Normalization is diagnostic
+only; penalties and fitted positions are unchanged.}
+\label{fig:spectrum_2024}
+\end{figure}
+
+Mass concentration and active complexity are distinct. Ridge weights a
+direction by $\widehat\mu_j/(\widehat\mu_j+\lambda)$, so weak eigenvalues can
+contribute many effective degrees of freedom while representing little
+second-moment mass. The historical average mass in the first 10\% of positive
+Gaussian ranks is \LeadingMass\%, but that group contributes only
+\LeadingComplexity\ of the full policy's \TotalComplexity\ mean effective
+directions. Those averages describe annual histories, not the final-date
+spectrum alone. Positive rank is calculated with a relative $10^{-12}$
+tolerance, and near-tied eigenvalues are kept together at group boundaries.
+The same operator also limits feasible complexity: ridge cannot activate
+more directions than the managed matrix supports. This numerical rank
+constraint is checked in the kernel and neural calculations. A long weak
+tail can therefore change regularized exposure without constituting evidence
+that its individual directions are reliably estimable or economically useful.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{figures/fig03_gaussian_complexity.pdf}
+\caption{A large single-window illustration for the fixed Gaussian
+representation. January 2024 historical and subsequent Sharpe are shown on
+separate vertical scales, with effective complexity on the common horizontal
+axis. The lower panel concatenates the 12 February 2024--January 2025 payoffs.
+The star is a retrospective maximum over the frozen grid; the diamond is
+selected using earlier validation $Q$. Neither estimates a significant
+population optimum.}
+\label{fig:complexity_gaussian}
+\end{figure}
+
+The final-year path isolates regularization: bandwidth, feature bank, and
+historical sample remain fixed as $\lambda$ varies. Its retrospective peak
+occurs at complexity \SinglePeakC\ with subsequent Sharpe \SinglePeakSR.
+Historical fit and subsequent performance need not move together. A short
+window can nevertheless yield a noisy shape, especially at aggressive
+penalties. We therefore interpret this display as an illustration, then
+examine all historical decision years in the next figure. No endpoint is
+discarded, and a minimum-norm zero-penalty solution is retained separately
+as an appendix diagnostic without changing validation eligibility.
+
+Figure~\ref{fig:complexity_nine} supplies the historical context. Its first
+eight blocks contain five decision years each; the final block contains seven.
+For each penalty candidate we concatenate the monthly payoffs actually realized
+across annual refits within the block, and calculate one Sharpe from that
+series. We do not average annual Sharpes. Horizontal coordinates average the
+corresponding annual complexities weighted by their realized month counts.
+All annual windows here contain 12 months, so month and annual weighting
+coincide. Curves use common axis definitions and terminate at their observed
+supports.
+
+All \InteriorCount\ of the nine grid maxima are interior, a descriptive
+property of these curves rather than evidence that every period has a
+statistically identified optimum. The maximizing mean complexity ranges
+from \MinimumPeakC\ to \MaximumPeakC\, and the shapes and performance levels
+vary markedly. The 2008--2012 peak is at relatively low complexity; later
+windows have different supports and weaker realized performance. Broad
+regions can be nearly flat relative to sampling uncertainty. The selected
+annual policy is shown separately: its average complexity and realized Sharpe
+need not lie on any fixed-$\lambda$ curve because its penalty varies annually.
+
+Pointwise bands use 5,000 paired circular-block resamples, with the same
+monthly draws across all candidates. They quantify uncertainty conditional
+on realized paths under approximately stable dependence and distributional
+conditions within a block. They do not correct for searching the grid or
+establish validity under arbitrary historical nonstationarity. Six- and
+24-month blocks, paired economic contrasts, and subperiod comparisons are
+reported separately in the appendix.
+
+As a secondary check, we jointly select bandwidth and ridge using prior
+validation and multipliers $\{0.25,0.5,1,2,4\}$ of the initial median distance.
+Each bandwidth's penalty scale comes from its own initial training spectrum.
+The fixed control is numerically reproduced first. Gaussian fixed/tuned gross
+Sharpes are \GaussianFixed\ / \GaussianTuned\ and net Sharpes are
+\GaussianFixedNet\ / \GaussianTunedNet; the corresponding Mat\'ern values are
+\MaternFixed\ / \MaternTuned\ and \MaternFixedNet\ / \MaternTunedNet.
+Boundary selections and uncertainty remain part of this sensitivity, not a
+reason to retune the main representation after observing test performance.
+
+\clearpage
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{figures/fig04_gaussian_nine_panels.pdf}
+\caption{Nine non-overlapping Gaussian decision-year blocks, with fixed
+bandwidth and feature bank. Panels report actual month counts. The first
+block realizes February 1978--January 1983; each subsequent boundary follows
+the same January-close convention, and the final block realizes February
+2018--January 2025. Lines concatenate monthly fixed-$\lambda$ OOS payoffs
+across refits. Stars mark retrospective grid maxima; diamonds show the
+separate validation-selected annual policy. Shading gives pointwise 95\%
+paired 12-month circular-block intervals, conditional on fitted paths and
+uncorrected for peak selection. Full dates and candidate paths are public.}
+\label{fig:complexity_nine}
+\end{figure}
+
+\clearpage
+\subsection{What Additional Directions Trade}
+
+We interpret portfolios associated with eigenspaces. At each annual refit,
+eigendecomposition partitions the selected Gaussian ridge policy into four
+disjoint positive-rank groups. Their actual spectral contributions become
+stock-level signed holdings, which give weighted long and short characteristic
+profiles and subsequent payoff and covariance attribution. The same selected
+$\lambda$ is retained across nested comparisons. These are attribution
+portfolios, not four separately optimized strategies, and equal-risk
+diagnostic baskets do not support the economic claims.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{figures/fig05_economic_holdings.pdf}
+\caption{Economic profiles of the actual Gaussian spectral holdings. The
+left panel reports long-minus-short differences in weighted formation-rank
+scores; the right reports signed notional exposures, preserving investment
+scale. Families use an explicit signed characteristic dictionary. Debt
+financing and equity issuance are distinct. Overlapping families describe
+the same holdings and cannot be added as disjoint return components.}
+\label{fig:economic_holdings}
+\end{figure}
+
+The profiles reveal reweighting within the same characteristic universe.
+Leading holdings favor profitability and oppose recent returns and debt
+financing. Intermediate directions modify those exposures rather than
+providing an invariant named factor. A normalized characteristic contrast
+can remain large when its component's notional is small; the two panels
+therefore answer different questions. Formation-time descriptors characterize
+positions, while realized outcomes determine their investment contribution.
+
+\input{tables/spectral_value}
+
+Table~\ref{tab:spectral_value} separates historical second-moment mass,
+component gross, netted account gross, and subsequent investment performance.
+The leading group has mean component gross \LeadingGross\ and annual excess
+payoff \LeadingMean\%. Adding the intermediate group contributes
+\IntermediateMean\% annually, yet its mean component gross \IntermediateGross\
+raises cumulative account gross by only \IncrementalGross\. This is stock-level
+cancellation: some new directions offset existing positions. The sum of
+component gross exposures is consequently not the gross of the combined
+account.
+
+The added component has negative covariance with the leading portfolio.
+Its annual covariance is \IntermediateCovariance\, but total annual variance
+changes by \IntermediateVariance\. The account's variance can rise despite
+negative covariance because the component adds its own variance. A positive
+standalone mean similarly does not establish an improvement in portfolio
+Sharpe; the combined mean, variance, and costs must be assessed together.
+
+Here the gross Sharpe rises from \LeadingSR\ to \TwoGroupSR\, and the net
+Sharpe from \LeadingNetSR\ to \TwoGroupNetSR. The paired 12-month-block
+interval for the gross change is [\GroupGrossLow,\GroupGrossHigh], and for
+the net change [\GroupNetLow,\GroupNetHigh]. These economic contrasts retain
+their uncertainty and remain descriptive. They are not tests of a change in
+$Q$, and no significant optimum or universal diversification benefit is
+required for the attribution to be informative.
+
+Small incremental account gross does not mean small turnover. Monthly
+characteristics and annual refits can alter offsetting positions substantially.
+Every nested account therefore sums group weights at the stock level before
+calculating trades against drift-adjusted pretrade holdings, short borrowing,
+and net returns. Separate component cost estimates would not reconstruct the
+netted account. The appendix documents initial entry from cash, post-cost
+target weights, cash financing, annual-to-monthly short-fee conversion, and
+the upstream corporate-action treatment. Target-weight changes are reported
+as a separate proxy and are never called realized trading costs.
+
+The weaker tail has little historical second-moment mass and small absolute
+payoff contributions. Its covariance can still matter for the selected
+policy, but the financial evidence should be evaluated through cumulative
+gross and net Sharpe rather than spectral mass alone. The same observation
+limits interpretation of characteristic profiles: a striking normalized tilt
+can arise in a direction whose investment contribution is economically small.
+Alternative rank boundaries and feature-draw sensitivity are reported in the
+appendix, without preserving labels when group content changes.
+
+Six-benchmark regressions use the actual component returns. Full-sample
+intercepts are descriptive spanning statistics, not implementable hedges or
+newly identified risk premia. A separate hedge subtracts only slopes estimated
+from each pretest history; it preserves the component's fitted scale. Detailed
+coefficients and joint financing--profitability cells remain in the appendix.
+Near-tied eigenvectors can rotate, so group profiles, rather than matched
+individual eigenvector names, are the principal historical comparison.
+
+The earlier history-length experiment remains a secondary diagnostic on its
+common dates. It does not motivate a memory-selection policy. Economic
+content and supported complexity vary with history. The stationary theory
+benchmarks approximately stable conditions; a ``local'' interpretation requires
+those conditions. Descriptive complexity changes do not identify changes in
+$b$, and degrees of freedom do not certify profitable opportunities.

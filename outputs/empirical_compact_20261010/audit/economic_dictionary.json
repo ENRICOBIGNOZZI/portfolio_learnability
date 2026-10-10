@@ -1,0 +1,68 @@
+{
+  "Value": {
+    "be_me": 1,
+    "ni_me": 1,
+    "fcf_me": 1,
+    "sale_me": 1,
+    "ocf_me": 1
+  },
+  "Profitability": {
+    "gp_at": 1,
+    "cop_at": 1,
+    "op_at": 1,
+    "ni_be": 1
+  },
+  "Investment": {
+    "at_gr1": 1,
+    "capx_gr1": 1,
+    "inv_gr1a": 1,
+    "ppeinv_gr1a": 1
+  },
+  "Momentum": {
+    "ret_12_1": 1,
+    "ret_6_1": 1,
+    "resff3_12_1": 1
+  },
+  "Recent return": {
+    "ret_1_0": 1
+  },
+  "Size": {
+    "market_equity": 1
+  },
+  "Liquidity": {
+    "dolvol_126d": 1,
+    "ami_126d": -1,
+    "bidaskhl_21d": -1,
+    "zero_trades_126d": -1
+  },
+  "Volatility": {
+    "rvol_21d": 1,
+    "ivol_capm_21d": 1,
+    "ivol_capm_252d": 1
+  },
+  "Issuance": {
+    "chcsho_12m": 1,
+    "eqnpo_12m": -1
+  },
+  "Accruals": {
+    "oaccruals_at": 1,
+    "taccruals_at": 1
+  },
+  "Quality": {
+    "qmj": 1,
+    "qmj_prof": 1,
+    "qmj_safety": 1
+  },
+  "Leverage": {
+    "debt_me": 1,
+    "netdebt_me": 1
+  },
+  "Seasonality": {
+    "seas_1_1an": 1,
+    "seas_2_5an": 1
+  },
+  "Debt financing": {
+    "fnl_gr1a": 1,
+    "dbnetis_at": 1
+  }
+}

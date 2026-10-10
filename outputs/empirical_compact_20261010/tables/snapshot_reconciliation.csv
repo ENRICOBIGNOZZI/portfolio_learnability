@@ -1,0 +1,14 @@
+dimension,archived_snapshot,canonical_snapshot,assessment
+Gaussian Sharpe,3.350 (rounded archival table),3.299902664375,Different; constant positive scale cannot explain
+Average Gaussian gross,1.76 (rounded archival table),2.326054439524,Different; archival scaling rule not recoverable
+Sample membership,"JKP, excludes nano, 130 characteristics; no input hash","Frozen clean manifest ca6e97aa..., 7,489 payoff exclusions",Exact old membership unverified
+Formation/realization dates,"1978-2024, 564 months stated; shift not disclosed",Jan-Dec formation -> Feb-next Jan payoffs,Archive chronology insufficient to prove equivalence
+Preprocessing,"Cross-sectional ranks, 30% missing cutoff; coverage window unstated",Initial-only characteristic coverage; payoff filter before ranks and N_t,Old formation-eligibility ordering not documented
+Feature bank,"10,000 RFF stated; hashes absent",Seed-0 frequencies/phases SHA in source manifests,Exact old feature draw unverified
+Bandwidth,Initial-sample median stated; value/sample hash absent,Initial sample checksum and exact bank ell,Verbal rule alone cannot establish same bandwidth
+Penalty grid/validation,"Fixed grid, five-year validation stated; numerical grid absent",120 initial-spectrum candidates; minimum fitted-scale validation Q,Old candidate spacing and selections unverified
+Refitting,Annual refit stated; head and selection paths absent,Train+validation through January close,Old refit implementation not reproducible
+Exposure scaling,Not documented by archive; different means/gross,"Common scale 0.03740000227285338, initial Linear validation","Scale might explain much of levels, cannot explain SR difference"
+Units,Percent annual means/volatility table; excess wealth caption,Decimal monthly excess payoffs; total wealth includes rf,"Both appear to report excess SR, old series unavailable"
+Cost accounting,Archive figure only; no stock holdings or fee path,"Drift-adjusted two-sided trades, netted account weights, annual short fee/12",Old cost path unverified
+Canonical cross-check,No numerical output paths in archive,Kernel baseline -> recomputed managed path -> stock holdings -> spectral sum,Maximum reconstruction errors recorded in canonical audits

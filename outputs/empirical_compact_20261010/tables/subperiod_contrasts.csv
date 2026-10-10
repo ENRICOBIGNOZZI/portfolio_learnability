@@ -1,0 +1,19 @@
+period,contrast,delta_sharpe,months
+1978-1982,gaussian minus linear,0.349994658786,60
+1978-1982,nested_2 minus nested_1,0.2307802346839,60
+1983-1987,gaussian minus linear,-0.03797018324885,60
+1983-1987,nested_2 minus nested_1,-0.04744708505668,60
+1988-1992,gaussian minus linear,0.2852539822557,60
+1988-1992,nested_2 minus nested_1,0.3997961225688,60
+1993-1997,gaussian minus linear,0.8087659825911,60
+1993-1997,nested_2 minus nested_1,1.195980685407,60
+1998-2002,gaussian minus linear,0.3552121002889,60
+1998-2002,nested_2 minus nested_1,0.9216500818405,60
+2003-2007,gaussian minus linear,-0.05773640086404,60
+2003-2007,nested_2 minus nested_1,0.4976091182683,60
+2008-2012,gaussian minus linear,0.262786980708,60
+2008-2012,nested_2 minus nested_1,-0.2159370407453,60
+2013-2017,gaussian minus linear,0.2387408865365,60
+2013-2017,nested_2 minus nested_1,0.2292159833717,60
+2018-2024,gaussian minus linear,0.2791157936104,84
+2018-2024,nested_2 minus nested_1,0.3091708776808,84

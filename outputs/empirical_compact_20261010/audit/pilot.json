@@ -1,0 +1,61 @@
+{
+  "elapsed_seconds": 70.2489447920234,
+  "torch": "2.9.1",
+  "monthly_gradient_error": 1.3493199613190399e-12,
+  "exact_head_max_error": 7.574385563202668e-12,
+  "logs": [
+    {
+      "step": 0,
+      "objective": 0.6652711467551291,
+      "raw_Q": 0.5595500246265563,
+      "head_norm": 423.19379370627655,
+      "penalty": 5.90313944690132e-07
+    },
+    {
+      "step": 16,
+      "objective": 0.5527786446588067,
+      "raw_Q": 0.4596142507976753,
+      "head_norm": 397.2678115429782,
+      "penalty": 5.90313944690132e-07
+    },
+    {
+      "step": 32,
+      "objective": 0.5189922895057905,
+      "raw_Q": 0.4438893094606717,
+      "head_norm": 356.6867363218609,
+      "penalty": 5.90313944690132e-07
+    },
+    {
+      "step": 48,
+      "objective": 0.39977612802040496,
+      "raw_Q": 0.3495433892464332,
+      "head_norm": 291.7102901852579,
+      "penalty": 5.90313944690132e-07
+    },
+    {
+      "step": 64,
+      "objective": 0.38518727517627194,
+      "raw_Q": 0.3351961342450505,
+      "head_norm": 291.0079413995244,
+      "penalty": 5.90313944690132e-07
+    },
+    {
+      "step": 80,
+      "objective": 0.4121785649952926,
+      "raw_Q": 0.3725338482249584,
+      "head_norm": 259.1498309615254,
+      "penalty": 5.90313944690132e-07
+    },
+    {
+      "step": 96,
+      "objective": 0.3555725701615269,
+      "raw_Q": 0.3024332769232641,
+      "head_norm": 300.0310547477485,
+      "penalty": 5.90313944690132e-07
+    }
+  ],
+  "initial_objective": 0.6652711467551291,
+  "final_objective": 0.3555725701615269,
+  "parameter_change": 2.348258594789402,
+  "runtime_plan": "CPU, one numerical thread, three mmap years resident; 47 chronological refits per seed; checkpoints resumable. Pilot timing is conservative only for initial history, later histories are longer."
+}

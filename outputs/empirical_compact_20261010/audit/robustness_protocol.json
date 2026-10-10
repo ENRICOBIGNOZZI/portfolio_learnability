@@ -1,0 +1,28 @@
+{
+  "feature_seeds": [
+    0,
+    1
+  ],
+  "rank_boundaries": [
+    [
+      0.1,
+      0.5,
+      0.9,
+      1
+    ],
+    [
+      0.05,
+      0.25,
+      0.75,
+      1
+    ],
+    [
+      0.2,
+      0.5,
+      0.8,
+      1
+    ]
+  ],
+  "rule": "Initial-training grid per feature draw; annual past-only validation, no seed selection",
+  "reason": "Two predeclared kernel draws limit computation on the shared 8 GB machine; neural sensitivity uses five seeds separately"
+}
