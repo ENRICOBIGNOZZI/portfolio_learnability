@@ -37,5 +37,48 @@
       "process_reading": "28384 S      0.0   5744 32:12\n39867 Rs    84.6 106064 08:31",
       "swap_reading": "vm.swapusage: total = 10240.00M  used = 8639.44M  free = 1600.56M  (encrypted)"
     }
+  ],
+  "runtime_observations": [
+    {
+      "recorded_utc": "2026-10-10T13:56:18.652145+00:00",
+      "pid": 39867,
+      "tool": "/usr/bin/sample 39867 1",
+      "sample_local_time": "2026-10-10 15:55:34.495 +0200",
+      "main_thread_samples": 700,
+      "main_thread_call_path": [
+        "f2py_rout__flapack_dsyevr",
+        "dsyevr$NEWLAPACK",
+        "libLAPACK",
+        "libBLAS",
+        "cblas_dgemv$NEWLAPACK"
+      ],
+      "reported_physical_footprint": "1.2G",
+      "reported_peak_physical_footprint": "1.4G",
+      "interpretation": "The observed main-thread samples are in the symmetric eigensolver, not a file-read wait. This one-second observation does not establish the cause of all runtime variation. Physical footprint is distinct from resident-set size.",
+      "action": "Continue the live computation without restart."
+    },
+    {
+      "recorded_utc": "2026-10-10T14:01:51.013143+00:00",
+      "kind": "git_cloud_metadata_read_wait",
+      "helper_pid": 45295,
+      "waiting_git_pid": 45302,
+      "waiting_command": "git diff --cached --name-only",
+      "open_file": ".git/HEAD",
+      "metadata_flags": "hidden,compressed,dataless",
+      "file_bytes": 21,
+      "provider_state": {
+        "isDownloadRequested": 1,
+        "isDownloaded": 0,
+        "isDownloading": 1,
+        "isSyncPaused": 0,
+        "hasUnresolvedConflicts": 0
+      },
+      "requested_materialization": [
+        ".git/HEAD",
+        ".git/config"
+      ],
+      "action": "Retain the existing commit/push helper while File Provider downloads the original metadata. No branch or reference modification.",
+      "status": "download_in_progress_at_observation"
+    }
   ]
 }

@@ -22,15 +22,17 @@
     269,
     268
   ],
-  "completed_indices": [],
+  "completed_indices": [
+    287
+  ],
   "pid": 39867,
   "primary_supervisor_pid": 28384,
   "started_utc": "2026-10-10T13:43:44.349259+00:00",
   "minimum_disk_free_bytes": 3221225472,
   "maximum_additional_workers": 1,
   "scope": "Twenty existing baseline indices, unchanged frozen production.execute; no additional scientific replications.",
-  "current_index": 287,
-  "disk_free_before_bytes": 8828715008,
-  "updated_utc": "2026-10-10T13:43:44.350187+00:00",
+  "current_index": 286,
+  "disk_free_before_bytes": 5580263424,
+  "updated_utc": "2026-10-10T13:57:05.831195+00:00",
   "status": "running"
 }

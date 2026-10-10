@@ -8,7 +8,7 @@ not artificially reset to 3. Persistence robustness preserves the population
 operator exactly.
 
 All 12 paired rank pilots and their audits are complete. The fixed-rank production
-protocol is frozen. The latest independent checkpoint audit verifies 44 baseline
+protocol is frozen. The latest independent checkpoint audit verifies 45 baseline
 replications and no completed production robustness batches. The study is NOT
 complete: all 300 paths in each economy, final summaries and all ten final figures
 remain required.

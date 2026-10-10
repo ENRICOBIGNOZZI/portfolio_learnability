@@ -32,13 +32,13 @@
   "reuse_confirmed_in_log": true,
   "first_new_checkpoint_index": 28,
   "verified_counts": {
-    "baseline": 44,
+    "baseline": 45,
     "N300": 0,
     "N1200": 0,
     "rho000": 0,
     "rho075": 0
   },
-  "verification_utc": "2026-10-10T13:51:42.445180+00:00",
+  "verification_utc": "2026-10-10T13:58:08.250598+00:00",
   "first_new_checkpoint_resources": {
     "index": 28,
     "ranks": [
@@ -78,5 +78,6 @@
     289
   ],
   "supplement_batch_launch": "production_recovery_batch_287_268_launch.json",
-  "maximum_total_production_workers": 2
+  "maximum_total_production_workers": 2,
+  "latest_verified_supplement_index": 287
 }
