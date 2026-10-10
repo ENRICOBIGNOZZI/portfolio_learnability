@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "appendix_pages": 1,
+  "manuscript_format": {
+    "paper": "letter",
+    "font_size_pt": 12,
+    "line_spacing": 1.5,
+    "top_bottom_margin_inches": 1.5,
+    "left_right_margin_inches": 1.0
+  },
+  "appendix_overfull_boxes": false,
+  "pdfs_rendered_with": "pdftoppm",
+  "inspected": [
+    "figures/complexity_paths.pdf",
+    "figures/wealth_comparison.pdf",
+    "publication/one_page_algorithm_appendix.pdf"
+  ],
+  "visual_findings": "Final renders show readable equations, labels and legends, with no clipping or overlap."
+}

@@ -1,0 +1,9 @@
+{
+  "sha256": {
+    "Codex_Theory_Guided_Lambda_Protocol.md": "a4ab31e32af1a67917fc4ae0c36cccdb91e22671beec29a712031df2acf0f479",
+    "Theory_Guided_Lambda_Algorithm_and_Codex.pdf": "ea7d65f030eb8f641b02e49a07ba84d15dc07b23879da79fe7b495e41f235607",
+    "Theory_Guided_Lambda_Codex_Package (1).zip": "8901aac538858486370488beed654a614e7edf5b96337605b86636ca11918407"
+  },
+  "zip_protocol_matches_requested_markdown": true,
+  "authority": "User explicitly requested Markdown protocol; supporting note and reference solver are reference material."
+}

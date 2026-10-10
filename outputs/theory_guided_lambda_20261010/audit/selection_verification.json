@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "decisions": 47,
+  "months": 564,
+  "baseline_reproduced": true,
+  "clean_manifest_and_feature_bank_match": true,
+  "managed_array_bitwise_match": false,
+  "coefficients_sha256": "cf012f96f29c9fa0dc01d32232ecec1e270bea516bc6883a748a0cf5971e05b7",
+  "elapsed_seconds": 9.239149749977514,
+  "baseline_payoff_error": 8.7927887193473e-11,
+  "legacy_payoff_error": 2.220446049250313e-16,
+  "complexity_error": 4.725109192804666e-12,
+  "root_kkt_residual": 5.4067861299245124e-14,
+  "dual_relative_residual": 2.0927541815186505e-11,
+  "direct_payoff_error": 2.478184324417043e-12,
+  "primal_payoff_error": 2.64073873879056e-10
+}

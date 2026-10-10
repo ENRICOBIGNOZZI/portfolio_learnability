@@ -1,0 +1,8 @@
+{
+  "clean_manifest_and_feature_bank_match": true,
+  "cache_array_sha256": "c7e59509736379007a186c865fe8db6b6e53dc23517a819b3ceedade78701507",
+  "original_array_sha256": "ae72ac896c0dd611089f1b40a9851da44ca5bf5a50b8013c5e03b8684f970857",
+  "managed_array_bitwise_match": false,
+  "explanation": "The bandwidth cache uses 64-stock reductions; the original managed_matrix uses 256. Different float64 accumulation orders can change final bits. Data/feature identity is verified; acceptance additionally requires every original selected payoff to agree at rtol=1e-7, atol=1e-9.",
+  "first_month_original_reduction_maximum_error": 0.0
+}

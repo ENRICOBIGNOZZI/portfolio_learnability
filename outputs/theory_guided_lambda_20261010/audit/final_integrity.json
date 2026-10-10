@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "costs_numeric_finite": true,
+  "costs_common_unique_months_per_account": 564,
+  "cost_accounts": 10,
+  "module_matches_frozen_config": true,
+  "main_manuscript_changed": false,
+  "private_data_and_holdings_committed": false
+}

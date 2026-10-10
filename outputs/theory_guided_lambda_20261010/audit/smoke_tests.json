@@ -1,0 +1,6 @@
+{
+  "command": "OPENBLAS_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 OMP_NUM_THREADS=1 python3 -m pytest -q tests/test_theory_guided_lambda.py -k 'not real and not frozen'",
+  "before_expensive_execution": true,
+  "initial_smoke_passed": 15,
+  "purpose": "Deterministic algebra only; no simulated research results."
+}

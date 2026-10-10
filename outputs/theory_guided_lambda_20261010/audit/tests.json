@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "new_tests": {
+    "command": "OPENBLAS_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 OMP_NUM_THREADS=1 python3 -m pytest -q tests/test_theory_guided_lambda.py",
+    "passed": 20,
+    "failed": 0,
+    "skipped": 0,
+    "elapsed_seconds": 35.66
+  },
+  "existing_tests": {
+    "command": "OPENBLAS_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 OMP_NUM_THREADS=1 python3 -m pytest -q tests/test_final_empirical.py tests/test_audit.py tests/test_bandwidth_tuning.py tests/test_three_empirical_experiments.py tests/test_pipeline.py",
+    "passed": 77,
+    "failed": 0,
+    "elapsed_seconds": 71.52,
+    "scope": "Existing empirical estimator, chronology, accounting, bandwidth and input-pipeline checks."
+  },
+  "total_distinct_tests_passed": 97,
+  "test_source_sha256": "65d1c32898ff9e5719ec18e3ce356626d5981ccb91c3206b8b916c4a460bca01"
+}

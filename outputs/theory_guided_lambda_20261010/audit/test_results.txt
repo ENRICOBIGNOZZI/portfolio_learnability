@@ -1,0 +1,6 @@
+New theory-guided tests:
+....................                                                     [100%]
+20 passed in 35.66s
+
+Existing empirical suites:
+77 passed in 71.52s (0:01:11)

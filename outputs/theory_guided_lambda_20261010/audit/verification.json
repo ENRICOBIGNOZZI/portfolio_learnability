@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "real_data": true,
+  "baseline_reproduced": true,
+  "years": 47,
+  "months": 564,
+  "primary_months": 552,
+  "primary_first_return": "1979-02-28",
+  "primary_last_return": "2025-01-31",
+  "rho_frozen": true,
+  "continuous_boundary_counts": {
+    "interior": 47
+  },
+  "maximum_kkt_residual": 5.406786129924512e-14,
+  "net_performance_reconstructed": true,
+  "all_numeric_annual_finite": true,
+  "all_numeric_monthly_finite": true,
+  "main_manuscript_modified": false,
+  "licensed_rows_exported": false,
+  "sources": {
+    "portfolio.py": "a87438dd12ad07b3851d4c41b477c934ae52347315f7002fe540577a18f3a5db",
+    "kernels.py": "8515be031e468ffa9f6733afa2d3f661bdb51ccdcd746aac4ce4d4faeb9c6da0",
+    "data_pipeline.py": "ea130846016c0ed10321ee333af81ef0ca24371564891d1633ecec8345aa32b5",
+    "empirical_final/run.py": "d18eafa909230c1620c9b17f9a3fb12c9e7e05bb543841f163a9b01045a581ca",
+    "empirical_final/core.py": "2e0ac427be10f5a686adb83d0bb5d29e666df0d29d108111ae0de6e74ef35482",
+    "empirical_final/three_experiments.py": "e73cdcc9fe30422daf48510fb285b6203d9f80eda240f7547695a1c5dde7ff00",
+    "empirical_final/theory_guided_lambda.py": "1a76faec5a7fa3c9b41fa58b4112f07b6a73f27fc36a00ba20d629cf6c784366"
+  }
+}

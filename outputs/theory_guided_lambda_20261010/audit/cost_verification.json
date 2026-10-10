@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "months_per_policy_scenario": 564,
+  "policies": 2,
+  "scenarios": [
+    "gross",
+    "target_trade25",
+    "borrow30",
+    "target_trade25_borrow30",
+    "trade25_borrow30"
+  ],
+  "actual_signed_weights": true,
+  "cv_stock_weights_reproduced": true,
+  "original_drift_cost_account_reproduced": true,
+  "elapsed_seconds": 242.23930720897624,
+  "maximum_raw_payoff_error": 2.640658802732787e-10,
+  "maximum_cv_raw_weight_error": 4.998217117968551e-12,
+  "maximum_accounting_residual": 2.480654570646834e-16
+}
