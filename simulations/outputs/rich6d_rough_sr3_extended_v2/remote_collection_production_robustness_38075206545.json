@@ -56,17 +56,23 @@
       "name": "rich6d-production_robustness-batch-7",
       "digest": "sha256:e2af9455d7145af671e76f43f6486df587cfe053a19bc8b30ef4ae65f7681864",
       "bytes": 2970412
+    },
+    {
+      "id": 11684056014,
+      "name": "rich6d-production_robustness-batch-8",
+      "digest": "sha256:00421d677de37e1e22a82e3eb4482b3c15b5c7df064670c9f0470b4c1f5e2076",
+      "bytes": 2970743
     }
   ],
   "verified_counts": {
     "baseline": 300,
-    "N300": 160,
-    "N1200": 160,
-    "rho000": 160,
-    "rho075": 160
+    "N300": 180,
+    "N1200": 180,
+    "rho000": 180,
+    "rho075": 180
   },
   "scope": "Import only after transfer validation and independent scientific audit. No final-study completion claim.",
-  "last_poll_utc": "2026-10-10T21:47:21.602250+00:00",
+  "last_poll_utc": "2026-10-10T21:49:25.827802+00:00",
   "remote_status": "queued",
   "remote_conclusion": "",
   "jobs": [
@@ -112,8 +118,8 @@
     },
     {
       "name": "production (8)",
-      "status": "in_progress",
-      "conclusion": ""
+      "status": "completed",
+      "conclusion": "success"
     },
     {
       "name": "production (12)",
@@ -151,6 +157,6 @@
       "conclusion": ""
     }
   ],
-  "last_import_utc": "2026-10-10T21:46:19.581891+00:00",
-  "files_published_in_last_import": 80
+  "last_import_utc": "2026-10-10T21:49:41.458352+00:00",
+  "files_published_in_last_import": 40
 }
