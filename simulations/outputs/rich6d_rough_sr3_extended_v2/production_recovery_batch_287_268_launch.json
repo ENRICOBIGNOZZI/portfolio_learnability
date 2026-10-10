@@ -29,5 +29,13 @@
   "maximum_total_production_workers": 2,
   "minimum_disk_free_before_each_replication_bytes": 3221225472,
   "disk_free_before_launch_bytes": 8821727232,
-  "evidence": "Both bounded recovery replications 290 and 289 completed and passed the checkpoint audit. Shared-host timings are operational observations, not a controlled performance comparison."
+  "evidence": "Both bounded recovery replications 290 and 289 completed and passed the checkpoint audit. Shared-host timings are operational observations, not a controlled performance comparison.",
+  "resource_observations": [
+    {
+      "utc": "2026-10-10T13:52:02.976534+00:00",
+      "disk_free_bytes": 6639513600,
+      "process_reading": "28384 S      0.0   5744 32:12\n39867 Rs    84.6 106064 08:31",
+      "swap_reading": "vm.swapusage: total = 10240.00M  used = 8639.44M  free = 1600.56M  (encrypted)"
+    }
+  ]
 }
