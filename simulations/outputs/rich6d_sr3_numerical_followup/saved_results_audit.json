@@ -1,0 +1,15 @@
+{
+  "completed_utc": "2026-10-11T09:19:52.672145+00:00",
+  "source_run_hash": "e9f1f005be1a58ee736a09cb711d5be87457b9875d1e26dab56c03ccdca61d8d",
+  "source_files": {
+    "distributions/baseline.npz": "0612f365c67060648bf08bb6eb70b0e9336dd058b83677d5788b8d3695de0ed0",
+    "distributions/N300.npz": "526af0f6ae9c20f6c61da4b79dab7ef729f4d851d0cf312d71f71801e71855c5",
+    "distributions/N1200.npz": "192b82aa7d6536b6fb383177109eb3795568eed40137d88b768400792c1a6da0",
+    "distributions/rho000.npz": "3883fc1d2b0bd9e7d15bd08e7222fda7498fda4007331a50d66335c4e3f30559",
+    "distributions/rho075.npz": "6cf086b8fcc6f685a1460000329b4ab66ab5a1adb7807efdfa72151c64d6de15"
+  },
+  "rows": 61,
+  "replications_added": 0,
+  "original_outputs_modified": false,
+  "caution": "Bias plus estimation norm plus signed cross term is the exact regret decomposition. Bias/regret is not an additive variance share."
+}

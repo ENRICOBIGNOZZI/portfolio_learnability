@@ -1,0 +1,41 @@
+{
+  "frozen_utc": "2026-10-11T09:19:54.057688+00:00",
+  "design": {
+    "schema": "targeted-rank-followup/1",
+    "ranks": [
+      4096,
+      8192
+    ],
+    "environment": "baseline",
+    "times": [
+      1440,
+      2160,
+      3240,
+      4860
+    ],
+    "paired_pilot_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "population_groups": 32768,
+    "population_seed": 1237722080,
+    "independent_evaluation_groups": 131072,
+    "independent_evaluation_seed": 306787219,
+    "basis_seed": 373077418,
+    "a": 9.968332766935744e-05,
+    "tolerance": 0.05,
+    "scope": "Targeted numerical audit, not replacement 300-path production. No new final-Monte-Carlo replication indices.",
+    "rule": "Compare unchanged theory policies at nested ranks; retain 5% floor and abs(paired mean)+1.96 MCSE criteria. No certification above the largest investigated rank.",
+    "original_protocol_sha256": "085180d348a6668556d6d580c9605d11611ba35afba8c1019f028203d770e236"
+  }
+}
