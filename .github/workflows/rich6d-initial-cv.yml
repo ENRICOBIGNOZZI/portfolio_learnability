@@ -42,7 +42,7 @@ jobs:
     timeout-minutes: 330
     strategy:
       fail-fast: false
-      max-parallel: 5
+      max-parallel: 15
       matrix:
         batch: ${{ fromJSON(needs.allocation.outputs.batches) }}
     env:

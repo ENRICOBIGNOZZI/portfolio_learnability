@@ -1,0 +1,110 @@
+{
+  "stage": "pilot",
+  "run_id": "38141338488",
+  "commit": "f8ed4132f6dbb4b23c87a735d87f45c0e7ac7d5e",
+  "run_hash": "cb6ccf31d7969f22eaa7d766f6330cae2dad5aafbb37602350572222d5ffa3b4",
+  "batches": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "checkpoints": [
+    {
+      "index": 2,
+      "path": "replications/rep_002.npz",
+      "sha256": "445bd467c623c43ea308c962eb31d5e518e9329680c1f22442a29a27bf87be1d",
+      "bytes": 34365,
+      "job_id": 114475687468
+    },
+    {
+      "index": 3,
+      "path": "replications/rep_003.npz",
+      "sha256": "2ee2e7b8946527b4edb47d1ce82a7da6b907f219955da9c9b245ef8bd5956e5f",
+      "bytes": 34407,
+      "job_id": 114475687480
+    },
+    {
+      "index": 4,
+      "path": "replications/rep_004.npz",
+      "sha256": "3acef97665de43b2b58b9a8905a752d53c062e3c5cbc5afca2b77d7df11e1d14",
+      "bytes": 34405,
+      "job_id": 114475687491
+    },
+    {
+      "index": 0,
+      "path": "replications/rep_000.npz",
+      "sha256": "cca370441e8269843b22651483d91c449fd07366a89c3b10399c8cd7ff445d9b",
+      "bytes": 34421,
+      "job_id": 114475687510
+    },
+    {
+      "index": 1,
+      "path": "replications/rep_001.npz",
+      "sha256": "abddbac2af43c2db9a015aa46aa2c26d03164eb864ba9e452a372ace6ae45a99",
+      "bytes": 34382,
+      "job_id": 114475687530
+    },
+    {
+      "index": 7,
+      "path": "replications/rep_007.npz",
+      "sha256": "6505e2edf30c609af286aa81267839322bef71649bfd217988488b1ce356e131",
+      "bytes": 34358,
+      "job_id": 114475687529
+    },
+    {
+      "index": 5,
+      "path": "replications/rep_005.npz",
+      "sha256": "3e6d89130c11bed0d84a530c4f21cb96fb1a5fa5e8046f7e2a6be3c149084ce3",
+      "bytes": 34389,
+      "job_id": 114475687581
+    },
+    {
+      "index": 6,
+      "path": "replications/rep_006.npz",
+      "sha256": "177f1e8493cef9474d95eeb575821a983276204ff3618f51c0b88015ee30b0ec",
+      "bytes": 34378,
+      "job_id": 114475687490
+    },
+    {
+      "index": 8,
+      "path": "replications/rep_008.npz",
+      "sha256": "b472306648697f65d02c069875057e295091ab159bb68a9ae413cd023b9c5b19",
+      "bytes": 34488,
+      "job_id": 114475687525
+    },
+    {
+      "index": 9,
+      "path": "replications/rep_009.npz",
+      "sha256": "f2921ac7c3991a97c6d5ceb27a2cc112b23fa2d2db60a31410806eed7b0654d7",
+      "bytes": 34305,
+      "job_id": 114475687524
+    },
+    {
+      "index": 10,
+      "path": "replications/rep_010.npz",
+      "sha256": "240cdd14c03ea98e816af2c46dade7762c3b8d97d69eb1fe2c3a47c6deb85572",
+      "bytes": 34406,
+      "job_id": 114475687501
+    },
+    {
+      "index": 11,
+      "path": "replications/rep_011.npz",
+      "sha256": "b6e9a07e8eda231c92bec0b9ce26499b46e39b067d708874bbf341829628f284",
+      "bytes": 34408,
+      "job_id": 114475687521
+    }
+  ],
+  "status": "completed",
+  "updated_utc": "2026-10-11T13:22:11.496351+00:00",
+  "conclusion": "success",
+  "completed_utc": "2026-10-11T13:22:11.498137+00:00"
+}

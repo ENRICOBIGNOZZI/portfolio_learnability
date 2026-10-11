@@ -1,0 +1,44 @@
+{
+  "passed": true,
+  "indices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "run_hash": "cb6ccf31d7969f22eaa7d766f6330cae2dad5aafbb37602350572222d5ffa3b4",
+  "verified_utc": "2026-10-11T13:22:11.499433+00:00",
+  "remote_run_id": "38141338488",
+  "source_commit": "f8ed4132f6dbb4b23c87a735d87f45c0e7ac7d5e",
+  "checks": [
+    "Original five-economy return hashes",
+    "Original fixed-rule metrics at every horizon",
+    "Initial validation minimizer",
+    "Same selected a at every T",
+    "Normal equations",
+    "Population regret floor"
+  ],
+  "checkpoint_sha256": {
+    "replications/rep_002.npz": "445bd467c623c43ea308c962eb31d5e518e9329680c1f22442a29a27bf87be1d",
+    "replications/rep_003.npz": "2ee2e7b8946527b4edb47d1ce82a7da6b907f219955da9c9b245ef8bd5956e5f",
+    "replications/rep_004.npz": "3acef97665de43b2b58b9a8905a752d53c062e3c5cbc5afca2b77d7df11e1d14",
+    "replications/rep_000.npz": "cca370441e8269843b22651483d91c449fd07366a89c3b10399c8cd7ff445d9b",
+    "replications/rep_001.npz": "abddbac2af43c2db9a015aa46aa2c26d03164eb864ba9e452a372ace6ae45a99",
+    "replications/rep_007.npz": "6505e2edf30c609af286aa81267839322bef71649bfd217988488b1ce356e131",
+    "replications/rep_005.npz": "3e6d89130c11bed0d84a530c4f21cb96fb1a5fa5e8046f7e2a6be3c149084ce3",
+    "replications/rep_006.npz": "177f1e8493cef9474d95eeb575821a983276204ff3618f51c0b88015ee30b0ec",
+    "replications/rep_008.npz": "b472306648697f65d02c069875057e295091ab159bb68a9ae413cd023b9c5b19",
+    "replications/rep_009.npz": "f2921ac7c3991a97c6d5ceb27a2cc112b23fa2d2db60a31410806eed7b0654d7",
+    "replications/rep_010.npz": "240cdd14c03ea98e816af2c46dade7762c3b8d97d69eb1fe2c3a47c6deb85572",
+    "replications/rep_011.npz": "b6e9a07e8eda231c92bec0b9ce26499b46e39b067d708874bbf341829628f284"
+  },
+  "scope": "Implementation correctness gate; no performance-dependent change to grid, folds, rank or exponent."
+}
