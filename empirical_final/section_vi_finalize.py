@@ -2,6 +2,7 @@
 
 Private-data reproduction: python3 -m empirical_final.section_vi_finalize
 Public reproduction: python3 -m empirical_final.section_vi_finalize --public-only
+Figure 6 only: python3 -m empirical_final.section_vi_finalize --figure-six-only
 No theory-guided experiments or manuscript sections are read or changed.
 """
 import argparse
@@ -283,6 +284,60 @@ def finish(fig,name):
     plt.close(fig)
 
 
+def figure_six():
+    """Draw every evaluated OOS candidate; preserve the full rank-bounded tail."""
+    curves=pd.read_csv(OUT/'tables/nine_panel_curves.csv',float_precision='round_trip')
+    summary=read('nine_panel_summary').set_index('period')
+    grid=np.array(json.loads((OUT/'audit/ridge_protocol.json').read_text())['penalties'])
+    with plt.rc_context({'font.family':'DejaVu Sans','font.size':13,
+        'axes.spines.top':False,'axes.spines.right':False,'pdf.fonttype':42,
+        'savefig.facecolor':'white','grid.alpha':.22,'path.simplify':False}):
+        fig,axs=plt.subplots(3,3,figsize=(10.5,8.7),sharex=True,sharey=True,layout='constrained')
+        plotted=[]
+        for ax,(lo,hi) in zip(axs.flat,BLOCKS):
+            label=f'{lo}-{hi}';f=curves[curves.period.eq(label)]
+            by_candidate=f.sort_values('candidate')
+            assert np.array_equal(by_candidate.candidate,np.arange(len(grid)))
+            np.testing.assert_allclose(by_candidate.penalty,grid,rtol=1e-13,atol=0)
+            assert np.isfinite(f[['mean_C','oos_sharpe']].to_numpy()).all()
+            # Retain every vertex, including nearly coincident near-zero policies.
+            f=f.sort_values(['mean_C','candidate'],kind='stable');s=summary.loc[label]
+            line,=ax.plot(f.mean_C,f.oos_sharpe,color=COLORS[1],lw=1.3)
+            assert len(line.get_xydata())==len(grid)
+            np.testing.assert_array_equal(line.get_xydata(),f[['mean_C','oos_sharpe']].to_numpy())
+            peak=f.loc[f.oos_sharpe.idxmax()];end=f[f.zero_penalty].iloc[0]
+            assert peak.retrospective_maximum and end.penalty==0 and end.mean_C==s.effective_rank
+            ax.scatter(peak.mean_C,peak.oos_sharpe,color=COLORS[2],marker='*',s=105,zorder=5)
+            ax.scatter(s.selected_mean_C,s.selected_sharpe,color='black',marker='D',s=28,zorder=5)
+            ax.scatter(end.mean_C,end.oos_sharpe,facecolors='white',edgecolors=COLORS[1],
+                s=32,zorder=6,clip_on=False)
+            ax.set_title(f'{lo}–{hi} · n = {int(s.months)}',fontsize=15);ax.grid(True)
+            ax.set_xticks([0,200,400,600]);ax.tick_params(labelsize=13)
+            plotted.append(dict(period=label,vertices=len(line.get_xydata()),
+                maximum_candidate=int(peak.candidate),zero_candidate=int(end.candidate),
+                observed_complexity_endpoint=float(end.mean_C)))
+        for ax in axs[2]:ax.set_xlabel('Mean effective complexity',fontsize=13)
+        for ax in axs[:,0]:ax.set_ylabel('OOS Sharpe',fontsize=13)
+        xmax=float(summary.effective_rank.max())
+        ymin=float(min(0,curves.oos_sharpe.min(),summary.selected_sharpe.min()))-.12
+        ymax=float(max(curves.oos_sharpe.max(),summary.selected_sharpe.max()))+.25
+        axs[0,0].set_xlim(0,xmax);axs[0,0].set_ylim(ymin,ymax)
+        handles=[plt.Line2D([0],[0],color=COLORS[1],lw=1.3,label='Evaluated λ path'),
+            plt.Line2D([0],[0],color=COLORS[2],marker='*',lw=0,ms=11,label='Retrospective maximum'),
+            plt.Line2D([0],[0],color='black',marker='D',lw=0,ms=5.5,label='Past-validation selection'),
+            plt.Line2D([0],[0],color=COLORS[1],marker='o',mfc='white',lw=0,ms=5.5,label='Exact λ = 0')]
+        fig.legend(handles=handles,loc='outside upper center',ncol=4,frameon=False,fontsize=12)
+        assert len(fig.axes)==9 and len(fig.legends)==1
+        assert all(np.array_equal(ax.get_xlim(),[0,xmax]) for ax in axs.flat)
+        assert all(np.array_equal(ax.get_ylim(),[ymin,ymax]) for ax in axs.flat)
+        finish(fig,'fig06_nine_complete_profiles')
+    audit('figure6_render',dict(passed=True,panels=plotted,policies_per_panel=len(grid),
+        common_xlim=[0,xmax],common_ylim=[ymin,ymax],confidence_bands=False,
+        historical_fit_panels=False,all_evaluated_vertices_retained=True,
+        path_simplification=False,smoothing=False,extrapolation=False,
+        curves_sha256=digest(OUT/'tables/nine_panel_curves.csv')))
+
+
 def figures():
     plt.rcParams.update({'font.family':'DejaVu Sans','font.size':11,'axes.spines.top':False,
         'axes.spines.right':False,'pdf.fonttype':42,'savefig.facecolor':'white','grid.alpha':.25})
@@ -319,28 +374,7 @@ def figures():
     axs[1].scatter(selected.C,sharpe(original.excess_return),marker='D',s=40,color='black',label='Past-validation selection',zorder=5)
     axs[1].set_xlabel('Effective complexity, fixed Gaussian');axs[1].set_xlim(0,c['rank'].iloc[0]);axs[1].legend(frameon=False,fontsize=9)
     finish(fig,'fig05_fixed_gaussian_2024')
-    curves=read('nine_panel_curves');summary=read('nine_panel_summary').set_index('period')
-    fig,axs=plt.subplots(3,3,figsize=(9,8.2),sharex=True,sharey=True,layout='constrained')
-    for ax,(lo,hi) in zip(axs.flat,BLOCKS):
-        label=f'{lo}-{hi}';f=curves[curves.period.eq(label)].sort_values('mean_C');s=summary.loc[label]
-        ax.fill_between(f.mean_C,f.sr_low,f.sr_high,color=COLORS[1],alpha=.15,lw=0)
-        ax.plot(f.mean_C,f.oos_sharpe,color=COLORS[1],lw=1.6)
-        peak=f[f.retrospective_maximum].iloc[0];end=f[f.zero_penalty].iloc[0]
-        ax.scatter(peak.mean_C,peak.oos_sharpe,color=COLORS[2],marker='*',s=120,zorder=5)
-        ax.scatter(s.selected_mean_C,s.selected_sharpe,color='black',marker='D',s=34,zorder=5)
-        ax.scatter(end.mean_C,end.oos_sharpe,facecolors='white',edgecolors=COLORS[1],s=38,zorder=6,clip_on=False)
-        ax.set_title(f'{lo}–{hi} · n = {int(s.months)}',fontsize=13);ax.grid(True)
-        ax.set_xticks([0,200,400,600]);ax.tick_params(labelsize=11)
-    for ax in axs[2]:ax.set_xlabel('Mean effective complexity',fontsize=11)
-    for ax in axs[:,0]:ax.set_ylabel('OOS Sharpe',fontsize=11)
-    axs[0,0].set_xlim(0,summary.effective_rank.max())
-    axs[0,0].set_ylim(curves.sr_low.min()-.15,curves.sr_high.max()+.15)
-    handles=[plt.Line2D([0],[0],color=COLORS[1],lw=1.6,label='Actual ridge path'),
-        plt.Line2D([0],[0],color=COLORS[2],marker='*',lw=0,ms=11,label='Retrospective maximum'),
-        plt.Line2D([0],[0],color='black',marker='D',lw=0,ms=6,label='Past-validation policy'),
-        plt.Line2D([0],[0],color=COLORS[1],marker='o',mfc='white',lw=0,ms=6,label='Exact λ = 0')]
-    fig.legend(handles=handles,loc='outside upper center',ncol=2,frameon=False,fontsize=11)
-    finish(fig,'fig06_nine_complete_profiles')
+    figure_six()
     e=read('economic_exposure_summary');names=['Value','Profitability','Investment','Momentum','Recent return','Size','Liquidity','Issuance','Debt financing']
     fig,axs=plt.subplots(1,2,figsize=(10,4.7),sharey=True,layout='constrained')
     for ax,col,title in zip(axs,['long_minus_short','signed_notional'],['Long-minus-short rank profile','Signed notional rank exposure']):
@@ -356,9 +390,12 @@ def figures():
 
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--public-only',action='store_true');args=parser.parse_args()
+    parser=argparse.ArgumentParser();modes=parser.add_mutually_exclusive_group()
+    modes.add_argument('--public-only',action='store_true')
+    modes.add_argument('--figure-six-only',action='store_true',help='Redraw Figure 6 and rebuild the section without changing results or other figures')
+    args=parser.parse_args()
     for folder in ['tables','audit','figures','publication']: (OUT/folder).mkdir(parents=True,exist_ok=True)
-    if not args.public_only:
+    if not (args.public_only or args.figure_six_only):
         audit('scope',dict(section='VI only',representation_comparison='Linear and joint-validation Gaussian/Matérn-3/2',
             mechanism='Existing fixed-lengthscale seed-0 Gaussian only',theory_modified=False,
             theory_guided_experiments_included=False,appendix=False))
@@ -368,12 +405,18 @@ def main():
         manifest=json.loads((OUT/'audit/results_manifest.json').read_text())
         for name,expected in manifest['tables'].items():
             if digest(OUT/name)!=expected:raise ValueError('Changed public aggregate: '+name)
-    figures()
+    if args.figure_six_only:figure_six()
+    else:figures()
     from empirical_final.section_vi_publication import publication, verify
     publication();verify()
-    audit('results_manifest',dict(tables={str(p.relative_to(OUT)):digest(p) for p in sorted((OUT/'tables').glob('*.csv'))},
+    result_manifest=dict(tables={str(p.relative_to(OUT)):digest(p) for p in sorted((OUT/'tables').glob('*.csv'))},
         code={str(p.relative_to(ROOT)):digest(p) for p in [Path(__file__),ROOT/'empirical_final/section_vi_publication.py',ROOT/'empirical_final/templates/final_section_vi.tex']},
-        figures={p.name:digest(p) for p in sorted((OUT/'figures').glob('*.pdf'))}))
+        figures={p.name:digest(p) for p in sorted((OUT/'figures').glob('*.pdf'))})
+    if args.figure_six_only:
+        result_manifest['test_source_sha256']=manifest.get('test_source_sha256')
+        result_manifest['delivered_pdf_sha256']=digest(OUT/'publication/Section_VI_Empirical_Portfolio_Learnability.pdf')
+        result_manifest['delivered_latex_zip_sha256']=digest(OUT/'publication/Section_VI_Complete_LaTeX_Source.zip')
+    audit('results_manifest',result_manifest)
 
 
 if __name__=='__main__':main()

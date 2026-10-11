@@ -138,6 +138,10 @@ def publication():
     (pub/'numbers.tex').write_text(macro)
     template=ROOT/'empirical_final/templates/final_section_vi.tex'
     shutil.copyfile(template,pub/'empirics.tex')
+    caption=re.search(r'(?<=fig06_nine_complete_profiles.pdf\}\n)\\caption\{.*?\}\n\\label\{fig:complexity_nine\}',
+        template.read_text(),flags=re.S)
+    if caption is None:raise ValueError('Figure 6 caption not found')
+    (pub/'figure6_caption.tex').write_text(caption.group(0)+'\n')
     for p in (OUT/'figures').glob('*.pdf'): shutil.copyfile(p,pub/'figures'/p.name)
     main=r"""\documentclass[11pt]{article}
 \usepackage[letterpaper,margin=1in]{geometry}

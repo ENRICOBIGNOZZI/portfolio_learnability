@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "starting_commit": "8b1624bc9b14146dfb142e16f5ff87d855c086df",
+  "unchanged_canonical_tables": 30,
+  "unchanged_other_figures": 4,
+  "surrounding_empirical_text_unchanged": true,
+  "empirical_edits": [
+    "Figure 6 introduction paragraph",
+    "Figure 6 caption"
+  ],
+  "plotted_candidates_per_period": 1522,
+  "total_plotted_candidates": 13698,
+  "exact_zero_endpoint_in_every_panel": true,
+  "source_package_compiled_independently": true
+}

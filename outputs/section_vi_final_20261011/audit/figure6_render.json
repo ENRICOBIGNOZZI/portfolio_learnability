@@ -1,0 +1,84 @@
+{
+  "passed": true,
+  "panels": [
+    {
+      "period": "1978-1982",
+      "vertices": 1522,
+      "maximum_candidate": 675,
+      "zero_candidate": 1521,
+      "observed_complexity_endpoint": 204.0
+    },
+    {
+      "period": "1983-1987",
+      "vertices": 1522,
+      "maximum_candidate": 747,
+      "zero_candidate": 1521,
+      "observed_complexity_endpoint": 264.0
+    },
+    {
+      "period": "1988-1992",
+      "vertices": 1522,
+      "maximum_candidate": 676,
+      "zero_candidate": 1521,
+      "observed_complexity_endpoint": 324.0
+    },
+    {
+      "period": "1993-1997",
+      "vertices": 1522,
+      "maximum_candidate": 684,
+      "zero_candidate": 1521,
+      "observed_complexity_endpoint": 384.0
+    },
+    {
+      "period": "1998-2002",
+      "vertices": 1522,
+      "maximum_candidate": 682,
+      "zero_candidate": 1521,
+      "observed_complexity_endpoint": 444.0
+    },
+    {
+      "period": "2003-2007",
+      "vertices": 1522,
+      "maximum_candidate": 676,
+      "zero_candidate": 1521,
+      "observed_complexity_endpoint": 504.0
+    },
+    {
+      "period": "2008-2012",
+      "vertices": 1522,
+      "maximum_candidate": 521,
+      "zero_candidate": 1521,
+      "observed_complexity_endpoint": 564.0
+    },
+    {
+      "period": "2013-2017",
+      "vertices": 1522,
+      "maximum_candidate": 753,
+      "zero_candidate": 1521,
+      "observed_complexity_endpoint": 624.0
+    },
+    {
+      "period": "2018-2024",
+      "vertices": 1522,
+      "maximum_candidate": 712,
+      "zero_candidate": 1521,
+      "observed_complexity_endpoint": 696.0
+    }
+  ],
+  "policies_per_panel": 1522,
+  "common_xlim": [
+    0,
+    696.0
+  ],
+  "common_ylim": [
+    -0.12,
+    7.87566024852991
+  ],
+  "confidence_bands": false,
+  "historical_fit_panels": false,
+  "all_evaluated_vertices_retained": true,
+  "path_simplification": false,
+  "smoothing": false,
+  "extrapolation": false,
+  "curves_sha256": "526cdf3f10fc83a2a5db866b65f9a449e0be2b11e8253b80a3128de5caf7f898"
+}

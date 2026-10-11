@@ -164,28 +164,33 @@ the first and final endpoints, and the smallest positive penalties converge
 numerically to the zero returns. No added evaluation changes the original
 validation policy, and no OOS result selects a deployable penalty.
 
-Each block concatenates the actual OOS monthly returns of each fixed-penalty
-policy across annual refits, then computes one annualized Sharpe. We do not
-average annual Sharpes. Horizontal coordinates average annual complexities
-with realized-month weights. The first eight blocks have 60 months each and
-the final block 84. The endpoint coordinate is the corresponding average
-historical rank; each annual policy also respects its own rank bound. Common
-axes permit comparison, while every curve stops at its observed support.
-Lines connect evaluated observations without smoothing or extrapolation.
+Figure~\ref{fig:complexity_nine} shows only OOS Sharpe against mean effective
+complexity in a $3\times3$ grid. Each block concatenates actual monthly OOS
+returns across annual refits for every one of the \CandidateCount\ evaluated
+penalties, including the complete near-unregularized tail and exact zero.
+Sharpe is calculated from that concatenated series, rather than averaged
+across annual Sharpes; complexity averages annual fits with realized-month
+weights. The first eight blocks have 60 months each and the final block 84.
+All panels use common scales, and each curve ends at its own mean historical
+effective rank. Lines connect all evaluated candidates without smoothing or
+extrapolation. Confidence bands are omitted for legibility; maxima remain
+retrospective, and diamonds retain the original past-validation policy.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{figures/fig06_nine_complete_profiles.pdf}
-\caption{Nine complete Sharpe--complexity profiles for the fixed Gaussian
-representation. Decision years label panels; 1978--1982 realizes February
-1978--January 1983, and 2018--2024 realizes February 2018--January 2025.
-Every line uses actual fixed-$\lambda$ monthly OOS returns across annual
-refits, including the extended positive grid and exact minimum-norm endpoint
-(open circle). Stars maximize Sharpe over this entire grid; diamonds show
-the unchanged annual past-validation policy, whose penalty varies by year.
-All panels share axes and each stops at its mean historical effective rank.
-Shading gives pointwise 95\% paired 12-month circular-block intervals,
-conditional on fitted paths and uncorrected for retrospective peak selection.}
+\caption{Complete OOS Sharpe profiles over the full evaluated $\lambda$
+range for the fixed Gaussian representation. Each panel uses every evaluated
+candidate penalty: the original grid, the extension to very small positive
+penalties, and exact $\lambda=0$. Lines connect actual OOS evaluations across
+annual refits against realized-month-weighted mean effective complexity;
+no values are smoothed or extrapolated outside observed support. Stars mark
+retrospective maxima over the complete grid. Diamonds show the annual
+past-only validation choices, whose penalties can vary within a block. Open
+circles denote exact minimum-norm $\lambda=0$ endpoints at each block's mean
+historical effective rank. All nine panels share horizontal and vertical
+scales. Decision years label panels: 1978--1982 realizes February 1978--January
+1983, and 2018--2024 realizes February 2018--January 2025.}
 \label{fig:complexity_nine}
 \end{figure}
 

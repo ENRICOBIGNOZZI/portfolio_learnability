@@ -32,18 +32,18 @@
     "tables/stock_reconstruction_checks.csv": "db2d9339a05995a27703da1b731cc93d27d95c199d96cd1faa50b5383b794a78"
   },
   "code": {
-    "empirical_final/section_vi_finalize.py": "537c7359cc5ef40faac099bcdac829c7f1153d7d821c18b6157bdf98c17fa19e",
-    "empirical_final/section_vi_publication.py": "1e1ee67212452e3d1ed76b9ae27f14c2791263e4a6895ab043d90c72331d97a0",
-    "empirical_final/templates/final_section_vi.tex": "2c11ef76c02bf5419607392931777e95880880d5bc4c3d671f0c196ca9cd6b84"
+    "empirical_final/section_vi_finalize.py": "0e279d9bdfc40ccd8a22cee91c613a53bccd1c59cbdebd0e50474f48a342cff0",
+    "empirical_final/section_vi_publication.py": "6c35594fcce7ca0bda1e3f06d64eb7c0961e95736276504856306a568947acdd",
+    "empirical_final/templates/final_section_vi.tex": "71217f7295e70f1dd6b7ea47dc678282c182f07119e433a3d730014fa1b4c447"
   },
   "figures": {
     "fig03_representation_wealth.pdf": "aa7639cf1d47a44867bfc64f327970b0acbcec8782e43a80ed4a30961f57f992",
     "fig04_fixed_gaussian_spectrum.pdf": "93b528c7809bfe8ffa946d9ef117c50a5438c27c84496f9d519a215cea592339",
     "fig05_fixed_gaussian_2024.pdf": "ae97c2419bbda672adc538927f6b36ee3bcf4867246d9dd0df55864961647669",
-    "fig06_nine_complete_profiles.pdf": "63d35c850916ef36c9697bdc0f0c480934d791708cc38133c440ca9b29b6b58f",
+    "fig06_nine_complete_profiles.pdf": "14d35102c30f375033c08ee01a3ed2388a126e19597d33f41f630ad8c5174a65",
     "fig07_fixed_gaussian_holdings.pdf": "9df821d73f14388d9b6d5739a6a5e9a86dee74d2c82806ee28420e657eae347e"
   },
   "test_source_sha256": "d7e0af8445b12bb3517456fa38e5a157547c7d8a12d342569bf435110fbafb72",
-  "delivered_pdf_sha256": "9ef2648a70c7c3a0f5bf713e47c1ace690676ddaba45be8d003e35c72485378f",
-  "delivered_latex_zip_sha256": "9f58ff87f7c05bec9a0b794dfd62c27952e0f45813fbf55fd27573c0b6a4a9f0"
+  "delivered_pdf_sha256": "dc7fc1cea95424bf33df7b53c7aa572bed912e5c82b8ebdc8342c1383128bb77",
+  "delivered_latex_zip_sha256": "55ddbcbd27208814dee2bd4e461f4138dab649485929644c3880668bf9ba89fa"
 }
