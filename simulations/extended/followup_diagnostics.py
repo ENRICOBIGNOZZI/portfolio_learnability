@@ -85,7 +85,15 @@ def run():
             crossfit = np.asarray(crossfit).T
             for label, gaps in [('theory', np.sqrt(12)*parameters(name).sr_star-sr[:, :, -1]),
                                 ('crossfit_population_oracle', np.sqrt(12)*parameters(name).sr_star-crossfit)]:
-                slopes.extend(dict(environment=name, diagnostic=label, **r) for r in gap_slopes(T, gaps))
+                for r in gap_slopes(T, gaps):
+                    if label == 'crossfit_population_oracle':
+                        # Shared selection folds make these outcomes dependent
+                        # across paths. Do not mislabel an iid delta/jackknife
+                        # interval as unconditional oracle uncertainty.
+                        for key in ('MCSE_delta', 'CI_low', 'CI_high', 'MCSE_jackknife'):
+                            r.pop(key, None)
+                        r['uncertainty'] = 'Descriptive only; shared cross-fit selection induces cross-path dependence.'
+                    slopes.append(dict(environment=name, diagnostic=label, **r))
     pd.DataFrame(rows).to_csv(DEST/'oracle_diagnostic.csv', index=False)
     pd.DataFrame(decompositions).to_csv(DEST/'gap_decomposition.csv', index=False)
     pd.DataFrame(slopes).to_csv(DEST/'diagnostic_slopes.csv', index=False)

@@ -1,0 +1,25 @@
+{
+  "recorded_utc": "2026-10-11T09:29:06.088437+00:00",
+  "remote_fit_commit": "041a8529f742583956bcf38dd28c4651f9e281b4",
+  "population_implementation_unchanged_during_execution": true,
+  "population_function_hashes": {
+    "RawBasis": "883301ea5f642796eb6a2cd07f77b5563b146578d6baeddd4c341742a60946e0",
+    "evaluate": "d14b471dd9524ef9d563cbf2bd67eec0b0c96e38130ef9fc9c96fe3d3796a756",
+    "population": "b2b6e6e06283472c3e9e0f82b280b2bd383d752259c7b496708541b3c024e892"
+  },
+  "sources": {
+    "kernels.py": "8515be031e468ffa9f6733afa2d3f661bdb51ccdcd746aac4ce4d4faeb9c6da0",
+    "simulations/extended/rank_followup.py": "ef68706a08e6954bbd0194c474e4de8ed2dc29ccd733dcd6cb62a80f1f821228",
+    "simulations/extended/population.py": "68c434863deb5907b4a5f4f3310c8d9a81c89c372a7da87caa528e74b8105071",
+    "simulations/extended/histories.py": "4d12d5edea2c7a32687e560e9d7cc069d7201b1c11a090ed37c38d333ad26c48",
+    "simulations/extended/design.py": "2159985ed7db5dee3f3658a051a1b40f35f996e179580faabd02923c70cec8ae",
+    "simulations/estimator/kernel.py": "a824efc02a20ddacc0820c4d3b1df918caad6fb65b612137eff35337b844cd18",
+    "simulations/estimator/ridge.py": "8b4d4b4a3bf0579e12c20513f680bce4cb371d12eb94ea1ec31f7af91164cdf0",
+    "simulations/dgp/balanced.py": "8dadd7867d1d3162228943a6ec943e09de9985f3e00e2986e1ddf7173d5e8724",
+    "simulations/dgp/rough.py": "25f6d5f398c346fa522f8f0d63725c73aa38392c8a7155862706b190f97775e5",
+    "simulations/extended/followup_diagnostics.py": "7f4672a38a4985e733f0b8e5c9ac86a219d67a485370623c192118ff4aa4e8fe",
+    "simulations/extended/followup_report.py": "36200dff6402ae6320a00a3108da1c1818b13735cfde56de771ace7c523a6bf5",
+    "tests/test_rank_followup.py": "96ec569b6a5a19f77c9133502e8612df473be9bfe0fa5afb2a9c1b62dd36d507"
+  },
+  "tests": "Four targeted tests passed: equivalent RKHS coordinates and streamed moments; disjoint oracle selection/evaluation; paired rank bound; paired slope covariance."
+}

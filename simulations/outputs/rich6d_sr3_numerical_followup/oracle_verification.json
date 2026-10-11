@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "checked_environment_horizons": 61,
+  "source_summary_sha256": "491679d4b47a7d72d0efea49cf830306296512f784a3cdfa7dd334a3e7388f4e",
+  "verified_utc": "2026-10-11T09:26:45.292391+00:00",
+  "checks": [
+    "Independent saved-summary maximum of mean SR",
+    "Independent saved-summary minimum of mean regret",
+    "Exact prescribed-strategy mean",
+    "Exact signed regret decomposition"
+  ]
+}

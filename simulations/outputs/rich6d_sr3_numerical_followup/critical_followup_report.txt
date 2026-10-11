@@ -1,0 +1,87 @@
+TARGETED NUMERICAL AND REGULARIZATION FOLLOW-UP
+
+
+
+Scope: the published 300-path experiment remains unchanged. This follow-up reuses its complete distributions and reruns the original twelve independent pilot histories at P=8192, at T=1440,2160,3240,4860. Baseline economy only; no new final-production Monte Carlo indices. The same Matérn kernel, anchors nested by Sobol prefix, RKHS norm, economics, annualization and a*T^(-0.6) strategy are preserved.
+
+MAIN CONCLUSION: Doubling rank reduces the estimated unregularized projection floor, but does not resolve the final-horizon 5% floor criterion. The actual prescribed fitted policies improve only slightly; their paired late-window slope is essentially unchanged. The saved 300-path penalty grid reveals a materially larger ex-post regularization opportunity. This comparison does not justify retuning a on final outcomes, nor attributing all late-window flattening to the rank-4096 floor.
+
+
+
+1. ORIGINAL HIGH-T DECOMPOSITION
+
+At T=4860: economic optimal annual Sharpe 3.000000; quadrature-fitted rank-4096 subspace optimum 2.989129; learned mean 2.934774. The subspace ceiling accounts for 16.666% of the annual Sharpe gap, versus 8.003% of quadratic regret. These are different denominators.
+
+Population regularization bias including projection floor / mean regret = 95.094%. The exact decomposition is bias + estimation norm + signed cross term; this percentage is not an additive bias-versus-variance allocation.
+
+
+
+2. COMMON EX-POST PENALTY-GRID OPTIMUM
+
+   T  theory_lambda  grid_SR_lambda  theory_SR  grid_max_mean_SR  crossfit_population_oracle_SR  SR_improvement
+1440   1.269419e-06    2.976351e-07   2.872454          2.937823                       2.937823        0.065369
+2160   9.952915e-07    2.335721e-07   2.901729          2.944576                       2.944576        0.042847
+3240   7.803609e-07    1.832981e-07   2.921222          2.949480                       2.949480        0.028258
+4860   6.118441e-07    1.438450e-07   2.934774          2.953426                       2.953426        0.018652
+
+The selected grid penalty maximizes the mean across paths, not a separate maximum for each path. Even/odd cross-fitting separates population-outcome selection and evaluation; it remains an infeasible population diagnostic, not a trading selector. Fixed-selected-index paired MCSE ignores selection uncertainty. No constant a is changed. The regret-minimizing grid point and the Sharpe-maximizing grid point are reported separately.
+
+The grid oracle is still rank 4096 and can be more exposed to projection error at its smaller penalty; these numbers do not certify a new optimal strategy.
+
+
+
+3. HIGHER-RANK PAIRED AUDIT
+
+P8192 quadrature-fitted projection regret floor: 0.00125235094; independently evaluated regret of that fitted optimum: 0.001537267935. The latter evaluates a fixed policy; it is not a certified exact subspace minimum.
+
+Population regularization bias at the same prescribed penalties and common primary quadrature:
+
+   T  population_bias_P4096  population_bias_P8192  population_bias_reduction  population_bias_relative_reduction  primary_floor_P4096  primary_floor_P8192
+1440               0.048731               0.048606                   0.000124                            0.002554             0.001777             0.001252
+2160               0.036939               0.036838                   0.000101                            0.002738             0.001777             0.001252
+3240               0.027864               0.027784                   0.000080                            0.002885             0.001777             0.001252
+4860               0.021115               0.021052                   0.000063                            0.002992             0.001777             0.001252
+
+ evaluation    T  paired_paths  mean_regret_P4096  mean_regret_P8192  mean_SR_P4096  mean_SR_P8192  paired_regret_difference  paired_regret_MCSE  paired_regret_bound  paired_fraction_of_lower_regret  paired_pass  P4096_primary_floor_fraction  P8192_primary_floor_fraction  P8192_independently_evaluated_floor_policy_fraction  P8192_floor_diagnostic_pass  P8192_independent_floor_policy_pass  paired_SR_improvement  paired_SR_MCSE  paired_SR_CI_low  paired_SR_CI_high  P8192_has_higher_rank_certificate
+    primary 1440            12           0.048430           0.048318       2.882864       2.883214                  0.000112        1.319604e-06             0.000115                         0.002368         True                      0.036694                      0.025919                                             0.031815                         True                                 True               0.000349        0.000017          0.000316           0.000383                              False
+    primary 2160            12           0.036665           0.036573       2.909396       2.909666                  0.000092        1.117610e-06             0.000094                         0.002569         True                      0.048469                      0.034243                                             0.042033                         True                                 True               0.000270        0.000014          0.000243           0.000298                              False
+    primary 3240            12           0.027591           0.027517       2.927749       2.927961                  0.000074        8.402825e-07             0.000076                         0.002750         True                      0.064409                      0.045513                                             0.055867                         True                                False               0.000211        0.000009          0.000194           0.000228                              False
+    primary 4860            12           0.021612           0.021552       2.935809       2.935988                  0.000060        7.974028e-07             0.000061                         0.002838         True                      0.082228                      0.058108                                             0.071328                        False                                False               0.000180        0.000006          0.000167           0.000192                              False
+independent 1440            12           0.047623           0.047513       2.885427       2.885771                  0.000110        1.078803e-06             0.000112                         0.002344         True                      0.037316                      0.026358                                             0.032354                         True                                 True               0.000345        0.000017          0.000311           0.000378                              False
+independent 2160            12           0.035965           0.035876       2.911490       2.911754                  0.000089        9.405758e-07             0.000091                         0.002529         True                      0.049412                      0.034908                                             0.042849                         True                                 True               0.000264        0.000014          0.000237           0.000292                              False
+independent 3240            12           0.026958           0.026886       2.929442       2.929648                  0.000071        7.062547e-07             0.000073                         0.002703         True                      0.065922                      0.046580                                             0.057177                         True                                False               0.000207        0.000008          0.000190           0.000223                              False
+independent 4860            12           0.021051           0.020994       2.937242       2.937417                  0.000057        7.041456e-07             0.000059                         0.002786         True                      0.084418                      0.059653                                             0.073224                        False                                False               0.000176        0.000006          0.000164           0.000187                              False
+
+
+
+At T4860 independent evaluation: mean annual Sharpe P4096=2.937242, P8192=2.937417; paired improvement=0.000176, MCSE=0.000006, 95% mean interval=[0.000164,0.000187]. These are twelve pilot policies, not the 300-production means.
+
+Paired slope changes over the four targeted horizons (full cross-rank and cross-T covariance):
+
+ evaluation  paired_paths            horizons  slope_change  paired_MCSE   CI_low  CI_high
+    primary            12 1440,2160,3240,4860      0.000151     0.000055 0.000043 0.000258
+independent            12 1440,2160,3240,4860      0.000172     0.000052 0.000072 0.000273
+
+
+
+4. QUADRATURE AND LIMITATIONS
+
+ rank    T  paired_paths  paired_difference  paired_MCSE    bound  independent_mean_regret  fraction  passed
+ 4096 1440            12           0.000808     0.000034 0.000873                 0.047623  0.018340    True
+ 4096 2160            12           0.000700     0.000043 0.000784                 0.035965  0.021796    True
+ 4096 3240            12           0.000633     0.000038 0.000708                 0.026958  0.026282    True
+ 4096 4860            12           0.000561     0.000032 0.000622                 0.021051  0.029564    True
+ 8192 1440            12           0.000805     0.000033 0.000871                 0.047513  0.018325    True
+ 8192 2160            12           0.000697     0.000043 0.000781                 0.035876  0.021765    True
+ 8192 3240            12           0.000631     0.000038 0.000706                 0.026886  0.026248    True
+ 8192 4860            12           0.000558     0.000031 0.000620                 0.020994  0.029514    True
+
+All twelve lower-rank policies reproduce the saved original population metrics, and the entire original return histories are hash-checked. Cholesky coordinates are an orthogonal change of RKHS feature coordinates, tested against the original symmetric whitening. No jitter, target enrichment, factor-informed features or altered penalty is introduced.
+
+Rank 8192 has no still-higher-rank reference. A backward difference does not certify the larger rank. Any remaining 5% failures remain failures; no universal numerical-resolution claim or replacement of all five 300-path environments is made.
+
+
+
+5. THEORETICAL INTERPRETATION
+
+Imposing lambda proportional to T^(-0.6) does not itself impose complexity proportional to T^(0.4): the actual population spectrum determines its elasticity. Nevertheless, measuring complexity along that prescribed path is not an independent test of the optimality of a, nor proof of the learnability theorem. This audit does not establish the source condition, its maximal regularity, Gaussian-tail assumptions, or minimax optimality, and makes no manuscript/proof changes.

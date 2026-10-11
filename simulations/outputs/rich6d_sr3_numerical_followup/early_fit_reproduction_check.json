@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "replication": 0,
+  "verified_utc": "2026-10-11T09:29:44.682708+00:00",
+  "maximum_regret_difference": 5.828670879282072e-15,
+  "maximum_SR_difference": 3.064215547965432e-14,
+  "scope": "Single first-fit reproduction check; not a Monte Carlo rank gate."
+}

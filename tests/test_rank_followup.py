@@ -44,3 +44,23 @@ def test_oracle_uses_common_grid_choice_and_disjoint_evaluation_indices():
     np.testing.assert_array_equal(crossfit, np.zeros(4))
     assert row['crossfit_even_selected_index'] == 0
     assert row['crossfit_odd_selected_index'] == 1
+
+
+def test_paired_bound_retains_pairing_instead_of_independent_rank_errors():
+    from simulations.extended.followup_report import paired_bound
+    low = np.array([[1., 3.], [2., 6.], [3., 9.]])
+    high = low-np.array([.1, .2])
+    mean, mcse, bound = paired_bound(low-high)
+    np.testing.assert_allclose(mean, [.1, .2])
+    np.testing.assert_allclose(mcse, 0, atol=1e-15)
+    np.testing.assert_allclose(bound, [.1, .2])
+
+
+def test_paired_slope_change_is_invariant_to_common_gap_scale():
+    from simulations.extended.followup_report import paired_slope_change
+    rng = np.random.default_rng(19)
+    times = np.array([1440, 2160, 3240, 4860])
+    low = rng.uniform(.9, 1.1, (12, 4))*times[None, :]**(-.6)
+    result = paired_slope_change(times, low, 2*low)
+    np.testing.assert_allclose(result['slope_change'], 0, atol=1e-14)
+    np.testing.assert_allclose(result['paired_MCSE'], 0, atol=1e-14)
