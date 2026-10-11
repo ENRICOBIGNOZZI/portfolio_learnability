@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "date": "2026-10-11",
+  "pages": 8,
+  "pdf_sha256": "9ef2648a70c7c3a0f5bf713e47c1ace690676ddaba45be8d003e35c72485378f",
+  "page_render_sha256": {
+    "page-1.png": "33da9af80ff94918974f122714b0e7a7efb6a11f7df4fc578f32c742fd929749",
+    "page-2.png": "32c744d72c0297a72273631ef2f46775afca00be35da3c7f9f4b04b56129c756",
+    "page-3.png": "63fb92856c88cea7c2afd490e436095767619ebe60bbea10b8a43e72edf23d30",
+    "page-4.png": "ea82be1eb342cbd6f129ae7163559e42af3251f327fa28d5ecd087995ae6c529",
+    "page-5.png": "349725028b8e0936908ba4b7f445ec7d4ec5d98ba46aef111c5a9742e30d8be3",
+    "page-6.png": "eea3140f9c1f20da5315951778e05585b351c222aa36e738c81281aecf029d06",
+    "page-7.png": "d77d284d5be2043342f912cf2b102551a5beb37c4e42cea7fc54d1f42caaef80",
+    "page-8.png": "7ec3bb736cf4eac5889b18a71a8a2f4c2bceee5bb7f09ffe823c78fcb7ed663a"
+  },
+  "review": "Every page visually inspected at full rendered resolution. After the last marker fix, pages 4 and 5 were re-inspected and all other page PNG hashes were unchanged.",
+  "checks": [
+    "Legible figures and nine-panel labels",
+    "Full zero-endpoint markers visible with rank-bounded axes",
+    "No clipped or overlapping text, tables or graphics",
+    "No nearly blank pages",
+    "Section VI and Figure 6 numbering correct",
+    "All numerical text, captions, table values and plotted observations verified from canonical results"
+  ],
+  "source_zip_sha256": "9f58ff87f7c05bec9a0b794dfd62c27952e0f45813fbf55fd27573c0b6a4a9f0",
+  "extracted_source_compiles": true,
+  "extracted_source_pages": 8,
+  "extracted_source_text_matches": true
+}

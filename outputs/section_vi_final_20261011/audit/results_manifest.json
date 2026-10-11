@@ -1,0 +1,49 @@
+{
+  "tables": {
+    "tables/dominant_long_short_exposures_named.csv": "c4c32d2cdf0cf89c3f0bf19ad8b2684aa01acccb9e88f7af2d6a582994b06c36",
+    "tables/e3_annual_groups.csv": "be0370a1e464bf867168ec2e0b4a0e0d08a3a783d2aa690faf59441c051beb7d",
+    "tables/e3_monthly.csv": "8b43510e82d45fe4c43e96799fa3b5f3aed1d52136d478a2b797aa27e80d640b",
+    "tables/economic_exposure_summary.csv": "f41fa1c746deca9335ae199245fe9ca3cec93f817f2957996f99f8c0a7e40eac",
+    "tables/figure_spectrum.csv": "dfe9bc28f48602db5af26cb3fd1bc1cd87b0d23253683e5bae4d2b30a75a4eda",
+    "tables/figure_wealth.csv": "480ebc407a1bc9aad10628ae1c8c9820b949cf876037423cd377ce856224ba38",
+    "tables/formation_timing_by_month.csv": "bc96ce90b015f3f839a623810b622fbbce3bd78aca8ac521ba8e1a6ab061b4bc",
+    "tables/group_factor_regressions.csv": "c75f9085e36576d3829436d0d9a135077f40ffc4e7937b4430607b58afd0bd60",
+    "tables/group_oos_covariance.csv": "4a3ba12314e924a60c49f979378d7eaa30d4f61d4c8d92eb0aba2e61ec705168",
+    "tables/group_past_only_hedged_monthly.csv": "8abe7a08d20e093881fffcfe990262f0325860fa455c13868a63a2163e7420ce",
+    "tables/incremental_spectral_loss.csv": "1e0fe03849cba61c749fb0f637d409fa6e8cfcbe8242e64a8a0910e43504994d",
+    "tables/joint_monthly_raw.csv": "125b96e64ae93567c53df2c0803fb05353fa611cf469cc1a3a93a124eefd0a2d",
+    "tables/joint_selections.csv": "aafe8dceffa9f9dd4fb4e39dae648c613ab3521003dc9e5712e144a5c05bccb9",
+    "tables/managed_spectra.csv": "397810852c9bbc469c405266c4790ba3b20b51a3cd46b0beae219cf77ddab503",
+    "tables/monthly_accounting.csv": "9d35460244157e6463506d3b8181629b1bc553a94c77fd152373fa3d72bbd952",
+    "tables/monthly_economic_exposures.csv": "687c2b23d03412ca631e7eb900eaae3b7c62c9cc292a3cccea280d82128716b4",
+    "tables/nine_panel_curves.csv": "526cdf3f10fc83a2a5db866b65f9a449e0be2b11e8253b80a3128de5caf7f898",
+    "tables/nine_panel_month_identifiers.csv": "f8d388977ac3612139793a9bd2063159c11ba7913f9972c6a95efa5276950b67",
+    "tables/nine_panel_summary.csv": "a22707d9f862f1ccd88aafce603815f7cb2a2c08f4f24ad8b2836b1a00cefc8a",
+    "tables/paired_contrasts.csv": "c174f83960202d03d63fbe0fe02931289696b29acfc7478c32851530249d3974",
+    "tables/representation_accounts.csv": "b73292446e7ce893d9ad60da53cd6656b77d22fa9a5be9a5e2eb2c20820ad8f0",
+    "tables/representation_paired.csv": "47a668e974faf7afdd15dc01b41e683643df8ab20da9295ca5117c9d544d3ead",
+    "tables/representation_performance.csv": "054da27539222b689fcf4c6578f998a7edc682665eaf8738584a8419528c9c4d",
+    "tables/ridge_annual.csv": "71ec025454aee3c9c1ad14ad0e10caeb984b49d3d17cb3b196665f36a7570aad",
+    "tables/ridge_endpoint_checks.csv": "133f2d1bd45dd4c47f940c208702b3cf750649c159b89e60630d633ef9f7695d",
+    "tables/ridge_monthly_paths.csv": "3caf619d599fe4a4db2484bf7a8bbd5ed3c5c210ba4121b4b6c593f6cde87952",
+    "tables/single_window_complexity.csv": "0d29f52ce0cf3d200ef1a1be625b825e50858043cf8c3a7519c915d33f751b50",
+    "tables/spectral_value.csv": "5e4a01e8c799cad9039359a8ee271acf7136a98c2b367e8d3aaafa4ecf7fa0b8",
+    "tables/stock_cost_checks.csv": "248d3ed85586e5d91dc5f8126b995002b29c23105b4533dd5ce3881d5c86f1aa",
+    "tables/stock_reconstruction_checks.csv": "db2d9339a05995a27703da1b731cc93d27d95c199d96cd1faa50b5383b794a78"
+  },
+  "code": {
+    "empirical_final/section_vi_finalize.py": "537c7359cc5ef40faac099bcdac829c7f1153d7d821c18b6157bdf98c17fa19e",
+    "empirical_final/section_vi_publication.py": "1e1ee67212452e3d1ed76b9ae27f14c2791263e4a6895ab043d90c72331d97a0",
+    "empirical_final/templates/final_section_vi.tex": "2c11ef76c02bf5419607392931777e95880880d5bc4c3d671f0c196ca9cd6b84"
+  },
+  "figures": {
+    "fig03_representation_wealth.pdf": "aa7639cf1d47a44867bfc64f327970b0acbcec8782e43a80ed4a30961f57f992",
+    "fig04_fixed_gaussian_spectrum.pdf": "93b528c7809bfe8ffa946d9ef117c50a5438c27c84496f9d519a215cea592339",
+    "fig05_fixed_gaussian_2024.pdf": "ae97c2419bbda672adc538927f6b36ee3bcf4867246d9dd0df55864961647669",
+    "fig06_nine_complete_profiles.pdf": "63d35c850916ef36c9697bdc0f0c480934d791708cc38133c440ca9b29b6b58f",
+    "fig07_fixed_gaussian_holdings.pdf": "9df821d73f14388d9b6d5739a6a5e9a86dee74d2c82806ee28420e657eae347e"
+  },
+  "test_source_sha256": "d7e0af8445b12bb3517456fa38e5a157547c7d8a12d342569bf435110fbafb72",
+  "delivered_pdf_sha256": "9ef2648a70c7c3a0f5bf713e47c1ace690676ddaba45be8d003e35c72485378f",
+  "delivered_latex_zip_sha256": "9f58ff87f7c05bec9a0b794dfd62c27952e0f45813fbf55fd27573c0b6a4a9f0"
+}

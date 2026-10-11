@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "pages": 8,
+  "oos_months": 564,
+  "annual_refits": 47,
+  "evaluated_candidates_per_refit": 1522,
+  "nine_panel_observations": 13698,
+  "all_original_paths_reproduced": true,
+  "zero_endpoint_primal_checks": [
+    1978,
+    2024
+  ],
+  "original_validation_policy_preserved": true,
+  "identical_representation_comparison_months": true,
+  "numerical_claims_verified": 47,
+  "latex_has_no_overfull_or_undefined_warnings": true,
+  "section_only": true,
+  "source_package_complete": true,
+  "visual_check": "Passed: all eight rendered pages inspected"
+}

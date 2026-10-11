@@ -1,0 +1,13 @@
+scenario,block_length,contrast,delta_sharpe,low,high,months,inference_scope
+gross,6,Gaussian minus Linear,0.2088086707261,-0.02773420877872,0.4918692649136,564,"conditional paired descriptive interval, not adjusted for multiple contrasts"
+gross,6,Add intermediate group,0.2724121611131,0.01029869301475,0.54849981386,564,"conditional paired descriptive interval, not adjusted for multiple contrasts"
+gross,12,Gaussian minus Linear,0.2088086707261,-0.002764281228206,0.4652012819495,564,"conditional paired descriptive interval, not adjusted for multiple contrasts"
+gross,12,Add intermediate group,0.2724121611131,0.00218853187737,0.5462927472959,564,"conditional paired descriptive interval, not adjusted for multiple contrasts"
+gross,24,Gaussian minus Linear,0.2088086707261,0.02084344994921,0.4378873836218,564,"conditional paired descriptive interval, not adjusted for multiple contrasts"
+gross,24,Add intermediate group,0.2724121611131,-0.01217402748082,0.5229414696927,564,"conditional paired descriptive interval, not adjusted for multiple contrasts"
+trade25_borrow30,6,Gaussian minus Linear,0.1295195119252,-0.07849184890883,0.3769338944643,564,"conditional paired descriptive interval, not adjusted for multiple contrasts"
+trade25_borrow30,6,Add intermediate group,0.2435857661393,0.01199993168375,0.490091627972,564,"conditional paired descriptive interval, not adjusted for multiple contrasts"
+trade25_borrow30,12,Gaussian minus Linear,0.1295195119252,-0.05712158429787,0.3530059840727,564,"conditional paired descriptive interval, not adjusted for multiple contrasts"
+trade25_borrow30,12,Add intermediate group,0.2435857661393,0.01128348002105,0.4873225431081,564,"conditional paired descriptive interval, not adjusted for multiple contrasts"
+trade25_borrow30,24,Gaussian minus Linear,0.1295195119252,-0.02753781642379,0.3148806182095,564,"conditional paired descriptive interval, not adjusted for multiple contrasts"
+trade25_borrow30,24,Add intermediate group,0.2435857661393,0.001641499400359,0.4634276353127,564,"conditional paired descriptive interval, not adjusted for multiple contrasts"
