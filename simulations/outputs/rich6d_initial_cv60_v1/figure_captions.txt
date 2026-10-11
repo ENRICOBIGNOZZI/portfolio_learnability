@@ -1,0 +1,17 @@
+comparison_baseline
+Baseline: N=600, rho=0.95. Means and central 95% replication-percentile bands across 300 paths. CV selects a once within the first 60 observations and freezes it thereafter. The oracle is an ex-post population diagnostic. Horizontal lines distinguish the economic optimum from the frozen Nyström subspace optimum. Grey areas retain original checked numerical failures; crosses identify CV mean-regret floor failures. All CV policies lack a new higher-rank certificate.
+
+comparison_N300
+N=300, rho=0.95. Means and central 95% replication-percentile bands across 300 paths. CV selects a once within the first 60 observations and freezes it thereafter. The oracle is an ex-post population diagnostic. Horizontal lines distinguish the economic optimum from the frozen Nyström subspace optimum. Grey areas retain original checked numerical failures; crosses identify CV mean-regret floor failures. All CV policies lack a new higher-rank certificate.
+
+comparison_N1200
+N=1200, rho=0.95. Means and central 95% replication-percentile bands across 300 paths. CV selects a once within the first 60 observations and freezes it thereafter. The oracle is an ex-post population diagnostic. Horizontal lines distinguish the economic optimum from the frozen Nyström subspace optimum. Grey areas retain original checked numerical failures; crosses identify CV mean-regret floor failures. All CV policies lack a new higher-rank certificate.
+
+comparison_rho000
+N=600, rho=0. Means and central 95% replication-percentile bands across 300 paths. CV selects a once within the first 60 observations and freezes it thereafter. The oracle is an ex-post population diagnostic. Horizontal lines distinguish the economic optimum from the frozen Nyström subspace optimum. Grey areas retain original checked numerical failures; crosses identify CV mean-regret floor failures. All CV policies lack a new higher-rank certificate.
+
+comparison_rho075
+N=600, rho=0.75. Means and central 95% replication-percentile bands across 300 paths. CV selects a once within the first 60 observations and freezes it thereafter. The oracle is an ex-post population diagnostic. Horizontal lines distinguish the economic optimum from the frozen Nyström subspace optimum. Grey areas retain original checked numerical failures; crosses identify CV mean-regret floor failures. All CV policies lack a new higher-rank certificate.
+
+initial_constants
+Distribution of the one-time initial CV constants across 300 paired replication indices per economy. The full predetermined grid and boundary selections are retained; dashed lines mark each original fixed constant. No later horizon changes the selected a.

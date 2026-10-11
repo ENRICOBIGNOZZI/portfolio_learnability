@@ -45,7 +45,27 @@ def run():
         f'The central 95% of CV replication outcomes is [{cv.p025:.6f}, {cv.p975:.6f}]. '
         f'The remaining mean economic Sharpe gap is {3-cv["mean"]:.6f}; the oracle-minus-CV difference is {oracle["mean"]-cv["mean"]:.6f}. '
         'These comparisons describe this frozen experiment; they do not establish a theorem or resolve rank approximation.')
-    findings=[opening]
+    start=summary[(summary.environment=='baseline')&(summary['T']==60)&(summary.metric=='annual_SR')].set_index('specification')
+    start_difference=paired[(paired.environment=='baseline')&(paired['T']==60)&(paired.metric=='annual_SR')].iloc[0]
+    early=(f'EARLY VERSUS LATE RECOVERY: At T=60, mean annualized Sharpe is {start.loc["initial_cv","mean"]:.6f} with initial CV versus {start.loc["old_fixed","mean"]:.6f} with the old constant, '
+        f'a paired improvement of {start_difference["mean"]:.6f} (95% mean interval [{start_difference.mean_CI_low:.6f}, {start_difference.mean_CI_high:.6f}]). '
+        'In the baseline the positive paired mean difference remains clear through T=2160, but its interval includes zero at T=3240 and T=4860. '
+        'A single initial calibration therefore substantially improves short-history recovery in this experiment, but does not deliver a persistent final-horizon Sharpe advantage or match the diagnostic oracle.')
+    full_slope=slopes[(slopes.environment=='baseline')&(slopes.specification=='initial_cv')&(slopes.quantity=='annual_gap')&(slopes.grid=='full')&(slopes.window=='full')].iloc[0]
+    late_slope=slopes[(slopes.environment=='baseline')&(slopes.specification=='initial_cv')&(slopes.quantity=='annual_gap')&(slopes.grid=='full')&(slopes.window=='T_ge_1440')].iloc[0]
+    rate=(f'BASELINE GAP SLOPES: Initial CV gives {full_slope.slope:.6f} over all thirteen horizons and {late_slope.slope:.6f} for T>=1440, versus the -0.6 theoretical reference. '
+        'The full-window slope also reflects the much smaller starting gap under CV; it does not by itself rank the procedures at every horizon or validate an asymptotic rate.')
+    with np.load(OUTPUT/'distributions/baseline.npz') as z:
+        median_penalties=np.median(z['penalties'][:,-1,:],axis=0)
+    complexity=summary[(summary.environment=='baseline')&(summary['T']==T_final)&(summary.metric=='empirical_complexity')].set_index('specification')
+    regret=summary[(summary.environment=='baseline')&(summary['T']==T_final)&(summary.metric=='regret')].set_index('specification')
+    diagnosis=(f'END-HORIZON DIAGNOSIS: The median CV penalty is {median_penalties[0]:.8g}, compared with {median_penalties[1]:.8g} for the old rule and {median_penalties[2]:.8g} for the common-grid Sharpe oracle. '
+        f'Mean empirical effective complexity is {complexity.loc["initial_cv","mean"]:.3f}, {complexity.loc["old_fixed","mean"]:.3f}, and {complexity.loc["population_oracle","mean"]:.3f}, respectively. '
+        f'The standard deviation of CV population Sharpe is {cv["sd"]/fixed["sd"]:.2f} times the old-rule standard deviation. '
+        f'CV nevertheless reduces mean response-one regret from {regret.loc["old_fixed","mean"]:.6f} to {regret.loc["initial_cv","mean"]:.6f}. '
+        'This distinction matters: CV targets prediction loss, while Sharpe is invariant to portfolio scale. The median CV penalty is below the diagnostic Sharpe optimum. '
+        'This is an ex-post diagnosis only; neither the selected constants nor the theoretical exponent has been revised.')
+    findings=[opening,early,rate,diagnosis]
     for name in ENVIRONMENTS:
         T=max(frozen['design']['baseline_T'] if name=='baseline' else frozen['design']['robustness_T'])
         row=paired[(paired.environment==name)&(paired['T']==T)&(paired.metric=='annual_SR')].iloc[0]

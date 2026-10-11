@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "replications_per_economy": 300,
+  "economies": 5,
+  "run_hash": "cb6ccf31d7969f22eaa7d766f6330cae2dad5aafbb37602350572222d5ffa3b4",
+  "verified_utc": "2026-10-11T19:56:20.930721+00:00",
+  "histories_and_old_rule_reproduced": true,
+  "initial_calibration_frozen_at_all_horizons": true
+}

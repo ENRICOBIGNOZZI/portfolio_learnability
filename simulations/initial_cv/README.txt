@@ -39,10 +39,11 @@ Reproduction
    run ID, commit and download directory. Exactly indices 12:299 remain.
 6. python3 -m simulations.initial_cv.summarize requires all 300 independently
    verified checkpoints and compares CV, the reproduced old fixed constant,
-   and the ex-post population oracle. Then run
-   python3 -m simulations.initial_cv.report to write the English report and
-   six PDF/PNG figures. Run simulations.initial_cv.audit between the summary
-   and report commands. Inspect every rendered PDF before final publication.
+   and the ex-post population oracle. Next run
+   python3 -m simulations.initial_cv.audit to independently check the tables.
+   Finally run python3 -m simulations.initial_cv.report to write the English
+   report and six PDF/PNG figures. Inspect every rendered PDF before final
+   publication.
 
 Use OPENBLAS_NUM_THREADS=1, OMP_NUM_THREADS=1,
 VECLIB_MAXIMUM_THREADS=1 and PYTHONDONTWRITEBYTECODE=1.

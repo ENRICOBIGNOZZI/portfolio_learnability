@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "verified_utc": "2026-10-11T19:56:28.287878+00:00",
+  "run_hash": "cb6ccf31d7969f22eaa7d766f6330cae2dad5aafbb37602350572222d5ffa3b4",
+  "replications_per_economy": 300,
+  "economies": 5,
+  "summary_rows_checked": 1281,
+  "slopes_checked": 600,
+  "paired_comparisons_checked": 532,
+  "original_warning_rows_checked": 183,
+  "source_summary_sha256": "41bbb13060a9e01d4493a01f4b8b8681df5bd1d11287a17b3ee6f4911fef807a",
+  "scope": "Independent table arithmetic, penalty invariance, oracle extraction, replication allocation, transfer hashes and preservation of original warnings. Not a new rank certificate."
+}

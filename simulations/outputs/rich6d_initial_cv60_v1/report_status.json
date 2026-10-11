@@ -1,0 +1,11 @@
+{
+  "completed_utc": "2026-10-11T19:58:56.905079+00:00",
+  "run_hash": "cb6ccf31d7969f22eaa7d766f6330cae2dad5aafbb37602350572222d5ffa3b4",
+  "figures": 6,
+  "replications_per_economy": 300,
+  "numerical_limitations_retained": true,
+  "visual_review_required": false,
+  "source_summary_sha256": "41bbb13060a9e01d4493a01f4b8b8681df5bd1d11287a17b3ee6f4911fef807a",
+  "visual_review_passed": true,
+  "visual_review_utc": "2026-10-11T19:59:45.453548+00:00"
+}
