@@ -7,7 +7,13 @@
     0,
     2,
     3,
-    11
+    4,
+    5,
+    8,
+    9,
+    10,
+    11,
+    14
   ],
   "checkpoints": [
     {
@@ -569,8 +575,764 @@
       "sha256": "0f0d9fe412e8c4fce8af5da05fc9e4e81df3ed87b41136e4f5439f82e752ce53",
       "bytes": 34369,
       "job_id": 114480313385
+    },
+    {
+      "index": 112,
+      "path": "replications/rep_112.npz",
+      "sha256": "bcb7b81b432fdeeef5e5184aac8a6860380e6de628a867c022080ea3c08196bc",
+      "bytes": 34408,
+      "job_id": 114480313350
+    },
+    {
+      "index": 113,
+      "path": "replications/rep_113.npz",
+      "sha256": "e2f2ab65a12c11c200a77f7e08b6dd6fcadb76c699a545d1765e74c276c6ea04",
+      "bytes": 34435,
+      "job_id": 114480313350
+    },
+    {
+      "index": 114,
+      "path": "replications/rep_114.npz",
+      "sha256": "3edd8ca28f2780b449e95c5a6b876e3f085c633f7883cc751a6a0628f1f363a3",
+      "bytes": 34392,
+      "job_id": 114480313350
+    },
+    {
+      "index": 115,
+      "path": "replications/rep_115.npz",
+      "sha256": "61a9411b4eb3f7c8c8e82ed8df2ef8ca922af9cce3453db47f9a57d62374d5fb",
+      "bytes": 34462,
+      "job_id": 114480313350
+    },
+    {
+      "index": 116,
+      "path": "replications/rep_116.npz",
+      "sha256": "9f0a783d283e8d4796b37a433566db2fa9e452fc9e992be79668d5949f026839",
+      "bytes": 34456,
+      "job_id": 114480313350
+    },
+    {
+      "index": 117,
+      "path": "replications/rep_117.npz",
+      "sha256": "91db20b65a280f0ad7faf1b5d6e047ea7d81ae5e2fa390022e30114c28acfe97",
+      "bytes": 34440,
+      "job_id": 114480313350
+    },
+    {
+      "index": 118,
+      "path": "replications/rep_118.npz",
+      "sha256": "f0851a27af96f5b5e17c25d1eb14c23b982f6f47fe19b8dce24e9e8e713aa291",
+      "bytes": 34308,
+      "job_id": 114480313350
+    },
+    {
+      "index": 119,
+      "path": "replications/rep_119.npz",
+      "sha256": "d58db57c8bc651787ad6831b2ea20d0c52d3f60b97a5117c754c3d61b8768269",
+      "bytes": 34265,
+      "job_id": 114480313350
+    },
+    {
+      "index": 120,
+      "path": "replications/rep_120.npz",
+      "sha256": "e9dbbccd83d0f0cf8a0a5f342e6454a676d6d65ec0af40d71e792b2a8ada25d2",
+      "bytes": 34401,
+      "job_id": 114480313350
+    },
+    {
+      "index": 121,
+      "path": "replications/rep_121.npz",
+      "sha256": "568e2bb0d5787f1cf6b493126302cae8a523050f6b442a3730129fa24be4739e",
+      "bytes": 34366,
+      "job_id": 114480313350
+    },
+    {
+      "index": 122,
+      "path": "replications/rep_122.npz",
+      "sha256": "447dd0ebe584aefbfbfd3876b272cc06914bf906de8cfe3cf44da0141447be62",
+      "bytes": 34396,
+      "job_id": 114480313350
+    },
+    {
+      "index": 123,
+      "path": "replications/rep_123.npz",
+      "sha256": "7a95573d800a20c619115c38be2c40cc2d37ad072a1761fa5a32943418f9dad6",
+      "bytes": 34421,
+      "job_id": 114480313350
+    },
+    {
+      "index": 124,
+      "path": "replications/rep_124.npz",
+      "sha256": "ef21d9f7168ff6e8c62c7a096511cbbce80ce4880f7bc7f031ad34e91e277220",
+      "bytes": 34296,
+      "job_id": 114480313350
+    },
+    {
+      "index": 125,
+      "path": "replications/rep_125.npz",
+      "sha256": "833b65c8007eb72c833b7cfb5a4409eb4f3b53b7018d48e42fddc7ecd08c1d18",
+      "bytes": 34411,
+      "job_id": 114480313350
+    },
+    {
+      "index": 126,
+      "path": "replications/rep_126.npz",
+      "sha256": "25c085ced1592f5ffb75657ee90b61083d263c066ee00fa49eea4e69872f58ac",
+      "bytes": 34420,
+      "job_id": 114480313350
+    },
+    {
+      "index": 127,
+      "path": "replications/rep_127.npz",
+      "sha256": "64aec4f5eb79ce5a371a07fc18b7f4c986f37ee383d52a341f3f019606e45a18",
+      "bytes": 34339,
+      "job_id": 114480313350
+    },
+    {
+      "index": 128,
+      "path": "replications/rep_128.npz",
+      "sha256": "b22e6f9ed0b9893b7d6d72bf748e75a0a864786f4c19782be6119a87d73b8efe",
+      "bytes": 34418,
+      "job_id": 114480313350
+    },
+    {
+      "index": 129,
+      "path": "replications/rep_129.npz",
+      "sha256": "2b0b36719569668666a2e73bdac59dbbb55051f46a5fd31930f2683f746bb68b",
+      "bytes": 34417,
+      "job_id": 114480313350
+    },
+    {
+      "index": 130,
+      "path": "replications/rep_130.npz",
+      "sha256": "902456f55b1b8d3f088f7be546fa299df5da8ad7cc817f9fb781a5ecdcaec4ff",
+      "bytes": 34414,
+      "job_id": 114480313350
+    },
+    {
+      "index": 131,
+      "path": "replications/rep_131.npz",
+      "sha256": "a611e1115e39ae63b91cd73741a7a00e268ab1d5d915c3f4f7c78f7c55867d35",
+      "bytes": 34415,
+      "job_id": 114480313350
+    },
+    {
+      "index": 292,
+      "path": "replications/rep_292.npz",
+      "sha256": "ce9119eb18edd3c35684a06c37375dfc2b68f97efad1f674cfaa7649632d50b4",
+      "bytes": 34405,
+      "job_id": 114480313432
+    },
+    {
+      "index": 293,
+      "path": "replications/rep_293.npz",
+      "sha256": "06e8202e8307b512671cc0ed38ccd16e415eec256a9713f8d23b5a6d5ba4b14d",
+      "bytes": 34359,
+      "job_id": 114480313432
+    },
+    {
+      "index": 294,
+      "path": "replications/rep_294.npz",
+      "sha256": "faa1f0e4d5b4de6ac200e7a9e6d2b7c83dd7d758700285a1acecf0155dc1a2f7",
+      "bytes": 34414,
+      "job_id": 114480313432
+    },
+    {
+      "index": 295,
+      "path": "replications/rep_295.npz",
+      "sha256": "e4c29c119ff5d4e2c773b23906bb3e051a09dd1ebc251597b217b12284d4533a",
+      "bytes": 34350,
+      "job_id": 114480313432
+    },
+    {
+      "index": 296,
+      "path": "replications/rep_296.npz",
+      "sha256": "53371717e621cdc8f6f0662fa9fc61d0645a3acb1298310c92d583255913efaa",
+      "bytes": 34247,
+      "job_id": 114480313432
+    },
+    {
+      "index": 297,
+      "path": "replications/rep_297.npz",
+      "sha256": "27841a36d78cfa31eff5606e4e55ebe8f2c9a1ed16d4bf3e940c03f7c9c9e684",
+      "bytes": 34451,
+      "job_id": 114480313432
+    },
+    {
+      "index": 298,
+      "path": "replications/rep_298.npz",
+      "sha256": "7faf5e92865a7ddb61504dfa86a68cdcc217e7a855c3c3655e11a04f56b27678",
+      "bytes": 34371,
+      "job_id": 114480313432
+    },
+    {
+      "index": 299,
+      "path": "replications/rep_299.npz",
+      "sha256": "80b08050026e70a5dbf9a113dcb0c93b9b56704cd27d1d082b16d43d0d86744b",
+      "bytes": 34451,
+      "job_id": 114480313432
+    },
+    {
+      "index": 192,
+      "path": "replications/rep_192.npz",
+      "sha256": "5e053f423b5743eba643cafc62e47bab0899eee3718e1771feb859791e5a2805",
+      "bytes": 34393,
+      "job_id": 114480313401
+    },
+    {
+      "index": 193,
+      "path": "replications/rep_193.npz",
+      "sha256": "e0507a5b6d99609df8e739fc9341ad6e23046fadc748ee429d65e9d69632389a",
+      "bytes": 34383,
+      "job_id": 114480313401
+    },
+    {
+      "index": 194,
+      "path": "replications/rep_194.npz",
+      "sha256": "83b675ecf38bd71c35ebfff9603f33e2de8e3a9ced69c0ecf3b33505cd124e82",
+      "bytes": 34346,
+      "job_id": 114480313401
+    },
+    {
+      "index": 195,
+      "path": "replications/rep_195.npz",
+      "sha256": "73f15a9515dc0024589e8fec7dd9e315711c96e114b84edc9a03c8c4cccd2f58",
+      "bytes": 34399,
+      "job_id": 114480313401
+    },
+    {
+      "index": 196,
+      "path": "replications/rep_196.npz",
+      "sha256": "2a402a66a0409add7af0b2160c15e370a99a7ff5c5bb55dcbbe8ef88fe2cb03d",
+      "bytes": 34375,
+      "job_id": 114480313401
+    },
+    {
+      "index": 197,
+      "path": "replications/rep_197.npz",
+      "sha256": "60f5c4e14a7125c08b2e49009cfe7055e15f0d24778801d318f4f457eff47bf1",
+      "bytes": 34366,
+      "job_id": 114480313401
+    },
+    {
+      "index": 198,
+      "path": "replications/rep_198.npz",
+      "sha256": "fea1328c9da90570e6b199f63a6e1a95c8f6c50bd54aa2200275c97a59cd8564",
+      "bytes": 34382,
+      "job_id": 114480313401
+    },
+    {
+      "index": 199,
+      "path": "replications/rep_199.npz",
+      "sha256": "a249a5ffc423af01cfca1ea300246a8cfc2eba1c22171e14704e6de38ef318ea",
+      "bytes": 34298,
+      "job_id": 114480313401
+    },
+    {
+      "index": 200,
+      "path": "replications/rep_200.npz",
+      "sha256": "1bfc468ed9f65ec28a70a4e7fb06652807a842112080f90c987a873709eec2a7",
+      "bytes": 34382,
+      "job_id": 114480313401
+    },
+    {
+      "index": 201,
+      "path": "replications/rep_201.npz",
+      "sha256": "90fb1dfe8ad3409cba593e0acba703cb362a1b7ec74d614bc1173839c90ed793",
+      "bytes": 34388,
+      "job_id": 114480313401
+    },
+    {
+      "index": 202,
+      "path": "replications/rep_202.npz",
+      "sha256": "f374810774cf9b5cbc615ce216a693f64e50516f6ae08b26a59b4e59ffd12017",
+      "bytes": 34439,
+      "job_id": 114480313401
+    },
+    {
+      "index": 203,
+      "path": "replications/rep_203.npz",
+      "sha256": "daf831d8fc32d7c2f4666b6de44a5cf8c2fc2a54603285c70c4edb46ee114305",
+      "bytes": 34466,
+      "job_id": 114480313401
+    },
+    {
+      "index": 204,
+      "path": "replications/rep_204.npz",
+      "sha256": "cc8cd691edcbbd6cafff147d66b93d260cb329b05c843020e5354f76e421a6f8",
+      "bytes": 34286,
+      "job_id": 114480313401
+    },
+    {
+      "index": 205,
+      "path": "replications/rep_205.npz",
+      "sha256": "949790822bd74e0b98cef43bb4fc7a3693c26a5448aeb371cfc4575b350575c6",
+      "bytes": 34397,
+      "job_id": 114480313401
+    },
+    {
+      "index": 206,
+      "path": "replications/rep_206.npz",
+      "sha256": "95debd713fda8aab9b6dce8ed0c9dd63c47976b83f986e22ddd8edca1aa83c56",
+      "bytes": 34482,
+      "job_id": 114480313401
+    },
+    {
+      "index": 207,
+      "path": "replications/rep_207.npz",
+      "sha256": "d617a081bfd27c3fd823d6fb106a764dfbb13cdf7046895e9704d797af152f7d",
+      "bytes": 34340,
+      "job_id": 114480313401
+    },
+    {
+      "index": 208,
+      "path": "replications/rep_208.npz",
+      "sha256": "72d132fe19955486111ae0b4ae56c6ff97d4740c937db70f2ce0f25cd96ed840",
+      "bytes": 34444,
+      "job_id": 114480313401
+    },
+    {
+      "index": 209,
+      "path": "replications/rep_209.npz",
+      "sha256": "c4ecd6ecc758f9c55f7678e1da2835b40876f4a1f0ff94ec1873efd43768afb7",
+      "bytes": 34366,
+      "job_id": 114480313401
+    },
+    {
+      "index": 210,
+      "path": "replications/rep_210.npz",
+      "sha256": "1c2e6d523f12335b239394453a96dd2231d6731b1dd5e4b93107c9c5d8030f24",
+      "bytes": 34365,
+      "job_id": 114480313401
+    },
+    {
+      "index": 211,
+      "path": "replications/rep_211.npz",
+      "sha256": "2ccd4eb06073ec3f5db656a00a97992aea226672888533f96bdbe5aba92b028c",
+      "bytes": 34445,
+      "job_id": 114480313401
+    },
+    {
+      "index": 172,
+      "path": "replications/rep_172.npz",
+      "sha256": "17135b0e13fa2a98a8e7c6095bf012982ab384eb39330ee01f3c8a80dc6426f9",
+      "bytes": 34422,
+      "job_id": 114480313399
+    },
+    {
+      "index": 173,
+      "path": "replications/rep_173.npz",
+      "sha256": "1f54b59ca1b70e50e60cdb006904448287ea91ffa85eb9ca197009994af15a1b",
+      "bytes": 34448,
+      "job_id": 114480313399
+    },
+    {
+      "index": 174,
+      "path": "replications/rep_174.npz",
+      "sha256": "742549ff5960f6e834761fa14e7fc61a7f6187296e01255b21bbe495b54b91d6",
+      "bytes": 34399,
+      "job_id": 114480313399
+    },
+    {
+      "index": 175,
+      "path": "replications/rep_175.npz",
+      "sha256": "276d4cca21418a8256375c6fc7171105d7da910cc94b818b2123c12dc8053c68",
+      "bytes": 34398,
+      "job_id": 114480313399
+    },
+    {
+      "index": 176,
+      "path": "replications/rep_176.npz",
+      "sha256": "e4fd0cbb54dfc175b001f57bde518d46e4a693d350770cbc4fcc7be37b0ea232",
+      "bytes": 34310,
+      "job_id": 114480313399
+    },
+    {
+      "index": 177,
+      "path": "replications/rep_177.npz",
+      "sha256": "896fca381cc1ff8621a3db5badaf39d810e66214277ce3dfccd2e8b704dd075a",
+      "bytes": 34396,
+      "job_id": 114480313399
+    },
+    {
+      "index": 178,
+      "path": "replications/rep_178.npz",
+      "sha256": "866bf79a4b434855d79785b7e3b5c3c02ec57a0a395872a3b2df66becc31451c",
+      "bytes": 34457,
+      "job_id": 114480313399
+    },
+    {
+      "index": 179,
+      "path": "replications/rep_179.npz",
+      "sha256": "c7b91479c5361a1d1a0c4b8c12d0b046d9c6280ee61511110f132ac392a110a6",
+      "bytes": 34400,
+      "job_id": 114480313399
+    },
+    {
+      "index": 180,
+      "path": "replications/rep_180.npz",
+      "sha256": "7c96f4154a0703a3e357b983e1bac439593528f41e6b67178c05dffd4d918145",
+      "bytes": 34339,
+      "job_id": 114480313399
+    },
+    {
+      "index": 181,
+      "path": "replications/rep_181.npz",
+      "sha256": "7cbfffe9fea362ff9c3e6c47ce2c3cbd69d0da6d71504fc1749622ab019de932",
+      "bytes": 34384,
+      "job_id": 114480313399
+    },
+    {
+      "index": 182,
+      "path": "replications/rep_182.npz",
+      "sha256": "173be4c39e49825695238beed400702834a509ea0a39a817f1757107f52f4df9",
+      "bytes": 34281,
+      "job_id": 114480313399
+    },
+    {
+      "index": 183,
+      "path": "replications/rep_183.npz",
+      "sha256": "a50d75575df9508951ee0524e2a432a002ec530244a2e7957fdb761c081a9aac",
+      "bytes": 34380,
+      "job_id": 114480313399
+    },
+    {
+      "index": 184,
+      "path": "replications/rep_184.npz",
+      "sha256": "fcfb2478a17f0ffb3c93de2048bf2fe7af36d4c21e240256b09b8f373d1deb43",
+      "bytes": 34425,
+      "job_id": 114480313399
+    },
+    {
+      "index": 185,
+      "path": "replications/rep_185.npz",
+      "sha256": "45f7debde6ea99365fe2842a4cd9ab60b3f0e3fe978a6dcac8dd93e7a304d7c3",
+      "bytes": 34389,
+      "job_id": 114480313399
+    },
+    {
+      "index": 186,
+      "path": "replications/rep_186.npz",
+      "sha256": "f76e76a67313d75a883c5d9a54c9bd9ee634ead9ddd30a90129ffceaf41782b3",
+      "bytes": 34424,
+      "job_id": 114480313399
+    },
+    {
+      "index": 187,
+      "path": "replications/rep_187.npz",
+      "sha256": "77e642155e7a2050a6bc5549c81a5985d341e02475c9f1ab82ad34b7bd4ee58e",
+      "bytes": 34374,
+      "job_id": 114480313399
+    },
+    {
+      "index": 188,
+      "path": "replications/rep_188.npz",
+      "sha256": "4c0858b0b8612e5637e7a73af5bc8d6b81c342dab4d6bb712a4fed10e28a616c",
+      "bytes": 34280,
+      "job_id": 114480313399
+    },
+    {
+      "index": 189,
+      "path": "replications/rep_189.npz",
+      "sha256": "d1b4b1a9db51da4a3229d955b8d5e70f1be82a2d39d1cbc4380b57a77db5dc57",
+      "bytes": 34443,
+      "job_id": 114480313399
+    },
+    {
+      "index": 190,
+      "path": "replications/rep_190.npz",
+      "sha256": "6809887175413207c0a3dc05bf434410b8868639c15db83d3b464244d0b0bb62",
+      "bytes": 34404,
+      "job_id": 114480313399
+    },
+    {
+      "index": 191,
+      "path": "replications/rep_191.npz",
+      "sha256": "e008152b191d7632646b591c0632bff6d10e35db3f1009b431bb76a74194a7a8",
+      "bytes": 34384,
+      "job_id": 114480313399
+    },
+    {
+      "index": 212,
+      "path": "replications/rep_212.npz",
+      "sha256": "be4f7d2df8afce6aa4e4c600fae54089c5374cf0e5a7b2a64427f1228fa8e529",
+      "bytes": 34386,
+      "job_id": 114480313407
+    },
+    {
+      "index": 213,
+      "path": "replications/rep_213.npz",
+      "sha256": "70634c0cfb09636644ffa0b4e4f6ba3601eed6d2f409c76660766d067e7c1b33",
+      "bytes": 34404,
+      "job_id": 114480313407
+    },
+    {
+      "index": 214,
+      "path": "replications/rep_214.npz",
+      "sha256": "974ec3f0ad4bf4a7d49a970554d055a8fefc67e956a85a0d0306ef77dd1000d8",
+      "bytes": 34432,
+      "job_id": 114480313407
+    },
+    {
+      "index": 215,
+      "path": "replications/rep_215.npz",
+      "sha256": "81a41a85394b5d39f353d1b306c96e1f39d56d76d6f5d668c9b4de7f8bdb1f18",
+      "bytes": 34344,
+      "job_id": 114480313407
+    },
+    {
+      "index": 216,
+      "path": "replications/rep_216.npz",
+      "sha256": "ca37b122fa6207eec2b210cca038efb81f307143d8cb49776b27adadc2818cc4",
+      "bytes": 34243,
+      "job_id": 114480313407
+    },
+    {
+      "index": 217,
+      "path": "replications/rep_217.npz",
+      "sha256": "f0d602e81b7140d6e5595ca79f602a4057941b38836621333e51c219abe6c07f",
+      "bytes": 34448,
+      "job_id": 114480313407
+    },
+    {
+      "index": 218,
+      "path": "replications/rep_218.npz",
+      "sha256": "143b2d6aeee1be3a4c4a19041c01edbcc12785b0381d411efbbfc281047cbcc3",
+      "bytes": 34409,
+      "job_id": 114480313407
+    },
+    {
+      "index": 219,
+      "path": "replications/rep_219.npz",
+      "sha256": "62356c8a34622f59b337455d27fa1666a53d96d9e3597af2e73d589a68bbbf70",
+      "bytes": 34389,
+      "job_id": 114480313407
+    },
+    {
+      "index": 220,
+      "path": "replications/rep_220.npz",
+      "sha256": "f08623dd4f85be04ecd08386120d50c8d17c7b700938356c5c74688a048cfe6e",
+      "bytes": 34396,
+      "job_id": 114480313407
+    },
+    {
+      "index": 221,
+      "path": "replications/rep_221.npz",
+      "sha256": "0f0d2d0de0ed1e7eac22e68a60edee42e9aa9bc41230bb6b21af5b8e9eb04fda",
+      "bytes": 34415,
+      "job_id": 114480313407
+    },
+    {
+      "index": 222,
+      "path": "replications/rep_222.npz",
+      "sha256": "214fd775c635522d44782fd1689b188adef18bda3ecd6d4a71cc2ba7040eaaaf",
+      "bytes": 34447,
+      "job_id": 114480313407
+    },
+    {
+      "index": 223,
+      "path": "replications/rep_223.npz",
+      "sha256": "cc4196b28e0ffb2f34f49dbd4c4b1318531ef0f8e85f084b9261c420f2e68d20",
+      "bytes": 34450,
+      "job_id": 114480313407
+    },
+    {
+      "index": 224,
+      "path": "replications/rep_224.npz",
+      "sha256": "c82b609e46538098b91441a89c316aa20321f03304ea5091c9da0681b36d8feb",
+      "bytes": 34310,
+      "job_id": 114480313407
+    },
+    {
+      "index": 225,
+      "path": "replications/rep_225.npz",
+      "sha256": "617c1acdf36cd80c1bda4ab785702c69ca196ebee48969ad5f6a2ec103b6b7a5",
+      "bytes": 34361,
+      "job_id": 114480313407
+    },
+    {
+      "index": 226,
+      "path": "replications/rep_226.npz",
+      "sha256": "9aad9590fcfa453199d8ff40e7d267feda06cc5c2f4af629739fb3da8bb6b2f8",
+      "bytes": 34384,
+      "job_id": 114480313407
+    },
+    {
+      "index": 227,
+      "path": "replications/rep_227.npz",
+      "sha256": "6b210abf81ac17ee71f97474f0949486e40b6680b66229d643593a3f4b801786",
+      "bytes": 34440,
+      "job_id": 114480313407
+    },
+    {
+      "index": 228,
+      "path": "replications/rep_228.npz",
+      "sha256": "62f7eac0d5dffe76bcc5b58bd4ae7df08980abf95d329964d4a5689880f07665",
+      "bytes": 34440,
+      "job_id": 114480313407
+    },
+    {
+      "index": 229,
+      "path": "replications/rep_229.npz",
+      "sha256": "408485204f4e619394eba731bbc6f40bce391280bf1bc6153a668a72bfe8d66a",
+      "bytes": 34462,
+      "job_id": 114480313407
+    },
+    {
+      "index": 230,
+      "path": "replications/rep_230.npz",
+      "sha256": "61b27c0078fc6115539d88fd9b9a777a2ac2ef868e5095cad04915502a57e1f6",
+      "bytes": 34381,
+      "job_id": 114480313407
+    },
+    {
+      "index": 231,
+      "path": "replications/rep_231.npz",
+      "sha256": "347a922d67f4d2387b8f75b1ed5fe18954ee311143bbbadd6f64a20b79cdc6c8",
+      "bytes": 34332,
+      "job_id": 114480313407
+    },
+    {
+      "index": 92,
+      "path": "replications/rep_092.npz",
+      "sha256": "94b959bbd96f240ace6c7500e6f54d19476af83d3e2d3ea6e46960d582522964",
+      "bytes": 34337,
+      "job_id": 114480313435
+    },
+    {
+      "index": 93,
+      "path": "replications/rep_093.npz",
+      "sha256": "2c570bc434e57d7f2f794ecccf6b06571ecb461b6bcb7f9401537e6009e6e79e",
+      "bytes": 34263,
+      "job_id": 114480313435
+    },
+    {
+      "index": 94,
+      "path": "replications/rep_094.npz",
+      "sha256": "552cc83e7d1fa41911bc8c49ee9b9410dce7ba4294d08790c416e526191f9513",
+      "bytes": 34319,
+      "job_id": 114480313435
+    },
+    {
+      "index": 95,
+      "path": "replications/rep_095.npz",
+      "sha256": "aa9eeb88703135060ef38ea252f5ec379e49411d27a5a35239c110bdc38a79f2",
+      "bytes": 34368,
+      "job_id": 114480313435
+    },
+    {
+      "index": 96,
+      "path": "replications/rep_096.npz",
+      "sha256": "7245b8e62626c3340808db4922f9925b9ca155a251f69a10c195629c729a68b6",
+      "bytes": 34304,
+      "job_id": 114480313435
+    },
+    {
+      "index": 97,
+      "path": "replications/rep_097.npz",
+      "sha256": "7c7afde420ca2d41c21ed18511ffc534273250ca64e5f95833152d00734619ed",
+      "bytes": 34396,
+      "job_id": 114480313435
+    },
+    {
+      "index": 98,
+      "path": "replications/rep_098.npz",
+      "sha256": "8d0e5b978fb9d4bed3b3f614024c0a04480388f37590ef1afa6d1e56873c19fb",
+      "bytes": 34394,
+      "job_id": 114480313435
+    },
+    {
+      "index": 99,
+      "path": "replications/rep_099.npz",
+      "sha256": "09c35218c5de79d8e972a0b61fbf24e828631aa3f22017d7e328aabcd5127650",
+      "bytes": 34394,
+      "job_id": 114480313435
+    },
+    {
+      "index": 100,
+      "path": "replications/rep_100.npz",
+      "sha256": "430efa5037bad6a6fa6fd93d1cae1a6e1a12e92bca35760c094b3ad53ad76c44",
+      "bytes": 34267,
+      "job_id": 114480313435
+    },
+    {
+      "index": 101,
+      "path": "replications/rep_101.npz",
+      "sha256": "e073b1df97b21999467a248abb60f508daaab2ff8ebe14503d4ee85152a1e6ec",
+      "bytes": 34348,
+      "job_id": 114480313435
+    },
+    {
+      "index": 102,
+      "path": "replications/rep_102.npz",
+      "sha256": "002e0533598744116ba8c31631af18d4ca4d30fe131b33acd5927f590bc9273d",
+      "bytes": 34381,
+      "job_id": 114480313435
+    },
+    {
+      "index": 103,
+      "path": "replications/rep_103.npz",
+      "sha256": "282865443932f9ea06017e93a6d0931311a15d39f66d9ca7b15babb2aa36b935",
+      "bytes": 34223,
+      "job_id": 114480313435
+    },
+    {
+      "index": 104,
+      "path": "replications/rep_104.npz",
+      "sha256": "685a0043afae024f6ef0d81b4bd49356b9949dd5d8da792d1c403940c405d392",
+      "bytes": 34287,
+      "job_id": 114480313435
+    },
+    {
+      "index": 105,
+      "path": "replications/rep_105.npz",
+      "sha256": "f519959fe529c43c42a73d82290434e387647c9dcf103cd9eab0a4752deb175b",
+      "bytes": 34386,
+      "job_id": 114480313435
+    },
+    {
+      "index": 106,
+      "path": "replications/rep_106.npz",
+      "sha256": "0a0865bd403e6f6b4e3f4a98dd0e1d88617f083834e407e2050bf23fd848a0dd",
+      "bytes": 34356,
+      "job_id": 114480313435
+    },
+    {
+      "index": 107,
+      "path": "replications/rep_107.npz",
+      "sha256": "e8e8d32973563d1b997da5a5478ef72260342e7a10d57c7684529f940f5f2a40",
+      "bytes": 34351,
+      "job_id": 114480313435
+    },
+    {
+      "index": 108,
+      "path": "replications/rep_108.npz",
+      "sha256": "d199b54d9a3cc16c93a01a4658e5030152c3751a036f30280a72f759ee9a5454",
+      "bytes": 34460,
+      "job_id": 114480313435
+    },
+    {
+      "index": 109,
+      "path": "replications/rep_109.npz",
+      "sha256": "be3ff3c94d6c2716b725a580160a3bab927c173c9455da0e30719c95278fb3d4",
+      "bytes": 34453,
+      "job_id": 114480313435
+    },
+    {
+      "index": 110,
+      "path": "replications/rep_110.npz",
+      "sha256": "62e1fd6ce44aeda424cd3f8047e313f099dd2d0a765621c11d27a6a3d3b1e404",
+      "bytes": 34346,
+      "job_id": 114480313435
+    },
+    {
+      "index": 111,
+      "path": "replications/rep_111.npz",
+      "sha256": "3c2eb5ba2048f2976a5f4fce0ffa45611217445bab4ccb788ba11a7b4c4f3155",
+      "bytes": 34372,
+      "job_id": 114480313435
     }
   ],
   "status": "collecting",
-  "updated_utc": "2026-10-11T15:35:21.350549+00:00"
+  "updated_utc": "2026-10-11T17:46:34.796261+00:00"
 }
