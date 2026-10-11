@@ -86,4 +86,5 @@ Reproduce in the repository: `python3 -m empirical_final.manuscript_cleanup`.
 Compile the ZIP independently inside `Portfolio/`: `tectonic main.tex` and
 `tectonic Empirics_only.tex`. See `Portfolio/README_BUILD.txt` for alternatives.
 
-Git source-and-deliverables commit: recorded after committing, in the audit-only follow-up.
+Git source-and-deliverables commit: `5261bf93116bb8acf87ec38f3e389b33341ad66c`.
+This exact hash is recorded by the subsequent audit-only documentation commit.
