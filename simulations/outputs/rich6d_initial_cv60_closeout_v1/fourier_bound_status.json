@@ -1,0 +1,9 @@
+{
+  "normalization": 34.95703934054692,
+  "bound_128": 6.699081604539618e-09,
+  "M128_operator_ratio_max": 0.6822153189568996,
+  "M128_fraction_over_5_percent": 0.004316939890710383,
+  "coefficient_bounds_conservative": true,
+  "empirical_fits_and_CV_choice_status": "not_run",
+  "scope": "An operator bound at actual lambdas does not by itself certify fitted policies or argmin stability."
+}

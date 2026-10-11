@@ -77,7 +77,7 @@ def summarize():
                 for t,T in enumerate(times):
                     summaries.append(dict(environment=name,T=int(T),specification=spec,metric=metric,
                         **{k:float(v[t]) for k,v in stats.items()}))
-                if metric in ('annual_gap','empirical_complexity','relative_complexity','population_complexity','population_relative_complexity'):
+                if metric in ('regret','annual_gap','empirical_complexity','relative_complexity','population_complexity','population_relative_complexity'):
                     for grid,mask in [('full',np.ones(nT,dtype=bool)),('robustness_common',times<=3240)]:
                         for row in gap_slopes(times[mask],values[:,mask,j]):
                             if spec=='population_oracle':

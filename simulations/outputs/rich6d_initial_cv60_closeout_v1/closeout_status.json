@@ -1,0 +1,77 @@
+{
+  "resolved": [
+    "full archived input and arithmetic checks",
+    "loss/Sharpe distinct oracles",
+    "whole-history slope uncertainty",
+    "financial identities, full-300 identified ray/scale quantities and numerical ridge bias, and recovered subset moments",
+    "theory scope review",
+    "generated publication"
+  ],
+  "failed": [
+    "Exported projection floors exceeding 5%"
+  ],
+  "unresolved": [
+    "Full-horizon representative and stress audit",
+    "Fixed-rank asymptotic transfer",
+    "Complete 300-history raw moments and separate displacement/cross",
+    "8192 forward certificate"
+  ],
+  "not_run": [
+    "Missing numerical workers",
+    "8192 population-ridge decomposition",
+    "Final-horizon Fourier fit sensitivity",
+    "New production campaign"
+  ],
+  "numerical_status": {
+    "status": "unresolved",
+    "full_indices": [
+      0
+    ],
+    "short_indices": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      33,
+      50,
+      70,
+      232
+    ],
+    "representative_full_indices_not_run": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "stress_full_indices_not_run": [
+      1,
+      33,
+      50,
+      70,
+      232
+    ],
+    "failed_metric_comparisons": 0,
+    "not_estimable_comparisons": 450,
+    "changed_CV_choices": 8,
+    "checked_CV_choices": 80,
+    "high_rank_population_ridge": "not_run",
+    "forward_rank_certificate": false,
+    "latex_scope": "The new CV audit re-estimates full audit horizons for 1 original production histories and only T=60 for 15 additional histories. There are 0 failed numerical metric comparisons and 450 comparisons with insufficient independent histories for MCSE. Rank-specific initial CV changes 8 of 80 checked selections. Representative-history MCSE is computed separately from minimum-a stress diagnostics; stress cases are never pooled into an IID MCSE. The twelve-history full-horizon protocol and separate stress coverage are incomplete; uncertainty at untested cells remains unresolved. Rank 8192 has no forward-rank certificate. Population-ridge decomposition at rank 8192 has not run. Quadrature differences are systematic evaluation diagnostics; replication MCSE does not quantify uncertainty over quadrature seeds."
+  },
+  "closed_with_limitations": true,
+  "scientific_certification": false
+}

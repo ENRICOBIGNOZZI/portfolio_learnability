@@ -1,0 +1,21 @@
+{
+  "design": {
+    "indices": [
+      0
+    ],
+    "times": [
+      60
+    ],
+    "terms": [
+      128,
+      512,
+      2048
+    ],
+    "rank": 4096,
+    "groups": 32768,
+    "quadrature_seed": 1237722080,
+    "tolerance": 0.05,
+    "scope": "Post hoc initial60 diagnostic; actual CV and frozen-constant fits; no endpoint sensitivity certification."
+  },
+  "frozen_utc": "2026-10-11T23:10:44.160276+00:00"
+}

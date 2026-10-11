@@ -1,0 +1,91 @@
+{
+  "design": {
+    "schema": "cv-closeout-audit/1",
+    "original_run_hash": "cb6ccf31d7969f22eaa7d766f6330cae2dad5aafbb37602350572222d5ffa3b4",
+    "ranks": [
+      4096,
+      8192
+    ],
+    "representative_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "stress_indices_by_economy": {
+      "baseline": 1,
+      "N300": 70,
+      "N1200": 50,
+      "rho000": 33,
+      "rho075": 232
+    },
+    "stress_selection": "Smallest archived initial constant, index tie-break; no performance or slope selection.",
+    "baseline_times": [
+      60,
+      720,
+      4860
+    ],
+    "robustness_times": [
+      60,
+      720,
+      3240
+    ],
+    "primary_groups": 32768,
+    "primary_seed": 1237722080,
+    "independent_groups": 131072,
+    "independent_seed": 306787219,
+    "A": "Hold archived rank4096 a fixed at both ranks.",
+    "B": "Recalibrate only the identical first60 observations at each rank.",
+    "C": "Historical old-fixed comparison; diagnostic only.",
+    "tolerances": {
+      "projection_floor_over_mean_regret": 0.05,
+      "paired_absolute_mean_plus_1_96_MCSE_over_low_rank_mean_regret": 0.05,
+      "quadrature_absolute_mean_plus_1_96_MCSE_over_primary_mean_regret": 0.05,
+      "relative_u": 0.05,
+      "relative_v": 0.05,
+      "relative_annual_gap": 0.05,
+      "relative_normalized_directional_error": 0.05,
+      "normal_equation_absolute": 1e-08,
+      "normal_equation_relative": 1e-08,
+      "rounding_negative_error": 1e-10
+    },
+    "inference": "Subset-specific only. Rank8192 has no forward-rank certificate. Short audits never certify long horizons.",
+    "resource_estimate": {
+      "machine_RAM_bytes": 8589934592,
+      "worker_limit": 1,
+      "dense_8192_matrix_bytes": 536870912,
+      "estimated_peak_bytes": 4500000000,
+      "full_representative_histories": 12,
+      "full_stress_histories_upper_bound": 4,
+      "historical_remote_baseline_seconds_P4096": 148.6,
+      "historical_remote_population_seconds_P8192": 406.2,
+      "local_full_fit_seconds_range_per_path": [
+        300,
+        3600
+      ],
+      "representative_fit_hours_range": [
+        1,
+        12
+      ],
+      "shared_evaluation_seconds_range": [
+        300,
+        7200
+      ],
+      "estimate_basis": "Historical 32-core remote timings; local 8-core timings uncertain. Measure one worker first.",
+      "cloud_spending_authorized": false,
+      "full_production_authorized": false
+    },
+    "created_before_fits": true,
+    "analysis_timing": "Post hoc numerical diagnostics; unchanged production protocol."
+  },
+  "protocol_hash": "ca207d419324c282edc296830cfb8b1682d4e78c094f6ac58a11e113731a501d",
+  "frozen_utc": "2026-10-11T22:30:18.544210+00:00"
+}

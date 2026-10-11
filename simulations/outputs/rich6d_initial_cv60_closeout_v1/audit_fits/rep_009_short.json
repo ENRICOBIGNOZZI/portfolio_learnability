@@ -1,0 +1,21 @@
+{
+  "sha256": "3b7e8d273303795a5fbc95ee5a5129b2b00f24487ce813d14e5fc779a6270849",
+  "moments_sha256": "7109854ebb2c15493321d2b93b22cb82d6a27dde5c1c0878b857477d66d6afcd",
+  "protocol_hash": "ca207d419324c282edc296830cfb8b1682d4e78c094f6ac58a11e113731a501d",
+  "index": 9,
+  "sample_scope": "short",
+  "source_checkpoint_sha256": "f2921ac7c3991a97c6d5ceb27a2cc112b23fa2d2db60a31410806eed7b0654d7",
+  "generation_seconds": 17.55516325001372,
+  "elapsed_seconds": 26.654902958020102,
+  "completed_utc": "2026-10-11T23:00:23.382316+00:00",
+  "numpy_version": "2.3.5",
+  "cache_sha256": {
+    "eigensystem_N300.npz": "4d38f4ef0a50cf28b3dadfb316577fa81098b2321b082e1058df6f8eab60d64c",
+    "chol8192.npy": "9d4914dfc8f357f5daf30093f4e7bd217ea9ec10b9cf943e71d3700df6992b17",
+    "eigensystem_baseline.npz": "8a6c812362091ee1a22111c02f21250d03728c7c7bb378824256ec0133952e1b",
+    "eigensystem_N1200.npz": "b4dd359b23bc5ea6cf1fe23543a38887a30b9dbe6c98c1a463eb6e086c3fc823",
+    "basis_P4096_seed373077418.npz": "12a2d15d65eb5e6b6d0f980f255e5cf647489a13261558e7a91732984f2b9239"
+  },
+  "training_prefix_cache_sha256": "02443060df57db946b193b1b51025df64704f919ba93765c431340ab0b14207a",
+  "compaction": "Lossless move of regenerable initial60 managed arrays to local cache; all policy coefficients, scores, moments and identity fields unchanged."
+}

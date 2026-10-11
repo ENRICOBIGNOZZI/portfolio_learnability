@@ -1,0 +1,35 @@
+\section{Simulations: a constant calibrated once}
+\label{sec:simulations}
+We use the frozen Rich6D economic experiment: a six-dimensional Mat\'ern-$3/2$ representation, Fourier truncation $M=128$, and 300 independent histories in each of five paired economies. The baseline has $N=600$ and $\rho=0.95$; alternatives change $N$ to 300 or 1200, or persistence to 0 or 0.75. Analytic economic optima are specific to $N$. Sharpe ratios are marginal monthly population quantities multiplied by $\sqrt{12}$; response-one loss is not annualized.
+
+For each economy and history, initial cross-validation selects one constant from the unchanged 71-point grid $[10^{-8},10^{-1}]$ using observations 1--60 only. Four forward folds train on 20, 30, 40, and 50 observations and validate on the subsequent ten. Each fold uses $\lambda=a n_{\rm train}^{-0.6}$ and observation-weighted response-one loss; exact ties favor larger $a$. The selected constant is then frozen:
+\[
+\lambda_{k,T}=\widehat a_{k,60}T^{-0.6}.
+\]
+Later observations refit the policy, with no further calibration. The historical constant is a comparison. Oracle Q minimizes mean regret and oracle SR maximizes mean Sharpe on the original 96-penalty grid, choosing one common penalty per economy and horizon. Both use population information and are diagnostics only.
+
+\begin{table}[htbp]\centering\small
+\caption{Baseline endpoint at $T=4860$, all 300 histories.}
+\input{\simoutput/paper/final_table.tex}
+\end{table}
+
+Initial CV reduces baseline mean endpoint regret from 0.022205 to 0.011296 (paired change $-0.010909$, 95\% Monte Carlo mean interval $[-0.011399,-0.010419]$). Annualized Sharpe changes from 2.934774 to 2.932497 (paired change $-0.002277$, interval $[-0.005079,0.000525]$). Empirical complexity rises from 14.956 to 143.782. Thus the response-one improvement does not establish a final Sharpe improvement. Oracle Q and oracle SR yield distinct endpoint penalties and outcomes; they do not tune the strategy.
+
+The financial components uniquely identified from each policy's signed Sharpe and regret explain this mean discrepancy. At $T=4860$, mean positive-ray loss is 0.011119 under initial CV versus 0.010733 historically, while mean scale loss falls from 0.011472 to 0.000177. These add to the respective mean regrets. Thus improved scaling more than offsets worse directional fit in the response-one objective. These quantities require no choice of a payoff-moment root; actual monthly moments and the remaining radial decomposition are recovered separately on the audit subset.
+
+The full-grid descriptive slopes of log mean regret and log mean Sharpe gap are $-0.437820$ and $-0.398648$, respectively. The unchanged windows $T\ge360$, $T\ge720$, and $T\ge1440$, full cross-horizon covariance MCSE, jackknife checks, and normalized-outcome quantiles are reported in the appendix. No horizon or replication was removed to approach $-0.6$. The asymptotic statement is an $O_{\mathbb P}$ upper bound, not an equality for a finite Monte Carlo mean.
+
+The ideal infinite Fourier target, the simulated $M=128$ economy, and the fixed-dimensional Nystr\"om estimator are distinct objects. The attached derivation supports maximal source order $r=1$ for the ideal target and preserves the kernel upper rate under a frozen selection on a finite positive grid, conditional on the manuscript assumptions. It does not certify the numerical approximation. A fixed subspace with positive representation error cannot have regret to the full economic optimum converging to zero. At the baseline endpoint the rank-4096 representation floor is about 15.7\% of mean CV regret, exceeding the unchanged 5\% criterion. The paired CV rank and quadrature audit remains unresolved; its scope and failed cells are tabulated in the appendix.
+
+\begin{figure}[p]\centering
+\includegraphics[width=\textwidth]{\simoutput/figures/figure_0_spectrum.pdf}
+\caption{Economic spectrum, ridge filters at median initial-CV penalties, and target energy measured in the same numerical eigen-directions. The displayed operator is the frozen rank-4096 approximation; it is not an infinite-dimensional spectrum.}\end{figure}
+\begin{figure}[p]\centering
+\includegraphics[width=\textwidth]{\simoutput/figures/figure_1_recovery.pdf}
+\caption{Baseline population Sharpe recovery, gap to the analytic economic optimum, and final capital-allocation frontiers. Curves include every archived horizon. Shaded bands are the central 95 percent of replication outcomes, not confidence intervals of the mean; oracle bands are descriptive and not selection adjusted. Crosses mark CV projection floor/mean regret exceeding 5 percent. The CV audit remains scope-limited; rank and quadrature uncertainty are additional.}\end{figure}
+\begin{figure}[p]\centering
+\includegraphics[width=\textwidth]{\simoutput/figures/figure_2_complexity.pdf}
+\caption{Empirical and numerical population effective complexity, and empirical complexity divided by history length. Population complexity is evaluated at each actual selected penalty before aggregation; it is not complexity at the mean penalty. Bands are replication percentiles.}\end{figure}
+\begin{figure}[p]\centering
+\includegraphics[width=\textwidth]{\simoutput/figures/figure_3_sharpe_complexity.pdf}
+\caption{Mean population Sharpe against mean empirical complexity across the full baseline horizon grid. Solid paths implement frozen initial CV or the historical rule; dashed oracle paths use population information. The horizontal line is the true economic optimum.}\end{figure}

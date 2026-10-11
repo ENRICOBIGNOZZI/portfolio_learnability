@@ -1,0 +1,74 @@
+{
+  "passed": true,
+  "reviewed_utc": "2026-10-11T23:20:27.785802+00:00",
+  "documents": [
+    {
+      "path": "paper/simulation_closeout.pdf",
+      "sha256": "57c197ab5221c235e9683ee65f8541e123eecacc08bdd8dbb33af3764d000d04",
+      "pages": 10,
+      "contact_sheets": [
+        "/Users/enrico/Desktop/PHD/portfolio/paper_codice/tmp/simulation_closeout_qa/simulation_contact_01.png"
+      ],
+      "text_outside_page": []
+    },
+    {
+      "path": "paper/paper_staging.pdf",
+      "sha256": "6f9907384b9bc3418ddc165803c6924e5c9516e527391a3fa4c5c8475a6de0fa",
+      "pages": 76,
+      "contact_sheets": [
+        "/Users/enrico/Desktop/PHD/portfolio/paper_codice/tmp/simulation_closeout_qa/manuscript_contact_01.png",
+        "/Users/enrico/Desktop/PHD/portfolio/paper_codice/tmp/simulation_closeout_qa/manuscript_contact_02.png",
+        "/Users/enrico/Desktop/PHD/portfolio/paper_codice/tmp/simulation_closeout_qa/manuscript_contact_03.png",
+        "/Users/enrico/Desktop/PHD/portfolio/paper_codice/tmp/simulation_closeout_qa/manuscript_contact_04.png",
+        "/Users/enrico/Desktop/PHD/portfolio/paper_codice/tmp/simulation_closeout_qa/manuscript_contact_05.png",
+        "/Users/enrico/Desktop/PHD/portfolio/paper_codice/tmp/simulation_closeout_qa/manuscript_contact_06.png",
+        "/Users/enrico/Desktop/PHD/portfolio/paper_codice/tmp/simulation_closeout_qa/manuscript_contact_07.png"
+      ],
+      "text_outside_page": []
+    },
+    {
+      "path": "sources/Portfolio_Source_Regularity_Theory.pdf",
+      "sha256": "625a8a95c637529a843f6e3dd9a402366ce4b4e2c8b98c04f18dbe5927a406a2",
+      "pages": 8,
+      "contact_sheets": [
+        "/Users/enrico/Desktop/PHD/portfolio/paper_codice/tmp/simulation_closeout_qa/theory_contact_01.png"
+      ],
+      "text_outside_page": []
+    }
+  ],
+  "figures": [
+    {
+      "path": "figures/appendix_economies.pdf",
+      "sha256": "2b5bfd431f1fd289f37490521ce43854edad1bcc6c87d5c45fc410972a8daf20",
+      "png_sha256": "d7c7d62bad0fa8948dc95828a1c3d20c80b0445ad030252a00c67b6d04ad4940"
+    },
+    {
+      "path": "figures/appendix_normalized.pdf",
+      "sha256": "dd7569e614da1dd700bb5c352e6633182035a49555a31ce834d168dd0cc627d7",
+      "png_sha256": "cfac41f8300114c2fbe3222b860f63bda5d6bdcfa839c102129ecc5e24a83d1e"
+    },
+    {
+      "path": "figures/figure_0_spectrum.pdf",
+      "sha256": "a62d8b8f3e31767f0272b582df918055eb9f60fd9565e33a6d4a7c0119e55ffa",
+      "png_sha256": "4aebd07ced977f8d45822938960b2ae99674e2d8d5cabda403316c6d4da9a995"
+    },
+    {
+      "path": "figures/figure_1_recovery.pdf",
+      "sha256": "31f1ac2c2a87a8d86ff257c8576a585c8c7e8f8de0a52deaa9dbd21c8428259f",
+      "png_sha256": "f97cfa810440f2179e88b3cb1e94e5bb8f6a83d985d0a610c292e9383be1cbda"
+    },
+    {
+      "path": "figures/figure_2_complexity.pdf",
+      "sha256": "a4b5e33b41b4ab3e1d71730f15a9d04c8c63eea157ba5eacc535e5dd9c1269df",
+      "png_sha256": "3be6f93b069b03e16b1bd5c0a9c92604118defef36321cccbf75b27da1a1049e"
+    },
+    {
+      "path": "figures/figure_3_sharpe_complexity.pdf",
+      "sha256": "1abc18614bf916bf88851278c4772def4afe48457b77b7b98a7e8b8a69fea68e",
+      "png_sha256": "952555ee6b011fde7899a88cabefc2237d8f7ca7476bcbdf9528c783e38549ca"
+    }
+  ],
+  "scope": "All theory-note pages, all standalone simulation pages, and all staged manuscript pages reviewed as PNGs/contact sheets. Every figure inspected; final unchanged plot data/geometry reviewed again. No clipping, overlap or text outside pages. Existing empirical/theory content preserved.",
+  "main_figures": 4,
+  "appendix_figures": 2
+}
