@@ -88,8 +88,13 @@ def summarize():
             for t,T in enumerate(times):
                 original=old_warnings[(old_warnings.environment==name)&(old_warnings['T']==T)].iloc[0]
                 regret=data['regret'][:,t,j]
+                q_projection=parameters(name).q_star-floor
+                subspace_sr=np.sqrt(12*q_projection/(1-q_projection))
+                representation_gap=np.sqrt(12)*parameters(name).sr_star-subspace_sr
                 warnings.append(dict(environment=name,T=int(T),specification=spec,projection_floor=floor,
                     mean_regret=float(regret.mean()),floor_fraction=float(floor/regret.mean()),
+                    subspace_annual_SR=float(subspace_sr),representation_annual_gap=float(representation_gap),
+                    fraction_mean_Sharpe_gap_numerical=float(representation_gap/data['annual_gap'][:,t,j].mean()),
                     floor_pass=bool(floor<=.05*regret.mean()),
                     fraction_paths_failing_floor=float(np.mean(floor>.05*regret)),
                     original_floor_pass=bool(original.floor_pass),original_paired_pass=bool(original.paired_pass),

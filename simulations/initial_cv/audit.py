@@ -101,6 +101,11 @@ def audit():
             assert not r.strategy_specific_forward_rank_certificate
             assert r.floor_pass==(r.projection_floor<=.05*r.mean_regret)
             close(r.floor_fraction,r.projection_floor/r.mean_regret)
+            q=parameters(name).q_star-r.projection_floor
+            close(r.subspace_annual_SR,np.sqrt(12*q/(1-q)))
+            close(r.representation_annual_gap,np.sqrt(12)*parameters(name).sr_star-r.subspace_annual_SR)
+            j=SPECIFICATIONS.index(r.specification);t=int(np.flatnonzero(times==r.T)[0])
+            close(r.fraction_mean_Sharpe_gap_numerical,r.representation_annual_gap/d['annual_gap'][:,t,j].mean())
     assert len(summary)==expected_rows
     for r in robust.itertuples(index=False):
         j=SPECIFICATIONS.index(r.specification);t=int(np.flatnonzero(data[r.environment]['T']==r.T)[0])

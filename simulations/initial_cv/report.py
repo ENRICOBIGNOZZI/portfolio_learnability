@@ -55,7 +55,9 @@ def run():
             f'(95% mean interval {row.mean_CI_low:+.6f}, {row.mean_CI_high:+.6f}); '
             f'median initial a={alpha["median"]:.6g}, central 95% a=[{alpha.p025:.6g}, {alpha.p975:.6g}], '
             f'boundary selections {int(alpha.lower_boundary_count)} lower / {int(alpha.upper_boundary_count)} upper out of 300. '
-            f'Projection floor / mean CV regret={100*warning.floor_fraction:.2f}%.')
+            f'Projection floor / mean CV regret={100*warning.floor_fraction:.2f}%. '
+            f'Nyström subspace Sharpe optimum={warning.subspace_annual_SR:.6f}; '
+            f'representation floor accounts for {100*warning.fraction_mean_Sharpe_gap_numerical:.2f}% of the mean CV economic Sharpe gap.')
     (OUTPUT/'findings.txt').write_text('\n\n'.join(findings)+'\n')
     lines=['INITIAL CV CALIBRATION: FINAL RICH6D SIMULATION',*findings,
         'All five economies have 300 independent replication indices, paired across environments and nested across horizons. The baseline analytical annualized Sharpe remains 3; the original N-specific opportunity sets are preserved.',
@@ -112,6 +114,8 @@ def run():
             if len(bad):
                 ax.axvspan(bad['T'].min(),times[-1]*1.04,color='#666666',alpha=.08,zorder=0)
         axes[0].axhline(np.sqrt(12)*parameters(name).sr_star,color='black',ls='--',lw=1,label='Economic optimum')
+        subspace_sr=warnings[warnings.environment==name].subspace_annual_SR.iloc[0]
+        axes[0].axhline(subspace_sr,color='#666666',ls=':',lw=1,label='Nyström subspace optimum')
         cv_warning=warnings[(warnings.environment==name)&(warnings.specification=='initial_cv')&(~warnings.floor_pass)]
         if len(cv_warning):
             t_index=[int(np.flatnonzero(times==T)[0]) for T in cv_warning['T']]
@@ -119,7 +123,7 @@ def run():
                 marker='x',color='black',s=24,label='CV floor exceeds 5%',zorder=5)
         handles,labels=axes[0].get_legend_handles_labels()
         fig.legend(handles,labels,loc='outside lower center',ncol=3,frameon=False)
-        save(fig,f'comparison_{name}',TITLES[name]+'. Means and central 95% replication-percentile bands across 300 paths. CV selects a once within the first 60 observations and freezes it thereafter. The oracle is an ex-post population diagnostic. Grey areas retain original checked numerical failures; crosses identify CV mean-regret floor failures. All CV policies lack a new higher-rank certificate.')
+        save(fig,f'comparison_{name}',TITLES[name]+'. Means and central 95% replication-percentile bands across 300 paths. CV selects a once within the first 60 observations and freezes it thereafter. The oracle is an ex-post population diagnostic. Horizontal lines distinguish the economic optimum from the frozen Nyström subspace optimum. Grey areas retain original checked numerical failures; crosses identify CV mean-regret floor failures. All CV policies lack a new higher-rank certificate.')
     fig,axes=plt.subplots(2,3,figsize=(9.4,5.3),layout='constrained')
     for ax,name in zip(axes.flat,ENVIRONMENTS):
         values=selected[selected.environment==name].selected_a
