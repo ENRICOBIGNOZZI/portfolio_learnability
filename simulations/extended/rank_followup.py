@@ -174,8 +174,17 @@ def pilot(index, rank=8192, fit_only=False):
         positions = [int(np.flatnonzero(old_times == t)[0]) for t in TIMES]
         low_c = low_basis.inverse_root@old['baseline_theory_coefficients'][positions].T
         old_hashes = json.loads(str(old['returns_hashes']))
-        if hashes['baseline_T3240'] != old_hashes['baseline_T3240']:
+        # Original pilot checkpoints predate the T3240 prefix hash. Verify
+        # their saved T1440 prefix and independently replay the full original
+        # economic stream (without any kernel work) to its terminal horizon.
+        if hashes['baseline_T1440'] != old_hashes['baseline_T1440']:
             raise ValueError('Paired return histories differ.')
+        from simulations.extended.histories import PairedHistory
+        replay = PairedHistory(seed('rank_training', index), 100000+index)
+        for _ in range(int(old_times[-1])):
+            replay.step(False)
+        if replay.hashes()['baseline'] != old_hashes['baseline']:
+            raise ValueError('Complete original pilot history differs.')
         reference_regret = old['baseline_loss'][positions, -1]-(1-parameters().q_star)
         reference_sr = old['baseline_sr'][positions, -1]*np.sqrt(12)
     del low_basis
