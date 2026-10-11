@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "bootstrap_replicates": 5000,
+  "blocks": [
+    6,
+    12,
+    24
+  ],
+  "actual_monthly_excess_sharpe": true,
+  "common_dates": true,
+  "state_carried": true,
+  "analysis_source_sha256": "0275dcae0bab20d2bdf8a20d08f0d127a028f8af252326742839d022d2b3972c"
+}

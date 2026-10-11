@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "unique_cases_passed": 57,
+  "baseline_and_related": {
+    "cases": 50,
+    "result": "50 passed in 31.05s"
+  },
+  "dense_extension": {
+    "cases": 6,
+    "result": "6 passed in 2.50s"
+  },
+  "final_updated_checks": {
+    "cases": 19,
+    "passed": true,
+    "detail": "18 passed in the final focused run; one exact-float equality check corrected to the declared numerical tolerance, then passed independently (1 passed in 2.26s)."
+  },
+  "fresh_destination_guard": true,
+  "commands": [
+    "python3 -m pytest -q tests/test_final_theory_regularization.py tests/test_bandwidth_tuning.py tests/test_schedule.py tests/test_final_empirical.py tests/test_lengthscale_spectral.py",
+    "python3 -m pytest -q tests/test_final_theory_dense.py",
+    "python3 -m pytest -q tests/test_final_theory_regularization.py tests/test_final_theory_dense.py",
+    "python3 -m pytest -q tests/test_final_theory_regularization.py::test_exported_counterfactual_penalties_and_cumulative_statistics"
+  ]
+}

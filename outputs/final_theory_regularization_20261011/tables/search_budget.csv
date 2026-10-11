@@ -1,0 +1,9 @@
+method,initial_lambda_candidates,subsequent_annual_lambda_grid_candidates,subsequent_annual_length_candidates,subsequent_decisions,notes
+A,200,0,1,46,"Initial count is candidate-policy evaluations; A-D grids nested original 200, CV grids original 120. One-anchor performs a scalar spectral root, no CV grid."
+B,200,0,1,46,"Initial count is candidate-policy evaluations; A-D grids nested original 200, CV grids original 120. One-anchor performs a scalar spectral root, no CV grid."
+C,1000,0,3,46,"Initial count is candidate-policy evaluations; A-D grids nested original 200, CV grids original 120. One-anchor performs a scalar spectral root, no CV grid."
+D,1000,0,3,46,"Initial count is candidate-policy evaluations; A-D grids nested original 200, CV grids original 120. One-anchor performs a scalar spectral root, no CV grid."
+annual_cv,120,120,1,46,"Initial count is candidate-policy evaluations; A-D grids nested original 200, CV grids original 120. One-anchor performs a scalar spectral root, no CV grid."
+joint_cv,600,600,5,46,"Initial count is candidate-policy evaluations; A-D grids nested original 200, CV grids original 120. One-anchor performs a scalar spectral root, no CV grid."
+fixed_lambda,200,0,1,46,"Initial count is candidate-policy evaluations; A-D grids nested original 200, CV grids original 120. One-anchor performs a scalar spectral root, no CV grid."
+one_anchor,120,0,1,46,"Initial count is candidate-policy evaluations; A-D grids nested original 200, CV grids original 120. One-anchor performs a scalar spectral root, no CV grid."

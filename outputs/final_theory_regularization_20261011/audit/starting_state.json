@@ -1,0 +1,9 @@
+{
+  "commit": "041a8529f742583956bcf38dd28c4651f9e281b4",
+  "branch": "main",
+  "unrelated_status": " M empirical_final/compact_protocol.json\n M empirical_final/compact_publication.py\n M empirical_final/neural_portfolio.py\n M outputs/empirical_compact_20261010/audit/bandwidth_generated_weight_cache.json\n M outputs/empirical_compact_20261010/audit/protocol.json\n M outputs/empirical_compact_20261010/audit/robustness_generated_weight_cache.json\n M simulations/extended/followup_diagnostics.py\n M simulations/outputs/rich6d_sr3_numerical_followup/diagnostic_slopes.csv\n M simulations/outputs/rich6d_sr3_numerical_followup/saved_results_audit.json\n M tests/test_compact_empirical.py\n M tests/test_rank_followup.py\n?? empirical_final/final_theory_regularization.py\n?? outputs/empirical_compact_20261010/audit/pilot_float32_legacy.json\n?? outputs/empirical_compact_20261010/audit/protocol_amendment.json\n?? outputs/empirical_compact_20261010/audit/protocol_execution_v1.json\n?? simulations/extended/followup_report.py\n?? simulations/outputs/rich6d_sr3_numerical_followup/early_fit_reproduction_check.json\n?? simulations/outputs/rich6d_sr3_numerical_followup/execution_sources.json\n?? simulations/outputs/rich6d_sr3_numerical_followup/oracle_verification.json\n?? simulations/outputs/rich6d_sr3_numerical_followup/population_resources_P8192.json\n?? simulations/outputs/rich6d_sr3_numerical_followup/remote_fit_receipts.json\n?? simulations/outputs/rich6d_sr3_numerical_followup/reproduction.txt\n?? simulations/outputs/rich6d_sr3_numerical_followup/temporary_cache_cleanup.json\n",
+  "baseline_tolerance": {
+    "rtol": 1e-07,
+    "atol": 1e-09
+  }
+}

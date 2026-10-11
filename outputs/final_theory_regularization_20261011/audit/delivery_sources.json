@@ -1,0 +1,17 @@
+{
+  "source_hashes": {
+    "empirical_final/final_theory_analysis.py": "0275dcae0bab20d2bdf8a20d08f0d127a028f8af252326742839d022d2b3972c",
+    "empirical_final/final_theory_dense.py": "23815482267e161bd9934470963f7ea1ca5e14877397235b721d70ffb8ed1013",
+    "empirical_final/final_theory_regularization.py": "930207e02205ff05377676fea012f4f26051e8b3b64f7d70d8da243a21d7e8a9",
+    "empirical_final/final_theory_report.py": "76cb91219cd50adee15a65a2918138fbe0396c7f97378f7adf75050a35c88566",
+    "empirical_final/final_theory_reproduce.py": "9da670e1fdd0f7e5cd1053c28f869329b2c3a36e25396a2d8c0c6ea476e17b8b",
+    "tests/test_final_theory_dense.py": "379758d6544e6f6d00051c2cbb1f86186f67b26749433dc0f36793eee5cf5677",
+    "tests/test_final_theory_regularization.py": "7b016d6d33cf1a4462cf393c68a093896838077d496111bf8f4de0679d564e64"
+  },
+  "manuscript_hashes": {
+    "paper/theory/economomic_spectrum_final.tex": "e83a201a6ce34b635a172f088e02a7b3dd0deddfc7b4b1e6ae5a5afd70761002",
+    "paper/theory/direct_port_learning.tex": "e03c416915ae6b35d8f6d1658ed9d9c84fd167af72db0a2d5dd6bb3cea98e260",
+    "paper/theory/proofs_learning.tex": "96f2cf375a7a951118a38d17e0fc857c35bc364bdcb9c888a21bbac3a31f0731"
+  },
+  "manuscript_unchanged": true
+}

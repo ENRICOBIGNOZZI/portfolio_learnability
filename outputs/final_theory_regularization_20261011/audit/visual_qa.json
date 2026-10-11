@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "pdf_sha256": "2c9962848d8fb4a26f7c627aaf7e946dfc25c98bc252f70c5bd84b633b93434c",
+  "report_pages": 6,
+  "inspected_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "final_render_pixel_identical_to_inspected": true,
+  "standalone_figures_inspected": [
+    "regularization_diagnostic.pdf",
+    "performance_comparison.pdf",
+    "rolling_diagnostic.pdf"
+  ],
+  "no_clipping_overlap_or_missing_curves": true,
+  "rolling_primary_points": 986
+}

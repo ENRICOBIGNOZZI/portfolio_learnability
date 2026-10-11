@@ -1,0 +1,524 @@
+# CODEX — Final Theory-Guided Regularization Experiment
+
+## Research objective
+
+Work in the repository:
+
+`ENRICOBIGNOZZI/portfolio_learnability`
+
+We have already implemented a theory-guided regularization schedule for the Matérn-3/2 portfolio kernel:
+
+\[
+\lambda_T=C_0T^{-\widehat b_T/(\widehat b_T+1)}.
+\]
+
+The constant \(C_0\) is calibrated once using initial chronological validation; the empirical spectral exponent \(\widehat b_T\) is subsequently re-estimated at each annual refit.
+
+The existing experiment reports an **annualized gross OOS Sharpe of approximately 3.561** on 564 months.
+
+The annual cross-validation benchmark with fixed lengthscale obtains approximately 3.461. Joint annual cross-validation of lengthscale and regularization obtains approximately 3.587.
+
+These values come from different existing experiments, so reproduce their monthly payoff paths before making comparisons.
+
+**We want to answer two questions:**
+
+1. Does re-estimating \(b_T\) improve portfolio performance compared with fixing \(b=b_0\) at its initial estimate?
+2. Can theory-guided regularization become more useful when we optimize kernel lengthscale chronologically while preserving the theoretically motivated lambda schedule?
+
+The aim is a small, clear, finance-relevant result for *The Law of Portfolio Learnability*, not a new independent methodology paper.
+
+Do not rewrite the manuscript, introduce new kernel families, or construct an unrelated algorithm.
+
+---
+
+## 1. Inspect and reproduce the existing experiments
+
+Read:
+
+- `complexity_schedule.py`
+- `paper/complexity_schedule/annual_schedule.csv`
+- `paper/complexity_schedule/initial_validation.csv`
+- `paper/complexity_schedule/manifest.json`
+- `bandwidth_tuning.py`
+- `portfolio.py`
+- `kernels.py`
+- `empirical_final/theory_guided_lambda.py`
+- `empirical_final/lengthscale_spectral.py`
+- `outputs/bandwidth_tuning/`
+- `outputs/lengthscale_spectral_constant_20261010/`
+
+Reuse the existing real JKP managed-payoff data.
+
+Use Matérn-3/2, 130 characteristics, 10,000 RFFs, seed 0, identical cross-sectional normalization and the original annual decision dates.
+
+The existing baseline lengthscale is
+
+\[
+\ell_0=4.392107784616423.
+\]
+
+**First reproduce the complete 3.561 gross-Sharpe baseline**, including every annual \(b_T,\lambda_T,\mathcal C_T\), and all 564 OOS monthly payoffs.
+
+Match the original output to numerical tolerance.
+
+If replication fails, stop and report the issue before producing new performance claims.
+
+Remember that this schedule is different from the later full-spectrum rule minimizing \(\lambda+\rho\widehat{\mathcal C}(\lambda)/T\). Do not substitute the latter.
+
+---
+
+# EXPERIMENT 1 — Does updating b actually matter?
+
+## 2. Freeze the baseline representation
+
+Fix the Matérn-3/2 kernel at \(\ell_0\).
+
+Replicate the initial calibration exactly as in `complexity_schedule.py`:
+
+- Initial training: 1963–1972, \(T_{\mathrm{train},0}=120\) months.
+- Initial validation: 1973–1977, 60 months.
+- Initial 200-candidate ridge grid.
+- Estimate \(b_0\) from the initial training spectrum.
+- Choose \(C_0\) once using validation squared portfolio loss.
+- First portfolio refit on the complete available history of 180 months.
+
+Importantly, use \(T=120\) when converting the initial validation-selected penalty into \(C_0\), exactly as the original implementation does. Use \(T=180\) for the first full-history portfolio refit.
+
+Freeze the calibrated constant.
+
+## 3. Compare two theoretical schedules
+
+### Strategy A — Fixed spectral exponent
+
+Estimate \(b_0\) once on the initial training sample.
+
+For every annual refit, use
+
+\[
+\boxed{
+\lambda_T^{A}
+=
+C_0T^{-b_0/(b_0+1)}.
+}
+\]
+
+Estimate the portfolio policy on the expanding training history.
+
+Neither \(C_0\) nor \(b_0\) changes.
+
+### Strategy B — Updated spectral exponent
+
+This is our existing method:
+
+\[
+\boxed{
+\lambda_T^{B}
+=
+C_0T^{-\widehat b_T/(\widehat b_T+1)}.
+}
+\]
+
+Update \(b_T\) from the currently available managed-payoff spectrum.
+
+Keep \(C_0\) unchanged.
+
+Use exactly the original spectral regression convention:
+
+- Positive eigenvalues of the uncentered managed-payoff second-moment operator.
+- Numerical relative threshold \(10^{-12}\).
+- Log-eigenvalue against log-rank OLS regression.
+- Predefined rank band from 10% to 60% of positive empirical ranks.
+- No clipping of invalid \(b\).
+
+Use identical histories, portfolio solvers, features and OOS observations.
+
+**The only difference between A and B must be whether \(b\) is updated.**
+
+## 4. Required results
+
+Calculate annual and cumulative OOS:
+
+- Gross Sharpe.
+- Net Sharpe using the established trading/borrowing-cost implementation.
+- Mean and volatility.
+- Effective complexity.
+- Annual lambda.
+- Turnover and leverage.
+- Maximum drawdown.
+- Response-one quadratic loss.
+
+Report paired bootstrap confidence intervals for differences in Sharpe and quadratic loss.
+
+Most importantly, quantify how much of the change in lambda comes from:
+
+1. Increasing training sample size \(T\).
+2. Re-estimating \(b_T\).
+
+Show a counterfactual penalty path that holds \(b=b_0\) while using the observed expanding \(T\).
+
+**Decisive question: Does updating b provide a measurable benefit beyond the original theoretical sample-size scaling?**
+
+Do not treat an insignificant difference as proof of equivalence.
+
+---
+
+# EXPERIMENT 2 — Theory-guided lambda with optimized lengthscale
+
+## 5. Keep the same kernel family
+
+Now allow Matérn lengthscale to vary across the existing five candidates:
+
+\[
+\boxed{
+\ell\in\ell_0\{0.25,0.5,1,2,4\}.
+}
+\]
+
+Reuse the existing managed-payoff caches generated by `bandwidth_tuning.py`.
+
+Do not generate different independent RFF draws across lengthscales.
+
+The entire experiment must keep the same return histories, security universe, characteristic rankings, RFF count and feature seed.
+
+## 6. Calibrate the constants once, independently for each lengthscale
+
+For each candidate \(\ell\), use only the original 1963–1972 training observations and 1973–1977 validation observations.
+
+Estimate its initial exponent:
+
+\[
+\widehat b_0(\ell).
+\]
+
+Select its initial penalty:
+
+\[
+\lambda_0^{CV}(\ell)
+\]
+
+using the same initial 200-candidate procedure as Experiment 1, but applied to that lengthscale's managed-payoff representation.
+
+Construct the corresponding constant:
+
+\[
+\boxed{
+C_0(\ell)
+=
+\lambda_0^{CV}(\ell)
+T_{\mathrm{train},0}^{\widehat b_0(\ell)/(\widehat b_0(\ell)+1)}.
+}
+\]
+
+Once calibrated, all five \(C_0(\ell)\) values remain frozen for every subsequent year.
+
+This is **one initial calibration per representation**, not annual optimization of lambda.
+
+Do not assume one universal \(C_0\) across lengthscales without justification: changing the RKHS changes the relevant source and regularization constants.
+
+Report all five initial exponents, penalties, constants, validation losses and numerical diagnostics.
+
+### Important admissibility check
+
+The paper's polynomial-spectrum theorem assumes \(b>1\).
+
+If a particular initial or subsequent lengthscale produces \(\widehat b\leq1\), do not silently clip the estimate.
+
+Report it as a violation of the assumptions underlying the theoretical plug-in rule. Predeclare how unavailable candidates are handled, preserve the baseline lengthscale as a control, and report whether candidate exclusions materially affect the comparison.
+
+Do not hide failures by replacing them with CV-selected penalties.
+
+---
+
+## 7. Two adaptive-lengthscale strategies
+
+### Strategy C — Optimized lengthscale, fixed b
+
+For each candidate \(\ell\), keep its initial exponent fixed:
+
+\[
+\boxed{
+\lambda_T^{C}(\ell)
+=
+C_0(\ell)
+T^{-\widehat b_0(\ell)/(\widehat b_0(\ell)+1)}.
+}
+\]
+
+At each annual decision, select the best candidate lengthscale using chronological validation.
+
+Do not retune lambda.
+
+### Strategy D — Optimized lengthscale, updated b
+
+For each candidate \(\ell\), re-estimate its spectral exponent:
+
+\[
+\widehat b_T(\ell).
+\]
+
+Then use
+
+\[
+\boxed{
+\lambda_T^{D}(\ell)
+=
+C_0(\ell)
+T^{-\widehat b_T(\ell)/(\widehat b_T(\ell)+1)}.
+}
+\]
+
+Again, select only the lengthscale through chronological validation.
+
+**This is our principal proposed algorithm.**
+
+The lengthscale changes the representation. The spectral rule determines lambda.
+
+No annual 120- or 200-point search over lambda is permitted after initial calibration.
+
+---
+
+## 8. Implement lengthscale selection without leakage
+
+Use the existing annual chronology.
+
+For a decision year \(y\):
+
+1. Identify the expanding inner-training observations ending before the five-year validation block.
+2. For every candidate lengthscale, compute the candidate's spectral exponent using only inner training.
+3. Calculate its theory-guided lambda using that candidate's previously frozen \(C_0(\ell)\) and the inner-training sample size.
+4. Fit its portfolio policy using inner training only.
+5. Evaluate the five candidate policies on the subsequent 60-month validation period using mean \((1-R^p)^2\).
+6. Select the lengthscale with the lowest validation loss, preserving the repository's existing deterministic tie convention.
+7. After choosing lengthscale, refit on the entire history available at the decision date.
+8. Re-estimate \(b_T\) on that complete past history for Strategy D, or retain \(b_0(\ell)\) for Strategy C.
+9. Calculate the final lambda from the theoretical formula with the full refit sample size.
+10. Evaluate the following OOS year.
+
+**Never calculate the validation-selected lengthscale using a penalty or spectral exponent fitted on observations belonging to that validation block.**
+
+The final refit may use all information available before the test period, exactly as the existing paper procedure does.
+
+The initial validation period is also used to calibrate \(C_0(\ell)\), so document that this is a historical calibration, not independent evidence of subsequent generalization.
+
+Report primary comparisons from 1979 onward, excluding the anchor year, and a secondary common 1984–2024 comparison to assess early overlap between calibration and repeated validation windows.
+
+---
+
+# EXPERIMENT 3 — The final controlled comparison
+
+## 9. Compare the full 2 × 2 design
+
+This table is the principal experiment:
+
+| | Fixed lengthscale | Optimized lengthscale |
+|---|---|---|
+| Fixed initial b | Strategy A | Strategy C |
+| Updated b each year | Strategy B | Strategy D |
+
+The design lets us answer four separate questions.
+
+**Q1.** Does updating \(b\) help when lengthscale is fixed?
+
+Compare B against A.
+
+**Q2.** Does optimizing lengthscale help when \(b\) is fixed?
+
+Compare C against A.
+
+**Q3.** Does optimizing lengthscale help when \(b\) is updated?
+
+Compare D against B.
+
+**Q4.** Does updating \(b\) help after allowing lengthscale to vary?
+
+Compare D against C.
+
+Include the interaction:
+
+\[
+\Delta_{\mathrm{interaction}}
+=
+(SR_D-SR_C)-(SR_B-SR_A).
+\]
+
+Treat this as a descriptive difference-in-differences between fitted strategies, not as a causal treatment effect.
+
+## 10. Add the existing practical benchmarks
+
+On identical common OOS periods, also report:
+
+- Standard annual CV, fixed Matérn lengthscale.
+- Joint annual CV of Matérn lengthscale and lambda.
+- Fixed initial lambda with fixed baseline lengthscale.
+- Existing one-anchor spectral rule as a secondary reference, if fully reproducible.
+
+The previously reported benchmarks are approximately:
+
+- Fixed-lengthscale annual CV: gross Sharpe 3.461.
+- Joint annual CV: gross Sharpe 3.587.
+- Theory-guided updated b with fixed lengthscale: gross Sharpe 3.561.
+
+These are reproduction targets, not guarantees or performance thresholds.
+
+Do not optimize hyperparameters using the final OOS ranking.
+
+The primary goal is to determine whether Strategy D can compete with the joint CV benchmark without performing an annual lambda-grid search.
+
+---
+
+## 11. Financial implementation matters
+
+Calculate all policies on the exact same OOS dates.
+
+Use the same fixed pretest display/exposure calibration as the existing benchmark.
+
+Reconstruct the actual signed stock weights for each portfolio.
+
+Compute transaction and short-borrowing costs using the existing verified `accounting_step` implementation:
+
+- 25 bp per traded notional.
+- 30 bp annually on short notional.
+
+Report both gross and net Sharpe, as well as changes in mean, volatility, leverage, turnover and drawdown.
+
+Never estimate the new algorithm's trading costs using the weights or turnover of the original CV portfolio.
+
+Report performance on:
+
+- Full February 1978–January 2025 sample, for context.
+- February 1979–January 2025, excluding the calibration decision year.
+- February 1984–January 2025 as a secondary common-window sensitivity.
+- The last five years as descriptive evidence only.
+
+Calculate the Sharpe from concatenated monthly excess returns, not the average of annual Sharpes.
+
+Use paired bootstrap uncertainty with predeclared 6-, 12- and 24-month blocks.
+
+The main inference should concern the difference between Strategy D and Strategies B, C and joint CV, especially **net of costs**.
+
+---
+
+# EXPERIMENT 4 — Should we move to monthly rolling estimation?
+
+Do not automatically replace the expanding-history annual experiment with a new rolling methodology.
+
+The previous 3.561 benchmark uses expanding windows and annual refits.
+
+A monthly rolling experiment changes both the statistical problem and the amount of information being used, so it must be evaluated separately.
+
+After Experiments 1–3 are complete, perform a lightweight diagnostic on trailing 180- and 240-month managed-payoff windows, moving one month at a time.
+
+Without refitting full portfolios initially, calculate the monthly trajectories of:
+
+\[
+\widehat b_{t,W},\qquad
+\lambda_{t,W}
+=
+C_0(W)W^{-\widehat b_{t,W}/(\widehat b_{t,W}+1)},
+\]
+
+and their implied effective complexities.
+
+For this diagnostic, explicitly recalibrate or translate the initial constant according to a well-defined pretest window convention. Do not reuse the expanding-history constant without checking that the same parameterization is valid.
+
+Measure:
+
+- Month-to-month variability of estimated b.
+- Sensitivity to spectral rank range.
+- Frequency of \(\widehat b\leq1\).
+- Monthly variation in theoretical lambda.
+- Monthly variation in effective complexity.
+
+If the changes are economically negligible or dominated by numerical instability, conclude that monthly re-estimation is not currently justified.
+
+Do not run another expensive full monthly OOS portfolio backtest unless the diagnostic provides a compelling reason.
+
+---
+
+## 12. Required numerical tests
+
+Verify:
+
+- Exact replication of the original theory-guided Matérn strategy.
+- Same initial calibration for Strategies A and B.
+- Identical lengthscale and dates in A versus B.
+- Correct per-lengthscale calibration dates and data.
+- Frozen \(C_0(\ell)\) for all subsequent years.
+- No OOS data in exponent estimation.
+- No validation data in inner-training spectral estimates.
+- Correct full-history refit after lengthscale selection.
+- Correct scaling with T.
+- Correct numerical eigenvalues and positive-rank thresholds.
+- Correct handling of invalid exponents.
+- Existing RFF feature-bank consistency.
+- Correct primal/dual ridge predictions.
+- Actual holdings reconciliation and net accounting.
+- Identical common samples and benchmark reproductions.
+- Complete alignment between plotted figures and exported data.
+
+Record the baseline and new input hashes.
+
+Do not modify original files or overwrite existing published results.
+
+---
+
+## 13. Deliverables
+
+Create a separate versioned output directory.
+
+Produce:
+
+**1. Main empirical report**
+
+A concise PDF with the 2 × 2 comparison, gross/net results, paired confidence intervals and economic interpretation.
+
+**2. Regularization diagnostic**
+
+One figure showing annual \(b_T\), \(\lambda_T\) and effective complexity for A–D.
+
+Clearly separate the contributions of increasing T, updating b and changing lengthscale.
+
+**3. Performance figure**
+
+One combined gross/net cumulative wealth comparison between the four methods and joint CV.
+
+**4. Reproducible tables**
+
+Annual selections and candidate losses, frozen constants, lambda paths, complexity, OOS monthly payoffs, holdings-cost summaries, paired bootstrap results, and numerical checks.
+
+**5. Final decision memo**
+
+Answer clearly:
+
+- How much of the 3.561 Sharpe comes from updating b?
+- Is fixing b at its initial value nearly as good?
+- Does allowing lengthscale to vary improve the theory-guided strategy?
+- Does it improve net Sharpe?
+- Can theory-guided lambda compete with annual joint CV?
+- Does the resulting algorithm actually use fewer regularization searches?
+- Is the method robust or dependent on one historical period?
+- Does it deserve a short subsection in the current paper?
+
+If the result is positive, propose a **maximum one-page main-text subsection** connected directly to the existing optimal-shrinkage theorem.
+
+If the result is weak, inconclusive or negative, recommend leaving the current manuscript unchanged.
+
+No appendix. No new independent methodological contribution. No claim of oracle-optimal data-dependent tuning unless proved.
+
+Execute and verify the experiments, preserve unrelated repository work, and push the completed permitted outputs to GitHub. Provide the exact final commit hash.
+
+## Scientific objective
+
+The preferred contribution is not another hyperparameter-tuning algorithm.
+
+It is to test whether the paper's existing theoretical law,
+
+\[
+\lambda_T\asymp T^{-b/(b+1)},
+\]
+
+can provide a useful and simple portfolio regularization schedule when the representation itself is selected using historical information.
+
+**We want to know whether the statistical law helps us learn better portfolios—not merely whether it generates smoother lambda paths.**
+
+Report the negative results with the same care as the positive ones.

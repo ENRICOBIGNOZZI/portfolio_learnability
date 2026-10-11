@@ -1,0 +1,19 @@
+{
+  "input_hashes": {
+    "annual_policies.csv": "d0ee6c927a435b6781b0fac5bff7018abf18033dd7689ac0224045b80596ed62",
+    "monthly_accounts.csv": "29ea4f8234093898ddd26dea161e6c1ded495b88ce3850d43d595fdade21f0fa",
+    "performance_figure_data.csv": "370fe854873d0aa78f6ec16d22322d2307adbcfc3bfc733a2d123ecb096e371c",
+    "rolling_monthly_diagnostics.csv": "c7416278294d8d45341a513ca7d775631a654c053ca80e5c9c25507f8a5e37d9"
+  },
+  "figures": {
+    "performance_comparison.png": "9e8b73277c05e300820d59493c257477bb18781b9a4bb5732170fcc6a21154ad",
+    "performance_comparison.pdf": "af9564144d38696ad268fd9dc5fa6ce0dcf56795025437bcea13d59e225477ee",
+    "regularization_diagnostic.png": "94a9fc391c9c97069252a9af5f6f73717d77bc4e5216c7666a95cd3c27ebe2c7",
+    "regularization_diagnostic.pdf": "b46685dceb29aa4f7d507a7636a3bc68ca932b5f38019390c43d0fa2becff3c4",
+    "rolling_diagnostic.pdf": "15b192e76212f39b35050d65608f63e1455cfefe7d6f9a09dfa45c471721b932",
+    "rolling_diagnostic.png": "2699bdb053a796a7ca7cd29bc8568868c4eb622b049716c4a9135c661603a8b8"
+  },
+  "all_curves_exported": true,
+  "rolling_primary_rows": 986,
+  "wealth": "Primary period rebased to 1; net state carried from 1978"
+}

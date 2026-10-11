@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "windows": [
+    180,
+    240
+  ],
+  "baseline_only": true,
+  "pretest": "Both fixed windows translated at January 1984 close to expanding B penalty; no post-anchor recalibration",
+  "no_portfolio_refits": true,
+  "compelling_gate_passed": false,
+  "full_monthly_backtest_executed": false,
+  "elapsed_seconds": 9.459800915967207
+}

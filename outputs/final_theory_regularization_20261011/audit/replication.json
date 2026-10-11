@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "months": 564,
+  "annual_refits": 47,
+  "full_gross_sharpe": 3.56133432162478,
+  "maximum_payoff_error": 2.220446049250313e-16,
+  "maximum_schedule_relative_error": 2.220446049250313e-16,
+  "C0": 2.2657790177294398e-06,
+  "b0": 1.2675347906895178,
+  "initial_train_months": 120,
+  "first_refit_months": 180,
+  "elapsed_seconds": 5.306674374965951
+}

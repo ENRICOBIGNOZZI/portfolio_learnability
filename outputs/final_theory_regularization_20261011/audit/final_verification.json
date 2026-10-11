@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "exact_baseline_replication": true,
+  "frozen_constants": true,
+  "chronological_inner_and_full_refits": true,
+  "invalid_exponents_reported_and_excluded": true,
+  "all_benchmark_paths_reproduced": true,
+  "signed_holdings_and_net_accounts_reconciled": true,
+  "common_samples": true,
+  "paired_blocks": [
+    6,
+    12,
+    24
+  ],
+  "numerical_tests_passed": 57,
+  "all_plotted_input_hashes_match": true,
+  "manuscript_unchanged": true,
+  "dense_followup_exploratory": true,
+  "user_confirmed_dense_lengthscale_with_theoretical_lambda": true,
+  "monthly_full_backtest_not_justified_by_declared_gate": true
+}

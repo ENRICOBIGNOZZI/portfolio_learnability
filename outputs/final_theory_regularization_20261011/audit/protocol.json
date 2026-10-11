@@ -1,0 +1,97 @@
+{
+  "version": "final-theory-2x2-v1",
+  "kernel": "matern32",
+  "ell0": 4.392107784616423,
+  "multipliers": [
+    0.25,
+    0.5,
+    1.0,
+    2.0,
+    4.0
+  ],
+  "features": 10000,
+  "characteristics": 130,
+  "feature_seed": 0,
+  "initial_training_formations": [
+    "1963-01-31",
+    "1972-12-31"
+  ],
+  "initial_validation_formations": [
+    "1973-01-31",
+    "1977-12-31"
+  ],
+  "initial_grid": 200,
+  "constant_conversion_T": 120,
+  "first_refit_T": 180,
+  "annual_decisions": [
+    1978,
+    2024
+  ],
+  "spectral_fit": "Uncentered Gram/T; positive threshold 1e-12; log-rank OLS; ceil(10%)-floor(60%); no clipping",
+  "rule": "C0(ell) * T ** (-b/(b+1)); constants frozen once",
+  "chronology": "Inner training precedes trailing 60 formation months; select length with inner-training lambda only; refit all past history",
+  "ties": "Exact loss ties prefer multiplier 1, then nearest absolute log2 distance, then smaller multiplier",
+  "admissibility": "Initial b<=1: exclude representation permanently. D inner b<=1: exclude for that decision. D selected full-refit b<=1: fall back to baseline control and record. Invalid baseline: stop. C uses admissible initial b, subsequent slopes descriptive only. No clipping, grid substitution or OOS-based exclusion.",
+  "exclusion_sensitivity": "Report positive-b extrapolation choices and gross paths separately as outside-theorem diagnostics; never a primary strategy",
+  "anchor": "1978 is context only; per-length calibration shares the initial validation block",
+  "periods": [
+    "1978-2024",
+    "1979-2024",
+    "1984-2024",
+    "2020-2024"
+  ],
+  "subperiods": [
+    "1979-1989",
+    "1990-1999",
+    "2000-2009",
+    "2010-2019"
+  ],
+  "primary": "1979-2024; principal paired net comparisons D-B, D-C, D-joint_cv",
+  "bootstrap": {
+    "seed": 20261011,
+    "replicates": 5000,
+    "blocks": [
+      6,
+      12,
+      24
+    ],
+    "interval": "Paired circular moving-block percentile 95%; conditional on fitted paths; no strategy refitting or multiplicity correction"
+  },
+  "costs": {
+    "trade_rate": 0.0025,
+    "annual_short_borrow": 0.003,
+    "implementation": "Existing verified accounting_step via account; actual reconstructed signed holdings",
+    "state": "Cash before February 1978; state carried into every reported subperiod; no terminal liquidation"
+  },
+  "loss": "Response-one quadratic loss in raw payoff units for gross comparisons; net loss divided by same fixed kappa",
+  "rolling": {
+    "windows": [
+      180,
+      240
+    ],
+    "start_formation": "1984-01-31",
+    "pretest_cutoff": "1983-12-31 formation, payoff known 1984-01-31",
+    "translation": "Anchor each W to expanding B lambda at T=252; C0(W)=lambda_anchor * W**(b_anchor(W)/(b_anchor(W)+1)); thereafter freeze",
+    "rank_fractions": [
+      [
+        0.1,
+        0.6
+      ],
+      [
+        0.1,
+        0.5
+      ],
+      [
+        0.2,
+        0.6
+      ],
+      [
+        0.1,
+        0.7
+      ]
+    ],
+    "diagnostic_only": true,
+    "compelling_gate": "For both W, median absolute monthly log-lambda change >= 5%, monthly median cross-band log-lambda spread <= that change, and >=99% primary b admissible; otherwise no monthly backtest"
+  },
+  "manuscript": "Recommend unchanged when incremental net evidence is weak, mixed or block-sensitive; no oracle or causal claim"
+}

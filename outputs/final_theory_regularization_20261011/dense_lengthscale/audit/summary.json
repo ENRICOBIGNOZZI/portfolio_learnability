@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "common_dates": true,
+  "no_annual_lambda_search": true,
+  "original_results_preserved": true,
+  "exploratory": true,
+  "source_sha256": "23815482267e161bd9934470963f7ea1ca5e14877397235b721d70ffb8ed1013"
+}
