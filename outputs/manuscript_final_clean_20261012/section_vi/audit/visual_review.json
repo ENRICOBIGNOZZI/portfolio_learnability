@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "date": "2026-10-12",
+  "pages": 8,
+  "pdf_sha256": "861ab7a5724791a35d049182cd18b1d94b01494c3dbca3dddc473366131ae871",
+  "source_zip_sha256": "854665993e0a6d8b3e8e399fd4b2aa53dd41a0e31dc8eb496f07564e720d4e24",
+  "review": "All eight final publication pages inspected; the delivered standalone wrapper and complete manuscript were also reviewed.",
+  "checks": [
+    "All nine chronological panel labels and the three-item legend are readable",
+    "No CV diamonds or confidence bands in Figure 6; Figure 5 diamond retained",
+    "Full observed right tails, retrospective stars and open zero endpoints visible",
+    "Empirical tables and captions readable without clipping or overlap",
+    "No obsolete costs figure; appendix continues into preserved factor-economy theory",
+    "No newly empty empirical or appendix pages"
+  ],
+  "page_render_sha256": {
+    "page-1.png": "33da9af80ff94918974f122714b0e7a7efb6a11f7df4fc578f32c742fd929749",
+    "page-2.png": "32c744d72c0297a72273631ef2f46775afca00be35da3c7f9f4b04b56129c756",
+    "page-3.png": "63fb92856c88cea7c2afd490e436095767619ebe60bbea10b8a43e72edf23d30",
+    "page-4.png": "6803416d0a1cc7046a26141feb73df83afd7bef95830f10d4d3371dcbe8280d0",
+    "page-5.png": "4593d1810b1e80b8224f9c92f660a0d2c3764e848b222deed8f781faffdd5e2b",
+    "page-6.png": "52019208e96ad101ec0bea04e5280404d7851c589cf35d9c98c852979ce7699f",
+    "page-7.png": "d77d284d5be2043342f912cf2b102551a5beb37c4e42cea7fc54d1f42caaef80",
+    "page-8.png": "7ec3bb736cf4eac5889b18a71a8a2f4c2bceee5bb7f09ffe823c78fcb7ed663a"
+  }
+}

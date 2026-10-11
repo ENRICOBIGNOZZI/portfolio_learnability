@@ -1,0 +1,17 @@
+{
+  "source_manifest_sha256": "01dc5d2771a9426534526bc963a44ccb31f437f694df1205c0c4bd79abe9e676",
+  "formation_months": 744,
+  "formation_stock_months": 2504402,
+  "original_missing_payoffs": 7489,
+  "recovered_exact_next_calendar_current_excess": 0,
+  "unresolved_payoffs": 7489,
+  "months_with_unresolved_payoffs": 638,
+  "max_characteristic_rank_change_vs_complete_payoff_sample": 0.0058750950363853915,
+  "future_availability_perturbation_rank_error": 0.0,
+  "characteristic_freeze": "1963-1972 formation metadata and characteristic coverage only",
+  "characteristic_coverage_observations": 223762,
+  "selected_names_exactly_match": true,
+  "dictionary_caveat": "153 candidates and characteristic values come from retrospective current JKP snapshot; vintage not certified.",
+  "resolution": "Formation-only ranks and universe rebuilt. Payoff-complete portfolios cannot be computed from this snapshot without an additional unidentified-return assumption. Existing empirical figures are isolated complete-payoff-sample sensitivities, not pristine real-time evidence.",
+  "elapsed_seconds": 794.4949093340038
+}

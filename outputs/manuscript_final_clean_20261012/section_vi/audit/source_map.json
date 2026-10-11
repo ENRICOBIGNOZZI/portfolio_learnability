@@ -1,0 +1,52 @@
+{
+  "claims": "audit/numerical_claims.json",
+  "figures": {
+    "3": [
+      "representation_accounts",
+      "figure_wealth"
+    ],
+    "4": [
+      "managed_spectra",
+      "figure_spectrum"
+    ],
+    "5": [
+      "single_window_complexity",
+      "ridge_monthly_paths",
+      "ridge_annual"
+    ],
+    "6": [
+      "nine_panel_curves",
+      "nine_panel_summary",
+      "nine_panel_month_identifiers",
+      "ridge_monthly_paths",
+      "ridge_annual"
+    ],
+    "7": [
+      "economic_exposure_summary",
+      "monthly_economic_exposures"
+    ]
+  },
+  "tables": {
+    "1": [
+      "representation_performance",
+      "representation_accounts"
+    ],
+    "2": [
+      "nine_panel_summary"
+    ],
+    "3": [
+      "spectral_value",
+      "incremental_spectral_loss",
+      "monthly_accounting",
+      "e3_monthly",
+      "e3_annual_groups"
+    ]
+  },
+  "boundaries": "Figure 3 / Table 1 are tuned-kernel paths. All subsequent figures and spectral economics use fixed Gaussian.",
+  "conventions": {
+    "Sharpe": "sqrt(12)*monthly excess mean/sample sd",
+    "wealth": "cumprod(1+total return)",
+    "complexity": "sum(mu/(mu+lambda)); exact zero equals retained historical rank",
+    "costs": "stock-netted, post-execution target NAV; drift-adjusted trades; 25 bps two-sided; annual short fee 30 bps/12"
+  }
+}

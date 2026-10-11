@@ -1,0 +1,8 @@
+{
+  "section": "VI only",
+  "representation_comparison": "Linear and joint-validation Gaussian/Mat\u00e9rn-3/2",
+  "mechanism": "Existing fixed-lengthscale seed-0 Gaussian only",
+  "theory_modified": false,
+  "theory_guided_experiments_included": false,
+  "appendix": false
+}

@@ -1,0 +1,95 @@
+\section{Introduction}
+In the \citet{markowitz1952} framework, first the portfolio manager estimate the two
+moments of returns, secondly the PM estimate the portoflio wieghts optimising a criterion.
+
+A different view emerged with the direct portfolio approach of
+\citet{brandt1999} and \citet{brandtsantaclaravalkanov2009}. Investors ultimately care about
+portfolio weights, not forecasts of moments. Rather than estimating conditional
+expected returns and covariance matrices as intermediate objects, one can
+parameterize and estimate the portfolio policy directly. This changed the
+object of estimation. This was a very futuristic approach, anticipating of years what computer science and machine learning is doing now. 
+
+This estimation problem becomes particularly acute in high-dimensional finance.
+\citet{kozaknagelsantosh2020} show that the estimation becomes unstable in low-eigenvalue
+directions. Where the eigenvalues tend to zero,  the payoff of the eigenportfolio tend to infinite, creating an arbitrage opportunity.  This motivate the economically shrinkage. 
+
+More recently, the machine-learning literature has brought model complexity to
+the foreground. Empirical asset pricing means model with data the financial market. There is always a model behind every modelization. 
+Thus finance can't ignore what is happening in the machine leanring world. 
+Indeed \citet{kellymalamudzhou2024} and \citet{kellymalamud2025} show that increasing model complexity can
+improve out-of-sample return prediction even deep into the overparameterized
+regime. Their conclusion is deliberately strong:
+
+\begin{quote}
+\emph{"The analyst should always use the largest approximating model that she
+can compute."}
+\end{quote}
+
+This was strongly new for the finance world in which the only virute was the parsimony. 
+
+This "virtue of complexity" shows that overparameterization can improve approximation and
+generate useful implicit regularization.  
+\citet{nagel2025}, in turn, shows why the economic meaning of highly
+overparameterized estimators must be interpreted carefully: large random-feature
+models can converge to kernel rules whose behavior is driven by particular
+forms of historical weighting rather than by an arbitrarily rich set of
+distinct economic decisions, introducing nominally and the effective complexity.
+
+The overparatized model not only now are in returns prediction, but appears
+in directly portfolio choice.
+\citet{simon2026} replace the linear parametric portfolio policy with deep neural
+networks and show that flexible nonlinear policies can generate economically
+valuable allocations, while investor preferences themselves act as a form of
+economic regularization.\\
+
+
+Taken together, this literature establishes that rich
+representations can be useful and that regularization is if not indispensable, at least usefull.
+
+Yet several fundamental questions remain open. \\
+
+
+Building on the direct portfolio approach of Brandt: 
+How reliably, and how quickly, can a flexible and "complex" portfolio rule recover the population-optimal investment decision?\\
+Building on the spectral shrinkage argument of Kozak, Nagel, and Santosh: Which investment directions should be shrunk because they are only weakly identified by returns?\\
+Building on the virtue-of-complexity literature: When is a richer representation a virtue for portfolio choice, and what notion of complexity is economically relevant for the investment decision itself?\\
+
+
+Answering these questions requires starting from a more fundamental one:
+
+\begin{quote}
+\centering
+\textbf{How much of the optimal portfolio can be learned from a finite market
+history?}
+\end{quote}
+
+Answering this question requires establishing whether and how fast the portfolio decision can be learned directly, identifying which investment directions should be shrunk because they are only weakly revealed by realized returns, and determining what notion of complexity is economically relevant for portfolio choice—and how much of that complexity a finite market history can support.
+
+
+First we used a particular estimator (Kernel ridge regression) to quantify our results, later we generalize these to every estimator.
+Our first contribution is to quantify how rapidly direct portfolio estimation recovers the population tangency direction as market history accumulates.
+We prove that the directly weights estimation for maximizing the Sharpe ratio is consistent and we characterize the rate at which its estimated direction converges to the population Sharpe.
+We find that portfolio learnability is governed by the spectrum of managed portfolios. Directions associated with large eigenvalues correspond to investment opportunities that generate substantial payoff variation and are therefore well identified from the available return history. By contrast, low-eigenvalue directions are only weakly identified, so taking large positions along them makes the portfolio especially sensitive to estimation error. More available portfolio directions therefore do not necessarily translate into more usable investment opportunities: what matters is how much of the opportunity set is concentrated in directions that can be estimated with sufficient precision.
+The result therefore provides
+both a formal justification for direct portfolio estimation and a quantitative
+answer to how much market history is required to learn the optimal investment
+decision. \\
+Our first contribution implies even a quantification of the optimal shrinkage: It should decline as market history accumulates and as a function of the managed portfolio spectrum. Additional observations progressively reveal portfolio directions that were previously too weakly identified to support reliable investment positions, allowing the investor to exploit a broader set of economically meaningful opportunities.
+
+
+
+Our second contribution is what we call the law of effective portfolio complexity. We distinguish two notions of complexity that play fundamentally different economic roles. The first is nominal representation complexity: the size of the approximating representation, as measured, for example, by the number of features, basis functions, or parameters. Kelly, Malamud, and Zhou show that, under their proportional high-dimensional asymptotic framework, increasing nominal representation size can improve limiting out-of-sample return-prediction performance. Richer representations can therefore be valuable because they expand approximation capacity and the set of investment rules that can potentially be expressed.
+
+
+The second notion is effective portfolio complexity, which we define directly in the space of the investment decision. It measures the effective breadth of the portfolio: the effective number of economically distinct managed-portfolio directions that remain active after shrinkage.
+This quantity need not move one-for-one with representation size. A representation may be arbitrarily rich while the portfolio learned from it remains effectively low dimensional. We show that the optimal level of effective portfolio complexity is finite at every finite sample size and increases as additional market history becomes available. Too little effective complexity leaves valuable investment opportunities unused; moving beyond the data-supported scale increasingly activates directions that the available history only weakly identifies. A rich representation may be a virtue; how much of that richness should become an active investment decision is a separate learnability question.
+
+
+Our third and last contribution is what we call the fundamental limit of portfolio
+learning. We show that the rate at which the optimal portfolio can be recovered is not merely a property of our estimator. 
+No portfolio-learning procedure —including neural networks, random forests, or alternative kernel methods— can uniformly improve this rate over the same class of economies without imposing additional structure.
+
+The learning limit therefore does not belong to a particular estimator. It
+belongs to the investment problem itself.
+
+Taken together, our results characterize how rapidly the population tangency portfolio can be recovered from finite market history, how richer representations expand the set of potential investment opportunities, and how the effective portfolio complexity that can be reliably exploited grows as additional data become available. We also establish the fastest rate at which any procedure can achieve this recovery. Our results therefore quantify both the opportunities created by increasingly flexible representations and the fundamental limits that finite market history imposes on machine learning for portfolio choice in finance.

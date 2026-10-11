@@ -1,0 +1,150 @@
+--- original/Portfolio/appendice_2.tex
++++ final/Portfolio/appendice_2.tex
+@@ -188,31 +188,6 @@
+ \emph{managed-payoff} spectral law and $\gamma>b$.
+ \end{minipage}
+ \end{table}
+-Figure~\ref{fig:equity_costs} provides a simple implementation-cost sensitivity.
+-Starting from the same out-of-sample target weights, we subtract 25 basis points
+-per unit of target-weight turnover. We then additionally charge a constant
+-30 basis points per year on short notional, a deliberately simple borrowing-cost
+-benchmark motivated by the order of magnitude of median shorting fees reported
+-by \citet{jensenkellymalamudpedersen2026}. The Sharpe ratios fall from
+-$3.20$, $3.35$, and $3.25$ to approximately $2.59$, $2.70$, and $2.61$
+-after commissions, and to $2.55$, $2.66$, and $2.57$ after both commissions
+-and the borrowing-cost adjustment. The borrowing-cost exercise is a sensitivity
+-analysis rather than a reconstruction of stock-specific historical lending fees.
+-
+-\begin{figure}[!htbp]
+-    \centering
+-    \includegraphics[width=0.93\textwidth]{figures/equity_with_costs.pdf}
+-    \caption{Cumulative out-of-sample excess-return wealth before costs, after
+-    a 25 basis point commission per unit of target-weight turnover, and after
+-    additionally charging a constant 30 basis points per year on short
+-    notional. The borrowing fee is an illustrative sensitivity rather than a
+-    stock-specific historical lending-cost series.}
+-    \label{fig:equity_costs}
+-\end{figure}
+-
+-
+-
+-
+ \subsection*{Population-optimal portfolio policy in a factor economy}
+ 
+ \noindent\textbf{Proposition.}
+--- original/Portfolio/direct_port_learning.tex
++++ final/Portfolio/direct_port_learning.tex
+@@ -1,7 +1,7 @@
+ \section{Direct Portfolio Learning}
+ \label{sec:direct_learning}
+ To estimate the portfolio policy we use a kernel representation \citet{filipovicschneider2024,nagel2025} because it provides a common framework for
+-portfolio policies of very different forms, as shown in table .... 
++portfolio policies of very different forms, as shown in Table~\ref{tab:kernel_policy_classes}. 
+ Indeed, depending on the kernel, the same estimator can generate static, linear,
+ polynomial or sieve-based, and flexible nonlinear mappings, generalizing respectively the static mean--variance portfolio of \citet{brittenjones1999}, the linear parametric portfolio
+ policies of \citet{brandtsantaclaravalkanov2009}, and the semiparametric
+--- original/Portfolio/empirics.tex
++++ final/Portfolio/empirics.tex
+@@ -164,33 +164,38 @@
+ numerically to the zero returns. No added evaluation changes the original
+ validation policy, and no OOS result selects a deployable penalty.
+ 
+-Figure~\ref{fig:complexity_nine} shows only OOS Sharpe against mean effective
+-complexity in a $3\times3$ grid. Each block concatenates actual monthly OOS
+-returns across annual refits for every one of the \CandidateCount\ evaluated
+-penalties, including the complete near-unregularized tail and exact zero.
+-Sharpe is calculated from that concatenated series, rather than averaged
+-across annual Sharpes; complexity averages annual fits with realized-month
+-weights. The first eight blocks have 60 months each and the final block 84.
+-All panels use common scales, and each curve ends at its own mean historical
+-effective rank. Lines connect all evaluated candidates without smoothing or
+-extrapolation. Confidence bands are omitted for legibility; maxima remain
+-retrospective, and diamonds retain the original past-validation policy.
++To assess whether the final-year Sharpe--complexity profile is representative
++of the broader historical record, Figure~\ref{fig:complexity_nine} repeats
++the analysis across nine nonoverlapping investment periods. Holding the
++Gaussian representation fixed, we vary only the degree of regularization
++and evaluate each candidate on subsequent portfolio returns. The profiles
++show that realized performance need not improve monotonically as additional
++portfolio directions are activated. In several periods, Sharpe reaches an
++interior maximum and subsequently declines, although the magnitude of the
++decline varies considerably across investment histories.
++
++The annual cross-validation portfolio remains an implementable, past-selected
++policy, but it is not a single point on the block-level fixed-penalty path
++because the selected penalty can change from one annual refit to the next.
+ 
+ \begin{figure}[!htbp]
+ \centering
+ \includegraphics[width=\textwidth]{figures/fig06_nine_complete_profiles.pdf}
+-\caption{Complete OOS Sharpe profiles over the full evaluated $\lambda$
+-range for the fixed Gaussian representation. Each panel uses every evaluated
+-candidate penalty: the original grid, the extension to very small positive
+-penalties, and exact $\lambda=0$. Lines connect actual OOS evaluations across
+-annual refits against realized-month-weighted mean effective complexity;
+-no values are smoothed or extrapolated outside observed support. Stars mark
+-retrospective maxima over the complete grid. Diamonds show the annual
+-past-only validation choices, whose penalties can vary within a block. Open
+-circles denote exact minimum-norm $\lambda=0$ endpoints at each block's mean
+-historical effective rank. All nine panels share horizontal and vertical
+-scales. Decision years label panels: 1978--1982 realizes February 1978--January
+-1983, and 2018--2024 realizes February 2018--January 2025.}
++\caption{Historical out-of-sample Sharpe--complexity profiles.
++Each panel reports the realized out-of-sample Sharpe ratio associated with
++the complete ridge regularization path of the fixed-lengthscale Gaussian
++representation. The nine panels cover eight five-year decision blocks and
++one 2018--2024 block. For each candidate penalty, monthly out-of-sample
++returns are concatenated across the annual refits in the block, and a single
++Sharpe ratio is computed. Effective complexity is averaged across those
++refits, weighted by the number of evaluated months. Curves connect the actual
++evaluated penalties, including the extended positive grid and the exact
++minimum-norm zero-penalty endpoint, without smoothing or extrapolation.
++Stars indicate retrospective test-sample maxima; open circles indicate the
++unregularized endpoints. The dynamically selected annual cross-validation
++strategy is not plotted as a point on these curves because its penalty may
++differ across annual refits. All panels use common axes. The historical
++maxima are descriptive and are not estimates of population-optimal complexity.}
+ \label{fig:complexity_nine}
+ \end{figure}
+ 
+@@ -199,8 +204,7 @@
+ \HistoricalFindings
+ These are descriptive shapes, not evidence of a statistically identified
+ optimum in every period. Broad regions can be nearly flat relative to sampling
+-uncertainty. The annual selected policy need not lie on a fixed-penalty curve
+-because its penalty changes annually. All displayed maxima have been
++uncertainty. All displayed maxima have been
+ recomputed on the extended grid, including zero.
+ 
+ Intervals use 5,000 paired circular-block resamples, sharing monthly draws
+--- original/Portfolio/figure6_caption.tex
++++ final/Portfolio/figure6_caption.tex
+@@ -1,13 +1,16 @@
+-\caption{Complete OOS Sharpe profiles over the full evaluated $\lambda$
+-range for the fixed Gaussian representation. Each panel uses every evaluated
+-candidate penalty: the original grid, the extension to very small positive
+-penalties, and exact $\lambda=0$. Lines connect actual OOS evaluations across
+-annual refits against realized-month-weighted mean effective complexity;
+-no values are smoothed or extrapolated outside observed support. Stars mark
+-retrospective maxima over the complete grid. Diamonds show the annual
+-past-only validation choices, whose penalties can vary within a block. Open
+-circles denote exact minimum-norm $\lambda=0$ endpoints at each block's mean
+-historical effective rank. All nine panels share horizontal and vertical
+-scales. Decision years label panels: 1978--1982 realizes February 1978--January
+-1983, and 2018--2024 realizes February 2018--January 2025.}
++\caption{Historical out-of-sample Sharpe--complexity profiles.
++Each panel reports the realized out-of-sample Sharpe ratio associated with
++the complete ridge regularization path of the fixed-lengthscale Gaussian
++representation. The nine panels cover eight five-year decision blocks and
++one 2018--2024 block. For each candidate penalty, monthly out-of-sample
++returns are concatenated across the annual refits in the block, and a single
++Sharpe ratio is computed. Effective complexity is averaged across those
++refits, weighted by the number of evaluated months. Curves connect the actual
++evaluated penalties, including the extended positive grid and the exact
++minimum-norm zero-penalty endpoint, without smoothing or extrapolation.
++Stars indicate retrospective test-sample maxima; open circles indicate the
++unregularized endpoints. The dynamically selected annual cross-validation
++strategy is not plotted as a point on these curves because its penalty may
++differ across annual refits. All panels use common axes. The historical
++maxima are descriptive and are not estimates of population-optimal complexity.}
+ \label{fig:complexity_nine}

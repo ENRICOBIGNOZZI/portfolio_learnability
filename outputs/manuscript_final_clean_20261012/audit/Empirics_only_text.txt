@@ -1,0 +1,372 @@
+VI Empirical Portfolio Learnability
+A Data, Representation, and Investment Performance
+The empirical exercise asks how a representation of stock characteristics, ﬁnite return history, and
+regularization jointly shape a portfolio policy. A richer representation makes additional portfolio
+opportunities available, but a ﬁnite return history does not necessarily make all those opportunities
+learnable or ﬁnancially valuable. We ﬁrst compare Linear, Gaussian, and Matérn- 3/ 2 policies on
+identical subsequent months. We then ﬁx the Gaussian representation to examine regularization
+and the economic content of its additional directions. The evidence is descriptive historical evidence:
+neither a favorable Sharpe nor an estimated number of active directions certiﬁes a reliably proﬁtable
+opportunity.
+We use the monthly U.S. equity characteristic panel of Jensen, Kelly, and Pedersen, with for-
+mations from January 1963 through December 2024. Starting from their research dictionary, we
+exclude nano stocks, retain the 130 characteristics with greatest coverage in 1963–1972, and remove
+observations missing more than 30% of these inputs. Observed values receive average cross-sectional
+ranks on [− 0. 5, 0. 5]; remaining missing inputs receive zero. The panel is unbalanced. The retro-
+spectively constructed characteristic dictionary and current data snapshot constitute the academic
+information set, rather than a reconstruction of historical signal discovery or data vintages.
+There is a material sample limitation. Unavailable subsequent payoﬀs are excluded before ranking
+and calculating the number of stocks Nt. A formation-only audit leaves 7,489 unidentiﬁed stock-
+month payoﬀs out of 2,504,402 eligible observations (0.299%); documented adjacent-calendar source
+matches recover none. Formation-only ranks are invariant to perturbing future payoﬀ availability,
+whereas the retained complete-payoﬀ sample is conditional on that availability. Thus selection uses
+only earlier observed payoﬀ values, but sample formation still depends on whether future payoﬀs
+are available. Unknown returns are never assigned zero. All performance and cost results retain
+this caveat.
+The ﬁrst inner training period uses 1963–1972 formations and validation uses 1973–1977. Each
+subsequent January-close decision reserves the preceding 60 formation months for validation, then
+reﬁts on the full available pretest history. December’s payoﬀ is known at January close. January–
+December formation positions therefore realize February–next January returns. All three policies
+are evaluated on the same 564 OOS months, February 1978–January 2025.
+Linear uses a constant and the characteristic coordinates. Gaussian and Matérn- 3/ 2 use 10,000
+random Fourier features with seed 0. For each kernel, chronological validation jointly selects length-
+scale and ridge penalty by minimizing the mean response-one quadratic loss Q at ﬁtted scale.
+Lengthscales are {0. 25, 0. 5, 1, 2, 4} times the initial-sample median distance; each has 120 penalties
+ﬁxed from its own initial training spectrum. Frequency and phase draws are shared across length-
+scales. The chosen pair is reﬁtted using training and validation observations before the test year;
+no test payoﬀ selects either parameter. Linear selects its penalty by the same chronological loss
+criterion. This is a comparison of representations under past validation; ﬁnite feature banks do not
+establish strict nesting or identify a population approximation gap from an observed performance
+ranking.
+1
+1980 1990 2000 2010 2020
+Payoff date
+100
+101
+102
+103
+104
+105
+106
+T otal wealth, initial NAV = 1
+Gross
+Linear
+Gaussian (joint validation)
+Matérn-3/2 (joint validation)
+1980 1990 2000 2010 2020
+Payoff date
+Net: 25 bps trades + 30 bps/year shorts
+Figure 3: Investment performance on identical OOS months. Linear validates its ridge penalty; Gaussian
+and Matérn-3/ 2 jointly validate lengthscale and penalty using earlier observations. Total wealth compounds
+cash returns plus portfolio excess payoﬀs, starting from NA V one at January 1978 close. The right panel
+applies 25-basis-point commissions to both purchases and sales against drift-adjusted holdings, plus a 30-
+basis-point annual short fee. These are illustrative costs on a sample conditional on future-payoﬀ availability.
+T able I: Representation comparison under chronological validation
+Policy Mean % Vol. % SRG SRN Gross Trades Fees %
+Linear 23.44 7.58 3.091 2.476 2.01 19.45 5.14
+Gaussian 28.34 7.77 3.646 2.857 2.44 24.53 6.48
+Matérn-3/ 2 28.85 8.04 3.587 2.747 2.58 26.82 7.07
+All policies use the same 564 months, February 1978–January 2025, and common initial-validation exposure scale.
+Gaussian and Matérn jointly validate lengthscale and penalty; Linear validates penalty. Mean and volatility are
+annualized gross excess returns. Net Sharpe applies 25 bps two-sided commissions and 30 bps/year short fees. Gross
+is mean account gross/NA V; trades are annual drift-adjusted traded notional/NA V on the net path; fees are annual
+trading plus short charges/NA V. Costs are illustrative assumptions.
+A common positive scale, 0.0374000, maps the initial Linear validation policy’s median gross
+exposure to 1.8. It is ﬁxed before the ﬁrst test payoﬀ and applies to all policies, without future
+volatility or full-sample exposure normalization. It leaves gross Sharpe unchanged but matters for
+costs. The Gaussian-minus-Linear gross Sharpe diﬀerence is 0.554, with paired 12-month-block
+interval [0.275,0.880]; the net diﬀerence is 0.381, with interval [0.140,0.653]. The corresponding
+Matérn diﬀerences are 0.496 [0.133,0.907] gross and 0.271 [-0.026,0.611] net. These comparisons
+condition on the ﬁtted paths and use the same resampled months for each policy. Trading require-
+ments and uncertainty accompany the point estimates; the comparison does not establish uniform
+dominance of one representation.
+B A Fixed Economic Spectrum and Active Complexity
+For the remainder of the section we use the existing ﬁxed-lengthscale Gaussian speciﬁcation: initial
+median distance 4.392108, 10,000 seed-0 features, and the original past-validation ridge selections.
+2
+Its full-policy gross/net Sharpes are 3.300/2.605. These are distinct from the jointly validated
+Gaussian returns in Figure 3 and Table I. Fixing lengthscale and feature draws keeps the opportunity
+representation unchanged: varying λ then changes regularization within the same managed-payoﬀ
+operator. A lengthscale change would alter both that operator and the portfolios being decomposed.
+Let G contain historical monthly managed payoﬀs Xt = N − 1
+t
+∑
+i Re
+i,t +1ϕ(Zi,t ). Response-one
+ridge ﬁts aλ = (G′G/T + λI)− 1G′1/T for positive λ. The uncentered second-moment spectrum of
+G′G/T orders directions by historical payoﬀ variation. An eigenvalue is neither invested capital,
+expected return, Sharpe, nor a uniquely named anomaly. Figure 4 uses only the history available
+at January 2024 close. Raw eigenvalues preserve representation units; division by the trace is a
+concentration diagnostic that does not rescale the ﬁtted policy.
+100 101 102 103
+Positive spectral rank
+10−10
+10−9
+10−8
+10−7
+10−6
+10−5
+10−4
+10−3
+Uncentered second-moment eigenvalue
+Raw managed-payoff units
+100 101 102 103
+Positive spectral rank
+10−7
+10−6
+10−5
+10−4
+10−3
+10−2
+10−1
+100
+Eigenvalue / trace
+Share of second-moment mass
+Figure 4: Managed-payoﬀ spectrum of the ﬁxed Gaussian representation at January 2024 close. Formations
+through December 2023 give 732 known monthly payoﬀs. The left panel shows raw uncentered second-
+moment eigenvalues; the right divides by their trace. Both use the same ﬁxed initial median lengthscale and
+feature bank as Figures 5– 7 and the spectral accounts in Table III.
+Mass concentration and active complexity are distinct. Ridge weights a direction by ˆµj/ (ˆµj + λ),
+giving C(λ) = ∑
+j ˆµj/ (ˆµj + λ). Weak eigenvalues can contribute many eﬀective degrees of freedom
+while carrying little second-moment mass. Across annual histories, the ﬁrst 10% of positive Gaussian
+ranks contain 99.921% of mass, but contribute only 33.8 of the selected policy’s 124.5 mean eﬀective
+directions. Positive rank uses a relative 10− 12 eigenvalue tolerance; near-tied eigenvalues are kept
+together at group boundaries. Feasible complexity cannot exceed this historical eﬀective rank,
+which is at most the number of historical monthly observations. A long weak tail can change
+exposures without establishing that its opportunities are learnable.
+3
+101
+103
+105
+107
+109
+1011
+Historical Sharpe (log)
+At λ = 0: constant historical payoff, unbounded Sharpe
+January 2024 historical fit
+0 100 200 300 400 500 600 700
+Effective complexity, fixed Gaussian
+0.0
+0.5
+1.0
+1.5
+2.0
+2.5
+3.0Sharpe
+February 2024–January 2025: 12 OOS months
+Retrospective maximum
+Past-validation selection
+Figure 5: Complete regularization path for the ﬁxed Gaussian January 2024 reﬁt. Historical Sharpe uses a
+logarithmic scale; subsequent Sharpe uses a separate linear scale. Exact response-one interpolation has zero
+historical variance and unbounded historical Sharpe; unresolved numerical ratios near that limit are omitted
+from the historical panel only. Each positive-penalty point is evaluated on its actual February 2024–January
+2025 OOS payoﬀs. The open circle is the exact minimum-norm zero-penalty policy at eﬀective rank 732.
+The star is the retrospective maximum over the extended evaluation grid; the diamond retains the original
+earlier-validation selection. Neither is an estimate of a signiﬁcant population optimum.
+The ﬁnal-year path holds lengthscale, feature bank, and history ﬁxed. Its retrospective maximum
+is at complexity 77.0 with subsequent Sharpe 3.138; at zero penalty Sharpe is 0.054. Historical
+ﬁt and subsequent investment performance need not move together. Twelve subsequent months
+produce a noisy illustration, so Figure 6 provides the complete progression in nine historical blocks.
+The evaluation grid retains every original penalty and adds a logarithmic sequence from strong
+regularization to very small positive penalties, followed by exactly λ = 0 . Its 1,522 policies are
+evaluated separately at every annual reﬁt. The zero endpoint uses a symmetric eigensystem Moore–
+Penrose pseudoinverse with the same positive-rank tolerance, rather than an inverse of a singular
+operator. Direct feature-space least squares checks the ﬁrst and ﬁnal endpoints, and the smallest
+positive penalties converge numerically to the zero returns. No added evaluation changes the
+original validation policy, and no OOS result selects a deployable penalty.
+To assess whether the ﬁnal-year Sharpe–complexity proﬁle is representative of the broader histor-
+ical record, Figure 6 repeats the analysis across nine nonoverlapping investment periods. Holding
+the Gaussian representation ﬁxed, we vary only the degree of regularization and evaluate each
+candidate on subsequent portfolio returns. The proﬁles show that realized performance need not
+improve monotonically as additional portfolio directions are activated. In several periods, Sharpe
+4
+reaches an interior maximum and subsequently declines, although the magnitude of the decline
+varies considerably across investment histories.
+The annual cross-validation portfolio remains an implementable, past-selected policy, but it is
+not a single point on the block-level ﬁxed-penalty path because the selected penalty can change
+from one annual reﬁt to the next.
+0
+2
+4
+6OOS Sharpe
+1978–1982 · n = 60 1983–1987 · n = 60 1988–1992 · n = 60
+0
+2
+4
+6OOS Sharpe
+1993–1997 · n = 60 1998–2002 · n = 60 2003–2007 · n = 60
+0 200 400 600
+Mean effective complexity
+0
+2
+4
+6OOS Sharpe
+2008–2012 · n = 60
+0 200 400 600
+Mean effective complexity
+2013–2017 · n = 60
+0 200 400 600
+Mean effective complexity
+2018–2024 · n = 84
+Evaluated λ path Retrospective maximum Exact λ = 0
+Figure 6: Historical out-of-sample Sharpe–complexity proﬁles. Each panel reports the realized out-of-
+sample Sharpe ratio associated with the complete ridge regularization path of the ﬁxed-lengthscale Gaussian
+representation. The nine panels cover eight ﬁve-year decision blocks and one 2018–2024 block. For each
+candidate penalty, monthly out-of-sample returns are concatenated across the annual reﬁts in the block,
+and a single Sharpe ratio is computed. Eﬀective complexity is averaged across those reﬁts, weighted by the
+number of evaluated months. Curves connect the actual evaluated penalties, including the extended positive
+grid and the exact minimum-norm zero-penalty endpoint, without smoothing or extrapolation. Stars indi-
+cate retrospective test-sample maxima; open circles indicate the unregularized endpoints. The dynamically
+selected annual cross-validation strategy is not plotted as a point on these curves because its penalty may
+diﬀer across annual reﬁts. All panels use common axes. The historical maxima are descriptive and are not
+estimates of population-optimal complexity.
+5
+T able II: Retrospective maxima and exact unregularized endpoints
+Decision years C at max. Max. SR C(0) SR at λ = 0 Decline
+1978–1982 113.4 5.719 204 5.313 0.406
+1983–1987 209.1 6.219 264 6.134 0.085
+1988–1992 137.9 7.626 324 6.274 1.352
+1993–1997 158.2 7.608 384 6.609 0.999
+1998–2002 164.4 5.443 444 4.844 0.599
+2003–2007 165.4 2.970 504 2.410 0.559
+2008–2012 28.7 2.918 564 2.435 0.483
+2013–2017 379.2 3.228 624 3.158 0.070
+2018–2024 266.2 1.537 696 1.337 0.200
+All maxima use the entire extended grid. Complexity is the realized-month-weighted mean across annual reﬁts; C(0)
+equals mean historical eﬀective rank. Decline is maximum minus zero-penalty Sharpe, a descriptive change rather
+than a signiﬁcance test. The smallest-decline period is retained as observed.
+All nine retrospective maxima are interior on the extended grid. Maximizing mean complexity
+ranges from 28.7 to 379.2. The 2008–2012 maximum occurs at low complexity. The unregularized
+endpoints remain close to the maxima in 1983–1987 and 2013–2017, with peak-to-zero Sharpe de-
+clines of 0.085 and 0.070, respectively. Neither period displays a substantial endpoint deterioration.
+The 2018–2024 decline is also modest; we do not impose a common downturn. Across blocks, the
+endpoint decline ranges from 0.070 to 1.352.These are descriptive shapes, not evidence of a statis-
+tically identiﬁed optimum in every period. Broad regions can be nearly ﬂat relative to sampling
+uncertainty. All displayed maxima have been recomputed on the extended grid, including zero.
+Intervals use 5,000 paired circular-block resamples, sharing monthly draws across all candidates
+or contrasted portfolios. They condition on estimated policies, representations, and holdings; they
+do not repeat model selection. Approximate stability and dependence decay within a block motivate
+this diagnostic. It neither corrects for searching the grid nor establishes validity under arbitrary
+nonstationarity. Six- and 24-month-block results for the representation comparisons and economic
+contrasts accompany the canonical results. A favorable retrospective peak is consequently distinct
+from a learnable policy selected using past information.
+C What Additional Directions Trade
+We interpret portfolios associated with eigenspaces of the same ﬁxed Gaussian policy. At each
+annual reﬁt, four disjoint positive-rank groups partition its ridge coeﬃcients. Their actual contri-
+butions are reconstructed as stock-level signed holdings, providing long and short characteristic
+proﬁles and subsequent payoﬀ and covariance attribution. The same selected penalty is retained
+across nested comparisons. These are attribution portfolios within one policy, not independently
+optimized strategies. Near-tied eigenvectors can rotate, so group proﬁles carry the historical inter-
+pretation rather than persistent names assigned to individual eigenvectors.
+6
+0–10% 10–50% 50–90% 90–100%
+Positive-rank group
+Value
+Profitability
+Investment
+Momentum
+Recent return
+Size
+Liquidity
+Issuance
+Debt financing
++0.17 -0.04 -0.00 +0.01
++0.24 -0.08 -0.04 -0.02
+-0.15 +0.05 -0.01 +0.03
++0.23 -0.05 -0.03 +0.01
+-0.17 -0.03 -0.01 -0.01
++0.01 +0.02 -0.02 +0.00
+-0.00 +0.01 -0.01 -0.01
+-0.12 -0.05 +0.03 +0.02
+-0.18 +0.12 -0.05 -0.03
+Long-minus-short rank profile
+0–10% 10–50% 50–90% 90–100%
+Positive-rank group
++0.19 -0.02 -0.00 +0.00
++0.26 -0.05 -0.01 -0.00
+-0.17 +0.03 -0.00 +0.00
++0.26 -0.04 -0.00 +0.00
+-0.20 -0.01 -0.00 -0.00
++0.01 +0.01 -0.00 -0.00
+-0.01 +0.01 -0.00 -0.00
+-0.12 -0.03 +0.01 +0.00
+-0.20 +0.07 -0.01 -0.00
+Signed notional rank exposure
+−0.2
+−0.1
+0.0
+0.1
+0.2
+−0.2
+−0.1
+0.0
+0.1
+0.2
+Figure 7: Economic proﬁles of the ﬁxed Gaussian policy’s actual spectral holdings. The left panel gives long-
+minus-short weighted formation-rank scores; the right preserves investment scale through signed notional
+exposures. An explicit signed characteristic dictionary deﬁnes the families. Debt ﬁnancing and equity
+issuance are distinct. Families can overlap and cannot be added as disjoint return components. These
+holdings decompose the ﬁxed representation, independently of the tuned-kernel opening comparison.
+Leading holdings favor proﬁtability and oppose recent returns and debt ﬁnancing. Intermediate
+directions modify those exposures within the same characteristic universe. A large normalized
+characteristic contrast can coexist with small notional exposure, so proﬁles and signed notionals
+answer diﬀerent questions. Formation descriptors characterize what is held; subsequent outcomes
+determine its investment contribution.
+T able III: Fixed Gaussian spectral groups and incremental investment value
+Ranks Mass % Own gross Account gross Mean % SRG SRN
+0–10% 99.9215 2.267 2.267 24.323 3.012 2.354
+10–50% 0.0685 1.263 2.333 2.759 3.284 2.598
+50–90% 0.0091 0.327 2.325 0.047 3.286 2.594
+90–100% 0.0010 0.078 2.326 0.026 3.300 2.605
+Added ranks ∆ Q Cross term Own square Paired 95% interval
+0–10% -0.402340 -1.083912 0.681573 [-0.524808, -0.257425]
+10–50% -0.036008 -0.131766 0.095758 [-0.093264, +0.027912]
+50–90% +0.000168 -0.003978 0.004146 [-0.008734, +0.009000]
+90–100% -0.003123 -0.003547 0.000424 [-0.006796, -0.000185]
+The original selected penalty is retained at each annual reﬁt. Mass averages annual historical second-moment shares.
+Own gross and mean describe individual components; account gross and Sharpes describe all groups through that
+boundary. The lower panel reports raw ﬁtted-scale loss changes, relative to the null portfolio for the ﬁrst group, with
+the same 5,000 paired 12-month-block draws. Weights are summed at stock level before trades and short fees. Gross
+Sharpe increments are +0.272, +0.002, +0.014; net increments are +0.244, -0.004, +0.011.
+7
+The leading group has mean component gross 2.267 and annual excess payoﬀ 24.32%. Adding
+intermediate directions contributes 2.76% annually. Their own gross 1.263 increases the cumulative
+account’s gross by only 0.066: some added positions oﬀset existing stock holdings. Component
+gross exposures therefore do not add to the combined account’s gross. The component’s annual
+covariance with the leading portfolio is -0.000634, while total annual variance changes by 0.000278.
+Negative covariance can coexist with increased account variance because the component also adds
+its own variance.
+Gross Sharpe rises from 3.012 to 3.284, and net Sharpe from 2.354 to 2.598. Paired 12-month-
+block intervals for these changes are [0.002,0.546] and [0.011,0.487]. The response-one loss changes
+by -0.036008, with interval [-0.093264,0.027912]; its cross term is -0.131766 and own-square term
+0.095758. Thus a positive standalone mean, a Sharpe increment, and an incremental Q improvement
+are distinct assessments. The incremental identity ∆ Q = − 2 (1 − P )A+A2 includes the interaction
+of the previous policy P and added payoﬀ A, at their original ﬁtted scale.
+Small incremental account gross does not imply small turnover. Monthly characteristics and
+annual reﬁts can change oﬀsetting positions substantially. For every nested account, stock weights
+are summed before calculating trades against drift-adjusted holdings, short notional, and net re-
+turns. Costs begin with entry from cash. Target weights refer to post-execution NA V; proportional
+commissions are solved jointly with the target cash residual. The annual short fee is divided by
+twelve. Cash earns or pays the same monthly risk-free rate, and terminal holdings are marked
+rather than forcibly liquidated. Separate component fees would not reconstruct the netted account.
+Changes in target weights remain a separate turnover proxy, never observed execution costs.
+Corporate-action and delisting treatment relies on the upstream JKP return construction and
+stable identiﬁers; there is no independent share-count or execution-tape reconstruction. Liquidated
+names incur trades but receive no invented next payoﬀ. The cost assumptions omit market impact
+and additional funding spreads. They are self-ﬁnancing friction sensitivities, with the same future-
+payoﬀ-availability caveat as gross returns.
+The weak tail has little historical second-moment mass and small absolute payoﬀ contributions.
+The successive gross/net Sharpe increments in Table III include adverse as well as favorable out-
+comes; the loss decomposition also retains the own-square and cross terms. Small mass alone
+cannot rule out covariance value, while a striking normalized characteristic tilt need not have a
+material ﬁnancial contribution. Six-benchmark regressions of the actual component returns give
+descriptive spanning statistics; a separate hedge uses only pretest slope estimates. Neither supplies
+an independently selected investment strategy or a newly identiﬁed risk premium.
+Economic content and supported complexity vary with history. The stationary theory is a bench-
+mark for approximately stable conditions; a local interpretation requires those conditions. De-
+scriptive complexity changes do not identify a population spectral-decay parameter. Across the
+representation comparison, ﬁxed-kernel regularization paths, and stock-level attribution, the ﬁnan-
+cial question is whether additional available directions improve the portfolio that ﬁnite historical
+information can support.
+8

@@ -1,0 +1,147 @@
+diff --git a/empirical_final/section_vi_finalize.py b/empirical_final/section_vi_finalize.py
+index 98ddcd9..4268ecc 100644
+--- a/empirical_final/section_vi_finalize.py
++++ b/empirical_final/section_vi_finalize.py
+@@ -285,7 +285,7 @@ def finish(fig,name):
+ 
+ 
+ def figure_six():
+-    """Draw every evaluated OOS candidate; preserve the full rank-bounded tail."""
++    """Draw fixed-penalty OOS paths; annual CV is a distinct dynamic policy."""
+     curves=pd.read_csv(OUT/'tables/nine_panel_curves.csv',float_precision='round_trip')
+     summary=read('nine_panel_summary').set_index('period')
+     grid=np.array(json.loads((OUT/'audit/ridge_protocol.json').read_text())['penalties'])
+@@ -307,8 +307,10 @@ def figure_six():
+             np.testing.assert_array_equal(line.get_xydata(),f[['mean_C','oos_sharpe']].to_numpy())
+             peak=f.loc[f.oos_sharpe.idxmax()];end=f[f.zero_penalty].iloc[0]
+             assert peak.retrospective_maximum and end.penalty==0 and end.mean_C==s.effective_rank
++            assert int(peak.candidate)==int(s.maximum_candidate)
++            np.testing.assert_allclose([peak.mean_C,peak.oos_sharpe],
++                [s.maximum_C,s.maximum_sharpe],rtol=1e-12,atol=1e-12)
+             ax.scatter(peak.mean_C,peak.oos_sharpe,color=COLORS[2],marker='*',s=105,zorder=5)
+-            ax.scatter(s.selected_mean_C,s.selected_sharpe,color='black',marker='D',s=28,zorder=5)
+             ax.scatter(end.mean_C,end.oos_sharpe,facecolors='white',edgecolors=COLORS[1],
+                 s=32,zorder=6,clip_on=False)
+             ax.set_title(f'{lo}–{hi} · n = {int(s.months)}',fontsize=15);ax.grid(True)
+@@ -324,9 +326,8 @@ def figure_six():
+         axs[0,0].set_xlim(0,xmax);axs[0,0].set_ylim(ymin,ymax)
+         handles=[plt.Line2D([0],[0],color=COLORS[1],lw=1.3,label='Evaluated λ path'),
+             plt.Line2D([0],[0],color=COLORS[2],marker='*',lw=0,ms=11,label='Retrospective maximum'),
+-            plt.Line2D([0],[0],color='black',marker='D',lw=0,ms=5.5,label='Past-validation selection'),
+             plt.Line2D([0],[0],color=COLORS[1],marker='o',mfc='white',lw=0,ms=5.5,label='Exact λ = 0')]
+-        fig.legend(handles=handles,loc='outside upper center',ncol=4,frameon=False,fontsize=12)
++        fig.legend(handles=handles,loc='outside upper center',ncol=3,frameon=False,fontsize=12)
+         assert len(fig.axes)==9 and len(fig.legends)==1
+         assert all(np.array_equal(ax.get_xlim(),[0,xmax]) for ax in axs.flat)
+         assert all(np.array_equal(ax.get_ylim(),[ymin,ymax]) for ax in axs.flat)
+@@ -335,6 +336,8 @@ def figure_six():
+         common_xlim=[0,xmax],common_ylim=[ymin,ymax],confidence_bands=False,
+         historical_fit_panels=False,all_evaluated_vertices_retained=True,
+         path_simplification=False,smoothing=False,extrapolation=False,
++        cv_strategy_plotted=False,markers_per_panel=['retrospective_maximum','exact_zero_endpoint'],
++        legend=[handle.get_label() for handle in handles],
+         curves_sha256=digest(OUT/'tables/nine_panel_curves.csv')))
+ 
+ 
+@@ -390,10 +393,13 @@ def figures():
+ 
+ 
+ def main():
++    global OUT
+     parser=argparse.ArgumentParser();modes=parser.add_mutually_exclusive_group()
+     modes.add_argument('--public-only',action='store_true')
+     modes.add_argument('--figure-six-only',action='store_true',help='Redraw Figure 6 and rebuild the section without changing results or other figures')
++    parser.add_argument('--output-dir',type=Path,help='Use a versioned copy of the verified Section VI outputs')
+     args=parser.parse_args()
++    if args.output_dir:OUT=args.output_dir.resolve()
+     for folder in ['tables','audit','figures','publication']: (OUT/folder).mkdir(parents=True,exist_ok=True)
+     if not (args.public_only or args.figure_six_only):
+         audit('scope',dict(section='VI only',representation_comparison='Linear and joint-validation Gaussian/Matérn-3/2',
+@@ -407,8 +413,9 @@ def main():
+             if digest(OUT/name)!=expected:raise ValueError('Changed public aggregate: '+name)
+     if args.figure_six_only:figure_six()
+     else:figures()
+-    from empirical_final.section_vi_publication import publication, verify
+-    publication();verify()
++    from empirical_final import section_vi_publication
++    section_vi_publication.OUT=OUT
++    section_vi_publication.publication();section_vi_publication.verify()
+     result_manifest=dict(tables={str(p.relative_to(OUT)):digest(p) for p in sorted((OUT/'tables').glob('*.csv'))},
+         code={str(p.relative_to(ROOT)):digest(p) for p in [Path(__file__),ROOT/'empirical_final/section_vi_publication.py',ROOT/'empirical_final/templates/final_section_vi.tex']},
+         figures={p.name:digest(p) for p in sorted((OUT/'figures').glob('*.pdf'))})
+diff --git a/empirical_final/templates/final_section_vi.tex b/empirical_final/templates/final_section_vi.tex
+index 35823eb..f6a7fb2 100644
+--- a/empirical_final/templates/final_section_vi.tex
++++ b/empirical_final/templates/final_section_vi.tex
+@@ -164,33 +164,38 @@ the first and final endpoints, and the smallest positive penalties converge
+ numerically to the zero returns. No added evaluation changes the original
+ validation policy, and no OOS result selects a deployable penalty.
+ 
+-Figure~\ref{fig:complexity_nine} shows only OOS Sharpe against mean effective
+-complexity in a $3\times3$ grid. Each block concatenates actual monthly OOS
+-returns across annual refits for every one of the \CandidateCount\ evaluated
+-penalties, including the complete near-unregularized tail and exact zero.
+-Sharpe is calculated from that concatenated series, rather than averaged
+-across annual Sharpes; complexity averages annual fits with realized-month
+-weights. The first eight blocks have 60 months each and the final block 84.
+-All panels use common scales, and each curve ends at its own mean historical
+-effective rank. Lines connect all evaluated candidates without smoothing or
+-extrapolation. Confidence bands are omitted for legibility; maxima remain
+-retrospective, and diamonds retain the original past-validation policy.
++To assess whether the final-year Sharpe--complexity profile is representative
++of the broader historical record, Figure~\ref{fig:complexity_nine} repeats
++the analysis across nine nonoverlapping investment periods. Holding the
++Gaussian representation fixed, we vary only the degree of regularization
++and evaluate each candidate on subsequent portfolio returns. The profiles
++show that realized performance need not improve monotonically as additional
++portfolio directions are activated. In several periods, Sharpe reaches an
++interior maximum and subsequently declines, although the magnitude of the
++decline varies considerably across investment histories.
++
++The annual cross-validation portfolio remains an implementable, past-selected
++policy, but it is not a single point on the block-level fixed-penalty path
++because the selected penalty can change from one annual refit to the next.
+ 
+ \begin{figure}[H]
+ \centering
+ \includegraphics[width=\textwidth]{figures/fig06_nine_complete_profiles.pdf}
+-\caption{Complete OOS Sharpe profiles over the full evaluated $\lambda$
+-range for the fixed Gaussian representation. Each panel uses every evaluated
+-candidate penalty: the original grid, the extension to very small positive
+-penalties, and exact $\lambda=0$. Lines connect actual OOS evaluations across
+-annual refits against realized-month-weighted mean effective complexity;
+-no values are smoothed or extrapolated outside observed support. Stars mark
+-retrospective maxima over the complete grid. Diamonds show the annual
+-past-only validation choices, whose penalties can vary within a block. Open
+-circles denote exact minimum-norm $\lambda=0$ endpoints at each block's mean
+-historical effective rank. All nine panels share horizontal and vertical
+-scales. Decision years label panels: 1978--1982 realizes February 1978--January
+-1983, and 2018--2024 realizes February 2018--January 2025.}
++\caption{Historical out-of-sample Sharpe--complexity profiles.
++Each panel reports the realized out-of-sample Sharpe ratio associated with
++the complete ridge regularization path of the fixed-lengthscale Gaussian
++representation. The nine panels cover eight five-year decision blocks and
++one 2018--2024 block. For each candidate penalty, monthly out-of-sample
++returns are concatenated across the annual refits in the block, and a single
++Sharpe ratio is computed. Effective complexity is averaged across those
++refits, weighted by the number of evaluated months. Curves connect the actual
++evaluated penalties, including the extended positive grid and the exact
++minimum-norm zero-penalty endpoint, without smoothing or extrapolation.
++Stars indicate retrospective test-sample maxima; open circles indicate the
++unregularized endpoints. The dynamically selected annual cross-validation
++strategy is not plotted as a point on these curves because its penalty may
++differ across annual refits. All panels use common axes. The historical
++maxima are descriptive and are not estimates of population-optimal complexity.}
+ \label{fig:complexity_nine}
+ \end{figure}
+ 
+@@ -199,8 +204,7 @@ scales. Decision years label panels: 1978--1982 realizes February 1978--January
+ \HistoricalFindings
+ These are descriptive shapes, not evidence of a statistically identified
+ optimum in every period. Broad regions can be nearly flat relative to sampling
+-uncertainty. The annual selected policy need not lie on a fixed-penalty curve
+-because its penalty changes annually. All displayed maxima have been
++uncertainty. All displayed maxima have been
+ recomputed on the extended grid, including zero.
+ 
+ Intervals use 5,000 paired circular-block resamples, sharing monthly draws

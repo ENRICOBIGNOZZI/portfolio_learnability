@@ -1,0 +1,25 @@
+Figure~\ref{fig:equity_costs} provides a simple implementation-cost sensitivity.
+Starting from the same out-of-sample target weights, we subtract 25 basis points
+per unit of target-weight turnover. We then additionally charge a constant
+30 basis points per year on short notional, a deliberately simple borrowing-cost
+benchmark motivated by the order of magnitude of median shorting fees reported
+by \citet{jensenkellymalamudpedersen2026}. The Sharpe ratios fall from
+$3.20$, $3.35$, and $3.25$ to approximately $2.59$, $2.70$, and $2.61$
+after commissions, and to $2.55$, $2.66$, and $2.57$ after both commissions
+and the borrowing-cost adjustment. The borrowing-cost exercise is a sensitivity
+analysis rather than a reconstruction of stock-specific historical lending fees.
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.93\textwidth]{figures/equity_with_costs.pdf}
+    \caption{Cumulative out-of-sample excess-return wealth before costs, after
+    a 25 basis point commission per unit of target-weight turnover, and after
+    additionally charging a constant 30 basis points per year on short
+    notional. The borrowing fee is an illustrative sensitivity rather than a
+    stock-specific historical lending-cost series.}
+    \label{fig:equity_costs}
+\end{figure}
+
+
+
+

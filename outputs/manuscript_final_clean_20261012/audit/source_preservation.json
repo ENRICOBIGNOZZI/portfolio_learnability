@@ -1,0 +1,205 @@
+{
+  "source_zip_sha256": "36b1b9e8f3aa16f8c991c4b211677a887f3cb93a9612a1b049f3b68c7e5fd097",
+  "changed_tex": [
+    "appendice_2.tex",
+    "direct_port_learning.tex",
+    "empirics.tex",
+    "figure6_caption.tex"
+  ],
+  "unchanged_sources": {
+    "main.tex": {
+      "before": "26b910e3ab924cf47a7a60d9db042700403171d51813c5c64c02fdc624c20616",
+      "after": "26b910e3ab924cf47a7a60d9db042700403171d51813c5c64c02fdc624c20616",
+      "unchanged": true
+    },
+    "introduction.tex": {
+      "before": "22b4960634cd86026e2c3f52327c6011f8d239c4faec7a23fa9adc0db0c62b7b",
+      "after": "22b4960634cd86026e2c3f52327c6011f8d239c4faec7a23fa9adc0db0c62b7b",
+      "unchanged": true
+    },
+    "population_problem.tex": {
+      "before": "15892ec10028ed6278e7b48904cc828ada6a5f3978ab4560b47fd16b43723e1c",
+      "after": "15892ec10028ed6278e7b48904cc828ada6a5f3978ab4560b47fd16b43723e1c",
+      "unchanged": true
+    },
+    "direct_port_learning.tex": {
+      "before": "e03c416915ae6b35d8f6d1658ed9d9c84fd167af72db0a2d5dd6bb3cea98e260",
+      "after": "4d3c962fcdf0bfab28b619ceee61a1e65be0ebbc3b9f0e8290ec6dc0f5346338",
+      "unchanged": false,
+      "editorial_only": true,
+      "mathematical_body_unchanged": true
+    },
+    "economomic_spectrum_final.tex": {
+      "before": "50246eff911cfca88b5b3c15d16a9983bdf00c09202031643af90d5419eeb934",
+      "after": "50246eff911cfca88b5b3c15d16a9983bdf00c09202031643af90d5419eeb934",
+      "unchanged": true
+    },
+    "representation_learnability.tex": {
+      "before": "ca13af09082ef3e883942579951c55f5acdb0456b0aaedd48a52ecfbde5303e6",
+      "after": "ca13af09082ef3e883942579951c55f5acdb0456b0aaedd48a52ecfbde5303e6",
+      "unchanged": true
+    },
+    "proofs_learning.tex": {
+      "before": "696263d4ebd5eb0828645270633f603533444fd8912549dd7bf7943bebcac34d",
+      "after": "696263d4ebd5eb0828645270633f603533444fd8912549dd7bf7943bebcac34d",
+      "unchanged": true
+    },
+    "references.bib": {
+      "before": "4b7a0a7538e296998e3e02f58dd1d03d4639a022556d0a4cf3af42611aa160d0",
+      "after": "4b7a0a7538e296998e3e02f58dd1d03d4639a022556d0a4cf3af42611aa160d0",
+      "unchanged": true
+    },
+    "Empirics_only.tex": {
+      "before": "68f754e157c750fc64c858298f131c5acfe313f96ca4a46d7f7f9045b7c3a2c6",
+      "after": "68f754e157c750fc64c858298f131c5acfe313f96ca4a46d7f7f9045b7c3a2c6",
+      "unchanged": true
+    },
+    "numbers.tex": {
+      "before": "9a4e50a0e46d7cb7abda1e4f40080c08bd35deb166dfa8164effdf9305a44041",
+      "after": "9a4e50a0e46d7cb7abda1e4f40080c08bd35deb166dfa8164effdf9305a44041",
+      "unchanged": true
+    },
+    "tables/performance.tex": {
+      "before": "234550ed05b05051ca2d83f91ba9180ac17fe19c31dbfd5f6a7e21b61f353231",
+      "after": "234550ed05b05051ca2d83f91ba9180ac17fe19c31dbfd5f6a7e21b61f353231",
+      "unchanged": true
+    },
+    "tables/spectral_value.tex": {
+      "before": "e80a711e6c955fc77f25e2010e290a998e5418df7a1ecffa95d798198b2cb73c",
+      "after": "e80a711e6c955fc77f25e2010e290a998e5418df7a1ecffa95d798198b2cb73c",
+      "unchanged": true
+    },
+    "tables/historical_endpoints.tex": {
+      "before": "4e63f79b35f9fe1fee5913bf7fa9ba27ef0832f1088041c0f2ab3d7a0fb75d55",
+      "after": "4e63f79b35f9fe1fee5913bf7fa9ba27ef0832f1088041c0f2ab3d7a0fb75d55",
+      "unchanged": true
+    }
+  },
+  "appendix_theory_prefix_and_suffix_byte_identical": true,
+  "removed_assets": [
+    "equity_with_costs.pdf",
+    "cumulative_wealth.pdf",
+    "complexity_gaussian.png",
+    "complexity_matern32.png",
+    "economic_spectrum.png",
+    "gross_and_net_exposure.png"
+  ],
+  "preserved_theory_assets": [
+    "FRONTIER.png",
+    "Complexity.png"
+  ],
+  "unchanged_empirical_tables": {
+    "dominant_long_short_exposures_named.csv": "c4c32d2cdf0cf89c3f0bf19ad8b2684aa01acccb9e88f7af2d6a582994b06c36",
+    "e3_annual_groups.csv": "be0370a1e464bf867168ec2e0b4a0e0d08a3a783d2aa690faf59441c051beb7d",
+    "e3_monthly.csv": "8b43510e82d45fe4c43e96799fa3b5f3aed1d52136d478a2b797aa27e80d640b",
+    "economic_exposure_summary.csv": "f41fa1c746deca9335ae199245fe9ca3cec93f817f2957996f99f8c0a7e40eac",
+    "figure_spectrum.csv": "dfe9bc28f48602db5af26cb3fd1bc1cd87b0d23253683e5bae4d2b30a75a4eda",
+    "figure_wealth.csv": "480ebc407a1bc9aad10628ae1c8c9820b949cf876037423cd377ce856224ba38",
+    "formation_timing_by_month.csv": "bc96ce90b015f3f839a623810b622fbbce3bd78aca8ac521ba8e1a6ab061b4bc",
+    "group_factor_regressions.csv": "c75f9085e36576d3829436d0d9a135077f40ffc4e7937b4430607b58afd0bd60",
+    "group_oos_covariance.csv": "4a3ba12314e924a60c49f979378d7eaa30d4f61d4c8d92eb0aba2e61ec705168",
+    "group_past_only_hedged_monthly.csv": "8abe7a08d20e093881fffcfe990262f0325860fa455c13868a63a2163e7420ce",
+    "incremental_spectral_loss.csv": "1e0fe03849cba61c749fb0f637d409fa6e8cfcbe8242e64a8a0910e43504994d",
+    "joint_monthly_raw.csv": "125b96e64ae93567c53df2c0803fb05353fa611cf469cc1a3a93a124eefd0a2d",
+    "joint_selections.csv": "aafe8dceffa9f9dd4fb4e39dae648c613ab3521003dc9e5712e144a5c05bccb9",
+    "managed_spectra.csv": "397810852c9bbc469c405266c4790ba3b20b51a3cd46b0beae219cf77ddab503",
+    "monthly_accounting.csv": "9d35460244157e6463506d3b8181629b1bc553a94c77fd152373fa3d72bbd952",
+    "monthly_economic_exposures.csv": "687c2b23d03412ca631e7eb900eaae3b7c62c9cc292a3cccea280d82128716b4",
+    "nine_panel_curves.csv": "526cdf3f10fc83a2a5db866b65f9a449e0be2b11e8253b80a3128de5caf7f898",
+    "nine_panel_month_identifiers.csv": "f8d388977ac3612139793a9bd2063159c11ba7913f9972c6a95efa5276950b67",
+    "nine_panel_summary.csv": "a22707d9f862f1ccd88aafce603815f7cb2a2c08f4f24ad8b2836b1a00cefc8a",
+    "paired_contrasts.csv": "c174f83960202d03d63fbe0fe02931289696b29acfc7478c32851530249d3974",
+    "representation_accounts.csv": "b73292446e7ce893d9ad60da53cd6656b77d22fa9a5be9a5e2eb2c20820ad8f0",
+    "representation_paired.csv": "47a668e974faf7afdd15dc01b41e683643df8ab20da9295ca5117c9d544d3ead",
+    "representation_performance.csv": "054da27539222b689fcf4c6578f998a7edc682665eaf8738584a8419528c9c4d",
+    "ridge_annual.csv": "71ec025454aee3c9c1ad14ad0e10caeb984b49d3d17cb3b196665f36a7570aad",
+    "ridge_endpoint_checks.csv": "133f2d1bd45dd4c47f940c208702b3cf750649c159b89e60630d633ef9f7695d",
+    "ridge_monthly_paths.csv": "3caf619d599fe4a4db2484bf7a8bbd5ed3c5c210ba4121b4b6c593f6cde87952",
+    "single_window_complexity.csv": "0d29f52ce0cf3d200ef1a1be625b825e50858043cf8c3a7519c915d33f751b50",
+    "spectral_value.csv": "5e4a01e8c799cad9039359a8ee271acf7136a98c2b367e8d3aaafa4ecf7fa0b8",
+    "stock_cost_checks.csv": "248d3ed85586e5d91dc5f8126b995002b29c23105b4533dd5ce3881d5c86f1aa",
+    "stock_reconstruction_checks.csv": "db2d9339a05995a27703da1b731cc93d27d95c199d96cd1faa50b5383b794a78"
+  },
+  "unchanged_other_empirical_figures": {
+    "fig03_representation_wealth.pdf": "aa7639cf1d47a44867bfc64f327970b0acbcec8782e43a80ed4a30961f57f992",
+    "fig03_representation_wealth.png": "5e07ef48e27f18631d7f23fff2defa9cd028e825b3bd1d3174b6f418d464eaeb",
+    "fig04_fixed_gaussian_spectrum.pdf": "93b528c7809bfe8ffa946d9ef117c50a5438c27c84496f9d519a215cea592339",
+    "fig04_fixed_gaussian_spectrum.png": "d8b12f38a44fc04eaac144bdc5e3ef8f7258286f633005dd905ee4623e7b94e5",
+    "fig05_fixed_gaussian_2024.pdf": "ae97c2419bbda672adc538927f6b36ee3bcf4867246d9dd0df55864961647669",
+    "fig05_fixed_gaussian_2024.png": "69c31c544c30f9f6387c2ad3dad051feae583460aa5b1310340001fa1c324e1c",
+    "fig07_fixed_gaussian_holdings.pdf": "9df821d73f14388d9b6d5739a6a5e9a86dee74d2c82806ee28420e657eae347e",
+    "fig07_fixed_gaussian_holdings.png": "1e2fbedfb03665ff39b0f2dcec4f544c7ad5e6803a9ee6a929f3d4bbad9a4cc5"
+  },
+  "canonical_published_artifacts_unchanged": {
+    "README.md": "fb0f458d24bff6b26cccc4269e3108c60bcc3d76185cf36408615daee1edbca1",
+    "tables/figure_wealth.csv": "480ebc407a1bc9aad10628ae1c8c9820b949cf876037423cd377ce856224ba38",
+    "tables/nine_panel_summary.csv": "a22707d9f862f1ccd88aafce603815f7cb2a2c08f4f24ad8b2836b1a00cefc8a",
+    "tables/ridge_annual.csv": "71ec025454aee3c9c1ad14ad0e10caeb984b49d3d17cb3b196665f36a7570aad",
+    "tables/monthly_accounting.csv": "9d35460244157e6463506d3b8181629b1bc553a94c77fd152373fa3d72bbd952",
+    "tables/ridge_monthly_paths.csv": "3caf619d599fe4a4db2484bf7a8bbd5ed3c5c210ba4121b4b6c593f6cde87952",
+    "tables/nine_panel_month_identifiers.csv": "f8d388977ac3612139793a9bd2063159c11ba7913f9972c6a95efa5276950b67",
+    "tables/group_factor_regressions.csv": "c75f9085e36576d3829436d0d9a135077f40ffc4e7937b4430607b58afd0bd60",
+    "tables/nine_panel_curves.csv": "526cdf3f10fc83a2a5db866b65f9a449e0be2b11e8253b80a3128de5caf7f898",
+    "tables/joint_monthly_raw.csv": "125b96e64ae93567c53df2c0803fb05353fa611cf469cc1a3a93a124eefd0a2d",
+    "tables/spectral_value.csv": "5e4a01e8c799cad9039359a8ee271acf7136a98c2b367e8d3aaafa4ecf7fa0b8",
+    "tables/formation_timing_by_month.csv": "bc96ce90b015f3f839a623810b622fbbce3bd78aca8ac521ba8e1a6ab061b4bc",
+    "tables/representation_paired.csv": "47a668e974faf7afdd15dc01b41e683643df8ab20da9295ca5117c9d544d3ead",
+    "tables/group_past_only_hedged_monthly.csv": "8abe7a08d20e093881fffcfe990262f0325860fa455c13868a63a2163e7420ce",
+    "tables/representation_accounts.csv": "b73292446e7ce893d9ad60da53cd6656b77d22fa9a5be9a5e2eb2c20820ad8f0",
+    "tables/single_window_complexity.csv": "0d29f52ce0cf3d200ef1a1be625b825e50858043cf8c3a7519c915d33f751b50",
+    "tables/dominant_long_short_exposures_named.csv": "c4c32d2cdf0cf89c3f0bf19ad8b2684aa01acccb9e88f7af2d6a582994b06c36",
+    "tables/ridge_endpoint_checks.csv": "133f2d1bd45dd4c47f940c208702b3cf750649c159b89e60630d633ef9f7695d",
+    "tables/e3_annual_groups.csv": "be0370a1e464bf867168ec2e0b4a0e0d08a3a783d2aa690faf59441c051beb7d",
+    "tables/figure_spectrum.csv": "dfe9bc28f48602db5af26cb3fd1bc1cd87b0d23253683e5bae4d2b30a75a4eda",
+    "tables/stock_cost_checks.csv": "248d3ed85586e5d91dc5f8126b995002b29c23105b4533dd5ce3881d5c86f1aa",
+    "tables/economic_exposure_summary.csv": "f41fa1c746deca9335ae199245fe9ca3cec93f817f2957996f99f8c0a7e40eac",
+    "tables/group_oos_covariance.csv": "4a3ba12314e924a60c49f979378d7eaa30d4f61d4c8d92eb0aba2e61ec705168",
+    "tables/representation_performance.csv": "054da27539222b689fcf4c6578f998a7edc682665eaf8738584a8419528c9c4d",
+    "tables/paired_contrasts.csv": "c174f83960202d03d63fbe0fe02931289696b29acfc7478c32851530249d3974",
+    "tables/stock_reconstruction_checks.csv": "db2d9339a05995a27703da1b731cc93d27d95c199d96cd1faa50b5383b794a78",
+    "tables/incremental_spectral_loss.csv": "1e0fe03849cba61c749fb0f637d409fa6e8cfcbe8242e64a8a0910e43504994d",
+    "tables/managed_spectra.csv": "397810852c9bbc469c405266c4790ba3b20b51a3cd46b0beae219cf77ddab503",
+    "tables/e3_monthly.csv": "8b43510e82d45fe4c43e96799fa3b5f3aed1d52136d478a2b797aa27e80d640b",
+    "tables/monthly_economic_exposures.csv": "687c2b23d03412ca631e7eb900eaae3b7c62c9cc292a3cccea280d82128716b4",
+    "tables/joint_selections.csv": "aafe8dceffa9f9dd4fb4e39dae648c613ab3521003dc9e5712e144a5c05bccb9",
+    "publication/numbers.tex": "9a4e50a0e46d7cb7abda1e4f40080c08bd35deb166dfa8164effdf9305a44041",
+    "publication/figure6_caption.tex": "bc22e7499cf28659a33559361f7f9a7880b7263f1144ba15f1a2a0c270624074",
+    "publication/Section_VI_Empirical_Portfolio_Learnability.pdf": "dc7fc1cea95424bf33df7b53c7aa572bed912e5c82b8ebdc8342c1383128bb77",
+    "publication/empirics.tex": "71217f7295e70f1dd6b7ea47dc678282c182f07119e433a3d730014fa1b4c447",
+    "publication/Section_VI_Empirical_Portfolio_Learnability.tex": "2018e9eda54d6d781dafe759b8a87d3dc03dc0e4b10d184c6b8da8717f035131",
+    "publication/Section_VI_Complete_LaTeX_Source.zip": "55ddbcbd27208814dee2bd4e461f4138dab649485929644c3880668bf9ba89fa",
+    "publication/README.txt": "1ba48f4716881d86a1d321f9a5755fc141cd7271b5ac9116ce209387c15c0806",
+    "publication/Section_VI_Empirical_Portfolio_Learnability.log": "fd74e5a1dc6d904926d9adec532a0038ad93e62a44a6d5676758924783ebd3a9",
+    "audit/numerical_claims.json": "d0f71a5e520ad123f66f093187a164b112b52a4d84715882088ef6e4b3d5fd34",
+    "audit/tests.json": "344c2f16fbd1bc5fb348e644f735b9bf8716d348a678bd53b53dd8021e3b903f",
+    "audit/latex_build.txt": "0c07483071afe2138991ca2484c83223fd0f797ba63dd881a90e5e2bc7a22a78",
+    "audit/formation_timing_audit.json": "277c986648c4cf49c0be5a86de7ea16226290e676944f35be64279f3f2b4fed2",
+    "audit/ridge_protocol.json": "34a65cee5064d0a4a3115c6e2185476129030ebf0fdf87709053bc2de8e4f6f7",
+    "audit/source_map.json": "cca5a7bd3cc5b0b4df8f9c99ba5fbd8c4b343f0d8e9938e3a7d7b54851eecf89",
+    "audit/scope.json": "673f028070a22577ce16abc61c4abfadd7463aabb7adeb7ff505f81b536fa85b",
+    "audit/results_manifest.json": "bfad43674d27369d0d61c3236536d9b39992e509da917c79b9d5ef48e9abb9a8",
+    "audit/figure6_render.json": "cd0d2324eef75f5d737edc6555baf443cd0cd0ce17bd25ca32188caee0c5d475",
+    "audit/inputs.json": "5a0b4275c35b5b01187749f434c3e52145b64274f64c935f66525c88d467a92d",
+    "audit/figure6_revision.json": "60bad60130efbb8599d3e9b1d5d5c8d4ffe40169ebf5622d900dcf17a909c1ce",
+    "audit/visual_review.json": "37e0f3709d2a7f6103dafba016c8ad27ed4d6ac1c5a9bf4794c4e42dbfaf128b",
+    "audit/verification.json": "f17cbf8662e5714e485fb37e09af5f41c3220a2ca53066f8041c8c22d2cf84c9",
+    "figures/fig04_fixed_gaussian_spectrum.png": "d8b12f38a44fc04eaac144bdc5e3ef8f7258286f633005dd905ee4623e7b94e5",
+    "figures/fig04_fixed_gaussian_spectrum.pdf": "93b528c7809bfe8ffa946d9ef117c50a5438c27c84496f9d519a215cea592339",
+    "figures/fig07_fixed_gaussian_holdings.png": "1e2fbedfb03665ff39b0f2dcec4f544c7ad5e6803a9ee6a929f3d4bbad9a4cc5",
+    "figures/fig07_fixed_gaussian_holdings.pdf": "9df821d73f14388d9b6d5739a6a5e9a86dee74d2c82806ee28420e657eae347e",
+    "figures/fig05_fixed_gaussian_2024.png": "69c31c544c30f9f6387c2ad3dad051feae583460aa5b1310340001fa1c324e1c",
+    "figures/fig03_representation_wealth.png": "5e07ef48e27f18631d7f23fff2defa9cd028e825b3bd1d3174b6f418d464eaeb",
+    "figures/fig03_representation_wealth.pdf": "aa7639cf1d47a44867bfc64f327970b0acbcec8782e43a80ed4a30961f57f992",
+    "figures/fig05_fixed_gaussian_2024.pdf": "ae97c2419bbda672adc538927f6b36ee3bcf4867246d9dd0df55864961647669",
+    "figures/fig06_nine_complete_profiles.pdf": "14d35102c30f375033c08ee01a3ed2388a126e19597d33f41f630ad8c5174a65",
+    "figures/fig06_nine_complete_profiles.png": "08d9f79444bb5632ed6ad922ead0b1f7cd4394bddcf289bf8433c5bb64c3da76",
+    "publication/tables/spectral_value.tex": "83ec37391871f0275bd662874835944105fc4a3dbfb6ec76a0e70646dd4addaa",
+    "publication/tables/performance.tex": "cb8ed76222953d11c8383bf5826dab831c42b5c777da2620b5a048d837d22b9d",
+    "publication/tables/historical_endpoints.tex": "2c22f6edbc8cdc844ce0fee83d76a163bb054322918209442558bed45e673bbc",
+    "publication/figures/fig04_fixed_gaussian_spectrum.pdf": "93b528c7809bfe8ffa946d9ef117c50a5438c27c84496f9d519a215cea592339",
+    "publication/figures/fig07_fixed_gaussian_holdings.pdf": "9df821d73f14388d9b6d5739a6a5e9a86dee74d2c82806ee28420e657eae347e",
+    "publication/figures/fig03_representation_wealth.pdf": "aa7639cf1d47a44867bfc64f327970b0acbcec8782e43a80ed4a30961f57f992",
+    "publication/figures/fig05_fixed_gaussian_2024.pdf": "ae97c2419bbda672adc538927f6b36ee3bcf4867246d9dd0df55864961647669",
+    "publication/figures/fig06_nine_complete_profiles.pdf": "14d35102c30f375033c08ee01a3ed2388a126e19597d33f41f630ad8c5174a65"
+  }
+}

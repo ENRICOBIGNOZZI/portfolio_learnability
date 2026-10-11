@@ -1,0 +1,6 @@
+note: Running TeX ...
+note: Running xdvipdfmx ...
+note: Writing `Empirics_only.log` (18.7353515625 KiB)
+note: Writing `Empirics_only.aux` (9.67578125 KiB)
+note: Writing `Empirics_only.out` (1.029296875 KiB)
+note: Writing `Empirics_only.pdf` (253.169921875 KiB)

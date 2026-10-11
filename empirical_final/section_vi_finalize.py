@@ -285,7 +285,7 @@ def finish(fig,name):
 
 
 def figure_six():
-    """Draw every evaluated OOS candidate; preserve the full rank-bounded tail."""
+    """Draw fixed-penalty OOS paths; annual CV is a distinct dynamic policy."""
     curves=pd.read_csv(OUT/'tables/nine_panel_curves.csv',float_precision='round_trip')
     summary=read('nine_panel_summary').set_index('period')
     grid=np.array(json.loads((OUT/'audit/ridge_protocol.json').read_text())['penalties'])
@@ -307,8 +307,10 @@ def figure_six():
             np.testing.assert_array_equal(line.get_xydata(),f[['mean_C','oos_sharpe']].to_numpy())
             peak=f.loc[f.oos_sharpe.idxmax()];end=f[f.zero_penalty].iloc[0]
             assert peak.retrospective_maximum and end.penalty==0 and end.mean_C==s.effective_rank
+            assert int(peak.candidate)==int(s.maximum_candidate)
+            np.testing.assert_allclose([peak.mean_C,peak.oos_sharpe],
+                [s.maximum_C,s.maximum_sharpe],rtol=1e-12,atol=1e-12)
             ax.scatter(peak.mean_C,peak.oos_sharpe,color=COLORS[2],marker='*',s=105,zorder=5)
-            ax.scatter(s.selected_mean_C,s.selected_sharpe,color='black',marker='D',s=28,zorder=5)
             ax.scatter(end.mean_C,end.oos_sharpe,facecolors='white',edgecolors=COLORS[1],
                 s=32,zorder=6,clip_on=False)
             ax.set_title(f'{lo}–{hi} · n = {int(s.months)}',fontsize=15);ax.grid(True)
@@ -324,9 +326,8 @@ def figure_six():
         axs[0,0].set_xlim(0,xmax);axs[0,0].set_ylim(ymin,ymax)
         handles=[plt.Line2D([0],[0],color=COLORS[1],lw=1.3,label='Evaluated λ path'),
             plt.Line2D([0],[0],color=COLORS[2],marker='*',lw=0,ms=11,label='Retrospective maximum'),
-            plt.Line2D([0],[0],color='black',marker='D',lw=0,ms=5.5,label='Past-validation selection'),
             plt.Line2D([0],[0],color=COLORS[1],marker='o',mfc='white',lw=0,ms=5.5,label='Exact λ = 0')]
-        fig.legend(handles=handles,loc='outside upper center',ncol=4,frameon=False,fontsize=12)
+        fig.legend(handles=handles,loc='outside upper center',ncol=3,frameon=False,fontsize=12)
         assert len(fig.axes)==9 and len(fig.legends)==1
         assert all(np.array_equal(ax.get_xlim(),[0,xmax]) for ax in axs.flat)
         assert all(np.array_equal(ax.get_ylim(),[ymin,ymax]) for ax in axs.flat)
@@ -335,6 +336,8 @@ def figure_six():
         common_xlim=[0,xmax],common_ylim=[ymin,ymax],confidence_bands=False,
         historical_fit_panels=False,all_evaluated_vertices_retained=True,
         path_simplification=False,smoothing=False,extrapolation=False,
+        cv_strategy_plotted=False,markers_per_panel=['retrospective_maximum','exact_zero_endpoint'],
+        legend=[handle.get_label() for handle in handles],
         curves_sha256=digest(OUT/'tables/nine_panel_curves.csv')))
 
 
@@ -390,10 +393,13 @@ def figures():
 
 
 def main():
+    global OUT
     parser=argparse.ArgumentParser();modes=parser.add_mutually_exclusive_group()
     modes.add_argument('--public-only',action='store_true')
     modes.add_argument('--figure-six-only',action='store_true',help='Redraw Figure 6 and rebuild the section without changing results or other figures')
+    parser.add_argument('--output-dir',type=Path,help='Use a versioned copy of the verified Section VI outputs')
     args=parser.parse_args()
+    if args.output_dir:OUT=args.output_dir.resolve()
     for folder in ['tables','audit','figures','publication']: (OUT/folder).mkdir(parents=True,exist_ok=True)
     if not (args.public_only or args.figure_six_only):
         audit('scope',dict(section='VI only',representation_comparison='Linear and joint-validation Gaussian/Matérn-3/2',
@@ -407,8 +413,9 @@ def main():
             if digest(OUT/name)!=expected:raise ValueError('Changed public aggregate: '+name)
     if args.figure_six_only:figure_six()
     else:figures()
-    from empirical_final.section_vi_publication import publication, verify
-    publication();verify()
+    from empirical_final import section_vi_publication
+    section_vi_publication.OUT=OUT
+    section_vi_publication.publication();section_vi_publication.verify()
     result_manifest=dict(tables={str(p.relative_to(OUT)):digest(p) for p in sorted((OUT/'tables').glob('*.csv'))},
         code={str(p.relative_to(ROOT)):digest(p) for p in [Path(__file__),ROOT/'empirical_final/section_vi_publication.py',ROOT/'empirical_final/templates/final_section_vi.tex']},
         figures={p.name:digest(p) for p in sorted((OUT/'figures').glob('*.pdf'))})

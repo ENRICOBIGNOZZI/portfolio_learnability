@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "baseline": "outputs/section_vi_final_20261011",
+  "unchanged_canonical_tables": 30,
+  "unchanged_other_figures": 4,
+  "cv_diamonds_removed": true,
+  "dynamic_cv_policy_numerically_preserved": true,
+  "plotted_candidates_per_period": 1522,
+  "total_plotted_candidates": 13698,
+  "exact_zero_endpoint_in_every_panel": true,
+  "source_package_compiled_independently": true,
+  "scientific_audit": "../../audit/figure6_scientific_audit.json"
+}

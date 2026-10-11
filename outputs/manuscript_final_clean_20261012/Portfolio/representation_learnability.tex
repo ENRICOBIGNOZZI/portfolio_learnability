@@ -1,0 +1,91 @@
+\section{Representation, Learnability, and the Virtue of Complexity}
+\label{sec:representation_learnability}
+\citet{kellymalamudzhou2024} study an environment in which expanding the model
+also captures an increasing share of the underlying economic signal. In their
+setting, the improvement in approximation can dominate the additional
+estimation cost. This is the virtue of complexity.
+
+Our question is different. We hold the investor's information set fixed and
+vary only the richness of the portfolio representation. We take the view that
+a portfolio manager should make available all information she considers
+economically useful and can observe in real time. Regularization, rather than
+ex ante feature exclusion, should then determine how much of the resulting
+portfolio opportunity set can actually be learned from the available data.
+We therefore study the virtue of Complexity, as the virtue of richer representation, separately from the
+addition of new signals.
+
+
+Our point in this section is that a richer portfolio representation and a
+better learned portfolio are two different objects.
+
+Let $\SR^\star$ denote the maximum population Sharpe ratio over the space of
+$L^2$ portfolio policies,
+\[
+\SR^\star := \sup_{W\in L^2}\SR(W),
+\]
+and let
+\[
+\SR_K^\star := \sup_{W\in\mathcal H_K}\SR(W)
+\]
+denote the maximum population Sharpe ratio available within representation
+$K$, where $\mathcal H_K\subseteq L^2$ is the corresponding policy space.
+For example, a linear kernel restricts portfolio weights to be linear
+functions of characteristics, whereas a Matérn kernel allows a richer
+nonlinear class.
+
+Finally,
+\[
+\SR(\widehat W_{K,\lambda,T})
+\]
+denotes the population Sharpe ratio of the portfolio policy learned within
+representation $K$ from a market history of length $T$.
+
+The gap between the unrestricted population opportunity set and the portfolio
+actually learned from the data can be decomposed as
+\begin{equation}
+\SR^\star-\SR(\widehat W_{K,\lambda,T})
+=
+\underbrace{\SR^\star-\SR_K^\star}_{\text{representation gap}}
++
+\underbrace{
+\SR_K^\star-\SR(\widehat W_{K,\lambda,T})
+}_{\text{learning gap}}.
+\label{eq:representation_estimation_decomposition}
+\end{equation}
+
+The representation gap measures the investment opportunities that cannot be
+expressed by the chosen representation, even if the investment environment
+were known perfectly. The learning gap measures how much of the opportunity
+set available within that representation cannot be recovered from a finite
+history of returns.
+
+Now consider two nested representations,
+\[
+\mathcal H_{K_1}\subseteq\mathcal H_{K_2}.
+\]
+At the population level,
+\[
+\SR_{K_2}^\star\geq\SR_{K_1}^\star.
+\]
+A richer representation can therefore only expand the population investment
+opportunity set. In this precise sense, complexity is a virtue for
+representation.
+
+But this population ordering need not survive estimation from finite data. It
+is perfectly possible that
+\[
+\SR_{K_2}^\star>\SR_{K_1}^\star
+\]
+while
+\[
+\SR(\widehat W_{K_2,\lambda_2,T})
+<
+\SR(\widehat W_{K_1,\lambda_1,T}).
+\]
+The larger representation contains better population opportunities, but some
+of those opportunities may lie in managed-portfolio directions that are too
+weakly identified by the available return history.
+
+A richer representation therefore expands what the portfolio manager could
+exploit. Whether those additional opportunities improve the learned portfolio
+depends on whether they can actually be learned from the available data.

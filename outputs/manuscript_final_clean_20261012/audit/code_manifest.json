@@ -1,0 +1,7 @@
+{
+  "empirical_final/section_vi_finalize.py": "0e05b1c10ce5acb225a5f7f943b75474c097839f37e8f982697c183ac21151e9",
+  "empirical_final/templates/final_section_vi.tex": "f4f54ee016c166d15d9a65875365ff16c92fe4c4f5e0908b54fce196d19b6fae",
+  "empirical_final/figure6_audit.py": "7651151da65146307a3f0e1dbc41da23efe836ce12278cb8bc43335c840729a3",
+  "empirical_final/manuscript_cleanup.py": "d7f4e6c2ac887362628634e29046463bd53b30d0a9e0c273cfb91914310534cc",
+  "tests/test_manuscript_cleanup.py": "0ab735f6a48fb3099aa4f5fd808efe33b3827af7b3741aee41f8b1cb816bdd01"
+}

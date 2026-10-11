@@ -1,0 +1,499 @@
+[
+  {
+    "macro": "MissingCount",
+    "input": "audit/formation_timing_audit.json",
+    "key": "unresolved_payoffs",
+    "value": 7489
+  },
+  {
+    "macro": "FormationCount",
+    "input": "audit/formation_timing_audit.json",
+    "key": "formation_stock_months",
+    "value": 2504402
+  },
+  {
+    "macro": "KernelGrossDelta",
+    "input": "tables/representation_paired.csv",
+    "column": "delta_sharpe",
+    "filters": {
+      "scenario": "gross",
+      "policy": "gaussian_tuned",
+      "block_length": 12
+    },
+    "scale": 1,
+    "raw_value": 0.554438719761948,
+    "rendered_value": "0.554"
+  },
+  {
+    "macro": "KernelGrossLow",
+    "input": "tables/representation_paired.csv",
+    "column": "low",
+    "filters": {
+      "scenario": "gross",
+      "policy": "gaussian_tuned",
+      "block_length": 12
+    },
+    "scale": 1,
+    "raw_value": 0.27472388089121,
+    "rendered_value": "0.275"
+  },
+  {
+    "macro": "KernelGrossHigh",
+    "input": "tables/representation_paired.csv",
+    "column": "high",
+    "filters": {
+      "scenario": "gross",
+      "policy": "gaussian_tuned",
+      "block_length": 12
+    },
+    "scale": 1,
+    "raw_value": 0.879943206924064,
+    "rendered_value": "0.880"
+  },
+  {
+    "macro": "KernelNetDelta",
+    "input": "tables/representation_paired.csv",
+    "column": "delta_sharpe",
+    "filters": {
+      "scenario": "trade25_borrow30",
+      "policy": "gaussian_tuned",
+      "block_length": 12
+    },
+    "scale": 1,
+    "raw_value": 0.381068556363093,
+    "rendered_value": "0.381"
+  },
+  {
+    "macro": "KernelNetLow",
+    "input": "tables/representation_paired.csv",
+    "column": "low",
+    "filters": {
+      "scenario": "trade25_borrow30",
+      "policy": "gaussian_tuned",
+      "block_length": 12
+    },
+    "scale": 1,
+    "raw_value": 0.140140511090623,
+    "rendered_value": "0.140"
+  },
+  {
+    "macro": "KernelNetHigh",
+    "input": "tables/representation_paired.csv",
+    "column": "high",
+    "filters": {
+      "scenario": "trade25_borrow30",
+      "policy": "gaussian_tuned",
+      "block_length": 12
+    },
+    "scale": 1,
+    "raw_value": 0.653083124030385,
+    "rendered_value": "0.653"
+  },
+  {
+    "macro": "MaternGrossDelta",
+    "input": "tables/representation_paired.csv",
+    "column": "delta_sharpe",
+    "filters": {
+      "scenario": "gross",
+      "policy": "matern32_tuned",
+      "block_length": 12
+    },
+    "scale": 1,
+    "raw_value": 0.495772318351472,
+    "rendered_value": "0.496"
+  },
+  {
+    "macro": "MaternGrossLow",
+    "input": "tables/representation_paired.csv",
+    "column": "low",
+    "filters": {
+      "scenario": "gross",
+      "policy": "matern32_tuned",
+      "block_length": 12
+    },
+    "scale": 1,
+    "raw_value": 0.133101050632629,
+    "rendered_value": "0.133"
+  },
+  {
+    "macro": "MaternGrossHigh",
+    "input": "tables/representation_paired.csv",
+    "column": "high",
+    "filters": {
+      "scenario": "gross",
+      "policy": "matern32_tuned",
+      "block_length": 12
+    },
+    "scale": 1,
+    "raw_value": 0.907372450137371,
+    "rendered_value": "0.907"
+  },
+  {
+    "macro": "MaternNetDelta",
+    "input": "tables/representation_paired.csv",
+    "column": "delta_sharpe",
+    "filters": {
+      "scenario": "trade25_borrow30",
+      "policy": "matern32_tuned",
+      "block_length": 12
+    },
+    "scale": 1,
+    "raw_value": 0.270883697372144,
+    "rendered_value": "0.271"
+  },
+  {
+    "macro": "MaternNetLow",
+    "input": "tables/representation_paired.csv",
+    "column": "low",
+    "filters": {
+      "scenario": "trade25_borrow30",
+      "policy": "matern32_tuned",
+      "block_length": 12
+    },
+    "scale": 1,
+    "raw_value": -0.0264219756955669,
+    "rendered_value": "-0.026"
+  },
+  {
+    "macro": "MaternNetHigh",
+    "input": "tables/representation_paired.csv",
+    "column": "high",
+    "filters": {
+      "scenario": "trade25_borrow30",
+      "policy": "matern32_tuned",
+      "block_length": 12
+    },
+    "scale": 1,
+    "raw_value": 0.611431606721606,
+    "rendered_value": "0.611"
+  },
+  {
+    "macro": "GroupGrossLow",
+    "input": "tables/paired_contrasts.csv",
+    "column": "low",
+    "filters": {
+      "scenario": "gross",
+      "contrast": "Add intermediate group",
+      "block_length": 12
+    },
+    "scale": 1,
+    "raw_value": 0.00218853187737,
+    "rendered_value": "0.002"
+  },
+  {
+    "macro": "GroupGrossHigh",
+    "input": "tables/paired_contrasts.csv",
+    "column": "high",
+    "filters": {
+      "scenario": "gross",
+      "contrast": "Add intermediate group",
+      "block_length": 12
+    },
+    "scale": 1,
+    "raw_value": 0.5462927472959,
+    "rendered_value": "0.546"
+  },
+  {
+    "macro": "GroupNetLow",
+    "input": "tables/paired_contrasts.csv",
+    "column": "low",
+    "filters": {
+      "scenario": "trade25_borrow30",
+      "contrast": "Add intermediate group",
+      "block_length": 12
+    },
+    "scale": 1,
+    "raw_value": 0.01128348002105,
+    "rendered_value": "0.011"
+  },
+  {
+    "macro": "GroupNetHigh",
+    "input": "tables/paired_contrasts.csv",
+    "column": "high",
+    "filters": {
+      "scenario": "trade25_borrow30",
+      "contrast": "Add intermediate group",
+      "block_length": 12
+    },
+    "scale": 1,
+    "raw_value": 0.4873225431081,
+    "rendered_value": "0.487"
+  },
+  {
+    "macro": "LeadingMass",
+    "input": "tables/spectral_value.csv",
+    "column": "mean_spectral_share",
+    "filters": {
+      "group": 1
+    },
+    "scale": 100,
+    "raw_value": 99.92145799286,
+    "rendered_value": "99.921"
+  },
+  {
+    "macro": "LeadingComplexity",
+    "input": "tables/spectral_value.csv",
+    "column": "mean_active_C",
+    "filters": {
+      "group": 1
+    },
+    "scale": 1,
+    "raw_value": 33.82486147562,
+    "rendered_value": "33.8"
+  },
+  {
+    "macro": "LeadingGross",
+    "input": "tables/spectral_value.csv",
+    "column": "component_gross",
+    "filters": {
+      "group": 1
+    },
+    "scale": 1,
+    "raw_value": 2.266757998879,
+    "rendered_value": "2.267"
+  },
+  {
+    "macro": "LeadingMean",
+    "input": "tables/spectral_value.csv",
+    "column": "annual_mean",
+    "filters": {
+      "group": 1
+    },
+    "scale": 100,
+    "raw_value": 24.322987417860002,
+    "rendered_value": "24.32"
+  },
+  {
+    "macro": "IntermediateMean",
+    "input": "tables/spectral_value.csv",
+    "column": "annual_mean",
+    "filters": {
+      "group": 2
+    },
+    "scale": 100,
+    "raw_value": 2.759488535878,
+    "rendered_value": "2.76"
+  },
+  {
+    "macro": "IntermediateGross",
+    "input": "tables/spectral_value.csv",
+    "column": "component_gross",
+    "filters": {
+      "group": 2
+    },
+    "scale": 1,
+    "raw_value": 1.262890682667,
+    "rendered_value": "1.263"
+  },
+  {
+    "macro": "IntermediateCovariance",
+    "input": "tables/spectral_value.csv",
+    "column": "annual_covariance_with_previous",
+    "filters": {
+      "group": 2
+    },
+    "scale": 1,
+    "raw_value": -0.0006342525731414,
+    "rendered_value": "-0.000634"
+  },
+  {
+    "macro": "IntermediateVariance",
+    "input": "tables/spectral_value.csv",
+    "column": "incremental_annual_variance",
+    "filters": {
+      "group": 2
+    },
+    "scale": 1,
+    "raw_value": 0.0002780833132805,
+    "rendered_value": "0.000278"
+  },
+  {
+    "macro": "LeadingSR",
+    "input": "tables/spectral_value.csv",
+    "column": "cumulative_gross_sharpe",
+    "filters": {
+      "group": 1
+    },
+    "scale": 1,
+    "raw_value": 3.011854186825,
+    "rendered_value": "3.012"
+  },
+  {
+    "macro": "TwoGroupSR",
+    "input": "tables/spectral_value.csv",
+    "column": "cumulative_gross_sharpe",
+    "filters": {
+      "group": 2
+    },
+    "scale": 1,
+    "raw_value": 3.284266347938,
+    "rendered_value": "3.284"
+  },
+  {
+    "macro": "LeadingNetSR",
+    "input": "tables/spectral_value.csv",
+    "column": "cumulative_net_sharpe",
+    "filters": {
+      "group": 1
+    },
+    "scale": 1,
+    "raw_value": 2.354235326802,
+    "rendered_value": "2.354"
+  },
+  {
+    "macro": "TwoGroupNetSR",
+    "input": "tables/spectral_value.csv",
+    "column": "cumulative_net_sharpe",
+    "filters": {
+      "group": 2
+    },
+    "scale": 1,
+    "raw_value": 2.597821092941,
+    "rendered_value": "2.598"
+  },
+  {
+    "macro": "FixedGrossSR",
+    "input": "tables/spectral_value.csv",
+    "column": "cumulative_gross_sharpe",
+    "filters": {
+      "group": 4
+    },
+    "scale": 1,
+    "raw_value": 3.29990266437,
+    "rendered_value": "3.300"
+  },
+  {
+    "macro": "FixedNetSR",
+    "input": "tables/spectral_value.csv",
+    "column": "cumulative_net_sharpe",
+    "filters": {
+      "group": 4
+    },
+    "scale": 1,
+    "raw_value": 2.605217498097,
+    "rendered_value": "2.605"
+  },
+  {
+    "macro": "IntermediateQDelta",
+    "input": "tables/incremental_spectral_loss.csv",
+    "column": "incremental_Q",
+    "filters": {
+      "group": 2
+    },
+    "scale": 1,
+    "raw_value": -0.0360081227852939,
+    "rendered_value": "-0.036008"
+  },
+  {
+    "macro": "IntermediateQLow",
+    "input": "tables/incremental_spectral_loss.csv",
+    "column": "delta_Q_low",
+    "filters": {
+      "group": 2
+    },
+    "scale": 1,
+    "raw_value": -0.0932639921145383,
+    "rendered_value": "-0.093264"
+  },
+  {
+    "macro": "IntermediateQHigh",
+    "input": "tables/incremental_spectral_loss.csv",
+    "column": "delta_Q_high",
+    "filters": {
+      "group": 2
+    },
+    "scale": 1,
+    "raw_value": 0.0279123500625125,
+    "rendered_value": "0.027912"
+  },
+  {
+    "macro": "IntermediateQCross",
+    "input": "tables/incremental_spectral_loss.csv",
+    "column": "cross_term",
+    "filters": {
+      "group": 2
+    },
+    "scale": 1,
+    "raw_value": -0.131765708129774,
+    "rendered_value": "-0.131766"
+  },
+  {
+    "macro": "IntermediateQSquare",
+    "input": "tables/incremental_spectral_loss.csv",
+    "column": "own_square",
+    "filters": {
+      "group": 2
+    },
+    "scale": 1,
+    "raw_value": 0.0957575853444801,
+    "rendered_value": "0.095758"
+  },
+  {
+    "macro": "SinglePeakC",
+    "input": "tables/single_window_complexity.csv",
+    "column": "C",
+    "filters": {
+      "candidate": 588
+    },
+    "scale": 1,
+    "raw_value": 76.9850977192484,
+    "rendered_value": "77.0"
+  },
+  {
+    "macro": "SinglePeakSR",
+    "input": "tables/single_window_complexity.csv",
+    "column": "oos_sharpe",
+    "filters": {
+      "candidate": 588
+    },
+    "scale": 1,
+    "raw_value": 3.13772928293456,
+    "rendered_value": "3.138"
+  },
+  {
+    "macro": "SingleZeroSR",
+    "input": "tables/single_window_complexity.csv",
+    "column": "oos_sharpe",
+    "filters": {
+      "zero_penalty": true
+    },
+    "scale": 1,
+    "raw_value": 0.0541558792857006,
+    "rendered_value": "0.054"
+  },
+  {
+    "macro": "MissingShare",
+    "input": "audit/formation_timing_audit.json",
+    "operation": "100*unresolved_payoffs/formation_stock_months"
+  },
+  {
+    "macro": "PortfolioScale",
+    "input": "source protocol",
+    "raw_value": 0.03740000227285338
+  },
+  {
+    "macro": "FixedLengthscale",
+    "input": "audit/ridge_protocol.json",
+    "operation": "representation.ell"
+  },
+  {
+    "macro": "CandidateCount",
+    "input": "audit/ridge_protocol.json",
+    "operation": "len(penalties)"
+  },
+  {
+    "macro": "TotalComplexity",
+    "input": "tables/spectral_value.csv",
+    "operation": "sum(mean_active_C)"
+  },
+  {
+    "macro": "IncrementalGross",
+    "input": "tables/spectral_value.csv",
+    "operation": "account_gross[group2]-account_gross[group1]"
+  },
+  {
+    "macro": "HistoricalFindings",
+    "input": "tables/nine_panel_summary.csv",
+    "operation": "all extended maxima; min/max complexities and endpoint declines"
+  }
+]

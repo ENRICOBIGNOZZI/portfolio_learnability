@@ -1,0 +1,48 @@
+{
+  "passed": true,
+  "direct": [
+    {
+      "passed": true,
+      "pages": 66,
+      "pdf_sha256": "0ef0a4bae173f365e19d0ea2698e2f2b52abb44a8cfe93b185e1c553d60eb873",
+      "undefined_commands_or_references": false,
+      "overfull_boxes": [
+        "Overfull \\hbox (7.09189pt too wide) in paragraph at lines 468--471"
+      ],
+      "entry": "main.tex",
+      "output": "Portfolio_Paper_Final_Clean.pdf"
+    },
+    {
+      "passed": true,
+      "pages": 8,
+      "pdf_sha256": "66d48e6947c032a2a09bb237334fe1c3ffec5fee4e7a92b471682e2671a6c21e",
+      "undefined_commands_or_references": false,
+      "overfull_boxes": [],
+      "entry": "Empirics_only.tex",
+      "output": "Empirics_Section_VI_Final.pdf"
+    }
+  ],
+  "independent_extracted_zip": [
+    {
+      "passed": true,
+      "pages": 66,
+      "pdf_sha256": "975307cf7edcf605dd90cba8ef38daf0d1a21f76490cc7cd2a45f7abd21a7a79",
+      "undefined_commands_or_references": false,
+      "overfull_boxes": [
+        "Overfull \\hbox (7.09189pt too wide) in paragraph at lines 468--471"
+      ],
+      "entry": "main.tex",
+      "text_matches_delivered_pdf": true
+    },
+    {
+      "passed": true,
+      "pages": 8,
+      "pdf_sha256": "c9edcac3ad83b37f09b2aefb39249917b632ab3b51fa2a4888610df8551a99d8",
+      "undefined_commands_or_references": false,
+      "overfull_boxes": [],
+      "entry": "Empirics_only.tex",
+      "text_matches_delivered_pdf": true
+    }
+  ],
+  "source_zip_sha256": "bb1e9bb1fd640d46ce66bda6e167773764bdb37d8b46fa68c2e7f7c1d1aced78"
+}
