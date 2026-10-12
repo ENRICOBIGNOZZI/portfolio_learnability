@@ -75,7 +75,7 @@ def test_actual_extractor_training_ignores_held_out_future_payoffs():
         def __init__(self):
             rng=np.random.default_rng(4)
             self.panels=[(torch.tensor(rng.normal(0,.2,(12,3)),dtype=torch.float32),
-                          torch.tensor(rng.normal(0,.05,12),dtype=torch.float32),np.arange(12)) for _ in range(9)]
+                          torch.tensor(rng.normal(0,.05,12),dtype=torch.float64),np.arange(12)) for _ in range(9)]
         def __getitem__(self,i):return self.panels[i]
     panels=SmallPanels();before=extractor_training(panels,np.arange(6),0,[2])[2]
     for i in range(6,9):

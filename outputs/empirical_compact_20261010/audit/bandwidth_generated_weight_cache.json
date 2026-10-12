@@ -1,5 +1,5 @@
 {
-  "protocol_sha256": "3c938f9ff6f1df21261bcca097806ab979c870d0602a962168b8d321b1ce4216",
+  "protocol_sha256": "9bda49949bb6126d4dd3165ad437f9f05c589585b69a72d915cffd28ccf98d64",
   "clean_manifest_sha256": "ca6e97aa3b6cd96962afb1ce5ffc6d901f74f90eb5c2cef5902391633c3e7db9",
   "producer_sha256": "43174e005de80a4e44227eff3e1cf8599d5497197a852dd53f19c99c540f3530",
   "files": {
@@ -72,5 +72,6 @@
     "bandwidth_matern32_weights_1979.parquet": "d33f741ef529c2c6c9a22d1bf763b8cef960b108d5fd11aabf471ea3236464a2",
     "bandwidth_gaussian_weights_2021.parquet": "cb760d78c4f19b263b263a4207fc5851879d33575b49827cd9c3a59cd5427ffb"
   },
-  "origin": "Generated during this canonical execution before interrupting for memory control; subsequent reuse requires hash and numerical policy verification"
+  "origin": "Generated during this canonical execution before interrupting for memory control; subsequent reuse requires hash and numerical policy verification",
+  "predecessor_protocol_sha256": "3c938f9ff6f1df21261bcca097806ab979c870d0602a962168b8d321b1ce4216"
 }

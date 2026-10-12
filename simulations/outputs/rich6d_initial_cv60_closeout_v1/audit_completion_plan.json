@@ -1,0 +1,73 @@
+{
+  "parent_commit": "64d611fb2c3d5687bb1944e3523470420ea4dc8e",
+  "original_audit_protocol_sha256": "c2f50986da041fdaabb6839661c96552a3a745a8338ec5318254bd5a066462fc",
+  "all_indices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    33,
+    50,
+    70,
+    232
+  ],
+  "missing_rank_full_indices": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    33,
+    50,
+    70,
+    232
+  ],
+  "ranks": [
+    4096,
+    8192
+  ],
+  "Fourier_terms": [
+    128,
+    512,
+    2048
+  ],
+  "baseline_times": [
+    60,
+    720,
+    4860
+  ],
+  "robustness_times": [
+    60,
+    720,
+    3240
+  ],
+  "primary_groups": 32768,
+  "independent_groups": 131072,
+  "thresholds_changed": false,
+  "initial_cv_changed": false,
+  "workers": 1,
+  "memory_budget_bytes": 4500000000,
+  "temporary_disk_budget_bytes": 4000000000,
+  "estimated_serial_rank_hours": 6.363796283508176,
+  "estimated_total_hours_range": [
+    8,
+    12
+  ],
+  "selection_rule": "Complete every declared representative and stress cell; never choose cells by observed performance or slopes.",
+  "reuse": "All verified full/short coefficient sidecars and independent evaluation already delivered; no replacement 1500-history production.",
+  "created_utc": "2026-10-12T00:12:59.712564+00:00"
+}

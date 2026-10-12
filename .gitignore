@@ -45,3 +45,6 @@ source_manifest.json
 
 # Public group-level exposure and attribution tables; no individual stock weights.
 !/outputs/spectral_economic_content_20261009/tables/*.parquet
+
+# Regenerable numerical-audit history and compiled feature caches.
+/simulations/outputs/rich6d_initial_cv60_closeout_v1/cache/

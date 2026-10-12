@@ -1,0 +1,7 @@
+{
+  "reason": "Late-history neural stock-payoff reconstruction failed absolute 2e-7 check. Retain original float64 returns and monthly aggregate precision, plus contiguous stock storage. Restart all neural runs in separate exact-readout checkpoints. No architecture, hyperparameter, seed, bandwidth or selection change.",
+  "previous_protocol_sha256": "3c938f9ff6f1df21261bcca097806ab979c870d0602a962168b8d321b1ce4216",
+  "previous_code_commit": "51d78e3",
+  "old_dtype": "float32 extractor and monthly aggregation; float64 exact ridge head and accounting",
+  "new_dtype": "float32 extractor; float64 original returns, monthly aggregation, exact ridge head and accounting"
+}

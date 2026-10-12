@@ -55,6 +55,27 @@ def summarize_audit():
                     passes=bool(len(ids)>=2 and denominator>0 and bound<=.05*denominator),
                     status='descriptive_stress' if values[-1]=='additional_stress' else ('not_applicable' if not np.isfinite(mean) else ('not_estimable' if len(ids)<2 else ('passed' if bound<=.05*denominator else 'failed')))))
     result=pd.DataFrame(comparisons);result.to_csv(DEST/'audit_paired_comparisons.csv',index=False)
+    plan=json.loads((DEST/'audit_protocol.json').read_text())['design']
+    stress_rows=[]
+    for name,index in plan['stress_indices_by_economy'].items():
+        selected=data[(data.environment==name)&(data['index']==index)]
+        for (T,audit),part in selected.groupby(['T','audit']):
+            for metric in metrics:
+                low=part[(part['rank']==4096)&(part.quadrature=='primary')][metric].iloc[0]
+                high=part[(part['rank']==8192)&(part.quadrature=='primary')][metric].iloc[0]
+                ratio=abs(high-low)/abs(low) if np.isfinite(low) and low!=0 else np.nan
+                stress_rows.append(dict(environment=name,index=index,T=int(T),audit=audit,metric=metric,comparison='rank8192_minus4096',
+                    relative_change=ratio,passes=bool(np.isfinite(ratio) and ratio<=.05),status='not_applicable' if not np.isfinite(ratio) else ('passed' if ratio<=.05 else 'failed'),
+                    scope='Individual predeclared minimum-a stress diagnostic; no IID MCSE or global certificate.'))
+                for rank in [4096,8192]:
+                    primary=part[(part['rank']==rank)&(part.quadrature=='primary')][metric].iloc[0]
+                    independent=part[(part['rank']==rank)&(part.quadrature=='independent')][metric].iloc[0]
+                    ratio=abs(independent-primary)/abs(primary) if np.isfinite(primary) and primary!=0 else np.nan
+                    stress_rows.append(dict(environment=name,index=index,T=int(T),audit=audit,metric=metric,comparison=f'independent_minus_primary_P{rank}',
+                        relative_change=ratio,passes=bool(np.isfinite(ratio) and ratio<=.05),status='not_applicable' if not np.isfinite(ratio) else ('passed' if ratio<=.05 else 'failed'),
+                        scope='Individual predeclared minimum-a stress diagnostic; no IID MCSE or global certificate.'))
+    pd.DataFrame(stress_rows).to_csv(DEST/'audit_individual_stress.csv',index=False)
+
     choices=[]
     for path in sorted((DEST/'audit_fits').glob('*.npz')):
         with np.load(path) as z:
@@ -69,16 +90,17 @@ def summarize_audit():
     missing_representative_full=sorted(set(plan['representative_indices'])-set(full))
     missing_stress=sorted(set(plan['stress_indices_by_economy'].values())-set(full))
     failed=result[result.status=='failed'];not_estimable=result[result.status=='not_estimable']
-    text=(f'The new CV audit re-estimates full audit horizons for {len(full)} original production histories and only T=60 for {len(set(short)-set(full))} additional histories. '
+    text=(f'The CV audit re-estimates full declared horizons for {len(full)} original production histories; any remaining short-only histories number {len(set(short)-set(full))}. '
           f'There are {len(failed)} failed numerical metric comparisons and {len(not_estimable)} comparisons with insufficient independent histories for MCSE. '
           f'Rank-specific initial CV changes {int((~choices.same_choice).sum())} of {len(choices)} checked selections. '
           'Representative-history MCSE is computed separately from minimum-a stress diagnostics; stress cases are never pooled into an IID MCSE. '
-          'The twelve-history full-horizon protocol and separate stress coverage are incomplete; uncertainty at untested cells remains unresolved. '
+          ('The declared twelve-history and minimum-a stress coverage is complete. ' if not missing_representative_full and not missing_stress else 'Declared full-horizon representative/stress coverage remains incomplete. ') +
           'Rank 8192 has no forward-rank certificate. Population-ridge decomposition at rank 8192 has not run. '
           'Quadrature differences are systematic evaluation diagnostics; replication MCSE does not quantify uncertainty over quadrature seeds.')
-    json_write(DEST/'numerical_status.json',dict(status='unresolved',full_indices=full,short_indices=short,
+    json_write(DEST/'numerical_status.json',dict(status='completed_with_resolution_limits' if not missing_representative_full and not missing_stress else 'unresolved',audit_completed=not missing_representative_full and not missing_stress,full_indices=full,short_indices=short,
         representative_full_indices_not_run=missing_representative_full,stress_full_indices_not_run=missing_stress,
         failed_metric_comparisons=len(failed),not_estimable_comparisons=len(not_estimable),
+        individual_stress_passed=sum(r['status']=='passed' for r in stress_rows),individual_stress_failed=sum(r['status']=='failed' for r in stress_rows),
         changed_CV_choices=int((~choices.same_choice).sum()),checked_CV_choices=len(choices),
         high_rank_population_ridge='not_run',forward_rank_certificate=False,latex_scope=text))
 

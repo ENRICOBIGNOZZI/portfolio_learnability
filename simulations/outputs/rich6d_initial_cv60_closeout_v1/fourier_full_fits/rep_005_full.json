@@ -1,0 +1,57 @@
+{
+  "index": 5,
+  "sha256": "c06835fa1196086a6ab3ed4014e9ede193b09ee2b393b4db90efed10c386a33e",
+  "solver_sha256": "74c10332d2d812e07f76cc191c3814ccc5e42ed9324dc284ef4a63a5571ab0d0",
+  "protocol_hash": "20913790f8383e3039ecb53d3f56243e107308b2dc5100d0b366bb99e9907a24",
+  "base_fit_sha256": "12f24c410893447bd2b8991e301644d7c194336e4c6584e79e142e23f4831429",
+  "generation": {
+    "index": 5,
+    "training_seed": 3195722465,
+    "returns_hashes": {
+      "baseline": "f952ebaf3eb68f5935d814df5964fbc3edcb9463eba2ea2ea41fdff76b81bac3",
+      "N300": "fe2a3cb396b1965ef3de11a7c4765b713983bd4e0434379a41679066f62b9b44",
+      "N1200": "4d3a1cc003b66d71f4a408c6f7e1615c20de31fd6281e992b93d6553c746bbff",
+      "rho000": "4ca1bbe19115f6b7f4b04aecb1be7ef6dceac9bf830b413abb0a90e0d1084cb0",
+      "rho075": "759f5e90d79370373ee349b6ed283996bf804cefa58abe5aaf4da06c40f99396",
+      "baseline_T1440": "fc1b042885d26d49b2a4a7d30fb5f73069346e800d72378437dc57471ba81433",
+      "N300_T1440": "2bf82fe37ace30db6d8e88b3afc639ab6023769799f92464247e330558864f8b",
+      "N1200_T1440": "78f2030cd1836fcbb416027c0e6d268c193c33793c3a0c7c3636b3754ffeb61f",
+      "rho000_T1440": "5b45b0439c3cb2588ae8a9726f5a30aec7e546dcd31b7443026d2db07b363b70",
+      "rho075_T1440": "9a397b84f0a2c29fca1a9d1d709f4e704715d5735824035710b15488c2c797ea",
+      "baseline_T3240": "b50200b0c3aa86687afb2a2664e385bb34de66b8859d18418ad0660525b93b4d",
+      "N300_T3240": "fe2a3cb396b1965ef3de11a7c4765b713983bd4e0434379a41679066f62b9b44",
+      "N1200_T3240": "4d3a1cc003b66d71f4a408c6f7e1615c20de31fd6281e992b93d6553c746bbff",
+      "rho000_T3240": "4ca1bbe19115f6b7f4b04aecb1be7ef6dceac9bf830b413abb0a90e0d1084cb0",
+      "rho075_T3240": "759f5e90d79370373ee349b6ed283996bf804cefa58abe5aaf4da06c40f99396"
+    },
+    "elapsed_seconds": 247.01670416694833,
+    "maximum_resident_bytes": 2217082880,
+    "Fourier_arrays": "M128 raw managed returns; M512/M2048 loading-induced DIFFERENCES from M128.",
+    "source_sha256": {
+      "/Users/enrico/Desktop/PHD/portfolio/paper_codice/simulations/closeout/completion.py": "139ba086f1c9214c02a07d370e6c7a923e3ba37a909b272fd402c7cad08c3bbe",
+      "/Users/enrico/Desktop/PHD/portfolio/paper_codice/simulations/closeout/managed_native.c": "99edd5edb34ff0973c9ccbc3cf5ebd7588041e127d977e31d9b4e3f173396f3a",
+      "/Users/enrico/Desktop/PHD/portfolio/paper_codice/simulations/closeout/fourier_evaluation.py": "8c49b8de4cdf2bbd49423dfe1105ced5aec2491ab2d7855b4a1b6d3b9e3245b9"
+    },
+    "files": {
+      "rho075_M512.npy": "96105d8bf3eea349035190f3adf54239c990b41cd2cb7d600e455aa9e0e156d4",
+      "N300_M512.npy": "39cb013d1002442d82ca7c91b55a1aae63f58a592abdc8d25edaa53c8f237074",
+      "rho000_M2048.npy": "3966bcce37784f70b864c51c57bc0e366bc3818de21ecb3f4c401a342e88655f",
+      "N300_M128.npy": "cdc2ee51564180ba48177b63b2514ec3bff08f2caa4e5642e172df0fbf83aa90",
+      "rho075_M128.npy": "b6d94652dc8b62e2c1f3a851bb5e03cbae6ef2050d9fa2666eb1e444096777dd",
+      "N1200_M128.npy": "34539435dda1a6bb9f00b64885a2c66f8868fcf15f96bf3fa3f65a0ea1226bdb",
+      "N1200_M512.npy": "1af30d5ac54165025a866b82d2be3d2abc5ec010594b7f26aacebdae81c6743e",
+      "N1200_M2048.npy": "62ce701ede2bf3f694047881c91ae7248354fb845cff4ae9c2b736fa2f2130ca",
+      "baseline_M512.npy": "778b9038d86170b5e63408f6c779c805d15dd1ba57267235dc4eb5c9dadc27ac",
+      "baseline_M128.npy": "90bce55e9132fe4164b321edb31ad5851f7828296663dd691ecbe770c34972a9",
+      "rho075_M2048.npy": "e017f51d73e616863322208fa10e4384a505e03f750bcf58ba765e5a7af82048",
+      "rho000_M128.npy": "d7af9cd7066a1dfb0de215d4fb907ff353a3e13f1810c9e751fe1589507b9de5",
+      "rho000_M512.npy": "578b6fa53f5499adef2dbd0dcc8f6342cf278b2453dbad03902d80f87608458f",
+      "baseline_M2048.npy": "320fa3711b0a4055fe6908f97d02fc501653350e2c1f8c87e46299ede56854bc",
+      "N300_M2048.npy": "fdfc74b7ebf48f5ff714a23e8afeb46aeaf0b5bc73a569409ff914b670c66149"
+    },
+    "completed_utc": "2026-10-12T09:47:39.307227+00:00"
+  },
+  "elapsed_fit_seconds": 240.3433560419944,
+  "maximum_resident_bytes": 2217082880,
+  "completed_utc": "2026-10-12T09:51:39.745715+00:00"
+}

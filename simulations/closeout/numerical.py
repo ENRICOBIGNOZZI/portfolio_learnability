@@ -75,24 +75,28 @@ def basis_pair():
     return low,high,np.load(chol_path)
 
 
-def fit(index,short=False):
+def fit(index,short=False,prepared=None,fourier_deltas=None,generation_receipt=None):
     plan=freeze()
     if index not in set(plan['representative_indices'])|set(plan['stress_indices_by_economy'].values()):
         raise ValueError('Index outside fixed representative/stress protocol.')
     suffix='short' if short else 'full'
     path=DEST/'audit_fits'/f'rep_{index:03d}_{suffix}.npz'
     receipt=path.with_suffix('.json')
-    if path.exists():
+    base_exists=path.exists()
+    fourier_path=DEST/'fourier_full_fits'/f'rep_{index:03d}_full.npz'
+    if base_exists:
         saved=json.loads(receipt.read_text())
         if file_hash(path)!=saved['sha256'] or saved['protocol_hash']!=digest(plan) or file_hash(path.with_suffix('.csv'))!=saved['moments_sha256']: raise ValueError('Altered fit or manifest.')
-        return
+        if fourier_deltas is None or fourier_path.exists(): return
     started=time.perf_counter()
     low,high,L=basis_pair()
     maxT=60 if short else 4860; robustT=60 if short else 3240
-    raw,hashes=raw_managed_history(high,original_seed('train',index),index,maxT,robustT,
-        progress=lambda t:print(f'CV-audit path {index}: T={t}/{maxT}',flush=True))
-    generation_seconds=time.perf_counter()-started
-    results={};moment_rows=[]; spectral=[]
+    if prepared is None:
+        raw,hashes=raw_managed_history(high,original_seed('train',index),index,maxT,robustT,
+            progress=lambda t:print(f'CV-audit path {index}: T={t}/{maxT}',flush=True))
+        generation_seconds=time.perf_counter()-started
+    else: raw,hashes,generation_seconds=prepared
+    results={};moment_rows=[];fourier_results={};fourier_solver_rows=[]
     reference_path=CANONICAL/'replications'/f'rep_{index:03d}.npz'
     input_manifest=json.loads((DEST/'input_verification.json').read_text())
     if file_hash(reference_path)!=input_manifest['sources'][str(reference_path)]:
@@ -116,6 +120,19 @@ def fit(index,short=False):
         results[name+'_selected_a']=np.array([original_a,selections[1]['selected_a']])
         results[name+'_fold_losses']=np.stack([s['fold_losses'] for s in selections])
         results[name+'_validation_scores']=np.stack([s['mean_validation_loss'] for s in selections])
+        if fourier_deltas is not None:
+            def whiten_delta(M,rank,T):
+                raw_delta=fourier_deltas[M][name][:T]
+                return raw_delta[:,:4096]@low.inverse_root if rank==4096 else solve_triangular(L,raw_delta.T,lower=True,check_finite=False).T
+            selected_F={M:{} for M in (512,2048)}
+            for M in selected_F:
+                for rank,X in [(4096,Xlow),(8192,Xhigh)]:
+                    selected_F[M][rank]=calibrate_initial(X[:60]+whiten_delta(M,rank,60))
+                fourier_results[f'{name}_M{M}_selected_a']=np.array([selected_F[M][rank]['selected_a'] for rank in (4096,8192)])
+                fourier_results[f'{name}_M{M}_fold_losses']=np.stack([selected_F[M][rank]['fold_losses'] for rank in (4096,8192)])
+            fourier_results[name+'_T']=times
+            f_policies={M:[] for M in selected_F};f_penalties={M:[] for M in selected_F}
+
         m,S,floor=load_operator(name,4096,plan['primary_groups'],plan['primary_seed'])
         eig_name='baseline' if name.startswith('rho') else name
         eig_path=CACHE/f'eigensystem_{eig_name}.npz'
@@ -134,16 +151,32 @@ def fit(index,short=False):
         policies=[];complexities=[];residuals=[];penalties=[]
         for T in times:
             per_rank=[];per_complexity=[];per_residual=[];per_lambda=[]
+            if fourier_deltas is not None: f_per_rank={M:[] for M in selected_F};f_per_lambda={M:[] for M in selected_F}
             position=int(np.flatnonzero(reference[name+'_T']==T)[0])
             for rank,X,sel in [(4096,Xlow,selections[0]),(8192,Xhigh,selections[1])]:
                 # Three fitted policies: A=frozen production a, B=rank-specific initial CV, C=old-fixed.
                 lam=np.array([original_a,sel['selected_a'],protocol()['design']['a_old'][name]])*float(T)**EXPONENT
-                coef,C=ridge_path_local(X[:T],lam)
+                if fourier_deltas is None: coef,C=ridge_path_local(X[:T],lam)
+                else:
+                    from simulations.closeout.perturb_ridge import RidgeFactor
+                    factor=RidgeFactor(X[:T]);coef,C=factor.path(lam)
                 error,relative=normal_residual(X[:T],coef,lam)
                 if error>1e-8 or relative>1e-8: raise ValueError('Normal residual threshold failed.')
                 raw_coef=low.inverse_root@coef if rank==4096 else solve_triangular(L.T,coef,lower=False,check_finite=False)
                 per_rank.append(np.pad(raw_coef,((0,8192-rank),(0,0))))
                 per_complexity.append(C);per_residual.append([error,relative]);per_lambda.append(lam)
+                if fourier_deltas is not None:
+                    for M in selected_F:
+                        penalties_F=np.array([original_a,selected_F[M][rank]['selected_a'],protocol()['design']['a_old'][name]])*float(T)**EXPONENT
+                        delta=whiten_delta(M,rank,T)
+                        coefficient_F,solver=factor.perturb(delta,penalties_F)
+                        raw_F=low.inverse_root@coefficient_F if rank==4096 else solve_triangular(L.T,coefficient_F,lower=False,check_finite=False)
+                        f_per_rank[M].append(np.pad(raw_F,((0,8192-rank),(0,0))))
+                        f_per_lambda[M].append(penalties_F)
+                        fourier_solver_rows.append(dict(environment=name,index=index,T=int(T),rank=rank,M=M,**solver))
+                        del delta,coefficient_F,raw_F
+                    del factor
+
                 if rank==4096:
                     u,v=payoff_moments(coef,m,S)
                     np.testing.assert_allclose(1-2*u[[0,2]]+v[[0,2]],reference[name+'_loss'][position],rtol=1e-7,atol=1e-9)
@@ -157,22 +190,47 @@ def fit(index,short=False):
                     results[name+f'_low_coefficients_T{T}']=coef
                     results[name+f'_population_ridge_T{T}']=population
             policies.append(np.stack(per_rank));complexities.append(per_complexity);residuals.append(per_residual);penalties.append(per_lambda)
+            if fourier_deltas is not None:
+                for M in selected_F:
+                    f_policies[M].append(np.stack(f_per_rank[M]));f_penalties[M].append(np.array(f_per_lambda[M]))
+
         results[name+'_raw_coefficients']=np.stack(policies)
         results[name+'_empirical_complexity']=np.array(complexities)
         results[name+'_normal_residuals']=np.array(residuals)
         results[name+'_penalties']=np.array(penalties)
+        if fourier_deltas is not None:
+            for M in selected_F:
+                fourier_results[f'{name}_M{M}_raw_coefficients']=np.stack(f_policies[M])
+                fourier_results[f'{name}_M{M}_penalties']=np.stack(f_penalties[M])
+
         del Xlow,Xhigh,S,vectors
         print(f'Audit {index} {name}: low metrics reproduced; both rank fits saved',flush=True)
-    prefixes={k:results.pop(k) for k in list(results) if 'managed_prefix' in k}
-    if prefixes: npz_write(CACHE/'training_prefixes'/path.name,**prefixes,index=index,protocol_hash=digest(plan))
-    npz_write(path,**results,index=index,protocol_hash=digest(plan),training_seed=original_seed('train',index),
-        returns_hashes=json.dumps(hashes,sort_keys=True),sample_scope=suffix)
-    pd.DataFrame(moment_rows).to_csv(path.with_suffix('.csv'),index=False)
-    json_write(receipt,dict(sha256=file_hash(path),moments_sha256=file_hash(path.with_suffix('.csv')),
-        protocol_hash=digest(plan),index=index,sample_scope=suffix,source_checkpoint_sha256=file_hash(CANONICAL/'replications'/f'rep_{index:03d}.npz'),
-        generation_seconds=generation_seconds,elapsed_seconds=time.perf_counter()-started,completed_utc=utc_now(),
-        numpy_version=np.__version__,
-        cache_sha256={p.name:file_hash(p) for p in CACHE.glob('*') if p.is_file()}))
+    if base_exists:
+        with np.load(path) as old:
+            for name in ENVIRONMENTS:
+                np.testing.assert_allclose(results[name+'_raw_coefficients'],old[name+'_raw_coefficients'],rtol=1e-7,atol=1e-7)
+    else:
+        prefixes={k:results.pop(k) for k in list(results) if 'managed_prefix' in k}
+        if prefixes: npz_write(CACHE/'training_prefixes'/path.name,**prefixes,index=index,protocol_hash=digest(plan))
+        npz_write(path,**results,index=index,protocol_hash=digest(plan),training_seed=original_seed('train',index),
+            returns_hashes=json.dumps(hashes,sort_keys=True),sample_scope=suffix)
+        pd.DataFrame(moment_rows).to_csv(path.with_suffix('.csv'),index=False)
+        json_write(receipt,dict(sha256=file_hash(path),moments_sha256=file_hash(path.with_suffix('.csv')),
+            protocol_hash=digest(plan),index=index,sample_scope=suffix,source_checkpoint_sha256=file_hash(CANONICAL/'replications'/f'rep_{index:03d}.npz'),
+            generation_seconds=generation_seconds,elapsed_seconds=time.perf_counter()-started,completed_utc=utc_now(),
+            numpy_version=np.__version__,
+            cache_sha256={p.name:file_hash(p) for p in CACHE.glob('*') if p.is_file()}))
+    if fourier_deltas is not None:
+        from simulations.closeout.completion import specification
+        description=specification()
+        npz_write(fourier_path,**fourier_results,index=index,training_seed=original_seed('train',index),protocol_hash=digest(description),
+            original_a=np.array([reference[n+'_selected_a'] for n in ENVIRONMENTS]))
+        pd.DataFrame(fourier_solver_rows).to_csv(fourier_path.with_suffix('.csv'),index=False)
+        json_write(fourier_path.with_suffix('.json'),dict(index=index,sha256=file_hash(fourier_path),solver_sha256=file_hash(fourier_path.with_suffix('.csv')),
+            protocol_hash=digest(description),base_fit_sha256=file_hash(path),generation=generation_receipt,
+            elapsed_fit_seconds=time.perf_counter()-started,maximum_resident_bytes=__import__('resource').getrusage(__import__('resource').RUSAGE_SELF).ru_maxrss,
+            completed_utc=utc_now()))
+
 
 
 def compact_fits():

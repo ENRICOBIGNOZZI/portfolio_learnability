@@ -1,0 +1,57 @@
+{
+  "index": 4,
+  "sha256": "cabec1dbd1db21635ad6f8352b8f7216955def61b92fd4dda563c1767de04724",
+  "solver_sha256": "8136da88fd92a00b006c5eaa6b25f836b4d36139649cd2ad27ff6ad96889d1a5",
+  "protocol_hash": "20913790f8383e3039ecb53d3f56243e107308b2dc5100d0b366bb99e9907a24",
+  "base_fit_sha256": "b436e1a7ea1182ff3e0961d3497b9f28b8d9134d3004dd2a71a3ae316877d3d6",
+  "generation": {
+    "index": 4,
+    "training_seed": 2499247754,
+    "returns_hashes": {
+      "baseline": "beb4dfe8d9b7944398391183cbbe27ffb7d226bff1b2293a86385b646adb3905",
+      "N300": "0ac3082d4c1bd6027faebd6fede32b2f73d35f60496d7c0c8b1fbfef945a5cb3",
+      "N1200": "b0802a1c6b3b92743d4b4d1a8ef7c0ae99204b273c6cfd7232da01ebead0d411",
+      "rho000": "b6a0f868b2f4f62769438401e53deccf019cc2a071f6a1e09750c57867f5e57e",
+      "rho075": "6f5bb87f45a44fbd909d4c444f5ccb8c867fa265c3915e87dfba467ea6024a34",
+      "baseline_T1440": "cdaa8f26a13a94333ea53b965d47416a16ddd27d5d09fe533385ac7a3347a7a4",
+      "N300_T1440": "f732ba5885159a7fb456186a2d3a9c80beb55dd135687e8a8e210baf3b09e758",
+      "N1200_T1440": "06a71f32d4c85f973174af500b1a8ecc6cc9a33fadbe3edf3d3b39cfa8546164",
+      "rho000_T1440": "bcd93d67a98be8603b039df0a044441b0b486cb8de8662ef27d66d857c591d75",
+      "rho075_T1440": "33948b07a336686d15d010ef5b4c7cdb255ad1dd7427cfd92ea08dd431dc2022",
+      "baseline_T3240": "5961164585c88d4e81f46290f2e0b6be269882dc93cb8d9265654dcfbf0dfa64",
+      "N300_T3240": "0ac3082d4c1bd6027faebd6fede32b2f73d35f60496d7c0c8b1fbfef945a5cb3",
+      "N1200_T3240": "b0802a1c6b3b92743d4b4d1a8ef7c0ae99204b273c6cfd7232da01ebead0d411",
+      "rho000_T3240": "b6a0f868b2f4f62769438401e53deccf019cc2a071f6a1e09750c57867f5e57e",
+      "rho075_T3240": "6f5bb87f45a44fbd909d4c444f5ccb8c867fa265c3915e87dfba467ea6024a34"
+    },
+    "elapsed_seconds": 246.18524329102365,
+    "maximum_resident_bytes": 2217082880,
+    "Fourier_arrays": "M128 raw managed returns; M512/M2048 loading-induced DIFFERENCES from M128.",
+    "source_sha256": {
+      "/Users/enrico/Desktop/PHD/portfolio/paper_codice/simulations/closeout/completion.py": "139ba086f1c9214c02a07d370e6c7a923e3ba37a909b272fd402c7cad08c3bbe",
+      "/Users/enrico/Desktop/PHD/portfolio/paper_codice/simulations/closeout/managed_native.c": "99edd5edb34ff0973c9ccbc3cf5ebd7588041e127d977e31d9b4e3f173396f3a",
+      "/Users/enrico/Desktop/PHD/portfolio/paper_codice/simulations/closeout/fourier_evaluation.py": "8c49b8de4cdf2bbd49423dfe1105ced5aec2491ab2d7855b4a1b6d3b9e3245b9"
+    },
+    "files": {
+      "rho075_M512.npy": "55d37e71a83377f736391c4f7a8d794d1424067e4facebd4d4d81dd451d9d6fe",
+      "N300_M512.npy": "2e3a0bfc52bd17fab53049445ff61afd2d4d3aca8acf356fbe5f45d035ef16e8",
+      "rho000_M2048.npy": "38323e3fb14e1d9228880dbdac9f73132c56e4a37ca8b3b11be66265ecb4b9ce",
+      "N300_M128.npy": "c4b4d47d267e091c781cc288f75ddb0aa3468e70ccacd76ca83b41de440ea7a3",
+      "rho075_M128.npy": "33ae0ed64ae23da6640a4f432869357fa9ad6be7e00d9d9ec9431305f7e3ead8",
+      "N1200_M128.npy": "1a983fff97efd748043f50eab835335adb39398d0eb520e9837e460c63eb9471",
+      "N1200_M512.npy": "a59c651bebd08c015c665d0a5adcb2d0c4fe875961cbcca53b9d9c76a0f8436c",
+      "N1200_M2048.npy": "5c11e89c043a8e80220cb8ec06be68334e452f65df02e7ce7e0484eb66625078",
+      "baseline_M512.npy": "d0c4ba044c76c6ccfeea2fc0e613e29b5de4958b8216b7c9db73a2894d33c2dd",
+      "baseline_M128.npy": "1860d2c0e6c526c7b6f91db0489c21970a00a087079bebec3d20f62bf88040c3",
+      "rho075_M2048.npy": "1cd48cc1762b6a96d07bf90acac6ca7f21ee1a59f8d2dbf74e73e7ea7d1c9d49",
+      "rho000_M128.npy": "10443a7ad47f19a6bb4e5662cc4082b2409930ebd40c2d5f8c544a7d950ff807",
+      "rho000_M512.npy": "0334d4b23b236f33b3f566445eacbd3b119ff5b49581d8746062952f2b245b88",
+      "baseline_M2048.npy": "653a55a1c672652e566fe57630c8db078bb6e6ca584cf946f1ca1c4668a69880",
+      "N300_M2048.npy": "6eb9892669973894d5a9a62ba0f4373bf4531cdf4dbfc13b78fc1e2673f47a05"
+    },
+    "completed_utc": "2026-10-12T09:39:25.216774+00:00"
+  },
+  "elapsed_fit_seconds": 242.9684423749568,
+  "maximum_resident_bytes": 2217082880,
+  "completed_utc": "2026-10-12T09:43:28.224769+00:00"
+}

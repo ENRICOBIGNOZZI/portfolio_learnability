@@ -32,7 +32,7 @@
     "readout_penalty_ratios": [0.000001,0.0001,0.01,1,100],
     "training": "Adam hidden updates from uniform complete-month batches, exact full-history ridge head refreshed every 16 steps. Restart from seed for each inner stage/refit. Extractor penalty fixed at initial stage trace/65 times 0.01. Validate both stopping budgets and exact-head ratios; refit selected budget and ratio on pretest history with no reselection. Raw hidden features are not whitened or normalized.",
     "device": "cpu",
-    "dtype": "float32 extractor and monthly aggregation; float64 exact ridge head and accounting"
+    "dtype": "float32 extractor; float64 original returns, monthly aggregation, exact ridge head and accounting"
   },
   "freeze_interpretation": "Revision execution protocol, not a retrospective preregistration"
 }

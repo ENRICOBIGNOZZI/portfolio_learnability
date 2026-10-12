@@ -1,0 +1,37 @@
+{
+  "primary": "Complete thirteen-horizon grid, theoretical predetermined constant.",
+  "secondary": [
+    720,
+    4860
+  ],
+  "selection_reason": "An existing, economically interpretable long-history sensitivity window from the earlier audit; illustrates late recovery after the initial 5-to-60-year transient. Complete-grid and neighboring-window results remain next to it. Never selected by minimizing distance to -0.6.",
+  "minimum_horizons": 5,
+  "candidate_lower_boundaries": [
+    60,
+    90,
+    120,
+    180,
+    240,
+    360,
+    540,
+    720
+  ],
+  "candidate_upper_boundaries": [
+    720,
+    1080,
+    1440,
+    2160,
+    3240,
+    4860
+  ],
+  "late_window_includes_failed_projection_floor_conditions": true,
+  "all_archived_observations_retained": true,
+  "window_rows": 2528,
+  "sources": {
+    "/Users/enrico/Desktop/PHD/portfolio/paper_codice/simulations/outputs/rich6d_initial_cv60_closeout_v1/distributions/baseline.npz": "efb00249cb39a26a3b3c1bbce67b15724c69de4d12dacc0e4a384380bae05e78",
+    "/Users/enrico/Desktop/PHD/portfolio/paper_codice/simulations/outputs/rich6d_initial_cv60_closeout_v1/distributions/N300.npz": "cbcaba298bbee260397dfe3f65874f33dc4887ab9311e5968afec2e2231ab189",
+    "/Users/enrico/Desktop/PHD/portfolio/paper_codice/simulations/outputs/rich6d_initial_cv60_closeout_v1/distributions/N1200.npz": "1385397e5da1225c2a4cee487cb657564059162283e0c74f69502d3190eb1551",
+    "/Users/enrico/Desktop/PHD/portfolio/paper_codice/simulations/outputs/rich6d_initial_cv60_closeout_v1/distributions/rho000.npz": "ca0e56e98de56e0e6eb899708ebed26d2a5ccd3773796716ec46cc7f9df01ed3",
+    "/Users/enrico/Desktop/PHD/portfolio/paper_codice/simulations/outputs/rich6d_initial_cv60_closeout_v1/distributions/rho075.npz": "6e6c34dad0b45aa3597b214d0bb4238a35111b90c43ab83dcc0a24abc7e80c0d"
+  }
+}

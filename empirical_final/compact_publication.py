@@ -242,7 +242,8 @@ The extractor has two 64-unit tanh layers, a scalar linear readout, and an
 explicit penalized constant coordinate. Raw hidden features are retained;
 there is no whitening, per-year feature normalization, or arbitrary spectral
 matching to a Fourier kernel. Torch 2.9.1 runs a float32 extractor on one CPU
-thread, with float64 exact ridge algebra and financial accounting. The primary
+thread, with original float64 returns, monthly aggregation, exact ridge algebra
+and financial accounting. The primary
 seed is 0; seeds 0--4 are stability checks, never selected on OOS Sharpe.
 
 The hidden layers minimize the direct monthly maximum-Sharpe criterion using

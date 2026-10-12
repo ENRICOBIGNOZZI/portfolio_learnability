@@ -1,0 +1,29 @@
+{
+  "reviewed_utc": "2026-10-12T10:01:03.111521+00:00",
+  "sources": {
+    "paper/main.tex": "cf085826ea9bc638e48f292dab28924231df162e99ae007a4dff6a62500a78e9",
+    "paper/theory/population_problem.tex": "15892ec10028ed6278e7b48904cc828ada6a5f3978ab4560b47fd16b43723e1c",
+    "paper/theory/direct_port_learning.tex": "e03c416915ae6b35d8f6d1658ed9d9c84fd167af72db0a2d5dd6bb3cea98e260",
+    "paper/theory/economomic_spectrum_final.tex": "e83a201a6ce34b635a172f088e02a7b3dd0deddfc7b4b1e6ae5a5afd70761002",
+    "paper/theory/representation_learnability.tex": "ca13af09082ef3e883942579951c55f5acdb0456b0aaedd48a52ecfbde5303e6",
+    "paper/theory/proofs_learning.tex": "96f2cf375a7a951118a38d17e0fc857c35bc364bdcb9c888a21bbac3a31f0731",
+    "simulations/dgp/balanced.py": "8dadd7867d1d3162228943a6ec943e09de9985f3e00e2986e1ddf7173d5e8724",
+    "simulations/dgp/rough.py": "25f6d5f398c346fa522f8f0d63725c73aa38392c8a7155862706b190f97775e5",
+    "simulations/estimator/ridge.py": "8b4d4b4a3bf0579e12c20513f680bce4cb371d12eb94ea1ec31f7af91164cdf0",
+    "simulations/outputs/rich6d_initial_cv60_closeout_v1/sources/Portfolio_Source_Regularity_Theory.tex": "3312a1902bfb0954ec72b6d6bb08673c3615f908531526ca0f9b2108f2989d30"
+  },
+  "primary": "Original old_fixed, population-eigenvalue-calibrated predetermined a0, complete 300 histories.",
+  "practical": "Original initial_cv, first60 forward response-one selection and permanently frozen constant.",
+  "diagnostic": "Oracle Q and SR common-grid choices; complete identified scale/direction components.",
+  "numerical": "Existing first-stage rank/Fourier subset; full completion now executing all declared cells.",
+  "simulation_archives": [
+    "rich6d_rough_sr3_extended_v2",
+    "rich6d_sr3_numerical_followup",
+    "rich6d_initial_cv60_v1"
+  ],
+  "nonidentifications": [
+    "finite M128 maximal source order",
+    "highest-rank/infinite-kernel certificate",
+    "single-DGP minimax sharpness"
+  ]
+}

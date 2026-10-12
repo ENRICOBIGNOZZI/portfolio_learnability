@@ -41,7 +41,7 @@ class Panels:
         self.names = self.clean['characteristics']
         self.dates = pd.date_range('1963-01-31','2024-12-31',freq='ME')
         self.cache = OrderedDict()
-        self.root = PRIVATE/'neural_inputs'
+        self.root = PRIVATE/'neural_inputs_exact'
         self.root.mkdir(exist_ok=True)
         self.records = []
         for item in self.clean['files']:
@@ -52,11 +52,12 @@ class Panels:
             raw = source(ROOT/'data/clean'/item['name'])
             if digest(raw) != item['sha256']:
                 raise ValueError('Changed private input')
-            identity = dict(clean_sha256=item['sha256'], names=self.names, dtype='float32', order='eom,id')
+            identity = dict(clean_sha256=item['sha256'], names=self.names,
+                            x_dtype='float32',r_dtype='float64',layout='C',order='eom,id')
             if not meta_path.exists():
                 frame = pd.read_parquet(raw).sort_values(['eom','id'], kind='stable')
-                np.save(folder/'x.npy', frame[self.names].to_numpy(np.float32))
-                np.save(folder/'r.npy', frame.r.to_numpy(np.float32))
+                np.save(folder/'x.npy', np.ascontiguousarray(frame[self.names].to_numpy(np.float32)))
+                np.save(folder/'r.npy', frame.r.to_numpy(np.float64))
                 np.save(folder/'ids.npy', frame.id.to_numpy(np.int64))
                 groups = frame.groupby('eom', sort=True).size()
                 offsets = np.r_[0, groups.cumsum().to_numpy()]
@@ -87,7 +88,7 @@ class Panels:
 
 
 def monthly_features(model, x, r):
-    return torch.mean(model(x)*r[:,None], dim=0)
+    return torch.mean(model(x).to(r.dtype)*r[:,None], dim=0)
 
 
 def managed(model, panels, indices):
@@ -130,7 +131,7 @@ def extractor_training(panels, indices, seed, budgets):
     record(0)
     for step in range(1,max(budgets)+1):
         optimizer.zero_grad()
-        at = torch.tensor(a, dtype=torch.float32)
+        at = torch.tensor(a, dtype=torch.float64)
         # Backpropagate each complete month separately to bound graph memory.
         chosen = rng.choice(indices, CFG['complete_months_per_step'], replace=True)
         for i in chosen:
@@ -198,7 +199,7 @@ def run(seed):
     states={s[0]:pd.Series(dtype=float) for s in PROTOCOL['cost_scenarios']}
     previous=pd.Series(dtype=float)
     monthly=[]; annual=[]; spectra=[]; candidates=[]; logs=[]
-    root=PRIVATE/f'neural_seed_{seed}';root.mkdir(exist_ok=True)
+    root=PRIVATE/f'neural_exact_seed_{seed}';root.mkdir(exist_ok=True)
     identity=dict(protocol_sha256=digest(ROOT/'empirical_final/compact_protocol.json'),
                   code_sha256=digest(__file__), clean_sha256=digest(ROOT/'data/clean/manifest.json'))
     for year,train,val,test in annual_splits(panels.dates):
