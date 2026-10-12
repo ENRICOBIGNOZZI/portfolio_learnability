@@ -1,0 +1,48 @@
+{
+  "passed": true,
+  "direct": [
+    {
+      "passed": true,
+      "pages": 66,
+      "pdf_sha256": "adaf9ed05a32f537f01d532bdba557c24e91b70aff0efe0273f4d3c444bc3a91",
+      "undefined_commands_or_references": false,
+      "overfull_boxes": [
+        "Overfull \\hbox (7.09189pt too wide) in paragraph at lines 468--471"
+      ],
+      "entry": "main.tex",
+      "output": "Portfolio_Paper_Annual_Figure6.pdf"
+    },
+    {
+      "passed": true,
+      "pages": 8,
+      "pdf_sha256": "fa4a0d267637e9901abc41f1837f8a8c626322366e0d5c29fb1427104e29ffdf",
+      "undefined_commands_or_references": false,
+      "overfull_boxes": [],
+      "entry": "Empirics_only.tex",
+      "output": "Empirics_Section_VI_Annual_Figure6.pdf"
+    }
+  ],
+  "independent_extracted_zip": [
+    {
+      "passed": true,
+      "pages": 66,
+      "pdf_sha256": "0b74ea6995ee64744c0a53082b5f7cbb2c8ddafe6edfce11c68c0d8cc9854ab4",
+      "undefined_commands_or_references": false,
+      "overfull_boxes": [
+        "Overfull \\hbox (7.09189pt too wide) in paragraph at lines 468--471"
+      ],
+      "entry": "main.tex",
+      "text_matches_delivered_pdf": true
+    },
+    {
+      "passed": true,
+      "pages": 8,
+      "pdf_sha256": "8b6d604773934196b03aff3b7bdd2bbf8833da1a5d257c34015fe17a496e89f8",
+      "undefined_commands_or_references": false,
+      "overfull_boxes": [],
+      "entry": "Empirics_only.tex",
+      "text_matches_delivered_pdf": true
+    }
+  ],
+  "source_zip_sha256": "3d347fec5a1ce55f5de1dae3ed0f83df59a8f231d8a96f82de54e816b2ff19ec"
+}

@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "passed_tests": 25,
+  "command": "python3 -m pytest -q tests/test_figure6_annual.py tests/test_manuscript_cleanup.py tests/test_section_vi_finalize.py tests/test_resolution_reconstruction.py tests/test_publication_scope.py tests/test_publication_pairs.py",
+  "source_sha256": {
+    "tests/test_figure6_annual.py": "69df549ce7e2690d03a61057d13ffa6f86af35e97915e4438ecafd6c0ce7fd47",
+    "tests/test_manuscript_cleanup.py": "0ab735f6a48fb3099aa4f5fd808efe33b3827af7b3741aee41f8b1cb816bdd01",
+    "tests/test_section_vi_finalize.py": "d7e0af8445b12bb3517456fa38e5a157547c7d8a12d342569bf435110fbafb72",
+    "tests/test_resolution_reconstruction.py": "ac37c9a4255fbe7a6edcbab5f0dd912b589dca38f21e7b41cd483c6fa474a9c7",
+    "tests/test_publication_scope.py": "fa9c93580260ccf5b762d8d7cd026cf4a1f5534339ed5d1397098b6b7bb97879",
+    "tests/test_publication_pairs.py": "e0e5da1c3713c4c7237c0cb3aa09f760f729b92397d7489c19714848d583b2a6"
+  },
+  "receipt_sha256": "6ea1096c6a2b3a7f9df433d5d8a5e1b7965237b9b980185abcbbe508ed5ada71"
+}

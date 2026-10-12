@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "common_xlim": [
+    0,
+    713.4
+  ],
+  "common_ylim": [
+    -1.6295864357602232,
+    17.139289011900154
+  ],
+  "panels": 9,
+  "vertices_per_panel": 1522,
+  "all_evaluated_vertices_retained": true,
+  "path_simplification": false,
+  "smoothing": false,
+  "extrapolation": false,
+  "cv_strategy_plotted": true,
+  "markers_per_panel": [
+    "annual_past_validation",
+    "annual_retrospective_maximum",
+    "exact_zero_endpoint"
+  ]
+}

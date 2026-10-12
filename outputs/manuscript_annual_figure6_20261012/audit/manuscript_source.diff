@@ -1,0 +1,71 @@
+--- baseline/Portfolio/empirics.tex
++++ annual/Portfolio/empirics.tex
+@@ -164,38 +164,40 @@
+ numerically to the zero returns. No added evaluation changes the original
+ validation policy, and no OOS result selects a deployable penalty.
+ 
+-To assess whether the final-year Sharpe--complexity profile is representative
+-of the broader historical record, Figure~\ref{fig:complexity_nine} repeats
+-the analysis across nine nonoverlapping investment periods. Holding the
+-Gaussian representation fixed, we vary only the degree of regularization
+-and evaluate each candidate on subsequent portfolio returns. The profiles
+-show that realized performance need not improve monotonically as additional
+-portfolio directions are activated. In several periods, Sharpe reaches an
+-interior maximum and subsequently declines, although the magnitude of the
+-decline varies considerably across investment histories.
+-
+-The annual cross-validation portfolio remains an implementable, past-selected
+-policy, but it is not a single point on the block-level fixed-penalty path
+-because the selected penalty can change from one annual refit to the next.
++To assess the historical Sharpe--complexity trade-off using year-specific
++effective complexity rather than block-average complexity,
++Figure~\ref{fig:complexity_nine} reports one representative annual profile
++from each of the nine historical blocks. We select the central calendar
++year in each block: 1980, 1985, 1990, 1995, 2000, 2005, 2010, 2015, and
++2021. Holding the Gaussian representation and lengthscale fixed, each
++profile connects the full evaluated penalty path using that year's
++effective complexity and the annualized Sharpe of its 12 subsequent
++monthly OOS returns. The annual past-validation selection is therefore
++an actual point on its own annual curve. These one-year profiles are
++noisier than pooled-block profiles and their retrospective maxima are
++descriptive. The historical table and block summaries below retain the
++original pooled-block results.
+ 
+ \begin{figure}[!htbp]
+ \centering
+ \includegraphics[width=\textwidth]{figures/fig06_nine_complete_profiles.pdf}
+-\caption{Historical out-of-sample Sharpe--complexity profiles.
+-Each panel reports the realized out-of-sample Sharpe ratio associated with
+-the complete ridge regularization path of the fixed-lengthscale Gaussian
+-representation. The nine panels cover eight five-year decision blocks and
+-one 2018--2024 block. For each candidate penalty, monthly out-of-sample
+-returns are concatenated across the annual refits in the block, and a single
+-Sharpe ratio is computed. Effective complexity is averaged across those
+-refits, weighted by the number of evaluated months. Curves connect the actual
+-evaluated penalties, including the extended positive grid and the exact
+-minimum-norm zero-penalty endpoint, without smoothing or extrapolation.
+-Stars indicate retrospective test-sample maxima; open circles indicate the
+-unregularized endpoints. The dynamically selected annual cross-validation
+-strategy is not plotted as a point on these curves because its penalty may
+-differ across annual refits. All panels use common axes. The historical
+-maxima are descriptive and are not estimates of population-optimal complexity.}
++\caption{Representative annual out-of-sample Sharpe--complexity profiles.
++Each panel corresponds to one selected decision year, the central calendar
++year of its indicated historical block: 1980, 1985, 1990, 1995, 2000,
++2005, 2010, 2015, or 2021. Annual OOS Sharpe is annualized from the 12
++subsequent monthly returns (February of the decision year through January
++of the following year); effective complexity is measured for that same
++year's fitted policy, with no averaging across years or pooling of returns.
++The Gaussian representation and lengthscale are fixed. Curves connect all
++actual evaluated penalties, including the extended near-zero positive
++grid and the exact minimum-norm $\lambda=0$ endpoint, without smoothing
++or extrapolation. Black diamonds mark annual past-validation selections
++verified to lie on their annual curves; orange stars mark retrospective
++maxima over the full annual evaluated grid; open circles mark exact
++zero-penalty endpoints. All nine panels share common axes. These profiles
++are noisier than the previous pooled-block curves because each uses only
++one OOS year. Retrospective maxima do not select deployable policies or
++estimate population-optimal complexity.}
+ \label{fig:complexity_nine}
+ \end{figure}
+ 

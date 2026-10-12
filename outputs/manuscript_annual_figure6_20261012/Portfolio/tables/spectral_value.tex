@@ -1,0 +1,17 @@
+\begin{table}[!htbp]\centering\small\setlength{\tabcolsep}{5pt}
+\caption{Fixed Gaussian spectral groups and incremental investment value}\label{tab:spectral_value}
+\begin{tabular}{@{}lrrrrrr@{}}\toprule
+Ranks & Mass \% & Own gross & Account gross & Mean \% & $\mathrm{SR}_G$ & $\mathrm{SR}_N$ \\ \midrule
+0--10\% & 99.9215 & 2.267 & 2.267 & 24.323 & 3.012 & 2.354 \\
+10--50\% & 0.0685 & 1.263 & 2.333 & 2.759 & 3.284 & 2.598 \\
+50--90\% & 0.0091 & 0.327 & 2.325 & 0.047 & 3.286 & 2.594 \\
+90--100\% & 0.0010 & 0.078 & 2.326 & 0.026 & 3.300 & 2.605 \\
+\bottomrule\end{tabular}\par\vspace{5pt}
+\par\vspace{9pt}\begin{tabular}{@{}lrrrr@{}}\toprule
+Added ranks & $\Delta Q$ & Cross term & Own square & Paired 95\% interval \\ \midrule
+0--10\% & -0.402340 & -1.083912 & 0.681573 & [-0.524808, -0.257425] \\
+10--50\% & -0.036008 & -0.131766 & 0.095758 & [-0.093264, +0.027912] \\
+50--90\% & +0.000168 & -0.003978 & 0.004146 & [-0.008734, +0.009000] \\
+90--100\% & -0.003123 & -0.003547 & 0.000424 & [-0.006796, -0.000185] \\
+\bottomrule\end{tabular}\par\vspace{5pt}
+\begin{minipage}{\textwidth}\footnotesize The original selected penalty is retained at each annual refit. Mass averages annual historical second-moment shares. Own gross and mean describe individual components; account gross and Sharpes describe all groups through that boundary. The lower panel reports raw fitted-scale loss changes, relative to the null portfolio for the first group, with the same 5,000 paired 12-month-block draws. Weights are summed at stock level before trades and short fees. Gross Sharpe increments are +0.272, +0.002, +0.014; net increments are +0.244, -0.004, +0.011.\end{minipage}\end{table}

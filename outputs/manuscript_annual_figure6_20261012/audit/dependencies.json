@@ -1,0 +1,61 @@
+[
+  {
+    "passed": true,
+    "entry": "main.tex",
+    "included_tex": [
+      "appendice_2.tex",
+      "direct_port_learning.tex",
+      "economomic_spectrum_final.tex",
+      "empirics.tex",
+      "introduction.tex",
+      "main.tex",
+      "numbers.tex",
+      "population_problem.tex",
+      "proofs_learning.tex",
+      "representation_learnability.tex",
+      "tables/historical_endpoints.tex",
+      "tables/performance.tex",
+      "tables/spectral_value.tex"
+    ],
+    "figures": [
+      "figures/FRONTIER.png",
+      "figures/Complexity.png",
+      "figures/fig03_representation_wealth.pdf",
+      "figures/fig04_fixed_gaussian_spectrum.pdf",
+      "figures/fig05_fixed_gaussian_2024.pdf",
+      "figures/fig06_nine_complete_profiles.pdf",
+      "figures/fig07_fixed_gaussian_holdings.pdf"
+    ],
+    "bibliography": [
+      "references.bib"
+    ],
+    "labels": 59,
+    "references": 73,
+    "duplicate_labels": [],
+    "unresolved_references": []
+  },
+  {
+    "passed": true,
+    "entry": "Empirics_only.tex",
+    "included_tex": [
+      "Empirics_only.tex",
+      "empirics.tex",
+      "numbers.tex",
+      "tables/historical_endpoints.tex",
+      "tables/performance.tex",
+      "tables/spectral_value.tex"
+    ],
+    "figures": [
+      "figures/fig03_representation_wealth.pdf",
+      "figures/fig04_fixed_gaussian_spectrum.pdf",
+      "figures/fig05_fixed_gaussian_2024.pdf",
+      "figures/fig06_nine_complete_profiles.pdf",
+      "figures/fig07_fixed_gaussian_holdings.pdf"
+    ],
+    "bibliography": [],
+    "labels": 9,
+    "references": 9,
+    "duplicate_labels": [],
+    "unresolved_references": []
+  }
+]

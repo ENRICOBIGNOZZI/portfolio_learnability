@@ -1,0 +1,678 @@
+\section{Proofs and Auxiliary Results}
+\label{app:theory}
+\label{app:learning_proof}
+\setcounter{equation}{0}
+
+\subsection{Maximum-Sharpe direction}
+\label{app:maximum_sharpe}
+
+\begin{proof}[Proof of Proposition~\ref{prop:population_optimal_policy}]
+Write $W=aU$, with $\|U\|_{\Hh}=1$ and $a\in\mathbb R$.
+For a direction with positive payoff variance, put
+$m_U=\E[R^p_{t+1}(U)]$ and $s_U^2=\E[(R^p_{t+1}(U))^2]$.
+Then
+\[
+Q(aU)=1-2am_U+a^2s_U^2,
+\qquad
+a^\star(U)=\frac{m_U}{s_U^2},
+\qquad
+\min_a Q(aU)=\frac{1}{1+\SR^2(R^p_{t+1}(U))}.
+\]
+A zero payoff has loss one; a nonzero constant payoff can be scaled to
+have loss zero. The assumption $0<Q(W^\star)<1$ therefore excludes both
+from the optimum. Minimizing over directions maximizes squared Sharpe,
+and the optimally scaled payoff has mean $m_U^2/s_U^2>0$.
+Thus the selected orientation attains the positive maximum Sharpe ratio.
+\end{proof}
+
+\subsection{Pricing-kernel interpretation and Hansen--Jagannathan equality}
+\label{app:sdf_hj}
+
+\begin{proof}[Proof of Proposition~\ref{prop:sdf_hj}]
+Suppress the economy subscript. The first-order condition for
+$Q(W^\star+aV)$ at $a=0$ gives
+$\E[m^\star R^p(V)]=0$ for every $V\in\Hh$.
+Taking $V=W^\star$ and using Proposition~\ref{prop:population_optimal_policy},
+\[
+\E[m^\star]=\E[(m^\star)^2]=Q(W^\star)
+=:q^\star=\frac{1}{1+(\SR^\star)^2}.
+\]
+Hence $\widetilde m=m^\star/q^\star$ has mean one and
+variance $(1-q^\star)/q^\star=(\SR^\star)^2$.
+For any square-integrable $d$ with $\E[d]=1$ and
+$\E[dR^p(V)]=0$ for every $V\in\Hh$,
+$\E[dm^\star]=1$ and therefore
+\[
+\Var(d)=\Var(\widetilde m)+\E[(d-\widetilde m)^2]
+\geq(\SR^\star)^2.
+\]
+This proves the minimum-variance property without imposing positivity
+or the stronger conditional restriction in Condition~\ref{ec:pricing}.
+\end{proof}
+
+\subsection{Managed-portfolio Markowitz representation}
+\label{app:managed_markowitz}
+
+\begin{proof}[Proof of Proposition~\ref{prop:managed_markowitz}]
+The reproducing property gives
+$R^p_{t+1}(W)=\langle W,X_t\rangle_{\Hh_K}$ and
+$\|X_t\|_{\Hh_K}^2=N^{-2}R_{t+1}'K_tR_{t+1}$.
+Assumption~\ref{ass:kernel} gives strong measurability, while
+Condition~\ref{ec:returns} and Jensen's inequality give
+$\E\|X_t\|_{\Hh_K}^2\leq B_X^2\log2$.
+Thus the first and second moments are well defined, and
+\[
+Q(W)=1-2\langle W,\mu_{\Hh_K}\rangle_{\Hh_K}
++\langle W,\Sigma_{\Hh_K}W\rangle_{\Hh_K}.
+\]
+The population first-order condition is
+$\Sigma_{\Hh_K}W_K^\star=\mu_{\Hh_K}$; the minimum-norm solution is the
+stated pseudoinverse representation. The empirical penalized criterion
+gives
+\[
+(\widehat\Sigma_T+\lambda I)\widehat W_{\lambda,T}=\widehat\mu_T.
+\]
+Since $\widehat\Sigma_T\succeq0$ and $\lambda>0$, the inverse exists and
+yields \eqref{eq:markowitz_representation}.
+\end{proof}
+
+\subsection{A sufficient Gaussian return specification}
+\label{app:primitive_consequences}
+
+\begin{proposition}[A sufficient Gaussian return specification]
+\label{prop:gaussian_admissible}
+Suppose that, conditionally on $\mathscr F_t$, $R_{t+1}$ is Gaussian, possibly
+with a singular covariance, and
+\[
+\max_{1\leq i\leq N}\E[R_{i,t+1}^2\mid\mathscr F_t]\leq V_R<\infty
+\quad\text{a.s.},
+\]
+uniformly in the economy and time. Then Condition~\ref{ec:returns} holds
+with $B_X^2=8\kappa_KV_R$ and $K_4=3$.
+\end{proposition}
+\begin{proof}
+For every $V\in\Hh_K$, $R^p_{t+1}(V)$ is conditionally Gaussian. A scalar
+$G\sim N(m,v)$ satisfies
+\[
+\E G^4=m^4+6m^2v+3v^2\leq3(m^2+v)^2,
+\]
+which proves \eqref{eq:conditional_fourth_condition} with $K_4=3$.
+
+For the tail condition, Cauchy--Schwarz in $\Hh_K$ and
+$K(z,z)\leq\kappa_K$ give
+\[
+\|X_t\|_{\Hh_K}^2
+\leq
+\frac{\kappa_K}{N}\sum_{i=1}^N R_{i,t+1}^2.
+\]
+If $G\sim N(m,v)$ and $m^2+v\leq V_R$, then
+\[
+\E e^{G^2/(8V_R)}
+=\left(1-\frac{v}{4V_R}\right)^{-1/2}
+  \exp\!\left(\frac{m^2}{8V_R-2v}\right)
+\leq\frac{2}{\sqrt3}e^{1/6}<2.
+\]
+Therefore, by convexity,
+\[
+\begin{aligned}
+\E_\varepsilon\!\left[
+\left.
+\exp\!\left(\frac{\|X_t\|^2}{8\kappa_KV_R}\right)
+\right|\mathscr F_t
+\right]
+&\leq
+\E_\varepsilon\!\left[
+\left.
+\exp\!\left(\frac1N\sum_{i=1}^N
+              \frac{R_{i,t+1}^2}{8V_R}\right)
+\right|\mathscr F_t
+\right]\\
+&\leq
+\frac1N\sum_{i=1}^N
+\E_\varepsilon\!\left[
+\left.
+\exp\!\left(\frac{R_{i,t+1}^2}{8V_R}\right)
+\right|\mathscr F_t
+\right]
+<2.
+\end{aligned}
+\]
+Independence across stocks is unnecessary.
+\end{proof}
+
+This is a sufficient specification for Condition~\ref{ec:returns};
+Gaussianity is not imposed on the class $\mathcal E$.
+
+\subsection{Exact reduction to the kernel learning problem}
+\label{app:induced_krr}
+
+\begin{lemma}[Induced KRR problem]
+\label{lem:induced_krr}
+For every $\varepsilon\in\mathcal E$, the direct estimator is isometrically
+equivalent to scalar KRR with constant response one. The induced problem
+satisfies the conditions of \citet[Lemma~A.7]{bignozzigagliardinischneider2026}
+with source order $r=1$. Its covariance operator is unitarily equivalent to
+$\Sigma_{\Hh_K,\varepsilon}$, and its prediction error is exactly population
+portfolio regret.
+\end{lemma}
+
+\begin{proof}
+\textit{Step 1: identify the learning problem.}
+Let $\mathcal X=\mathscr Z^N\times\mathbb R^N$ and
+$\Xi_t=(Z_t,R_{t+1})$. For $x=((z_1,\ldots,z_N),r)$, put
+\[
+\Phi(x)=\frac1N\sum_i r_iK(\cdot,z_i),
+\qquad
+f_W(x)=\langle W,\Phi(x)\rangle_{\Hh_K}.
+\]
+The map $\mathcal T:W\mapsto f_W$ is injective: choosing
+$r=(N,0,\ldots,0)$ and varying $z_1$ shows that $f_W=0$ on
+$\mathcal X$ implies $W=0$. Equip
+$\mathcal G=\{f_W:W\in\Hh_K\}$ with
+$\langle f_W,f_V\rangle_{\mathcal G}=\langle W,V\rangle_{\Hh_K}$.
+Then $\mathcal T$ is an isometry onto the separable RKHS with kernel
+\[
+\widetilde K(x,x')
+=\langle\Phi(x),\Phi(x')\rangle_{\Hh_K}
+=\frac1{N^2}\sum_{i,j}r_i s_jK(z_i,z_j'),
+\qquad x'=((z_1',\ldots,z_N'),s).
+\]
+Since $\Phi(\Xi_t)=X_t$, $Y_t\equiv1$ gives exactly the empirical
+criterion in \eqref{eq:estimator}, with the same penalty.
+Let $J:\mathcal G\to L^2(\mathbb P_{\varepsilon,\Xi})$ be the canonical
+embedding. Square integrability, established above, gives
+\[
+\mathcal T^*J^*J\mathcal T=\Sigma_{\Hh_K,\varepsilon},
+\qquad
+f_{\mathcal G}=\mathcal TW^\star_\varepsilon.
+\]
+Expansion of the population criterion at its minimizer gives
+\[
+\|Jf_W-Jf_{\mathcal G}\|_{L^2}^2
+=\|\Sigma_{\Hh_K,\varepsilon}^{1/2}(W-W^\star_\varepsilon)\|_{\Hh_K}^2
+=Q_\varepsilon(W)-Q_\varepsilon(W^\star_\varepsilon).
+\]
+
+\medskip
+\noindent\textit{Step 2: verify the statistical assumptions.}
+The induced kernel is measurable, and
+$\widetilde K(\Xi_t,\Xi_t)=\|X_t\|_{\Hh_K}^2$.
+For the statistical history
+$\mathcal A_t=\sigma(\Xi_s,Y_s:s\leq t)$, economic timing gives
+$\mathcal A_{t-1}\subseteq\mathscr F_t$.
+Condition~\ref{ec:returns} and the tower property therefore imply
+\[
+\E_\varepsilon\!\left[
+\left.\exp\!\left(\frac{\widetilde K(\Xi_t,\Xi_t)}{B_X^2}\right)
+\right|\mathcal A_{t-1}\right]\leq2.
+\]
+This is the conditional kernel-moment assumption in
+\citet{bignozzigagliardinischneider2026}, with $B_K=B_X$ and $C_K=2$.
+Stationarity and mixing follow from Condition~\ref{ec:dependence};
+Condition~\ref{ec:target} gives source order $r=1$, and
+Condition~\ref{ec:spectrum} gives the same positive spectrum under the isometry.
+
+It remains to verify the score condition of the cited lemma.
+Write $m^\star=m^\star_{t+1,\varepsilon}$,
+$P_t^\star=R^p_{t+1}(W^\star_\varepsilon)$ and
+$q_t=\E_\varepsilon[(P_t^\star)^2\mid\mathscr F_t]$.
+Condition~\ref{ec:pricing} with $V=W^\star_\varepsilon$ gives
+$\E_\varepsilon[P_t^\star\mid\mathscr F_t]=q_t$; conditional Jensen
+then gives $q_t^2\leq q_t$, so $0\leq q_t\leq1$.
+Consequently, Condition~\ref{ec:returns} implies
+$\E_\varepsilon[(m^\star)^4\mid\mathscr F_t]\leq8(1+K_4)$.
+For every $V\in\Hh_K$, conditional Cauchy--Schwarz yields
+\[
+\begin{aligned}
+\E_\varepsilon[(m^\star)^2(R^p_{t+1}(V))^2\mid\mathscr F_t]
+&\leq
+\sqrt{\E_\varepsilon[(m^\star)^4\mid\mathscr F_t]
+\E_\varepsilon[(R^p_{t+1}(V))^4\mid\mathscr F_t]}\\
+&\leq
+C_{\rm sc}\E_\varepsilon[(R^p_{t+1}(V))^2\mid\mathscr F_t],
+\end{aligned}
+\]
+where $C_{\rm sc}=\sqrt{8K_4(1+K_4)}$.
+Integration and summation over an orthonormal basis show that
+$m^\star X_t$ is square integrable and that its second-moment operator
+is bounded above by $C_{\rm sc}\Sigma_{\Hh_K,\varepsilon}$.
+Condition~\ref{ec:pricing}, separability and the tower property give
+$\E_\varepsilon[m^\star X_t\mid\mathcal A_{t-1}]=0$.
+The statistical score is $\mathcal T(m^\star X_t)$, so the cited lemma
+applies with its variance constant equal to $C_{\rm sc}$.
+All constants are common to $\mathcal E$.
+\end{proof}
+
+\subsection{Proof of the portfolio-learning rate}
+\label{app:rate}
+
+\begin{proof}[Proof of Theorem~\ref{thm:rate}]
+Lemma~\ref{lem:induced_krr} verifies the conditions of
+\citet[Lemma~A.7]{bignozzigagliardinischneider2026} with $r=1$.
+Since $\gamma>b$ and $\lambda_T^\star\asymp T^{-b/(b+1)}$, its upper
+rate and the loss identity give \eqref{eq:portfolio-loss-rate} uniformly
+over $\mathcal E$.
+
+For the Sharpe statement, put
+$D_T=Q_\varepsilon(\widehat W_{\lambda_T^\star,T})-Q_\varepsilon(W^\star_\varepsilon)$,
+$q^\star=Q_\varepsilon(W^\star_\varepsilon)$ and
+$S^\star=\SR^\star_{\varepsilon,K}$.
+Proposition~\ref{prop:population_optimal_policy} and
+Condition~\ref{ec:sharpe} give
+\[
+\underline q:=\frac1{1+\overline S^2}
+\leq q^\star\leq\frac1{1+\underline S^2}=: \overline q<1.
+\]
+On $D_T<1-\overline q$, the estimated loss is below one, hence the
+estimated payoff has positive mean. Its variance cannot be zero:
+a positive constant payoff could be rescaled to one, contradicting
+$q^\star>0$. Write its positive Sharpe as $\widehat S_T$.
+Optimizing only its scale gives
+\[
+q^\star\leq\frac1{1+\widehat S_T^2}\leq q^\star+D_T,
+\qquad
+0\leq(S^\star)^2-\widehat S_T^2
+\leq\frac{D_T}{q^\star(q^\star+D_T)}.
+\]
+Therefore
+\[
+0\leq S^\star-\widehat S_T
+\leq\frac{D_T}{\underline S\,\underline q^2}.
+\]
+The event has probability tending to one uniformly, which proves
+\eqref{eq:sharpe-level-rate}. Any finite convention on a zero-variance
+event leaves this rate unchanged. At a fixed volatility $\sigma$, the
+capital-allocation-line gap is $\sigma(S^\star-\widehat S_T)$ and has
+the same rate, uniformly for $\sigma$ in a bounded interval.
+\end{proof}
+
+\subsection{Effective portfolio complexity}
+\label{app:complexity}
+
+\begin{proof}[Proof of Theorem~\ref{thm:effective_complexity}]
+Condition~\ref{ec:spectrum} and
+\citet[Proposition~A.6]{bignozzigagliardinischneider2026} give
+$\mathcal C_{K,\varepsilon}(\lambda)\asymp\lambda^{-1/b}$ uniformly.
+At the regularization scale in Theorem~\ref{thm:rate},
+\[
+\mathcal C^\star_{K,T}\asymp T^{1/(b+1)},
+\qquad
+\frac{\mathcal C^\star_{K,T}}{T}\asymp T^{-b/(b+1)}\longrightarrow0.
+\]
+Finiteness follows from
+$\mathcal C_{K,\varepsilon}(\lambda)\leq\Tr(\Sigma_{\Hh_K,\varepsilon})/\lambda$.
+This is the rate-optimal balance of the loss upper bound, not a shape
+theorem for the exact Sharpe curve of every economy.
+\end{proof}
+
+
+\subsection{A finance-specific minimax construction}
+\label{app:minimax}
+
+\begin{proof}[Proof of Theorem~\ref{thm:minimax_words}]
+The construction keeps the policy kernel fixed. It is a least-favourable family
+used only in this lower-bound proof, not a structural return equation imposed on
+the economies in the main text.
+
+\medskip
+\noindent\textit{Step 1: construct a least-favourable family with nondegenerate Sharpe.}
+Since $\mathcal E$ is nonempty, take the one-period state-return marginal
+$\nu_0$ of one economy in the class. Write a draw as
+$x=(\mathbf z,r)$ and put
+\[
+Q_X(x):=\|\Phi(x)\|_{\Hh_K}^2,
+\qquad
+q_X:=\int Q_X(x)\,d\nu_0(x).
+\]
+Condition~\ref{ec:returns} and Jensen's inequality imply
+$q_X\leq B_X^2\log2$. Moreover $q_X>0$, because otherwise the managed
+feature would vanish almost surely, contradicting the spectral lower bound
+in Condition~\ref{ec:spectrum}.
+
+Define a tilted law by
+\[
+d\widetilde\nu(x)
+=
+\frac{Q_X(x)}{q_X}\,d\nu_0(x),
+\]
+and, on the support of the tilted law, replace the return vector by
+\[
+r^\circ
+=
+\sqrt{\frac{q_X}{Q_X(x)}}\,r.
+\]
+Let $\nu$ denote the law of $(\mathbf z,r^\circ)$ and reuse $r$ for the
+normalized return vector below. Since the feature map is linear in returns,
+\[
+\int \Phi(\mathbf z,r^\circ)\otimes\Phi(\mathbf z,r^\circ)\,d\widetilde\nu
+=
+\int \Phi(x)\otimes\Phi(x)\,d\nu_0(x)
+=:\Sigma_0.
+\]
+Thus the normalization preserves the entire managed-payoff second-moment
+operator. Under $\nu$,
+\[
+\|\Phi(x)\|_{\Hh_K}^2=q_X\leq B_X^2\log2
+\quad\text{almost surely}.
+\]
+Put $\overline B_X:=B_X\sqrt{\log2}$.
+
+Write
+\[
+\Sigma_0e_j=\mu_je_j,
+\qquad
+c_\mu j^{-b}\leq\mu_j\leq C_\mu j^{-b}.
+\]
+Its eigenvectors are orthonormal in $\Hh_K$. Fix constants $a,h>0$,
+with $h\leq a$, sufficiently small that
+\[
+a^2+h^2\leq R^2,
+\qquad
+\overline B_X\sqrt{a^2+h^2}\leq\frac12,
+\qquad
+8C_\mu h^2\leq\frac18.
+\]
+For an integer $M\geq1$ and $\theta\in\{-1,1\}^M$, define
+\[
+W_\theta
+:=
+a e_1
++
+\frac{h}{\sqrt M}
+\sum_{j=M+1}^{2M}\theta_{j-M}e_j,
+\qquad
+g_\theta(x)
+:=
+\langle W_\theta,\Phi(x)\rangle_{\Hh_K}.
+\]
+Then
+\[
+\|W_\theta\|_{\Hh_K}=\sqrt{a^2+h^2}\leq R,
+\qquad
+|g_\theta(x)|\leq \overline B_X\sqrt{a^2+h^2}\leq\frac12.
+\]
+Put
+\[
+A_M
+:=
+\|g_\theta\|_{L^2(\nu)}^2
+=
+a^2\mu_1
++
+\frac{h^2}{M}
+\sum_{j=M+1}^{2M}\mu_j.
+\]
+This quantity does not depend on $\theta$. Moreover,
+\[
+a^2c_\mu\leq A_M\leq\frac14.
+\]
+
+\medskip
+\noindent\textit{Step 2: construct admissible financial observations.}
+Draw $x_t=(Z_t,r_t)$ independently with law $\nu$. Conditional on $x_t$,
+draw $s_t\in\{-1,1\}$ according to
+\[
+\mathbb P_\theta(s_t=1\mid x_t)
+=
+\frac{1+g_\theta(x_t)}{2}.
+\]
+The observed financial row is
+$(Z_t,R_{t+1})=(Z_t,s_tr_t)$. For the least-favourable construction take
+\[
+\mathscr F_t
+=
+\sigma(x_u,s_u:u<t)\vee\sigma(x_t).
+\]
+This information structure is allowed by Definition~\ref{def:economy}.
+Rows are i.i.d. The managed feature is $s_t\Phi(x_t)$ and, since
+$s_t^2=1$,
+\[
+\|s_t\Phi(x_t)\|_{\Hh_K}^2=q_X.
+\]
+Because $x_t$ is contained in $\mathscr F_t$,
+\[
+\E_\theta\!\left[
+\left.
+\exp\!\left(
+\frac{\|s_t\Phi(x_t)\|_{\Hh_K}^2}{B_X^2}
+\right)
+\right|\mathscr F_t
+\right]
+=
+\exp(q_X/B_X^2)
+\leq2.
+\]
+Moreover, for every $V\in\Hh_K$,
+\[
+(R^p_{t+1}(V))^2=\langle V,\Phi(x_t)\rangle_{\Hh_K}^2,
+\qquad
+(R^p_{t+1}(V))^4=\langle V,\Phi(x_t)\rangle_{\Hh_K}^4
+\]
+conditionally on $\mathscr F_t$. Hence
+Condition~\ref{ec:returns} holds with fourth-moment coefficient one,
+and therefore with the class constant $K_4\geq1$.
+The second-moment operator of the managed feature is exactly $\Sigma_0$.
+
+For every $V\in\Hh_K$, conditional on the current $x_t$ and the past,
+\[
+\begin{aligned}
+&\E_\theta\!\left[
+(1-R^p_{t+1}(W_\theta))R^p_{t+1}(V)
+\mid x_t,\mathscr F_{t-1}
+\right]\\
+&\qquad=
+\langle V,\Phi(x_t)\rangle_{\Hh_K}
+\E_\theta[s_t-g_\theta(x_t)\mid x_t,\mathscr F_{t-1}]
+=0.
+\end{aligned}
+\]
+Thus Condition~\ref{ec:pricing} holds. For any portfolio policy $W$ with
+finite loss, write $g_W(x)=N^{-1}\sum_iW(z_i)r_i$. Then
+\begin{equation}
+Q_\theta(W)-Q_\theta(W_\theta)
+=
+\int(g_W(x)-g_\theta(x))^2\,d\nu(x).
+\label{eq:lower_risk_identity}
+\end{equation}
+Indeed, conditioning on $x$ gives the quadratic
+$1-2g_\theta(x)g_W(x)+g_W(x)^2$. Consequently, $W_\theta$ is the
+population-optimal minimum-norm policy.
+
+Its payoff satisfies
+\[
+\E_\theta[R^p_{t+1}(W_\theta)]=A_M,
+\qquad
+\E_\theta[(R^p_{t+1}(W_\theta))^2]=A_M.
+\]
+Hence
+\[
+(\SR_\theta^\star)^2
+=
+\frac{A_M}{1-A_M}.
+\]
+Because $A_M$ is uniformly bounded away from zero and from one, the optimal
+Sharpe ratio is uniformly bounded away from zero and infinity. Thus the
+least-favourable family satisfies Condition~\ref{ec:sharpe}, with constants
+common to the family, as well as Conditions~\ref{ec:dependence}--\ref{ec:spectrum}.
+
+\medskip
+\noindent\textit{Step 3: neighboring economies are difficult to distinguish.}
+Consider the more informative experiment that also reveals $x_t$ and $s_t$.
+A lower bound in this augmented experiment also applies to the financial
+observations. Neighboring parameters differ in one sign, say coordinate
+$j-M$. Their conditional Bernoulli probabilities lie in $[1/4,3/4]$, and
+\[
+\operatorname{KL}(\operatorname{Ber}(p),\operatorname{Ber}(q))
+\leq
+\frac{(p-q)^2}{q(1-q)}.
+\]
+Hence, for the laws $\mathbb P^{\mathrm{aug},T}_\theta$ of $T$ augmented
+observations and a one-bit neighbor $\theta'$, we have
+\[
+\begin{aligned}
+\operatorname{KL}(\mathbb P^{\mathrm{aug},T}_\theta,
+                  \mathbb P^{\mathrm{aug},T}_{\theta'})
+&\leq
+2T\int(g_\theta-g_{\theta'})^2\,d\nu\\
+&=
+\frac{8Th^2\mu_j}{M}\\
+&\leq
+8C_\mu h^2\frac{T}{M^{b+1}}.
+\end{aligned}
+\]
+Choose
+\[
+M=\left\lceil T^{1/(b+1)}\right\rceil.
+\]
+The right-hand side is at most $1/8$, so Pinsker's inequality gives total
+variation at most $1/4$ for every neighboring pair.
+
+\medskip
+\noindent\textit{Step 4: testing difficulty implies scale-free directional error.}
+Define
+\[
+\psi_j(x)
+:=
+\frac{\langle e_j,\Phi(x)\rangle_{\Hh_K}}{\sqrt{\mu_j}},
+\]
+so that $(\psi_j)_{j\geq1}$ is orthonormal in $L^2(\nu)$. Let $\widehat g$
+be any estimated square-integrable payoff rule and write
+\[
+\widehat a_j
+:=
+\langle\widehat g,\psi_j\rangle_{L^2(\nu)}.
+\]
+Decode the signs by
+\[
+\widehat\theta_{j-M}
+:=
+\operatorname{sign}(\widehat a_1\widehat a_j),
+\qquad M<j\leq2M,
+\]
+with any fixed convention at zero. This decoder is invariant to any nonzero
+global rescaling of $\widehat g$.
+
+Define the scale-free directional error
+\[
+D_\theta(\widehat g)
+:=
+\inf_{c\in\mathbb R}
+\|g_\theta-c\widehat g\|_{L^2(\nu)}^2.
+\]
+For any $c\in\mathbb R$, if $c\widehat a_1\leq0$, the squared error in the
+first coordinate is at least $a^2\mu_1$. If $c\widehat a_1>0$, every
+incorrectly decoded sign contributes at least $h^2\mu_j/M$ to the squared
+error. Since $h\leq a$ and $H(\widehat\theta,\theta)\leq M$, both cases
+imply
+\[
+D_\theta(\widehat g)
+\geq
+\frac{h^2c_\mu}{2^bM^{b+1}}
+H(\widehat\theta,\theta).
+\]
+For every neighboring pair, the sum of the two sign-error probabilities is at
+least $1-\mathrm{TV}\geq3/4$. Averaging over the hypercube and summing over
+its $M$ coordinates therefore gives
+\[
+2^{-M}\sum_\theta
+\E_\theta[H(\widehat\theta,\theta)]
+\geq
+\frac{3M}{8}.
+\]
+Consequently,
+\[
+2^{-M}\sum_\theta
+\E_\theta[D_\theta(\widehat g)]
+\geq
+\frac{3h^2c_\mu}{2^{b+3}}M^{-b}.
+\]
+
+\medskip
+\noindent\textit{Step 5: directional error is a Sharpe-ratio gap.}
+Write
+\[
+m:=\langle g_\theta,\widehat g\rangle_{L^2(\nu)},
+\qquad
+v:=\|\widehat g\|_{L^2(\nu)}^2.
+\]
+If $v>0$, the payoff generated by $\widehat g$ satisfies
+\[
+\E_\theta[R(\widehat g)]=m,
+\qquad
+\E_\theta[R(\widehat g)^2]=v,
+\]
+and hence
+\[
+\SR_\theta(\widehat g)^2
+=
+\frac{m^2}{v-m^2}.
+\]
+Moreover,
+\[
+D_\theta(\widehat g)
+=
+A_M-\frac{m^2}{v}
+=
+\frac{1}{1+\SR_\theta(\widehat g)^2}
+-
+\frac{1}{1+(\SR_\theta^\star)^2}.
+\]
+The same identity holds for $v=0$ under the convention
+$\SR_\theta(\widehat g)=0$. Cauchy--Schwarz implies
+$|\SR_\theta(\widehat g)|\leq\SR_\theta^\star$.
+
+If $\SR_\theta(\widehat g)\geq0$, then
+\[
+\SR_\theta^\star-\SR_\theta(\widehat g)
+\geq
+\frac{D_\theta(\widehat g)}{2\overline S}.
+\]
+If $\SR_\theta(\widehat g)<0$, then the gap is at least $\underline S$;
+since $D_\theta(\widehat g)\leq A_M\leq1/4$, it is again bounded below by
+a fixed positive multiple of $D_\theta(\widehat g)$. Therefore there is a
+constant $c_S>0$, independent of $M,T,\theta$, such that
+\[
+\SR_\theta^\star-\SR_\theta(\widehat g)
+\geq
+c_S D_\theta(\widehat g).
+\]
+Combining this inequality with Step 4 yields
+\[
+2^{-M}\sum_\theta
+\E_\theta\!\left[
+\SR_\theta^\star-\SR_\theta(\widehat g)
+\right]
+\geq
+c_1M^{-b}
+\]
+for a constant $c_1>0$. Since
+$M=\lceil T^{1/(b+1)}\rceil\leq2T^{1/(b+1)}$ for all sufficiently large
+$T$, we obtain
+\[
+\sup_\theta
+\E_\theta\!\left[
+\SR_\theta^\star-\SR_\theta(\widehat g)
+\right]
+\geq
+c_2T^{-b/(b+1)}
+\]
+for some $c_2>0$.
+
+The argument allowed $\widehat g$ to range over all square-integrable
+estimators in the more informative augmented experiment, a larger class than
+managed portfolio rules based on the observed financial rows. Taking the
+infimum over all measurable portfolio-learning procedures proves
+\[
+\inf_{\widetilde W_T}
+\sup_{\varepsilon\in\mathcal E}
+\mathbb E_\varepsilon
+\left[
+\SR^\star_{\varepsilon,K}
+-
+\SR_\varepsilon\!\left(R^p_{t+1}(\widetilde W_T)\right)
+\right]
+\geq
+c\,T^{-b/(b+1)}
+\]
+for a constant $c>0$ and all sufficiently large $T$.
+\end{proof}

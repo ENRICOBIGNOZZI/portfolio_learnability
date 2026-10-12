@@ -1,0 +1,2376 @@
+The Law of Portfolio Learnability
+EB PG PS
+September 2026
+1
+I. Introduction
+In the Markowitz (1952) framework, first the portfolio manager estimate the two moments of returns,
+secondly the PM estimate the portoflio wieghts optimising a criterion.
+A different view emerged with the direct portfolio approach of Brandt (1999) and Brandt et al.
+(2009). Investors ultimately care about portfolio weights, not forecasts of moments. Rather than
+estimating conditional expected returns and covariance matrices as intermediate objects, one can
+parameterize and estimate the portfolio policy directly. This changed the object of estimation. This
+was a very futuristic approach, anticipating of years what computer science and machine learning
+is doing now.
+This estimation problem becomes particularly acute in high-dimensional finance. Kozak et al.
+(2020) show that the estimation becomes unstable in low-eigenvalue directions. Where the eigenval-
+ues tend to zero, the payoff of the eigenportfolio tend to infinite, creating an arbitrage opportunity.
+This motivate the economically shrinkage.
+More recently, the machine-learning literature has brought model complexity to the foreground.
+Empirical asset pricing means model with data the financial market. There is always a model behind
+every modelization. Thus finance can’t ignore what is happening in the machine leanring world.
+Indeed Kelly et al. (2024) and Kelly and Malamud (2025) show that increasing model complexity
+can improve out-of-sample return prediction even deep into the overparameterized regime. Their
+conclusion is deliberately strong:
+”The analyst should always use the largest approximating model that she can com-
+pute.”
+This was strongly new for the finance world in which the only virute was the parsimony.
+This ”virtue of complexity” shows that overparameterization can improve approximation and
+generate useful implicit regularization. Nagel (2025), in turn, shows why the economic meaning
+of highly overparameterized estimators must be interpreted carefully: large random-feature models
+2
+can converge to kernel rules whose behavior is driven by particular forms of historical weighting
+rather than by an arbitrarily rich set of distinct economic decisions, introducing nominally and the
+effective complexity.
+The overparatized model not only now are in returns prediction, but appears in directly port-
+folio choice. Simon et al. (2026) replace the linear parametric portfolio policy with deep neural
+networks and show that flexible nonlinear policies can generate economically valuable allocations,
+while investor preferences themselves act as a form of economic regularization.
+Taken together, this literature establishes that rich representations can be useful and that regu-
+larization is if not indispensable, at least usefull.
+Y et several fundamental questions remain open.
+Building on the direct portfolio approach of Brandt: How reliably, and how quickly, can a flex-
+ible and ”complex” portfolio rule recover the population-optimal investment decision?
+Building on the spectral shrinkage argument of Kozak, Nagel, and Santosh: Which investment di-
+rections should be shrunk because they are only weakly identified by returns?
+Building on the virtue-of-complexity literature: When is a richer representation a virtue for port-
+folio choice, and what notion of complexity is economically relevant for the investment decision
+itself?
+Answering these questions requires starting from a more fundamental one:
+How much of the optimal portfolio can be learned from a finite market history?
+Answering this question requires establishing whether and how fast the portfolio decision can
+be learned directly, identifying which investment directions should be shrunk because they are only
+weakly revealed by realized returns, and determining what notion of complexity is economically
+relevant for portfolio choice—and how much of that complexity a finite market history can support.
+3
+First we used a particular estimator (Kernel ridge regression) to quantify our results, later we
+generalize these to every estimator. Our first contribution is to quantify how rapidly direct portfolio
+estimation recovers the population tangency direction as market history accumulates. We prove that
+the directly weights estimation for maximizing the Sharpe ratio is consistent and we characterize
+the rate at which its estimated direction converges to the population Sharpe. We find that portfolio
+learnability is governed by the spectrum of managed portfolios. Directions associated with large
+eigenvalues correspond to investment opportunities that generate substantial payoff variation and
+are therefore well identified from the available return history. By contrast, low-eigenvalue direc-
+tions are only weakly identified, so taking large positions along them makes the portfolio especially
+sensitive to estimation error. More available portfolio directions therefore do not necessarily trans-
+late into more usable investment opportunities: what matters is how much of the opportunity set
+is concentrated in directions that can be estimated with sufficient precision. The result therefore
+provides both a formal justification for direct portfolio estimation and a quantitative answer to how
+much market history is required to learn the optimal investment decision.
+Our first contribution implies even a quantification of the optimal shrinkage: It should decline as
+market history accumulates and as a function of the managed portfolio spectrum. Additional ob-
+servations progressively reveal portfolio directions that were previously too weakly identified to
+support reliable investment positions, allowing the investor to exploit a broader set of economically
+meaningful opportunities.
+Our second contribution is what we call the law of effective portfolio complexity. We distin-
+guish two notions of complexity that play fundamentally different economic roles. The first is
+nominal representation complexity: the size of the approximating representation, as measured, for
+example, by the number of features, basis functions, or parameters. Kelly, Malamud, and Zhou
+show that, under their proportional high-dimensional asymptotic framework, increasing nominal
+representation size can improve limiting out-of-sample return-prediction performance. Richer rep-
+resentations can therefore be valuable because they expand approximation capacity and the set of
+investment rules that can potentially be expressed.
+4
+The second notion is effective portfolio complexity, which we define directly in the space of
+the investment decision. It measures the effective breadth of the portfolio: the effective number of
+economically distinct managed-portfolio directions that remain active after shrinkage. This quantity
+need not move one-for-one with representation size. A representation may be arbitrarily rich while
+the portfolio learned from it remains effectively low dimensional. We show that the optimal level of
+effective portfolio complexity is finite at every finite sample size and increases as additional market
+history becomes available. Too little effective complexity leaves valuable investment opportunities
+unused; moving beyond the data-supported scale increasingly activates directions that the available
+history only weakly identifies. A rich representation may be a virtue; how much of that richness
+should become an active investment decision is a separate learnability question.
+Our third and last contribution is what we call the fundamental limit of portfolio learning. We
+show that the rate at which the optimal portfolio can be recovered is not merely a property of
+our estimator. No portfolio-learning procedure —including neural networks, random forests, or
+alternative kernel methods— can uniformly improve this rate over the same class of economies
+without imposing additional structure.
+The learning limit therefore does not belong to a particular estimator. It belongs to the invest-
+ment problem itself.
+Taken together, our results characterize how rapidly the population tangency portfolio can be
+recovered from finite market history, how richer representations expand the set of potential invest-
+ment opportunities, and how the effective portfolio complexity that can be reliably exploited grows
+as additional data become available. We also establish the fastest rate at which any procedure can
+achieve this recovery. Our results therefore quantify both the opportunities created by increasingly
+flexible representations and the fundamental limits that finite market history imposes on machine
+learning for portfolio choice in finance.
+5
+II. Population Problem Portfolio Choice
+At date 𝑡, the portfolio manager faces 𝑁 risky stocks. The corresponding next-period excess-return
+vector is 𝑅𝑡+1 =  𝑅1,𝑡+1, . . . , 𝑅𝑁,𝑡 +1
+′ ∈ R𝑁 . For each stock 𝑖 = 1, . . . , 𝑁, the portfolio manager
+observes a 𝐷-dimensional vector of firm characteristics 𝑍𝑖,𝑡 ∈ 𝒵 ⊆ R𝐷 . The portfolio manager has
+to choose the portfolio weights policy, between an infinte number of policies in an Hilbert space
+H , at every time, this maps characteristics into weights: 𝑊 ∈ H : 𝒵 → R. The resulting portfolio
+return at each time is
+𝑅 𝑝
+𝑡+1(𝑊) = 1
+𝑁
+𝑁Õ
+𝑖=1
+𝑊 (𝑍𝑖,𝑡 )𝑅𝑖,𝑡 +1. (1)
+The factor 1/𝑁 is a cross-sectional normalization that prevents portfolio scale from growing me-
+chanically with the number of available stocks.
+Definition 1 (Economy). An economy 𝜀 is a probability law for the stochastic process
+{( 𝑁, 𝑍 𝑡, 𝑅𝑡+1)} 𝑡∈Z ,
+defined on a filtered probability space (Ω, ℱ, { ℱ𝑡 } 𝑡∈Z, P𝜀). We require 𝑍𝑡 to be ℱ𝑡-measurable and
+𝑅𝑡+1 to be ℱ𝑡+1-measurable.
+For a fixed economy, expectations are taken underP𝜀; we suppress the economy subscript when
+it is unambiguous. The population criterion is
+𝑄(𝑊) = E
+
+1 − 𝑅 𝑝
+𝑡+1(𝑊)
+ 2
+, 𝑊 ★ ∈ arg min
+𝑊 ∈H
+𝑄(𝑊). (2)
+The following proposition relates this criterion to the maximum squared Sharpe ratio. All popula-
+tion statements refer to the same one-period state-return distribution.
+6
+Proposition 1 (Maximum-Sharpe direction; cf. Britten-Jones (1999)). Suppose every policy in H
+generates a square-integrable payoff, the population minimum is attained, and 0 < 𝑄 (𝑊★) < 1.
+Sharpe ratios below are evaluated only for policies with positive payoff variance. Every nonzero
+policy 𝑊 ∈ H can be written as
+𝑊 = 𝑐𝑈, 𝑐 ∈ R, ∥𝑈 ∥H = 1.
+The normalized policy 𝑈 determines the portfolio direction, namely the relative state-dependent
+allocation rule, whereas 𝑐 determines the overall scale of exposure along that direction. Then, with
+the minimization over 𝑈 restricted to positive-variance payoffs,
+min
+𝑊 ∈H
+𝑄(𝑊) = min
+𝑈∈H
+∥𝑈 ∥ H=1
+1
+1 + SR2
+
+𝑅 𝑝
+𝑡+1(𝑈)
+ ,
+where
+SR
+
+𝑅 𝑝
+𝑡+1(𝑈)
+
+:=
+E
+
+𝑅 𝑝
+𝑡+1(𝑈)
+
+r
+Var
+
+𝑅 𝑝
+𝑡+1(𝑈)
+ .
+Hence, minimizing 𝑄 selects a maximum-Sharpe direction and fixes its scale, with positive expected
+excess return.
+We embrace the philosophy of Brandt (1999): rather than estimating expected returns and the
+covariance matrix as intermediate objects and then solving for the optimal portfolio, we estimate
+portfolio weights directly. Estimating the mean return vector requires estimating 𝑁 expected re-
+turns, while estimating the covariance matrix requires estimating 𝑁 (𝑁 + 1)/2 distinct covariance
+parameters. By contrast, directly estimating the portfolio means estimating the 𝑁 portfolio weights
+that are ultimately the object of interest.
+The criterion in ( 2) deliberately describes a frictionless portfolio problem. More generally, the loss
+should represent the economic objective actually faced by the portfolio manager. Transaction costs,
+7
+market impact, short-selling costs, leverage constraints, or other implementation frictions should
+therefore be incorporated directly into the portfolio objective whenever they are economically rele-
+vant. Estimating the frictionless-optimal policy and subtracting costs afterwards generally does not
+deliver the same decision.
+Proposition 2 (Pricing kernel and Hansen–Jagannathan frontier) . Let 𝑊★
+𝜀 denote the population-
+optimal policy in Proposition 1, and define
+𝑚★
+𝑡+1,𝜀 := 1 − 𝑅 𝑝
+𝑡+1(𝑊★
+𝜀 ).
+Then 𝑚★
+𝑡+1,𝜀 prices every managed excess-return portfolio:
+E𝜀
+h
+𝑚★
+𝑡+1,𝜀 𝑅 𝑝
+𝑡+1(𝑉)
+i
+= 0, ∀ 𝑉 ∈ H .
+Moreover, letting SR★
+𝜀 := SR(𝑅 𝑝
+𝑡+1(𝑊★
+𝜀 )),
+E𝜀 [𝑚★
+𝑡+1,𝜀] = E𝜀 [( 𝑚★
+𝑡+1,𝜀)2] = 1
+1 + ( SR★
+𝜀 )2 .
+Hence the normalized pricing kernel
+e𝑚𝑡+1,𝜀 :=
+𝑚★
+𝑡+1,𝜀
+E𝜀 [𝑚★
+𝑡+1,𝜀]
+satisfies E𝜀 [e𝑚𝑡+1,𝜀] = 1, and Var𝜀 (e𝑚𝑡+1,𝜀) = (SR★
+𝜀 )2. Equivalently,
+𝜎𝜀 (e𝑚𝑡+1,𝜀)
+E𝜀 [e𝑚𝑡+1,𝜀] = SR★
+𝜀 ,
+so the Hansen–Jagannathan bound (( Hansen and Jagannathan, 1991)) holds with equality.
+The proposition provides the asset-pricing dual of Proposition 1. The same portfolio that maxi-
+mizes the Sharpe ratio generates, through 𝑚★
+𝑡+1,𝜀 = 1 − 𝑅 𝑝
+𝑡+1(𝑊★
+𝜀 ), the minimum-variance unit-mean
+8
+pricing kernel for the managed-payoff space. Thus the maximum-Sharpe portfolio and the Hansen–
+Jagannathan frontier are two representations of the same population geometry.
+9
+III. Direct Portfolio Learning
+To estimate the portfolio policy we use a kernel representation Filipović and Schneider (2024);
+Nagel (2025) because it provides a common framework for portfolio policies of very different forms,
+as shown in Table IV. Indeed, depending on the kernel, the same estimator can generate static,
+linear, polynomial or sieve-based, and flexible nonlinear mappings, generalizing respectively the
+static mean–variance portfolio of Britten-Jones (1999), the linear parametric portfolio policies of
+Brandt et al. (2009), and the semiparametric spline-based policies of Caldeira et al. (2023).
+Kernel methods are also closely connected to the recent work of Nagel (2025); Kelly and Malamud
+(2025). In particular, random Fourier features (Rahimi and Recht, 2007) provide finite-dimensional
+approximations to stationary kernels, while the corresponding kernel estimator can be viewed as
+the infinite-feature limit. In this sense, the kernel formulation provides a natural benchmark for
+portfolio models whose nominal representation complexity is allowed to become arbitrarily large.
+Kernel methods are also closely related to neural-network representations. A random-feature
+approximation can be interpreted as a neural network with a fixed, randomly generated hidden layer,
+in which only the final linear coefficients are estimated. More generally, neural tangent kernels arise
+as the infinite-width limits of particular neural-network training regimes ( Jacot et al. , 2018).
+Let
+𝐾 : 𝒵 × 𝒵 → R
+be a positive-definite scalar kernel and let H𝐾 denote the corresponding space of characteristic-
+based portfolio policies.
+Assumption 1 (Portfolio representation). The space 𝒵 is Polish. Fix a jointly measurable kernel
+𝐾, with separable RKHS H𝐾, satisfying
+sup
+𝑧∈𝒵
+𝐾 (𝑧, 𝑧) ≤ 𝜅𝐾 < ∞.
+The representation is fixed across economies and sample sizes.
+10
+Let 𝑊★
+𝐾 denote the minimum-norm population minimizer in H𝐾, when attained. Write 𝑊★
+𝜀 =
+𝑊★
+𝜀,𝐾 and ΣH𝐾 ,𝜀 when distinguishing economies.
+The empirical regularized counterpart of the population problem in Equation ( 2) is
+b𝑊𝜆,𝑇 := arg min
+𝑊 ∈H𝐾
+8>> <
+>>:
+1
+𝑇
+𝑇Õ
+𝑡=1
+ 
+1 − 1
+𝑁
+𝑁Õ
+𝑖=1
+𝑊 (𝑍𝑖,𝑡 )𝑅𝑖,𝑡 +1
+! 2
++ 𝜆∥𝑊 ∥2
+H𝐾
+9>> =
+>>;
+= arg min
+𝑊 ∈H𝐾
+n
+b𝑄(𝑊) + 𝜆∥𝑊 ∥2
+H𝐾
+o
+= min
+𝑈∈H
+∥𝑈 ∥ H=1
+8>>> <
+>>>:
+1
+1 + cSR
+2
+𝜆,𝑇
+
+𝑅 𝑝
+𝑡+1(𝑈)
+
+)
+9>>> =
+>>>;
+, 𝜆 > 0.
+(3)
+where
+cSR𝜆,𝑇
+
+𝑅 𝑝
+𝑡+1(𝑈)
+
+:=
+1
+𝑇
+Í𝑇
+𝑡=1 𝑅 𝑝
+𝑡+1(𝑈)
+r
+1
+𝑇
+Í𝑇
+𝑡=1
+
+𝑅 𝑝
+𝑡+1(𝑈) − 1
+𝑇
+Í𝑇
+𝑠=1 𝑅 𝑝
+𝑠+1(𝑈)
+ 2
++ 𝜆
+.
+The economic structure of the estimator becomes transparent by viewing kernel-managed portfolio
+payoffs as elements of the portfolio policy space. At each date 𝑡, define
+𝑋𝑡 := 1
+𝑁
+𝑁Õ
+𝑖=1
+𝑅𝑖,𝑡 +1𝐾 (· , 𝑍𝑖,𝑡 ) ∈ H 𝐾 .
+Thus 𝑋𝑡 is a random element of H𝐾. If evaluated at 𝑧 ∈ 𝒵, it gives
+𝑋𝑡 (𝑧) = 1
+𝑁
+𝑁Õ
+𝑖=1
+𝑅𝑖,𝑡 +1𝐾 (𝑧, 𝑍𝑖,𝑡 ) ∈ 𝑅.
+the payoff generated by the kernel-managed portfolio that assigns stock 𝑖 the weight 𝐾 (𝑧, 𝑍𝑖,𝑡 )/𝑁.
+Its population mean is
+𝜇H𝐾 := E[𝑋𝑡] ∈ H 𝐾,
+11
+while its population second-moment operator is
+ΣH𝐾 := E[𝑋𝑡 ⊗ 𝑋𝑡] : H𝐾 → H𝐾,
+where, for every 𝑉 ∈ H 𝐾,
+(𝑋𝑡 ⊗ 𝑋𝑡)𝑉 = ⟨𝑉, 𝑋 𝑡⟩H𝐾 𝑋𝑡 .
+The first moment captures expected managed-portfolio payoffs, while the second-moment operator
+describes the magnitude of realized payoffs across portfolio directions.
+Their sample counterparts are the element
+b𝜇𝑇 = 1
+𝑇
+𝑇Õ
+𝑡=1
+𝑋𝑡 ∈ H 𝐾,
+and the operator
+bΣ𝑇 = 1
+𝑇
+𝑇Õ
+𝑡=1
+𝑋𝑡 ⊗ 𝑋𝑡 : H𝐾 → H𝐾 .
+Proposition 3 (Managed-portfolio Markowitz representation). The population-optimal minimum-
+norm policy satisfies
+𝜇H𝐾 = Σ H𝐾 𝑊★
+𝐾 . (4)
+Equivalently,
+𝑊★
+𝐾 = Σ †
+H𝐾
+𝜇H𝐾 ,
+where Σ†
+H𝐾
+denotes the pseudo inverse.
+The regularized sample policy in Equation (3) satisfies
+b𝑊𝜆,𝑇 =
+
+bΣ𝑇 + 𝜆𝐼
+ −1
+b𝜇𝑇 , 𝜆 > 0. (5)
+Equation (5) provides the structural link to classical portfolio choice. The investor is still com-
+12
+bining expected returns against second moments, as in Markowitz. The difference is that the invest-
+ment objects are now characteristic-managed portfolios weighted with the kernels.
+Regularization has a familiar portfolio interpretation. As emphasized by Kozak et al. (2020),
+portfolio directions with very little payoff variation but non-negligible expected returns resemble
+near-arbitrage opportunities and should therefore be treated with particular caution. Regulariza-
+tion has a familiar portfolio interpretation. As emphasized by Kozak et al. (2020), weak portfolio
+directions are particularly dangerous because small estimation errors can translate into very large
+portfolio positions. In their eigenportfolio setting, a low-variance direction with a sufficiently large
+estimated expected return can even resemble a near-arbitrage opportunity.
+The same instability appears in our managed-portfolio representation. Let ΣH𝐾 𝑒 𝑗 = 𝜇 𝑗 𝑒 𝑗 , and let
+𝑚 𝑗 := ⟨𝜇H𝐾 , 𝑒 𝑗 ⟩H𝐾 . Without regularization, the portfolio weight along direction 𝑒 𝑗 is proportional
+to
+b𝑊0, 𝑗 = b𝑚 𝑗
+b𝜇 𝑗
+.
+Hence, when b𝜇 𝑗 is small, even modest estimation error in b𝑚 𝑗 can generate a very large portfolio
+position. Regularization replaces the small eigenvalue in the denominator by b𝜇 𝑗 + 𝜆:
+b𝑊𝜆, 𝑗 = b𝑚 𝑗
+b𝜇 𝑗 + 𝜆 = b𝜇 𝑗
+b𝜇 𝑗 + 𝜆
+b𝑊0, 𝑗.
+Thus, b𝜇 𝑗 /(b𝜇 𝑗 + 𝜆) is the spectral shrinkage factor.
+The spectral filter derived above suggests a natural measure of how much of the managed-
+portfolio opportunity set is effectively used by the investor. The relevant notion of portfolio com-
+plexity is not the number of characteristics, parameters, or random features in the representation,
+but the number of economically distinct portfolio directions that remain active after shrinkage.
+This motivates the following definition.
+Definition 2 (Effective portfolio complexity) . For a fixed portfolio representation 𝐾 and 𝜆 > 0,
+13
+define
+C𝐾 (𝜆) := Tr
+
+ΣH𝐾 (ΣH𝐾 + 𝜆𝐼 )−1
+=
+Õ
+𝑗 ≥1
+𝜇 𝑗
+𝜇 𝑗 + 𝜆 . (6)
+Effective portfolio complexity is the shrinkage-adjusted number of managed-portfolio directions
+used by the portfolio rule.
+The definition follows directly from the spectral shrinkage mechanism already introduced. Each
+managed-portfolio direction contributes between zero and one to C𝐾 (𝜆). If 𝜇 𝑗 ≫ 𝜆, its shrinkage
+factor is close to one and the direction is effectively active. If 𝜇 𝑗 ≪ 𝜆, the direction contributes
+little and is effectively suppressed.
+Effective complexity therefore measures how deeply into the managed-portfolio spectrum the
+investor is actually operating.
+This notion is fundamentally different from nominal representation size. A model may contain
+thousands, or infinitely many, basis directions while the portfolio decision itself remains effectively
+low dimensional because regularization suppresses most weak directions. Conversely, a rich rep-
+resentation can be valuable because it makes additional investment opportunities available once
+sufficient market history exists to identify them.
+14
+IV. Portfolio Learnability
+A. A Class of Portfolio Economies
+For the fixed representation in Assumption 1, fix 𝑏 > 1, 𝛾 > 𝑏 , constants 𝐶𝛽, 𝐵𝑋, 𝑅 > 0, 𝐾4 ≥ 1,
+and 0 < 𝑐 𝜇 ≤ 𝐶𝜇 < ∞. We denote by
+E = E (𝑏, 𝛾, 𝐶 𝛽, 𝐵𝑋, 𝐾4, 𝑅, 𝑐 𝜇, 𝐶𝜇)
+the nonempty class of economies 𝜀 satisfying the following conditions, with all bounds common
+to the class:
+(E1) The process {( 𝑍𝑡, 𝑅𝑡+1)} 𝑡∈Z is strictly stationary and polynomially 𝛽-mixing, with 𝛽𝜀 (𝑘) ≤
+𝐶𝛽𝑘 −𝛾 for every 𝑘 ≥ 1.
+(E2) Gaussian-type managed-return tails and conditional fourth moments. Let
+𝐾𝑡 :=
+
+𝐾 (𝑍𝑖,𝑡 , 𝑍 𝑗,𝑡 )
+ 𝑁
+𝑖, 𝑗=1.
+Assume
+E𝜀
+"
+exp
+ 
+𝑁 −2𝑅′
+𝑡+1𝐾𝑡 𝑅𝑡+1
+𝐵2
+𝑋
+! ℱ𝑡
+#
+≤ 2 a.s. (7)
+For every 𝑉 ∈ H 𝐾, assume also
+E𝜀
+
+(𝑅 𝑝
+𝑡+1(𝑉)) 4 ℱ𝑡
+
+≤ 𝐾4
+
+E𝜀
+
+(𝑅 𝑝
+𝑡+1(𝑉)) 2 ℱ𝑡
+	 2
+a.s. (8)
+Both bounds are uniform over the class. Since 𝑁 −2𝑅′
+𝑡+1𝐾𝑡 𝑅𝑡+1 = ∥ 𝑋𝑡 ∥2
+H𝐾
+, Condition ( 7)
+directly controls the diagonal of the induced kernel while allowing unbounded returns. Con-
+ditional Gaussian returns with uniformly bounded conditional second moments satisfy Con-
+dition (E2); see Proposition 4.
+15
+(E3) The population minimum over H𝐾 is attained. Its minimum-norm solution 𝑊★
+𝜀 satisfies
+∥𝑊★
+𝜀 ∥H𝐾 ≤ 𝑅.
+(E4) The pricing kernel 𝑚★
+𝑡+1,𝜀 := 1 − 𝑅 𝑝
+𝑡+1(𝑊★
+𝜀 ) satisfies
+E𝜀
+h
+𝑚★
+𝑡+1,𝜀 𝑅 𝑝
+𝑡+1(𝑉) | ℱ𝑡
+i
+= 0, ∀ 𝑉 ∈ H 𝐾, a.s.
+Here ℱ𝑡 is the investor’s information at the decision date in Definition 1. Conditional pricing
+is imposed separately from unconditional population optimality; positivity is not imposed.
+(E5) Let ΣH𝐾 ,𝜀 = E𝜀 [𝑋𝑡 ⊗ 𝑋𝑡] and let 𝜇1,𝜀 ≥ 𝜇2,𝜀 ≥ · · · > 0 denote its positive eigenvalues. Then
+𝑐𝜇 𝑗 −𝑏 ≤ 𝜇 𝑗,𝜀 ≤ 𝐶𝜇 𝑗 −𝑏, 𝑗 ≥ 1.
+(E6) The optimal payoff has positive variance and SR★
+𝜀,𝐾 := SR(𝑅 𝑝
+𝑡+1(𝑊★
+𝜀 )) satisfies the common
+bounds
+0 < 𝑆 ≤ SR★
+𝜀,𝐾 ≤ 𝑆 < ∞.
+Condition (E2) replaces the almost-sure bounded-return restriction by Gaussian-compatible tail
+and fourth-moment control. Proposition 4 in Appendix A.4 gives a simple sufficient conditional-
+Gaussian specification. No Gaussianity is otherwise imposed.
+The class E separates two forces governing portfolio learnability. The exponent 𝛾 controls the
+persistence of the data, while 𝑏 controls the geometry of the managed-portfolio spectrum. The
+parameter 𝑏 describes how concentrated the managed-portfolio opportunity set is. A large 𝑏 means
+that most payoff variation is concentrated in a relatively small number of strong portfolio directions.
+A smaller 𝑏 leaves a longer tail of economically distinct but progressively weaker directions.
+Polynomial spectral decay is natural for finite-smoothness representations, including Sobolev–
+Matérn, Laplace, and spline-type kernels. Gaussian kernels can instead generate exponential or
+faster-than-polynomial decay (Belkin, 2018). For exposition, we use 𝑏 = ∞ as shorthand for the
+16
+fast-decay benchmark, including Gaussian-type spectra and the finite-rank limit. The class E itself
+has finite 𝑏; these are separate benchmarks, not substitutions into the restriction 𝛾 > 𝑏 . Their
+relevance depends on the spectrum of ΣH𝐾 ,𝜀, not on the kernel name alone.
+B. Learnable Sharpe ratio and optimal shrinkage
+We can now ask how regularization should change as market history accumulates, how rapidly the
+population maximum-Sharpe direction can be recovered, and how much of the managed-portfolio
+opportunity set can be reliably used. The financial observations can be independent over time or
+weakly dependent.
+Population loss and Sharpe of an estimated policy hold the training sample fixed and integrate
+over the stationary one-period evaluation law. They are not the Sharpe ratio of a finite test sample.
+The statistical upper bound follows from Bignozzi et al. (2026, Lemma A.7). Appendix A.5
+verifies the kernel representation and its statistical assumptions.
+Theorem 1 (Optimal shrinkage and learnable frontier) . Choose the optimal regularization
+𝜆★
+𝑇 ≍ 𝑇 −𝑏/( 𝑏+1)
+, with comparison constants independent of the economy. Uniformly over 𝜀 ∈ E ,
+𝑄𝜀 (b𝑊𝜆★
+𝑇 ,𝑇) − 𝑄𝜀 (𝑊★
+𝜀 ) = 𝑂P𝜀
+
+𝑇 −𝑏/( 𝑏+1)
+
+. (9)
+Moreover, uniformly over 𝜀 ∈ E ,
+SR★
+𝜀,𝐾 − SR
+
+𝑅 𝑝
+𝑡+1(b𝑊𝜆★
+𝑇 ,𝑇)
+
+= 𝑂P𝜀
+
+𝑇 −𝑏/( 𝑏+1)
+
+, (10)
+17
+where:
+𝑆𝑅 𝜀
+
+b𝑊𝐾,𝜆,𝑇
+
+=
+E𝜀
+h
+𝑅 𝑝
+𝑡+1
+
+b𝑊𝐾,𝜆,𝑇
+ b𝑊𝐾,𝜆,𝑇
+i
+r
+Var𝜀
+
+𝑅 𝑝
+𝑡+1
+
+b𝑊𝐾,𝜆,𝑇
+ b𝑊𝐾,𝜆,𝑇
+ =
+E𝜀
+"
+1
+𝑁
+𝑁Õ
+𝑖=1
+b𝑊𝐾,𝜆,𝑇 (𝑍𝑖,𝑡 )𝑅𝑖,𝑡 +1
+
+b𝑊𝐾,𝜆,𝑇
+#
+vut
+Var𝜀
+ 
+1
+𝑁
+𝑁Õ
+𝑖=1
+b𝑊𝐾,𝜆,𝑇 (𝑍𝑖,𝑡 )𝑅𝑖,𝑡 +1
+
+b𝑊𝐾,𝜆,𝑇
+!
+and
+𝑆𝑅 ★
+𝜀,𝐾 = sup
+𝑊 ∈H𝐾
+E𝜀
+ 1
+𝑁
+Í𝑁
+𝑖=1 𝑊 (𝑍𝑖,𝑡 )𝑅𝑖,𝑡 +1
+
+r
+Var𝜀
+
+1
+𝑁
+Í𝑁
+𝑖=1 𝑊 (𝑍𝑖,𝑡 )𝑅𝑖,𝑡 +1
+ .
+The theorem first establishes consistency of direct portfolio learning. Since 𝜆★
+𝑇 → 0 and
+SR★
+𝐾 − SR
+
+b𝑊𝜆★
+𝑇 ,𝑇
+
+→𝑃 0, the portfolio manager eventually recovers the maximum-Sharpe direc-
+tion available within the chosen portfolio representation.
+The optimal regularization path also gives a dynamic interpretation to the eigenportfolio logic
+discussed above. With a short return history, directions deep in the managed-portfolio spectrum are
+weakly identified and are therefore shrunk heavily. As more observations become available, their
+expected payoff and payoff variation can be estimated more precisely, allowing the manager to take
+progressively larger positions in those directions.
+Indeed, as 𝜆★
+𝑇 ≍ 𝑇 −𝑏/( 𝑏+1) falls with 𝑇, the spectral filter 𝜇 𝑗
+𝜇 𝑗 +𝜆★
+𝑇
+moves toward one for progres-
+sively smaller values of 𝜇 𝑗 . Directions that were effectively suppressed in short samples therefore
+become statistically usable in longer samples.
+Regularization is thus a finite-history device. More data allow the portfolio manager to move
+deeper into the managed-portfolio spectrum and exploit investment opportunities that were previ-
+ously too weakly identified.
+The shape of the spectrum determines how quickly portfolio opportunities can be learned. A
+steep spectrum (large 𝑏) concentrates economically relevant payoff variation in a few directions,
+making the portfolio easier to learn. A flatter spectrum spreads variation across many weaker di-
+rections, increasing potential breadth but slowing learning.
+18
+Importantly, portfolio learnability is therefore not determined directly by the number 𝐷 of firm
+characteristics. T wo representations with the same number of characteristics can generate very
+different learning problems. If their characteristics produce largely redundant portfolio bets, the
+managed-portfolio spectrum is concentrated. If instead they produce many distinct but weak port-
+folio directions, the spectrum is diffuse and substantially more market history is required.
+What matters for the portfolio manager is therefore not the raw number of signals, but the
+economic geometry of the portfolios generated by those signals.
+Figure 1 gives a graphical interpretation of the learning result: as market history grows, the
+learned capital-allocation line rotates toward the population tangency line. Under Condition (E6),
+at any fixed volatility, the expected-return gap closes at rate 𝑂 𝑃
+
+𝑇 −𝑏/( 𝑏+1)
+
+.
+19
+Figure 1. Learning the tangency direction. The population tangency direction generates expected excess
+return 𝜇★
+𝐾 (𝜎) = 𝜎 SR★
+𝐾 , while the direction learned from a finite history generates ˆ𝜇𝐾 ,𝑇 (𝜎) = 𝜎 SR(b𝑊𝜆★
+𝑇 ,𝑇 ).
+At the fixed volatility target ¯𝜎, the vertical distance is the expected-return learning gap 𝜇★
+𝐾 ( ¯𝜎) − ˆ𝜇𝐾 ,𝑇 ( ¯𝜎).
+C. Optimal effective portfolio complexity
+The optimal-shrinkage result can now be expressed directly in terms of portfolio complexity.
+Theorem 2 (Learnable effective portfolio complexity). Under the portfolio-loss conditions of The-
+orem 1, the rate-optimal effective complexity satisfies
+C★
+𝐾,𝑇 := C𝐾 (𝜆★
+𝑇 ) ≍ 𝑇 1/( 𝑏+1). (11)
+The theorem gives a direct economic interpretation of additional market history. As 𝑇 increases
+and optimal shrinkage declines, the portfolio manager can reliably activate a broader set of managed-
+portfolio directions.
+This expansion is nevertheless gradual. Effective complexity grows sublinearly:
+C★
+𝐾 ,𝑇
+𝑇 → 0.
+20
+Thus, even when the underlying representation is arbitrarily rich, a finite market history supports
+only a limited fraction of its potential portfolio directions.
+A steep managed-portfolio spectrum implies slower growth of effective complexity because
+most economically relevant payoff variation is already concentrated in a few strong directions. A
+flatter spectrum supports greater potential breadth, but exploiting that breadth requires substantially
+more market history.
+Figure 2 summarizes this tradeoff. With a short history, the Sharpe-maximizing portfolio uses
+only a small number of effective directions. With more observations, weaker directions become
+reliably investable and the optimal effective complexity shifts outward.
+21
+Figure 2. Market history and learnable portfolio complexity. Schematic Sharpe–complexity profiles for
+different history lengths. Longer market histories allow the portfolio manager to activate a broader set of
+managed-portfolio directions, shifting the Sharpe-maximizing effective complexity to the right.
+The distinction from nominal size is central. A large representation expands the set of portfolio
+policies that can potentially be expressed. Effective complexity measures how much of that repre-
+sentation the portfolio manager can actually use given the available history of returns. Effective
+complexity is therefore a learnable economic that quantify the amount of eigenportoflios that the
+portoflio manager trade.
+22
+D. The fundamental limit
+The previous results describe how a portfolio manager should use a finite market history: weak
+managed-portfolio directions should be shrunk, the amount of shrinkage should decline as more
+observations become available, and the set of portfolio opportunities that can be reliably exploited
+expands with the sample. A natural question remains. Could a different learning technology over-
+come this limitation? Could a sufficiently large neural network, a richer random-feature model, or a
+more sophisticated portfolio algorithm recover the optimal investment decision substantially faster?
+The answer is no without additional economic structure.
+Theorem 3 (Fundamental limit of maximum-Sharpe learning) . There exists a constant 𝑐 > 0 such
+that, for all suﬀiciently large 𝑇,
+inf
+e𝑊𝑇
+sup
+𝜀∈E
+E𝜀
+h
+SR★
+𝜀,𝐾 − SR𝜀
+
+𝑅 𝑝
+𝑡+1(e𝑊𝑇 )
+i
+≥ 𝑐 𝑇−𝑏/( 𝑏+1).
+The infimum is over all measurable portfolio-learning procedures based on the 𝑇 observed finan-
+cial rows. Hence no portfolio-learning procedure can uniformly recover the population maximum
+Sharpe ratio at a faster rate than 𝑇 −𝑏/( 𝑏+1) over E.
+Together with Theorem 1, this establishes 𝑇 −𝑏/( 𝑏+1) as the minimax-optimal rate for learning
+the maximum Sharpe ratio over the class considered here.
+The limitation is therefore informational rather than computational. Portfolio directions deep
+in the managed-payoff spectrum are only weakly identified by a finite history of realized returns.
+A richer model may represent more investment opportunities, and a better algorithm may use the
+available information more effectively, but neither can make those weakly identified opportunities
+more visible in the data.
+Learning faster requires knowing more about the economy. This can come from a longer market
+history or from additional economic restrictions on the return process, the managed-payoff spec-
+trum, or the location of optimal portfolio demand. Absent such information, the learning rate is a
+23
+property of the investment problem, not of the particular algorithm used to solve it.
+24
+V. Representation, Learnability, and the Virtue of Complexity
+Kelly et al. (2024) study an environment in which expanding the model also captures an increasing
+share of the underlying economic signal. In their setting, the improvement in approximation can
+dominate the additional estimation cost. This is the virtue of complexity.
+Our question is different. We hold the investor’s information set fixed and vary only the richness
+of the portfolio representation. We take the view that a portfolio manager should make available
+all information she considers economically useful and can observe in real time. Regularization,
+rather than ex ante feature exclusion, should then determine how much of the resulting portfolio
+opportunity set can actually be learned from the available data. We therefore study the virtue of
+Complexity, as the virtue of richer representation, separately from the addition of new signals.
+Our point in this section is that a richer portfolio representation and a better learned portfolio
+are two different objects.
+Let SR★ denote the maximum population Sharpe ratio over the space of 𝐿2 portfolio policies,
+SR★ := sup
+𝑊 ∈𝐿2
+SR(𝑊),
+and let
+SR★
+𝐾 := sup
+𝑊 ∈H𝐾
+SR(𝑊)
+denote the maximum population Sharpe ratio available within representation 𝐾, where H𝐾 ⊆ 𝐿2 is
+the corresponding policy space. For example, a linear kernel restricts portfolio weights to be linear
+functions of characteristics, whereas a Matérn kernel allows a richer nonlinear class.
+Finally,
+SR(b𝑊𝐾,𝜆,𝑇 )
+denotes the population Sharpe ratio of the portfolio policy learned within representation 𝐾 from a
+market history of length 𝑇.
+25
+The gap between the unrestricted population opportunity set and the portfolio actually learned
+from the data can be decomposed as
+SR★ − SR(b𝑊𝐾,𝜆,𝑇 ) = SR★ − SR★
+𝐾|       {z       }
+representation gap
++ SR★
+𝐾 − SR(b𝑊𝐾,𝜆,𝑇 )
+|                 {z                 }
+learning gap
+. (12)
+The representation gap measures the investment opportunities that cannot be expressed by the
+chosen representation, even if the investment environment were known perfectly. The learning gap
+measures how much of the opportunity set available within that representation cannot be recovered
+from a finite history of returns.
+Now consider two nested representations,
+H𝐾1 ⊆ H 𝐾2.
+At the population level,
+SR★
+𝐾2 ≥ SR★
+𝐾1 .
+A richer representation can therefore only expand the population investment opportunity set. In this
+precise sense, complexity is a virtue for representation.
+But this population ordering need not survive estimation from finite data. It is perfectly possible
+that
+SR★
+𝐾2 > SR★
+𝐾1
+while
+SR(b𝑊𝐾2,𝜆2,𝑇) < SR(b𝑊𝐾1,𝜆1,𝑇).
+The larger representation contains better population opportunities, but some of those opportunities
+may lie in managed-portfolio directions that are too weakly identified by the available return history.
+A richer representation therefore expands what the portfolio manager could exploit. Whether
+26
+those additional opportunities improve the learned portfolio depends on whether they can actually
+be learned from the available data.
+27
+VI. Empirical Portfolio Learnability
+A. Data, Representation, and Investment Performance
+The empirical exercise asks how a representation of stock characteristics, finite return history, and
+regularization jointly shape a portfolio policy. A richer representation makes additional portfolio
+opportunities available, but a finite return history does not necessarily make all those opportunities
+learnable or financially valuable. We first compare Linear, Gaussian, and Matérn- 3/2 policies on
+identical subsequent months. We then fix the Gaussian representation to examine regularization and
+the economic content of its additional directions. The evidence is descriptive historical evidence:
+neither a favorable Sharpe nor an estimated number of active directions certifies a reliably profitable
+opportunity.
+We use the monthly U.S. equity characteristic panel of Jensen, Kelly, and Pedersen, with for-
+mations from January 1963 through December 2024. Starting from their research dictionary, we
+exclude nano stocks, retain the 130 characteristics with greatest coverage in 1963–1972, and re-
+move observations missing more than 30% of these inputs. Observed values receive average cross-
+sectional ranks on [−0.5, 0.5]; remaining missing inputs receive zero. The panel is unbalanced.
+The retrospectively constructed characteristic dictionary and current data snapshot constitute the
+academic information set, rather than a reconstruction of historical signal discovery or data vin-
+tages.
+There is a material sample limitation. Unavailable subsequent payoffs are excluded before
+ranking and calculating the number of stocks 𝑁𝑡. A formation-only audit leaves 7,489 unidenti-
+fied stock-month payoffs out of 2,504,402 eligible observations (0.299%); documented adjacent-
+calendar source matches recover none. Formation-only ranks are invariant to perturbing future
+payoff availability, whereas the retained complete-payoff sample is conditional on that availabil-
+ity. Thus selection uses only earlier observed payoff values, but sample formation still depends on
+whether future payoffs are available. Unknown returns are never assigned zero. All performance
+28
+and cost results retain this caveat.
+The first inner training period uses 1963–1972 formations and validation uses 1973–1977. Each
+subsequent January-close decision reserves the preceding 60 formation months for validation, then
+refits on the full available pretest history. December’s payoff is known at January close. January–
+December formation positions therefore realize February–next January returns. All three policies
+are evaluated on the same 564 OOS months, February 1978–January 2025.
+Linear uses a constant and the characteristic coordinates. Gaussian and Matérn- 3/2 use 10,000
+random Fourier features with seed 0. For each kernel, chronological validation jointly selects
+lengthscale and ridge penalty by minimizing the mean response-one quadratic loss 𝑄 at fitted scale.
+Lengthscales are { 0.25, 0.5, 1, 2, 4} times the initial-sample median distance; each has 120 penalties
+fixed from its own initial training spectrum. Frequency and phase draws are shared across length-
+scales. The chosen pair is refitted using training and validation observations before the test year;
+no test payoff selects either parameter. Linear selects its penalty by the same chronological loss
+criterion. This is a comparison of representations under past validation; finite feature banks do not
+establish strict nesting or identify a population approximation gap from an observed performance
+ranking.
+Table I. Representation comparison under chronological validation
+Policy Mean % Vol. % SR𝐺 SR𝑁 Gross Trades Fees %
+Linear 23.44 7.58 3.091 2.476 2.01 19.45 5.14
+Gaussian 28.34 7.77 3.646 2.857 2.44 24.53 6.48
+Matérn-3/2 28.85 8.04 3.587 2.747 2.58 26.82 7.07
+All policies use the same 564 months, February 1978–January 2025, and common initial-validation exposure scale.
+Gaussian and Matérn jointly validate lengthscale and penalty; Linear validates penalty. Mean and volatility are annual-
+ized gross excess returns. Net Sharpe applies 25 bps two-sided commissions and 30 bps/year short fees. Gross is mean
+account gross/NA V; trades are annual drift-adjusted traded notional/NA V on the net path; fees are annual trading plus
+short charges/NA V . Costs are illustrative assumptions.
+A common positive scale, 0.0374000, maps the initial Linear validation policy’s median gross
+exposure to 1.8. It is fixed before the first test payoff and applies to all policies, without future
+volatility or full-sample exposure normalization. It leaves gross Sharpe unchanged but matters for
+29
+1980 1990 2000 2010 2020
+Payoff date
+100
+101
+102
+103
+104
+105
+106
+T otal wealth, initial NAV = 1
+Gross
+Linear
+Gaussian (joint validation)
+Matérn-3/2 (joint validation)
+1980 1990 2000 2010 2020
+Payoff date
+Net: 25 bps trades + 30 bps/year shorts
+Figure 3. Investment performance on identical OOS months. Linear validates its ridge penalty; Gaussian and
+Matérn-3/2 jointly validate lengthscale and penalty using earlier observations. Total wealth compounds cash
+returns plus portfolio excess payoffs, starting from NA V one at January 1978 close. The right panel applies
+25-basis-point commissions to both purchases and sales against drift-adjusted holdings, plus a 30-basis-point
+annual short fee. These are illustrative costs on a sample conditional on future-payoff availability.
+costs. The Gaussian-minus-Linear gross Sharpe difference is 0.554, with paired 12-month-block
+interval [0.275,0.880]; the net difference is 0.381, with interval [0.140,0.653]. The corresponding
+Matérn differences are 0.496 [0.133,0.907] gross and 0.271 [-0.026,0.611] net. These comparisons
+condition on the fitted paths and use the same resampled months for each policy. Trading require-
+ments and uncertainty accompany the point estimates; the comparison does not establish uniform
+dominance of one representation.
+B. A Fixed Economic Spectrum and Active Complexity
+For the remainder of the section we use the existing fixed-lengthscale Gaussian specification: initial
+median distance 4.392108, 10,000 seed-0 features, and the original past-validation ridge selections.
+Its full-policy gross/net Sharpes are 3.300/2.605. These are distinct from the jointly validated Gaus-
+sian returns in Figure 3 and Table I. Fixing lengthscale and feature draws keeps the opportunity
+representation unchanged: varying 𝜆 then changes regularization within the same managed-payoff
+30
+operator. A lengthscale change would alter both that operator and the portfolios being decomposed.
+Let 𝐺 contain historical monthly managed payoffs 𝑋𝑡 = 𝑁 −1
+𝑡
+Í
+𝑖 𝑅𝑒
+𝑖,𝑡 +1𝜙(𝑍𝑖,𝑡 ). Response-one
+ridge fits 𝑎𝜆 = (𝐺′𝐺/𝑇 + 𝜆𝐼 )−1𝐺′1/𝑇 for positive 𝜆. The uncentered second-moment spectrum of
+𝐺′𝐺/𝑇 orders directions by historical payoff variation. An eigenvalue is neither invested capital,
+expected return, Sharpe, nor a uniquely named anomaly. Figure 4 uses only the history available
+at January 2024 close. Raw eigenvalues preserve representation units; division by the trace is a
+concentration diagnostic that does not rescale the fitted policy.
+100 101 102 103
+Positive spectral rank
+10−10
+10−9
+10−8
+10−7
+10−6
+10−5
+10−4
+10−3
+Uncentered second-moment eigenvalue
+Raw managed-payoff units
+100 101 102 103
+Positive spectral rank
+10−7
+10−6
+10−5
+10−4
+10−3
+10−2
+10−1
+100
+Eigenvalue / trace
+Share of second-moment mass
+Figure 4. Managed-payoff spectrum of the fixed Gaussian representation at January 2024 close. Formations
+through December 2023 give 732 known monthly payoffs. The left panel shows raw uncentered second-
+moment eigenvalues; the right divides by their trace. Both use the same fixed initial median lengthscale and
+feature bank as Figures 5–7 and the spectral accounts in Table III.
+Mass concentration and active complexity are distinct. Ridge weights a direction byb𝜇 𝑗 /(b𝜇 𝑗 +𝜆),
+giving 𝐶 (𝜆) = Í
+𝑗 b𝜇 𝑗 /(b𝜇 𝑗 +𝜆). Weak eigenvalues can contribute many effective degrees of freedom
+while carrying little second-moment mass. Across annual histories, the first 10% of positive Gaus-
+sian ranks contain 99.921% of mass, but contribute only 33.8 of the selected policy’s 124.5 mean
+effective directions. Positive rank uses a relative 10−12 eigenvalue tolerance; near-tied eigenvalues
+are kept together at group boundaries. Feasible complexity cannot exceed this historical effective
+rank, which is at most the number of historical monthly observations. A long weak tail can change
+31
+exposures without establishing that its opportunities are learnable.
+101
+103
+105
+107
+109
+1011
+Historical Sharpe (log)
+At λ = 0: constant historical payoff, unbounded Sharpe
+January 2024 historical fit
+0 100 200 300 400 500 600 700
+Effective complexity, fixed Gaussian
+0.0
+0.5
+1.0
+1.5
+2.0
+2.5
+3.0Sharpe
+February 2024–January 2025: 12 OOS months
+Retrospective maximum
+Past-validation selection
+Figure 5. Complete regularization path for the fixed Gaussian January 2024 refit. Historical Sharpe uses a
+logarithmic scale; subsequent Sharpe uses a separate linear scale. Exact response-one interpolation has zero
+historical variance and unbounded historical Sharpe; unresolved numerical ratios near that limit are omitted
+from the historical panel only. Each positive-penalty point is evaluated on its actual February 2024–January
+2025 OOS payoffs. The open circle is the exact minimum-norm zero-penalty policy at effective rank 732.
+The star is the retrospective maximum over the extended evaluation grid; the diamond retains the original
+earlier-validation selection. Neither is an estimate of a significant population optimum.
+The final-year path holds lengthscale, feature bank, and history fixed. Its retrospective maxi-
+mum is at complexity 77.0 with subsequent Sharpe 3.138; at zero penalty Sharpe is 0.054. Histori-
+cal fit and subsequent investment performance need not move together. T welve subsequent months
+produce a noisy illustration, so Figure 6 provides the complete progression in nine historical blocks.
+The evaluation grid retains every original penalty and adds a logarithmic sequence from strong
+regularization to very small positive penalties, followed by exactly 𝜆 = 0. Its 1,522 policies are
+evaluated separately at every annual refit. The zero endpoint uses a symmetric eigensystem Moore–
+32
+Penrose pseudoinverse with the same positive-rank tolerance, rather than an inverse of a singular
+operator. Direct feature-space least squares checks the first and final endpoints, and the smallest pos-
+itive penalties converge numerically to the zero returns. No added evaluation changes the original
+validation policy, and no OOS result selects a deployable penalty.
+To assess the historical Sharpe–complexity trade-off using year-specific effective complexity
+rather than block-average complexity, Figure 6 reports one representative annual profile from each
+of the nine historical blocks. We select the central calendar year in each block: 1980, 1985, 1990,
+1995, 2000, 2005, 2010, 2015, and 2021. Holding the Gaussian representation and lengthscale
+fixed, each profile connects the full evaluated penalty path using that year’s effective complexity
+and the annualized Sharpe of its 12 subsequent monthly OOS returns. The annual past-validation
+selection is therefore an actual point on its own annual curve. These one-year profiles are noisier
+than pooled-block profiles and their retrospective maxima are descriptive. The historical table and
+block summaries below retain the original pooled-block results.
+Table II. Retrospective maxima and exact unregularized endpoints
+Decision years 𝐶 at max. Max. SR 𝐶 (0) SR at 𝜆 = 0 Decline
+1978–1982 113.4 5.719 204 5.313 0.406
+1983–1987 209.1 6.219 264 6.134 0.085
+1988–1992 137.9 7.626 324 6.274 1.352
+1993–1997 158.2 7.608 384 6.609 0.999
+1998–2002 164.4 5.443 444 4.844 0.599
+2003–2007 165.4 2.970 504 2.410 0.559
+2008–2012 28.7 2.918 564 2.435 0.483
+2013–2017 379.2 3.228 624 3.158 0.070
+2018–2024 266.2 1.537 696 1.337 0.200
+All maxima use the entire extended grid. Complexity is the realized-month-weighted mean across annual refits; 𝐶 (0)
+equals mean historical effective rank. Decline is maximum minus zero-penalty Sharpe, a descriptive change rather than
+a significance test. The smallest-decline period is retained as observed.
+All nine retrospective maxima are interior on the extended grid. Maximizing mean complexity
+ranges from 28.7 to 379.2. The 2008–2012 maximum occurs at low complexity. The unregularized
+endpoints remain close to the maxima in 1983–1987 and 2013–2017, with peak-to-zero Sharpe de-
+33
+0
+5
+10
+15Annual OOS Sharpe
+1980  (1978 1982)
+ 1985  (1983 1987)
+ 1990  (1988 1992)
+0
+5
+10
+15Annual OOS Sharpe
+1995  (1993 1997)
+ 2000  (1998 2002)
+ 2005  (2003 2007)
+0 200 400 600
+Annual effective complexity
+0
+5
+10
+15Annual OOS Sharpe
+2010  (2008 2012)
+0 200 400 600
+Annual effective complexity
+2015  (2013 2017)
+0 200 400 600
+Annual effective complexity
+2021  (2018 2024)
+Evaluated annual  path
+Past-validation selection
+Retrospective maximum
+Exact  = 0
+Figure 6. Representative annual out-of-sample Sharpe–complexity profiles. Each panel corresponds to one
+selected decision year, the central calendar year of its indicated historical block: 1980, 1985, 1990, 1995,
+2000, 2005, 2010, 2015, or 2021. Annual OOS Sharpe is annualized from the 12 subsequent monthly returns
+(February of the decision year through January of the following year); effective complexity is measured for
+that same year’s fitted policy, with no averaging across years or pooling of returns. The Gaussian repre-
+sentation and lengthscale are fixed. Curves connect all actual evaluated penalties, including the extended
+near-zero positive grid and the exact minimum-norm 𝜆 = 0 endpoint, without smoothing or extrapolation.
+Black diamonds mark annual past-validation selections verified to lie on their annual curves; orange stars
+mark retrospective maxima over the full annual evaluated grid; open circles mark exact zero-penalty end-
+points. All nine panels share common axes. These profiles are noisier than the previous pooled-block curves
+because each uses only one OOS year. Retrospective maxima do not select deployable policies or estimate
+population-optimal complexity.
+34
+clines of 0.085 and 0.070, respectively. Neither period displays a substantial endpoint deterioration.
+The 2018–2024 decline is also modest; we do not impose a common downturn. Across blocks, the
+endpoint decline ranges from 0.070 to 1.352.These are descriptive shapes, not evidence of a statis-
+tically identified optimum in every period. Broad regions can be nearly flat relative to sampling
+uncertainty. All displayed maxima have been recomputed on the extended grid, including zero.
+Intervals use 5,000 paired circular-block resamples, sharing monthly draws across all candidates
+or contrasted portfolios. They condition on estimated policies, representations, and holdings; they
+do not repeat model selection. Approximate stability and dependence decay within a block motivate
+this diagnostic. It neither corrects for searching the grid nor establishes validity under arbitrary
+nonstationarity. Six- and 24-month-block results for the representation comparisons and economic
+contrasts accompany the canonical results. A favorable retrospective peak is consequently distinct
+from a learnable policy selected using past information.
+C. What Additional Directions Trade
+We interpret portfolios associated with eigenspaces of the same fixed Gaussian policy. At each
+annual refit, four disjoint positive-rank groups partition its ridge coefficients. Their actual contri-
+butions are reconstructed as stock-level signed holdings, providing long and short characteristic
+profiles and subsequent payoff and covariance attribution. The same selected penalty is retained
+across nested comparisons. These are attribution portfolios within one policy, not independently
+optimized strategies. Near-tied eigenvectors can rotate, so group profiles carry the historical inter-
+pretation rather than persistent names assigned to individual eigenvectors.
+Leading holdings favor profitability and oppose recent returns and debt financing. Intermediate
+directions modify those exposures within the same characteristic universe. A large normalized
+characteristic contrast can coexist with small notional exposure, so profiles and signed notionals
+answer different questions. Formation descriptors characterize what is held; subsequent outcomes
+determine its investment contribution.
+35
+0–10% 10–50% 50–90% 90–100%
+Positive-rank group
+Value
+Profitability
+Investment
+Momentum
+Recent return
+Size
+Liquidity
+Issuance
+Debt financing
++0.17 -0.04 -0.00 +0.01
++0.24 -0.08 -0.04 -0.02
+-0.15 +0.05 -0.01 +0.03
++0.23 -0.05 -0.03 +0.01
+-0.17 -0.03 -0.01 -0.01
++0.01 +0.02 -0.02 +0.00
+-0.00 +0.01 -0.01 -0.01
+-0.12 -0.05 +0.03 +0.02
+-0.18 +0.12 -0.05 -0.03
+Long-minus-short rank profile
+0–10% 10–50% 50–90% 90–100%
+Positive-rank group
++0.19 -0.02 -0.00 +0.00
++0.26 -0.05 -0.01 -0.00
+-0.17 +0.03 -0.00 +0.00
++0.26 -0.04 -0.00 +0.00
+-0.20 -0.01 -0.00 -0.00
++0.01 +0.01 -0.00 -0.00
+-0.01 +0.01 -0.00 -0.00
+-0.12 -0.03 +0.01 +0.00
+-0.20 +0.07 -0.01 -0.00
+Signed notional rank exposure
+−0.2
+−0.1
+0.0
+0.1
+0.2
+−0.2
+−0.1
+0.0
+0.1
+0.2
+Figure 7. Economic profiles of the fixed Gaussian policy’s actual spectral holdings. The left panel gives
+long-minus-short weighted formation-rank scores; the right preserves investment scale through signed no-
+tional exposures. An explicit signed characteristic dictionary defines the families. Debt financing and equity
+issuance are distinct. Families can overlap and cannot be added as disjoint return components. These hold-
+ings decompose the fixed representation, independently of the tuned-kernel opening comparison.
+Table III. Fixed Gaussian spectral groups and incremental investment value
+Ranks Mass % Own gross Account gross Mean % SR𝐺 SR𝑁
+0–10% 99.9215 2.267 2.267 24.323 3.012 2.354
+10–50% 0.0685 1.263 2.333 2.759 3.284 2.598
+50–90% 0.0091 0.327 2.325 0.047 3.286 2.594
+90–100% 0.0010 0.078 2.326 0.026 3.300 2.605
+Added ranks Δ𝑄 Cross term Own square Paired 95% interval
+0–10% -0.402340 -1.083912 0.681573 [-0.524808, -0.257425]
+10–50% -0.036008 -0.131766 0.095758 [-0.093264, +0.027912]
+50–90% +0.000168 -0.003978 0.004146 [-0.008734, +0.009000]
+90–100% -0.003123 -0.003547 0.000424 [-0.006796, -0.000185]
+The original selected penalty is retained at each annual refit. Mass averages annual historical second-moment shares.
+Own gross and mean describe individual components; account gross and Sharpes describe all groups through that
+boundary. The lower panel reports raw fitted-scale loss changes, relative to the null portfolio for the first group, with
+the same 5,000 paired 12-month-block draws. Weights are summed at stock level before trades and short fees. Gross
+Sharpe increments are +0.272, +0.002, +0.014; net increments are +0.244, -0.004, +0.011.
+36
+The leading group has mean component gross 2.267 and annual excess payoff 24.32%. Adding
+intermediate directions contributes 2.76% annually. Their own gross 1.263 increases the cumulative
+account’s gross by only 0.066: some added positions offset existing stock holdings. Component
+gross exposures therefore do not add to the combined account’s gross. The component’s annual
+covariance with the leading portfolio is -0.000634, while total annual variance changes by 0.000278.
+Negative covariance can coexist with increased account variance because the component also adds
+its own variance.
+Gross Sharpe rises from 3.012 to 3.284, and net Sharpe from 2.354 to 2.598. Paired 12-
+month-block intervals for these changes are [0.002,0.546] and [0.011,0.487]. The response-one
+loss changes by -0.036008, with interval [-0.093264,0.027912]; its cross term is -0.131766 and
+own-square term 0.095758. Thus a positive standalone mean, a Sharpe increment, and an incre-
+mental 𝑄 improvement are distinct assessments. The incremental identity Δ𝑄 = −2 (1 − 𝑃) 𝐴 + 𝐴2
+includes the interaction of the previous policy 𝑃 and added payoff 𝐴, at their original fitted scale.
+Small incremental account gross does not imply small turnover. Monthly characteristics and
+annual refits can change offsetting positions substantially. For every nested account, stock weights
+are summed before calculating trades against drift-adjusted holdings, short notional, and net returns.
+Costs begin with entry from cash. Target weights refer to post-execution NA V; proportional com-
+missions are solved jointly with the target cash residual. The annual short fee is divided by twelve.
+Cash earns or pays the same monthly risk-free rate, and terminal holdings are marked rather than
+forcibly liquidated. Separate component fees would not reconstruct the netted account. Changes in
+target weights remain a separate turnover proxy, never observed execution costs.
+Corporate-action and delisting treatment relies on the upstream JKP return construction and
+stable identifiers; there is no independent share-count or execution-tape reconstruction. Liquidated
+names incur trades but receive no invented next payoff. The cost assumptions omit market impact
+and additional funding spreads. They are self-financing friction sensitivities, with the same future-
+payoff-availability caveat as gross returns.
+The weak tail has little historical second-moment mass and small absolute payoff contributions.
+37
+The successive gross/net Sharpe increments in Table III include adverse as well as favorable out-
+comes; the loss decomposition also retains the own-square and cross terms. Small mass alone
+cannot rule out covariance value, while a striking normalized characteristic tilt need not have a
+material financial contribution. Six-benchmark regressions of the actual component returns give
+descriptive spanning statistics; a separate hedge uses only pretest slope estimates. Neither supplies
+an independently selected investment strategy or a newly identified risk premium.
+Economic content and supported complexity vary with history. The stationary theory is a
+benchmark for approximately stable conditions; a local interpretation requires those conditions.
+Descriptive complexity changes do not identify a population spectral-decay parameter. Across the
+representation comparison, fixed-kernel regularization paths, and stock-level attribution, the finan-
+cial question is whether additional available directions improve the portfolio that finite historical
+information can support.
+38
+References
+Belkin, M. (2018). Approximation beats concentration? an approximation view on inference with
+smooth radial kernels. In Proceedings of the 31st Conference on Learning Theory, volume 75 of
+Proceedings of Machine Learning Research, pages 1348–1361.
+Bignozzi, E., Gagliardini, P ., and Schneider, P . (2026). Optimal rates for kernel ridge regression
+under 𝛽-mixing. Working paper.
+Brandt, M. W. (1999). Estimating portfolio and consumption choice: A conditional euler equations
+approach. The Journal of Finance , 54(5):1609–1645.
+Brandt, M. W., Santa-Clara, P ., and Valkanov, R. (2009). Parametric portfolio policies: Ex-
+ploiting characteristics in the cross-section of equity returns. The Review of Financial Studies ,
+22(9):3411–3447.
+Britten-Jones, M. (1999). The sampling error in estimates of mean–variance efficient portfolio
+weights. The Journal of Finance , 54(2):655–671.
+Caldeira, J. a. F., Santos, A. A. P ., and Torrent, H. S. (2023). Semiparametric portfolios: Improving
+portfolio performance by exploiting non-linearities in firm characteristics. Economic Modelling,
+122:106239.
+Filipović, D. and Schneider, P . (2024). Joint estimation of conditional mean and covariance for
+unbalanced panels. Swiss Finance Institute Research Paper Series 24-60, Swiss Finance Institute.
+Revised March 2025.
+Hansen, L. P . and Jagannathan, R. (1991). Implications of security market data for models of
+dynamic economies. Journal of Political Economy, 99(2):225–262.
+39
+Jacot, A., Gabriel, F., and Hongler, C. (2018). Neural tangent kernel: Convergence and general-
+ization in neural networks. In Advances in Neural Information Processing Systems 31 , pages
+8571–8580.
+Kelly, B. T. and Malamud, S. (2025). Understanding the virtue of complexity. Research Paper
+25-96, Swiss Finance Institute. Working paper.
+Kelly, B. T., Malamud, S., and Zhou, K. (2024). The virtue of complexity in return prediction. The
+Journal of Finance, 79(1):459–503.
+Kozak, S., Nagel, S., and Santosh, S. (2020). Shrinking the cross-section. Journal of Financial
+Economics, 135(2):271–292.
+Markowitz, H. (1952). Portfolio selection. The Journal of Finance , 7(1):77–91.
+Nagel, S. (2025). Seemingly virtuous complexity in return prediction. Working Paper 34104,
+National Bureau of Economic Research.
+Rahimi, A. and Recht, B. (2007). Random features for large-scale kernel machines. In Advances
+in Neural Information Processing Systems 20 , pages 1177–1184.
+Simon, F., Weibels, S., and Zimmermann, T. (2026). Deep parametric portfolio policies. Manage-
+ment Science. Articles in Advance.
+40
+A. Proofs and Auxiliary Results
+A.1. Maximum-Sharpe direction
+Proof of Proposition 1. Write 𝑊 = 𝑎𝑈, with ∥𝑈 ∥H = 1 and 𝑎 ∈ R. For a direction with positive
+payoff variance, put 𝑚𝑈 = E[𝑅 𝑝
+𝑡+1(𝑈)] and 𝑠2
+𝑈 = E[( 𝑅 𝑝
+𝑡+1(𝑈)) 2]. Then
+𝑄(𝑎𝑈) = 1 − 2𝑎𝑚𝑈 + 𝑎2𝑠2
+𝑈, 𝑎 ★(𝑈) = 𝑚𝑈
+𝑠2
+𝑈
+, min
+𝑎
+𝑄(𝑎𝑈) = 1
+1 + SR2(𝑅 𝑝
+𝑡+1(𝑈))
+.
+A zero payoff has loss one; a nonzero constant payoff can be scaled to have loss zero. The as-
+sumption 0 < 𝑄 (𝑊★) < 1 therefore excludes both from the optimum. Minimizing over directions
+maximizes squared Sharpe, and the optimally scaled payoff has mean𝑚2
+𝑈/𝑠2
+𝑈 > 0. Thus the selected
+orientation attains the positive maximum Sharpe ratio. □
+A.2. Pricing-kernel interpretation and Hansen–Jagannathan equality
+Proof of Proposition 2. Suppress the economy subscript. The first-order condition for 𝑄(𝑊★ + 𝑎𝑉)
+at 𝑎 = 0 gives E[𝑚★𝑅 𝑝 (𝑉)] = 0 for every 𝑉 ∈ H . Taking 𝑉 = 𝑊★ and using Proposition 1,
+E[𝑚★] = E[( 𝑚★)2] = 𝑄(𝑊★) =: 𝑞★ = 1
+1 + ( SR★)2 .
+Hence e𝑚 = 𝑚★/𝑞★ has mean one and variance (1 − 𝑞★)/𝑞★ = (SR★)2. For any square-integrable 𝑑
+with E[𝑑] = 1 and E[𝑑𝑅 𝑝 (𝑉)] = 0 for every 𝑉 ∈ H , E[𝑑𝑚★] = 1 and therefore
+Var(𝑑) = Var(e𝑚) + E[( 𝑑 − e𝑚)2] ≥ ( SR★)2.
+This proves the minimum-variance property without imposing positivity or the stronger conditional
+restriction in Condition (E4). □
+41
+A.3. Managed-portfolio Markowitz representation
+Proof of Proposition 3. The reproducing property gives 𝑅 𝑝
+𝑡+1(𝑊) = ⟨𝑊, 𝑋 𝑡⟩H𝐾 and ∥ 𝑋𝑡 ∥2
+H𝐾
+=
+𝑁 −2𝑅′
+𝑡+1𝐾𝑡 𝑅𝑡+1. Assumption 1 gives strong measurability, while Condition (E2) and Jensen’s in-
+equality give E∥ 𝑋𝑡 ∥2
+H𝐾
+≤ 𝐵2
+𝑋 log 2. Thus the first and second moments are well defined, and
+𝑄(𝑊) = 1 − 2⟨𝑊, 𝜇 H𝐾 ⟩H𝐾 + ⟨𝑊, ΣH𝐾 𝑊⟩H𝐾 .
+The population first-order condition is ΣH𝐾 𝑊★
+𝐾 = 𝜇H𝐾 ; the minimum-norm solution is the stated
+pseudoinverse representation. The empirical penalized criterion gives
+(bΣ𝑇 + 𝜆𝐼 ) b𝑊𝜆,𝑇 = b𝜇𝑇 .
+Since bΣ𝑇 ⪰ 0 and 𝜆 > 0, the inverse exists and yields ( 5). □
+A.4. A suﬀicient Gaussian return specification
+Proposition 4 (A sufficient Gaussian return specification). Suppose that, conditionally on ℱ𝑡, 𝑅𝑡+1
+is Gaussian, possibly with a singular covariance, and
+max
+1≤𝑖≤𝑁
+E[𝑅2
+𝑖,𝑡 +1 | ℱ𝑡] ≤ 𝑉𝑅 < ∞ a.s.,
+uniformly in the economy and time. Then Condition (E2) holds with 𝐵2
+𝑋 = 8𝜅𝐾𝑉𝑅 and 𝐾4 = 3.
+Proof. For every 𝑉 ∈ H 𝐾, 𝑅 𝑝
+𝑡+1(𝑉) is conditionally Gaussian. A scalar 𝐺 ∼ 𝑁 (𝑚, 𝑣) satisfies
+E𝐺4 = 𝑚4 + 6𝑚2𝑣 + 3𝑣2 ≤ 3(𝑚2 + 𝑣)2,
+which proves (8) with 𝐾4 = 3.
+42
+For the tail condition, Cauchy–Schwarz in H𝐾 and 𝐾 (𝑧, 𝑧) ≤ 𝜅𝐾 give
+∥ 𝑋𝑡 ∥2
+H𝐾 ≤ 𝜅𝐾
+𝑁
+𝑁Õ
+𝑖=1
+𝑅2
+𝑖,𝑡 +1.
+If 𝐺 ∼ 𝑁 (𝑚, 𝑣) and 𝑚2 + 𝑣 ≤ 𝑉𝑅, then
+E𝑒𝐺2/(8𝑉𝑅) =
+
+1 − 𝑣
+4𝑉𝑅
+ −1/2
+exp
+ 𝑚2
+8𝑉𝑅 − 2𝑣
+
+≤ 2√
+3
+𝑒1/6 < 2.
+Therefore, by convexity,
+E𝜀
+
+exp
+ ∥ 𝑋𝑡 ∥2
+8𝜅𝐾𝑉𝑅
+ ℱ𝑡
+
+≤ E𝜀
+"
+exp
+ 
+1
+𝑁
+𝑁Õ
+𝑖=1
+𝑅2
+𝑖,𝑡 +1
+8𝑉𝑅
+! ℱ𝑡
+#
+≤ 1
+𝑁
+𝑁Õ
+𝑖=1
+E𝜀
+"
+exp
+ 𝑅2
+𝑖,𝑡 +1
+8𝑉𝑅
+! ℱ𝑡
+#
+< 2.
+Independence across stocks is unnecessary. □
+This is a sufficient specification for Condition (E2); Gaussianity is not imposed on the class E.
+A.5. Exact reduction to the kernel learning problem
+Lemma 1 (Induced KRR problem). For every𝜀 ∈ E , the direct estimator is isometrically equivalent
+to scalar KRR with constant response one. The induced problem satisfies the conditions of Bignozzi
+et al. (2026, Lemma A.7) with source order 𝑟 = 1. Its covariance operator is unitarily equivalent
+to ΣH𝐾 ,𝜀, and its prediction error is exactly population portfolio regret.
+Proof. Step 1: identify the learning problem. Let X = 𝒵𝑁 × R𝑁 and Ξ𝑡 = (𝑍𝑡, 𝑅𝑡+1). For 𝑥 =
+(( 𝑧1, . . . , 𝑧𝑁 ), 𝑟), put
+Φ(𝑥) = 1
+𝑁
+Õ
+𝑖
+𝑟𝑖𝐾 (· , 𝑧𝑖), 𝑓 𝑊 (𝑥) = ⟨𝑊, Φ(𝑥)⟩H𝐾 .
+43
+The map T : 𝑊 ↦→ 𝑓𝑊 is injective: choosing 𝑟 = (𝑁, 0, . . . , 0) and varying 𝑧1 shows that 𝑓𝑊 = 0
+on X implies 𝑊 = 0. Equip G = { 𝑓𝑊 : 𝑊 ∈ H 𝐾 } with ⟨ 𝑓𝑊 , 𝑓 𝑉 ⟩G = ⟨𝑊, 𝑉 ⟩H𝐾 . Then T is an
+isometry onto the separable RKHS with kernel
+e𝐾 (𝑥, 𝑥′) = ⟨Φ(𝑥), Φ(𝑥′)⟩H𝐾 = 1
+𝑁 2
+Õ
+𝑖, 𝑗
+𝑟𝑖𝑠 𝑗 𝐾 (𝑧𝑖, 𝑧′
+𝑗 ), 𝑥 ′ = (( 𝑧′
+1, . . . , 𝑧′
+𝑁 ), 𝑠).
+Since Φ(Ξ𝑡) = 𝑋𝑡, 𝑌𝑡 ≡ 1 gives exactly the empirical criterion in ( 3), with the same penalty. Let
+𝐽 : G → 𝐿2(P𝜀,Ξ) be the canonical embedding. Square integrability, established above, gives
+T ∗𝐽∗𝐽T = Σ H𝐾 ,𝜀, 𝑓 G = T 𝑊★
+𝜀 .
+Expansion of the population criterion at its minimizer gives
+∥𝐽 𝑓𝑊 − 𝐽 𝑓G ∥2
+𝐿2 = ∥Σ1/2
+H𝐾 ,𝜀 (𝑊 − 𝑊★
+𝜀 ) ∥2
+H𝐾 = 𝑄𝜀 (𝑊) − 𝑄𝜀 (𝑊★
+𝜀 ).
+Step 2: verify the statistical assumptions. The induced kernel is measurable, and e𝐾 (Ξ𝑡, Ξ𝑡) =
+∥ 𝑋𝑡 ∥2
+H𝐾
+. For the statistical history A𝑡 = 𝜎(Ξ𝑠, 𝑌𝑠 : 𝑠 ≤ 𝑡), economic timing gives A𝑡−1 ⊆ ℱ𝑡.
+Condition (E2) and the tower property therefore imply
+E𝜀
+"
+exp
+ 
+e𝐾 (Ξ𝑡, Ξ𝑡)
+𝐵2
+𝑋
+! A𝑡−1
+#
+≤ 2.
+This is the conditional kernel-moment assumption in Bignozzi et al. (2026), with 𝐵𝐾 = 𝐵𝑋 and
+𝐶𝐾 = 2. Stationarity and mixing follow from Condition (E1); Condition (E3) gives source order
+𝑟 = 1, and Condition (E5) gives the same positive spectrum under the isometry.
+It remains to verify the score condition of the cited lemma. Write 𝑚★ = 𝑚★
+𝑡+1,𝜀, 𝑃★
+𝑡 = 𝑅 𝑝
+𝑡+1(𝑊★
+𝜀 )
+and 𝑞𝑡 = E𝜀 [( 𝑃★
+𝑡 )2 | ℱ𝑡]. Condition (E4) with 𝑉 = 𝑊★
+𝜀 gives E𝜀 [𝑃★
+𝑡 | ℱ𝑡] = 𝑞𝑡; conditional Jensen
+then gives 𝑞2
+𝑡 ≤ 𝑞𝑡, so 0 ≤ 𝑞𝑡 ≤ 1. Consequently, Condition (E2) implies E𝜀 [( 𝑚★)4 | ℱ𝑡] ≤
+44
+8(1 + 𝐾4). For every 𝑉 ∈ H 𝐾, conditional Cauchy–Schwarz yields
+E𝜀 [( 𝑚★)2(𝑅 𝑝
+𝑡+1(𝑉)) 2 | ℱ𝑡] ≤
+q
+E𝜀 [( 𝑚★)4 | ℱ𝑡]E𝜀 [( 𝑅 𝑝
+𝑡+1(𝑉)) 4 | ℱ𝑡]
+≤ 𝐶scE𝜀 [( 𝑅 𝑝
+𝑡+1(𝑉)) 2 | ℱ𝑡],
+where 𝐶sc =
+p
+8𝐾4(1 + 𝐾4). Integration and summation over an orthonormal basis show that 𝑚★𝑋𝑡
+is square integrable and that its second-moment operator is bounded above by 𝐶scΣH𝐾 ,𝜀. Condi-
+tion (E4), separability and the tower property give E𝜀 [𝑚★𝑋𝑡 | A 𝑡−1] = 0. The statistical score
+is T (𝑚★𝑋𝑡), so the cited lemma applies with its variance constant equal to 𝐶sc. All constants are
+common to E. □
+A.6. Proof of the portfolio-learning rate
+Proof of Theorem 1. Lemma 1 verifies the conditions of Bignozzi et al. (2026, Lemma A.7) with
+𝑟 = 1. Since 𝛾 > 𝑏 and 𝜆★
+𝑇 ≍ 𝑇 −𝑏/( 𝑏+1), its upper rate and the loss identity give ( 9) uniformly over
+E.
+For the Sharpe statement, put 𝐷𝑇 = 𝑄𝜀 (b𝑊𝜆★
+𝑇 ,𝑇) − 𝑄𝜀 (𝑊★
+𝜀 ), 𝑞★ = 𝑄𝜀 (𝑊★
+𝜀 ) and 𝑆★ = SR★
+𝜀,𝐾 .
+Proposition 1 and Condition (E6) give
+𝑞 := 1
+1 + 𝑆
+2 ≤ 𝑞★ ≤ 1
+1 + 𝑆2 =: 𝑞 < 1.
+On 𝐷𝑇 < 1 − 𝑞, the estimated loss is below one, hence the estimated payoff has positive mean. Its
+variance cannot be zero: a positive constant payoff could be rescaled to one, contradicting 𝑞★ > 0.
+Write its positive Sharpe as b𝑆𝑇 . Optimizing only its scale gives
+𝑞★ ≤ 1
+1 + b𝑆2
+𝑇
+≤ 𝑞★ + 𝐷𝑇 , 0 ≤ ( 𝑆★)2 − b𝑆2
+𝑇 ≤ 𝐷𝑇
+𝑞★(𝑞★ + 𝐷𝑇 ) .
+45
+Therefore
+0 ≤ 𝑆★ − b𝑆𝑇 ≤ 𝐷𝑇
+𝑆 𝑞2 .
+The event has probability tending to one uniformly, which proves ( 10). Any finite convention on a
+zero-variance event leaves this rate unchanged. At a fixed volatility 𝜎, the capital-allocation-line
+gap is 𝜎(𝑆★ − b𝑆𝑇 ) and has the same rate, uniformly for 𝜎 in a bounded interval. □
+A.7. Effective portfolio complexity
+Proof of Theorem 2. Condition (E5) and Bignozzi et al. (2026, Proposition A.6) give C𝐾,𝜀 (𝜆) ≍
+𝜆−1/𝑏 uniformly. At the regularization scale in Theorem 1,
+C★
+𝐾,𝑇 ≍ 𝑇 1/( 𝑏+1),
+C★
+𝐾,𝑇
+𝑇 ≍ 𝑇 −𝑏/( 𝑏+1) − →0.
+Finiteness follows from C𝐾,𝜀 (𝜆) ≤ Tr(ΣH𝐾 ,𝜀)/𝜆. This is the rate-optimal balance of the loss upper
+bound, not a shape theorem for the exact Sharpe curve of every economy. □
+A.8. A finance-specific minimax construction
+Proof of Theorem 3. The construction keeps the policy kernel fixed. It is a least-favourable family
+used only in this lower-bound proof, not a structural return equation imposed on the economies in
+the main text.
+Step 1: construct a least-favourable family with nondegenerate Sharpe. Since E is nonempty, take
+the one-period state-return marginal 𝜈0 of one economy in the class. Write a draw as 𝑥 = (z, 𝑟) and
+put
+𝑄 𝑋 (𝑥) := ∥Φ(𝑥) ∥2
+H𝐾 , 𝑞 𝑋 :=
+¹
+𝑄 𝑋 (𝑥) 𝑑𝜈 0(𝑥).
+Condition (E2) and Jensen’s inequality imply 𝑞 𝑋 ≤ 𝐵2
+𝑋 log 2. Moreover 𝑞 𝑋 > 0, because other-
+wise the managed feature would vanish almost surely, contradicting the spectral lower bound in
+46
+Condition (E5).
+Define a tilted law by
+𝑑e𝜈(𝑥) = 𝑄 𝑋 (𝑥)
+𝑞 𝑋
+𝑑𝜈 0(𝑥),
+and, on the support of the tilted law, replace the return vector by
+𝑟 ◦ =
+r 𝑞 𝑋
+𝑄 𝑋 (𝑥) 𝑟.
+Let 𝜈 denote the law of (z, 𝑟◦) and reuse 𝑟 for the normalized return vector below. Since the feature
+map is linear in returns,
+¹
+Φ(z, 𝑟◦) ⊗ Φ(z, 𝑟◦) 𝑑e𝜈 =
+¹
+Φ(𝑥) ⊗ Φ(𝑥) 𝑑𝜈 0(𝑥) =: Σ0.
+Thus the normalization preserves the entire managed-payoff second-moment operator. Under 𝜈,
+∥Φ(𝑥) ∥2
+H𝐾 = 𝑞 𝑋 ≤ 𝐵2
+𝑋 log 2 almost surely.
+Put 𝐵𝑋 := 𝐵𝑋
+p
+log 2.
+Write
+Σ0𝑒 𝑗 = 𝜇 𝑗 𝑒 𝑗 , 𝑐 𝜇 𝑗 −𝑏 ≤ 𝜇 𝑗 ≤ 𝐶𝜇 𝑗 −𝑏.
+Its eigenvectors are orthonormal in H𝐾. Fix constants 𝑎, ℎ > 0, with ℎ ≤ 𝑎, sufficiently small that
+𝑎2 + ℎ2 ≤ 𝑅2, 𝐵𝑋
+p
+𝑎2 + ℎ2 ≤ 1
+2, 8𝐶𝜇ℎ2 ≤ 1
+8 .
+For an integer 𝑀 ≥ 1 and 𝜃 ∈ {− 1, 1} 𝑀, define
+𝑊𝜃 := 𝑎𝑒 1 + ℎ√
+𝑀
+2𝑀Õ
+𝑗=𝑀+1
+𝜃 𝑗−𝑀 𝑒 𝑗 , 𝑔 𝜃 (𝑥) := ⟨𝑊𝜃, Φ(𝑥)⟩H𝐾 .
+47
+Then
+∥𝑊𝜃 ∥H𝐾 =
+p
+𝑎2 + ℎ2 ≤ 𝑅, | 𝑔𝜃 (𝑥)| ≤ 𝐵𝑋
+p
+𝑎2 + ℎ2 ≤ 1
+2 .
+Put
+𝐴𝑀 := ∥𝑔𝜃 ∥2
+𝐿2 (𝜈) = 𝑎2𝜇1 + ℎ2
+𝑀
+2𝑀Õ
+𝑗=𝑀+1
+𝜇 𝑗 .
+This quantity does not depend on 𝜃. Moreover,
+𝑎2𝑐𝜇 ≤ 𝐴𝑀 ≤ 1
+4 .
+Step 2: construct admissible financial observations. Draw 𝑥𝑡 = (𝑍𝑡, 𝑟𝑡) independently with law 𝜈.
+Conditional on 𝑥𝑡, draw 𝑠𝑡 ∈ {− 1, 1} according to
+P𝜃 (𝑠𝑡 = 1 | 𝑥𝑡) = 1 + 𝑔𝜃 (𝑥𝑡)
+2 .
+The observed financial row is (𝑍𝑡, 𝑅𝑡+1) = (𝑍𝑡, 𝑠𝑡𝑟𝑡). For the least-favourable construction take
+ℱ𝑡 = 𝜎(𝑥𝑢, 𝑠𝑢 : 𝑢 < 𝑡 ) ∨ 𝜎(𝑥𝑡).
+This information structure is allowed by Definition1. Rows are i.i.d. The managed feature is 𝑠𝑡Φ(𝑥𝑡)
+and, since 𝑠2
+𝑡 = 1,
+∥𝑠𝑡Φ(𝑥𝑡) ∥2
+H𝐾 = 𝑞 𝑋 .
+Because 𝑥𝑡 is contained in ℱ𝑡,
+E𝜃
+"
+exp
+ ∥𝑠𝑡Φ(𝑥𝑡) ∥2
+H𝐾
+𝐵2
+𝑋
+! ℱ𝑡
+#
+= exp(𝑞 𝑋/𝐵2
+𝑋) ≤ 2.
+48
+Moreover, for every 𝑉 ∈ H 𝐾,
+(𝑅 𝑝
+𝑡+1(𝑉)) 2 = ⟨𝑉, Φ(𝑥𝑡)⟩ 2
+H𝐾 , (𝑅 𝑝
+𝑡+1(𝑉)) 4 = ⟨𝑉, Φ(𝑥𝑡)⟩ 4
+H𝐾
+conditionally on ℱ𝑡. Hence Condition (E2) holds with fourth-moment coefficient one, and therefore
+with the class constant 𝐾4 ≥ 1. The second-moment operator of the managed feature is exactly Σ0.
+For every 𝑉 ∈ H 𝐾, conditional on the current 𝑥𝑡 and the past,
+E𝜃
+
+(1 − 𝑅 𝑝
+𝑡+1(𝑊𝜃)) 𝑅 𝑝
+𝑡+1(𝑉) | 𝑥𝑡, ℱ𝑡−1
+
+= ⟨𝑉, Φ(𝑥𝑡)⟩H𝐾 E𝜃 [𝑠𝑡 − 𝑔𝜃 (𝑥𝑡) | 𝑥𝑡, ℱ𝑡−1] = 0.
+Thus Condition (E4) holds. For any portfolio policy𝑊 with finite loss, write𝑔𝑊 (𝑥) = 𝑁 −1 Í
+𝑖 𝑊 (𝑧𝑖)𝑟𝑖.
+Then
+𝑄𝜃 (𝑊) − 𝑄𝜃 (𝑊𝜃) =
+¹
+(𝑔𝑊 (𝑥) − 𝑔𝜃 (𝑥)) 2 𝑑𝜈 (𝑥). (A.1)
+Indeed, conditioning on 𝑥 gives the quadratic 1 − 2𝑔𝜃 (𝑥)𝑔𝑊 (𝑥) + 𝑔𝑊 (𝑥)2. Consequently, 𝑊𝜃 is the
+population-optimal minimum-norm policy.
+Its payoff satisfies
+E𝜃 [𝑅 𝑝
+𝑡+1(𝑊𝜃)] = 𝐴𝑀, E𝜃 [( 𝑅 𝑝
+𝑡+1(𝑊𝜃)) 2] = 𝐴𝑀 .
+Hence
+(SR★
+𝜃 )2 = 𝐴𝑀
+1 − 𝐴𝑀
+.
+Because 𝐴𝑀 is uniformly bounded away from zero and from one, the optimal Sharpe ratio is
+uniformly bounded away from zero and infinity. Thus the least-favourable family satisfies Con-
+dition (E6), with constants common to the family, as well as Conditions (E1)–(E5).
+Step 3: neighboring economies are diﬀicult to distinguish. Consider the more informative experi-
+ment that also reveals 𝑥𝑡 and 𝑠𝑡. A lower bound in this augmented experiment also applies to the
+49
+financial observations. Neighboring parameters differ in one sign, say coordinate 𝑗 − 𝑀. Their
+conditional Bernoulli probabilities lie in [1/4, 3/4], and
+KL(Ber( 𝑝), Ber(𝑞)) ≤ ( 𝑝 − 𝑞)2
+𝑞(1 − 𝑞) .
+Hence, for the laws Paug,𝑇
+𝜃 of 𝑇 augmented observations and a one-bit neighbor 𝜃′, we have
+KL(Paug,𝑇
+𝜃 , Paug,𝑇
+𝜃′ ) ≤ 2𝑇
+¹
+(𝑔𝜃 − 𝑔𝜃′)2 𝑑𝜈
+= 8𝑇 ℎ2𝜇 𝑗
+𝑀
+≤ 8𝐶𝜇ℎ2 𝑇
+𝑀 𝑏+1 .
+Choose
+𝑀 =
+l
+𝑇 1/( 𝑏+1)
+m
+.
+The right-hand side is at most 1/8, so Pinsker’s inequality gives total variation at most1/4 for every
+neighboring pair.
+Step 4: testing diﬀiculty implies scale-free directional error. Define
+𝜓 𝑗 (𝑥) := ⟨𝑒 𝑗 , Φ(𝑥)⟩H𝐾
+√𝜇 𝑗
+,
+so that (𝜓 𝑗 ) 𝑗 ≥1 is orthonormal in 𝐿2(𝜈). Let b𝑔 be any estimated square-integrable payoff rule and
+write
+b𝑎 𝑗 := ⟨b𝑔, 𝜓 𝑗 ⟩𝐿2 (𝜈).
+Decode the signs by
+b𝜃 𝑗−𝑀 := sign(b𝑎1b𝑎 𝑗 ), 𝑀 < 𝑗 ≤ 2𝑀,
+with any fixed convention at zero. This decoder is invariant to any nonzero global rescaling of b𝑔.
+50
+Define the scale-free directional error
+𝐷𝜃 (b𝑔) := inf
+𝑐∈R
+∥𝑔𝜃 − 𝑐b𝑔∥2
+𝐿2 (𝜈).
+For any 𝑐 ∈ R, if 𝑐b𝑎1 ≤ 0, the squared error in the first coordinate is at least 𝑎2𝜇1. If 𝑐b𝑎1 > 0,
+every incorrectly decoded sign contributes at least ℎ2𝜇 𝑗 /𝑀 to the squared error. Since ℎ ≤ 𝑎 and
+𝐻 (b𝜃, 𝜃 ) ≤ 𝑀, both cases imply
+𝐷𝜃 (b𝑔) ≥ ℎ2𝑐𝜇
+2𝑏 𝑀 𝑏+1 𝐻 (b𝜃, 𝜃 ).
+For every neighboring pair, the sum of the two sign-error probabilities is at least 1 − TV ≥ 3/4.
+Averaging over the hypercube and summing over its 𝑀 coordinates therefore gives
+2−𝑀
+Õ
+𝜃
+E𝜃 [𝐻 (b𝜃, 𝜃 )] ≥ 3𝑀
+8 .
+Consequently,
+2−𝑀
+Õ
+𝜃
+E𝜃 [𝐷𝜃 (b𝑔)] ≥ 3ℎ2𝑐𝜇
+2𝑏+3 𝑀 −𝑏.
+Step 5: directional error is a Sharpe-ratio gap. Write
+𝑚 := ⟨𝑔𝜃,b𝑔⟩𝐿2 (𝜈), 𝑣 := ∥b𝑔∥2
+𝐿2 (𝜈).
+If 𝑣 > 0, the payoff generated by b𝑔 satisfies
+E𝜃 [𝑅(b𝑔)] = 𝑚, E𝜃 [𝑅(b𝑔)2] = 𝑣,
+and hence
+SR𝜃 (b𝑔)2 = 𝑚2
+𝑣 − 𝑚2 .
+51
+Moreover,
+𝐷𝜃 (b𝑔) = 𝐴𝑀 − 𝑚2
+𝑣 = 1
+1 + SR𝜃 (b𝑔)2 − 1
+1 + ( SR★
+𝜃 )2 .
+The same identity holds for 𝑣 = 0 under the convention SR𝜃 (b𝑔) = 0. Cauchy–Schwarz implies
+| SR𝜃 (b𝑔)| ≤ SR★
+𝜃 .
+If SR𝜃 (b𝑔) ≥ 0, then
+SR★
+𝜃 − SR𝜃 (b𝑔) ≥ 𝐷𝜃 (b𝑔)
+2𝑆
+.
+If SR𝜃 (b𝑔) < 0, then the gap is at least 𝑆; since 𝐷𝜃 (b𝑔) ≤ 𝐴𝑀 ≤ 1/4, it is again bounded below by
+a fixed positive multiple of 𝐷𝜃 (b𝑔). Therefore there is a constant 𝑐𝑆 > 0, independent of 𝑀, 𝑇 , 𝜃,
+such that
+SR★
+𝜃 − SR𝜃 (b𝑔) ≥ 𝑐𝑆 𝐷𝜃 (b𝑔).
+Combining this inequality with Step 4 yields
+2−𝑀
+Õ
+𝜃
+E𝜃
+
+SR★
+𝜃 − SR𝜃 (b𝑔)
+
+≥ 𝑐1𝑀 −𝑏
+for a constant 𝑐1 > 0. Since 𝑀 = ⌈𝑇 1/( 𝑏+1)⌉ ≤ 2𝑇 1/( 𝑏+1) for all sufficiently large 𝑇, we obtain
+sup
+𝜃
+E𝜃
+
+SR★
+𝜃 − SR𝜃 (b𝑔)
+
+≥ 𝑐2𝑇 −𝑏/( 𝑏+1)
+for some 𝑐2 > 0.
+The argument allowed b𝑔 to range over all square-integrable estimators in the more informative
+augmented experiment, a larger class than managed portfolio rules based on the observed financial
+rows. Taking the infimum over all measurable portfolio-learning procedures proves
+inf
+e𝑊𝑇
+sup
+𝜀∈E
+E𝜀
+h
+SR★
+𝜀,𝐾 − SR𝜀
+
+𝑅 𝑝
+𝑡+1(e𝑊𝑇 )
+i
+≥ 𝑐 𝑇−𝑏/( 𝑏+1)
+for a constant 𝑐 > 0 and all sufficiently large 𝑇. □
+52
+B. Tabelle
+Table IV. Portfolio representations generated by different kernels
+Representation Kernel Portfolio policy
+Common exposure 𝐾 (𝑧, 𝑧′) = 1 𝑊 (𝑧) is constant
+Linear 𝐾 (𝑧, 𝑧′) = 1 + 𝑧′𝑧′ 𝑊 (𝑧) is linear in characteristics
+Finite features 𝐾 (𝑧, 𝑧′) = Φ (𝑧)′Φ(𝑧′) 𝑊 (𝑧) lies in the span of the chosen fea-
+tures
+Polynomial 𝐾 (𝑧, 𝑧′) = (1 + 𝑧′𝑧′)𝑞 𝑊 (𝑧) includes polynomial terms and
+interactions
+Gaussian 𝐾 (𝑧, 𝑧′) = exp
+
+− ∥𝑧 − 𝑧′∥2
+2ℓ2
+
+Flexible nonlinear 𝑊 (𝑧)
+Matérn 𝐾𝑠 (𝑧, 𝑧′) = 𝑐𝑠,𝐷 𝜌𝑠 (𝑧, 𝑧′) 𝑠−𝐷/2
+× K𝑠−𝐷/2
+ 𝜌𝑠 (𝑧, 𝑧′) Flexible nonlinear 𝑊 (𝑧) with smooth-
+ness controlled by 𝑠
+Neural tangent
+𝐾NTK(𝑧, 𝑧′) = ∥𝑧∥ ∥ 𝑧′∥
+2𝜋
+h
+sin 𝜃
++ 2(𝜋 − 𝜃) cos 𝜃
+i Infinite-width one-hidden-layer ReLU
+policy
+Notes: Here ℓ > 0 denotes the kernel length scale. For the Matérn kernel,
+𝜌𝑠 (𝑧, 𝑧′) =
+√
+2𝑠 − 𝐷 ∥𝑧 − 𝑧′ ∥
+ℓ , 𝑐 𝑠,𝐷 = 21− (𝑠−𝐷/2)
+Γ(𝑠 − 𝐷/2) , 𝑠 > 𝐷
+2 ,
+and K𝛼 denotes the modified Bessel function of the second kind. Under standard regularity conditions, the Matérn
+RKHS is equivalent to a Sobolev space of smoothness 𝑠.
+For the neural tangent kernel,
+𝜃 = arccos
+ 𝑧′𝑧′
+∥𝑧∥ ∥ 𝑧′ ∥
+
+,
+and the displayed expression corresponds to a one-hidden-layer ReLU network without bias in the infinite-width
+NTK limit, up to the conventional overall normalization.
+The kernel determines the class of characteristic-to-exposure mappings available to the portfolio manager. Portfolio
+returns use the common cross-sectional normalization in Equation ( 1). The common-exposure specification is an
+equal-exposure characteristic rule, not an unrestricted vector of static stock weights.
+53
+Table V relates the learning exponent to familiar spectral benchmarks. These are conditions on the
+managed-portfolio operator, not conclusions implied by the kernel name alone.
+Table V. Benchmark portfolio-learning rates
+Portfolio class Managed-portfolio spectrum Sharpe learning rate
+Finite dimensional Fixed finite rank 𝑇 −1
+Gaussian benchmark Fast decay Nearly 𝑇 −1
+Sobolev–Matérn benchmark 𝑏 = 2e𝑠/𝐷 𝑇 −2e𝑠/( 2e𝑠+𝐷)
+Notes: Sharpe rates use Condition (E6). The finite-rank rate uses a fixed identifiable payoff space and root- 𝑇
+moment estimation. The fast-decay row is a separate i.i.d. or sufficiently fast-mixing benchmark, with possible
+logarithmic factors and an admissible regularization sequence; it does not follow by setting 𝑏 = ∞ in Theorem 1.
+The Sobolev–Matérn row assumes the displayed managed-payoff spectral law and 𝛾 > 𝑏 .
+Population-optimal portfolio policy in a factor economy
+Proposition. Consider the three-factor return model
+𝑅𝑖,𝑡 +1 = 𝛽(𝑍𝑖,𝑡 )⊤𝐹𝑡+1 + 𝜀𝑖,𝑡 +1, 𝑖 = 1, . . . , 𝑁,
+where 𝛽(𝑧) ∈ R3 and the characteristics 𝑍𝑖,𝑡 are measurable with respect to F𝑡. Assume that
+E[𝐹𝑡+1 | F 𝑡] = 𝜇𝐹, E[𝐹𝑡+1𝐹⊤
+𝑡+1 | F 𝑡] = 𝐼3,
+E[𝜀𝑡+1 | F 𝑡] = 0, E[𝜀𝑡+1𝜀⊤
+𝑡+1 | F 𝑡] = 𝜎2
+𝜀 𝐼𝑁 ,
+E[𝐹𝑡+1𝜀⊤
+𝑡+1 | F 𝑡] = 0, 𝜎2
+𝜀 > 0.
+Suppose that the characteristics have a common marginal distribution 𝑃𝑍 , that 𝛽1, 𝛽2, 𝛽3 ∈ H 𝐾,
+and that the factor loadings satisfy
+1
+𝑁
+𝑁Õ
+𝑖=1
+𝛽(𝑍𝑖,𝑡 ) 𝛽(𝑍𝑖,𝑡 )⊤ = 𝑔𝐼 3, 𝑔 = 𝑐 𝛽
+3 > 0,
+54
+almost surely at every date. Then the population-optimal policy minimizing
+𝑄(𝑊) = E
+266664
+ 
+1 − 1
+𝑁
+𝑁Õ
+𝑖=1
+𝑊 (𝑍𝑖,𝑡 )𝑅𝑖,𝑡 +1
+! 2377775
+over 𝑊 ∈ H 𝐾 is given, uniquely up to 𝑃𝑍 -almost-sure equality, by
+𝑊★(𝑧) = 𝛽(𝑧)⊤𝜇𝐹
+𝑔 + 𝜎2𝜀 /𝑁 .
+Proof. For any 𝑊 ∈ H 𝐾, define the portfolio factor exposure
+𝑏𝑡 (𝑊) = 1
+𝑁
+𝑁Õ
+𝑖=1
+𝑊 (𝑍𝑖,𝑡 ) 𝛽(𝑍𝑖,𝑡 ) ∈ R3.
+Substituting the factor model into the portfolio payoff yields
+𝑅 𝑝
+𝑡+1(𝑊) = 𝑏𝑡 (𝑊)⊤𝐹𝑡+1 + 1
+𝑁
+𝑁Õ
+𝑖=1
+𝑊 (𝑍𝑖,𝑡 )𝜀𝑖,𝑡 +1.
+Using the conditional moment assumptions and the law of iterated expectations, we obtain
+E[𝑅 𝑝
+𝑡+1(𝑊) | F 𝑡] = 𝑏𝑡 (𝑊)⊤𝜇𝐹
+and
+E[( 𝑅 𝑝
+𝑡+1(𝑊)) 2 | F 𝑡] = ∥𝑏𝑡 (𝑊) ∥2 + 𝜎2
+𝜀
+𝑁 2
+𝑁Õ
+𝑖=1
+𝑊 (𝑍𝑖,𝑡 )2.
+Consequently, using the common marginal distribution of the characteristics, the unconditional
+population loss becomes
+𝑄(𝑊) = 1 − 2𝜇⊤
+𝐹E[𝑏𝑡 (𝑊)] + E[∥ 𝑏𝑡 (𝑊) ∥2] + 𝜎2
+𝜀
+𝑁 E[𝑊 (𝑍)2].
+55
+To compute its functional derivative, take an arbitrary direction 𝑉 ∈ H 𝐾 and consider 𝑊ℎ =
+𝑊 + ℎ𝑉, with ℎ ∈ R. Since 𝑏𝑡 is linear, we have 𝑏𝑡 (𝑊 + ℎ𝑉) = 𝑏𝑡 (𝑊) + ℎ𝑏 𝑡 (𝑉). Substituting into
+the loss and expanding gives
+𝑄(𝑊 + ℎ𝑉) = 𝑄(𝑊) + 2ℎ
+
+−𝜇⊤
+𝐹E[𝑏𝑡 (𝑉)] + E[𝑏𝑡 (𝑊)⊤𝑏𝑡 (𝑉)] + 𝜎2
+𝜀
+𝑁 E[𝑊 (𝑍)𝑉 (𝑍)]
+
++ ℎ2
+
+E[∥ 𝑏𝑡 (𝑉) ∥2] + 𝜎2
+𝜀
+𝑁 E[𝑉 (𝑍)2]
+
+.
+Therefore, the Gâteaux derivative of 𝑄 at 𝑊 in the direction 𝑉 is
+𝐷𝑄 (𝑊) [𝑉] = 𝑑
+𝑑ℎ 𝑄(𝑊 + ℎ𝑉)
+
+ℎ=0
+= −2𝜇⊤
+𝐹E[𝑏𝑡 (𝑉)] + 2E[𝑏𝑡 (𝑊)⊤𝑏𝑡 (𝑉)] + 2𝜎2
+𝜀
+𝑁 E[𝑊 (𝑍)𝑉 (𝑍)] .
+A population minimizer must satisfy 𝐷𝑄 (𝑊) [𝑉] = 0 for every 𝑉 ∈ H 𝐾. Dividing by two and
+recalling that
+𝑏𝑡 (𝑉) = 1
+𝑁
+𝑁Õ
+𝑖=1
+𝑉 (𝑍𝑖,𝑡 ) 𝛽(𝑍𝑖,𝑡 ),
+the functional first-order condition can be written as
+0 = E
+"
+1
+𝑁
+𝑁Õ
+𝑖=1
+𝑉 (𝑍𝑖,𝑡 )
+
+𝛽(𝑍𝑖,𝑡 )⊤ [𝑏𝑡 (𝑊) − 𝜇𝐹] + 𝜎2
+𝜀
+𝑁 𝑊 (𝑍𝑖,𝑡 )
+#
+.
+We solve this equation by imposing the stronger pointwise condition
+𝛽(𝑍𝑖,𝑡 )⊤ [𝑏𝑡 (𝑊) − 𝜇𝐹] + 𝜎2
+𝜀
+𝑁 𝑊 (𝑍𝑖,𝑡 ) = 0
+for every 𝑖 and almost every realization of the characteristics. This condition is sufficient, although
+not necessarily equivalent to the functional first-order condition, since it makes the expression inside
+the expectation vanish for every admissible direction 𝑉.
+56
+Isolating 𝑊 (𝑍𝑖,𝑡 ), we obtain
+𝑊 (𝑍𝑖,𝑡 ) = 𝑁
+𝜎2𝜀
+𝛽(𝑍𝑖,𝑡 )⊤ [𝜇𝐹 − 𝑏𝑡 (𝑊)] .
+Substituting this expression into the definition of 𝑏𝑡 (𝑊) yields
+𝑏𝑡 (𝑊) = 1
+𝑁
+𝑁Õ
+𝑖=1
+𝛽(𝑍𝑖,𝑡 )𝑊 (𝑍𝑖,𝑡 )
+= 1
+𝜎2𝜀
+ 𝑁Õ
+𝑖=1
+𝛽(𝑍𝑖,𝑡 ) 𝛽(𝑍𝑖,𝑡 )⊤
+!
+[𝜇𝐹 − 𝑏𝑡 (𝑊)] .
+By the cross-sectional balance condition, the matrix inside the parentheses equals 𝑁𝑔𝐼 3. Hence
+𝑏𝑡 (𝑊) = 𝑁𝑔
+𝜎2𝜀
+[𝜇𝐹 − 𝑏𝑡 (𝑊)] ,
+which implies
+(𝑁𝑔 + 𝜎2
+𝜀 )𝑏𝑡 (𝑊) = 𝑁𝑔𝜇 𝐹, 𝑏 𝑡 (𝑊) = 𝑁𝑔
+𝑁𝑔 + 𝜎2𝜀
+𝜇𝐹 .
+Substituting back into the expression for 𝑊 (𝑍𝑖,𝑡 ), we find
+𝑊 (𝑍𝑖,𝑡 ) = 𝑁
+𝜎2𝜀
+𝛽(𝑍𝑖,𝑡 )⊤
+
+𝜇𝐹 − 𝑁𝑔
+𝑁𝑔 + 𝜎2𝜀
+𝜇𝐹
+
+= 𝑁
+𝜎2𝜀
+𝛽(𝑍𝑖,𝑡 )⊤ 𝜎2
+𝜀
+𝑁𝑔 + 𝜎2𝜀
+𝜇𝐹
+= 𝛽(𝑍𝑖,𝑡 )⊤𝜇𝐹
+𝑔 + 𝜎2𝜀 /𝑁 .
+We have thus derived the function
+𝑊★(𝑧) = 𝛽(𝑧)⊤𝜇𝐹
+𝑔 + 𝜎2𝜀 /𝑁 = 𝛽(𝑧)⊤𝜇𝐹
+𝑐 𝛽/3 + 𝜎2𝜀 /𝑁 .
+Its functional form was not imposed in advance. Moreover, since 𝛽1, 𝛽2, 𝛽3 ∈ H 𝐾, the resulting
+57
+𝑊★ belongs to H𝐾.
+We now verify that this function satisfies the functional first-order condition. Using cross-
+sectional balance,
+𝑏𝑡 (𝑊★) = 1
+𝑁
+𝑁Õ
+𝑖=1
+𝛽(𝑍𝑖,𝑡 )𝑊★(𝑍𝑖,𝑡 )
+= 1
+𝑔 + 𝜎2𝜀 /𝑁
+ 
+1
+𝑁
+𝑁Õ
+𝑖=1
+𝛽(𝑍𝑖,𝑡 ) 𝛽(𝑍𝑖,𝑡 )⊤
+!
+𝜇𝐹
+= 𝑔
+𝑔 + 𝜎2𝜀 /𝑁 𝜇𝐹 .
+Therefore, for every 𝑖 and almost every realization of the characteristics,
+𝛽(𝑍𝑖,𝑡 )⊤ [𝑏𝑡 (𝑊★) − 𝜇𝐹] + 𝜎2
+𝜀
+𝑁 𝑊★(𝑍𝑖,𝑡 )
+= − 𝜎2
+𝜀 /𝑁
+𝑔 + 𝜎2𝜀 /𝑁 𝛽(𝑍𝑖,𝑡 )⊤𝜇𝐹 + 𝜎2
+𝜀 /𝑁
+𝑔 + 𝜎2𝜀 /𝑁 𝛽(𝑍𝑖,𝑡 )⊤𝜇𝐹 = 0.
+It follows that 𝐷𝑄 (𝑊★) [𝑉] = 0 for every 𝑉 ∈ H 𝐾.
+To establish global optimality, observe that the second functional variation is
+𝐷2𝑄(𝑊) [𝑉, 𝑉 ] = 2E[∥ 𝑏𝑡 (𝑉) ∥2] + 2𝜎2
+𝜀
+𝑁 E[𝑉 (𝑍)2].
+Both terms are nonnegative, and the second is strictly positive whenever 𝑉 is nonzero in 𝐿2(𝑃𝑍 ).
+Thus 𝑄 is strictly convex up to 𝑃𝑍 -almost-sure equality, and the stationary point 𝑊★ is its unique
+population minimizer in this sense.
+More explicitly, for any𝑊 ∈ H 𝐾, let Δ𝑊 = 𝑊 −𝑊★. Since the first functional variation vanishes
+at 𝑊★, the quadratic expansion gives the exact excess-loss identity
+𝑄(𝑊) − 𝑄(𝑊★) = E[∥ 𝑏𝑡 (Δ𝑊) ∥2] + 𝜎2
+𝜀
+𝑁 E[Δ𝑊 (𝑍)2] ≥ 0.
+Finally, the solution also satisfies the conditional pricing restriction. Let 𝐵𝑡 ∈ R𝑁×3 contain the
+58
+factor loadings as its rows and define
+𝑤★
+𝑡 = 1
+𝑁 (𝑊★(𝑍1,𝑡), . . . , 𝑊★(𝑍𝑁,𝑡 )) ⊤, 𝑣 𝑡 = 1
+𝑁 (𝑉 (𝑍1,𝑡), . . . , 𝑉(𝑍𝑁,𝑡 )) ⊤.
+The pointwise condition established above is equivalent to
+(𝐵𝑡 𝐵⊤
+𝑡 + 𝜎2
+𝜀 𝐼𝑁 )𝑤★
+𝑡 = 𝐵𝑡 𝜇𝐹 .
+Consequently, for every 𝑉 ∈ H 𝐾,
+E[( 1 − 𝑅 𝑝
+𝑡+1(𝑊★)) 𝑅 𝑝
+𝑡+1(𝑉) | F 𝑡]
+= 𝑣⊤
+𝑡 𝐵𝑡 𝜇𝐹 − 𝑣⊤
+𝑡 (𝐵𝑡 𝐵⊤
+𝑡 + 𝜎2
+𝜀 𝐼𝑁 )𝑤★
+𝑡 = 0.
+Hence the population-optimal policy also satisfies Condition E4. □
+For the conditional Gaussian specification
+𝐹𝑡+1 ∼ N ( 𝜇𝐹, 𝐼3 − 𝜇𝐹 𝜇⊤
+𝐹), 𝜀 𝑡+1 ∼ N (0, 𝜎2
+𝜀 𝐼𝑁 ),
+with conditionally independent factors and idiosyncratic innovations, and ∥ 𝛽(𝑧) ∥2 = 𝑐 𝛽. Then
+E[𝑅2
+𝑖,𝑡 +1 | F 𝑡] = ∥ 𝛽(𝑍𝑖,𝑡 ) ∥2 + 𝜎2
+𝜀 = 𝑐 𝛽 + 𝜎2
+𝜀 .
+Proposition 4 therefore verifies Condition (E2) with 𝐵2
+𝑋 = 8𝜅𝐾 (𝑐 𝛽 + 𝜎2
+𝜀 ) and 𝐾4 = 3. For a normal-
+ized Matérn kernel, 𝜅𝐾 = 1.
+Proposition 5 (Eigenvalue decay of the managed-return covariance operator) . Consider the factor
+economy
+𝑅𝑖,𝑡 +1 = 𝛽(𝑍𝑖,𝑡 )⊤𝐹𝑡+1 + 𝜀𝑖,𝑡 +1, 𝑖 = 1, . . . , 𝑁,
+59
+where
+E[𝐹𝑡+1𝐹⊤
+𝑡+1 | F 𝑡] = 𝐼3, E[𝜀𝑡+1𝜀⊤
+𝑡+1 | F 𝑡] = 𝜎2
+𝜀 𝐼𝑁 , E[𝐹𝑡+1𝜀⊤
+𝑡+1 | F 𝑡] = 0,
+with 𝜎2
+𝜀 > 0. Assume that the characteristics have a common uniform marginal distribution 𝑃𝑍 on
+Z = [−1, 1] 𝐷 and that the factor loadings satisfy
+1
+𝑁
+𝑁Õ
+𝑖=1
+𝛽(𝑍𝑖,𝑡 ) 𝛽(𝑍𝑖,𝑡 )⊤ = 𝑔𝐼 3, 𝑔 > 0,
+almost surely at every date. Let 𝐾 be a Matérn kernel with smoothness parameter 𝜈 > 0 and fixed
+positive length scale, and define
+𝑋𝑡 = 1
+𝑁
+𝑁Õ
+𝑖=1
+𝑅𝑖,𝑡 +1𝐾 (· , 𝑍𝑖,𝑡 ), ΣH𝐾 ,𝜀 = E𝜀 [𝑋𝑡 ⊗ 𝑋𝑡].
+Then, for every fixed economy with finite 𝑁, the positive eigenvalues 𝜇 𝑗,𝜀 of ΣH𝐾 ,𝜀 satisfy
+𝑐𝜇 𝑗 −𝑏 ≤ 𝜇 𝑗,𝜀 ≤ 𝐶𝜇 𝑗 −𝑏, 𝑗 ≥ 1,
+where 𝑏 = 1 + 2𝜈/𝐷 and 0 < 𝑐 𝜇 ≤ 𝐶𝜇 < ∞. In particular, for 𝐷 = 6 and 𝜈 = 3/2, we obtain
+𝑏 = 3/2.
+Proof. Consider an arbitrary function 𝑓 ∈ H 𝐾. By the definition of the covariance operator and
+the reproducing property of the kernel,
+⟨ 𝑓 , ΣH𝐾 ,𝜀 𝑓 ⟩H𝐾 = E𝜀 [⟨ 𝑓 , 𝑋𝑡⟩2
+H𝐾 ]
+= E𝜀
+266664
+ 
+1
+𝑁
+𝑁Õ
+𝑖=1
+𝑓 (𝑍𝑖,𝑡 )𝑅𝑖,𝑡 +1
+! 2377775
+.
+60
+Substituting the factor model, we obtain
+1
+𝑁
+𝑁Õ
+𝑖=1
+𝑓 (𝑍𝑖,𝑡 )𝑅𝑖,𝑡 +1 =
+ 
+1
+𝑁
+𝑁Õ
+𝑖=1
+𝑓 (𝑍𝑖,𝑡 ) 𝛽(𝑍𝑖,𝑡 )
+! ⊤
+𝐹𝑡+1 + 1
+𝑁
+𝑁Õ
+𝑖=1
+𝑓 (𝑍𝑖,𝑡 )𝜀𝑖,𝑡 +1.
+Since the characteristics are F𝑡-measurable, the conditional second-moment assumptions imply
+E𝜀
+266664
+ 
+1
+𝑁
+𝑁Õ
+𝑖=1
+𝑓 (𝑍𝑖,𝑡 )𝑅𝑖,𝑡 +1
+! 2
+F𝑡
+377775
+=
+
+1
+𝑁
+𝑁Õ
+𝑖=1
+𝑓 (𝑍𝑖,𝑡 ) 𝛽(𝑍𝑖,𝑡 )
+
+2
++ 𝜎2
+𝜀
+𝑁 2
+𝑁Õ
+𝑖=1
+𝑓 (𝑍𝑖,𝑡 )2.
+Taking unconditional expectations and using the common marginal distribution of the characteris-
+tics gives
+⟨ 𝑓 , ΣH𝐾 ,𝜀 𝑓 ⟩H𝐾 = E𝜀
+266664
+
+1
+𝑁
+𝑁Õ
+𝑖=1
+𝑓 (𝑍𝑖,𝑡 ) 𝛽(𝑍𝑖,𝑡 )
+
+2377775
++ 𝜎2
+𝜀
+𝑁 E𝜀 [ 𝑓 (𝑍)2].
+Define the kernel covariance operator
+𝑇𝐾 = E𝜀 [𝐾 (· , 𝑍 ) ⊗ 𝐾 (· , 𝑍 )] ,
+where 𝑍 ∼ 𝑃𝑍 . By the reproducing property,
+⟨ 𝑓 , 𝑇𝐾 𝑓 ⟩H𝐾 = E𝜀 [ 𝑓 (𝑍)2].
+Since the first term in the preceding expression for ⟨ 𝑓 , ΣH𝐾 ,𝜀 𝑓 ⟩H𝐾 is nonnegative, we immediately
+obtain
+⟨ 𝑓 , ΣH𝐾 ,𝜀 𝑓 ⟩H𝐾 ≥ 𝜎2
+𝜀
+𝑁 ⟨ 𝑓 , 𝑇𝐾 𝑓 ⟩H𝐾 .
+To establish the upper bound, let 𝐵𝑡 ∈ R𝑁×3 denote the matrix whose 𝑖-th row is 𝛽(𝑍𝑖,𝑡 )⊤, and
+61
+write 𝑓𝑡 = ( 𝑓 (𝑍1,𝑡), . . . , 𝑓 (𝑍𝑁,𝑡 )) ⊤. The cross-sectional balance condition implies
+𝐵⊤
+𝑡 𝐵𝑡 = 𝑁𝑔𝐼 3.
+Consequently, the largest eigenvalue of 𝐵𝑡 𝐵⊤
+𝑡 is 𝑁𝑔 , and hence
+
+1
+𝑁
+𝑁Õ
+𝑖=1
+𝑓 (𝑍𝑖,𝑡 ) 𝛽(𝑍𝑖,𝑡 )
+
+2
+= 1
+𝑁 2 𝑓 ⊤
+𝑡 𝐵𝑡 𝐵⊤
+𝑡 𝑓𝑡
+≤ 𝑔
+𝑁 ∥ 𝑓𝑡 ∥2 = 𝑔
+𝑁
+𝑁Õ
+𝑖=1
+𝑓 (𝑍𝑖,𝑡 )2.
+Taking expectations and using the common marginal law,
+E𝜀
+266664
+
+1
+𝑁
+𝑁Õ
+𝑖=1
+𝑓 (𝑍𝑖,𝑡 ) 𝛽(𝑍𝑖,𝑡 )
+
+2377775
+≤ 𝑔E𝜀 [ 𝑓 (𝑍)2].
+Combining this inequality with the idiosyncratic component yields
+⟨ 𝑓 , ΣH𝐾 ,𝜀 𝑓 ⟩H𝐾 ≤
+
+𝑔 + 𝜎2
+𝜀
+𝑁
+
+⟨ 𝑓 , 𝑇𝐾 𝑓 ⟩H𝐾 .
+Therefore, for every 𝑓 ∈ H 𝐾,
+𝜎2
+𝜀
+𝑁 ⟨ 𝑓 , 𝑇𝐾 𝑓 ⟩H𝐾 ≤ ⟨ 𝑓 , ΣH𝐾 ,𝜀 𝑓 ⟩H𝐾 ≤
+
+𝑔 + 𝜎2
+𝜀
+𝑁
+
+⟨ 𝑓 , 𝑇𝐾 𝑓 ⟩H𝐾 .
+Equivalently, in the Loewner ordering of self-adjoint operators,
+𝜎2
+𝜀
+𝑁 𝑇𝐾 ⪯ ΣH𝐾 ,𝜀 ⪯
+
+𝑔 + 𝜎2
+𝜀
+𝑁
+
+𝑇𝐾 .
+Let 𝜆 𝑗 (𝑇𝐾) denote the eigenvalues of 𝑇𝐾, arranged in nonincreasing order. Since both operators
+62
+are positive, self-adjoint and compact, the min–max principle implies
+𝜎2
+𝜀
+𝑁 𝜆 𝑗 (𝑇𝐾) ≤ 𝜇 𝑗,𝜀 ≤
+
+𝑔 + 𝜎2
+𝜀
+𝑁
+
+𝜆 𝑗 (𝑇𝐾), 𝑗 ≥ 1.
+For a Matérn kernel with smoothness parameter 𝜈 on the bounded Lipschitz domain Z =
+[−1, 1] 𝐷, equipped with a uniform probability measure, the standard spectral asymptotics of the
+associated kernel integral operator imply that there exist constants 0 < 𝑐 𝐾 ≤ 𝐶𝐾 < ∞ such that
+𝑐𝐾 𝑗 −(1+2𝜈/𝐷) ≤ 𝜆 𝑗 (𝑇𝐾) ≤ 𝐶𝐾 𝑗 −(1+2𝜈/𝐷), 𝑗 ≥ 1.
+The nonzero eigenvalues of the kernel integral operator on 𝐿2(𝑃𝑍 ) coincide with those of 𝑇𝐾 on
+H𝐾. Therefore, combining the preceding inequalities, we obtain
+𝜎2
+𝜀
+𝑁 𝑐𝐾 𝑗 −(1+2𝜈/𝐷) ≤ 𝜇 𝑗,𝜀 ≤
+
+𝑔 + 𝜎2
+𝜀
+𝑁
+
+𝐶𝐾 𝑗 −(1+2𝜈/𝐷).
+Thus the required polynomial eigenvalue decay holds with
+𝑏 = 1 + 2𝜈
+𝐷 , 𝑐 𝜇 = 𝜎2
+𝜀
+𝑁 𝑐𝐾, 𝐶 𝜇 =
+
+𝑔 + 𝜎2
+𝜀
+𝑁
+
+𝐶𝐾 .
+In the baseline specification, 𝜈 = 3/2 and 𝐷 = 6, so that
+𝑏 = 1 + 2(3/2)
+6 = 3
+2 .
+Hence,
+𝑐𝜇 𝑗 −3/2 ≤ 𝜇 𝑗,𝜀 ≤ 𝐶𝜇 𝑗 −3/2, 𝑗 ≥ 1,
+which establishes the claimed eigenvalue decay. □
+Proposition 6 (Uniform bounds for the optimal Sharpe ratio) . Consider the factor economy de-
+63
+scribed above, with 𝑁 = 3𝐺 ≥ 3, 𝑔 = 𝑐 𝛽/3 > 0, 𝜎2
+𝜀 > 0, and 0 < ∥𝜇𝐹 ∥2 < 1. Let
+𝑊★(𝑧) = 𝛽(𝑧)⊤𝜇𝐹
+𝑔 + 𝜎2𝜀 /𝑁
+denote the population-optimal portfolio policy. Then there exist constants0 < 𝑆𝑅 min ≤ 𝑆𝑅 max < ∞,
+independent of 𝑁, such that
+𝑆𝑅 min ≤ 𝑆𝑅 (𝑊★) ≤ 𝑆𝑅 max.
+Proof. Recall that the portfolio return associated with a policy 𝑊 is
+𝑅 𝑝
+𝑡+1(𝑊) = 1
+𝑁
+𝑁Õ
+𝑖=1
+𝑊 (𝑍𝑖,𝑡 )𝑅𝑖,𝑡 +1.
+Its Sharpe ratio is defined as
+𝑆𝑅 (𝑊) =
+E[𝑅 𝑝
+𝑡+1(𝑊)]
+q
+Var(𝑅 𝑝
+𝑡+1(𝑊))
+.
+For the population-optimal policy, the cross-sectional balance condition implies
+𝑏𝑡 (𝑊★) = 1
+𝑁
+𝑁Õ
+𝑖=1
+𝑊★(𝑍𝑖,𝑡 ) 𝛽(𝑍𝑖,𝑡 ) = 𝑔
+𝑔 + 𝜎2𝜀 /𝑁 𝜇𝐹 .
+Consequently,
+E[𝑅 𝑝
+𝑡+1(𝑊★)] = 𝜇⊤
+𝐹 𝑏𝑡 (𝑊★) = 𝑔∥𝜇𝐹 ∥2
+𝑔 + 𝜎2𝜀 /𝑁 .
+Using the conditional second-moment assumptions of the factor model, we also have
+E[( 𝑅 𝑝
+𝑡+1(𝑊★)) 2] = E[∥ 𝑏𝑡 (𝑊★) ∥2] + 𝜎2
+𝜀
+𝑁 E[𝑊★(𝑍)2]
+= 𝑔2∥𝜇𝐹 ∥2
+(𝑔 + 𝜎2𝜀 /𝑁)2 + 𝜎2
+𝜀
+𝑁
+𝑔∥𝜇𝐹 ∥2
+(𝑔 + 𝜎2𝜀 /𝑁)2
+= 𝑔∥𝜇𝐹 ∥2
+𝑔 + 𝜎2𝜀 /𝑁 ,
+64
+where we used E[𝛽(𝑍) 𝛽(𝑍)⊤] = 𝑔𝐼 3.
+Define
+𝑞𝑁 = 𝑔∥𝜇𝐹 ∥2
+𝑔 + 𝜎2𝜀 /𝑁 .
+The preceding identities imply
+E[𝑅 𝑝
+𝑡+1(𝑊★)] = E[( 𝑅 𝑝
+𝑡+1(𝑊★)) 2] = 𝑞𝑁 ,
+and therefore
+Var(𝑅 𝑝
+𝑡+1(𝑊★)) = 𝑞𝑁 − 𝑞2
+𝑁 .
+It follows that
+𝑆𝑅 (𝑊★) = 𝑞𝑁q
+𝑞𝑁 − 𝑞2
+𝑁
+=
+r 𝑞𝑁
+1 − 𝑞𝑁
+.
+Since 𝑁 ≥ 3, we have
+0 < 𝜎2
+𝜀
+𝑁 ≤ 𝜎2
+𝜀
+3 .
+Together with 𝑔 > 0 and 0 < ∥𝜇𝐹 ∥2 < 1, this yields
+0 < 𝑔∥𝜇𝐹 ∥2
+𝑔 + 𝜎2𝜀 /3 ≤ 𝑞𝑁 ≤ ∥ 𝜇𝐹 ∥2 < 1.
+Since the function 𝑞 ↦→
+p
+𝑞/(1 − 𝑞) is strictly increasing on (0, 1), we obtain
+s
+𝑔∥𝜇𝐹 ∥2
+𝑔 + 𝜎2𝜀 /3 − 𝑔∥𝜇𝐹 ∥2 ≤ 𝑆𝑅 (𝑊★) ≤
+s
+∥𝜇𝐹 ∥2
+1 − ∥ 𝜇𝐹 ∥2 .
+Thus, defining
+𝑆𝑅 min =
+s
+𝑔∥𝜇𝐹 ∥2
+𝑔 + 𝜎2𝜀 /3 − 𝑔∥𝜇𝐹 ∥2 , 𝑆𝑅 max =
+s
+∥𝜇𝐹 ∥2
+1 − ∥ 𝜇𝐹 ∥2 ,
+65
+we conclude that
+0 < 𝑆𝑅 min ≤ 𝑆𝑅 (𝑊★) ≤ 𝑆𝑅 max < ∞.
+Both constants depend only on the fixed model parameters 𝑔, 𝜇𝐹, and 𝜎2
+𝜀 , and are independent of
+the number of assets 𝑁. This establishes the required uniform Sharpe-ratio bounds. □
+66

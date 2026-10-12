@@ -1,0 +1,38 @@
+{
+  "passed": true,
+  "pdf_sha256": {
+    "Portfolio_Paper_Annual_Figure6.pdf": "adaf9ed05a32f537f01d532bdba557c24e91b70aff0efe0273f4d3c444bc3a91",
+    "Empirics_Section_VI_Annual_Figure6.pdf": "fa4a0d267637e9901abc41f1837f8a8c626322366e0d5c29fb1427104e29ffdf"
+  },
+  "reviewed_standalone_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "reviewed_complete_manuscript_pages": [
+    33,
+    34
+  ],
+  "figure6_complete_manuscript_page": 34,
+  "figure6_standalone_page": 5,
+  "render_tool": "pdftoppm",
+  "render_dpi": [
+    110,
+    130
+  ],
+  "checks": [
+    "Nine selected annual panels with no missing year substitutions",
+    "Full observed tails and all 1,522 vertices per year",
+    "Common x and y limits; no clipped markers",
+    "Black annual CV diamonds, orange full-grid maxima, open exact zero endpoints",
+    "Caption and revised introduction legible",
+    "Tables and other figures remain readable and unchanged",
+    "No empirical overfull boxes or unresolved references"
+  ],
+  "known_unchanged_warning": "7.09189pt overfull hbox in unchanged proof"
+}
