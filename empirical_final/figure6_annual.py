@@ -1,4 +1,4 @@
-"""Replace only Figure 6 using saved annual fixed-Gaussian ridge exports.
+"""Align Figure 6 and Table II using saved annual fixed-Gaussian ridge exports.
 
 Reproduce without fitting portfolios: python3 -m empirical_final.figure6_annual
 """
@@ -36,8 +36,8 @@ effective complexity and the annualized Sharpe of its 12 subsequent
 monthly OOS returns. The annual past-validation selection is therefore
 an actual point on its own annual curve. These one-year profiles are
 noisier than pooled-block profiles and their retrospective maxima are
-descriptive. The historical table and block summaries below retain the
-original pooled-block results.
+descriptive. Table~\ref{tab:historical_endpoints} summarizes the maxima and
+zero-penalty endpoints for these same nine selected decision years.
 
 '''
 CAPTION = r'''\caption{Representative annual out-of-sample Sharpe--complexity profiles.
@@ -218,6 +218,57 @@ def revise_text(text):
     return updated[:caption_start] + CAPTION + updated[caption_end:]
 
 
+def annual_endpoint_table(summary):
+    """Tabulate the very same annual star and open-circle coordinates as Figure 6."""
+    lines = [r'\begin{table}[!htbp]\centering\small\setlength{\tabcolsep}{5pt}',
+        r'\caption{Annual retrospective maxima and exact unregularized endpoints}',
+        r'\label{tab:historical_endpoints}',
+        r'\begin{tabular}{@{}lrrrrr@{}}\toprule',
+        r'Decision year & $C$ at max. & Max. SR & $C(0)$ & SR at $\lambda=0$ & Decline \\ \midrule']
+    for s in summary.itertuples():
+        decline = s.maximum_sharpe - s.zero_sharpe
+        lines.append(f'{s.decision_year} & {s.maximum_C:.1f} & {s.maximum_sharpe:.3f}'
+                     f' & {s.zero_C:.0f} & {s.zero_sharpe:.3f} & {decline:.3f} ' + r'\\')
+    lines += [r'\bottomrule\end{tabular}\par\vspace{5pt}',
+        r'\begin{minipage}{\textwidth}\footnotesize',
+        r'The decision years are the same nine selected years as in Figure~\ref{fig:complexity_nine}.',
+        r'Each maximum uses the full annual evaluated grid, including the exact $\lambda=0$ endpoint.',
+        r'Sharpe is annualized from the 12 subsequent monthly OOS returns; complexity is measured',
+        r'for that same annual fit, without averaging across years. $C(0)$ is the annual',
+        r'historical effective rank. Decline is maximum minus zero-penalty Sharpe,',
+        r'a descriptive change rather than a significance test.',
+        r'\end{minipage}\end{table}']
+    return '\n'.join(lines) + '\n'
+
+
+def annual_findings(summary):
+    """Replace the obsolete pooled-block interpretation immediately after Table II."""
+    declines = summary.maximum_sharpe - summary.zero_sharpe
+    smallest = summary.loc[declines.idxmin()]
+    largest = summary.loc[declines.idxmax()]
+    interior = ((summary.maximum_candidate > 0) &
+                (summary.maximum_candidate < summary.zero_candidate)).all()
+    first = ('All nine annual retrospective maxima are interior on the extended grid. '
+             if interior else 'Annual retrospective maxima use the full extended grid, including zero. ')
+    return (first + f'Maximizing annual complexity ranges from {summary.maximum_C.min():.1f} '
+        f'to {summary.maximum_C.max():.1f}. Across the nine selected decision years, '
+        f'the peak-to-zero Sharpe decline ranges from {declines.min():.3f} to {declines.max():.3f}. '
+        f'The smallest decline occurs in {int(smallest.decision_year)}, where the unregularized '
+        f'endpoint remains close to the annual maximum; the largest occurs in {int(largest.decision_year)}. '
+        'These figures describe the selected annual profiles in Figure~\\ref{fig:complexity_nine} '
+        'and Table~\\ref{tab:historical_endpoints}, rather than pooled historical blocks. ')
+
+
+def revise_numbers(text, summary):
+    prefix = r'\newcommand{\HistoricalFindings}{'
+    start = text.index(prefix)
+    # HistoricalFindings is the final macro in the saved numbers.tex.
+    before, macro = text[:start], text[start:]
+    assert macro.startswith(prefix) and macro.rstrip().endswith('}')
+    assert macro.count(r'\newcommand') == 1
+    return before + prefix + annual_findings(summary) + '}\n'
+
+
 def build(baseline=BASELINE, delivery=DELIVERY):
     baseline, delivery = Path(baseline).resolve(), Path(delivery).resolve()
     assert baseline != delivery
@@ -234,6 +285,8 @@ def build(baseline=BASELINE, delivery=DELIVERY):
     shutil.copytree(source, project, dirs_exist_ok=True)
     (project / 'empirics.tex').write_text(revise_text((source / 'empirics.tex').read_text()))
     (project / 'figure6_caption.tex').write_text(CAPTION)
+    (project / 'tables/historical_endpoints.tex').write_text(annual_endpoint_table(summary))
+    (project / 'numbers.tex').write_text(revise_numbers((source / 'numbers.tex').read_text(), summary))
     (project / 'README_BUILD.txt').write_text((source / 'README_BUILD.txt').read_text().replace(
         'python3 -m empirical_final.manuscript_cleanup', 'python3 -m empirical_final.figure6_annual'))
     fig, rendering = plot_profiles(curves, summary)
@@ -241,7 +294,8 @@ def build(baseline=BASELINE, delivery=DELIVERY):
     fig.savefig(audit_dir / 'figure6.png', dpi=180)
     plt.close(fig)
     write_json(audit_dir / 'figure6_render.json', rendering)
-    changed = ['empirics.tex', 'figure6_caption.tex', f'figures/{FIGURE}.pdf', 'README_BUILD.txt']
+    changed = ['empirics.tex', 'figure6_caption.tex', f'figures/{FIGURE}.pdf', 'README_BUILD.txt',
+               'tables/historical_endpoints.tex', 'numbers.tex']
     for name, sha in before.items():
         if name not in changed:
             assert digest(project / name) == sha, f'Unexpected source change: {name}'
@@ -258,7 +312,9 @@ def build(baseline=BASELINE, delivery=DELIVERY):
         baseline=str(baseline.relative_to(ROOT)), changed_project_files=changed,
         protected_project_files={name: sha for name, sha in before.items() if name not in changed},
         baseline_project_sha256=before, empirical_text_outside_introduction_and_caption_unchanged=True,
-        other_figures_and_tables_unchanged=True, theory_and_proofs_unchanged=True))
+        other_figures_and_tables_unchanged=True, theory_and_proofs_unchanged=True,
+        numbers_outside_historical_findings_unchanged=True,
+        table_ii_matches_figure6_decision_years=True))
     dependencies = [dependency_audit(project, entry) for entry in ['main.tex', 'Empirics_only.tex']]
     write_json(audit_dir / 'dependencies.json', dependencies)
     builds = []

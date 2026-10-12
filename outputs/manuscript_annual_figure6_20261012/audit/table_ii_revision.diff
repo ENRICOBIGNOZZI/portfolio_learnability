@@ -1,0 +1,59 @@
+--- previous_annual/Portfolio/empirics.tex
++++ annual_table/Portfolio/empirics.tex
+@@ -175,8 +175,8 @@
+ monthly OOS returns. The annual past-validation selection is therefore
+ an actual point on its own annual curve. These one-year profiles are
+ noisier than pooled-block profiles and their retrospective maxima are
+-descriptive. The historical table and block summaries below retain the
+-original pooled-block results.
++descriptive. Table~\ref{tab:historical_endpoints} summarizes the maxima and
++zero-penalty endpoints for these same nine selected decision years.
+ 
+ \begin{figure}[!htbp]
+ \centering
+--- previous_annual/Portfolio/numbers.tex
++++ annual_table/Portfolio/numbers.tex
+@@ -44,4 +44,4 @@
+ \newcommand{\SinglePeakC}{77.0}
+ \newcommand{\SinglePeakSR}{3.138}
+ \newcommand{\SingleZeroSR}{0.054}
+-\newcommand{\HistoricalFindings}{All nine retrospective maxima are interior on the extended grid. Maximizing mean complexity ranges from 28.7 to 379.2. The 2008--2012 maximum occurs at low complexity. The unregularized endpoints remain close to the maxima in 1983--1987 and 2013--2017, with peak-to-zero Sharpe declines of 0.085 and 0.070, respectively. Neither period displays a substantial endpoint deterioration. The 2018--2024 decline is also modest; we do not impose a common downturn. Across blocks, the endpoint decline ranges from 0.070 to 1.352.}
++\newcommand{\HistoricalFindings}{All nine annual retrospective maxima are interior on the extended grid. Maximizing annual complexity ranges from 20.0 to 291.5. Across the nine selected decision years, the peak-to-zero Sharpe decline ranges from 0.252 to 8.424. The smallest decline occurs in 2000, where the unregularized endpoint remains close to the annual maximum; the largest occurs in 1985. These figures describe the selected annual profiles in Figure~\ref{fig:complexity_nine} and Table~\ref{tab:historical_endpoints}, rather than pooled historical blocks. }
+--- previous_annual/Portfolio/tables/historical_endpoints.tex
++++ annual_table/Portfolio/tables/historical_endpoints.tex
+@@ -1,15 +1,23 @@
+ \begin{table}[!htbp]\centering\small\setlength{\tabcolsep}{5pt}
+-\caption{Retrospective maxima and exact unregularized endpoints}\label{tab:historical_endpoints}
++\caption{Annual retrospective maxima and exact unregularized endpoints}
++\label{tab:historical_endpoints}
+ \begin{tabular}{@{}lrrrrr@{}}\toprule
+-Decision years & $C$ at max. & Max. SR & $C(0)$ & SR at $\lambda=0$ & Decline \\ \midrule
+-1978--1982 & 113.4 & 5.719 & 204 & 5.313 & 0.406 \\
+-1983--1987 & 209.1 & 6.219 & 264 & 6.134 & 0.085 \\
+-1988--1992 & 137.9 & 7.626 & 324 & 6.274 & 1.352 \\
+-1993--1997 & 158.2 & 7.608 & 384 & 6.609 & 0.999 \\
+-1998--2002 & 164.4 & 5.443 & 444 & 4.844 & 0.599 \\
+-2003--2007 & 165.4 & 2.970 & 504 & 2.410 & 0.559 \\
+-2008--2012 & 28.7 & 2.918 & 564 & 2.435 & 0.483 \\
+-2013--2017 & 379.2 & 3.228 & 624 & 3.158 & 0.070 \\
+-2018--2024 & 266.2 & 1.537 & 696 & 1.337 & 0.200 \\
++Decision year & $C$ at max. & Max. SR & $C(0)$ & SR at $\lambda=0$ & Decline \\ \midrule
++1980 & 30.0 & 6.355 & 204 & 3.971 & 2.384 \\
++1985 & 20.0 & 16.209 & 264 & 7.785 & 8.424 \\
++1990 & 229.0 & 7.718 & 324 & 7.385 & 0.333 \\
++1995 & 187.2 & 15.320 & 384 & 12.239 & 3.081 \\
++2000 & 291.5 & 4.874 & 444 & 4.622 & 0.252 \\
++2005 & 78.3 & 6.470 & 504 & 2.736 & 3.734 \\
++2010 & 109.3 & 4.474 & 564 & 3.285 & 1.189 \\
++2015 & 147.6 & 3.460 & 624 & 2.984 & 0.476 \\
++2021 & 167.5 & 5.945 & 696 & 4.563 & 1.382 \\
+ \bottomrule\end{tabular}\par\vspace{5pt}
+-\begin{minipage}{\textwidth}\footnotesize All maxima use the entire extended grid. Complexity is the realized-month-weighted mean across annual refits; $C(0)$ equals mean historical effective rank. Decline is maximum minus zero-penalty Sharpe, a descriptive change rather than a significance test. The smallest-decline period is retained as observed.\end{minipage}\end{table}
++\begin{minipage}{\textwidth}\footnotesize
++The decision years are the same nine selected years as in Figure~\ref{fig:complexity_nine}.
++Each maximum uses the full annual evaluated grid, including the exact $\lambda=0$ endpoint.
++Sharpe is annualized from the 12 subsequent monthly OOS returns; complexity is measured
++for that same annual fit, without averaging across years. $C(0)$ is the annual
++historical effective rank. Decline is maximum minus zero-penalty Sharpe,
++a descriptive change rather than a significance test.
++\end{minipage}\end{table}

@@ -5,10 +5,11 @@
     "empirics.tex",
     "figure6_caption.tex",
     "figures/fig06_nine_complete_profiles.pdf",
-    "README_BUILD.txt"
+    "README_BUILD.txt",
+    "tables/historical_endpoints.tex",
+    "numbers.tex"
   ],
   "protected_project_files": {
-    "numbers.tex": "9a4e50a0e46d7cb7abda1e4f40080c08bd35deb166dfa8164effdf9305a44041",
     "appendice_2.tex": "ad32a728b699a7da792ed2ec3dcd58fdd2ec73e5c84a998b1dab67ef60d6434e",
     "direct_port_learning.tex": "4d3c962fcdf0bfab28b619ceee61a1e65be0ebbc3b9f0e8290ec6dc0f5346338",
     "Empirics_only.tex": "68f754e157c750fc64c858298f131c5acfe313f96ca4a46d7f7f9045b7c3a2c6",
@@ -21,7 +22,6 @@
     "proofs_learning.tex": "696263d4ebd5eb0828645270633f603533444fd8912549dd7bf7943bebcac34d",
     "tables/spectral_value.tex": "e80a711e6c955fc77f25e2010e290a998e5418df7a1ecffa95d798198b2cb73c",
     "tables/performance.tex": "234550ed05b05051ca2d83f91ba9180ac17fe19c31dbfd5f6a7e21b61f353231",
-    "tables/historical_endpoints.tex": "4e63f79b35f9fe1fee5913bf7fa9ba27ef0832f1088041c0f2ab3d7a0fb75d55",
     "figures/Complexity.png": "c4f68d20e6ace0ced74ec3f94740df770abd6eee569e538c3db86efed45ec7fc",
     "figures/fig04_fixed_gaussian_spectrum.pdf": "93b528c7809bfe8ffa946d9ef117c50a5438c27c84496f9d519a215cea592339",
     "figures/FRONTIER.png": "2d4b9fab91140cf9a1ddb52225a445ac105f4e0f46033633244fd3c13c8b9a6a",
@@ -57,5 +57,7 @@
   },
   "empirical_text_outside_introduction_and_caption_unchanged": true,
   "other_figures_and_tables_unchanged": true,
-  "theory_and_proofs_unchanged": true
+  "theory_and_proofs_unchanged": true,
+  "numbers_outside_historical_findings_unchanged": true,
+  "table_ii_matches_figure6_decision_years": true
 }

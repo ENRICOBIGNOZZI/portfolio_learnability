@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "previous_delivery_commit": "64d611fb2c3d5687bb1944e3523470420ea4dc8e",
+  "selected_decision_years": [
+    1980,
+    1985,
+    1990,
+    1995,
+    2000,
+    2005,
+    2010,
+    2015,
+    2021
+  ],
+  "table_ii_rows": 9,
+  "table_ii_matches_figure6": true,
+  "figure6_unchanged_sha256": "d5a98fe07dc2ef548f9c13c7c5bbcd72cbaca2fa916c26ccd685546fa14a26e3",
+  "annual_complexity_and_sharpe": true,
+  "backtest_rerun": false,
+  "related_prose_updated": [
+    "Table II caption and note",
+    "HistoricalFindings macro",
+    "Figure 6 introduction: table reference"
+  ]
+}

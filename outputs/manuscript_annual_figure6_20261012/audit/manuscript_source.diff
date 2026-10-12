@@ -28,8 +28,8 @@
 +monthly OOS returns. The annual past-validation selection is therefore
 +an actual point on its own annual curve. These one-year profiles are
 +noisier than pooled-block profiles and their retrospective maxima are
-+descriptive. The historical table and block summaries below retain the
-+original pooled-block results.
++descriptive. Table~\ref{tab:historical_endpoints} summarizes the maxima and
++zero-penalty endpoints for these same nine selected decision years.
  
  \begin{figure}[!htbp]
  \centering

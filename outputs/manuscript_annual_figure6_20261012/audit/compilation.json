@@ -4,7 +4,7 @@
     {
       "passed": true,
       "pages": 66,
-      "pdf_sha256": "adaf9ed05a32f537f01d532bdba557c24e91b70aff0efe0273f4d3c444bc3a91",
+      "pdf_sha256": "02852d5c482a0e4f447f0678827006e56dbd18855cb019295e2d33cec4e6dde6",
       "undefined_commands_or_references": false,
       "overfull_boxes": [
         "Overfull \\hbox (7.09189pt too wide) in paragraph at lines 468--471"
@@ -15,7 +15,7 @@
     {
       "passed": true,
       "pages": 8,
-      "pdf_sha256": "fa4a0d267637e9901abc41f1837f8a8c626322366e0d5c29fb1427104e29ffdf",
+      "pdf_sha256": "32d883b6ed719e968c2bdbadd44f4a0cb12096bf8c813c8737023799a18cf712",
       "undefined_commands_or_references": false,
       "overfull_boxes": [],
       "entry": "Empirics_only.tex",
@@ -26,7 +26,7 @@
     {
       "passed": true,
       "pages": 66,
-      "pdf_sha256": "0b74ea6995ee64744c0a53082b5f7cbb2c8ddafe6edfce11c68c0d8cc9854ab4",
+      "pdf_sha256": "c995389f003767b9ece38a6c9efffcc156311cc998bd239a2a64359a9586241a",
       "undefined_commands_or_references": false,
       "overfull_boxes": [
         "Overfull \\hbox (7.09189pt too wide) in paragraph at lines 468--471"
@@ -37,12 +37,12 @@
     {
       "passed": true,
       "pages": 8,
-      "pdf_sha256": "8b6d604773934196b03aff3b7bdd2bbf8833da1a5d257c34015fe17a496e89f8",
+      "pdf_sha256": "e1beed1160313fde2e26588eb82881849de104211951733764a341d568dd0431",
       "undefined_commands_or_references": false,
       "overfull_boxes": [],
       "entry": "Empirics_only.tex",
       "text_matches_delivered_pdf": true
     }
   ],
-  "source_zip_sha256": "3d347fec5a1ce55f5de1dae3ed0f83df59a8f231d8a96f82de54e816b2ff19ec"
+  "source_zip_sha256": "70b096894fd6f294bb0f525729d6a05f46c5f1da60fb622e0f42894d60a549e9"
 }

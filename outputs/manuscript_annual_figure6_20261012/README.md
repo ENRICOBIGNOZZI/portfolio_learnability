@@ -1,11 +1,13 @@
 # Annual Figure 6 manuscript revision - 12 October 2026
 
-This version revises only Figure 6 and its introductory prose and caption in
+This version aligns Figure 6 and Table II with the same nine annual decision years in
 `outputs/manuscript_final_clean_20261012/Portfolio`. The obsolete paragraph
 explaining why annual CV could not be plotted on a pooled-block curve is
 absorbed into the revised introduction. The build README points to the new
-reproduction command. Theory, proofs, bibliography, tables, other figures,
-and all empirical prose outside this introduction and caption are unchanged.
+reproduction command. Table II now reports the annual maxima and zero endpoints displayed in Figure 6,
+and its following descriptive summary uses these annual values. Theory, proofs,
+bibliography, other tables, other figures, and the remaining empirical prose
+are unchanged.
 Baseline files and unrelated ongoing work are preserved.
 
 ## Deliverables
@@ -38,9 +40,13 @@ endpoints at the annual effective rank. Full numerical checks, original input
 hashes and per-year marker coordinates are in `audit/annual_profiles.json`,
 `audit/annual_curves.csv`, and `audit/annual_summary.csv`. No backtest was run.
 
-The unchanged historical Table II and following block summaries still report
-the original pooled-block results. The new introduction makes this distinction
-explicit so their numerical values are not attributed to the annual profiles.
+Table II reports the same selected years as Figure 6. Its columns are decision
+year, annual complexity at the retrospective maximum, maximum annual OOS
+Sharpe, annual zero-endpoint complexity, zero-endpoint OOS Sharpe, and the
+peak-to-zero Sharpe decline. The caption, note and following descriptive summary
+now use annual values. No multi-year complexity averages or pooled Sharpes
+remain in this table. Only the HistoricalFindings macro in numbers.tex changes;
+all other reported numbers and both other tables are byte-identical.
 
 ## Reproduction and checks
 
@@ -60,12 +66,12 @@ preservation, the permitted prose diff and compilation receipts are in
 `audit/source_preservation.json`, `audit/manuscript_source.diff`,
 `audit/dependencies.json`, and `audit/compilation.json`.
 
-All eight standalone pages and full-manuscript pages 33-34 were rendered and
+All eight standalone pages and full-manuscript pages 33-35 were rendered and
 visually checked. The annual figure's panel labels, common scales, full tails,
 three markers per panel, and caption are readable and unclipped. The complete
 manuscript retains the baseline's 7.09189-point overfull box in an unchanged
 proof; the empirical section has no overfull boxes or unresolved references.
 
-The annual reconstruction and marker geometry tests, narrow source/archive
+The annual reconstruction, marker geometry and Table II coordinate tests, narrow source/archive
 preservation tests and five existing manuscript/empirical test files pass:
-25 tests total. See `audit/tests.json` and `audit/visual_review.json`.
+26 tests total. See `audit/tests.json` and `audit/visual_review.json`.

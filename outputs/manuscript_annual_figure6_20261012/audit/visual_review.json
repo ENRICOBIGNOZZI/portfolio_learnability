@@ -1,8 +1,8 @@
 {
   "passed": true,
   "pdf_sha256": {
-    "Portfolio_Paper_Annual_Figure6.pdf": "adaf9ed05a32f537f01d532bdba557c24e91b70aff0efe0273f4d3c444bc3a91",
-    "Empirics_Section_VI_Annual_Figure6.pdf": "fa4a0d267637e9901abc41f1837f8a8c626322366e0d5c29fb1427104e29ffdf"
+    "Portfolio_Paper_Annual_Figure6.pdf": "02852d5c482a0e4f447f0678827006e56dbd18855cb019295e2d33cec4e6dde6",
+    "Empirics_Section_VI_Annual_Figure6.pdf": "32d883b6ed719e968c2bdbadd44f4a0cb12096bf8c813c8737023799a18cf712"
   },
   "reviewed_standalone_pages": [
     1,
@@ -14,25 +14,27 @@
     7,
     8
   ],
+  "standalone_pages_1_to_3_render_byte_identical_to_previously_reviewed_version": true,
   "reviewed_complete_manuscript_pages": [
     33,
-    34
+    34,
+    35
   ],
   "figure6_complete_manuscript_page": 34,
   "figure6_standalone_page": 5,
+  "table_ii_complete_manuscript_page": 33,
+  "table_ii_standalone_page": 6,
   "render_tool": "pdftoppm",
   "render_dpi": [
-    110,
-    130
+    110
   ],
   "checks": [
-    "Nine selected annual panels with no missing year substitutions",
-    "Full observed tails and all 1,522 vertices per year",
-    "Common x and y limits; no clipped markers",
-    "Black annual CV diamonds, orange full-grid maxima, open exact zero endpoints",
-    "Caption and revised introduction legible",
-    "Tables and other figures remain readable and unchanged",
-    "No empirical overfull boxes or unresolved references"
+    "Table II contains exactly the nine Figure 6 decision years",
+    "Annual maxima and exact-zero complexity and Sharpe are readable and match figure coordinates",
+    "No clipped table columns, notes or surrounding prose",
+    "Updated summary describes annual results",
+    "Figure 6 unchanged; legend and markers remain readable",
+    "Other tables and figures remain unchanged"
   ],
   "known_unchanged_warning": "7.09189pt overfull hbox in unchanged proof"
 }

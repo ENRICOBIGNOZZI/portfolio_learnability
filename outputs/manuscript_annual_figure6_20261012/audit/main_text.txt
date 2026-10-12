@@ -1009,25 +1009,25 @@ of the nine historical blocks. We select the central calendar year in each block
 fixed, each profile connects the full evaluated penalty path using that year’s effective complexity
 and the annualized Sharpe of its 12 subsequent monthly OOS returns. The annual past-validation
 selection is therefore an actual point on its own annual curve. These one-year profiles are noisier
-than pooled-block profiles and their retrospective maxima are descriptive. The historical table and
-block summaries below retain the original pooled-block results.
-Table II. Retrospective maxima and exact unregularized endpoints
-Decision years 𝐶 at max. Max. SR 𝐶 (0) SR at 𝜆 = 0 Decline
-1978–1982 113.4 5.719 204 5.313 0.406
-1983–1987 209.1 6.219 264 6.134 0.085
-1988–1992 137.9 7.626 324 6.274 1.352
-1993–1997 158.2 7.608 384 6.609 0.999
-1998–2002 164.4 5.443 444 4.844 0.599
-2003–2007 165.4 2.970 504 2.410 0.559
-2008–2012 28.7 2.918 564 2.435 0.483
-2013–2017 379.2 3.228 624 3.158 0.070
-2018–2024 266.2 1.537 696 1.337 0.200
-All maxima use the entire extended grid. Complexity is the realized-month-weighted mean across annual refits; 𝐶 (0)
-equals mean historical effective rank. Decline is maximum minus zero-penalty Sharpe, a descriptive change rather than
-a significance test. The smallest-decline period is retained as observed.
-All nine retrospective maxima are interior on the extended grid. Maximizing mean complexity
-ranges from 28.7 to 379.2. The 2008–2012 maximum occurs at low complexity. The unregularized
-endpoints remain close to the maxima in 1983–1987 and 2013–2017, with peak-to-zero Sharpe de-
+than pooled-block profiles and their retrospective maxima are descriptive. Table II summarizes the
+maxima and zero-penalty endpoints for these same nine selected decision years.
+Table II. Annual retrospective maxima and exact unregularized endpoints
+Decision year 𝐶 at max. Max. SR 𝐶 (0) SR at 𝜆 = 0 Decline
+1980 30.0 6.355 204 3.971 2.384
+1985 20.0 16.209 264 7.785 8.424
+1990 229.0 7.718 324 7.385 0.333
+1995 187.2 15.320 384 12.239 3.081
+2000 291.5 4.874 444 4.622 0.252
+2005 78.3 6.470 504 2.736 3.734
+2010 109.3 4.474 564 3.285 1.189
+2015 147.6 3.460 624 2.984 0.476
+2021 167.5 5.945 696 4.563 1.382
+The decision years are the same nine selected years as in Figure 6. Each maximum uses the full annual evaluated grid,
+including the exact 𝜆 = 0 endpoint. Sharpe is annualized from the 12 subsequent monthly OOS returns; complexity is
+measured for that same annual fit, without averaging across years. 𝐶 (0) is the annual historical effective rank. Decline
+is maximum minus zero-penalty Sharpe, a descriptive change rather than a significance test.
+All nine annual retrospective maxima are interior on the extended grid. Maximizing annual
+complexity ranges from 20.0 to 291.5. Across the nine selected decision years, the peak-to-zero
 33
 0
 5
@@ -1073,11 +1073,12 @@ points. All nine panels share common axes. These profiles are noisier than the p
 because each uses only one OOS year. Retrospective maxima do not select deployable policies or estimate
 population-optimal complexity.
 34
-clines of 0.085 and 0.070, respectively. Neither period displays a substantial endpoint deterioration.
-The 2018–2024 decline is also modest; we do not impose a common downturn. Across blocks, the
-endpoint decline ranges from 0.070 to 1.352.These are descriptive shapes, not evidence of a statis-
-tically identified optimum in every period. Broad regions can be nearly flat relative to sampling
-uncertainty. All displayed maxima have been recomputed on the extended grid, including zero.
+Sharpe decline ranges from 0.252 to 8.424. The smallest decline occurs in 2000, where the unreg-
+ularized endpoint remains close to the annual maximum; the largest occurs in 1985. These figures
+describe the selected annual profiles in Figure 6 and Table II, rather than pooled historical blocks.
+These are descriptive shapes, not evidence of a statistically identified optimum in every period.
+Broad regions can be nearly flat relative to sampling uncertainty. All displayed maxima have been
+recomputed on the extended grid, including zero.
 Intervals use 5,000 paired circular-block resamples, sharing monthly draws across all candidates
 or contrasted portfolios. They condition on estimated policies, representations, and holdings; they
 do not repeat model selection. Approximate stability and dependence decay within a block motivate
@@ -1097,7 +1098,6 @@ Leading holdings favor profitability and oppose recent returns and debt financin
 directions modify those exposures within the same characteristic universe. A large normalized
 characteristic contrast can coexist with small notional exposure, so profiles and signed notionals
 answer different questions. Formation descriptors characterize what is held; subsequent outcomes
-determine its investment contribution.
 35
 0–10% 10–50% 50–90% 90–100%
 Positive-rank group
@@ -1147,6 +1147,8 @@ long-minus-short weighted formation-rank scores; the right preserves investment 
 tional exposures. An explicit signed characteristic dictionary defines the families. Debt financing and equity
 issuance are distinct. Families can overlap and cannot be added as disjoint return components. These hold-
 ings decompose the fixed representation, independently of the tuned-kernel opening comparison.
+36
+determine its investment contribution.
 Table III. Fixed Gaussian spectral groups and incremental investment value
 Ranks Mass % Own gross Account gross Mean % SR𝐺 SR𝑁
 0–10% 99.9215 2.267 2.267 24.323 3.012 2.354
@@ -1163,7 +1165,6 @@ Own gross and mean describe individual components; account gross and Sharpes des
 boundary. The lower panel reports raw fitted-scale loss changes, relative to the null portfolio for the first group, with
 the same 5,000 paired 12-month-block draws. Weights are summed at stock level before trades and short fees. Gross
 Sharpe increments are +0.272, +0.002, +0.014; net increments are +0.244, -0.004, +0.011.
-36
 The leading group has mean component gross 2.267 and annual excess payoff 24.32%. Adding
 intermediate directions contributes 2.76% annually. Their own gross 1.263 increases the cumulative
 account’s gross by only 0.066: some added positions offset existing stock holdings. Component
@@ -1177,6 +1178,7 @@ loss changes by -0.036008, with interval [-0.093264,0.027912]; its cross term is
 own-square term 0.095758. Thus a positive standalone mean, a Sharpe increment, and an incre-
 mental 𝑄 improvement are distinct assessments. The incremental identity Δ𝑄 = −2 (1 − 𝑃) 𝐴 + 𝐴2
 includes the interaction of the previous policy 𝑃 and added payoff 𝐴, at their original fitted scale.
+37
 Small incremental account gross does not imply small turnover. Monthly characteristics and
 annual refits can change offsetting positions substantially. For every nested account, stock weights
 are summed before calculating trades against drift-adjusted holdings, short notional, and net returns.
@@ -1191,7 +1193,6 @@ names incur trades but receive no invented next payoff. The cost assumptions omi
 and additional funding spreads. They are self-financing friction sensitivities, with the same future-
 payoff-availability caveat as gross returns.
 The weak tail has little historical second-moment mass and small absolute payoff contributions.
-37
 The successive gross/net Sharpe increments in Table III include adverse as well as favorable out-
 comes; the loss decomposition also retains the own-square and cross terms. Small mass alone
 cannot rule out covariance value, while a striking normalized characteristic tilt need not have a

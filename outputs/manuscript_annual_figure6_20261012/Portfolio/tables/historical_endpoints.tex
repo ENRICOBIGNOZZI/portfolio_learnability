@@ -1,15 +1,23 @@
 \begin{table}[!htbp]\centering\small\setlength{\tabcolsep}{5pt}
-\caption{Retrospective maxima and exact unregularized endpoints}\label{tab:historical_endpoints}
+\caption{Annual retrospective maxima and exact unregularized endpoints}
+\label{tab:historical_endpoints}
 \begin{tabular}{@{}lrrrrr@{}}\toprule
-Decision years & $C$ at max. & Max. SR & $C(0)$ & SR at $\lambda=0$ & Decline \\ \midrule
-1978--1982 & 113.4 & 5.719 & 204 & 5.313 & 0.406 \\
-1983--1987 & 209.1 & 6.219 & 264 & 6.134 & 0.085 \\
-1988--1992 & 137.9 & 7.626 & 324 & 6.274 & 1.352 \\
-1993--1997 & 158.2 & 7.608 & 384 & 6.609 & 0.999 \\
-1998--2002 & 164.4 & 5.443 & 444 & 4.844 & 0.599 \\
-2003--2007 & 165.4 & 2.970 & 504 & 2.410 & 0.559 \\
-2008--2012 & 28.7 & 2.918 & 564 & 2.435 & 0.483 \\
-2013--2017 & 379.2 & 3.228 & 624 & 3.158 & 0.070 \\
-2018--2024 & 266.2 & 1.537 & 696 & 1.337 & 0.200 \\
+Decision year & $C$ at max. & Max. SR & $C(0)$ & SR at $\lambda=0$ & Decline \\ \midrule
+1980 & 30.0 & 6.355 & 204 & 3.971 & 2.384 \\
+1985 & 20.0 & 16.209 & 264 & 7.785 & 8.424 \\
+1990 & 229.0 & 7.718 & 324 & 7.385 & 0.333 \\
+1995 & 187.2 & 15.320 & 384 & 12.239 & 3.081 \\
+2000 & 291.5 & 4.874 & 444 & 4.622 & 0.252 \\
+2005 & 78.3 & 6.470 & 504 & 2.736 & 3.734 \\
+2010 & 109.3 & 4.474 & 564 & 3.285 & 1.189 \\
+2015 & 147.6 & 3.460 & 624 & 2.984 & 0.476 \\
+2021 & 167.5 & 5.945 & 696 & 4.563 & 1.382 \\
 \bottomrule\end{tabular}\par\vspace{5pt}
-\begin{minipage}{\textwidth}\footnotesize All maxima use the entire extended grid. Complexity is the realized-month-weighted mean across annual refits; $C(0)$ equals mean historical effective rank. Decline is maximum minus zero-penalty Sharpe, a descriptive change rather than a significance test. The smallest-decline period is retained as observed.\end{minipage}\end{table}
+\begin{minipage}{\textwidth}\footnotesize
+The decision years are the same nine selected years as in Figure~\ref{fig:complexity_nine}.
+Each maximum uses the full annual evaluated grid, including the exact $\lambda=0$ endpoint.
+Sharpe is annualized from the 12 subsequent monthly OOS returns; complexity is measured
+for that same annual fit, without averaging across years. $C(0)$ is the annual
+historical effective rank. Decline is maximum minus zero-penalty Sharpe,
+a descriptive change rather than a significance test.
+\end{minipage}\end{table}

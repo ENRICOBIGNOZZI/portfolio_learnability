@@ -1,7 +1,7 @@
 note: Running TeX ...
 note: Rerunning TeX because "Empirics_only.aux" changed ...
 note: Running xdvipdfmx ...
-note: Writing `Empirics_only.aux` (9.86328125 KiB)
 note: Writing `Empirics_only.out` (1.029296875 KiB)
 note: Writing `Empirics_only.log` (18.7353515625 KiB)
-note: Writing `Empirics_only.pdf` (173.2373046875 KiB)
+note: Writing `Empirics_only.aux` (9.876953125 KiB)
+note: Writing `Empirics_only.pdf` (173.9052734375 KiB)

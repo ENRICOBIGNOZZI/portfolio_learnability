@@ -285,93 +285,92 @@ warning: empirics:200: Requested font "ntx-Bold-tlf-ot1" at 8.0pt
 warning: empirics:200:  -> ntx-Bold-tlf-ot1
 warning: empirics:200: Requested font "ntx-Bold-tlf-ot1" at 6.1pt
 warning: empirics:200:  -> ntx-Bold-tlf-ot1
-warning: tables/historical_endpoints:15: 
-Requested font "ntx-Regular-tlf-ot1" at 10.0pt
-warning: tables/historical_endpoints:15:  -> ntx-Regular-tlf-ot1
-warning: tables/historical_endpoints:15: Requested font "ntx-Regular-tlf-ot1" at 7.3pt
-warning: tables/historical_endpoints:15:  -> ntx-Regular-tlf-ot1
-warning: tables/historical_endpoints:15: Requested font "ntx-Regular-tlf-ot1" at 5.5pt
-warning: tables/historical_endpoints:15:  -> ntx-Regular-tlf-ot1
-warning: tables/historical_endpoints:15: Requested font "ntxmi" at 10.0pt
-warning: tables/historical_endpoints:15:  -> ntxmi
-warning: tables/historical_endpoints:15: Requested font "ntxmi7" at 7.3pt
-warning: tables/historical_endpoints:15:  -> ntxmi7
-warning: tables/historical_endpoints:15: Requested font "ntxmi5" at 5.5pt
-warning: tables/historical_endpoints:15:  -> ntxmi5
-warning: tables/historical_endpoints:15: Requested font "ntxsy" at 10.0pt
-warning: tables/historical_endpoints:15:  -> ntxsy
-warning: tables/historical_endpoints:15: Requested font "ntxsy7" at 7.3pt
-warning: tables/historical_endpoints:15:  -> ntxsy7
-warning: tables/historical_endpoints:15: Requested font "ntxsy5" at 5.5pt
-warning: tables/historical_endpoints:15:  -> ntxsy5
-warning: tables/historical_endpoints:15: Requested font "ntxexx" at 10.0pt
-warning: tables/historical_endpoints:15:  -> ntxexx
-warning: tables/historical_endpoints:15: Requested font "ntxexx" at 7.3pt
-warning: tables/historical_endpoints:15:  -> ntxexx
-warning: tables/historical_endpoints:15: Requested font "ntxexx" at 5.5pt
-warning: tables/historical_endpoints:15:  -> ntxexx
-warning: tables/historical_endpoints:15: Requested font "msam10" at 10.0pt
-warning: tables/historical_endpoints:15:  -> msam10
-warning: tables/historical_endpoints:15: Requested font "msam7" at 7.3pt
-warning: tables/historical_endpoints:15:  -> msam7
-warning: tables/historical_endpoints:15: Requested font "msam5" at 5.5pt
-warning: tables/historical_endpoints:15:  -> msam5
-warning: tables/historical_endpoints:15: Requested font "msbm10" at 10.0pt
-warning: tables/historical_endpoints:15:  -> msbm10
-warning: tables/historical_endpoints:15: Requested font "msbm7" at 7.3pt
-warning: tables/historical_endpoints:15:  -> msbm7
-warning: tables/historical_endpoints:15: Requested font "msbm5" at 5.5pt
-warning: tables/historical_endpoints:15:  -> msbm5
-warning: tables/historical_endpoints:15: Requested font "rsfs10" at 10.0pt
-warning: tables/historical_endpoints:15:  -> rsfs10
-warning: tables/historical_endpoints:15: Requested font "rsfs5" at 5.0pt
-warning: tables/historical_endpoints:15:  -> rsfs5
-warning: tables/historical_endpoints:15: Requested font "cmbx10" at 10.0pt
-warning: tables/historical_endpoints:15:  -> cmbx10
-warning: tables/historical_endpoints:15: Requested font "cmbx5" at 5.0pt
-warning: tables/historical_endpoints:15:  -> cmbx5
-warning: tables/historical_endpoints:15: Requested font "cmmib10" at 10.0pt
-warning: tables/historical_endpoints:15:  -> cmmib10
-warning: tables/historical_endpoints:15: Requested font "cmmib5" at 5.0pt
-warning: tables/historical_endpoints:15:  -> cmmib5
-warning: tables/historical_endpoints:15: Requested font "cmbsy10" at 10.0pt
-warning: tables/historical_endpoints:15:  -> cmbsy10
-warning: tables/historical_endpoints:15: Requested font "cmbsy5" at 5.0pt
-warning: tables/historical_endpoints:15:  -> cmbsy5
-warning: tables/historical_endpoints:15: Requested font "ntx-Bold-tlf-ot1" at 10.0pt
-warning: tables/historical_endpoints:15:  -> ntx-Bold-tlf-ot1
-warning: tables/historical_endpoints:15: Requested font "ntx-Bold-tlf-ot1" at 7.3pt
-warning: tables/historical_endpoints:15:  -> ntx-Bold-tlf-ot1
-warning: tables/historical_endpoints:15: Requested font "ntx-Bold-tlf-ot1" at 5.5pt
-warning: tables/historical_endpoints:15:  -> ntx-Bold-tlf-ot1
-warning: tables/historical_endpoints:15: Requested font "ntxmia" at 10.0pt
-warning: tables/historical_endpoints:15:  -> ntxmia
-warning: tables/historical_endpoints:15: Requested font "ntxmia" at 7.3pt
-warning: tables/historical_endpoints:15:  -> ntxmia
-warning: tables/historical_endpoints:15: Requested font "ntxmia" at 5.5pt
-warning: tables/historical_endpoints:15:  -> ntxmia
-warning: tables/historical_endpoints:15: Requested font "ntxsym" at 10.0pt
-warning: tables/historical_endpoints:15:  -> ntxsym
-warning: tables/historical_endpoints:15: Requested font "ntxsym" at 7.3pt
-warning: tables/historical_endpoints:15:  -> ntxsym
-warning: tables/historical_endpoints:15: Requested font "ntxsym" at 5.5pt
-warning: tables/historical_endpoints:15:  -> ntxsym
-warning: tables/historical_endpoints:15: Requested font "ntxsyc" at 10.0pt
-warning: tables/historical_endpoints:15:  -> ntxsyc
-warning: tables/historical_endpoints:15: Requested font "ntxsyc" at 7.3pt
-warning: tables/historical_endpoints:15:  -> ntxsyc
-warning: tables/historical_endpoints:15: Requested font "ntxsyc" at 5.5pt
-warning: tables/historical_endpoints:15:  -> ntxsyc
-warning: tables/historical_endpoints:15: Requested font "ntxexa" at 10.0pt
-warning: tables/historical_endpoints:15:  -> ntxexa
-warning: tables/historical_endpoints:15: Requested font "ntxexa" at 7.3pt
-warning: tables/historical_endpoints:15:  -> ntxexa
-warning: tables/historical_endpoints:15: Requested font "ntxexa" at 5.5pt
-warning: tables/historical_endpoints:15:  -> ntxexa
+warning: tables/historical_endpoints:17: Requested font "[TeXGyreTermesX-Bold.otf]/OT:script=latn;language=dflt;-ss05;+tnum;+lnum;mapping=tex-text;" at 10.0pt
+warning: tables/historical_endpoints:18: Requested font "ntx-Regular-tlf-ot1" at 10.0pt
+warning: tables/historical_endpoints:18:  -> ntx-Regular-tlf-ot1
+warning: tables/historical_endpoints:18: Requested font "ntx-Regular-tlf-ot1" at 7.3pt
+warning: tables/historical_endpoints:18:  -> ntx-Regular-tlf-ot1
+warning: tables/historical_endpoints:18: Requested font "ntx-Regular-tlf-ot1" at 5.5pt
+warning: tables/historical_endpoints:18:  -> ntx-Regular-tlf-ot1
+warning: tables/historical_endpoints:18: Requested font "ntxmi" at 10.0pt
+warning: tables/historical_endpoints:18:  -> ntxmi
+warning: tables/historical_endpoints:18: Requested font "ntxmi7" at 7.3pt
+warning: tables/historical_endpoints:18:  -> ntxmi7
+warning: tables/historical_endpoints:18: Requested font "ntxmi5" at 5.5pt
+warning: tables/historical_endpoints:18:  -> ntxmi5
+warning: tables/historical_endpoints:18: Requested font "ntxsy" at 10.0pt
+warning: tables/historical_endpoints:18:  -> ntxsy
+warning: tables/historical_endpoints:18: Requested font "ntxsy7" at 7.3pt
+warning: tables/historical_endpoints:18:  -> ntxsy7
+warning: tables/historical_endpoints:18: Requested font "ntxsy5" at 5.5pt
+warning: tables/historical_endpoints:18:  -> ntxsy5
+warning: tables/historical_endpoints:18: Requested font "ntxexx" at 10.0pt
+warning: tables/historical_endpoints:18:  -> ntxexx
+warning: tables/historical_endpoints:18: Requested font "ntxexx" at 7.3pt
+warning: tables/historical_endpoints:18:  -> ntxexx
+warning: tables/historical_endpoints:18: Requested font "ntxexx" at 5.5pt
+warning: tables/historical_endpoints:18:  -> ntxexx
+warning: tables/historical_endpoints:18: Requested font "msam10" at 10.0pt
+warning: tables/historical_endpoints:18:  -> msam10
+warning: tables/historical_endpoints:18: Requested font "msam7" at 7.3pt
+warning: tables/historical_endpoints:18:  -> msam7
+warning: tables/historical_endpoints:18: Requested font "msam5" at 5.5pt
+warning: tables/historical_endpoints:18:  -> msam5
+warning: tables/historical_endpoints:18: Requested font "msbm10" at 10.0pt
+warning: tables/historical_endpoints:18:  -> msbm10
+warning: tables/historical_endpoints:18: Requested font "msbm7" at 7.3pt
+warning: tables/historical_endpoints:18:  -> msbm7
+warning: tables/historical_endpoints:18: Requested font "msbm5" at 5.5pt
+warning: tables/historical_endpoints:18:  -> msbm5
+warning: tables/historical_endpoints:18: Requested font "rsfs10" at 10.0pt
+warning: tables/historical_endpoints:18:  -> rsfs10
+warning: tables/historical_endpoints:18: Requested font "rsfs5" at 5.0pt
+warning: tables/historical_endpoints:18:  -> rsfs5
+warning: tables/historical_endpoints:18: Requested font "cmbx10" at 10.0pt
+warning: tables/historical_endpoints:18:  -> cmbx10
+warning: tables/historical_endpoints:18: Requested font "cmbx5" at 5.0pt
+warning: tables/historical_endpoints:18:  -> cmbx5
+warning: tables/historical_endpoints:18: Requested font "cmmib10" at 10.0pt
+warning: tables/historical_endpoints:18:  -> cmmib10
+warning: tables/historical_endpoints:18: Requested font "cmmib5" at 5.0pt
+warning: tables/historical_endpoints:18:  -> cmmib5
+warning: tables/historical_endpoints:18: Requested font "cmbsy10" at 10.0pt
+warning: tables/historical_endpoints:18:  -> cmbsy10
+warning: tables/historical_endpoints:18: Requested font "cmbsy5" at 5.0pt
+warning: tables/historical_endpoints:18:  -> cmbsy5
+warning: tables/historical_endpoints:18: Requested font "ntx-Bold-tlf-ot1" at 10.0pt
+warning: tables/historical_endpoints:18:  -> ntx-Bold-tlf-ot1
+warning: tables/historical_endpoints:18: Requested font "ntx-Bold-tlf-ot1" at 7.3pt
+warning: tables/historical_endpoints:18:  -> ntx-Bold-tlf-ot1
+warning: tables/historical_endpoints:18: Requested font "ntx-Bold-tlf-ot1" at 5.5pt
+warning: tables/historical_endpoints:18:  -> ntx-Bold-tlf-ot1
+warning: tables/historical_endpoints:18: Requested font "ntxmia" at 10.0pt
+warning: tables/historical_endpoints:18:  -> ntxmia
+warning: tables/historical_endpoints:18: Requested font "ntxmia" at 7.3pt
+warning: tables/historical_endpoints:18:  -> ntxmia
+warning: tables/historical_endpoints:18: Requested font "ntxmia" at 5.5pt
+warning: tables/historical_endpoints:18:  -> ntxmia
+warning: tables/historical_endpoints:18: Requested font "ntxsym" at 10.0pt
+warning: tables/historical_endpoints:18:  -> ntxsym
+warning: tables/historical_endpoints:18: Requested font "ntxsym" at 7.3pt
+warning: tables/historical_endpoints:18:  -> ntxsym
+warning: tables/historical_endpoints:18: Requested font "ntxsym" at 5.5pt
+warning: tables/historical_endpoints:18:  -> ntxsym
+warning: tables/historical_endpoints:18: Requested font "ntxsyc" at 10.0pt
+warning: tables/historical_endpoints:18:  -> ntxsyc
+warning: tables/historical_endpoints:18: Requested font "ntxsyc" at 7.3pt
+warning: tables/historical_endpoints:18:  -> ntxsyc
+warning: tables/historical_endpoints:18: Requested font "ntxsyc" at 5.5pt
+warning: tables/historical_endpoints:18:  -> ntxsyc
+warning: tables/historical_endpoints:18: Requested font "ntxexa" at 10.0pt
+warning: tables/historical_endpoints:18:  -> ntxexa
+warning: tables/historical_endpoints:18: Requested font "ntxexa" at 7.3pt
+warning: tables/historical_endpoints:18:  -> ntxexa
+warning: tables/historical_endpoints:18: Requested font "ntxexa" at 5.5pt
+warning: tables/historical_endpoints:18:  -> ntxexa
 warning: proofs_learning:88: Requested font "[TeXGyreTermesX-Italic.otf]/OT:script=latn;language=dflt;-ss05;+tnum;+lnum;mapping=tex-text;" at 8.8pt
 warning: proofs_learning:88: Requested font "[TeXGyreTermesX-Italic.otf]/OT:script=latn;language=dflt;-ss05;+tnum;+lnum;mapping=tex-text;" at 6.6pt
 warning: appendice_2:97: Requested font "[TeXGyreTermesX-Italic.otf]/OT:script=latn;language=dflt;-ss05;+tnum;+lnum;mapping=tex-text;" at 10.0pt
-warning: appendice_2:130: Requested font "[TeXGyreTermesX-Bold.otf]/OT:script=latn;language=dflt;-ss05;+tnum;+lnum;mapping=tex-text;" at 10.0pt
 note: Running BibTeX on main.aux ...
 note: Rerunning TeX because bibtex was run ...
 warning: hyperref.sty:4873: Requested font "pzdr" at 0.00002pt
@@ -660,89 +659,89 @@ warning: empirics:200: Requested font "ntx-Bold-tlf-ot1" at 8.0pt
 warning: empirics:200:  -> ntx-Bold-tlf-ot1
 warning: empirics:200: Requested font "ntx-Bold-tlf-ot1" at 6.1pt
 warning: empirics:200:  -> ntx-Bold-tlf-ot1
-warning: tables/historical_endpoints:15: 
+warning: tables/historical_endpoints:18: 
 Requested font "ntx-Regular-tlf-ot1" at 10.0pt
-warning: tables/historical_endpoints:15:  -> ntx-Regular-tlf-ot1
-warning: tables/historical_endpoints:15: Requested font "ntx-Regular-tlf-ot1" at 7.3pt
-warning: tables/historical_endpoints:15:  -> ntx-Regular-tlf-ot1
-warning: tables/historical_endpoints:15: Requested font "ntx-Regular-tlf-ot1" at 5.5pt
-warning: tables/historical_endpoints:15:  -> ntx-Regular-tlf-ot1
-warning: tables/historical_endpoints:15: Requested font "ntxmi" at 10.0pt
-warning: tables/historical_endpoints:15:  -> ntxmi
-warning: tables/historical_endpoints:15: Requested font "ntxmi7" at 7.3pt
-warning: tables/historical_endpoints:15:  -> ntxmi7
-warning: tables/historical_endpoints:15: Requested font "ntxmi5" at 5.5pt
-warning: tables/historical_endpoints:15:  -> ntxmi5
-warning: tables/historical_endpoints:15: Requested font "ntxsy" at 10.0pt
-warning: tables/historical_endpoints:15:  -> ntxsy
-warning: tables/historical_endpoints:15: Requested font "ntxsy7" at 7.3pt
-warning: tables/historical_endpoints:15:  -> ntxsy7
-warning: tables/historical_endpoints:15: Requested font "ntxsy5" at 5.5pt
-warning: tables/historical_endpoints:15:  -> ntxsy5
-warning: tables/historical_endpoints:15: Requested font "ntxexx" at 10.0pt
-warning: tables/historical_endpoints:15:  -> ntxexx
-warning: tables/historical_endpoints:15: Requested font "ntxexx" at 7.3pt
-warning: tables/historical_endpoints:15:  -> ntxexx
-warning: tables/historical_endpoints:15: Requested font "ntxexx" at 5.5pt
-warning: tables/historical_endpoints:15:  -> ntxexx
-warning: tables/historical_endpoints:15: Requested font "msam10" at 10.0pt
-warning: tables/historical_endpoints:15:  -> msam10
-warning: tables/historical_endpoints:15: Requested font "msam7" at 7.3pt
-warning: tables/historical_endpoints:15:  -> msam7
-warning: tables/historical_endpoints:15: Requested font "msam5" at 5.5pt
-warning: tables/historical_endpoints:15:  -> msam5
-warning: tables/historical_endpoints:15: Requested font "msbm10" at 10.0pt
-warning: tables/historical_endpoints:15:  -> msbm10
-warning: tables/historical_endpoints:15: Requested font "msbm7" at 7.3pt
-warning: tables/historical_endpoints:15:  -> msbm7
-warning: tables/historical_endpoints:15: Requested font "msbm5" at 5.5pt
-warning: tables/historical_endpoints:15:  -> msbm5
-warning: tables/historical_endpoints:15: Requested font "rsfs10" at 10.0pt
-warning: tables/historical_endpoints:15:  -> rsfs10
-warning: tables/historical_endpoints:15: Requested font "rsfs5" at 5.0pt
-warning: tables/historical_endpoints:15:  -> rsfs5
-warning: tables/historical_endpoints:15: Requested font "cmbx10" at 10.0pt
-warning: tables/historical_endpoints:15:  -> cmbx10
-warning: tables/historical_endpoints:15: Requested font "cmbx5" at 5.0pt
-warning: tables/historical_endpoints:15:  -> cmbx5
-warning: tables/historical_endpoints:15: Requested font "cmmib10" at 10.0pt
-warning: tables/historical_endpoints:15:  -> cmmib10
-warning: tables/historical_endpoints:15: Requested font "cmmib5" at 5.0pt
-warning: tables/historical_endpoints:15:  -> cmmib5
-warning: tables/historical_endpoints:15: Requested font "cmbsy10" at 10.0pt
-warning: tables/historical_endpoints:15:  -> cmbsy10
-warning: tables/historical_endpoints:15: Requested font "cmbsy5" at 5.0pt
-warning: tables/historical_endpoints:15:  -> cmbsy5
-warning: tables/historical_endpoints:15: Requested font "ntx-Bold-tlf-ot1" at 10.0pt
-warning: tables/historical_endpoints:15:  -> ntx-Bold-tlf-ot1
-warning: tables/historical_endpoints:15: Requested font "ntx-Bold-tlf-ot1" at 7.3pt
-warning: tables/historical_endpoints:15:  -> ntx-Bold-tlf-ot1
-warning: tables/historical_endpoints:15: Requested font "ntx-Bold-tlf-ot1" at 5.5pt
-warning: tables/historical_endpoints:15:  -> ntx-Bold-tlf-ot1
-warning: tables/historical_endpoints:15: Requested font "ntxmia" at 10.0pt
-warning: tables/historical_endpoints:15:  -> ntxmia
-warning: tables/historical_endpoints:15: Requested font "ntxmia" at 7.3pt
-warning: tables/historical_endpoints:15:  -> ntxmia
-warning: tables/historical_endpoints:15: Requested font "ntxmia" at 5.5pt
-warning: tables/historical_endpoints:15:  -> ntxmia
-warning: tables/historical_endpoints:15: Requested font "ntxsym" at 10.0pt
-warning: tables/historical_endpoints:15:  -> ntxsym
-warning: tables/historical_endpoints:15: Requested font "ntxsym" at 7.3pt
-warning: tables/historical_endpoints:15:  -> ntxsym
-warning: tables/historical_endpoints:15: Requested font "ntxsym" at 5.5pt
-warning: tables/historical_endpoints:15:  -> ntxsym
-warning: tables/historical_endpoints:15: Requested font "ntxsyc" at 10.0pt
-warning: tables/historical_endpoints:15:  -> ntxsyc
-warning: tables/historical_endpoints:15: Requested font "ntxsyc" at 7.3pt
-warning: tables/historical_endpoints:15:  -> ntxsyc
-warning: tables/historical_endpoints:15: Requested font "ntxsyc" at 5.5pt
-warning: tables/historical_endpoints:15:  -> ntxsyc
-warning: tables/historical_endpoints:15: Requested font "ntxexa" at 10.0pt
-warning: tables/historical_endpoints:15:  -> ntxexa
-warning: tables/historical_endpoints:15: Requested font "ntxexa" at 7.3pt
-warning: tables/historical_endpoints:15:  -> ntxexa
-warning: tables/historical_endpoints:15: Requested font "ntxexa" at 5.5pt
-warning: tables/historical_endpoints:15:  -> ntxexa
+warning: tables/historical_endpoints:18:  -> ntx-Regular-tlf-ot1
+warning: tables/historical_endpoints:18: Requested font "ntx-Regular-tlf-ot1" at 7.3pt
+warning: tables/historical_endpoints:18:  -> ntx-Regular-tlf-ot1
+warning: tables/historical_endpoints:18: Requested font "ntx-Regular-tlf-ot1" at 5.5pt
+warning: tables/historical_endpoints:18:  -> ntx-Regular-tlf-ot1
+warning: tables/historical_endpoints:18: Requested font "ntxmi" at 10.0pt
+warning: tables/historical_endpoints:18:  -> ntxmi
+warning: tables/historical_endpoints:18: Requested font "ntxmi7" at 7.3pt
+warning: tables/historical_endpoints:18:  -> ntxmi7
+warning: tables/historical_endpoints:18: Requested font "ntxmi5" at 5.5pt
+warning: tables/historical_endpoints:18:  -> ntxmi5
+warning: tables/historical_endpoints:18: Requested font "ntxsy" at 10.0pt
+warning: tables/historical_endpoints:18:  -> ntxsy
+warning: tables/historical_endpoints:18: Requested font "ntxsy7" at 7.3pt
+warning: tables/historical_endpoints:18:  -> ntxsy7
+warning: tables/historical_endpoints:18: Requested font "ntxsy5" at 5.5pt
+warning: tables/historical_endpoints:18:  -> ntxsy5
+warning: tables/historical_endpoints:18: Requested font "ntxexx" at 10.0pt
+warning: tables/historical_endpoints:18:  -> ntxexx
+warning: tables/historical_endpoints:18: Requested font "ntxexx" at 7.3pt
+warning: tables/historical_endpoints:18:  -> ntxexx
+warning: tables/historical_endpoints:18: Requested font "ntxexx" at 5.5pt
+warning: tables/historical_endpoints:18:  -> ntxexx
+warning: tables/historical_endpoints:18: Requested font "msam10" at 10.0pt
+warning: tables/historical_endpoints:18:  -> msam10
+warning: tables/historical_endpoints:18: Requested font "msam7" at 7.3pt
+warning: tables/historical_endpoints:18:  -> msam7
+warning: tables/historical_endpoints:18: Requested font "msam5" at 5.5pt
+warning: tables/historical_endpoints:18:  -> msam5
+warning: tables/historical_endpoints:18: Requested font "msbm10" at 10.0pt
+warning: tables/historical_endpoints:18:  -> msbm10
+warning: tables/historical_endpoints:18: Requested font "msbm7" at 7.3pt
+warning: tables/historical_endpoints:18:  -> msbm7
+warning: tables/historical_endpoints:18: Requested font "msbm5" at 5.5pt
+warning: tables/historical_endpoints:18:  -> msbm5
+warning: tables/historical_endpoints:18: Requested font "rsfs10" at 10.0pt
+warning: tables/historical_endpoints:18:  -> rsfs10
+warning: tables/historical_endpoints:18: Requested font "rsfs5" at 5.0pt
+warning: tables/historical_endpoints:18:  -> rsfs5
+warning: tables/historical_endpoints:18: Requested font "cmbx10" at 10.0pt
+warning: tables/historical_endpoints:18:  -> cmbx10
+warning: tables/historical_endpoints:18: Requested font "cmbx5" at 5.0pt
+warning: tables/historical_endpoints:18:  -> cmbx5
+warning: tables/historical_endpoints:18: Requested font "cmmib10" at 10.0pt
+warning: tables/historical_endpoints:18:  -> cmmib10
+warning: tables/historical_endpoints:18: Requested font "cmmib5" at 5.0pt
+warning: tables/historical_endpoints:18:  -> cmmib5
+warning: tables/historical_endpoints:18: Requested font "cmbsy10" at 10.0pt
+warning: tables/historical_endpoints:18:  -> cmbsy10
+warning: tables/historical_endpoints:18: Requested font "cmbsy5" at 5.0pt
+warning: tables/historical_endpoints:18:  -> cmbsy5
+warning: tables/historical_endpoints:18: Requested font "ntx-Bold-tlf-ot1" at 10.0pt
+warning: tables/historical_endpoints:18:  -> ntx-Bold-tlf-ot1
+warning: tables/historical_endpoints:18: Requested font "ntx-Bold-tlf-ot1" at 7.3pt
+warning: tables/historical_endpoints:18:  -> ntx-Bold-tlf-ot1
+warning: tables/historical_endpoints:18: Requested font "ntx-Bold-tlf-ot1" at 5.5pt
+warning: tables/historical_endpoints:18:  -> ntx-Bold-tlf-ot1
+warning: tables/historical_endpoints:18: Requested font "ntxmia" at 10.0pt
+warning: tables/historical_endpoints:18:  -> ntxmia
+warning: tables/historical_endpoints:18: Requested font "ntxmia" at 7.3pt
+warning: tables/historical_endpoints:18:  -> ntxmia
+warning: tables/historical_endpoints:18: Requested font "ntxmia" at 5.5pt
+warning: tables/historical_endpoints:18:  -> ntxmia
+warning: tables/historical_endpoints:18: Requested font "ntxsym" at 10.0pt
+warning: tables/historical_endpoints:18:  -> ntxsym
+warning: tables/historical_endpoints:18: Requested font "ntxsym" at 7.3pt
+warning: tables/historical_endpoints:18:  -> ntxsym
+warning: tables/historical_endpoints:18: Requested font "ntxsym" at 5.5pt
+warning: tables/historical_endpoints:18:  -> ntxsym
+warning: tables/historical_endpoints:18: Requested font "ntxsyc" at 10.0pt
+warning: tables/historical_endpoints:18:  -> ntxsyc
+warning: tables/historical_endpoints:18: Requested font "ntxsyc" at 7.3pt
+warning: tables/historical_endpoints:18:  -> ntxsyc
+warning: tables/historical_endpoints:18: Requested font "ntxsyc" at 5.5pt
+warning: tables/historical_endpoints:18:  -> ntxsyc
+warning: tables/historical_endpoints:18: Requested font "ntxexa" at 10.0pt
+warning: tables/historical_endpoints:18:  -> ntxexa
+warning: tables/historical_endpoints:18: Requested font "ntxexa" at 7.3pt
+warning: tables/historical_endpoints:18:  -> ntxexa
+warning: tables/historical_endpoints:18: Requested font "ntxexa" at 5.5pt
+warning: tables/historical_endpoints:18:  -> ntxexa
 warning: proofs_learning:88: Requested font "[TeXGyreTermesX-Italic.otf]/OT:script=latn;language=dflt;-ss05;+tnum;+lnum;mapping=tex-text;" at 8.8pt
 warning: proofs_learning:88: Requested font "[TeXGyreTermesX-Italic.otf]/OT:script=latn;language=dflt;-ss05;+tnum;+lnum;mapping=tex-text;" at 6.6pt
 warning: proofs_learning:471: Overfull \hbox (7.09189pt too wide) in paragraph at lines 468--471
@@ -1034,89 +1033,89 @@ warning: empirics:200: Requested font "ntx-Bold-tlf-ot1" at 8.0pt
 warning: empirics:200:  -> ntx-Bold-tlf-ot1
 warning: empirics:200: Requested font "ntx-Bold-tlf-ot1" at 6.1pt
 warning: empirics:200:  -> ntx-Bold-tlf-ot1
-warning: tables/historical_endpoints:15: 
+warning: tables/historical_endpoints:18: 
 Requested font "ntx-Regular-tlf-ot1" at 10.0pt
-warning: tables/historical_endpoints:15:  -> ntx-Regular-tlf-ot1
-warning: tables/historical_endpoints:15: Requested font "ntx-Regular-tlf-ot1" at 7.3pt
-warning: tables/historical_endpoints:15:  -> ntx-Regular-tlf-ot1
-warning: tables/historical_endpoints:15: Requested font "ntx-Regular-tlf-ot1" at 5.5pt
-warning: tables/historical_endpoints:15:  -> ntx-Regular-tlf-ot1
-warning: tables/historical_endpoints:15: Requested font "ntxmi" at 10.0pt
-warning: tables/historical_endpoints:15:  -> ntxmi
-warning: tables/historical_endpoints:15: Requested font "ntxmi7" at 7.3pt
-warning: tables/historical_endpoints:15:  -> ntxmi7
-warning: tables/historical_endpoints:15: Requested font "ntxmi5" at 5.5pt
-warning: tables/historical_endpoints:15:  -> ntxmi5
-warning: tables/historical_endpoints:15: Requested font "ntxsy" at 10.0pt
-warning: tables/historical_endpoints:15:  -> ntxsy
-warning: tables/historical_endpoints:15: Requested font "ntxsy7" at 7.3pt
-warning: tables/historical_endpoints:15:  -> ntxsy7
-warning: tables/historical_endpoints:15: Requested font "ntxsy5" at 5.5pt
-warning: tables/historical_endpoints:15:  -> ntxsy5
-warning: tables/historical_endpoints:15: Requested font "ntxexx" at 10.0pt
-warning: tables/historical_endpoints:15:  -> ntxexx
-warning: tables/historical_endpoints:15: Requested font "ntxexx" at 7.3pt
-warning: tables/historical_endpoints:15:  -> ntxexx
-warning: tables/historical_endpoints:15: Requested font "ntxexx" at 5.5pt
-warning: tables/historical_endpoints:15:  -> ntxexx
-warning: tables/historical_endpoints:15: Requested font "msam10" at 10.0pt
-warning: tables/historical_endpoints:15:  -> msam10
-warning: tables/historical_endpoints:15: Requested font "msam7" at 7.3pt
-warning: tables/historical_endpoints:15:  -> msam7
-warning: tables/historical_endpoints:15: Requested font "msam5" at 5.5pt
-warning: tables/historical_endpoints:15:  -> msam5
-warning: tables/historical_endpoints:15: Requested font "msbm10" at 10.0pt
-warning: tables/historical_endpoints:15:  -> msbm10
-warning: tables/historical_endpoints:15: Requested font "msbm7" at 7.3pt
-warning: tables/historical_endpoints:15:  -> msbm7
-warning: tables/historical_endpoints:15: Requested font "msbm5" at 5.5pt
-warning: tables/historical_endpoints:15:  -> msbm5
-warning: tables/historical_endpoints:15: Requested font "rsfs10" at 10.0pt
-warning: tables/historical_endpoints:15:  -> rsfs10
-warning: tables/historical_endpoints:15: Requested font "rsfs5" at 5.0pt
-warning: tables/historical_endpoints:15:  -> rsfs5
-warning: tables/historical_endpoints:15: Requested font "cmbx10" at 10.0pt
-warning: tables/historical_endpoints:15:  -> cmbx10
-warning: tables/historical_endpoints:15: Requested font "cmbx5" at 5.0pt
-warning: tables/historical_endpoints:15:  -> cmbx5
-warning: tables/historical_endpoints:15: Requested font "cmmib10" at 10.0pt
-warning: tables/historical_endpoints:15:  -> cmmib10
-warning: tables/historical_endpoints:15: Requested font "cmmib5" at 5.0pt
-warning: tables/historical_endpoints:15:  -> cmmib5
-warning: tables/historical_endpoints:15: Requested font "cmbsy10" at 10.0pt
-warning: tables/historical_endpoints:15:  -> cmbsy10
-warning: tables/historical_endpoints:15: Requested font "cmbsy5" at 5.0pt
-warning: tables/historical_endpoints:15:  -> cmbsy5
-warning: tables/historical_endpoints:15: Requested font "ntx-Bold-tlf-ot1" at 10.0pt
-warning: tables/historical_endpoints:15:  -> ntx-Bold-tlf-ot1
-warning: tables/historical_endpoints:15: Requested font "ntx-Bold-tlf-ot1" at 7.3pt
-warning: tables/historical_endpoints:15:  -> ntx-Bold-tlf-ot1
-warning: tables/historical_endpoints:15: Requested font "ntx-Bold-tlf-ot1" at 5.5pt
-warning: tables/historical_endpoints:15:  -> ntx-Bold-tlf-ot1
-warning: tables/historical_endpoints:15: Requested font "ntxmia" at 10.0pt
-warning: tables/historical_endpoints:15:  -> ntxmia
-warning: tables/historical_endpoints:15: Requested font "ntxmia" at 7.3pt
-warning: tables/historical_endpoints:15:  -> ntxmia
-warning: tables/historical_endpoints:15: Requested font "ntxmia" at 5.5pt
-warning: tables/historical_endpoints:15:  -> ntxmia
-warning: tables/historical_endpoints:15: Requested font "ntxsym" at 10.0pt
-warning: tables/historical_endpoints:15:  -> ntxsym
-warning: tables/historical_endpoints:15: Requested font "ntxsym" at 7.3pt
-warning: tables/historical_endpoints:15:  -> ntxsym
-warning: tables/historical_endpoints:15: Requested font "ntxsym" at 5.5pt
-warning: tables/historical_endpoints:15:  -> ntxsym
-warning: tables/historical_endpoints:15: Requested font "ntxsyc" at 10.0pt
-warning: tables/historical_endpoints:15:  -> ntxsyc
-warning: tables/historical_endpoints:15: Requested font "ntxsyc" at 7.3pt
-warning: tables/historical_endpoints:15:  -> ntxsyc
-warning: tables/historical_endpoints:15: Requested font "ntxsyc" at 5.5pt
-warning: tables/historical_endpoints:15:  -> ntxsyc
-warning: tables/historical_endpoints:15: Requested font "ntxexa" at 10.0pt
-warning: tables/historical_endpoints:15:  -> ntxexa
-warning: tables/historical_endpoints:15: Requested font "ntxexa" at 7.3pt
-warning: tables/historical_endpoints:15:  -> ntxexa
-warning: tables/historical_endpoints:15: Requested font "ntxexa" at 5.5pt
-warning: tables/historical_endpoints:15:  -> ntxexa
+warning: tables/historical_endpoints:18:  -> ntx-Regular-tlf-ot1
+warning: tables/historical_endpoints:18: Requested font "ntx-Regular-tlf-ot1" at 7.3pt
+warning: tables/historical_endpoints:18:  -> ntx-Regular-tlf-ot1
+warning: tables/historical_endpoints:18: Requested font "ntx-Regular-tlf-ot1" at 5.5pt
+warning: tables/historical_endpoints:18:  -> ntx-Regular-tlf-ot1
+warning: tables/historical_endpoints:18: Requested font "ntxmi" at 10.0pt
+warning: tables/historical_endpoints:18:  -> ntxmi
+warning: tables/historical_endpoints:18: Requested font "ntxmi7" at 7.3pt
+warning: tables/historical_endpoints:18:  -> ntxmi7
+warning: tables/historical_endpoints:18: Requested font "ntxmi5" at 5.5pt
+warning: tables/historical_endpoints:18:  -> ntxmi5
+warning: tables/historical_endpoints:18: Requested font "ntxsy" at 10.0pt
+warning: tables/historical_endpoints:18:  -> ntxsy
+warning: tables/historical_endpoints:18: Requested font "ntxsy7" at 7.3pt
+warning: tables/historical_endpoints:18:  -> ntxsy7
+warning: tables/historical_endpoints:18: Requested font "ntxsy5" at 5.5pt
+warning: tables/historical_endpoints:18:  -> ntxsy5
+warning: tables/historical_endpoints:18: Requested font "ntxexx" at 10.0pt
+warning: tables/historical_endpoints:18:  -> ntxexx
+warning: tables/historical_endpoints:18: Requested font "ntxexx" at 7.3pt
+warning: tables/historical_endpoints:18:  -> ntxexx
+warning: tables/historical_endpoints:18: Requested font "ntxexx" at 5.5pt
+warning: tables/historical_endpoints:18:  -> ntxexx
+warning: tables/historical_endpoints:18: Requested font "msam10" at 10.0pt
+warning: tables/historical_endpoints:18:  -> msam10
+warning: tables/historical_endpoints:18: Requested font "msam7" at 7.3pt
+warning: tables/historical_endpoints:18:  -> msam7
+warning: tables/historical_endpoints:18: Requested font "msam5" at 5.5pt
+warning: tables/historical_endpoints:18:  -> msam5
+warning: tables/historical_endpoints:18: Requested font "msbm10" at 10.0pt
+warning: tables/historical_endpoints:18:  -> msbm10
+warning: tables/historical_endpoints:18: Requested font "msbm7" at 7.3pt
+warning: tables/historical_endpoints:18:  -> msbm7
+warning: tables/historical_endpoints:18: Requested font "msbm5" at 5.5pt
+warning: tables/historical_endpoints:18:  -> msbm5
+warning: tables/historical_endpoints:18: Requested font "rsfs10" at 10.0pt
+warning: tables/historical_endpoints:18:  -> rsfs10
+warning: tables/historical_endpoints:18: Requested font "rsfs5" at 5.0pt
+warning: tables/historical_endpoints:18:  -> rsfs5
+warning: tables/historical_endpoints:18: Requested font "cmbx10" at 10.0pt
+warning: tables/historical_endpoints:18:  -> cmbx10
+warning: tables/historical_endpoints:18: Requested font "cmbx5" at 5.0pt
+warning: tables/historical_endpoints:18:  -> cmbx5
+warning: tables/historical_endpoints:18: Requested font "cmmib10" at 10.0pt
+warning: tables/historical_endpoints:18:  -> cmmib10
+warning: tables/historical_endpoints:18: Requested font "cmmib5" at 5.0pt
+warning: tables/historical_endpoints:18:  -> cmmib5
+warning: tables/historical_endpoints:18: Requested font "cmbsy10" at 10.0pt
+warning: tables/historical_endpoints:18:  -> cmbsy10
+warning: tables/historical_endpoints:18: Requested font "cmbsy5" at 5.0pt
+warning: tables/historical_endpoints:18:  -> cmbsy5
+warning: tables/historical_endpoints:18: Requested font "ntx-Bold-tlf-ot1" at 10.0pt
+warning: tables/historical_endpoints:18:  -> ntx-Bold-tlf-ot1
+warning: tables/historical_endpoints:18: Requested font "ntx-Bold-tlf-ot1" at 7.3pt
+warning: tables/historical_endpoints:18:  -> ntx-Bold-tlf-ot1
+warning: tables/historical_endpoints:18: Requested font "ntx-Bold-tlf-ot1" at 5.5pt
+warning: tables/historical_endpoints:18:  -> ntx-Bold-tlf-ot1
+warning: tables/historical_endpoints:18: Requested font "ntxmia" at 10.0pt
+warning: tables/historical_endpoints:18:  -> ntxmia
+warning: tables/historical_endpoints:18: Requested font "ntxmia" at 7.3pt
+warning: tables/historical_endpoints:18:  -> ntxmia
+warning: tables/historical_endpoints:18: Requested font "ntxmia" at 5.5pt
+warning: tables/historical_endpoints:18:  -> ntxmia
+warning: tables/historical_endpoints:18: Requested font "ntxsym" at 10.0pt
+warning: tables/historical_endpoints:18:  -> ntxsym
+warning: tables/historical_endpoints:18: Requested font "ntxsym" at 7.3pt
+warning: tables/historical_endpoints:18:  -> ntxsym
+warning: tables/historical_endpoints:18: Requested font "ntxsym" at 5.5pt
+warning: tables/historical_endpoints:18:  -> ntxsym
+warning: tables/historical_endpoints:18: Requested font "ntxsyc" at 10.0pt
+warning: tables/historical_endpoints:18:  -> ntxsyc
+warning: tables/historical_endpoints:18: Requested font "ntxsyc" at 7.3pt
+warning: tables/historical_endpoints:18:  -> ntxsyc
+warning: tables/historical_endpoints:18: Requested font "ntxsyc" at 5.5pt
+warning: tables/historical_endpoints:18:  -> ntxsyc
+warning: tables/historical_endpoints:18: Requested font "ntxexa" at 10.0pt
+warning: tables/historical_endpoints:18:  -> ntxexa
+warning: tables/historical_endpoints:18: Requested font "ntxexa" at 7.3pt
+warning: tables/historical_endpoints:18:  -> ntxexa
+warning: tables/historical_endpoints:18: Requested font "ntxexa" at 5.5pt
+warning: tables/historical_endpoints:18:  -> ntxexa
 warning: proofs_learning:88: Requested font "[TeXGyreTermesX-Italic.otf]/OT:script=latn;language=dflt;-ss05;+tnum;+lnum;mapping=tex-text;" at 8.8pt
 warning: proofs_learning:88: Requested font "[TeXGyreTermesX-Italic.otf]/OT:script=latn;language=dflt;-ss05;+tnum;+lnum;mapping=tex-text;" at 6.6pt
 warning: proofs_learning:471: Overfull \hbox (7.09189pt too wide) in paragraph at lines 468--471
@@ -1408,98 +1407,98 @@ warning: empirics:200: Requested font "ntx-Bold-tlf-ot1" at 8.0pt
 warning: empirics:200:  -> ntx-Bold-tlf-ot1
 warning: empirics:200: Requested font "ntx-Bold-tlf-ot1" at 6.1pt
 warning: empirics:200:  -> ntx-Bold-tlf-ot1
-warning: tables/historical_endpoints:15: 
+warning: tables/historical_endpoints:18: 
 Requested font "ntx-Regular-tlf-ot1" at 10.0pt
-warning: tables/historical_endpoints:15:  -> ntx-Regular-tlf-ot1
-warning: tables/historical_endpoints:15: Requested font "ntx-Regular-tlf-ot1" at 7.3pt
-warning: tables/historical_endpoints:15:  -> ntx-Regular-tlf-ot1
-warning: tables/historical_endpoints:15: Requested font "ntx-Regular-tlf-ot1" at 5.5pt
-warning: tables/historical_endpoints:15:  -> ntx-Regular-tlf-ot1
-warning: tables/historical_endpoints:15: Requested font "ntxmi" at 10.0pt
-warning: tables/historical_endpoints:15:  -> ntxmi
-warning: tables/historical_endpoints:15: Requested font "ntxmi7" at 7.3pt
-warning: tables/historical_endpoints:15:  -> ntxmi7
-warning: tables/historical_endpoints:15: Requested font "ntxmi5" at 5.5pt
-warning: tables/historical_endpoints:15:  -> ntxmi5
-warning: tables/historical_endpoints:15: Requested font "ntxsy" at 10.0pt
-warning: tables/historical_endpoints:15:  -> ntxsy
-warning: tables/historical_endpoints:15: Requested font "ntxsy7" at 7.3pt
-warning: tables/historical_endpoints:15:  -> ntxsy7
-warning: tables/historical_endpoints:15: Requested font "ntxsy5" at 5.5pt
-warning: tables/historical_endpoints:15:  -> ntxsy5
-warning: tables/historical_endpoints:15: Requested font "ntxexx" at 10.0pt
-warning: tables/historical_endpoints:15:  -> ntxexx
-warning: tables/historical_endpoints:15: Requested font "ntxexx" at 7.3pt
-warning: tables/historical_endpoints:15:  -> ntxexx
-warning: tables/historical_endpoints:15: Requested font "ntxexx" at 5.5pt
-warning: tables/historical_endpoints:15:  -> ntxexx
-warning: tables/historical_endpoints:15: Requested font "msam10" at 10.0pt
-warning: tables/historical_endpoints:15:  -> msam10
-warning: tables/historical_endpoints:15: Requested font "msam7" at 7.3pt
-warning: tables/historical_endpoints:15:  -> msam7
-warning: tables/historical_endpoints:15: Requested font "msam5" at 5.5pt
-warning: tables/historical_endpoints:15:  -> msam5
-warning: tables/historical_endpoints:15: Requested font "msbm10" at 10.0pt
-warning: tables/historical_endpoints:15:  -> msbm10
-warning: tables/historical_endpoints:15: Requested font "msbm7" at 7.3pt
-warning: tables/historical_endpoints:15:  -> msbm7
-warning: tables/historical_endpoints:15: Requested font "msbm5" at 5.5pt
-warning: tables/historical_endpoints:15:  -> msbm5
-warning: tables/historical_endpoints:15: Requested font "rsfs10" at 10.0pt
-warning: tables/historical_endpoints:15:  -> rsfs10
-warning: tables/historical_endpoints:15: Requested font "rsfs5" at 5.0pt
-warning: tables/historical_endpoints:15:  -> rsfs5
-warning: tables/historical_endpoints:15: Requested font "cmbx10" at 10.0pt
-warning: tables/historical_endpoints:15:  -> cmbx10
-warning: tables/historical_endpoints:15: Requested font "cmbx5" at 5.0pt
-warning: tables/historical_endpoints:15:  -> cmbx5
-warning: tables/historical_endpoints:15: Requested font "cmmib10" at 10.0pt
-warning: tables/historical_endpoints:15:  -> cmmib10
-warning: tables/historical_endpoints:15: Requested font "cmmib5" at 5.0pt
-warning: tables/historical_endpoints:15:  -> cmmib5
-warning: tables/historical_endpoints:15: Requested font "cmbsy10" at 10.0pt
-warning: tables/historical_endpoints:15:  -> cmbsy10
-warning: tables/historical_endpoints:15: Requested font "cmbsy5" at 5.0pt
-warning: tables/historical_endpoints:15:  -> cmbsy5
-warning: tables/historical_endpoints:15: Requested font "ntx-Bold-tlf-ot1" at 10.0pt
-warning: tables/historical_endpoints:15:  -> ntx-Bold-tlf-ot1
-warning: tables/historical_endpoints:15: Requested font "ntx-Bold-tlf-ot1" at 7.3pt
-warning: tables/historical_endpoints:15:  -> ntx-Bold-tlf-ot1
-warning: tables/historical_endpoints:15: Requested font "ntx-Bold-tlf-ot1" at 5.5pt
-warning: tables/historical_endpoints:15:  -> ntx-Bold-tlf-ot1
-warning: tables/historical_endpoints:15: Requested font "ntxmia" at 10.0pt
-warning: tables/historical_endpoints:15:  -> ntxmia
-warning: tables/historical_endpoints:15: Requested font "ntxmia" at 7.3pt
-warning: tables/historical_endpoints:15:  -> ntxmia
-warning: tables/historical_endpoints:15: Requested font "ntxmia" at 5.5pt
-warning: tables/historical_endpoints:15:  -> ntxmia
-warning: tables/historical_endpoints:15: Requested font "ntxsym" at 10.0pt
-warning: tables/historical_endpoints:15:  -> ntxsym
-warning: tables/historical_endpoints:15: Requested font "ntxsym" at 7.3pt
-warning: tables/historical_endpoints:15:  -> ntxsym
-warning: tables/historical_endpoints:15: Requested font "ntxsym" at 5.5pt
-warning: tables/historical_endpoints:15:  -> ntxsym
-warning: tables/historical_endpoints:15: Requested font "ntxsyc" at 10.0pt
-warning: tables/historical_endpoints:15:  -> ntxsyc
-warning: tables/historical_endpoints:15: Requested font "ntxsyc" at 7.3pt
-warning: tables/historical_endpoints:15:  -> ntxsyc
-warning: tables/historical_endpoints:15: Requested font "ntxsyc" at 5.5pt
-warning: tables/historical_endpoints:15:  -> ntxsyc
-warning: tables/historical_endpoints:15: Requested font "ntxexa" at 10.0pt
-warning: tables/historical_endpoints:15:  -> ntxexa
-warning: tables/historical_endpoints:15: Requested font "ntxexa" at 7.3pt
-warning: tables/historical_endpoints:15:  -> ntxexa
-warning: tables/historical_endpoints:15: Requested font "ntxexa" at 5.5pt
-warning: tables/historical_endpoints:15:  -> ntxexa
+warning: tables/historical_endpoints:18:  -> ntx-Regular-tlf-ot1
+warning: tables/historical_endpoints:18: Requested font "ntx-Regular-tlf-ot1" at 7.3pt
+warning: tables/historical_endpoints:18:  -> ntx-Regular-tlf-ot1
+warning: tables/historical_endpoints:18: Requested font "ntx-Regular-tlf-ot1" at 5.5pt
+warning: tables/historical_endpoints:18:  -> ntx-Regular-tlf-ot1
+warning: tables/historical_endpoints:18: Requested font "ntxmi" at 10.0pt
+warning: tables/historical_endpoints:18:  -> ntxmi
+warning: tables/historical_endpoints:18: Requested font "ntxmi7" at 7.3pt
+warning: tables/historical_endpoints:18:  -> ntxmi7
+warning: tables/historical_endpoints:18: Requested font "ntxmi5" at 5.5pt
+warning: tables/historical_endpoints:18:  -> ntxmi5
+warning: tables/historical_endpoints:18: Requested font "ntxsy" at 10.0pt
+warning: tables/historical_endpoints:18:  -> ntxsy
+warning: tables/historical_endpoints:18: Requested font "ntxsy7" at 7.3pt
+warning: tables/historical_endpoints:18:  -> ntxsy7
+warning: tables/historical_endpoints:18: Requested font "ntxsy5" at 5.5pt
+warning: tables/historical_endpoints:18:  -> ntxsy5
+warning: tables/historical_endpoints:18: Requested font "ntxexx" at 10.0pt
+warning: tables/historical_endpoints:18:  -> ntxexx
+warning: tables/historical_endpoints:18: Requested font "ntxexx" at 7.3pt
+warning: tables/historical_endpoints:18:  -> ntxexx
+warning: tables/historical_endpoints:18: Requested font "ntxexx" at 5.5pt
+warning: tables/historical_endpoints:18:  -> ntxexx
+warning: tables/historical_endpoints:18: Requested font "msam10" at 10.0pt
+warning: tables/historical_endpoints:18:  -> msam10
+warning: tables/historical_endpoints:18: Requested font "msam7" at 7.3pt
+warning: tables/historical_endpoints:18:  -> msam7
+warning: tables/historical_endpoints:18: Requested font "msam5" at 5.5pt
+warning: tables/historical_endpoints:18:  -> msam5
+warning: tables/historical_endpoints:18: Requested font "msbm10" at 10.0pt
+warning: tables/historical_endpoints:18:  -> msbm10
+warning: tables/historical_endpoints:18: Requested font "msbm7" at 7.3pt
+warning: tables/historical_endpoints:18:  -> msbm7
+warning: tables/historical_endpoints:18: Requested font "msbm5" at 5.5pt
+warning: tables/historical_endpoints:18:  -> msbm5
+warning: tables/historical_endpoints:18: Requested font "rsfs10" at 10.0pt
+warning: tables/historical_endpoints:18:  -> rsfs10
+warning: tables/historical_endpoints:18: Requested font "rsfs5" at 5.0pt
+warning: tables/historical_endpoints:18:  -> rsfs5
+warning: tables/historical_endpoints:18: Requested font "cmbx10" at 10.0pt
+warning: tables/historical_endpoints:18:  -> cmbx10
+warning: tables/historical_endpoints:18: Requested font "cmbx5" at 5.0pt
+warning: tables/historical_endpoints:18:  -> cmbx5
+warning: tables/historical_endpoints:18: Requested font "cmmib10" at 10.0pt
+warning: tables/historical_endpoints:18:  -> cmmib10
+warning: tables/historical_endpoints:18: Requested font "cmmib5" at 5.0pt
+warning: tables/historical_endpoints:18:  -> cmmib5
+warning: tables/historical_endpoints:18: Requested font "cmbsy10" at 10.0pt
+warning: tables/historical_endpoints:18:  -> cmbsy10
+warning: tables/historical_endpoints:18: Requested font "cmbsy5" at 5.0pt
+warning: tables/historical_endpoints:18:  -> cmbsy5
+warning: tables/historical_endpoints:18: Requested font "ntx-Bold-tlf-ot1" at 10.0pt
+warning: tables/historical_endpoints:18:  -> ntx-Bold-tlf-ot1
+warning: tables/historical_endpoints:18: Requested font "ntx-Bold-tlf-ot1" at 7.3pt
+warning: tables/historical_endpoints:18:  -> ntx-Bold-tlf-ot1
+warning: tables/historical_endpoints:18: Requested font "ntx-Bold-tlf-ot1" at 5.5pt
+warning: tables/historical_endpoints:18:  -> ntx-Bold-tlf-ot1
+warning: tables/historical_endpoints:18: Requested font "ntxmia" at 10.0pt
+warning: tables/historical_endpoints:18:  -> ntxmia
+warning: tables/historical_endpoints:18: Requested font "ntxmia" at 7.3pt
+warning: tables/historical_endpoints:18:  -> ntxmia
+warning: tables/historical_endpoints:18: Requested font "ntxmia" at 5.5pt
+warning: tables/historical_endpoints:18:  -> ntxmia
+warning: tables/historical_endpoints:18: Requested font "ntxsym" at 10.0pt
+warning: tables/historical_endpoints:18:  -> ntxsym
+warning: tables/historical_endpoints:18: Requested font "ntxsym" at 7.3pt
+warning: tables/historical_endpoints:18:  -> ntxsym
+warning: tables/historical_endpoints:18: Requested font "ntxsym" at 5.5pt
+warning: tables/historical_endpoints:18:  -> ntxsym
+warning: tables/historical_endpoints:18: Requested font "ntxsyc" at 10.0pt
+warning: tables/historical_endpoints:18:  -> ntxsyc
+warning: tables/historical_endpoints:18: Requested font "ntxsyc" at 7.3pt
+warning: tables/historical_endpoints:18:  -> ntxsyc
+warning: tables/historical_endpoints:18: Requested font "ntxsyc" at 5.5pt
+warning: tables/historical_endpoints:18:  -> ntxsyc
+warning: tables/historical_endpoints:18: Requested font "ntxexa" at 10.0pt
+warning: tables/historical_endpoints:18:  -> ntxexa
+warning: tables/historical_endpoints:18: Requested font "ntxexa" at 7.3pt
+warning: tables/historical_endpoints:18:  -> ntxexa
+warning: tables/historical_endpoints:18: Requested font "ntxexa" at 5.5pt
+warning: tables/historical_endpoints:18:  -> ntxexa
 warning: proofs_learning:88: Requested font "[TeXGyreTermesX-Italic.otf]/OT:script=latn;language=dflt;-ss05;+tnum;+lnum;mapping=tex-text;" at 8.8pt
 warning: proofs_learning:88: Requested font "[TeXGyreTermesX-Italic.otf]/OT:script=latn;language=dflt;-ss05;+tnum;+lnum;mapping=tex-text;" at 6.6pt
 warning: proofs_learning:471: Overfull \hbox (7.09189pt too wide) in paragraph at lines 468--471
 warning: appendice_2:97: Requested font "[TeXGyreTermesX-Italic.otf]/OT:script=latn;language=dflt;-ss05;+tnum;+lnum;mapping=tex-text;" at 10.0pt
 warning: warnings were issued by the TeX engine; use --print and/or --keep-logs for details.
 note: Running xdvipdfmx ...
+note: Writing `main.pdf` (1.0044431686401367 MiB)
+note: Writing `main.blg` (193 B)
 note: Writing `main.log` (55.083984375 KiB)
 note: Writing `main.bbl` (3.7841796875 KiB)
-note: Writing `main.aux` (21.07421875 KiB)
-note: Writing `main.pdf` (1.0042457580566406 MiB)
+note: Writing `main.aux` (21.087890625 KiB)
 note: Writing `main.out` (5.3037109375 KiB)
-note: Writing `main.blg` (193 B)
