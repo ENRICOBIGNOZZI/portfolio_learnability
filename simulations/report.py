@@ -64,10 +64,10 @@ def line(ax, frame, x, y, label, color, log=False):
     tab = matrix(frame, x, y)
     xx = tab.columns.to_numpy(float)
     yy = tab.mean(axis=0).to_numpy()
-    se = tab.std(axis=0).to_numpy() / np.sqrt(len(tab))
+    sd = tab.std(axis=0, ddof=1).to_numpy()
     ax.plot(xx, yy, "o-", label=label, color=color, markersize=4, linewidth=1.8)
-    if not log or np.all(yy - 1.96 * se > 0):
-        ax.fill_between(xx, yy-1.96*se, yy+1.96*se, color=color, alpha=.12)
+    if not log or np.all(yy-sd > 0):
+        ax.fill_between(xx, yy-sd, yy+sd, color=color, alpha=.16)
     return xx, yy
 
 
@@ -156,7 +156,7 @@ def build(out):
     files = []
 
     def save(fig, stem):
-        fig.text(.5, .01, f"{config['trials']} replications per cell; bands: 95% Monte Carlo intervals. "
+        fig.text(.5, .01, f"{config['trials']} replications per cell; bands/error bars: mean +/- 1 standard deviation. "
                  "Fits use the full prespecified window.", ha="center", fontsize=8, color="#555555")
         fig.tight_layout(rect=(0, .055, 1, .97))
         fig.savefig(figures / (stem+".pdf"))
@@ -186,11 +186,11 @@ def build(out):
             line(axes[0], frame, "T_train", "SR_hat", label, color)
             line(axes[1], frame, "T_train", "SR_gap", label, color, log=True)
         axes[0].axhline(config["SR_ann"], color="black", linestyle=":", label=rf"$SR^\star={config['SR_ann']:g}$")
-        axes[0].set(xlabel="Training periods T", ylabel=r"Annualized $SR(\widehat W)$", title="Sharpe recovery")
+        axes[0].set(xlabel=r"Training observations $T_{\mathrm{train}}$", ylabel=r"Annualized $SR(\widehat W)$", title="Sharpe recovery")
         axes[0].set_xscale("log", base=2)
         axes[0].set_xticks(T, [str(int(t)) for t in T])
         axes[0].legend(fontsize=8)
-        axes[1].set(xscale="log", yscale="log", xlabel="Training periods T", ylabel=r"$SR^\star-SR(\widehat W)$")
+        axes[1].set(xscale="log", yscale="log", xlabel=r"Training observations $T_{\mathrm{train}}$", ylabel=r"$SR^\star-SR(\widehat W)$")
         axes[1].set_xticks(T, [str(int(t)) for t in T])
         label_fit(axes[1], fits[fit_key], rf"$a T^{{-2/3}}$, N={nfix}, $\rho={rhofix}$")
         fig.suptitle("Learning the portfolio Sharpe ratio | " + subtitle)
@@ -200,9 +200,10 @@ def build(out):
     for N, color in zip(config["N_values"], COLORS):
         frame = chosen[(chosen.N == N) & (chosen.rho == rhofix)]
         agg = frame.groupby("T_train").agg(C=("complexity", "mean"), SR=("SR_hat", "mean"),
-            SR_se=("SR_hat", lambda x: x.std()/np.sqrt(len(x))), gap=("SR_gap", "mean"))
-        axes[0].errorbar(agg.C, agg.SR, yerr=1.96*agg.SR_se, color=color, marker="o", label=f"N = {N}")
-        axes[1].plot(agg.C, agg.gap, "o-", color=color, label=f"N = {N}")
+            SR_std=("SR_hat", "std"), C_std=("complexity","std"), gap=("SR_gap", "mean"), gap_std=("SR_gap","std"))
+        axes[0].errorbar(agg.C, agg.SR, xerr=agg.C_std, yerr=agg.SR_std, color=color, marker="o", label=f"N = {N}")
+        axes[1].errorbar(agg.C,agg.gap,xerr=agg.C_std,yerr=agg.gap_std,
+                         color=color,marker="o",label=f"N = {N}")
     axes[0].axhline(3, color="black", linestyle=":")
     axes[0].set(xlabel=r"Mean effective complexity $\widehat C_T(\lambda_T)$",
                 ylabel=r"Annualized $SR(\widehat W)$", title="Along the balanced regularization path")
@@ -218,7 +219,7 @@ def build(out):
         frame = chosen[(chosen.N == N) & (chosen.rho == rhofix)]
         line(ax, frame, "T_train", "complexity", f"N = {N}", color, log=True)
     label_fit(ax, fits["C_T"], rf"$a T^{{1/3}}$, N={nfix}")
-    ax.set(xscale="log", yscale="log", xlabel="Training periods T", ylabel=r"$\widehat C_T(\lambda_T)$")
+    ax.set(xscale="log", yscale="log", xlabel=r"Training observations $T_{\mathrm{train}}$", ylabel=r"$\widehat C_T(\lambda_T)$")
     ax.set_xticks(T, [str(int(t)) for t in T])
     fig.suptitle(rf"Effective complexity and history | $\rho={rhofix}$")
     save(fig, "04_complexity_T")
@@ -240,9 +241,13 @@ def build(out):
         avg = frame.groupby("T_train")[["SR_hat", "complexity"]].mean()
         axes[0].plot(avg.index, avg.SR_hat, style, label=label)
         axes[1].plot(avg.index, avg.complexity, style, label=label)
+        std=frame.groupby("T_train")[["SR_hat","complexity"]].std(ddof=1)
+        for ax,column in [(axes[0],"SR_hat"),(axes[1],"complexity")]:
+            color=ax.lines[-1].get_color()
+            ax.fill_between(avg.index,avg[column]-std[column],avg[column]+std[column],color=color,alpha=.16)
     axes[0].axhline(3, color="black", linestyle=":")
-    axes[0].set(xscale="log", xlabel="Training periods T", ylabel="Annualized Sharpe")
-    axes[1].set(xscale="log", yscale="log", xlabel="Training periods T", ylabel="Effective complexity")
+    axes[0].set(xscale="log", xlabel=r"Training observations $T_{\mathrm{train}}$", ylabel="Annualized Sharpe")
+    axes[1].set(xscale="log", yscale="log", xlabel=r"Training observations $T_{\mathrm{train}}$", ylabel="Effective complexity")
     for ax in axes:
         ax.legend(fontsize=8)
     fig.suptitle(rf"Regularization scale audit | N={nfix}, $\rho={rhofix}$")
@@ -281,7 +286,8 @@ Il PDF <a href="requested_plots.pdf">requested_plots.pdf</a> contiene tutte le f
 Gap(C) ~ C^(-2) riguarda esclusivamente il percorso bilanciato lambda(T), non qualsiasi variazione della penalita a T fissato.
 Gli esponenti sono benchmark asintotici: la teoria non garantisce un'equivalenza con costante positiva per questa singola economia.</p>
 <p>Fit principale: un solo coefficiente positivo con esponente teorico fissato. Sono riportati anche esponente libero, intervallo bootstrap in rate_fits.json,
-e fit diagnostico floor + a*x^p. Tutti i cinque T entrano nel fit. La banda mostra l'incertezza tra repliche, condizionata alla banca RFF, al pilot e al campione di integrazione.</p>
+e fit diagnostico floor + a*x^p. Tutti i cinque T entrano nel fit. Le bande e barre mostrano media +/- una deviazione standard campionaria tra repliche (ddof=1), senza divisione per sqrt(trials): non sono errori standard o intervalli di confidenza.
+La dispersione e condizionata alla banca RFF, al pilot e al campione di integrazione.</p>
 {table_html}<p>good_fit richiede R2 &gt;= 0.90 e che l'intervallo bootstrap al 95% dell'esponente libero includa quello teorico.
 Un esito negativo resta visibile; non sono state modificate curve, semi, finestre o dati per migliorarlo.
 Questa e una classificazione descrittiva del fit finito, non un test di validita del teorema: una convergenza piu rapida puo rispettare lo stesso upper bound.</p>

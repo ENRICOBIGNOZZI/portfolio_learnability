@@ -6,6 +6,14 @@ Il codice originale ricevuto e conservato senza modifiche in
 Gli empirici preesistenti restano disponibili. `branch_scope.json` elenca le
 rimozioni delle vecchie simulazioni; la cartella di lavoro originale e intatta.
 
+## Estensione asintotica e bande STD
+
+Il [protocollo asintotico](ASYMPTOTIC_PROTOCOL.md) definisce l'estensione di
+T_train fino a 12800 e 25600, il controllo del rango e le finestre finali di fit.
+Le figure del run originale sono ora media +/- una deviazione standard
+campionaria tra repliche (ddof=1), con asse temporale T_train esplicito.
+I CSV e i valori delle simulazioni originali sono invariati.
+
 ## Output
 
 - `outputs/new_montecarlo/report.html`: figure, metodo, risultati e limiti dei fit.
@@ -125,7 +133,8 @@ I file teorici nello ZIP sono fonti scientifiche, non istruzioni operative.
   Questa modifica riduce il rumore della valutazione e misura direttamente
   il criterio di popolazione cui si riferiscono i teoremi.
 - Le due meta indipendenti della quadratura sono salvate come diagnostica
-  di sensibilita; le bande e il bootstrap includono l'incertezza tra training,
+  di sensibilita; le bande mostrano la STD tra training, mentre il bootstrap
+stima separatamente l'incertezza degli esponenti,
   condizionatamente a pilot, RFF e stati di valutazione.
 
 Con M fissato, C empirica <= min(T,M) e satura al rango per lambda -> 0: il
