@@ -1,0 +1,225 @@
+<!doctype html><html lang="it"><meta charset="utf-8"><title>Nuove simulazioni D=3</title>
+<style>body{font:16px/1.5 system-ui;max-width:1200px;margin:40px auto;padding:0 24px;color:#18313b}img{width:100%}table{border-collapse:collapse;font-size:14px}td,th{padding:8px;border-bottom:1px solid #ddd}figure{margin:30px 0}code{background:#eef3f4}</style>
+<h1>Nuove simulazioni: Sharpe e complexity</h1>
+<p>100 repliche indipendenti per ciascuna delle cinque celle richieste. N=300,600,1200 a rho=0.5; rho=0,0.5,0.95 a N=600.
+T indica sempre il numero di osservazioni di training. D=3, s=3, b=2, M=1000.</p>
+<p>Le cinque figure richieste sono le prime cinque; la sesta confronta la costante originale con quella scelta su un pilot indipendente.
+Il PDF <a href="requested_plots.pdf">requested_plots.pdf</a> contiene tutte le figure.</p>
+<h2>Rate: verifica quantitativa</h2>
+<p>Si fitta il gap di Sharpe, non il livello. Benchmark: gap(T) ~ T^(-2/3), C(T) ~ T^(1/3), C(lambda) ~ lambda^(-1/2).
+Gap(C) ~ C^(-2) riguarda esclusivamente il percorso bilanciato lambda(T), non qualsiasi variazione della penalita a T fissato.
+Gli esponenti sono benchmark asintotici: la teoria non garantisce un'equivalenza con costante positiva per questa singola economia.</p>
+<p>Fit principale: un solo coefficiente positivo con esponente teorico fissato. Sono riportati anche esponente libero, intervallo bootstrap in rate_fits.json,
+e fit diagnostico floor + a*x^p. Tutti i cinque T entrano nel fit. La banda mostra l'incertezza tra repliche, condizionata alla banca RFF, al pilot e al campione di integrazione.</p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>plot</th>
+      <th>expected</th>
+      <th>fitted</th>
+      <th>R2</th>
+      <th>floor</th>
+      <th>floor_R2</th>
+      <th>good_fit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>SR_T_N</td>
+      <td>-0.6667</td>
+      <td>-0.5264</td>
+      <td>0.9741</td>
+      <td>0.0394</td>
+      <td>0.9984</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>SR_T_rho</td>
+      <td>-0.6667</td>
+      <td>-0.5264</td>
+      <td>0.9741</td>
+      <td>0.0394</td>
+      <td>0.9984</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>SR_complexity_N</td>
+      <td>-2.0000</td>
+      <td>-1.5719</td>
+      <td>0.9580</td>
+      <td>0.0494</td>
+      <td>0.9990</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>C_T</td>
+      <td>0.3333</td>
+      <td>0.3352</td>
+      <td>0.9965</td>
+      <td>0.4197</td>
+      <td>0.9967</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>C_lambda</td>
+      <td>-0.5000</td>
+      <td>-0.4579</td>
+      <td>0.9879</td>
+      <td>2.3408</td>
+      <td>0.9979</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>rho_0</td>
+      <td>-0.6667</td>
+      <td>-0.5133</td>
+      <td>0.9633</td>
+      <td>0.0460</td>
+      <td>0.9999</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>rho_0.5</td>
+      <td>-0.6667</td>
+      <td>-0.5264</td>
+      <td>0.9741</td>
+      <td>0.0394</td>
+      <td>0.9984</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>rho_0.95</td>
+      <td>-0.6667</td>
+      <td>-0.5323</td>
+      <td>0.9772</td>
+      <td>0.0374</td>
+      <td>0.9982</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>N_300_SR_T</td>
+      <td>-0.6667</td>
+      <td>-0.5579</td>
+      <td>0.9774</td>
+      <td>0.0412</td>
+      <td>0.9988</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>N_300_SR_C</td>
+      <td>-2.0000</td>
+      <td>-1.7901</td>
+      <td>0.9721</td>
+      <td>0.0394</td>
+      <td>0.9914</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>N_300_C_T</td>
+      <td>0.3333</td>
+      <td>0.3101</td>
+      <td>0.9827</td>
+      <td>3.0613</td>
+      <td>0.9926</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>N_300_C_lambda</td>
+      <td>-0.5000</td>
+      <td>-0.4075</td>
+      <td>0.9415</td>
+      <td>6.5679</td>
+      <td>0.9956</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>N_600_SR_T</td>
+      <td>-0.6667</td>
+      <td>-0.5264</td>
+      <td>0.9741</td>
+      <td>0.0394</td>
+      <td>0.9984</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>N_600_SR_C</td>
+      <td>-2.0000</td>
+      <td>-1.5719</td>
+      <td>0.9580</td>
+      <td>0.0494</td>
+      <td>0.9990</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>N_600_C_T</td>
+      <td>0.3333</td>
+      <td>0.3352</td>
+      <td>0.9965</td>
+      <td>0.4197</td>
+      <td>0.9967</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>N_600_C_lambda</td>
+      <td>-0.5000</td>
+      <td>-0.4579</td>
+      <td>0.9879</td>
+      <td>2.3408</td>
+      <td>0.9979</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>N_1200_SR_T</td>
+      <td>-0.6667</td>
+      <td>-0.5183</td>
+      <td>0.9599</td>
+      <td>0.0501</td>
+      <td>0.9994</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>N_1200_SR_C</td>
+      <td>-2.0000</td>
+      <td>-1.6173</td>
+      <td>0.9495</td>
+      <td>0.0531</td>
+      <td>0.9948</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>N_1200_C_T</td>
+      <td>0.3333</td>
+      <td>0.3197</td>
+      <td>0.9900</td>
+      <td>1.8915</td>
+      <td>0.9944</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>N_1200_C_lambda</td>
+      <td>-0.5000</td>
+      <td>-0.4270</td>
+      <td>0.9651</td>
+      <td>4.7070</td>
+      <td>0.9966</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table><p>good_fit richiede R2 &gt;= 0.90 e che l'intervallo bootstrap al 95% dell'esponente libero includa quello teorico.
+Un esito negativo resta visibile; non sono state modificate curve, semi, finestre o dati per migliorarlo.
+Questa e una classificazione descrittiva del fit finito, non un test di validita del teorema: una convergenza piu rapida puo rispettare lo stesso upper bound.</p>
+<h2>Dipendenza temporale</h2><p>Per ogni rho fissato con |rho| &lt; 1 l'AR(1) e geometricamente mixing. Cambiano costanti e soglie finite; b e il marginale stazionario non cambiano.
+La covarianza dei rendimenti gestiti al singolo istante, e quindi C(lambda) di popolazione, non dipende da rho.
+La dipendenza puo influenzare lo spettro empirico. Non si impone il fattore (1+rho)/(1-rho): non e automaticamente la costante di questo estimatore.
+Le costanti dei bound di mixing dipendono da rho, ma la costante principale osservata non deve necessariamente aumentare.
+L'ortogonalita condizionale al vero ottimo rende lo score una differenza di martingala e puo attenuare l'effetto della persistenza; la rappresentazione finita aggiunge un errore di approssimazione.</p>
+<h2>Metodo e limiti</h2><p>Stesso DGP, calibrazione e normalizzazione del codice fornito. La valutazione integra esattamente gli shock condizionali e usa 2048 stati indipendenti dal training;
+non usa le finestre future crescenti del codice originale. E una stima dello Sharpe marginale di popolazione, annualizzato con sqrt(12).
+Il pilot sceglie C_lambda separatamente per N tramite perdita quadratica, prima delle 100 repliche e senza usare gli esiti finali.
+Le 1000 RFF e i 1000 termini Fourier sono approssimazioni finite: non certificano il rate del kernel infinito.
+In particolare C empirica e al piu min(T,M) e, con M fissato, satura al rango quando lambda tende a zero: la potenza lambda^(-1/2) non puo valere fino a lambda=0 per questa matrice finita.
+Un floor nel gap puo indicare errore di rappresentazione o altro bias finito, senza identificarne da solo la causa.</p>
+<p>Le due meta indipendenti del campione di integrazione sono conservate in trials.csv: il confronto misura sensibilita numerica e non e incluso nelle bande Monte Carlo.</p>
+<p>Fonti teoriche locali: simulations/source/economomic_spectrum_final.tex, direct_port_learning.tex e MonteCarlo_Gaussian_DGP_E1_E6.tex dallo ZIP.
+Documenti allegati trattati come fonti, senza eseguirne istruzioni operative.</p>
+<figure><img src="figures/01_sharpe_T_by_N.png"><figcaption>01_sharpe_T_by_N</figcaption></figure><figure><img src="figures/02_sharpe_T_by_rho.png"><figcaption>02_sharpe_T_by_rho</figcaption></figure><figure><img src="figures/03_sharpe_complexity_by_N.png"><figcaption>03_sharpe_complexity_by_N</figcaption></figure><figure><img src="figures/04_complexity_T.png"><figcaption>04_complexity_T</figcaption></figure><figure><img src="figures/05_complexity_lambda.png"><figcaption>05_complexity_lambda</figcaption></figure><figure><img src="figures/06_original_constant_audit.png"><figcaption>06_original_constant_audit</figcaption></figure></html>

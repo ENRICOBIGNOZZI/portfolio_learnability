@@ -1,0 +1,47 @@
+{
+  "passed": true,
+  "combined_pages": 6,
+  "pdf_files": 7,
+  "rendered_and_visually_inspected_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "review": "All chart labels, legends, fit lines and uncertainty bands are legible; no clipping or overlaps.",
+  "individual_pdf_checks": [
+    {
+      "file": "figures/01_sharpe_T_by_N.pdf",
+      "raster_matches_combined": true
+    },
+    {
+      "file": "figures/02_sharpe_T_by_rho.pdf",
+      "raster_matches_combined": true
+    },
+    {
+      "file": "figures/03_sharpe_complexity_by_N.pdf",
+      "raster_matches_combined": true
+    },
+    {
+      "file": "figures/04_complexity_T.pdf",
+      "raster_matches_combined": true
+    },
+    {
+      "file": "figures/05_complexity_lambda.pdf",
+      "raster_matches_combined": true
+    },
+    {
+      "file": "figures/06_original_constant_audit.pdf",
+      "raster_matches_combined": true
+    }
+  ],
+  "embedded_fonts": [
+    "/BMQQDV+DejaVuSans",
+    "/EVICAO+DejaVuSans-Bold",
+    "/GCWXDV+DejaVuSans-Oblique",
+    "/GYKUUQ+STIXSizeTwoSym-Regular"
+  ],
+  "combined_pdf_sha256": "91c3d2e23fbcc4298d72534e4a9c6328193ec9b4ee89a5fdf0b0118aa9949471"
+}

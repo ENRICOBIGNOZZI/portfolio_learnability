@@ -17,12 +17,35 @@ rimozioni delle vecchie simulazioni; la cartella di lavoro originale e intatta.
 - `outputs/new_montecarlo/pilot.csv`: tutti i punteggi della selezione preliminare.
 - `outputs/new_montecarlo/manifest.json`, `checks.json`: configurazione, provenienza e controlli.
 
+## Risultati del run completo
+
+500 repliche completate, 100 per cella. Riferimento dei fit: N=600, rho=0.5;
+lo Sharpe viene fittato come gap rispetto a 3. Nessun T e escluso.
+
+| Grafico | Esponente teorico | Esponente libero | R2 con esponente teorico |
+|---|---:|---:|---:|
+| Sharpe vs T, N diversi | -0.6667 | -0.5264 | 0.9741 |
+| Sharpe vs T, rho diversi | -0.6667 | -0.5264 | 0.9741 |
+| Sharpe vs C | -2.0000 | -1.5719 | 0.9580 |
+| C vs T | 0.3333 | 0.3352 | 0.9965 |
+| C vs lambda | -0.5000 | -0.4579 | 0.9879 |
+
+I cinque fit a esponente teorico hanno R2>0.90, ma le pendenze finite non
+coincidono tutte con i benchmark asintotici. Per il gap di Sharpe vs T il fit
+aggiungendo un floor ha R2=0.9984; e una diagnostica della rappresentazione
+finita e non dimostra la convergenza verso SR*=3. Le curve per rho sono quasi
+sovrapposte, coerentemente con la forte ortogonalita condizionale del DGP.
+A T=1600 lo Sharpe medio delle policy calibrate e circa 2.89 in tutte le celle.
+L'errore massimo relativo E4 e 4.12e-16; tutti i 5000 record delle due regole
+superano l'audit indipendente. PDF e singole figure sono renderizzati e verificati.
+
 ## Riproduzione
 
 ```sh
 python3 -m pip install -r requirements.txt
 VECLIB_MAXIMUM_THREADS=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -m simulations.run --workers 5
 python3 -m simulations.run --render-only
+python3 -m simulations.validate
 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python3 -m pytest -q tests
 ```
 
@@ -105,6 +128,8 @@ I file teorici nello ZIP sono fonti scientifiche, non istruzioni operative.
   di sensibilita; le bande e il bootstrap includono l'incertezza tra training,
   condizionatamente a pilot, RFF e stati di valutazione.
 
+Con M fissato, C empirica <= min(T,M) e satura al rango per lambda -> 0: il
+benchmark lambda^(-1/2) non e un limite asintotico della matrice finita.
 Una rappresentazione RFF fissa ha rango finito e puo avere un floor nel gap
 rispetto al vero ottimo. Il fit `floor+a*T^(-2/3)` e diagnostico: non prova
 che il gap verso SR*=3 converga a zero. I fit senza floor restano riportati.

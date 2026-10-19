@@ -19,5 +19,10 @@
     "empirics",
     "complexity_schedule/empirics_schedule"
   ],
-  "private_bindings_ignored_by_git": true
+  "private_bindings_ignored_by_git": true,
+  "independent_csv_validator_smoke": "passed",
+  "full_monte_carlo_training_completed": 500,
+  "independent_full_csv_validation": "passed, 5000 observations",
+  "all_five_fixed_exponent_fits_R2_above_090": true,
+  "visual_pdf_review": "six pages inspected; seven PDFs checked"
 }

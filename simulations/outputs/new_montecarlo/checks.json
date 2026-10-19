@@ -1,0 +1,21 @@
+{
+  "completed_replications": 500,
+  "expected_replications": 500,
+  "max_e4_relative_error": 4.113625999642108e-16,
+  "min_regret": 0.0121862141781442,
+  "max_half_sample_SR_difference": 0.032481371726079566,
+  "mean_half_sample_SR_difference": 0.002751779067968367,
+  "max_oracle_SR_deviation": 0.0023908073059519808,
+  "all_finite": true,
+  "figures": [
+    "01_sharpe_T_by_N",
+    "02_sharpe_T_by_rho",
+    "03_sharpe_complexity_by_N",
+    "04_complexity_T",
+    "05_complexity_lambda",
+    "06_original_constant_audit"
+  ],
+  "all_requested_rate_fits_good": false,
+  "all_requested_fixed_power_fits_R2_above_090": true,
+  "all_requested_finite_representation_fits_R2_above_090": true
+}

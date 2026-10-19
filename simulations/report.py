@@ -74,6 +74,16 @@ def line(ax, frame, x, y, label, color, log=False):
 def build(out):
     out = Path(out)
     config = json.loads((out / "config.json").read_text())
+    from .model import calibrate
+    calibration = []
+    for N in config["N_values"]:
+        cal = calibrate(N, config["SR_ann"], config["sigma_eps"], terms=config["fourier_terms"])
+        calibration.append(dict(N=N, A_alpha=cal["A_alpha"], A_beta=cal["A_beta"],
+            kappa_0=cal["kappa_0"], covariance_upper_bound=cal["upper_bound"],
+            covariance_margin=cal["kappa_0"]-cal["upper_bound"], p_star=cal["p_star"],
+            SR_star=config["SR_ann"], sigma_eps=cal["sigma_eps"],
+            factor_means=json.dumps(cal["lambda_factor"].tolist())))
+    pd.DataFrame(calibration).to_csv(out / "calibration.csv", index=False)
     data = pd.read_csv(out / "trials.csv")
     spectral = pd.read_csv(out / "complexity_lambda_trials.csv")
     chosen = data[data.rule == "pilot_frozen"]
@@ -248,6 +258,11 @@ def build(out):
                   max_oracle_SR_deviation=float(np.max(np.abs(data.SR_oracle_eval-3))),
                   all_finite=bool(np.isfinite(data.select_dtypes("number")).all().all()),
                   figures=files, all_requested_rate_fits_good=all(fits[k]["good_rate_fit"] for k in ["SR_T_N", "SR_T_rho", "SR_complexity_N", "C_T", "C_lambda"]))
+    main_keys = ["SR_T_N", "SR_T_rho", "SR_complexity_N", "C_T", "C_lambda"]
+    checks["all_requested_fixed_power_fits_R2_above_090"] = all(fits[k]["r_squared"] >= .9 for k in main_keys)
+    checks["all_requested_finite_representation_fits_R2_above_090"] = all(
+        (max(fits[k]["r_squared"], fits[k]["floor_r_squared"]) if k.startswith("SR_")
+         else fits[k]["r_squared"]) >= .9 for k in main_keys)
     (out / "checks.json").write_text(json.dumps(checks, indent=2)+"\n")
     table_html = pd.DataFrame([dict(plot=k, expected=v["expected_exponent"],
         fitted=v["exponent"], R2=v["r_squared"], floor=v["floor"],
@@ -278,7 +293,9 @@ L'ortogonalita condizionale al vero ottimo rende lo score una differenza di mart
 <h2>Metodo e limiti</h2><p>Stesso DGP, calibrazione e normalizzazione del codice fornito. La valutazione integra esattamente gli shock condizionali e usa 2048 stati indipendenti dal training;
 non usa le finestre future crescenti del codice originale. E una stima dello Sharpe marginale di popolazione, annualizzato con sqrt(12).
 Il pilot sceglie C_lambda separatamente per N tramite perdita quadratica, prima delle 100 repliche e senza usare gli esiti finali.
-Le 1000 RFF e i 1000 termini Fourier sono approssimazioni finite: non certificano il rate del kernel infinito. Un floor nel gap puo indicare errore di rappresentazione o altro bias finito, senza identificarne da solo la causa.</p>
+Le 1000 RFF e i 1000 termini Fourier sono approssimazioni finite: non certificano il rate del kernel infinito.
+In particolare C empirica e al piu min(T,M) e, con M fissato, satura al rango quando lambda tende a zero: la potenza lambda^(-1/2) non puo valere fino a lambda=0 per questa matrice finita.
+Un floor nel gap puo indicare errore di rappresentazione o altro bias finito, senza identificarne da solo la causa.</p>
 <p>Le due meta indipendenti del campione di integrazione sono conservate in trials.csv: il confronto misura sensibilita numerica e non e incluso nelle bande Monte Carlo.</p>
 <p>Fonti teoriche locali: simulations/source/economomic_spectrum_final.tex, direct_port_learning.tex e MonteCarlo_Gaussian_DGP_E1_E6.tex dallo ZIP.
 Documenti allegati trattati come fonti, senza eseguirne istruzioni operative.</p>

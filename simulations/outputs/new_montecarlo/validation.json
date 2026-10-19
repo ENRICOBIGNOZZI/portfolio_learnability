@@ -1,0 +1,42 @@
+{
+  "passed": true,
+  "observations": 5000,
+  "completed_replications": 500,
+  "expected_replications": 500,
+  "max_e4_relative_error": 4.113625999642108e-16,
+  "evaluation_oracle_moment_offsets": {
+    "300": -6.306898767946977e-05,
+    "600": -0.0003902031983255607,
+    "1200": -6.436338993606423e-05
+  },
+  "source_hash_matches": true,
+  "monotone_complexity_lambda": true,
+  "scientific_fit_results": "Descriptive fits retained, including benchmark mismatches.",
+  "files_sha256": {
+    "calibration.csv": "58697e1c1285a56dc757795b20c72944970a51b5ef4980d1f7f48726bfed1035",
+    "checks.json": "2a41518f91c8710c699769bef52a1e20da241fbcb95a0566a7ee3539e6859d05",
+    "complexity_lambda_trials.csv": "c11eb9772eb698ba5081959c4fd670c2612e5d96057a3f8ba197b87a510bb4e0",
+    "config.json": "1045e2ce7bcc1770c20dc42a371d0121704fbfed9e9dd42e678796b87aa7c6c4",
+    "figures/01_sharpe_T_by_N.pdf": "8ad7c353b38dee6fb1a978145eded5cd2f4507ef5fcf6a99cddf4c3acfd2e108",
+    "figures/01_sharpe_T_by_N.png": "4baeea39836ef746d504a925ab8e7bb9f8ac827807259276fcb60ff2a488c6fc",
+    "figures/02_sharpe_T_by_rho.pdf": "e6201ab335d23894b7e443f663083dd94c47cc9f88593089d8fc13c842d40ebe",
+    "figures/02_sharpe_T_by_rho.png": "2a1964d707068a06a3173b2566b6aa23894fad2f82b3c7dbee64d36bd3a2a8db",
+    "figures/03_sharpe_complexity_by_N.pdf": "889d4d482abca95f7a21377435df725141a0d1c432ac194d2e47686bcc5c8443",
+    "figures/03_sharpe_complexity_by_N.png": "5c99a372ee001fda68d5526b8a95db8382fa0db9da3db151ea62ef440a89f715",
+    "figures/04_complexity_T.pdf": "87a72a4f1681d39625c20744335514555f6db356e730d2256e9432166e7cac12",
+    "figures/04_complexity_T.png": "b0ce15f9245a161890e0a15d08f4b2033f023405782503fc31e04312d6119b96",
+    "figures/05_complexity_lambda.pdf": "c94e724572bab677e7230bfa3f271528159c70445be8cc49fe8b587fcc10e468",
+    "figures/05_complexity_lambda.png": "8389c2ec4e03cf6c3c460345a61a5d5e31e011f491a45eadbe859104e25ea63f",
+    "figures/06_original_constant_audit.pdf": "ba1a8eb5be4b0e4f886fb81c8caf36d6dd8139c008870e9e4294bbae2ef0074b",
+    "figures/06_original_constant_audit.png": "6a9d31c3baa7c7e35b8678c6999603ec221c7c57230514d0c491a3f8fa0f035d",
+    "frozen_constants.json": "df83be8be681dc8775eb8658e66386b2f38c9f66717852e1b5c6779ba4780e71",
+    "manifest.json": "3a2cc0b13c5ca9a0b18ef76d227cbe90269364dbbf459677e2e01a487d1f94fc",
+    "pilot.csv": "071b56911ac0341e2510e6f6d5c11d22ea6d628989ae6e0d1f61db9fc8fc9f4e",
+    "rate_fits.csv": "78d49697a7ca822b89164559abd7f6e21f95a636e5e3dbba2b7b851a0a57e3ad",
+    "rate_fits.json": "8e9f67493097f7723280654788541a970ab5860a04328d58d58c06c45d2ab8ba",
+    "report.html": "e02299b1865fde027d881a378c97a0b928c5f71982f4e3e4feaf3a581653273a",
+    "requested_plots.pdf": "91c3d2e23fbcc4298d72534e4a9c6328193ec9b4ee89a5fdf0b0118aa9949471",
+    "summary.csv": "520a70b2c8eb7499fe63024984f795964f4b005a51293df7a8765b8a60e91d17",
+    "trials.csv": "0e0af8146f142077c6616623e147fd0ab302844866bbfb8714ab2e7756c0c472"
+  }
+}
