@@ -13,10 +13,17 @@ import numpy as np
 import pandas as pd
 from scipy.optimize import nnls
 
-COLORS = ["#157A95", "#D06432", "#7756A2"]
-plt.rcParams.update({"font.size": 10, "axes.spines.top": False,
-                     "axes.spines.right": False, "pdf.fonttype": 42,
-                     "savefig.dpi": 160, "axes.titleweight": "bold"})
+COLORS = ["#0072B2", "#D55E00", "#009E73"]
+plt.rcParams.update({"font.family":"serif", "font.serif":["STIXGeneral","DejaVu Serif"],
+                     "mathtext.fontset":"stix", "font.size":9, "axes.titlesize":9,
+                     "axes.labelsize":9, "xtick.labelsize":8, "ytick.labelsize":8,
+                     "legend.fontsize":7.5, "legend.frameon":False,
+                     "axes.spines.top":False, "axes.spines.right":False,
+                     "axes.linewidth":.65, "axes.formatter.useoffset":False,
+                     "xtick.direction":"out", "ytick.direction":"out",
+                     "xtick.major.width":.6, "ytick.major.width":.6,
+                     "pdf.fonttype":42, "ps.fonttype":42,
+                     "savefig.dpi":300, "axes.titleweight":"normal"})
 
 
 def r_squared(y, prediction):
@@ -65,9 +72,12 @@ def line(ax, frame, x, y, label, color, log=False):
     xx = tab.columns.to_numpy(float)
     yy = tab.mean(axis=0).to_numpy()
     sd = tab.std(axis=0, ddof=1).to_numpy()
+    p95 = tab.quantile(.95, axis=0, interpolation="linear").to_numpy()
     ax.plot(xx, yy, "o-", label=label, color=color, markersize=4, linewidth=1.8)
     if not log or np.all(yy-sd > 0):
         ax.fill_between(xx, yy-sd, yy+sd, color=color, alpha=.16)
+    ax.plot(xx, p95, color=color, linestyle=(0,(4,2)), linewidth=1,
+            alpha=.85, gid="trial_percentile_95")
     return xx, yy
 
 
@@ -107,6 +117,9 @@ def build(out):
     for name in ["SR", "gap", "complexity"]:
         summary[name+"_se"] = summary[name+"_std"] / np.sqrt(summary.trials)
     summary.to_csv(out / "summary.csv", index=False)
+    data.groupby(dimensions)[["SR_hat","SR_gap","complexity"]].quantile(.95,interpolation="linear").rename(
+        columns={"SR_hat":"SR_p95","SR_gap":"gap_p95","complexity":"complexity_p95"}).reset_index().to_csv(
+        out / "percentiles.csv",index=False)
     nfix, rhofix = config["fixed_N"], config["fixed_rho"]
     reference = chosen[(chosen.N == nfix) & (chosen.rho == rhofix)]
     T = np.array(config["T_train"], dtype=float)
@@ -156,8 +169,8 @@ def build(out):
     files = []
 
     def save(fig, stem):
-        fig.text(.5, .01, f"{config['trials']} replications per cell; bands/error bars: mean +/- 1 standard deviation. "
-                 "Fits use the full prespecified window.", ha="center", fontsize=8, color="#555555")
+        fig.text(.5, .01, f"{config['trials']} replications per cell; bands/bars: mean +/- 1 sample SD. "
+                 "Colored dashes: trial 95th percentile. Full-window fits.", ha="center", fontsize=7.5, color="#555555")
         fig.tight_layout(rect=(0, .055, 1, .97))
         fig.savefig(figures / (stem+".pdf"))
         fig.savefig(figures / (stem+".png"))
@@ -204,6 +217,9 @@ def build(out):
         axes[0].errorbar(agg.C, agg.SR, xerr=agg.C_std, yerr=agg.SR_std, color=color, marker="o", label=f"N = {N}")
         axes[1].errorbar(agg.C,agg.gap,xerr=agg.C_std,yerr=agg.gap_std,
                          color=color,marker="o",label=f"N = {N}")
+        quantiles=frame.groupby("T_train")[["SR_hat","SR_gap"]].quantile(.95,interpolation="linear")
+        for ax,column in [(axes[0],"SR_hat"),(axes[1],"SR_gap")]:
+            ax.plot(agg.C,quantiles[column],color=color,linestyle=(0,(4,2)),linewidth=1,gid="trial_percentile_95")
     axes[0].axhline(3, color="black", linestyle=":")
     axes[0].set(xlabel=r"Mean effective complexity $\widehat C_T(\lambda_T)$",
                 ylabel=r"Annualized $SR(\widehat W)$", title="Along the balanced regularization path")
@@ -235,7 +251,7 @@ def build(out):
     save(fig, "05_complexity_lambda")
 
     fig, axes = plt.subplots(1, 2, figsize=(11.5, 4.5))
-    for rule, style, label in [("literal_C1", "o--", "Original constant C = 1"),
+    for rule, style, label in [("literal_C1", "o-", "Original constant C = 1"),
                                ("pilot_frozen", "o-", "Independent pilot, frozen C")]:
         frame = data[(data.N == nfix) & (data.rho == rhofix) & (data.rule == rule)]
         avg = frame.groupby("T_train")[["SR_hat", "complexity"]].mean()
@@ -245,6 +261,8 @@ def build(out):
         for ax,column in [(axes[0],"SR_hat"),(axes[1],"complexity")]:
             color=ax.lines[-1].get_color()
             ax.fill_between(avg.index,avg[column]-std[column],avg[column]+std[column],color=color,alpha=.16)
+            p95=frame.groupby("T_train")[column].quantile(.95,interpolation="linear")
+            ax.plot(avg.index,p95,color=color,linestyle=(0,(4,2)),linewidth=1,gid="trial_percentile_95")
     axes[0].axhline(3, color="black", linestyle=":")
     axes[0].set(xscale="log", xlabel=r"Training observations $T_{\mathrm{train}}$", ylabel="Annualized Sharpe")
     axes[1].set(xscale="log", yscale="log", xlabel=r"Training observations $T_{\mathrm{train}}$", ylabel="Effective complexity")
@@ -262,6 +280,7 @@ def build(out):
                   mean_half_sample_SR_difference=float(np.mean(np.abs(data.SR_half1-data.SR_half2))),
                   max_oracle_SR_deviation=float(np.max(np.abs(data.SR_oracle_eval-3))),
                   all_finite=bool(np.isfinite(data.select_dtypes("number")).all().all()),
+                  percentile_plotted=95,percentile_interpolation="linear",standard_error_plotted=False,
                   figures=files, all_requested_rate_fits_good=all(fits[k]["good_rate_fit"] for k in ["SR_T_N", "SR_T_rho", "SR_complexity_N", "C_T", "C_lambda"]))
     main_keys = ["SR_T_N", "SR_T_rho", "SR_complexity_N", "C_T", "C_lambda"]
     checks["all_requested_fixed_power_fits_R2_above_090"] = all(fits[k]["r_squared"] >= .9 for k in main_keys)
@@ -286,7 +305,9 @@ Il PDF <a href="requested_plots.pdf">requested_plots.pdf</a> contiene tutte le f
 Gap(C) ~ C^(-2) riguarda esclusivamente il percorso bilanciato lambda(T), non qualsiasi variazione della penalita a T fissato.
 Gli esponenti sono benchmark asintotici: la teoria non garantisce un'equivalenza con costante positiva per questa singola economia.</p>
 <p>Fit principale: un solo coefficiente positivo con esponente teorico fissato. Sono riportati anche esponente libero, intervallo bootstrap in rate_fits.json,
-e fit diagnostico floor + a*x^p. Tutti i cinque T entrano nel fit. Le bande e barre mostrano media +/- una deviazione standard campionaria tra repliche (ddof=1), senza divisione per sqrt(trials): non sono errori standard o intervalli di confidenza.
+e fit diagnostico floor + a*x^p. Tutti i cinque T entrano nel fit. Le bande e barre mostrano media +/- una deviazione standard campionaria tra repliche (ddof=1), senza divisione per sqrt(trials).
+I tratteggi colorati mostrano il 95esimo percentile empirico tra le repliche di ciascun punto e metrica, con interpolazione lineare; i valori sono in percentiles.csv.
+Queste misure non sono errori standard o intervalli di confidenza della media. Nel grafico Sharpe-complexity il percentile dello Sharpe e posto alla complexity media del medesimo T, senza attribuirgli il significato di quantile congiunto.
 La dispersione e condizionata alla banca RFF, al pilot e al campione di integrazione.</p>
 {table_html}<p>good_fit richiede R2 &gt;= 0.90 e che l'intervallo bootstrap al 95% dell'esponente libero includa quello teorico.
 Un esito negativo resta visibile; non sono state modificate curve, semi, finestre o dati per migliorarlo.

@@ -10,7 +10,9 @@ Il PDF <a href="requested_plots.pdf">requested_plots.pdf</a> contiene tutte le f
 Gap(C) ~ C^(-2) riguarda esclusivamente il percorso bilanciato lambda(T), non qualsiasi variazione della penalita a T fissato.
 Gli esponenti sono benchmark asintotici: la teoria non garantisce un'equivalenza con costante positiva per questa singola economia.</p>
 <p>Fit principale: un solo coefficiente positivo con esponente teorico fissato. Sono riportati anche esponente libero, intervallo bootstrap in rate_fits.json,
-e fit diagnostico floor + a*x^p. Tutti i cinque T entrano nel fit. Le bande e barre mostrano media +/- una deviazione standard campionaria tra repliche (ddof=1), senza divisione per sqrt(trials): non sono errori standard o intervalli di confidenza.
+e fit diagnostico floor + a*x^p. Tutti i cinque T entrano nel fit. Le bande e barre mostrano media +/- una deviazione standard campionaria tra repliche (ddof=1), senza divisione per sqrt(trials).
+I tratteggi colorati mostrano il 95esimo percentile empirico tra le repliche di ciascun punto e metrica, con interpolazione lineare; i valori sono in percentiles.csv.
+Queste misure non sono errori standard o intervalli di confidenza della media. Nel grafico Sharpe-complexity il percentile dello Sharpe e posto alla complexity media del medesimo T, senza attribuirgli il significato di quantile congiunto.
 La dispersione e condizionata alla banca RFF, al pilot e al campione di integrazione.</p>
 <table border="1" class="dataframe">
   <thead>

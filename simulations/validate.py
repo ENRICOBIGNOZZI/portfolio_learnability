@@ -51,6 +51,12 @@ def validate(out):
         assert (ordered.complexity > 0).all()
         assert (ordered.complexity <= config["features"] + 1e-9).all()
     fits = json.loads((out / "rate_fits.json").read_text())
+    percentiles=pd.read_csv(out/'percentiles.csv')
+    keys=['N','rho','T_train','rule']
+    actual=frame.groupby(keys)[['SR_hat','SR_gap','complexity']].quantile(.95,interpolation='linear')
+    exported=percentiles.set_index(keys).sort_index()
+    for original,column in [('SR_hat','SR_p95'),('SR_gap','gap_p95'),('complexity','complexity_p95')]:
+        np.testing.assert_allclose(exported[column],actual[original].sort_index(),rtol=1e-11,atol=1e-13)
     for key in ["SR_T_N", "SR_T_rho", "SR_complexity_N", "C_T"]:
         assert fits[key]["fit_points"] == len(config["T_train"])
         assert fits[key]["all_points_used"]
@@ -62,6 +68,7 @@ def validate(out):
                   max_e4_relative_error=float(frame.e4_relative_error.max()),
                   evaluation_oracle_moment_offsets=accounting,
                   source_hash_matches=True, monotone_complexity_lambda=True,
+                  percentile_plotted=95,percentile_interpolation='linear',
                   scientific_fit_results="Descriptive fits retained, including benchmark mismatches.",
                   files_sha256={str(p.relative_to(out)): hashlib.sha256(p.read_bytes()).hexdigest()
                                 for p in sorted(files)})

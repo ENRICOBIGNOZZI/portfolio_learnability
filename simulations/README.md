@@ -6,13 +6,19 @@ Il codice originale ricevuto e conservato senza modifiche in
 Gli empirici preesistenti restano disponibili. `branch_scope.json` elenca le
 rimozioni delle vecchie simulazioni; la cartella di lavoro originale e intatta.
 
-## Estensione asintotica e bande STD
+## Estensione asintotica, griglia fitta e figure da paper
 
 Il [protocollo asintotico](ASYMPTOTIC_PROTOCOL.md) definisce l'estensione di
 T_train fino a 12800 e 25600, il controllo del rango e le finestre finali di fit.
-Le figure del run originale sono ora media +/- una deviazione standard
-campionaria tra repliche (ddof=1), con asse temporale T_train esplicito.
-I CSV e i valori delle simulazioni originali sono invariati.
+Il [disegno fitto](config/asymptotic_dense.json) ha 46 punti effettivi per
+confronto e 54 nel riferimento, con 28 punti nella coda T_train>=1600.
+Ogni punto e ristimato. Le figure mostrano media +/- deviazione standard
+campionaria tra repliche (ddof=1) e 95esimo percentile empirico, con asse
+temporale T_train esplicito. Non si usano SE per le bande.
+I PDF vettoriali hanno font serif incorporati e colori Okabe-Ito;
+media, dispersione, percentile e benchmark hanno segni distinti.
+I CSV e i valori delle simulazioni originali restano invariati; i loro
+percentili sono aggiunti in `outputs/new_montecarlo/percentiles.csv`.
 
 ## Output
 

@@ -2,6 +2,7 @@ import json
 from pathlib import Path
 
 import numpy as np
+import pytest
 from scipy import linalg
 
 from simulations.asymptotic import (Basis, draw_blocks, evaluate_coefficients,
@@ -22,6 +23,7 @@ def test_nystrom_is_projection_of_the_original_matern_kernel():
     remainder=exact-features@features.T
     assert np.linalg.eigvalsh((remainder+remainder.T)/2).min()>-1e-10
     np.testing.assert_allclose(b.raw(b.centers),matern_kernel(b.centers,b.centers),atol=1e-14)
+    np.testing.assert_array_equal(Basis('nystrom',16,c).centers,b.centers[:16])
 
 
 def test_longer_horizons_have_identical_data_prefixes():
@@ -77,12 +79,43 @@ def test_result_band_is_one_standard_deviation_not_standard_error():
     import pandas as pd
     import matplotlib.pyplot as plt
     from simulations.report import line
+    from simulations.asymptotic_report import draw
     frame=pd.DataFrame([dict(trial=j,T_train=t,value=v) for t in [100,200]
                         for j,v in enumerate([1.,2.,3.,4.])])
-    fig,ax=plt.subplots()
-    line(ax,frame,'T_train','value','test','blue')
-    vertices=ax.collections[0].get_paths()[0].vertices[:,1]
-    sd=np.std([1.,2.,3.,4.],ddof=1)
-    np.testing.assert_allclose(vertices.min(),2.5-sd)
-    np.testing.assert_allclose(vertices.max(),2.5+sd)
-    plt.close(fig)
+    for helper in [line,draw]:
+        fig,ax=plt.subplots()
+        helper(ax,frame,'T_train','value','test','blue')
+        vertices=ax.collections[0].get_paths()[0].vertices[:,1]
+        sd=np.std([1.,2.,3.,4.],ddof=1)
+        np.testing.assert_allclose(vertices.min(),2.5-sd)
+        np.testing.assert_allclose(vertices.max(),2.5+sd)
+        percentile=[artist for artist in ax.lines if artist.get_gid()=='trial_percentile_95']
+        assert len(percentile)==1
+        np.testing.assert_allclose(percentile[0].get_ydata(),[3.85,3.85])
+        assert not np.isclose(3.85,2.5+1.96*sd/2)
+        plt.close(fig)
+
+
+def test_dense_design_retains_anchors_and_has_many_actual_tail_points():
+    parent=config()
+    dense=json.loads((Path(__file__).parents[1]/'simulations/config/asymptotic_dense.json').read_text())
+    assert {k for k in parent if parent[k]!=dense[k]}=={'version','T_train','T_train_reference'}
+    assert len(dense['T_train'])==46
+    assert len(dense['T_train_reference'])==54
+    for key in ['T_train','T_train_reference']:
+        assert dense[key]==sorted(set(dense[key]))
+        assert set(parent[key])<=set(dense[key])
+    assert sum(t>=dense['asymptotic_T_min'] for t in dense['T_train_reference'])==28
+
+
+def test_pilot_reuse_rejects_scientific_changes_and_missing_training_anchors():
+    from simulations.asymptotic_dense import validate_upgrade
+    parent=config()
+    dense=json.loads((Path(__file__).parents[1]/'simulations/config/asymptotic_dense.json').read_text())
+    assert set(validate_upgrade(parent,dense))=={'version','T_train','T_train_reference'}
+    wrong=dict(dense,confirmation_seed=dense['confirmation_seed']+1)
+    with pytest.raises(ValueError,match='confirmation_seed'):
+        validate_upgrade(parent,wrong)
+    wrong=dict(dense,T_train=[t for t in dense['T_train'] if t!=1600])
+    with pytest.raises(ValueError,match='supersets'):
+        validate_upgrade(parent,wrong)

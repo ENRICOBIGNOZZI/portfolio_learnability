@@ -1,42 +1,25 @@
 {
   "passed": true,
-  "combined_pages": 6,
-  "pdf_files": 7,
-  "dispersion": "mean +/- 1 sample SD, ddof=1; no SE",
-  "x_axis": "T_train only",
-  "rendered_and_visually_inspected_pages": [
-    1,
-    2,
-    3,
-    4,
-    5,
-    6
+  "combined_pages_reviewed": 6,
+  "individual_pdfs_verified": 6,
+  "review": "Rendered every page and inspected axes, legends, fonts, SD bands, colored percentile dashes and clipping; individual PDFs raster-match the combined pages.",
+  "dispersion": "mean +/- 1 sample standard deviation, ddof=1",
+  "percentile": 95,
+  "percentile_interpolation": "linear",
+  "x_axis": "training T only",
+  "embedded_fonts": [
+    "CZRBLR+STIXGeneral-Regular",
+    "FTXWZA+STIXGeneral-Italic",
+    "GYKUUQ+STIXSizeTwoSym-Regular"
   ],
-  "individual_pdf_checks": [
-    {
-      "file": "figures/01_sharpe_T_by_N.pdf",
-      "raster_matches_reviewed": true
-    },
-    {
-      "file": "figures/02_sharpe_T_by_rho.pdf",
-      "raster_matches_reviewed": true
-    },
-    {
-      "file": "figures/03_sharpe_complexity_by_N.pdf",
-      "raster_matches_reviewed": true
-    },
-    {
-      "file": "figures/04_complexity_T.pdf",
-      "raster_matches_reviewed": true
-    },
-    {
-      "file": "figures/05_complexity_lambda.pdf",
-      "raster_matches_reviewed": true
-    },
-    {
-      "file": "figures/06_original_constant_audit.pdf",
-      "raster_matches_reviewed": true
-    }
-  ],
-  "combined_pdf_sha256": "0cfe714adfe3201a835d49e2813f116390d8ecf7c142c7675d14c001674e7c88"
+  "original_trial_and_summary_csv_unchanged": true,
+  "pdf_sha256": {
+    "requested_plots.pdf": "55ab13eb819ce69ce0dc290ebf13c77377d1da96456622ca8b6a0ea00163ac6c",
+    "figures/01_sharpe_T_by_N.pdf": "b87d242926e5dc5656c7c093f0c24d6b033023ceebbcee5b8b04573b812c08e1",
+    "figures/02_sharpe_T_by_rho.pdf": "0015313856e68decf6c0de19d828a03ff57bc9510bab71fad2e425dc0b05fb98",
+    "figures/03_sharpe_complexity_by_N.pdf": "eb21650dedd12eaa57508abd55ddce3b2e7a5788c92ee6151967cef3d373b08c",
+    "figures/04_complexity_T.pdf": "028ab5ce36471923dc3eff09bfe561757a701479c7300efd2bbe2694cda649ad",
+    "figures/05_complexity_lambda.pdf": "5adaa8ad4fc61aa6e302ffc7321bff5d2e05ac9eeb0d6d15e84916c617ba4c8c",
+    "figures/06_original_constant_audit.pdf": "67e4dc7b1e48cf26acb1ee97f9e96493147082e3dec96a5fc6a4af9526832426"
+  }
 }
