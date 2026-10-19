@@ -1,4 +1,4 @@
-# Portfolio learnability: canonical simulations and empirical diagnostics
+# Portfolio learnability: empirics and new D=3 simulations
 
 ## Economic investment strategies in the spectral groups
 
@@ -25,7 +25,15 @@ Only group aggregates are published. Reproduce with existing data and fitted
 caches using `python3 -m empirical_final.economic_reproduce`; this verifies the
 unchanged policy, regenerates the artifacts, and runs the relevant tests.
 
-The balanced three-factor simulation pipeline lives in `simulations/`. See `simulations/README.md` for reproducible smoke and paper commands. The cleanup is documented in `simulation_cleanup_manifest.md`. The new simulation run is complete: 3,500 verified replications, 66 PDF figures, and a 91-page integrated manuscript. Final evidence and deliverables are linked from `simulations/README.md`.
+La branch `empirics-montecarlo-20261019` conserva il codice e gli output empirici e sostituisce tutte le precedenti simulazioni con il DGP D=3 fornito il 19 ottobre 2026. Le vecchie simulazioni restano nella storia Git e nella branch originale.
+
+- [Nuove simulazioni e protocollo](simulations/README.md)
+- [Cinque grafici, confronto con il codice originale e audit dei rate](simulations/outputs/new_montecarlo/report.html)
+- [PDF con tutti i grafici](simulations/outputs/new_montecarlo/requested_plots.pdf)
+- [Fit quantitativi dei rate](simulations/outputs/new_montecarlo/rate_fits.csv)
+
+`paper/main.tex` include soltanto gli empirici e il loro approfondimento sulla complexity; la nuova simulazione e autonoma. I sorgenti teorici dello ZIP usati per fissare i benchmark sono conservati in `simulations/source/`.
+
 
 ## Empirical evidence and entry points
 

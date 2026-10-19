@@ -1,5 +1,0 @@
-RUNNING simulations.extended.summarize
-RUNNING simulations.extended.verify --data-only
-RUNNING simulations.extended.report
-RUNNING simulations.extended.figures
-RUNNING simulations.extended.verify

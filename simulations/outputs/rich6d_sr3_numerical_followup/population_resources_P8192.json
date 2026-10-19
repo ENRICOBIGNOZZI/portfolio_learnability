@@ -1,8 +1,0 @@
-{
-  "completed_utc": "2026-10-11T09:26:40.216920+00:00",
-  "elapsed_seconds": 406.168470042001,
-  "rank": 8192,
-  "fitted_quadrature_floor": 0.0012523509401017874,
-  "independent_optimum_policy_regret": 0.0015372679353619634,
-  "note": "Independent regret evaluates the quadrature-fitted subspace optimum; it is not a certified exact minimum."
-}

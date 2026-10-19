@@ -1,0 +1,743 @@
+\section{Monte Carlo}
+\label{sec:simulations}
+\begin{align*}
+R^e_{i,t+1}&=\alpha(Z_{i,t})+\beta(Z_{i,t})^\top F_{t+1}+\varepsilon_{i,t+1},\\
+Z_{i,t,k}&=2\Phi(S_{i,t,k})-1,\qquad
+S_{i,t,k}=\rho S_{i,t-1,k}+\sqrt{1-\rho^2}\,\eta_{i,t,k},\quad k=1,2,3,\\
+\alpha(z)&=A_\alpha\sqrt2\cos\left(\pi\sum_{k=1}^3z_k\right),\\
+\beta_k(z)&=A_\beta\sum_{m=2}^\infty\frac{\cos(\pi m z_k)}{m^{7/2}\log(m+1)},\quad k=1,2,3.
+\end{align*}
+We assume $|\rho|<1$, $A_\alpha,A_\beta,\sigma_\varepsilon>0$, $\lambda^\top\lambda<1$,
+$S_{i,0,k}\sim\mathcal N(0,1)$ and $\eta_{i,t,k}\overset{\mathrm{i.i.d.}}\sim\mathcal N(0,1)$,
+independently across stocks, characteristics and dates. Thus $Z_{i,t}$ has independent
+$\operatorname{Unif}(-1,1)$ coordinates, and the characteristic vectors are independent
+across stocks at each date. Define
+\begin{align*}
+\alpha_t&=(\alpha(Z_{1,t}),\ldots,\alpha(Z_{N,t}))^\top,
+&B_t&=(\beta(Z_{1,t}),\ldots,\beta(Z_{N,t}))^\top,\\
+\mu_t&=\alpha_t+B_t\lambda,
+&\Omega_F&=I_3-\lambda\lambda^\top,\\
+\Sigma_t^0&=\mu_t\mu_t^\top+B_t\Omega_FB_t^\top+\sigma_\varepsilon^2I_N,
+&D_t&=\kappa_0 I_N-\Sigma_t^0.
+\end{align*}
+Choose a constant $\kappa_0>\sup_{Z_t}\lambda_{\max}(\Sigma_t^0)$ and set
+\[
+h_t=\begin{cases}
+D_t\mu_t/\sqrt{\mu_t^\top D_t\mu_t},&\mu_t\neq0,\\
+0,&\mu_t=0.
+\end{cases}
+\]
+Conditional on the decision-date information $\mathscr F_t$, the \emph{Gaussian generators}
+are independent and satisfy
+\begin{align*}
+F^G_{t+1}\mid\mathscr F_t&\sim\mathcal N_3(\lambda,\Omega_F),\\
+\varepsilon^G_{t+1}\mid\mathscr F_t&\sim
+\mathcal N_N(0,\sigma_\varepsilon^2I_N+h_th_t^\top).
+\end{align*}
+Equivalently, with independent standard Gaussian vectors and scalars,
+\begin{align*}
+F^G_{t+1}&=\lambda+\Omega_F^{1/2}G^F_{t+1},\\
+\varepsilon^G_{t+1}&=\sigma_\varepsilon G^\varepsilon_{t+1}+h_tG^0_{t+1},\\
+G^F_{t+1}&\sim\mathcal N_3(0,I_3),\quad
+G^\varepsilon_{t+1}\sim\mathcal N_N(0,I_N),\quad
+G^0_{t+1}\sim\mathcal N(0,1).
+\end{align*}
+All Gaussian generators are independent across dates and of the characteristic process.
+For bounded returns, replace each primitive $G\sim\mathcal N(0,1)$ in the
+\emph{factor and return innovations} by the standardized truncated Gaussian
+\[
+\xi=\frac{G\mid\{|G|\leq a\}}{\sqrt{v_a}},\qquad
+v_a=1-\frac{2a\varphi(a)}{2\Phi(a)-1},\qquad a=4.47.
+\]
+Use the resulting innovations in the preceding linear formulas to define the actual
+$F_{t+1}$ and $\varepsilon_{t+1}$. They retain exactly the displayed conditional
+means and covariance matrices, although after truncation they are no longer
+literally Gaussian. Each return uses at most five independent primitive innovations
+(three factors, one individual shock and one common shock), hence
+\[
+|R^e_{i,t+1}-\mu_{i,t}|
+\leq\sqrt5\,\frac{a}{\sqrt{v_a}}
+\sqrt{\operatorname{Var}(R^e_{i,t+1}\mid\mathscr F_t)}
+<10\sqrt{\operatorname{Var}(R^e_{i,t+1}\mid\mathscr F_t)}.
+\]
+This enforces a ten-conditional-standard-deviation bound without clipping the
+finished returns and thereby changing their conditional moments. Here
+$\mathscr F_t$ contains the characteristics at $t$ and the history of
+characteristics and realized innovations through $t$.
+The resulting conditional return law has
+\begin{align*}
+\E[R^e_{t+1}\mid\mathscr F_t]&=\mu_t,\\
+\Sigma_t:=\E[R^e_{t+1}(R^e_{t+1})^\top\mid\mathscr F_t]
+&=\Sigma_t^0+h_th_t^\top.
+\end{align*}
+The characteristic distribution implies
+\begin{align*}
+\E[\alpha(Z)]&=0,&\E[\beta(Z)]&=0,&\E[\alpha(Z)\beta(Z)]&=0,\\
+\E[\alpha(Z)^2]&=v_\alpha=A_\alpha^2,
+&\E[\beta(Z)\beta(Z)^\top]&=v_\beta I_3,\\
+v_\beta&=\frac{A_\beta^2}{2}\sum_{m=2}^\infty
+\frac1{m^7\log^2(m+1)}.
+\end{align*}
+We use the Mat\'ern-$3/2$ kernel with a fixed lengthscale $\ell>0$,
+\[
+K(z,z')=\left(1+\frac{\sqrt3\|z-z'\|}{\ell}\right)
+\exp\left(-\frac{\sqrt3\|z-z'\|}{\ell}\right),
+\qquad\Hh_K\simeq H^3((-1,1)^3),
+\]
+where $\simeq$ denotes equality of function sets with equivalent norms.
+As in the population problem, $R^p_{t+1}(W)=N^{-1}\sum_iW(Z_{i,t})R^e_{i,t+1}$ and
+$Q(W)=\E[(1-R^p_{t+1}(W))^2]$.
+\begin{proposition}[Population-optimal portfolio policy]
+\label{prop:mc_optimal}
+Under the specified DGP, the unique population-optimal scalar policy is
+\[
+W^\star(z)=\frac{N}{\kappa_0}
+\left[\alpha(z)+\beta(z)^\top\lambda\right].
+\]
+It minimizes $Q(W)$ over $\Hh_K$ and also minimizes the conditional quadratic
+loss at every date. The actual portfolio weight of stock $i$ is
+$W^\star(Z_{i,t})/N$.
+\end{proposition}
+\begin{proof}
+By construction, $D_t\succ0$. For $\mu_t\neq0$,
+\begin{align*}
+h_th_t^\top\mu_t
+&=\frac{D_t\mu_t\mu_t^\top D_t\mu_t}
+{\mu_t^\top D_t\mu_t}
+=D_t\mu_t.
+\end{align*}
+The same equality is trivial if $\mu_t=0$. Consequently,
+\[
+\Sigma_t\mu_t=(\Sigma_t^0+h_th_t^\top)\mu_t
+=\Sigma_t^0\mu_t+D_t\mu_t=\kappa_0\mu_t.
+\]
+For any scalar policy $W$, write
+\[
+w_t(W)=\frac1N(W(Z_{1,t}),\ldots,W(Z_{N,t}))^\top.
+\]
+The conditional loss is
+\[
+Q_t(W)=1-2w_t(W)^\top\mu_t+w_t(W)^\top\Sigma_tw_t(W).
+\]
+The proposed policy gives $w_t(W^\star)=\mu_t/\kappa_0$, and thus
+$\Sigma_tw_t(W^\star)=\mu_t$. Completing the square,
+\begin{align*}
+Q_t(W)-Q_t(W^\star)
+&=[w_t(W)-w_t(W^\star)]^\top\Sigma_t
+[w_t(W)-w_t(W^\star)]\\
+&\geq\frac{\sigma_\varepsilon^2}{N^2}
+\sum_{i=1}^N[W(Z_{i,t})-W^\star(Z_{i,t})]^2.
+\end{align*}
+Taking expectations and using the common stock-characteristic distribution,
+\[
+Q(W)-Q(W^\star)\geq\frac{\sigma_\varepsilon^2}{N}
+\E[(W(Z)-W^\star(Z))^2].
+\]
+By Proposition~\ref{prop:mc_sobolev}, $W^\star\in\Hh_K$, so the lower bound is
+attained by an admissible scalar policy. It is strictly positive for every
+policy differing from $W^\star$ on a set of positive $P_Z$-measure, establishing
+existence and uniqueness (up to $P_Z$-almost sure equality).
+\end{proof}
+\begin{proposition}[Optimal Sharpe ratio]
+\label{prop:mc_sharpe}
+Set $L=\lambda^\top\lambda$ and
+\[
+p^\star=\frac{N}{\kappa_0}(v_\alpha+v_\beta L).
+\]
+Then $0<p^\star<1$ and
+\begin{align*}
+\E[R^p_{t+1}(W^\star)]&=\E[(R^p_{t+1}(W^\star))^2]=p^\star,\\
+Q(W^\star)&=1-p^\star,\\
+\operatorname{Var}(R^p_{t+1}(W^\star))&=p^\star(1-p^\star),\\
+\SR(W^\star)&=\sqrt{\frac{p^\star}{1-p^\star}},\\
+\SR_{\mathrm{ann,marg}}(W^\star)&=\sqrt{12}\sqrt{\frac{p^\star}{1-p^\star}}.
+\end{align*}
+This is the maximum population Sharpe ratio over admissible scalar policies.
+\end{proposition}
+\begin{proof}
+The stock weights satisfy $w_t^\star=\mu_t/\kappa_0$ and
+$\Sigma_t\mu_t=\kappa_0\mu_t$. Therefore
+\begin{align*}
+\E[R^p_{t+1}(W^\star)\mid\mathscr F_t]
+&=(w_t^\star)^\top\mu_t=\frac{\|\mu_t\|^2}{\kappa_0},\\
+\E[(R^p_{t+1}(W^\star))^2\mid\mathscr F_t]
+&=(w_t^\star)^\top\Sigma_tw_t^\star=\frac{\|\mu_t\|^2}{\kappa_0}.
+\end{align*}
+Cross-sectional linearity, orthogonality and the common marginal distribution give
+\begin{align*}
+\E[\|\mu_t\|^2]
+&=\sum_i\E[(\alpha(Z_{i,t})+\beta(Z_{i,t})^\top\lambda)^2]\\
+&=N(v_\alpha+v_\beta L).
+\end{align*}
+Thus both unconditional moments equal $p^\star$. The mean is positive because
+$A_\alpha>0$. The conditional covariance matrix of returns satisfies
+$\Sigma_t-\mu_t\mu_t^\top\succeq\sigma_\varepsilon^2I_N\succ0$.
+If $\mu_t\neq0$, evaluating its quadratic form at $\mu_t$ gives
+\[
+0<\kappa_0\|\mu_t\|^2-\|\mu_t\|^4,
+\qquad\frac{\|\mu_t\|^2}{\kappa_0}<1.
+\]
+Consequently $0<p^\star<1$. Expanding $Q(W^\star)$ and subtracting the
+square of the mean from the second moment yields the stated loss, variance
+and Sharpe formulas.
+For any admissible nonzero payoff $Y=R^p_{t+1}(W)$, scalar rescaling gives
+\[
+\inf_{c\in\mathbb R}\E[(1-cY)^2]
+=1-\frac{\E[Y]^2}{\E[Y^2]}
+=\frac1{1+\SR(Y)^2}.
+\]
+Since the left side is at least $Q(W^\star)$ and $W^\star$ has a positive mean,
+its Sharpe is maximal. Multiplication by $\sqrt{12}$ is the marginal monthly
+to annual convention; it does not assert a serial-independence formula for
+compounded annual returns.
+\end{proof}
+\begin{proposition}[Calibration of the DGP]
+\label{prop:mc_calibration}
+Define
+\[
+\kappa_\beta=\frac12\sum_{m=2}^\infty\frac1{m^7\log^2(m+1)},
+\qquad v_\beta=\kappa_\beta A_\beta^2.
+\]
+For a desired optimal expected payoff $p_0\in(0,1)$ and fixed
+$\kappa_0,A_\beta,\lambda$, the alpha amplitude is
+\[
+A_\alpha=\left[\frac{\kappa_0p_0}{N}
+-\kappa_\beta A_\beta^2\lambda^\top\lambda\right]^{1/2}.
+\]
+Alternatively, for fixed $A_\alpha,\kappa_0$ and $L=\lambda^\top\lambda>0$,
+\[
+A_\beta=\left[
+\frac{\kappa_0p_0/N-A_\alpha^2}{\kappa_\beta L}
+\right]^{1/2}.
+\]
+Equivalently, for fixed amplitudes,
+\[
+\kappa_0=\frac{N}{p_0}
+\left(A_\alpha^2+\kappa_\beta A_\beta^2L\right).
+\]
+These calibrations require positive radicands and
+$\kappa_0>\sup_{Z_t}\lambda_{\max}(\Sigma_t^0)$.
+For $\SR_{\mathrm{ann,marg}}^\star=3$, the equivalent restriction is
+\[
+p_0=\frac37,\qquad
+\kappa_0=\frac{7N}{3}
+\left(A_\alpha^2+\kappa_\beta A_\beta^2L\right).
+\]
+\end{proposition}
+\begin{proof}
+Proposition~\ref{prop:mc_sharpe} implies
+\[
+p_0=\frac{N}{\kappa_0}
+\left(A_\alpha^2+\kappa_\beta A_\beta^2L\right).
+\]
+Solving this identity for $A_\alpha$, $A_\beta$ or $\kappa_0$ gives the
+three expressions. Moreover,
+\[
+3=\sqrt{12}\sqrt{\frac{p_0}{1-p_0}}
+\quad\Longleftrightarrow\quad p_0=\frac37.
+\]
+The admissible set is nonempty. To see this, hold $A_\alpha>0$, $N$ and
+$0<L<1$ fixed. As $A_\beta,\sigma_\varepsilon\downarrow0$,
+\[
+\kappa_0\longrightarrow\frac{7N}{3}A_\alpha^2,
+\qquad
+\sup_{Z_t}\lambda_{\max}(\Sigma_t^0)
+\leq2NA_\alpha^2+o(1).
+\]
+Because $7/3>2$, sufficiently small strictly positive $A_\beta$ and
+$\sigma_\varepsilon$ satisfy the strict covariance condition while
+retaining a nonzero factor component and a strictly positive idiosyncratic
+variance.
+\end{proof}
+\begin{proposition}[Sobolev regularity of the optimal policy]
+\label{prop:mc_sobolev}
+Let $\mathcal Z=(-1,1)^3$. If $A_\beta>0$ and
+$\lambda^\top\lambda>0$, then
+\[
+W^\star\in H^3(\mathcal Z)=\Hh_K,
+\qquad
+W^\star\notin H^{3+\delta}(\mathcal Z)
+\quad\text{for every }\delta>0.
+\]
+\end{proposition}
+\begin{proof}
+The function $\alpha$ is a trigonometric polynomial, hence belongs to
+$H^r(\mathcal Z)$ for every finite $r\geq0$. Each $\beta_k$ is a two-periodic
+cosine series with nonzero Fourier coefficients
+\[
+\widehat\beta_k(\pm me_k)
+=\frac{A_\beta}{2m^{7/2}\log(m+1)},\qquad m\geq2.
+\]
+Consequently, for any $r\geq0$,
+\[
+\|\beta_k\|_{H^r(\mathbb T^3)}^2
+\asymp A_\beta^2\sum_{m=2}^\infty
+\frac{m^{2r-7}}{\log^2(m+1)}.
+\]
+At $r=3$ this is a convergent series
+$\sum_{m\geq2}[m\log^2(m+1)]^{-1}$, whereas for every
+$\delta>0$ the corresponding series at $r=3+\delta$ is
+$\sum_{m\geq2}m^{2\delta-1}/\log^2(m+1)=\infty$.
+Thus $\beta_k\in H^3(\mathbb T^3)$ but
+$\beta_k\notin H^{3+\delta}(\mathbb T^3)$ for every $\delta>0$.
+The policy in Proposition~\ref{prop:mc_optimal} is a finite linear
+combination of $\alpha$ and the $\beta_k$, and therefore belongs to $H^3$.
+Choose $k$ such that $\lambda_k\neq0$. The Fourier support of $\alpha$
+is $\{\pm(1,1,1)\}$, whereas the support of $\beta_k$ is
+$\{\pm me_k:m\geq2\}$; the supports of different loadings are also
+disjoint. Hence
+\[
+\widehat W^\star(\pm me_k)
+=\frac{NA_\beta\lambda_k}{2\kappa_0m^{7/2}\log(m+1)},
+\]
+and for every $\delta>0$,
+\[
+\|W^\star\|_{H^{3+\delta}(\mathbb T^3)}^2
+\geq c\sum_{m=2}^\infty
+\frac{m^{2\delta-1}}{\log^2(m+1)}=\infty.
+\]
+The restriction to the cube has the same sharp threshold. Indeed, the
+periodic series and its derivatives of orders at most two are continuous,
+and their traces match across opposite cube faces. If the restriction were
+in $H^{3+\delta}(\mathcal Z)$, choose
+$0<\delta_0<\min\{\delta,1/2\}$. The Sobolev gluing criterion would put
+its periodic extension in $H^{3+\delta_0}(\mathbb T^3)$, contradicting
+the preceding Fourier divergence.
+Finally, on the bounded Lipschitz domain $\mathcal Z\subset\mathbb R^3$,
+the Mat\'ern-$3/2$ RKHS is precisely $H^{3/2+3/2}(\mathcal Z)=H^3(\mathcal Z)$
+as a function set, with equivalent norms. This proves both claims.
+\end{proof}
+\begin{proposition}[Verification of the economy assumptions]
+\label{prop:mc_assumptions}
+Fix $N$, $A_\alpha,A_\beta,\sigma_\varepsilon>0$, a nonzero $\lambda$
+with $\lambda^\top\lambda<1$, a fixed Mat\'ern-$3/2$ kernel and
+$\kappa_0>\sup_{Z_t}\lambda_{\max}(\Sigma_t^0)$.
+Let $\rho$ vary in a compact interval $[-\bar\rho,\bar\rho]$,
+$\bar\rho<1$. The resulting family of economies satisfies all six
+conditions (E1)--(E6) in the portfolio-learning theorem with common
+constants, $b=2$ and any prescribed $\gamma>2$. More precisely,
+\begin{align*}
+\beta_\varepsilon(n)&\leq C_\gamma n^{-\gamma},\\
+\|X_t\|_{\Hh_K}&\leq B_X,\qquad
+\|W^\star\|_{\Hh_K}\leq R,\\
+\E[(1-R^p_{t+1}(W^\star))R^p_{t+1}(V)\mid\mathscr F_t]&=0
+\quad\text{for every }V\in\Hh_K,\\
+c_\mu j^{-2}&\leq\mu_j(\Sigma_{\Hh_K})\leq C_\mu j^{-2},\\
+0<\underline S&\leq\SR(W^\star)\leq\overline S<\infty.
+\end{align*}
+The class also satisfies the order-$r=1$ source condition and the bounded
+conditional Bernstein requirement for the kernel-weighted regression residual.
+\end{proposition}
+\begin{proof}
+\emph{(E1): stationarity and mixing.}
+The joint latent state $S_t=(S_{i,t,k})_{i,k}$ is a finite-dimensional
+stationary Gaussian AR(1) Markov chain. Its $n$-step transition law is
+$\mathcal N(\rho^n x,(1-\rho^{2n})I_{3N})$. Using Gaussian relative
+entropy and the total-variation bound gives
+\[
+\beta_S(n)\leq
+\left[-\frac{3N}{4}\log(1-\rho^{2n})\right]^{1/2}
+\leq C\bar\rho^n.
+\]
+The primitive factor and idiosyncratic generators are independent
+of the state process and of their own past. The financial observation
+$(Z_t,R^e_{t+1})$ is a measurable function of the current state and
+these fresh innovations; it is therefore stationary and geometrically
+absolutely regular. Since
+$\sup_{n\geq1}n^\gamma\bar\rho^n<\infty$ for every fixed
+$\gamma>0$, the required polynomial inequality holds for any
+$\gamma>2=b$. The bound is uniform over the stated interval for $\rho$.
+\par\noindent\emph{(E2): bounded managed features.}
+Let $\mathcal B=\sum_{m=2}^\infty[m^{7/2}\log(m+1)]^{-1}$.
+Then, uniformly over $z$,
+\[
+|\alpha(z)|\leq\sqrt2 A_\alpha,
+\qquad\|\beta(z)\|\leq\sqrt3 A_\beta\mathcal B.
+\]
+The matrices $D_t$ are positive definite and bounded by $\kappa_0I_N$.
+For $\mu_t\neq0$, the inequality $D_t^2\preceq\|D_t\|D_t$ yields
+\[
+\|h_t\|^2
+=\frac{\mu_t^\top D_t^2\mu_t}{\mu_t^\top D_t\mu_t}
+\leq\|D_t\|\leq\kappa_0.
+\]
+The same bound holds when $\mu_t=0$. The conditional standard deviation
+of return $i$ is therefore bounded by
+\[
+\sigma_{i,t}:=
+\sqrt{\beta(Z_{i,t})^\top\Omega_F\beta(Z_{i,t})
++\sigma_\varepsilon^2+h_{i,t}^2}
+\leq\sqrt{3A_\beta^2\mathcal B^2+\sigma_\varepsilon^2+\kappa_0}.
+\]
+The ten-sigma bound and the bound on $\mu_{i,t}$ imply
+\begin{align*}
+|R^e_{i,t+1}|
+&\leq\sqrt2 A_\alpha+\sqrt3 A_\beta\mathcal B\|\lambda\|\\
+&\quad+10\sqrt{3A_\beta^2\mathcal B^2+\sigma_\varepsilon^2+\kappa_0}
+=:B_R.
+\end{align*}
+For $X_t=N^{-1}\sum_iR^e_{i,t+1}K(\cdot,Z_{i,t})$ and
+$K(z,z)=1$, the reproducing property gives
+\[
+\|X_t\|_{\Hh_K}\leq\frac1N\sum_i
+|R^e_{i,t+1}|\sqrt{K(Z_{i,t},Z_{i,t})}
+\leq B_R=:B_X.
+\]
+Thus (E2) holds with $\|X_t\|_{\Hh_K}^2\leq B_X^2$.
+\par\noindent\emph{(E3): population attainment, norm and source condition.}
+Propositions~\ref{prop:mc_optimal} and~\ref{prop:mc_sobolev}
+show that the minimum is attained and $W^\star\in\Hh_K$. Furthermore,
+\[
+\|W^\star\|_{\Hh_K}
+\leq\frac{N}{\kappa_0}
+\left(\|\alpha\|_{\Hh_K}
++\|\lambda\|\Bigl[\sum_{k=1}^3\|\beta_k\|_{\Hh_K}^2\Bigr]^{1/2}\right)
+=:R<\infty.
+\]
+This bound does not depend on $\rho$. Strict convexity from
+Proposition~\ref{prop:mc_optimal} also makes this the minimum-norm
+population minimizer. Membership in $\Hh_K$ verifies the source
+condition of order $r=1$; it does not imply a higher source order.
+\par\noindent\emph{(E4): conditional pricing.}
+For every $V\in\Hh_K$ and $v_t=(V(Z_{1,t}),\ldots,V(Z_{N,t}))^\top/N$,
+\begin{align*}
+&\E[(1-R^p_{t+1}(W^\star))R^p_{t+1}(V)\mid\mathscr F_t]\\
+&=v_t^\top\bigl(\mu_t-\Sigma_tw_t(W^\star)\bigr)\\
+&=v_t^\top\left(\mu_t-\Sigma_t\frac{\mu_t}{\kappa_0}\right)=0.
+\end{align*}
+This proves the requested condition against the entire
+$\mathscr F_t$, not merely the unconditional portfolio first-order condition.
+The pricing residual need not be positive.
+\par\noindent\emph{(E5): managed-return spectrum.}
+Let
+\[
+T_K=\E[K(\cdot,Z)\otimes K(\cdot,Z)],
+\quad\Sigma_{\Hh_K}=\E[X_t\otimes X_t].
+\]
+Because $\Sigma_t^0\prec\kappa_0I_N$ and
+$\|h_t\|^2\leq\kappa_0$, we have
+\[
+\sigma_\varepsilon^2I_N\preceq\Sigma_t\preceq2\kappa_0I_N.
+\]
+For every $V\in\Hh_K$, conditional integration and the reproducing
+property yield
+\begin{align*}
+\langle V,\Sigma_{\Hh_K}V\rangle_{\Hh_K}
+&=\E\left[\frac1{N^2}\sum_{i,j}
+V(Z_{i,t})\Sigma_{ij,t}V(Z_{j,t})\right],\\
+\frac{\sigma_\varepsilon^2}{N}\E[V(Z)^2]
+&\leq\langle V,\Sigma_{\Hh_K}V\rangle_{\Hh_K}
+\leq\frac{2\kappa_0}{N}\E[V(Z)^2].
+\end{align*}
+Thus
+\[
+\frac{\sigma_\varepsilon^2}{N}T_K
+\preceq\Sigma_{\Hh_K}
+\preceq\frac{2\kappa_0}{N}T_K.
+\]
+The uniform characteristic law on the three-dimensional cube and the
+Mat\'ern-$3/2$ equivalence $\Hh_K\simeq H^3(\mathcal Z)$ imply that
+the positive eigenvalues $\tau_j$ of $T_K$ obey
+\[
+c_Kj^{-2}\leq\tau_j\leq C_Kj^{-2},\qquad j\geq1,
+\]
+by the Sobolev embedding spectral asymptotics (embedding singular
+values have order $j^{-3/3}$). The min--max principle therefore gives
+\[
+\frac{\sigma_\varepsilon^2c_K}{N}j^{-2}
+\leq\mu_j(\Sigma_{\Hh_K})
+\leq\frac{2\kappa_0C_K}{N}j^{-2},\qquad j\geq1.
+\]
+In particular, $b=2>1$. These are bounds on the managed-return
+second-moment operator, not on the centered return covariance or just
+on the kernel itself.
+\par\noindent\emph{(E6): positive and bounded optimal Sharpe.}
+By Proposition~\ref{prop:mc_sharpe},
+\[
+0<p^\star=\frac{N}{\kappa_0}(v_\alpha+v_\beta L)<1,
+\qquad\SR^\star=\sqrt{\frac{p^\star}{1-p^\star}}\in(0,\infty).
+\]
+Neither $p^\star$ nor $\SR^\star$ depends on $\rho$, so common
+strictly positive finite Sharpe bounds hold over the entire stated
+family. Under the calibration $p^\star=3/7$ the annualized marginal
+Sharpe is exactly three for every $\rho$.
+Finally, the pricing residual $m^\star_{t+1}=1-R^p_{t+1}(W^\star)$
+satisfies
+\[
+|m^\star_{t+1}|\leq1+RB_X=:M_0<\infty,
+\qquad\E[m^\star_{t+1}X_t\mid\mathscr F_t]=0.
+\]
+Thus it satisfies bounded conditional Bernstein noise inequalities;
+for example,
+\[
+\E\left[\exp\left(\frac{|m^\star_{t+1}|}{M_0}\right)
+-\frac{|m^\star_{t+1}|}{M_0}-1\ \middle|\mathscr F_t\right]
+\leq e-2<1.
+\]
+All conditions are therefore verified for the specified family.
+\end{proof}
+
+
+
+\begin{proposition}[Functional Orthogonality and Exact Portfolio Regret]
+\label{prop:portfolio_regret}
+
+Let $\mathcal H$ be a linear space of admissible portfolio
+policies, and define
+\[
+W_t(f)
+=
+\frac{1}{N}
+\bigl(f(Z_{1,t}),\ldots,f(Z_{N,t})\bigr)'.
+\]
+
+Consider the population criterion
+\[
+Q(f)
+=
+\mathbb E\left[
+\left(1-W_t(f)'R^e_{t+1}\right)^2
+\right],
+\]
+and suppose that its minimum over $\mathcal H$ is attained at
+$f^\star$.
+
+Define the conditional moments
+\[
+\mu_i(Z_t)
+=
+\mathbb E[R^e_{i,t+1}\mid Z_t],
+\qquad
+\Omega_{ij}(Z_t)
+=
+\mathbb E[R^e_{i,t+1}R^e_{j,t+1}\mid Z_t].
+\]
+
+Assume that the relevant second moments are finite.
+
+Then the population-optimal policy satisfies the
+functional orthogonality condition
+\begin{equation}
+\boxed{
+\sum_{i=1}^{N}
+\mathbb E\left[
+h(Z_{i,t})
+\left(
+\mu_i(Z_t)
+-
+\frac{1}{N}
+\sum_{j=1}^{N}
+\Omega_{ij}(Z_t)f^\star(Z_{j,t})
+\right)
+\right]
+=0
+}
+\label{eq:functional_orthogonality}
+\end{equation}
+for every $h\in\mathcal H$.
+
+Consequently, for every $f\in\mathcal H$,
+\begin{equation}
+\boxed{
+\begin{aligned}
+Q(f)-Q(f^\star)
+=
+\frac{1}{N^2}
+\sum_{i,j=1}^{N}
+\mathbb E\Big[
+&\bigl(f(Z_{i,t})-f^\star(Z_{i,t})\bigr)\\
+&\times
+\bigl(f(Z_{j,t})-f^\star(Z_{j,t})\bigr)
+\Omega_{ij}(Z_t)
+\Big].
+\end{aligned}
+}
+\label{eq:exact_portfolio_regret}
+\end{equation}
+
+In particular, this identity applies to the estimated policy
+$\widehat f_{\lambda,T}$, conditionally on its training sample,
+when population risk is evaluated on a fresh observation.
+\end{proposition}
+
+
+\begin{proof}
+
+By conditioning on $Z_t$ and expanding the square,
+the population criterion can be written as
+\begin{equation}
+\begin{aligned}
+Q(f)
+={}&1
+-\frac{2}{N}
+\sum_{i=1}^{N}
+\mathbb E\left[
+f(Z_{i,t})\mu_i(Z_t)
+\right]\\
+&+
+\frac{1}{N^2}
+\sum_{i,j=1}^{N}
+\mathbb E\left[
+f(Z_{i,t})f(Z_{j,t})
+\Omega_{ij}(Z_t)
+\right].
+\end{aligned}
+\label{eq:population_loss_expansion}
+\end{equation}
+
+Consider an arbitrary direction $h\in\mathcal H$.
+Since $\mathcal H$ is linear,
+$f^\star+\varepsilon h\in\mathcal H$ for every
+$\varepsilon\in\mathbb R$.
+
+The Gâteaux derivative of $Q$ at $f^\star$
+in direction $h$ is
+\[
+DQ(f^\star)[h]
+=
+\left.
+\frac{d}{d\varepsilon}
+Q(f^\star+\varepsilon h)
+\right|_{\varepsilon=0}.
+\]
+
+Differentiating \eqref{eq:population_loss_expansion}
+and using the symmetry
+$\Omega_{ij}(Z_t)=\Omega_{ji}(Z_t)$ gives
+\[
+\begin{aligned}
+DQ(f^\star)[h]
+={}&
+-\frac{2}{N}
+\sum_{i=1}^{N}
+\mathbb E[
+h(Z_{i,t})\mu_i(Z_t)
+]\\
+&+
+\frac{2}{N^2}
+\sum_{i,j=1}^{N}
+\mathbb E[
+h(Z_{i,t})f^\star(Z_{j,t})
+\Omega_{ij}(Z_t)
+].
+\end{aligned}
+\]
+
+Since $f^\star$ minimizes $Q$ over the linear space
+$\mathcal H$, we have
+\[
+DQ(f^\star)[h]=0
+\qquad
+\text{for every }h\in\mathcal H.
+\]
+
+Rearranging establishes
+\eqref{eq:functional_orthogonality}.
+
+We now establish the exact regret identity.
+For any $f\in\mathcal H$, expanding the difference
+between the two population losses yields
+\[
+\begin{aligned}
+Q(f)-Q(f^\star)
+={}&
+-\frac{2}{N}
+\sum_i
+\mathbb E[
+(f(Z_{i,t})-f^\star(Z_{i,t}))
+\mu_i(Z_t)
+]\\
+&+
+\frac{1}{N^2}
+\sum_{i,j}
+\mathbb E[
+(f(Z_{i,t})f(Z_{j,t})
+-f^\star(Z_{i,t})f^\star(Z_{j,t}))
+\Omega_{ij}(Z_t)
+].
+\end{aligned}
+\]
+
+Using the algebraic identity
+\[
+\begin{aligned}
+f(Z_{i,t})f(Z_{j,t})
+-f^\star(Z_{i,t})f^\star(Z_{j,t})
+={}&
+(f(Z_{i,t})-f^\star(Z_{i,t}))
+(f(Z_{j,t})-f^\star(Z_{j,t}))\\
+&+
+(f(Z_{i,t})-f^\star(Z_{i,t}))
+f^\star(Z_{j,t})\\
+&+
+f^\star(Z_{i,t})
+(f(Z_{j,t})-f^\star(Z_{j,t})),
+\end{aligned}
+\]
+and exploiting the symmetry of $\Omega$, we obtain
+\[
+\begin{aligned}
+Q(f)-Q(f^\star)
+={}&
+\frac{1}{N^2}
+\sum_{i,j}
+\mathbb E\Big[
+(f(Z_{i,t})-f^\star(Z_{i,t}))
+(f(Z_{j,t})-f^\star(Z_{j,t}))
+\Omega_{ij}(Z_t)
+\Big]\\
+&-
+\frac{2}{N}
+\sum_i
+\mathbb E\left[
+(f(Z_{i,t})-f^\star(Z_{i,t}))
+\left(
+\mu_i(Z_t)
+-
+\frac{1}{N}
+\sum_j
+\Omega_{ij}(Z_t)f^\star(Z_{j,t})
+\right)
+\right].
+\end{aligned}
+\]
+
+Because $\mathcal H$ is linear,
+$f-f^\star\in\mathcal H$.
+Taking $h=f-f^\star$ in
+\eqref{eq:functional_orthogonality}
+shows that the second term vanishes.
+
+Therefore,
+\[
+\boxed{
+Q(f)-Q(f^\star)
+=
+\frac{1}{N^2}
+\sum_{i,j=1}^{N}
+\mathbb E\left[
+(f(Z_{i,t})-f^\star(Z_{i,t}))
+(f(Z_{j,t})-f^\star(Z_{j,t}))
+\Omega_{ij}(Z_t)
+\right].
+}
+\]
+
+This proves the result.
+\end{proof}
+
+
+
+
+\begin{equation}
+\label{eq:empirical_portfolio_regret}
+\boxed{
+\begin{aligned}
+\widehat{\mathcal R}_T
+=\frac{1}{S}\sum_{s=1}^{S}\Bigg[
+&\left(1-\widehat W_T^{(s)\prime}R^{(s)}\right)^2\\
+-&\left(1-W^{\star\prime}(Z^{(s)})R^{(s)}\right)^2
+\Bigg].
+\end{aligned}
+}
+\end{equation}

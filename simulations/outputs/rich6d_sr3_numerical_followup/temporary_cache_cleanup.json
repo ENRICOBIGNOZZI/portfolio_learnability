@@ -1,6 +1,0 @@
-{
-  "completed_utc": "2026-10-11T09:40:02.630201+00:00",
-  "path": "/tmp/rich6d_rank_followup_cache/chol_P8192.npy",
-  "bytes_removed": 536871040,
-  "reason": "Population calculation completed. Subsequent evaluation uses raw policy coefficients; the Cholesky cache is regenerable."
-}

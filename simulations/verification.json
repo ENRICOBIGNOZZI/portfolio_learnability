@@ -1,0 +1,23 @@
+{
+  "full_suite": {
+    "passed": 200,
+    "skipped": 1,
+    "log": "Full empirical and new Monte Carlo test suite, including local private-data checks."
+  },
+  "protected_empirical_files_unchanged": 70,
+  "published_aggregate_verification": "passed; read-only",
+  "local_ignored_bindings": [
+    "data -> original worktree data",
+    "results -> original worktree results",
+    "paper/theory -> original historical theory for empirical hash audits"
+  ],
+  "private_inputs_committed": false,
+  "new_dgp_and_fit_tests_passed": 8,
+  "source_compilation": "passed",
+  "empirical_tex_unresolved_refs": [],
+  "empirics_only_manuscript_inputs": [
+    "empirics",
+    "complexity_schedule/empirics_schedule"
+  ],
+  "private_bindings_ignored_by_git": true
+}

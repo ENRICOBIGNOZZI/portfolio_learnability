@@ -149,7 +149,7 @@
 % --------------------------------------------------
 \title{
     \vspace{-1.5cm}
-    {\LARGE\bfseries The Law of Portfolio Learnability}\\[0.35em]
+    {\LARGE\bfseries Portfolio Learnability: Empirical Evidence}\\[0.35em]
     {\Large }
 }
 
@@ -165,7 +165,6 @@
 
 % ==================================================
 % JF submission reminder: add full affiliations and the required author-by-author conflict-of-interest disclosure before submission.
-\newcommand{\simoutput}{../simulations/outputs/rich6d_initial_cv60_closeout_v1}
 \begin{document}
 % ==================================================
 
@@ -178,40 +177,11 @@
 \vspace{0.5em}
 
 \clearpage
-\input{theory/introduction}
-\clearpage
-\input{theory/population_problem}
-\clearpage
-\input{theory/direct_port_learning}
-\clearpage
-\input{theory/economomic_spectrum_final}
-\clearpage
-
-\clearpage
-\input{theory/representation_learnability}
-\clearpage
-\input{\simoutput/paper/simulation_section.tex}
-\clearpage
 \input{empirics}
 \input{complexity_schedule/empirics_schedule}
 \clearpage
 
 \bibliographystyle{apalike}
-\bibliography{theory/references}
-
-\clearpage
-\appendix
-\renewcommand{\thesection}{\Alph{section}}
-\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
-\renewcommand{\theequation}{\thesection.\arabic{equation}}
-\renewcommand{\theHequation}{appendix.\thesection.\arabic{equation}}
-\setcounter{equation}{0}
-
-\clearpage
-\input{theory/proofs_learning}
-\input{theory/representation_tables}
-\clearpage
-
-\input{\simoutput/paper/simulation_appendix.tex}
+\bibliography{references}
 
 \end{document}

@@ -47,4 +47,11 @@ source_manifest.json
 !/outputs/spectral_economic_content_20261009/tables/*.parquet
 
 # Regenerable numerical-audit history and compiled feature caches.
-/simulations/outputs/rich6d_initial_cv60_closeout_v1/cache/
+/simulations/outputs/*/cache/
+
+# Optional local historical-theory binding for frozen empirical audits.
+/paper/theory
+
+# Ignore local symbolic bindings as well as private input directories.
+/data
+/results

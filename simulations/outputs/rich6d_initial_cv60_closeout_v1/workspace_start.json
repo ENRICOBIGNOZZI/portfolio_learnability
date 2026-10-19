@@ -1,6 +1,0 @@
-{
-  "head": "05461a909a10ccbcfbbfe99dcf98c2a516c49248",
-  "branch": "main",
-  "working_tree_before": " M empirical_final/compact_protocol.json\n M empirical_final/compact_publication.py\n M empirical_final/neural_portfolio.py\n M outputs/empirical_compact_20261010/audit/bandwidth_generated_weight_cache.json\n M outputs/empirical_compact_20261010/audit/protocol.json\n M outputs/empirical_compact_20261010/audit/robustness_generated_weight_cache.json\n M tests/test_compact_empirical.py\n?? outputs/empirical_compact_20261010/audit/pilot_float32_legacy.json\n?? outputs/empirical_compact_20261010/audit/protocol_amendment.json\n?? outputs/empirical_compact_20261010/audit/protocol_execution_v1.json\n?? simulations/outputs/rich6d_initial_cv60_closeout_v1/\n",
-  "scope": "Simulations only; diagnostics are post hoc; archived experiments immutable. Existing unrelated empirical changes excluded from commit. Standing AGENTS.md authorization permits commit and push."
-}
