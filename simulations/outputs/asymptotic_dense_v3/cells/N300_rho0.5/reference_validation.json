@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "completed_reference_replications": 100,
+  "observations": 13800,
+  "temporal_points": 46,
+  "all_28_window_fits_verified": true,
+  "SD_ddof": 1,
+  "standard_error_plotted": false,
+  "percentile_plotted": null,
+  "percentile_reported": 95,
+  "source_hash_matches": true,
+  "covers_full_experiment": false,
+  "minimum_primary_fixed_power_R_squared": 0.9958412872436386,
+  "note": "Bookkeeping and fixed-power R2 do not imply exact agreement of finite-window free exponents with asymptotic powers.",
+  "files_sha256": {
+    "analysis_status.json": "48f257ce9ee4b6064efc03bc8044707e1573f173658368b43da8e32f49414d64",
+    "completed.json": "9ca0a3c57cf5f7ad49009676b40f224e1a49aab2358ca55772d3150c0efb3a30",
+    "complexity_lambda_trials.csv": "af3f563a5db8ae042e963a0f59215016c9490d2dca91189bc5755c34c19e2a53",
+    "confirmation_trials.csv": "915c77c20a7cf020ff3aa3bba6aa9f27e3489e7591f4dc39d70f28ac43ce766f",
+    "rate_fits.json": "e9eb304a22697d124333618b0ae87de8879da35195125118dfc20062177fac4b",
+    "summary.csv": "dfef4de0ec53e515f0bd6cc59e97d1a31b92d4719e709d43753c61c061d02314",
+    "window_sensitivity.csv": "848e92961626e329f361c15e9bc172eb2f124b48a2f7ee7d9124854d6ade68f5"
+  }
+}

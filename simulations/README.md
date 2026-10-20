@@ -13,7 +13,8 @@ La tabella con gap Sharpe-T -0.5264 si riferisce al **primo run completo**,
 `outputs/asymptotic_dense_v3` e una simulazione distinta, ancora in corso:
 il suo `completed.json` viene scritto solo dopo tutte le 500 repliche.
 Il riferimento N=600, rho=0.5 e gia completato: **100 repliche indipendenti,
-54 T_train effettivi da 100 a 25600**. Gli altri quattro casi continuano.
+54 T_train effettivi da 100 a 25600**. Anche N=300, rho=0.5 e completato;
+restano i due confronti con rho diverso e la cella N=1200.
 Il [PDF del riferimento](outputs/asymptotic_dense_v3/cells/N600_rho0.5/reference_plots.pdf)
 mostra media, STD, 95esimo percentile e tutti i tagli piccoli e grandi.
 
@@ -32,6 +33,26 @@ Le pendenze libere restano diverse dai benchmark: i quattro fit primari
 non superano il criterio aggiuntivo dell'intervallo bootstrap prefissato.
 Il pilot a ranghi superiori studia separatamente l'errore numerico residuo.
 Questa e una cella completa, non il completamento dell'intero disegno.
+
+Anche la cella **N=300, rho=0.5 ha 100 repliche complete**, su 46 T_train
+da 100 a 12800. Sono quindi esportate 200 delle 500 repliche previste.
+I [28 fit di N=300](outputs/asymptotic_dense_v3/cells/N300_rho0.5/window_sensitivity.csv)
+comprendono tutti i tagli, anche 100,200,400,800. Il fit principale da 1600
+usa 20 tempi effettivi e restituisce:
+
+| Rate, N=300 | Benchmark | Esponente libero | R2, esponente teorico imposto |
+|---|---:|---:|---:|
+| Gap Sharpe vs T_train | -0.6667 | -0.6398 | 0.9966 |
+| C vs T_train | +0.3333 | +0.3197 | 0.9978 |
+| C vs lambda | -0.5000 | -0.4703 | 0.9958 |
+| Gap Sharpe vs C | -2.0000 | -2.0006 | 0.9986 |
+
+Per gap(C), il bootstrap 95% dell'esponente e [-2.0514,-1.9505]: passa
+anche il criterio prefissato dell'intervallo e R2. Gli altri tre rate
+mostrano scarti finiti e restano riportati. C(lambda) usa lo stesso spettro
+a T_train=12800; nessuna scelta del taglio usa la qualita del fit.
+La descrizione di questa cella mantiene N=600 come riferimento primario
+del disegno generale.
 
 Il pilot numerico indipendente gia completato ha otto repliche per
 rappresentazione; i suoi esiti non sono risultati della conferma a 100.
@@ -64,6 +85,11 @@ pubblicati e riproduce le pendenze della tabella principale precedente.
 Per ricostruire il report del riferimento:
 `python3 -m simulations.reference_report simulations/outputs/asymptotic_dense_v3`;
 la stessa invocazione con `--validate` verifica dati, STD, percentili e 28 fit.
+Per le sole tabelle di una cella esportata si aggiungono
+`--tables-only --N 300 --rho 0.5`; per verificarle si usano
+`--validate --N 300 --rho 0.5`. La griglia di training e i semi del disegno
+restano quelli originali; il riferimento locale serve a fittare C(lambda)
+per la cella richiesta.
 
 Il [protocollo asintotico](ASYMPTOTIC_PROTOCOL.md) definisce l'estensione di
 T_train fino a 12800 e 25600, il controllo del rango e le finestre finali di fit.

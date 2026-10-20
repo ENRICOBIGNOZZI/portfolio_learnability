@@ -22,6 +22,48 @@ from .precision_report import balanced,METRICS,TITLES
 from .report import COLORS
 
 
+def summary_stats(frame):
+    return frame.groupby(['lambda_multiplier','T_train']).agg(
+        SR_mean=('SR_hat','mean'),SR_std=('SR_hat','std'),SR_p95=('SR_hat',lambda v:v.quantile(.95)),
+        gap_mean=('SR_gap','mean'),gap_std=('SR_gap','std'),gap_p95=('SR_gap',lambda v:v.quantile(.95)),
+        C_mean=('complexity','mean'),C_std=('complexity','std'),C_p95=('complexity',lambda v:v.quantile(.95)),
+        replications=('trial','count')).reset_index()
+
+
+def build_tables(output,N=None,rho=None):
+    """Analyze an exported cell without changing the primary reference design."""
+    out=Path(output);config=json.loads((out/'config.json').read_text())
+    N=config['fixed_N'] if N is None else N
+    rho=config['fixed_rho'] if rho is None else rho
+    if [N,rho] not in config['cells']:
+        raise ValueError('The requested cell is outside the frozen design')
+    cell=out/'cells'/f'N{N}_rho{rho:g}'
+    marker=json.loads((cell/'completed.json').read_text())
+    assert marker['source_hash']==scientific_hash(config)
+    for name,sha in marker['files_sha256'].items():
+        assert hashlib.sha256((cell/name).read_bytes()).hexdigest()==sha
+    frame=pd.read_csv(cell/'confirmation_trials.csv')
+    spectrum=pd.read_csv(cell/'complexity_lambda_trials.csv')
+    validate_cell(config,N,rho,frame,spectrum)
+    analysis_config,analysis=analysis_design(config,out)
+    # This selects the cell-local lambda curve for descriptive fitting only.
+    # The frozen simulation config and the primary N=600 reference stay intact.
+    local=dict(analysis_config,fixed_N=N,fixed_rho=rho)
+    fits,windows,_=tail_fits(local,frame,spectrum)
+    write_json(cell/'rate_fits.json',fits)
+    windows.to_csv(cell/'window_sensitivity.csv',index=False)
+    summary_stats(frame).to_csv(cell/'summary.csv',index=False)
+    write_json(cell/'analysis_status.json',dict(status='Complete cell; other cells outside this report',
+        analyzed_cell=[N,rho],original_primary_reference=[config['fixed_N'],config['fixed_rho']],
+        completed_reference_replications=config['trials'],
+        required_experiment_replications=config['trials']*len(config['cells']),
+        covers_full_experiment=False,source_hash_matches=True,analysis_design=analysis,
+        source_cell_manifest_sha256=hashlib.sha256((cell/'completed.json').read_bytes()).hexdigest(),
+        x_axis='T_train only',full_grid_retained=True,SD_ddof=1,standard_error_plotted=False,
+        percentile_reported=95,percentile_plotted=None,percentile_interpolation='linear',tables_only=True))
+    print(windows[['metric','T_train_min','points','exponent','r_squared']].to_string(index=False))
+
+
 def build(output):
     out=Path(output)
     config=json.loads((out/'config.json').read_text())
@@ -42,11 +84,7 @@ def build(output):
     fits,windows,lambda_window=tail_fits(config,frame,spectrum)
     write_json(cell/'rate_fits.json',fits)
     windows.to_csv(cell/'window_sensitivity.csv',index=False)
-    summary=frame.groupby(['lambda_multiplier','T_train']).agg(
-        SR_mean=('SR_hat','mean'),SR_std=('SR_hat','std'),SR_p95=('SR_hat',lambda v:v.quantile(.95)),
-        gap_mean=('SR_gap','mean'),gap_std=('SR_gap','std'),gap_p95=('SR_gap',lambda v:v.quantile(.95)),
-        C_mean=('complexity','mean'),C_std=('complexity','std'),C_p95=('complexity',lambda v:v.quantile(.95)),
-        replications=('trial','count')).reset_index()
+    summary=summary_stats(frame)
     summary.to_csv(cell/'summary.csv',index=False)
     chosen=frame[frame.lambda_multiplier==1]
     cutoff=config['asymptotic_T_min'];color=COLORS[0]
@@ -131,10 +169,14 @@ def build(output):
     print(windows[['metric','T_train_min','points','exponent','r_squared']].to_string(index=False))
 
 
-def validate(output):
+def validate(output,N=None,rho=None):
     """Recompute summary statistics and fit exponents from exported CSVs."""
     out=Path(output);config=json.loads((out/'config.json').read_text())
-    N,rho=config['fixed_N'],config['fixed_rho'];cell=out/'cells'/f'N{N}_rho{rho:g}'
+    N=config['fixed_N'] if N is None else N
+    rho=config['fixed_rho'] if rho is None else rho
+    if [N,rho] not in config['cells']:
+        raise ValueError('The requested cell is outside the frozen design')
+    cell=out/'cells'/f'N{N}_rho{rho:g}'
     marker=json.loads((cell/'completed.json').read_text())
     assert marker['source_hash']==scientific_hash(config)
     for name,sha in marker['files_sha256'].items():
@@ -142,6 +184,9 @@ def validate(output):
     frame=pd.read_csv(cell/'confirmation_trials.csv');spectrum=pd.read_csv(cell/'complexity_lambda_trials.csv')
     validate_cell(config,N,rho,frame,spectrum)
     np.testing.assert_allclose(frame.SR_gap,3-frame.SR_hat,atol=1e-13)
+    np.testing.assert_allclose(frame.SR_hat,np.sqrt(12)*frame.payoff_mean/
+        np.sqrt(frame.payoff_second-frame.payoff_mean**2),rtol=1e-11)
+    np.testing.assert_allclose(frame.lambda_reg,frame.C_lambda*frame.T_train**(-2/3)*frame.lambda_multiplier,rtol=1e-11)
     np.testing.assert_allclose(frame.Q_hat,1-2*frame.payoff_mean+frame.payoff_second,atol=1e-12)
     np.testing.assert_allclose(frame.regret,frame.Q_hat-4/7,atol=1e-12)
     summary=pd.read_csv(cell/'summary.csv')
@@ -182,12 +227,13 @@ def validate(output):
     status=json.loads((cell/'analysis_status.json').read_text())
     assert status['analysis_design']==analysis and status['covers_full_experiment'] is False
     assert status['standard_error_plotted'] is False and status['SD_ddof']==1
-    assert status['percentile_plotted']==95
+    assert status.get('percentile_reported',status.get('percentile_plotted'))==95
     files=[p for p in cell.iterdir() if p.is_file() and p.name not in ['reference_validation.json','visual_review.json']]
     primary=windows[windows.T_train_min==config['asymptotic_T_min']]
     result=dict(passed=True,completed_reference_replications=config['trials'],observations=len(frame),
-        temporal_points=len(config['T_train_reference']),all_28_window_fits_verified=True,
-        SD_ddof=1,standard_error_plotted=False,percentile_plotted=95,source_hash_matches=True,
+        temporal_points=frame.T_train.nunique(),all_28_window_fits_verified=True,
+        SD_ddof=1,standard_error_plotted=False,percentile_plotted=status.get('percentile_plotted'),
+        percentile_reported=95,source_hash_matches=True,
         covers_full_experiment=False,minimum_primary_fixed_power_R_squared=float(primary.r_squared.min()),
         note='Bookkeeping and fixed-power R2 do not imply exact agreement of finite-window free exponents with asymptotic powers.',
         files_sha256={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(files)})
@@ -198,5 +244,13 @@ def validate(output):
 
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('output',type=Path)
-    p.add_argument('--validate',action='store_true');args=p.parse_args()
-    validate(args.output) if args.validate else build(args.output)
+    p.add_argument('--validate',action='store_true');p.add_argument('--tables-only',action='store_true')
+    p.add_argument('--N',type=int);p.add_argument('--rho',type=float);args=p.parse_args()
+    if args.validate:
+        validate(args.output,args.N,args.rho)
+    elif args.tables_only:
+        build_tables(args.output,args.N,args.rho)
+    elif args.N is not None or args.rho is not None:
+        p.error('--N and --rho apply to --tables-only or --validate')
+    else:
+        build(args.output)
