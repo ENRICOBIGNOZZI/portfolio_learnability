@@ -9,6 +9,19 @@ I vecchi risultati restano in `outputs/new_montecarlo`; le figure mostrano
 media +/- una STD e 95esimo percentile, mantenendo invariati i CSV originali.
 I percentili del vecchio studio sono aggiunti nel separato `percentiles.csv`.
 
+L'esecuzione puo anticipare la cella gia prevista N=1200, rho=0.5 con
+`asymptotic_prefetch`, al massimo due worker a bassa priorita. Si invoca
+la stessa funzione scientifica, con identici semi, centri, griglie e C0.
+I file temporanei risiedono in uno staging separato; un hard link atomico
+pubblica soltanto checkpoint completi e preserva quelli gia presenti.
+Il collector principale riusa questi cache e mantiene i suoi stessi controlli.
+Un test confronta tutti gli array con il percorso principale, bit per bit.
+Questa modifica riguarda l'ordine di esecuzione, non il disegno statistico.
+Comando: `nice -n 10 python3 -m simulations.asymptotic_prefetch simulations/outputs/asymptotic_dense_v3 --N 1200 --rho 0.5 --workers 2`,
+con le stesse variabili BLAS a un thread del processo principale.
+Il progresso tecnico resta sotto `cache/prefetch_progress.json`, escluso
+dagli output scientifici; la validazione finale considera i CSV del collector.
+
 ## Requisiti e disegno
 
 - Stessa economia del codice fornito, D=s=3, b=2, Sharpe ottimo annualizzato 3.

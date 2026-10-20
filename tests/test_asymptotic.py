@@ -230,3 +230,37 @@ def test_precision_sharpe_complexity_percentile_keeps_the_balanced_pairing():
     sd=np.std([.01,.02,.03,.04],ddof=1)
     np.testing.assert_allclose(band.max(),.025+sd)
     plt.close(fig)
+
+
+def test_prefetch_handoff_is_atomic_and_preserves_existing_main_outputs(tmp_path):
+    from simulations.asymptotic_prefetch import handoff
+    staged=tmp_path/'staged';target=tmp_path/'target';marker=tmp_path/'completed.json'
+    staged.write_bytes(b'completed policy')
+    assert handoff(staged,target,marker)=='published'
+    assert target.read_bytes()==b'completed policy' and not staged.exists()
+    staged.write_bytes(b'duplicate computation')
+    assert handoff(staged,target,marker)=='main_cache_already_present'
+    assert target.read_bytes()==b'completed policy' and not staged.exists()
+    target.unlink();marker.write_text('{}');staged.write_bytes(b'late policy')
+    assert handoff(staged,target,marker)=='cell_already_exported'
+    assert not target.exists() and not staged.exists()
+
+
+def test_prefetched_training_is_identical_to_the_frozen_main_engine(tmp_path):
+    from simulations import asymptotic as engine
+    from simulations.asymptotic_prefetch import prefetch_job
+    c=config();c.update(fixed_N=5,fixed_rho=.5,cells=[[5,.5]],T_train=[3,8,17],
+        T_train_reference=[3,8,17],spectrum_T_train=17,stream_block=8)
+    cache=tmp_path/'out/cache';cache.mkdir(parents=True)
+    direct=tmp_path/'direct';direct.mkdir()
+    rank=8;constant=1e-5
+    result=prefetch_job((c,5,.5,0,rank,constant,str(cache),engine.scientific_hash(c)))
+    assert result['state']=='published'
+    expected=engine.training_job((c,5,.5,0,c['confirmation_seed'],c['T_train'],
+        'nystrom',rank,constant,str(direct),'confirmation'))
+    with np.load(expected) as a,np.load(cache/Path(expected).name) as b:
+        assert set(a.files)==set(b.files)
+        for key in a.files:
+            np.testing.assert_array_equal(a[key],b[key])
+    with pytest.raises(RuntimeError,match='source changed'):
+        prefetch_job((c,5,.5,0,rank,constant,str(cache),'wrong scientific signature'))
