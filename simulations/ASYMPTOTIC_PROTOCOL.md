@@ -38,6 +38,23 @@ I percentili del vecchio studio sono aggiunti nel separato `percentiles.csv`.
 - Le curve Sharpe-complexity restano sul percorso bilanciato confermato:
   lambda(T_train)=C0*T_train^(-2/3).
 
+## Dipendenza temporale
+
+Per rho fissato con |rho|<1, la copula AR gaussiana e geometricamente
+mixing: i rate teorici conservano gli stessi esponenti, mentre le costanti
+dei bound possono dipendere da rho. La distribuzione stazionaria marginale
+delle caratteristiche e uniforme sullo stesso cubo per ogni rho. Anche
+p*=3/7 e lo Sharpe ottimo annualizzato 3 restano uguali, come dimostrato
+in `source/MonteCarlo_Gaussian_DGP_E1_E6.tex`, condizioni E1 ed E6.
+
+In questa economia E4 annulla inoltre la media condizionata della score
+all'oracolo rispetto all'intera informazione F_t: la score all'oracolo e
+una differenza di martingala. La persistenza delle caratteristiche e la
+score hanno quindi strutture seriali diverse. Per i portafogli stimati,
+le differenze finite tra rho vanno misurate nelle medie e nella dispersione
+delle repliche. L'eventuale sovrapposizione delle curve va riportata, senza
+imporre graficamente o nei fit un ordinamento delle costanti al variare di rho.
+
 ## Precisione del kernel
 
 Aumentare le repliche riduce l'incertezza della media ma non l'errore di

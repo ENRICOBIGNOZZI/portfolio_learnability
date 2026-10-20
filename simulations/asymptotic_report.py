@@ -358,6 +358,10 @@ La figura di sensibilita confronta gli stessi portafogli con e senza correzione.
 <h2>Finestre di fit: tutti i risultati</h2>{windows_html}
 <p>Aumentare le repliche riduce l'incertezza della media ma non un bias di rappresentazione. Per questo si mantengono 100 repliche e si aumentano training e accuratezza del kernel.
 La rappresentazione resta finita: C e limitata dal rango, e i risultati non certificano il limite a kernel infinito. Per rho fissato |rho|&lt;1 restano gli stessi esponenti teorici; le costanti dei bound possono cambiare.</p>
+<h2>Interpretazione del confronto tra rho</h2>
+<p>La copula AR e geometricamente mixing per |rho|&lt;1. La distribuzione marginale stazionaria delle caratteristiche resta la stessa e lo Sharpe ottimo annualizzato e 3 per ogni rho.
+La condizione E4 della <a href="../../source/MonteCarlo_Gaussian_DGP_E1_E6.tex">costruzione fornita</a> rende la score all'oracolo una differenza di martingala rispetto all'intera informazione F_t.
+Per i portafogli stimati, le differenze finite vanno misurate nella media e nella dispersione delle repliche: si riportano anche curve sovrapposte, senza imporre un ordinamento dei gap o delle costanti al variare di rho.</p>
 {image_html}</html>'''
     (out/'report.html').write_text(text)
     return meta
