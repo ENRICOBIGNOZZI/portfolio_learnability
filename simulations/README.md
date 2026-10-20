@@ -27,6 +27,20 @@ usa lo spettro a T_train=12800 e la finestra di penalita prefissata.
 Fonti: `outputs/asymptotic_v2/fidelity_trials.csv` e
 `fidelity_rate_diagnostics.json`. Pendenze e R2 non hanno selezionato il rango.
 
+Il [confronto secondario dei tagli nel pilot](outputs/asymptotic_v2/fidelity_windows.html)
+pubblica tutti i tagli osservabili 800,1600,3200, per tutte e quattro le
+rappresentazioni e tutti e quattro i rate: 48 fit. Da 800 si usano tutti i
+cinque punti disponibili. Al riferimento Nyström2048 si ottengono
+gap(T)=-0.6522, C(T)=+0.3285, C(lambda)=-0.4790, gap(C)=-1.9840.
+Al rango selezionato 1024 gli stessi esponenti sono -0.6523,+0.3198,
+-0.4661,-2.0375. Questi esiti restano preliminari a otto repliche e non
+cambiano il fit principale da 1600 o la selezione numerica del rango.
+I tagli 100,200,400 richiedono i nuovi dati: non vengono attribuiti al pilot.
+Per riprodurre l'analisi dai CSV e cache originali:
+`python3 -m simulations.fidelity_windows simulations/outputs/asymptotic_v2`.
+La stessa invocazione con `--validate` verifica i 48 fit dai soli CSV
+pubblicati e riproduce le pendenze della tabella principale precedente.
+
 Il [protocollo asintotico](ASYMPTOTIC_PROTOCOL.md) definisce l'estensione di
 T_train fino a 12800 e 25600, il controllo del rango e le finestre finali di fit.
 Il [disegno fitto](config/asymptotic_dense.json) ha 46 punti effettivi per

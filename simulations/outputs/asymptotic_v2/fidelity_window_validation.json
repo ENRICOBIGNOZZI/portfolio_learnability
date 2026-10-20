@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "checked_fits": 48,
+  "replications": 8,
+  "all_estimable_windows_retained": true,
+  "original_primary_exponents_reproduced": true,
+  "method": "Direct CSV group means, log-log least squares and fixed-power R2; no fitting helper or cache used",
+  "files_sha256": {
+    "fidelity_spectrum.csv": "246b4be4a48d3cd9e961a681a63bc81c6bb061028b84b2bf583188ca00cc878b",
+    "fidelity_window_sensitivity.csv": "51265a395287a895dd0f37663e071947c1e3f9f7a33666229810d16629550b78",
+    "fidelity_window_fits.json": "1edd64a845aa80e215ad41b1c3150080bb72ad005a7714fb246984adc9ce96af",
+    "fidelity_window_comparison.csv": "9707a85e5ec43ffc2d22612e9acbe9a7098a7c883a65e005be3b8da9f5dfca40",
+    "fidelity_windows.html": "4cf62887065780cb240d9a14dd7d7a8b31a1f5a45d2ca58d9d165a2f92a1a2d0",
+    "fidelity_window_design.json": "ca09db5cbc8ca183cbaa6a7685a705f4cdf08e6b8925f3a2e0c0f9e6b40b0cd5"
+  }
+}

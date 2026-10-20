@@ -1,0 +1,65 @@
+{
+  "replications": 8,
+  "analysis_source_sha256": "e8d88d5b7b6be2a5073116b9d98e3e76f45c379505a73631c97a197729a093b3",
+  "available_T_train": [
+    800,
+    1600,
+    3200,
+    6400,
+    12800
+  ],
+  "secondary_cutoffs": [
+    800,
+    1600,
+    3200
+  ],
+  "primary_T_train_min": 1600,
+  "earlier_cutoffs_unobserved": [
+    100,
+    200,
+    400
+  ],
+  "source_fidelity_trials_sha256": "2dc9c0080514a2867a225e209f628801832043ba8e05cb516ee3dba4756906a8",
+  "source_training_cache_sha256": {
+    "fidelity_nystrom512_N600_rho0.5_trial000.npz": "2edf1563c3c67bb0b65d1e026f275b7e44549d9ff9db436efdaedb41f1026ceb",
+    "fidelity_nystrom512_N600_rho0.5_trial001.npz": "6beca4d92b0a2b691778e94b8e55ad26369f44d975f160834f9565086f8cb423",
+    "fidelity_nystrom512_N600_rho0.5_trial002.npz": "bc113faaf8405e0d585c6660dd1183d07cd7229923e07b60e7aa0256220c8eb8",
+    "fidelity_nystrom512_N600_rho0.5_trial003.npz": "6c08317b454b0e5b65c6f1c57f2ef97e8dc833cadd87daf50e7c0c674ca1a6e0",
+    "fidelity_nystrom512_N600_rho0.5_trial004.npz": "328e81d4229657d82e5630430ac8c53edeed9cc68acc94c01ba8b567d104b857",
+    "fidelity_nystrom512_N600_rho0.5_trial005.npz": "c0416cb907ad8d088b21748eecc25a4d4300b2bcccee8a10743fabdb28ebb2ac",
+    "fidelity_nystrom512_N600_rho0.5_trial006.npz": "774e806d40292d78c58015729ce4f945c5deb0f1605ac9febead06d8ded43cca",
+    "fidelity_nystrom512_N600_rho0.5_trial007.npz": "a29597943a98c9b57c7895412019f607a2ec4d53ea3621aa11ca83baf2cdce29",
+    "fidelity_nystrom1024_N600_rho0.5_trial000.npz": "e8a5c94df673225ef267ec368cb9d819eca9c174c14d957820068963d409fc11",
+    "fidelity_nystrom1024_N600_rho0.5_trial001.npz": "b8f567d7ad2c5bdf600385e9f05571da4da9bf28f348ee446f4ff6ad00411d8e",
+    "fidelity_nystrom1024_N600_rho0.5_trial002.npz": "b851323e2a770413300f5559a48a4ff55fd1192750eecf5414473671baa55c0a",
+    "fidelity_nystrom1024_N600_rho0.5_trial003.npz": "7188e87f68577854ea3723a78f01a1aa4e587c078e88b984763e2846a2d8bb25",
+    "fidelity_nystrom1024_N600_rho0.5_trial004.npz": "3f0361c63f3aa21a1d77701db5785c51a55ddaec071c09f8f01536a731f1b457",
+    "fidelity_nystrom1024_N600_rho0.5_trial005.npz": "893c6bb2f5f5dc607b85a9d55c4417dc52a93aa3d0dbe5d27e867f791f7f4a83",
+    "fidelity_nystrom1024_N600_rho0.5_trial006.npz": "602efa351cf74ed7ecd1cf594c9595135be51d9f820ce0662a425e3592aacc90",
+    "fidelity_nystrom1024_N600_rho0.5_trial007.npz": "eaff4be6eb9a8cd37c5378104fa9e8bb48552b0c2d3b0e413b3e8259fd9dbe18",
+    "fidelity_nystrom2048_N600_rho0.5_trial000.npz": "f44db3661d7a880793f30b74cd44296bbf34709b2c13d06aafa2da32de6e53cb",
+    "fidelity_nystrom2048_N600_rho0.5_trial001.npz": "b2dc7a1df621fbb0ed3ee55231ba0de599c62eaac7a40b8df0d5962e436c09db",
+    "fidelity_nystrom2048_N600_rho0.5_trial002.npz": "6ba281e038c7ab9863cf22ba57e524b37d08c44af853490c237e946ce3696e1d",
+    "fidelity_nystrom2048_N600_rho0.5_trial003.npz": "4af79dd107df29260689accbe7e4282a6efe5ee9d68a3cef4ac1c47d5b8654e1",
+    "fidelity_nystrom2048_N600_rho0.5_trial004.npz": "1ef174daa1dc8d50d574df0140f483e17a9d24b920d4dc7fa6e8420d38a70427",
+    "fidelity_nystrom2048_N600_rho0.5_trial005.npz": "8b7987f952bcf7cf0f071af17beadadb9e492f1bb5f8a9948c4fd94a3e3d9f33",
+    "fidelity_nystrom2048_N600_rho0.5_trial006.npz": "6a5cb308a40e1810a85f5b03ef8c1a2750c1fb498b13bdf6f930b21015a51771",
+    "fidelity_nystrom2048_N600_rho0.5_trial007.npz": "d0e1873accde21f4335c50dd779907aeafcf4cbba334c4b7bd5aed8bdaa990b7",
+    "fidelity_rff1000_N600_rho0.5_trial000.npz": "6e3a7d01987f7ad6035bcc671e650a5a2b69a4322f78dd5fa13fcd94a13a653e",
+    "fidelity_rff1000_N600_rho0.5_trial001.npz": "0a2196800ab0fc4915f792ea830ac7249a9e124cb3e10cc9b1266de506dd18bf",
+    "fidelity_rff1000_N600_rho0.5_trial002.npz": "76275067afbf4b589593e882e041550ef1718451069caf09fa5a032148cc0f93",
+    "fidelity_rff1000_N600_rho0.5_trial003.npz": "a0428449886b3ab63afea58d8bc5858809a05d3c40405cc0d67e373940677617",
+    "fidelity_rff1000_N600_rho0.5_trial004.npz": "b40dbcb1ae6ad13cbd93c61c437cd532f0f5e6d5d1eff3bb80eafbd499ad55a5",
+    "fidelity_rff1000_N600_rho0.5_trial005.npz": "6469fe079cb3d7db64c76257cda3d417d04e4be2a9c6c1298dafa41f42c68943",
+    "fidelity_rff1000_N600_rho0.5_trial006.npz": "3e4a31ae2efae2a4033540ecfb517560d55a2abac00a17f5466713b505e0080c",
+    "fidelity_rff1000_N600_rho0.5_trial007.npz": "89226b431ad0f256f0532e1fa0db551983e8557cef468e030c55dbd1dfc4d9d4"
+  },
+  "files_sha256": {
+    "fidelity_spectrum.csv": "246b4be4a48d3cd9e961a681a63bc81c6bb061028b84b2bf583188ca00cc878b",
+    "fidelity_window_sensitivity.csv": "51265a395287a895dd0f37663e071947c1e3f9f7a33666229810d16629550b78",
+    "fidelity_window_fits.json": "1edd64a845aa80e215ad41b1c3150080bb72ad005a7714fb246984adc9ce96af",
+    "fidelity_window_comparison.csv": "9707a85e5ec43ffc2d22612e9acbe9a7098a7c883a65e005be3b8da9f5dfca40",
+    "fidelity_windows.html": "4cf62887065780cb240d9a14dd7d7a8b31a1f5a45d2ca58d9d165a2f92a1a2d0"
+  },
+  "note": "Secondary analysis requested after the preliminary table; every estimable cutoff and representation is retained. The original primary fit and numerical rank selection are unchanged. T=100,200,400 require the new simulation, not relabeling the pilot."
+}
