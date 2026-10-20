@@ -139,6 +139,10 @@ def build(out):
                 transform=ax.transAxes,fontsize=7,color='#222222',
                 bbox=dict(facecolor='white',alpha=.8,edgecolor='none',pad=1.5))
 
+    def sharpe_benchmark(ax,fit,label):
+        ax.plot(fit['x'],3-np.asarray(fit['prediction']),color='black',linestyle='--',
+                linewidth=1.4,label=label)
+
     def train_axis(ax,shade=True):
         ax.set_xscale('log',base=2)
         times=sorted(chosen.T_train.unique())
@@ -160,6 +164,7 @@ def build(out):
             draw(axes[0],f,'T_train','SR_hat',label,color)
             draw(axes[1],f,'T_train','SR_gap',label,color,True)
         axes[0].axhline(3,color='black',linestyle=':',label=r'$SR^\star=3$')
+        sharpe_benchmark(axes[0],fits[main_keys['SR_T']],r'$3-aT_{\mathrm{train}}^{-2/3}$')
         axes[0].set(ylabel=r'Annualized $SR(\widehat W)$',title='Sharpe ratio')
         axes[1].set(ylabel=r'$SR^\star-SR(\widehat W)$',title='Sharpe gap')
         power(axes[1],fits[main_keys['SR_T']],r'$aT_{\mathrm{train}}^{-2/3}$')
@@ -184,7 +189,8 @@ def build(out):
             ax.plot(a.C,a[p95],color=color,linestyle=(0,(4,2)),linewidth=1,gid='trial_percentile_95')
         if (a.gap-a.gapsd<=0).any():
             axes[1]._sd_crosses_zero=True
-    axes[0].axhline(3,color='black',linestyle=':')
+    axes[0].axhline(3,color='black',linestyle=':',label=r'$SR^\star=3$')
+    sharpe_benchmark(axes[0],fits[main_keys['SR_C']],r'$3-aC^{-2}$')
     axes[0].set(xlabel=r'Mean complexity $\widehat C(\lambda_T)$',ylabel=r'Annualized $SR(\widehat W)$',title='Sharpe ratio')
     axes[1].set(xscale='log',yscale='log',xlabel=r'Mean complexity $\widehat C(\lambda_T)$',ylabel=r'$SR^\star-SR(\widehat W)$',title='Sharpe gap')
     if getattr(axes[1],'_sd_crosses_zero',False):
@@ -263,8 +269,10 @@ def build(out):
     diagnostics.close();pages.close()
 
     main=[dict(graph=label,**{k:v for k,v in fits[key].items() if k in ['expected_exponent','exponent','r_squared','exponent_ci95','floor','floor_r_squared']})
-          for label,key in [('SR vs T, different N',main_keys['SR_T']),('SR vs T, different rho',main_keys['SR_T']),('SR vs complexity',main_keys['SR_C']),('C vs T',main_keys['C_T']),('C vs lambda','C_lambda_reference')]]
+          for label,key in [('Sharpe gap vs T, different N',main_keys['SR_T']),('Sharpe gap vs T, different rho',main_keys['SR_T']),('Sharpe gap vs complexity',main_keys['SR_C']),('C vs T',main_keys['C_T']),('C vs lambda','C_lambda_reference')]]
     pd.DataFrame(main).to_csv(out/'main_rate_fits.csv',index=False)
+    tail_file=out/'tail_audit.json'
+    tail_audit=json.loads(tail_file.read_text()) if tail_file.exists() else None
     meta=dict(x_axis='T_train only; pilot/validation/evaluation observations excluded',
               dispersion='mean +/- 1 sample standard deviation across independent training replications, ddof=1',
               standard_error_plotted=False,main_fit_T_train_min=cutoff,full_grid_shown=True,
@@ -275,12 +283,23 @@ def build(out):
                   series_markers=MARKERS,
                   complexity_horizontal_SD='at original dyadic training anchors; all vertical SD bands and mean points shown'),
               main_reference_N=nfix,main_reference_rho=rhofix,figure_stems=stems,
+              extended_horizon_numerical_audit=tail_audit,
               max_control_variate_SR_change=float(np.max(np.abs(frame.SR_hat-frame.SR_raw))),
               all_finite=bool(np.isfinite(frame.select_dtypes('number')).all().all()))
     (out/'plot_audit.json').write_text(json.dumps(meta,indent=2)+'\n')
     table=pd.DataFrame(main).to_html(index=False,float_format=lambda x:f'{x:.5f}')
     windows_html=windows.to_html(index=False,float_format=lambda x:f'{x:.5f}')
     selection=json.loads((out/'rank_selection.json').read_text())
+    tail_html=''
+    if tail_audit is not None:
+        tail_table=pd.DataFrame(tail_audit['checks']).to_html(index=False,float_format=lambda x:f'{x:.7f}')
+        tail_html=f'''<h2>Precisione numerica all'estremo temporale esteso</h2>
+<p>Il pilot principale termina a {max(config['fidelity_T_train'])}. L'audit separato
+<a href="tail_audit.json">tail_audit.json</a> estende {tail_audit['design']['trials']} stream del pilot
+fino a {max(config['T_train_reference'])} e confronta rango selezionato e riferimento.
+Tutti gli esiti sono riportati, anche quando lo scostamento supera una tolleranza del pilot.
+Questo confronto misura errore di rappresentazione: non e un intervallo di confidenza
+delle performance e non contribuisce a medie, STD, percentili o fit delle 100 repliche.</p>{tail_table}'''
     image_html=''.join(f'<figure><img src="figures/{s}.png"><figcaption>{html.escape(s)}</figcaption></figure>' for s in stems)
     text=f'''<!doctype html><html lang="it"><meta charset="utf-8"><title>Simulazioni asintotiche e deviazione standard</title>
 <style>body{{font:16px/1.5 system-ui;max-width:1250px;margin:35px auto;padding:0 24px;color:#18313b}}img{{width:100%}}table{{border-collapse:collapse;font-size:13px}}td,th{{padding:7px;border-bottom:1px solid #ddd}}figure{{margin:35px 0}}</style>
@@ -294,7 +313,7 @@ Nel grafico Sharpe-complexity il percentile dello Sharpe e posto alla complexity
 Il pilot usa separatamente {config['pilot_train']} date di training e {config['pilot_validation']} di validazione: non vengono aggiunte all'asse X della conferma.
 Il fit principale usa T_train &gt;= {cutoff}, fissato prima di osservare la nuova simulazione. Tutti gli altri tagli prefissati sono pubblicati.</p>
 <p><a href="requested_plots.pdf">PDF completo</a>; <a href="confirmation_trials.csv">repliche integrali</a>; <a href="window_sensitivity.csv">sensibilita ai tagli iniziali</a>.</p>
-<h2>Fit principali, senza floor</h2>{table}
+<h2>Rate del gap di Sharpe e della complexity, senza floor</h2>{table}
 <p>Benchmark: gap(T_train) = O_P(T_train^(-2/3)), C(T_train) ~ T_train^(1/3), C(lambda) ~ lambda^(-1/2).
 Il gap(C) ~ C^(-2) si riferisce al percorso bilanciato. R2 descrive l'adattamento finito; non dimostra un minimax o un'equivalenza asintotica per una singola economia.
 Gli intervalli bootstrap degli esponenti sono conservati nei CSV, mentre le bande delle performance mostrano SD tra repliche.
@@ -306,6 +325,7 @@ La scelta usa esclusivamente tolleranze dichiarate sugli errori di complexity e 
 Tutti gli esiti, inclusi RFF1000 e ranghi che falliscono, sono in <a href="fidelity_trials.csv">fidelity_trials.csv</a> e rank_selection.json.
 Come riferimento metodologico: <a href="https://arxiv.org/abs/1507.04717">Rudi, Camoriano e Rosasco (2015), Less is More: Nystrom Computational Regularization</a>.
 Quel lavoro riguarda regressione kernel; non costituisce da solo una verifica delle ipotesi finanziarie o di mixing di questa simulazione.</p>
+{tail_html}
 <h2>Valutazione e controllo del rumore numerico</h2>
 <p>Si integrano analiticamente gli shock e si usano {config['evaluation_states']} stati indipendenti dal training, divisi in due meta indipendenti.
 E noto p*=3/7. Per ogni meta f, m_f e s_f stimano primo e secondo momento del payoff, p_f quello dell'oracolo.

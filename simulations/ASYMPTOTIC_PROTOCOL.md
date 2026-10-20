@@ -59,6 +59,33 @@ Riferimento metodologico primario:
 Il lavoro riguarda regressione kernel; non sostituisce la verifica delle
 ipotesi finanziarie e di dipendenza del manoscritto.
 
+### Esito del pilot numerico indipendente
+
+Le otto repliche appaiate hanno selezionato il rango 1024: differenza massima
+di complexity media 3.9576% e di Sharpe medio 0.00002724 rispetto a 2048.
+Il rango 512 non passa la tolleranza di complexity (9.9424%). Gli esiti
+integrali sono in `outputs/asymptotic_v2/fidelity_trials.csv` e
+`rank_selection.json`.
+
+Dopo la selezione, i fit diagnostici sugli stessi dati del pilot danno
+pendenza del gap Sharpe-T -0.6736 (benchmark -2/3; R2=0.9980) per Nyström1024,
+contro -0.5374 per RFF1000. Per C-T, le pendenze sono rispettivamente
+0.3151 e 0.1996 (benchmark 1/3). Tutti i fit, anche quelli lontani dai rate,
+sono conservati in `fidelity_rate_diagnostics.json`. Questi sono risultati
+preliminari di otto repliche, distinti dalle 100 repliche della conferma;
+non sono stati usati per selezionare il rango.
+Lo stesso archivio include C(lambda) allo spettro T_train=12800: pendenza
+-0.4621 per Nyström1024 rispetto al benchmark -0.5. Il gap rispetto alla
+complexity ha pendenza -2.1365 rispetto al benchmark -2.
+
+La conferma estende il riferimento oltre la fine del pilot (12800).
+Un ulteriore audit numerico estende due stream indipendenti del pilot
+fino a 25600 e confronta i ranghi congelati 1024 e 2048. Questo audit
+e separato dalle medie, STD, percentili e fit della conferma e non cambia
+automaticamente il rango. `tail_audit_design.json` registra il disegno
+prima dei calcoli; `tail_audit.json` pubblica anche eventuali scostamenti
+dalle tolleranze al nuovo estremo temporale.
+
 ## Simulazione, valutazione e STD
 
 I dati si generano in blocchi con stream separati per caratteristiche e
@@ -110,6 +137,7 @@ Tutti i fit, anche quelli lontani dal benchmark, vengono conservati.
 VECLIB_MAXIMUM_THREADS=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -m simulations.asymptotic --stage pilot --workers 4
 VECLIB_MAXIMUM_THREADS=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -m simulations.asymptotic --stage fidelity --workers 4
 VECLIB_MAXIMUM_THREADS=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -m simulations.asymptotic_dense --workers 4
+VECLIB_MAXIMUM_THREADS=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -m simulations.asymptotic_tail_audit --workers 2
 python3 -m simulations.asymptotic_report simulations/outputs/asymptotic_dense_v3
 python3 -m simulations.asymptotic_validate simulations/outputs/asymptotic_dense_v3
 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python3 -m pytest -q tests/test_new_montecarlo.py tests/test_asymptotic.py

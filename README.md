@@ -28,9 +28,16 @@ unchanged policy, regenerates the artifacts, and runs the relevant tests.
 La branch `empirics-montecarlo-20261019` conserva il codice e gli output empirici e sostituisce tutte le precedenti simulazioni con il DGP D=3 fornito il 19 ottobre 2026. Le vecchie simulazioni restano nella storia Git e nella branch originale.
 
 - [Nuove simulazioni e protocollo](simulations/README.md)
-- [Cinque grafici, confronto con il codice originale e audit dei rate](simulations/outputs/new_montecarlo/report.html)
-- [PDF con tutti i grafici](simulations/outputs/new_montecarlo/requested_plots.pdf)
-- [Fit quantitativi dei rate](simulations/outputs/new_montecarlo/rate_fits.csv)
+- [Primo run completo: cinque T_train da 100 a 1600](simulations/outputs/new_montecarlo/report.html)
+- [PDF del primo run, con STD e 95esimo percentile](simulations/outputs/new_montecarlo/requested_plots.pdf)
+- [Fit del primo run: gap Sharpe-T -0.5264](simulations/outputs/new_montecarlo/rate_fits.csv)
+- [Estensione asintotica in corso: protocollo e griglia di 46/54 T_train](simulations/ASYMPTOTIC_PROTOCOL.md)
+- [Pilot numerico indipendente: fit su 8 repliche, distinti dalla conferma](simulations/outputs/asymptotic_v2/fidelity_rate_diagnostics.json)
+
+L'estensione arriva a T_train=12800 e 25600. Il pilot Nyström1024 da otto
+repliche da una pendenza del gap Sharpe-T di -0.6736; la conferma a 100 repliche
+per scenario e ancora in corso. La tabella -0.5264/+0.3352/-0.4579/-1.5719
+appartiene al primo run completo, non e il risultato finale dell'estensione.
 
 `paper/main.tex` include soltanto gli empirici e il loro approfondimento sulla complexity; la nuova simulazione e autonoma. I sorgenti teorici dello ZIP usati per fissare i benchmark sono conservati in `simulations/source/`.
 

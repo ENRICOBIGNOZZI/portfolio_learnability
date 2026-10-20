@@ -1,0 +1,25 @@
+{
+  "selected_rank": 1024,
+  "reference_rank": 2048,
+  "checks": [
+    {
+      "rank": 512,
+      "max_relative_C_difference": 0.09942400057514333,
+      "max_absolute_SR_difference": 5.4915840082936374e-05,
+      "passes": false
+    },
+    {
+      "rank": 1024,
+      "max_relative_C_difference": 0.039576145933017615,
+      "max_absolute_SR_difference": 2.7234376927198767e-05,
+      "passes": true
+    },
+    {
+      "rank": 2048,
+      "max_relative_C_difference": 0.0,
+      "max_absolute_SR_difference": 0.0,
+      "passes": true
+    }
+  ],
+  "rule": "Smallest rank meeting prespecified numerical-error tolerances; slopes never enter selection."
+}

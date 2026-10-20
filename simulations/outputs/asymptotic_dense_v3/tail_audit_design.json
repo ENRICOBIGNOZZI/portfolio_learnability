@@ -1,0 +1,17 @@
+{
+  "N": 600,
+  "rho": 0.5,
+  "T_train": [
+    25600
+  ],
+  "trials": 2,
+  "ranks": [
+    1024,
+    2048
+  ],
+  "seed": 881019,
+  "source_hash": "84f75e5b4a91ded7f2d0cb08308a857935746a1b4d7bb6ba653d415a7ce0d76e",
+  "driver_sha256": "a0035333c8f9167719ba7b152564a9f06a970f7a8624d3d4b6ce4a0f5cf14214",
+  "reason": "The primary numerical pilot stopped before the extended confirmation endpoint.",
+  "decision": "Diagnostic only; frozen confirmation rank and all rate-fit windows remain unchanged."
+}

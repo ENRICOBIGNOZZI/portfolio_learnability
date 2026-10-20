@@ -1,0 +1,212 @@
+{
+  "stages": [
+    "pilot",
+    "fidelity",
+    "evaluation at fixed N"
+  ],
+  "parent_design": {
+    "version": "asymptotic_v2",
+    "N_values": [
+      300,
+      600,
+      1200
+    ],
+    "rho_values": [
+      0.0,
+      0.5,
+      0.95
+    ],
+    "fixed_N": 600,
+    "fixed_rho": 0.5,
+    "cells": [
+      [
+        300,
+        0.5
+      ],
+      [
+        600,
+        0.0
+      ],
+      [
+        600,
+        0.5
+      ],
+      [
+        600,
+        0.95
+      ],
+      [
+        1200,
+        0.5
+      ]
+    ],
+    "T_train": [
+      100,
+      200,
+      400,
+      800,
+      1600,
+      3200,
+      6400,
+      12800
+    ],
+    "T_train_reference": [
+      100,
+      200,
+      400,
+      800,
+      1600,
+      3200,
+      6400,
+      12800,
+      25600
+    ],
+    "asymptotic_T_min": 1600,
+    "sensitivity_T_min": [
+      100,
+      400,
+      800,
+      1600,
+      3200,
+      6400
+    ],
+    "spectrum_T_train": 12800,
+    "spectrum_fit_T_min": 1600,
+    "spectrum_fit_T_max": 12800,
+    "trials": 100,
+    "ell": 1.0,
+    "kernel_jitter": 1e-12,
+    "center_seed": 4242,
+    "feature_seed": 42,
+    "candidate_ranks": [
+      512,
+      1024,
+      2048
+    ],
+    "rank_C_tolerance": 0.05,
+    "rank_SR_tolerance": 0.002,
+    "pilot_rank": 2048,
+    "pilot_trials": 6,
+    "pilot_train": 800,
+    "pilot_validation": 1600,
+    "pilot_C_grid": [
+      1e-09,
+      1.7782794100389228e-09,
+      3.1622776601683795e-09,
+      5.623413251903491e-09,
+      1e-08,
+      1.7782794100389228e-08,
+      3.162277660168379e-08,
+      5.6234132519034905e-08,
+      1e-07,
+      1.7782794100389227e-07,
+      3.162277660168379e-07,
+      5.62341325190349e-07,
+      1e-06,
+      1.778279410038923e-06,
+      3.162277660168379e-06,
+      5.623413251903491e-06,
+      1e-05,
+      1.778279410038923e-05,
+      3.1622776601683795e-05,
+      5.623413251903491e-05,
+      0.0001,
+      0.00017782794100389227,
+      0.00031622776601683794,
+      0.0005623413251903491,
+      0.001
+    ],
+    "fidelity_trials": 8,
+    "fidelity_T_train": [
+      800,
+      1600,
+      3200,
+      6400,
+      12800
+    ],
+    "lambda_multipliers": [
+      0.3,
+      1.0,
+      3.0
+    ],
+    "pilot_seed": 991019,
+    "fidelity_seed": 881019,
+    "confirmation_seed": 771019,
+    "evaluation_seed": 661019,
+    "evaluation_states": 8192,
+    "evaluation_block": 8,
+    "stream_block": 128,
+    "bootstrap_resamples": 2000,
+    "plot_dispersion": "mean plus/minus one sample standard deviation across independent training replications; never standard error",
+    "rank_selection": "Numerical fidelity on an independent pilot; exponents and fit R2 never used for selection",
+    "fit_windows": "Main T_train >=1600, declared before new data; all sensitivity cutoffs reported"
+  },
+  "parent_source_hash": "1049908f2b47c96c201be00c771144c30bbf28575557fde7a69451096f747d9e",
+  "dense_source_hash": "84f75e5b4a91ded7f2d0cb08308a857935746a1b4d7bb6ba653d415a7ce0d76e",
+  "changed_parameters": [
+    "T_train",
+    "T_train_reference",
+    "version"
+  ],
+  "rationale": "Only the subsequent confirmation training grid and design name changed. No confirmation policies were reused.",
+  "immutable_files_sha256": {
+    "pilot.csv": "47aee391f484d1af7e615b99f08b094f2c2295b660387ec5059492133e81e6ec",
+    "frozen_constants.json": "223ce1a6e9084dd519c80c1b290c6489dbd8cbaff574520308ef8a7ab773833a",
+    "fidelity_trials.csv": "2dc9c0080514a2867a225e209f628801832043ba8e05cb516ee3dba4756906a8",
+    "rank_selection.json": "7ec149e936528568b0a13c08f9dabb593720127691062ea90cbf45ee5d89a2af",
+    "cache/pilot_N300_trial000.npz": "3ea8f9de87df1f4464eb101fbc0f7b0fda9087cdd499160a857f2975e2df9625",
+    "cache/pilot_N300_trial001.npz": "e7879722c435c0d1470fc105a0fdc856f20984017d3eb311ad1b6ead64f8bfdf",
+    "cache/pilot_N300_trial002.npz": "f245d6b0ddc2a968f823afac3625a4ff00f1fb0ae67910a90e6089a493ec8580",
+    "cache/pilot_N300_trial003.npz": "d8d4dd27a12929d68ca60bed0ba388e9a868ec34ea4a465e95d6363f85fc9d85",
+    "cache/pilot_N300_trial004.npz": "059e025945c8daffeeee01f0bb0c00976a0811bebab61d44d6d9f93b235524ad",
+    "cache/pilot_N300_trial005.npz": "b9dd997d9b56431c7e3360c700c52aaa97384a3e0d7a8daf310728eef875f590",
+    "cache/pilot_N600_trial000.npz": "7a5376a2ba372247af78785d1e161b243ecb84330cbad0a0e118dad3dea379a0",
+    "cache/pilot_N600_trial001.npz": "d8db267897e1a8390976b9dc24b22ae94071569469a36bb350a942e257844960",
+    "cache/pilot_N600_trial002.npz": "9e22cf0b9e7deb78dc505b00de54e1dd86f4ed21e8fff3be7aee03748b3f37b0",
+    "cache/pilot_N600_trial003.npz": "409010ff059f57c0bb0cbea1db3f8aa1bbe029a37ffe293108e39f8e7f651dfb",
+    "cache/pilot_N600_trial004.npz": "b2b0b334d55b68706cd9ba74f1047ef2be23f8012c8509b12558719488506eac",
+    "cache/pilot_N600_trial005.npz": "6c0cb96d36597e3ce8d2165acb257e1136a524ed488e8b576e2ff6cf48ab2a85",
+    "cache/pilot_N1200_trial000.npz": "73c57ae99eee86c4ebfdebadc3ac925c38504bc50a7697190f9236db8c371011",
+    "cache/pilot_N1200_trial001.npz": "05b2cec494fa7c1a931a4c259f355ed8119ca872df1eefd42cc297d24922b87f",
+    "cache/pilot_N1200_trial002.npz": "9718ffa53517b14a5df8b6215407aa8c06e3e82762007749b9541c4d29fefa81",
+    "cache/pilot_N1200_trial003.npz": "056b69fa05d020620b8652a0a51d543b643373fdbeb12040e60f5e1aa5defff2",
+    "cache/pilot_N1200_trial004.npz": "b5f7e7a95b30bdf88351fae8c46f01ec8f0b436fbc80c0a74c3a8fa91db781b2",
+    "cache/pilot_N1200_trial005.npz": "09452a74e3d6c8b634c22eab73c35609255e8317224309535eac5443bcee496d",
+    "cache/evaluation_nystrom512_N600.npz": "3629f285dbb1d1dc8991ccab67349befc85c118630845fc3b2f6bcfbdbe8a0c3",
+    "cache/fidelity_nystrom512_N600_rho0.5_trial000.npz": "2edf1563c3c67bb0b65d1e026f275b7e44549d9ff9db436efdaedb41f1026ceb",
+    "cache/fidelity_nystrom512_N600_rho0.5_trial001.npz": "6beca4d92b0a2b691778e94b8e55ad26369f44d975f160834f9565086f8cb423",
+    "cache/fidelity_nystrom512_N600_rho0.5_trial002.npz": "bc113faaf8405e0d585c6660dd1183d07cd7229923e07b60e7aa0256220c8eb8",
+    "cache/fidelity_nystrom512_N600_rho0.5_trial003.npz": "6c08317b454b0e5b65c6f1c57f2ef97e8dc833cadd87daf50e7c0c674ca1a6e0",
+    "cache/fidelity_nystrom512_N600_rho0.5_trial004.npz": "328e81d4229657d82e5630430ac8c53edeed9cc68acc94c01ba8b567d104b857",
+    "cache/fidelity_nystrom512_N600_rho0.5_trial005.npz": "c0416cb907ad8d088b21748eecc25a4d4300b2bcccee8a10743fabdb28ebb2ac",
+    "cache/fidelity_nystrom512_N600_rho0.5_trial006.npz": "774e806d40292d78c58015729ce4f945c5deb0f1605ac9febead06d8ded43cca",
+    "cache/fidelity_nystrom512_N600_rho0.5_trial007.npz": "a29597943a98c9b57c7895412019f607a2ec4d53ea3621aa11ca83baf2cdce29",
+    "cache/evaluation_nystrom1024_N600.npz": "2a2ea1335eb862c614ae1626f748f49f584cdf41513c01e47f5ec1bd8511df8e",
+    "cache/fidelity_nystrom1024_N600_rho0.5_trial000.npz": "e8a5c94df673225ef267ec368cb9d819eca9c174c14d957820068963d409fc11",
+    "cache/fidelity_nystrom1024_N600_rho0.5_trial001.npz": "b8f567d7ad2c5bdf600385e9f05571da4da9bf28f348ee446f4ff6ad00411d8e",
+    "cache/fidelity_nystrom1024_N600_rho0.5_trial002.npz": "b851323e2a770413300f5559a48a4ff55fd1192750eecf5414473671baa55c0a",
+    "cache/fidelity_nystrom1024_N600_rho0.5_trial003.npz": "7188e87f68577854ea3723a78f01a1aa4e587c078e88b984763e2846a2d8bb25",
+    "cache/fidelity_nystrom1024_N600_rho0.5_trial004.npz": "3f0361c63f3aa21a1d77701db5785c51a55ddaec071c09f8f01536a731f1b457",
+    "cache/fidelity_nystrom1024_N600_rho0.5_trial005.npz": "893c6bb2f5f5dc607b85a9d55c4417dc52a93aa3d0dbe5d27e867f791f7f4a83",
+    "cache/fidelity_nystrom1024_N600_rho0.5_trial006.npz": "602efa351cf74ed7ecd1cf594c9595135be51d9f820ce0662a425e3592aacc90",
+    "cache/fidelity_nystrom1024_N600_rho0.5_trial007.npz": "eaff4be6eb9a8cd37c5378104fa9e8bb48552b0c2d3b0e413b3e8259fd9dbe18",
+    "cache/evaluation_nystrom2048_N600.npz": "975a2dc10bdbfa3f1834745c4e9504092f443d7b65ff2db043f1cb4db952366f",
+    "cache/fidelity_nystrom2048_N600_rho0.5_trial000.npz": "f44db3661d7a880793f30b74cd44296bbf34709b2c13d06aafa2da32de6e53cb",
+    "cache/fidelity_nystrom2048_N600_rho0.5_trial001.npz": "b2dc7a1df621fbb0ed3ee55231ba0de599c62eaac7a40b8df0d5962e436c09db",
+    "cache/fidelity_nystrom2048_N600_rho0.5_trial002.npz": "6ba281e038c7ab9863cf22ba57e524b37d08c44af853490c237e946ce3696e1d",
+    "cache/fidelity_nystrom2048_N600_rho0.5_trial003.npz": "4af79dd107df29260689accbe7e4282a6efe5ee9d68a3cef4ac1c47d5b8654e1",
+    "cache/fidelity_nystrom2048_N600_rho0.5_trial004.npz": "1ef174daa1dc8d50d574df0140f483e17a9d24b920d4dc7fa6e8420d38a70427",
+    "cache/fidelity_nystrom2048_N600_rho0.5_trial005.npz": "8b7987f952bcf7cf0f071af17beadadb9e492f1bb5f8a9948c4fd94a3e3d9f33",
+    "cache/fidelity_nystrom2048_N600_rho0.5_trial006.npz": "6a5cb308a40e1810a85f5b03ef8c1a2750c1fb498b13bdf6f930b21015a51771",
+    "cache/fidelity_nystrom2048_N600_rho0.5_trial007.npz": "d0e1873accde21f4335c50dd779907aeafcf4cbba334c4b7bd5aed8bdaa990b7",
+    "cache/evaluation_rff1000_N600.npz": "94c0d9bf9a8cf7de741157340272a6b8885b217fcb3da71c20d353c45eebb513",
+    "cache/fidelity_rff1000_N600_rho0.5_trial000.npz": "6e3a7d01987f7ad6035bcc671e650a5a2b69a4322f78dd5fa13fcd94a13a653e",
+    "cache/fidelity_rff1000_N600_rho0.5_trial001.npz": "0a2196800ab0fc4915f792ea830ac7249a9e124cb3e10cc9b1266de506dd18bf",
+    "cache/fidelity_rff1000_N600_rho0.5_trial002.npz": "76275067afbf4b589593e882e041550ef1718451069caf09fa5a032148cc0f93",
+    "cache/fidelity_rff1000_N600_rho0.5_trial003.npz": "a0428449886b3ab63afea58d8bc5858809a05d3c40405cc0d67e373940677617",
+    "cache/fidelity_rff1000_N600_rho0.5_trial004.npz": "b40dbcb1ae6ad13cbd93c61c437cd532f0f5e6d5d1eff3bb80eafbd499ad55a5",
+    "cache/fidelity_rff1000_N600_rho0.5_trial005.npz": "6469fe079cb3d7db64c76257cda3d417d04e4be2a9c6c1298dafa41f42c68943",
+    "cache/fidelity_rff1000_N600_rho0.5_trial006.npz": "3e4a31ae2efae2a4033540ecfb517560d55a2abac00a17f5466713b505e0080c",
+    "cache/fidelity_rff1000_N600_rho0.5_trial007.npz": "89226b431ad0f256f0532e1fa0db551983e8557cef468e030c55dbd1dfc4d9d4"
+  }
+}

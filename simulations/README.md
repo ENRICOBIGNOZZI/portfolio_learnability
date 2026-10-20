@@ -8,6 +8,25 @@ rimozioni delle vecchie simulazioni; la cartella di lavoro originale e intatta.
 
 ## Estensione asintotica, griglia fitta e figure da paper
 
+La tabella con gap Sharpe-T -0.5264 si riferisce al **primo run completo**,
+`outputs/new_montecarlo`, con cinque T da 100 a 1600. L'estensione
+`outputs/asymptotic_dense_v3` e una simulazione distinta, ancora in corso:
+il suo `completed.json` viene scritto solo dopo tutte le 500 repliche.
+Il pilot numerico indipendente gia completato ha otto repliche per
+rappresentazione; i suoi esiti non sono risultati della conferma a 100.
+
+| Quantita | Benchmark | Pilot Nyström1024, 8 repliche |
+|---|---:|---:|
+| Gap Sharpe vs T_train | -0.6667 | -0.6736 |
+| C vs T_train | +0.3333 | +0.3151 |
+| C vs lambda | -0.5000 | -0.4621 |
+| Gap Sharpe vs C | -2.0000 | -2.1365 |
+
+I fit temporali del pilot usano T_train=1600,3200,6400,12800; C(lambda)
+usa lo spettro a T_train=12800 e la finestra di penalita prefissata.
+Fonti: `outputs/asymptotic_v2/fidelity_trials.csv` e
+`fidelity_rate_diagnostics.json`. Pendenze e R2 non hanno selezionato il rango.
+
 Il [protocollo asintotico](ASYMPTOTIC_PROTOCOL.md) definisce l'estensione di
 T_train fino a 12800 e 25600, il controllo del rango e le finestre finali di fit.
 Il [disegno fitto](config/asymptotic_dense.json) ha 46 punti effettivi per
@@ -20,7 +39,7 @@ media, dispersione, percentile e benchmark hanno segni distinti.
 I CSV e i valori delle simulazioni originali restano invariati; i loro
 percentili sono aggiunti in `outputs/new_montecarlo/percentiles.csv`.
 
-## Output
+## Output del primo run completo: T_train da 100 a 1600
 
 - `outputs/new_montecarlo/report.html`: figure, metodo, risultati e limiti dei fit.
 - `outputs/new_montecarlo/requested_plots.pdf`: cinque figure richieste e audit della costante originale.
@@ -31,7 +50,7 @@ percentili sono aggiunti in `outputs/new_montecarlo/percentiles.csv`.
 - `outputs/new_montecarlo/pilot.csv`: tutti i punteggi della selezione preliminare.
 - `outputs/new_montecarlo/manifest.json`, `checks.json`: configurazione, provenienza e controlli.
 
-## Risultati del run completo
+## Risultati del primo run completo
 
 500 repliche completate, 100 per cella. Riferimento dei fit: N=600, rho=0.5;
 lo Sharpe viene fittato come gap rispetto a 3. Nessun T e escluso.

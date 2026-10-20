@@ -1,0 +1,56 @@
+{
+  "design": {
+    "N": 600,
+    "rho": 0.5,
+    "T_train": [
+      25600
+    ],
+    "trials": 2,
+    "ranks": [
+      1024,
+      2048
+    ],
+    "seed": 881019,
+    "source_hash": "84f75e5b4a91ded7f2d0cb08308a857935746a1b4d7bb6ba653d415a7ce0d76e",
+    "driver_sha256": "a0035333c8f9167719ba7b152564a9f06a970f7a8624d3d4b6ce4a0f5cf14214",
+    "reason": "The primary numerical pilot stopped before the extended confirmation endpoint.",
+    "decision": "Diagnostic only; frozen confirmation rank and all rate-fit windows remain unchanged."
+  },
+  "checks": [
+    {
+      "lambda_multiplier": 0.3,
+      "T_train": 25600,
+      "selected_rank": 1024,
+      "reference_rank": 2048,
+      "selected_C": 201.08530504743266,
+      "reference_C": 218.69514489543883,
+      "relative_C_difference": 0.08052231729435821,
+      "absolute_SR_difference": 0.000323777777610168,
+      "meets_original_value_tolerances": false
+    },
+    {
+      "lambda_multiplier": 1.0,
+      "T_train": 25600,
+      "selected_rank": 1024,
+      "reference_rank": 2048,
+      "selected_C": 120.56893296092832,
+      "reference_C": 126.74364412330425,
+      "relative_C_difference": 0.04871811288910688,
+      "absolute_SR_difference": 1.2246914684599375e-05,
+      "meets_original_value_tolerances": true
+    },
+    {
+      "lambda_multiplier": 3.0,
+      "T_train": 25600,
+      "selected_rank": 1024,
+      "reference_rank": 2048,
+      "selected_C": 73.41357842137197,
+      "reference_C": 75.66590329950897,
+      "relative_C_difference": 0.029766708384113327,
+      "absolute_SR_difference": 8.075444624111583e-05,
+      "meets_original_value_tolerances": true
+    }
+  ],
+  "all_finite": true,
+  "note": "Two paired pilot trials diagnose numerical representation error; they are excluded from all 100-trial confirmation means, SD, percentiles and rate fits."
+}

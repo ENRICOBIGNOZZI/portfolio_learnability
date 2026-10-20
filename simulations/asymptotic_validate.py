@@ -76,6 +76,25 @@ def validate(out):
         recomputed.append((rank,passes))
     assert min(rank for rank,passes in recomputed if passes)==selection['selected_rank']
     assert selection['selected_rank']==completion['rank']
+    tail_summary=None
+    if (out/'tail_audit_design.json').exists():
+        tail=json.loads((out/'tail_audit.json').read_text())
+        assert tail['design']==json.loads((out/'tail_audit_design.json').read_text())
+        assert tail['design']['source_hash']==scientific_hash(config)
+        tf=pd.read_csv(out/'tail_fidelity_trials.csv')
+        assert set(tf.T_train)=={max(config['T_train_reference'])}
+        assert set(tf.trial)==set(range(tail['design']['trials']))
+        assert set(tf['rank'])==set(tail['design']['ranks'])
+        assert len(tf)==len(tail['design']['ranks'])*tail['design']['trials']*len(config['lambda_multipliers'])
+        for check in tail['checks']:
+            means=tf[tf.lambda_multiplier==check['lambda_multiplier']].groupby('rank')[['complexity','SR_hat']].mean()
+            a,b=means.loc[selection['selected_rank']],means.loc[selection['reference_rank']]
+            c_difference=abs(a.complexity/b.complexity-1)
+            sr_difference=abs(a.SR_hat-b.SR_hat)
+            np.testing.assert_allclose(check['relative_C_difference'],c_difference,atol=1e-11)
+            np.testing.assert_allclose(check['absolute_SR_difference'],sr_difference,atol=1e-11)
+            assert check['meets_original_value_tolerances']==bool(c_difference<=config['rank_C_tolerance'] and sr_difference<=config['rank_SR_tolerance'])
+        tail_summary=next(check for check in tail['checks'] if check['lambda_multiplier']==1)
     for key,g in spectrum.groupby(['N','rho','trial']):
         assert len(g)==65
         assert set(g.T_train)=={config['spectrum_T_train']}
@@ -145,6 +164,7 @@ def validate(out):
                 minimum_estimated_regret=float(frame.regret.min()),
                 negative_estimated_gaps=int((frame.SR_gap<0).sum()),
                 coherence_comparison=improvement,
+                extended_endpoint_representation_check=tail_summary,
                 note='Numerical validity and rate coherence are reported separately; failing to match a benchmark is not relabeled a successful fit.')
     files=[p for p in out.rglob('*') if p.is_file() and 'cache' not in p.parts
            and p.name not in ['validation.json','visual_review.json']]
