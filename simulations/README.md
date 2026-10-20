@@ -13,8 +13,8 @@ La tabella con gap Sharpe-T -0.5264 si riferisce al **primo run completo**,
 `outputs/asymptotic_dense_v3` e una simulazione distinta, ancora in corso:
 il suo `completed.json` viene scritto solo dopo tutte le 500 repliche.
 Il riferimento N=600, rho=0.5 e gia completato: **100 repliche indipendenti,
-54 T_train effettivi da 100 a 25600**. Anche N=300, rho=0.5 e completato;
-restano i due confronti con rho diverso e la cella N=1200.
+54 T_train effettivi da 100 a 25600**. Anche N=300, rho=0.5 e N=600,
+rho=0 sono completati; restano rho=0.95 e la cella N=1200.
 Il [PDF del riferimento](outputs/asymptotic_dense_v3/cells/N600_rho0.5/reference_plots.pdf)
 mostra media, STD, 95esimo percentile e tutti i tagli piccoli e grandi.
 
@@ -35,7 +35,7 @@ Il pilot a ranghi superiori studia separatamente l'errore numerico residuo.
 Questa e una cella completa, non il completamento dell'intero disegno.
 
 Anche la cella **N=300, rho=0.5 ha 100 repliche complete**, su 46 T_train
-da 100 a 12800. Sono quindi esportate 200 delle 500 repliche previste.
+da 100 a 12800.
 I [28 fit di N=300](outputs/asymptotic_dense_v3/cells/N300_rho0.5/window_sensitivity.csv)
 comprendono tutti i tagli, anche 100,200,400,800. Il fit principale da 1600
 usa 20 tempi effettivi e restituisce:
@@ -53,6 +53,26 @@ mostrano scarti finiti e restano riportati. C(lambda) usa lo stesso spettro
 a T_train=12800; nessuna scelta del taglio usa la qualita del fit.
 La descrizione di questa cella mantiene N=600 come riferimento primario
 del disegno generale.
+
+La cella **N=600, rho=0 ha 100 repliche complete**, anch'essa su 46 T_train
+da 100 a 12800. Sono ora esportate **300 delle 500 repliche** previste.
+I [28 fit di rho=0](outputs/asymptotic_dense_v3/cells/N600_rho0/window_sensitivity.csv)
+mantengono ogni taglio dichiarato. Nel fit primario da 1600:
+
+| Rate, N=600 e rho=0 | Benchmark | Esponente libero | R2, esponente teorico imposto |
+|---|---:|---:|---:|
+| Gap Sharpe vs T_train | -0.6667 | -0.6596 | 0.9989 |
+| C vs T_train | +0.3333 | +0.3152 | 0.9962 |
+| C vs lambda | -0.5000 | -0.4621 | 0.9931 |
+| Gap Sharpe vs C | -2.0000 | -2.0920 | 0.9987 |
+
+Il bootstrap 95% dell'esponente del gap(T) e [-0.6798,-0.6413], quindi
+questo fit passa anche il criterio prefissato dell'intervallo e R2.
+Gli altri tre fit primari non lo superano. Il taglio secondario da 800 da
+gap(C)=-2.0105; la tabella pubblica anche tutti gli altri esiti, senza
+scegliere la finestra dopo aver visto la pendenza. Le ampiezze fra rho
+saranno confrontate sulla griglia comune 1600..12800 dopo la cella rho=0.95.
+Il riferimento rho=0.5 conserva il suo fit primario fino a 25600.
 
 Il pilot numerico indipendente gia completato ha otto repliche per
 rappresentazione; i suoi esiti non sono risultati della conferma a 100.
