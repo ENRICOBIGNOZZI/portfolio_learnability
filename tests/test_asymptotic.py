@@ -334,3 +334,32 @@ def test_rho_constants_leave_zero_reference_ratios_undefined():
     assert validate_rho_constants(c,frame,table,audit)==[100,200,400]
     assert audit['positive_bootstrap_reference_fraction']==0
     assert table[['ratio_to_reference','ratio_ci_low','ratio_ci_high']].isna().all().all()
+
+
+def test_precision_completed_rank_audit_does_not_require_or_select_other_ranks(tmp_path):
+    import hashlib
+    from simulations.asymptotic_precision import training_job,collect
+    from simulations.precision_validate import validate
+    c=config();c.update(fixed_N=9,fixed_rho=.5,T_train=[8,12,17,24],
+        spectrum_T_train=24,spectrum_fit_T_min=8,spectrum_fit_T_max=24,
+        asymptotic_T_min=12,sensitivity_T_min=[8,12],trials=2,
+        precision_ranks=[8,16],precision_frozen_C0=1e-5,
+        precision_relative_C_error_tolerance=.02,evaluation_states=64,
+        precision_evaluation_block=2,stream_block=8,bootstrap_resamples=40)
+    (tmp_path/'config.json').write_text(json.dumps(c))
+    cache=tmp_path/'cache';cache.mkdir()
+    for j in range(c['trials']):training_job((c,8,j,str(cache)))
+    collect(c,8,tmp_path)
+    result=validate(tmp_path,rank=8)
+    assert result['passed'] and result['rank_replications']==2
+    assert not result['full_precision_study_complete'] and not result['report_verified']
+    assert not (tmp_path/'precision_selection.json').exists()
+    assert not (tmp_path/'precision_nystrom16_completed.json').exists()
+    # Even an internally rehashed export cannot substitute unpaired/fabricated CIs.
+    path=tmp_path/'precision_nystrom8_fits.json';fits=json.loads(path.read_text())
+    fit=fits['SR_C_Tmin8'];fit['exponent_ci95']=[-99.,99.]
+    path.write_text(json.dumps(fits))
+    marker=tmp_path/'precision_nystrom8_completed.json';record=json.loads(marker.read_text())
+    record['files_sha256'][path.name]=hashlib.sha256(path.read_bytes()).hexdigest()
+    marker.write_text(json.dumps(record))
+    with pytest.raises(AssertionError):validate(tmp_path,rank=8)

@@ -134,7 +134,18 @@ Il [pilot di precisione aggiuntivo](PRECISION_PROTOCOL.md) confronta ranghi
 Parte da T_train=100 e arriva a 25600, con tutti i tagli piccoli e grandi.
 Il rango viene valutato con un certificato di errore della complessita
 empirica; le pendenze non determinano la selezione. Questo calcolo resta
-distinto dalla conferma a 100 repliche e non ha ancora risultati finali.
+distinto dalla conferma a 100 repliche. Il rango **4096 ha completato tutte
+le otto repliche e la valutazione**, su nove T_train da 100 a 25600.
+Il primario da 1600 restituisce gap(T)=-0.6908, C(T)=+0.3259,
+C(lambda)=-0.4802 e gap(C)=-2.1184, con R2 a potenza teorica >0.997.
+Gli intervalli bootstrap includono il benchmark per i due rate del gap,
+non per i due rate di C. Il certificato massimo e 2.4938%, sopra la soglia
+numerica prefissata del 2%; non viene quindi dichiarato selezionato.
+I [28 fit del rango 4096](outputs/asymptotic_precision_v4/precision_nystrom4096_fits.json)
+e i dati grezzi sono pubblicati con audit indipendente, inclusi gli
+intervalli bootstrap. Il confronto con 8192 e le nuove figure restano da
+completare. La finestra e lo spettro del nuovo pilot sono diversi dalla
+precedente tabella Nyström1024: vedere il protocollo per il confronto corretto.
 
 ## Output del primo run completo: T_train da 100 a 1600
 

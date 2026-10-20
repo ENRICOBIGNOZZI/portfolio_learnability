@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "rank": 4096,
+  "rank_replications": 8,
+  "observations": 216,
+  "all_sensitivity_windows_retained": true,
+  "bootstrap_exponent_intervals_independently_verified": true,
+  "source_hash": "a0af1225830946e76ae61b8393bb733d5224ae360ad9e4730511f48163c46821",
+  "report_verified": false,
+  "full_precision_study_complete": false,
+  "passes_certified_tolerance": false,
+  "negative_estimated_gaps": 0,
+  "note": "Single-rank raw data, moments, complexity certificate and fits verified independently. Final cross-rank selection, summary statistics and plots require the full study.",
+  "files_sha256": {
+    "config.json": "38ce45bc15d4fafb90b9e6be7f1713801e1c8df8d7eb4ddfead875c3aa045827",
+    "precision_nystrom4096_completed.json": "f93e43d00e27a0586f259ca854a13829da19ddfe8b633a1b8192ef173a9428c7",
+    "precision_nystrom4096_trials.csv": "35fffd8bc9b01ca3d94b49cc415fd4b370c06d76b0006e60e7f74b982fa634ea",
+    "precision_nystrom4096_certificates.csv": "07df95742903a1f02cd2e5aead89990f96f336da5b37c8a6bab3f93b0d233494",
+    "precision_nystrom4096_spectrum.csv": "bbebf694a665c9592396479df6c193b9e67c854825f0af76d45f4278c2a9948b",
+    "precision_nystrom4096_fits.json": "3c99be648777812bb375da52845a63083a7ce6a9551a62f5451ace6b976925e6"
+  }
+}

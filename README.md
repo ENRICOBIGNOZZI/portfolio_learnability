@@ -37,6 +37,7 @@ La branch `empirics-montecarlo-20261019` conserva il codice e gli output empiric
 - [Fit del primo run: gap Sharpe-T -0.5264](simulations/outputs/new_montecarlo/rate_fits.csv)
 - [Estensione asintotica in corso: protocollo e griglia di 46/54 T_train](simulations/ASYMPTOTIC_PROTOCOL.md)
 - [Pilot numerico indipendente: fit su 8 repliche, distinti dalla conferma](simulations/outputs/asymptotic_v2/fidelity_rate_diagnostics.json)
+- [Pilot di maggiore precisione: rango 4096 completato, confronto con 8192 in corso](simulations/PRECISION_PROTOCOL.md#primo-rango-completato-4096)
 
 L'estensione arriva a T_train=12800 e 25600. Il pilot Nyström1024 da otto
 repliche da una pendenza del gap Sharpe-T di -0.6736; la conferma a 100 repliche

@@ -83,8 +83,44 @@ se il certificato conservativo non la dimostra. La validazione ricalcola
 dal CSV le statistiche, la regolarizzazione, i momenti, le pendenze,
 le griglie di fit e la selezione del rango, e verifica gli SHA dei dati.
 Il caso di prova completo ha inoltre verificato che sostituire una STD
-con il suo SE venga rilevato. I risultati scientifici devono ancora essere
-calcolati; il caso di prova e una verifica del codice, non un risultato.
+con il suo SE venga rilevato. Il caso di prova e una verifica del codice,
+distinta dai risultati scientifici sotto riportati.
+
+## Primo rango completato: 4096
+
+Otto repliche complete e valutate su tutti i nove T_train da 100 a 25600:
+216 portafogli, 520 punti dello spettro e tutti i 28 fit dichiarati.
+Il fit principale usa 1600,3200,6400,12800,25600; C(lambda) usa lo spettro
+a 25600 nella finestra prefissata. Gli esponenti liberi sono:
+
+| Rate | Benchmark | Rango 4096 | R2 con esponente teorico imposto |
+|---|---:|---:|---:|
+| Gap Sharpe vs T_train | -0.6667 | -0.6908 | 0.9984 |
+| C vs T_train | +0.3333 | +0.3259 | 0.9992 |
+| C vs lambda | -0.5000 | -0.4802 | 0.9982 |
+| Gap Sharpe vs C | -2.0000 | -2.1184 | 0.9978 |
+
+Gli intervalli bootstrap del gap(T) e del gap(C) includono i benchmark;
+quelli dei due rate di C non li includono. Il massimo certificato relativo
+e **2.4938%**, sopra la soglia prefissata del 2%: il rango 4096 non passa
+questa soglia e non viene dichiarato selezionato. Il rango 8192 resta
+da completare, come pure il confronto e le figure finali. La finestra
+temporale e lo spettro differiscono da quelli della precedente tabella
+Nyström1024: le pendenze non vanno confrontate come se il solo rango cambiasse.
+
+I dati e i fit sono in `outputs/asymptotic_precision_v4/precision_nystrom4096_*`.
+L'audit del singolo rango si riproduce senza richiedere il report finale:
+
+```sh
+python3 -m simulations.precision_validate simulations/outputs/asymptotic_precision_v4 --rank 4096
+```
+
+L'audit verifica manifest, momenti, griglie, tracce e certificati, e
+ricalcola da percorsi grezzi le pendenze, i fit a potenza fissata e gli
+intervalli bootstrap con regressione centrata indipendente da `polyfit`.
+Per gap(C) ricampiona insieme entrambe le coordinate. Il risultato distingue
+esplicitamente dati corretti, soglia numerica superata e studio completo;
+nessun report grafico viene dichiarato verificato da questo controllo parziale.
 
 ## Ripresa quando varia lo spazio libero
 

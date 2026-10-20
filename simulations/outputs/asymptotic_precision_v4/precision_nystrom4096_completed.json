@@ -1,0 +1,15 @@
+{
+  "rank": 4096,
+  "replications": 8,
+  "source_hash": "a0af1225830946e76ae61b8393bb733d5224ae360ad9e4730511f48163c46821",
+  "evaluation_states": 8192,
+  "maximum_balanced_relative_C_error_bound": 0.024938002774970103,
+  "maximum_fit_window_relative_C_error_bound": 0.024938002774970103,
+  "passes_certified_tolerance": false,
+  "files_sha256": {
+    "precision_nystrom4096_trials.csv": "35fffd8bc9b01ca3d94b49cc415fd4b370c06d76b0006e60e7f74b982fa634ea",
+    "precision_nystrom4096_certificates.csv": "07df95742903a1f02cd2e5aead89990f96f336da5b37c8a6bab3f93b0d233494",
+    "precision_nystrom4096_spectrum.csv": "bbebf694a665c9592396479df6c193b9e67c854825f0af76d45f4278c2a9948b",
+    "precision_nystrom4096_fits.json": "3c99be648777812bb375da52845a63083a7ce6a9551a62f5451ace6b976925e6"
+  }
+}

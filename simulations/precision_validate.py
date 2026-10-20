@@ -13,22 +13,26 @@ from .asymptotic_precision import source_hash
 from .asymptotic_dense import write_json
 
 
-def validate(output):
+def validate(output, rank=None):
     out=Path(output);config=json.loads((out/'config.json').read_text())
-    audit=json.loads((out/'precision_plot_audit.json').read_text())
-    selection=json.loads((out/'precision_selection.json').read_text())
-    summary=pd.read_csv(out/'precision_summary.csv')
-    windows=pd.read_csv(out/'precision_window_sensitivity.csv')
-    assert audit['standard_error_plotted'] is False and audit['SD_ddof']==1
-    assert audit['percentile_plotted']==95 and audit['percentile_interpolation']=='linear'
-    assert audit['full_training_grid']==config['T_train']
-    assert audit['all_sensitivity_cutoffs']==config['sensitivity_T_min']
-    assert audit['main_fit_T_train_min']==config['asymptotic_T_min']
-    assert set(summary['rank'])==set(config['precision_ranks'])
-    assert set(windows['rank'])==set(config['precision_ranks'])
-    assert selection['selection_uses_slopes_or_R_squared'] is False
+    report=rank is None
+    ranks=config['precision_ranks'] if report else [rank]
+    assert all(r in config['precision_ranks'] for r in ranks)
+    if report:
+        audit=json.loads((out/'precision_plot_audit.json').read_text())
+        selection=json.loads((out/'precision_selection.json').read_text())
+        summary=pd.read_csv(out/'precision_summary.csv')
+        windows=pd.read_csv(out/'precision_window_sensitivity.csv')
+        assert audit['standard_error_plotted'] is False and audit['SD_ddof']==1
+        assert audit['percentile_plotted']==95 and audit['percentile_interpolation']=='linear'
+        assert audit['full_training_grid']==config['T_train']
+        assert audit['all_sensitivity_cutoffs']==config['sensitivity_T_min']
+        assert audit['main_fit_T_train_min']==config['asymptotic_T_min']
+        assert set(summary['rank'])==set(config['precision_ranks'])
+        assert set(windows['rank'])==set(config['precision_ranks'])
+        assert selection['selection_uses_slopes_or_R_squared'] is False
     checks=[];observations=0;gaps_below_zero=0
-    for rank in config['precision_ranks']:
+    for rank in ranks:
         prefix=f'precision_nystrom{rank}_'
         complete=json.loads((out/(prefix+'completed.json')).read_text())
         assert complete['source_hash']==source_hash(config)
@@ -65,7 +69,7 @@ def validate(output):
         absolute=np.maximum(paired.residual_trace,0)/paired.lambda_reg
         np.testing.assert_allclose(paired.absolute_C_error_bound,absolute,rtol=1e-10,atol=1e-12)
         np.testing.assert_allclose(paired.relative_C_error_bound,absolute/paired.complexity,rtol=1e-10,atol=1e-12)
-        for (mult,t),g in f.groupby(['lambda_multiplier','T_train']):
+        for (mult,t),g in (f.groupby(['lambda_multiplier','T_train']) if report else []):
             row=summary[(summary['rank']==rank)&(summary.lambda_multiplier==mult)&(summary.T_train==t)]
             assert len(row)==1;row=row.iloc[0]
             assert row.replications==config['trials']
@@ -92,11 +96,14 @@ def validate(output):
             spectral=spectrum[(spectrum.lambda_reg>=lower*(1-1e-10))&
                               (spectrum.lambda_reg<=upper*(1+1e-10))]
             sm=spectral.groupby('lambda_reg').complexity.mean().sort_index()
-            for metric,x,y,target in [
-                ('SR_T',np.array(times,float),means.SR_gap.to_numpy(),-2/3),
-                ('C_T',np.array(times,float),means.complexity.to_numpy(),1/3),
-                ('SR_C',means.complexity.to_numpy(),means.SR_gap.to_numpy(),-2),
-                ('C_lambda',sm.index.to_numpy(float),sm.to_numpy(),-.5)]:
+            gaps=part.pivot(index='trial',columns='T_train',values='SR_gap').sort_index(axis=1).to_numpy()
+            complexities=part.pivot(index='trial',columns='T_train',values='complexity').sort_index(axis=1).to_numpy()
+            spectral_values=spectral.pivot(index='trial',columns='lambda_reg',values='complexity').sort_index(axis=1).to_numpy()
+            for metric,x,y,target,values,xvalues in [
+                ('SR_T',np.array(times,float),means.SR_gap.to_numpy(),-2/3,gaps,None),
+                ('C_T',np.array(times,float),means.complexity.to_numpy(),1/3,complexities,None),
+                ('SR_C',means.complexity.to_numpy(),means.SR_gap.to_numpy(),-2,gaps,complexities),
+                ('C_lambda',sm.index.to_numpy(float),sm.to_numpy(),-.5,spectral_values,None)]:
                 fit=fits[f'{metric}_Tmin{cutoff}']
                 np.testing.assert_allclose(fit['x'],x,rtol=1e-11)
                 np.testing.assert_allclose(fit['observed'],y,rtol=1e-11,atol=1e-13)
@@ -110,12 +117,34 @@ def validate(output):
                     assert fit['exponent'] is None
                 basis=x**target;scale=max(0,float(basis@y/(basis@basis)))
                 np.testing.assert_allclose(fit['prediction'],scale*basis,rtol=1e-11,atol=1e-13)
-                row=windows[(windows['rank']==rank)&(windows.metric==metric)&(windows.T_train_min==cutoff)]
-                assert len(row)==1
-                if fit['exponent'] is None:
-                    assert pd.isna(row.iloc[0].exponent)
-                else:
-                    np.testing.assert_allclose(row.iloc[0].exponent,fit['exponent'],atol=1e-10)
+                variance=np.sum((y-y.mean())**2)
+                r2=1-np.sum((y-scale*basis)**2)/variance
+                np.testing.assert_allclose(fit['r_squared'],r2,rtol=1e-10,atol=1e-12)
+                # Resample whole raw paths; SR(C) resamples both coordinates.
+                # Closed-form centered regression is independent of rate_fit's polyfit.
+                interval=None
+                if np.all(y>0):
+                    indices=np.random.default_rng(540007).integers(0,len(values),
+                        size=(config['bootstrap_resamples'],len(values)))
+                    by=values[indices].mean(axis=1)
+                    bx=np.broadcast_to(x,by.shape) if xvalues is None else xvalues[indices].mean(axis=1)
+                    positive=np.all(by>0,axis=1)
+                    if np.any(positive):
+                        lx=np.log(bx[positive]);ly=np.log(by[positive])
+                        lx-=lx.mean(axis=1,keepdims=True);ly-=ly.mean(axis=1,keepdims=True)
+                        slopes=np.sum(lx*ly,axis=1)/np.sum(lx**2,axis=1)
+                        interval=np.quantile(slopes,[.025,.975])
+                if interval is None:assert fit['exponent_ci95']==[None,None]
+                else:np.testing.assert_allclose(fit['exponent_ci95'],interval,rtol=1e-9,atol=1e-11)
+                good=bool(r2>=.9 and interval is not None and interval[0]<=target<=interval[1])
+                assert fit['good_rate_fit']==good
+                if report:
+                    row=windows[(windows['rank']==rank)&(windows.metric==metric)&(windows.T_train_min==cutoff)]
+                    assert len(row)==1
+                    if fit['exponent'] is None:
+                        assert pd.isna(row.iloc[0].exponent)
+                    else:
+                        np.testing.assert_allclose(row.iloc[0].exponent,fit['exponent'],atol=1e-10)
         low=config['precision_frozen_C0']*config['spectrum_fit_T_max']**(-2/3)
         high=config['precision_frozen_C0']*config['spectrum_fit_T_min']**(-2/3)
         a=float(cert[cert.lambda_multiplier==1].relative_C_error_bound.max())
@@ -123,13 +152,28 @@ def validate(output):
                          (spectrum.lambda_reg<=high*(1+1e-10))].relative_C_error_bound.max())
         passed=max(a,b)<=config['precision_relative_C_error_tolerance']
         assert bool(passed)==complete['passes_certified_tolerance']
-        actual=next(c for c in selection['checks'] if c['rank']==rank)
-        assert actual['passes_certified_tolerance']==bool(passed)
+        if report:
+            actual=next(c for c in selection['checks'] if c['rank']==rank)
+            assert actual['passes_certified_tolerance']==bool(passed)
         for field,value in [('maximum_balanced_relative_C_error_bound',a),('maximum_fit_window_relative_C_error_bound',b)]:
-            np.testing.assert_allclose(actual[field],value,rtol=1e-11)
+            if report:np.testing.assert_allclose(actual[field],value,rtol=1e-11)
             np.testing.assert_allclose(complete[field],value,rtol=1e-11)
         checks.append((rank,bool(passed)))
         observations+=len(f);gaps_below_zero+=int((f.SR_gap<0).sum())
+    if not report:
+        # A complete rank can be audited while the other planned rank is running.
+        # This does not select a rank or certify the final report's plots/statistics.
+        files=['config.json',f'precision_nystrom{rank}_completed.json',*complete['files_sha256']]
+        result=dict(passed=True,rank=rank,rank_replications=config['trials'],
+            observations=observations,all_sensitivity_windows_retained=True,
+            bootstrap_exponent_intervals_independently_verified=True,
+            source_hash=source_hash(config),report_verified=False,full_precision_study_complete=False,
+            passes_certified_tolerance=checks[0][1],negative_estimated_gaps=gaps_below_zero,
+            note='Single-rank raw data, moments, complexity certificate and fits verified independently. Final cross-rank selection, summary statistics and plots require the full study.',
+            files_sha256={name:hashlib.sha256((out/name).read_bytes()).hexdigest() for name in files})
+        write_json(out/f'precision_nystrom{rank}_validation.json',result)
+        print(json.dumps({k:v for k,v in result.items() if k!='files_sha256'},indent=2))
+        return result
     eligible=[rank for rank,passed in checks if passed]
     expected=min(eligible) if eligible else None
     assert selection['selected_rank']==expected
@@ -141,6 +185,7 @@ def validate(output):
            and p.name not in ['precision_validation.json','visual_review.json','execution.json']]
     result=dict(passed=True,rank_replications=config['trials'],ranks=config['precision_ranks'],
         observations=observations,selected_rank=expected,all_sensitivity_windows_retained=True,
+        bootstrap_exponent_intervals_independently_verified=True,
         x_axis='T_train',SD_ddof=1,standard_error_plotted=False,percentile_plotted=95,
         negative_estimated_gaps=gaps_below_zero,
         note='Numerical and bookkeeping checks do not assert agreement with a theoretical rate or a passing complexity certificate.',
@@ -152,4 +197,5 @@ def validate(output):
 
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('output',type=Path)
-    validate(p.parse_args().output)
+    p.add_argument('--rank',type=int,help='Audit one completed rank, without declaring the full study or report complete')
+    a=p.parse_args();validate(a.output,a.rank)
