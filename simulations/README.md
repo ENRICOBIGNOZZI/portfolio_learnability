@@ -39,6 +39,19 @@ media, dispersione, percentile e benchmark hanno segni distinti.
 I CSV e i valori delle simulazioni originali restano invariati; i loro
 percentili sono aggiunti in `outputs/new_montecarlo/percentiles.csv`.
 
+La sensibilita ai tagli include anche quelli piccoli: 100,200,400,800,
+oltre a 1600,3200,6400. Il fit principale resta da 1600, i dati restano
+tutti visibili e si pubblicano le quattro pendenze per ogni finestra,
+compresa C(lambda) sullo stesso spettro di training. L'aggiunta secondaria
+di 200 e registrata in `analysis_spec.json`, separata dal disegno congelato.
+
+Il [pilot di precisione aggiuntivo](PRECISION_PROTOCOL.md) confronta ranghi
+4096 e 8192, senza cambiare kernel, otto semi appaiati o C0 del pilot.
+Parte da T_train=100 e arriva a 25600, con tutti i tagli piccoli e grandi.
+Il rango viene valutato con un certificato di errore della complessita
+empirica; le pendenze non determinano la selezione. Questo calcolo resta
+distinto dalla conferma a 100 repliche e non ha ancora risultati finali.
+
 ## Output del primo run completo: T_train da 100 a 1600
 
 - `outputs/new_montecarlo/report.html`: figure, metodo, risultati e limiti dei fit.

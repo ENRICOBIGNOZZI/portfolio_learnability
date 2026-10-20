@@ -119,3 +119,76 @@ def test_pilot_reuse_rejects_scientific_changes_and_missing_training_anchors():
     wrong=dict(dense,T_train=[t for t in dense['T_train'] if t!=1600])
     with pytest.raises(ValueError,match='supersets'):
         validate_upgrade(parent,wrong)
+
+
+def test_high_precision_direct_evaluation_matches_the_independent_operator(tmp_path):
+    from simulations.asymptotic import evaluation_job
+    from simulations.asymptotic_precision import direct_evaluation
+    c=config();c.update(evaluation_states=64,evaluation_block=4,precision_evaluation_block=2)
+    N=7;rank=8;b=Basis('nystrom',rank,c)
+    coeff=np.random.default_rng(291).normal(size=(rank,3))*100
+    path=evaluation_job((c,N,'nystrom',rank,str(tmp_path)))
+    with np.load(path) as data:
+        expected=evaluate_coefficients(coeff,{k:data[k] for k in data.files})
+    actual=direct_evaluation(c,N,b,coeff)
+    for key in expected:
+        np.testing.assert_allclose(actual[key],expected[key],rtol=1e-10,atol=1e-12)
+
+
+def test_memory_bounded_solver_and_certificate_agree_with_full_kernel(tmp_path):
+    from simulations.asymptotic_precision import training_job,trace_certificate
+    c=config();c.update(fixed_N=5,fixed_rho=.5,T_train=[3,8,17],
+        spectrum_T_train=17,precision_frozen_C0=1e-5,stream_block=8)
+    rank=8;b=Basis('nystrom',rank,c)
+    output=training_job((c,rank,0,str(tmp_path)))
+    blocks=list(draw_blocks(5,.5,0,c['fidelity_seed'],17,8))
+    z=np.concatenate([p[1] for p in blocks]);r=np.concatenate([p[2] for p in blocks])
+    raw=managed_block(b,z,r)
+    full=matern_kernel(z.reshape(-1,3),z.reshape(-1,3)).reshape(17,5,17,5)
+    managed=np.einsum('in,injm,jm->ij',r,full,r)/25
+    with np.load(output) as a:
+        for i,n in enumerate(c['T_train']):
+            penalties=c['precision_frozen_C0']*n**(-2/3)*np.array(c['lambda_multipliers'])
+            coeff,C,_=fit_statistics(b,raw[:n].mean(axis=0),raw[:n].T@raw[:n]/n,penalties)
+            np.testing.assert_allclose(a['theta'][:,i*3:(i+1)*3],coeff,rtol=1e-8,atol=1e-8)
+            np.testing.assert_allclose(a['complexity'][i],C,rtol=1e-9)
+            np.testing.assert_allclose(a['full_trace'][i],np.trace(managed[:n,:n])/n,atol=1e-16)
+            eig=np.maximum(np.linalg.eigvalsh(managed[:n,:n]/n),0)
+            exact=np.sum(eig[:,None]/(eig[:,None]+penalties),axis=0)
+            upper,_=trace_certificate(a['full_trace'][i],a['projected_trace'][i],penalties,C)
+            assert (exact-C>=-1e-9).all()
+            assert (exact-C<=upper+1e-9).all()
+    assert not list(tmp_path.glob('*.dat'))
+
+
+def test_small_cutoff_analysis_keeps_the_frozen_primary_and_every_window(tmp_path):
+    import pandas as pd
+    from simulations.asymptotic_analysis import analysis_design
+    from simulations.asymptotic_report import tail_fits
+    c=config();original=json.loads(json.dumps(c))
+    spec=dict(primary_T_train_min=1600,sensitivity_T_min=[100,200,400,800,1600,3200,6400],
+              reason='User requested smaller secondary cutoffs')
+    (tmp_path/'analysis_spec.json').write_text(json.dumps(spec))
+    effective,provenance=analysis_design(c,tmp_path)
+    assert c==original and effective['asymptotic_T_min']==1600
+    assert provenance['sensitivity_T_min']==spec['sensitivity_T_min']
+    effective['bootstrap_resamples']=20
+    times=[100,200,400,800,1600,3200,6400,12800,25600]
+    frame=pd.DataFrame([dict(N=600,rho=.5,trial=j,lambda_multiplier=1,C_lambda=1e-6,
+        T_train=t,SR_gap=(j+1)*t**(-2/3),complexity=(j+1)*t**(1/3))
+        for j in range(3) for t in times])
+    penalties=np.geomspace(1e-6*25600**(-2/3),1e-6*100**(-2/3),65)
+    spectrum=pd.DataFrame([dict(N=600,rho=.5,trial=j,lambda_reg=lam,
+        complexity=(j+1)*lam**(-.5)) for j in range(3) for lam in penalties])
+    fits,windows,_=tail_fits(effective,frame,spectrum)
+    for cutoff in spec['sensitivity_T_min']:
+        assert set(windows[windows.T_train_min==cutoff].metric)=={'SR_T','C_T','SR_C','C_lambda'}
+        for name,power in [('SR_T',-2/3),('C_T',1/3),('SR_C',-2)]:
+            fit=fits[f'N600_rho0.5_{name}_Tmin{cutoff}']
+            assert fit['T_train_fit_grid']==[t for t in times if t>=cutoff]
+            np.testing.assert_allclose(fit['exponent'],power,atol=1e-8)
+        np.testing.assert_allclose(fits[f'C_lambda_Tmin{cutoff}']['exponent'],-.5,atol=1e-8)
+    spec['primary_T_train_min']=200
+    (tmp_path/'analysis_spec.json').write_text(json.dumps(spec))
+    with pytest.raises(ValueError,match='primary cutoff'):
+        analysis_design(c,tmp_path)

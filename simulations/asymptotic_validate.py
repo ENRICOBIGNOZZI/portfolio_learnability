@@ -11,6 +11,7 @@ import pandas as pd
 
 from .asymptotic import scientific_hash
 from .model import calibrate, moments
+from .asymptotic_analysis import analysis_design
 
 
 def validate(out):
@@ -109,6 +110,8 @@ def validate(out):
         for column,metric in [('SR_p95','SR_hat'),('gap_p95','SR_gap'),('C_p95','complexity')]:
             np.testing.assert_allclose(row[column],g[metric].quantile(.95,interpolation='linear'),rtol=1e-11,atol=1e-13)
     plot=json.loads((out/'plot_audit.json').read_text())
+    analysis_config,analysis_spec=analysis_design(config,out)
+    assert plot['analysis_design']==analysis_spec
     assert plot['standard_error_plotted'] is False
     assert plot['main_fit_T_train_min']==config['asymptotic_T_min']
     assert plot['full_grid_shown']
@@ -119,7 +122,7 @@ def validate(out):
     windows=pd.read_csv(out/'window_sensitivity.csv')
     for (N,rho),g in chosen.groupby(['N','rho']):
         ts=sorted(g.T_train.unique())
-        for cutoff in config['sensitivity_T_min']:
+        for cutoff in analysis_config['sensitivity_T_min']:
             count=sum(t>=cutoff for t in ts)
             if count<3:
                 continue
@@ -129,6 +132,22 @@ def validate(out):
                 assert fits[key]['fit_points']==count
                 assert fits[key]['T_train_fit_grid']==[t for t in ts if t>=cutoff]
                 assert fits[key]['all_points_in_declared_window_used']
+                assert len(windows[(windows.N==N)&(windows.rho==rho)&
+                    (windows.metric==metric)&(windows.T_train_min==cutoff)])==1
+    ref=chosen[(chosen.N==config['fixed_N'])&(chosen.rho==config['fixed_rho'])]
+    C0=ref.C_lambda.iloc[0]
+    ref_spectrum=spectrum[(spectrum.N==config['fixed_N'])&(spectrum.rho==config['fixed_rho'])]
+    lower=C0*config['spectrum_fit_T_max']**(-2/3)
+    for cutoff in analysis_config['sensitivity_T_min']:
+        upper=C0*cutoff**(-2/3)
+        grid=sorted(ref_spectrum[(ref_spectrum.lambda_reg>=lower*(1-1e-10))&
+            (ref_spectrum.lambda_reg<=upper*(1+1e-10))].lambda_reg.unique())
+        if len(grid)<3:
+            continue
+        fit=fits[f'C_lambda_Tmin{cutoff}']
+        np.testing.assert_allclose(fit['lambda_fit_grid'],grid,rtol=1e-12)
+        assert fit['fit_points']==len(grid)
+        assert len(windows[(windows.metric=='C_lambda')&(windows.T_train_min==cutoff)])==1
     # Independent economic audit, including calibration from Fourier orthogonality.
     economic=[]
     rng=np.random.default_rng(93719)
@@ -158,6 +177,7 @@ def validate(out):
     report=dict(passed=True,completed_replications=completion['completed_replications'],observations=len(frame),
                 source_hash_matches=True,all_C0_selections_interior=all(interior),
                 all_sensitivity_windows_retained=True,T_train_max=int(frame.T_train.max()),
+                analysis_design=analysis_spec,
                 SD_ddof=1,percentile_plotted=95,percentile_interpolation='linear',
                 temporal_points_per_comparison=len(config['T_train']),temporal_points_reference=len(config['T_train_reference']),
                 standard_error_plotted=False,economic_audit=economic,

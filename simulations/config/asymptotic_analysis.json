@@ -1,0 +1,5 @@
+{
+  "primary_T_train_min": 1600,
+  "sensitivity_T_min": [100, 200, 400, 800, 1600, 3200, 6400],
+  "reason": "User requested small training cutoffs too, after seeing the preliminary eight-replication pilot. These are secondary window comparisons; the primary cutoff and all simulated data remain frozen."
+}

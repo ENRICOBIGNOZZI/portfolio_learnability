@@ -25,10 +25,16 @@ I percentili del vecchio studio sono aggiunti nel separato `percentiles.csv`.
   di validazione su uno stream separato; nessuna di queste date e aggiunta
   all'ascissa della simulazione di conferma.
 - Fit principale su T_train>=1600, scelto prima dei nuovi risultati.
-  Si pubblicano anche tutti i tagli prefissati 100,400,800,1600,3200,6400
-  quando rimangono almeno tre punti. La finestra non e scelta dal miglior R2.
+  Si pubblicano anche tutti i tagli 100,200,400,800,1600,3200,6400
+  quando rimangono almeno tre punti. Il taglio secondario 200 e aggiunto
+  su richiesta dell'utente dopo il pilot preliminare e prima del report
+  completo, tramite `config/asymptotic_analysis.json`, copiato nell'output
+  come `analysis_spec.json`. Non cambia il disegno computazionale congelato,
+  i dati o il fit principale. La finestra non e scelta dal miglior R2.
 - Per C(lambda), spettro di training a T_train=12800 e fit sul tratto di
   penalita corrispondente a T_train da 1600 a 12800.
+  La sensibilita ai tagli usa lo stesso spettro e gli intervalli di lambda
+  corrispondenti a ciascun taglio fino a 12800; non cambia T dello spettro.
 - Le curve Sharpe-complexity restano sul percorso bilanciato confermato:
   lambda(T_train)=C0*T_train^(-2/3).
 

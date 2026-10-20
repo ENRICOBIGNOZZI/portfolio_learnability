@@ -14,6 +14,7 @@ import numpy as np
 import pandas as pd
 
 from .report import COLORS, matrix, rate_fit
+from .asymptotic_analysis import analysis_design
 
 X_LABEL=r'Training observations $T_{\mathrm{train}}$'
 DOUBLE=(7.6,3.8)
@@ -73,17 +74,32 @@ def tail_fits(config,frame,spectrum):
     ref=chosen[(chosen.N==nfix)&(chosen.rho==rhofix)]
     constant=ref.C_lambda.iloc[0]
     lower=constant*config['spectrum_fit_T_max']**(-2/3)
-    upper=constant*config['spectrum_fit_T_min']**(-2/3)
-    subset=spectrum[(spectrum.N==nfix)&(spectrum.rho==rhofix)&
-                    (spectrum.lambda_reg>=lower*(1-1e-10))&(spectrum.lambda_reg<=upper*(1+1e-10))]
-    tab=matrix(subset,'lambda_reg','complexity')
-    results['C_lambda_reference']=rate_fit(tab.columns.to_numpy(float),tab.to_numpy(),-.5,config['bootstrap_resamples'])
-    return results,pd.DataFrame(windows),(lower,upper)
+    reference_spectrum=spectrum[(spectrum.N==nfix)&(spectrum.rho==rhofix)]
+    for cutoff in config['sensitivity_T_min']:
+        upper=constant*cutoff**(-2/3)
+        subset=reference_spectrum[(reference_spectrum.lambda_reg>=lower*(1-1e-10))&
+                                  (reference_spectrum.lambda_reg<=upper*(1+1e-10))]
+        tab=matrix(subset,'lambda_reg','complexity')
+        if tab.shape[1]<3:
+            continue
+        fit=rate_fit(tab.columns.to_numpy(float),tab.to_numpy(),-.5,config['bootstrap_resamples'])
+        fit.update(lambda_fit_grid=tab.columns.to_numpy(float).tolist(),
+                   T_train_cutoff=cutoff,spectrum_T_train=config['spectrum_T_train'])
+        results[f'C_lambda_Tmin{cutoff}']=fit
+        windows.append(dict(N=nfix,rho=rhofix,metric='C_lambda',T_train_min=cutoff,
+            T_train_max=config['spectrum_fit_T_max'],points=tab.shape[1],expected_exponent=-.5,
+            exponent=fit['exponent'],exponent_ci_low=fit['exponent_ci95'][0],
+            exponent_ci_high=fit['exponent_ci95'][1],r_squared=fit['r_squared'],
+            floor=fit['floor'],floor_r_squared=fit['floor_r_squared']))
+    primary=config['spectrum_fit_T_min']
+    results['C_lambda_reference']=results[f'C_lambda_Tmin{primary}']
+    return results,pd.DataFrame(windows),(lower,constant*primary**(-2/3))
 
 
 def build(out):
     out=Path(out)
     config=json.loads((out/'config.json').read_text())
+    config,analysis_spec=analysis_design(config,out)
     frame=pd.read_csv(out/'confirmation_trials.csv')
     spectrum=pd.read_csv(out/'complexity_lambda_trials.csv')
     fidelity=pd.read_csv(out/'fidelity_trials.csv')
@@ -219,16 +235,17 @@ def build(out):
     save(fig,'05_complexity_lambda')
 
     # Every prescribed cutoff, including windows that fit the theory poorly.
-    fig,axes=plt.subplots(1,3,figsize=(10.2,3.8))
+    fig,axes=plt.subplots(2,2,figsize=(7.6,6.2))
     w=windows[(windows.N==nfix)&(windows.rho==rhofix)]
-    for ax,(metric,target) in zip(axes,[('SR_T',-2/3),('C_T',1/3),('SR_C',-2)]):
+    for ax,(metric,target) in zip(axes.flat,[('SR_T',-2/3),('C_T',1/3),('SR_C',-2),('C_lambda',-.5)]):
         f=w[w.metric==metric].sort_values('T_train_min')
         ax.plot(f.T_train_min,f.exponent,'o-',color=COLORS[1],label='Exponent of mean curve')
         ax.axhline(target,color='black',linestyle='--',label='Theoretical exponent')
         ax.axvline(cutoff,color='#666666',linestyle=':',label='Main cutoff chosen in advance')
         title={'SR_T':r'Sharpe gap vs. $T_{\mathrm{train}}$',
                'C_T':r'Complexity vs. $T_{\mathrm{train}}$',
-               'SR_C':'Sharpe gap vs. complexity'}[metric]
+               'SR_C':'Sharpe gap vs. complexity',
+               'C_lambda':r'Complexity vs. $\lambda$ (fixed spectrum)'}[metric]
         ax.set(xscale='log',xlabel=r'Lower training cutoff $T_{train,min}$',ylabel='Fitted exponent',title=title)
         ax.set_xticks(f.T_train_min,[str(int(t)) for t in f.T_train_min],rotation=35)
         ax.legend(fontsize=7)
@@ -276,6 +293,7 @@ def build(out):
     meta=dict(x_axis='T_train only; pilot/validation/evaluation observations excluded',
               dispersion='mean +/- 1 sample standard deviation across independent training replications, ddof=1',
               standard_error_plotted=False,main_fit_T_train_min=cutoff,full_grid_shown=True,
+              analysis_design=analysis_spec,
               percentile_plotted=95,percentile_interpolation='linear',percentile_unit='independent training replications',
               temporal_points_per_comparison=len(config['T_train']),temporal_points_reference=len(config['T_train_reference']),
               publication_style=dict(pdf='vector, embedded TrueType serif fonts',png_dpi=300,
@@ -311,7 +329,9 @@ Nel grafico Sharpe-complexity il percentile dello Sharpe e posto alla complexity
 <p>I PDF sono vettoriali, con font serif incorporati e palette Okabe-Ito. Per mantenere leggibile la griglia fitta nel grafico Sharpe-complexity, la STD verticale e mostrata come banda su tutti i punti e la STD orizzontale come barra alle ancore temporali originarie; i valori di tutte le STD restano in summary.csv.</p>
 <p>Griglia completa di {len(config['T_train'])} valori effettivi fino a {max(config['T_train'])} date di training; riferimento N={nfix}, rho={rhofix} con {len(config['T_train_reference'])} valori fino a {max(config['T_train_reference'])}. Ogni punto e stimato nuovamente, senza interpolare simulazioni.
 Il pilot usa separatamente {config['pilot_train']} date di training e {config['pilot_validation']} di validazione: non vengono aggiunte all'asse X della conferma.
-Il fit principale usa T_train &gt;= {cutoff}, fissato prima di osservare la nuova simulazione. Tutti gli altri tagli prefissati sono pubblicati.</p>
+Il fit principale usa T_train &gt;= {cutoff}, fissato prima di osservare la nuova simulazione.
+Sono pubblicati tutti i tagli di sensibilita {config['sensitivity_T_min']}, compreso 200 aggiunto su richiesta dopo il pilot preliminare.
+Per C(lambda) il taglio identifica l'intervallo di lambda corrispondente al percorso bilanciato, sullo stesso spettro a T_train fissato.</p>
 <p><a href="requested_plots.pdf">PDF completo</a>; <a href="confirmation_trials.csv">repliche integrali</a>; <a href="window_sensitivity.csv">sensibilita ai tagli iniziali</a>.</p>
 <h2>Rate del gap di Sharpe e della complexity, senza floor</h2>{table}
 <p>Benchmark: gap(T_train) = O_P(T_train^(-2/3)), C(T_train) ~ T_train^(1/3), C(lambda) ~ lambda^(-1/2).
