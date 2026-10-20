@@ -14,6 +14,57 @@ from .model import calibrate, moments
 from .asymptotic_analysis import analysis_design
 
 
+def validate_rho_constants(config,chosen,rho_table,audit):
+    """Recompute common-grid amplitudes and paired bootstrap from raw paths."""
+    groups={rho:chosen[(chosen.N==config['fixed_N'])&(chosen.rho==rho)] for rho in config['rho_values']}
+    common=sorted(set.intersection(*(set(g.T_train) for g in groups.values())))
+    common=[int(t) for t in common if t>=config['asymptotic_T_min']]
+    assert audit['common_T_train_grid']==common and audit['primary_fit_unchanged']
+    assert audit['N']==config['fixed_N'] and audit['reference_rho']==config['fixed_rho']
+    assert audit['replications']==config['trials'] and audit['bootstrap_resamples']==config['bootstrap_resamples']
+    assert audit['bootstrap_seed']==540009 and audit['amplitude_SD_ddof']==1
+    assert audit['percentile_reported']==95 and audit['amplitude_intercept_fitted'] is False
+    assert set(rho_table.rho)==set(config['rho_values']) and not rho_table.rho.duplicated().any()
+    assert set(rho_table.N)=={config['fixed_N']}
+    basis=np.array(common,float)**(-2/3);den=basis@basis
+    indices=np.random.default_rng(540009).integers(0,config['trials'],
+        size=(config['bootstrap_resamples'],config['trials']))
+    amplitude_means={};boots={}
+    for rho,g in groups.items():
+        values=g.pivot(index='trial',columns='T_train',values='SR_gap').sort_index().loc[:,common].to_numpy()
+        a=values@basis/den;mean=values.mean(axis=0)
+        bootstrap=np.array([(values[j].mean(axis=0)@basis)/den for j in indices])
+        amplitude_means[rho]=float(a.mean());boots[rho]=bootstrap
+        row=rho_table[rho_table.rho==rho].iloc[0]
+        assert row.points==len(common) and row.replications==config['trials']
+        assert row.expected_exponent==-2/3
+        assert row.T_train_min==min(common) and row.T_train_max==max(common)
+        np.testing.assert_allclose(row.amplitude_mean,a.mean(),rtol=1e-11)
+        np.testing.assert_allclose(row.amplitude_std,a.std(ddof=1),rtol=1e-10,atol=1e-13)
+        np.testing.assert_allclose(row.amplitude_p95,np.quantile(a,.95),rtol=1e-11)
+        np.testing.assert_allclose([row.amplitude_ci_low,row.amplitude_ci_high],np.quantile(bootstrap,[.025,.975]),rtol=1e-10)
+        variance=np.sum((mean-mean.mean())**2)
+        if variance>0:
+            r2=1-np.sum((mean-a.mean()*basis)**2)/variance
+            np.testing.assert_allclose(row.fixed_power_R_squared,r2,atol=1e-10)
+        else:assert pd.isna(row.fixed_power_R_squared)
+        if np.all(mean>0):
+            np.testing.assert_allclose(row.free_exponent,np.polyfit(np.log(common),np.log(mean),1)[0],atol=1e-10)
+        else:assert pd.isna(row.free_exponent)
+    ref=config['fixed_rho'];fraction=float(np.mean(boots[ref]>0))
+    np.testing.assert_allclose(audit['positive_bootstrap_reference_fraction'],fraction)
+    for rho in config['rho_values']:
+        row=rho_table[rho_table.rho==rho].iloc[0]
+        if amplitude_means[ref]>0:
+            np.testing.assert_allclose(row.ratio_to_reference,amplitude_means[rho]/amplitude_means[ref],rtol=1e-11)
+        else:assert pd.isna(row.ratio_to_reference)
+        if amplitude_means[ref]>0 and fraction==1:
+            np.testing.assert_allclose([row.ratio_ci_low,row.ratio_ci_high],
+                np.quantile(boots[rho]/boots[ref],[.025,.975]),rtol=1e-10)
+        else:assert pd.isna(row.ratio_ci_low) and pd.isna(row.ratio_ci_high)
+    return common
+
+
 def validate(out):
     out=Path(out)
     config=json.loads((out/'config.json').read_text())
@@ -148,6 +199,8 @@ def validate(out):
         np.testing.assert_allclose(fit['lambda_fit_grid'],grid,rtol=1e-12)
         assert fit['fit_points']==len(grid)
         assert len(windows[(windows.metric=='C_lambda')&(windows.T_train_min==cutoff)])==1
+    common=validate_rho_constants(config,chosen,pd.read_csv(out/'rho_rate_constants.csv'),
+                                  plot['rho_constant_comparison'])
     # Independent economic audit, including calibration from Fourier orthogonality.
     economic=[]
     rng=np.random.default_rng(93719)
@@ -178,6 +231,7 @@ def validate(out):
                 source_hash_matches=True,all_C0_selections_interior=all(interior),
                 all_sensitivity_windows_retained=True,T_train_max=int(frame.T_train.max()),
                 analysis_design=analysis_spec,
+                rho_amplitudes_compared_on_common_grid=True,rho_common_T_train_grid=common,
                 SD_ddof=1,percentile_plotted=95,percentile_interpolation='linear',
                 temporal_points_per_comparison=len(config['T_train']),temporal_points_reference=len(config['T_train_reference']),
                 standard_error_plotted=False,economic_audit=economic,

@@ -21,6 +21,61 @@ X_LABEL=r'Training observations $T_{\mathrm{train}}$'
 DOUBLE=(7.6,3.8)
 SINGLE=(5.2,3.8)
 MARKERS=dict(zip(COLORS,['o','s','^']))
+RHO_BOOTSTRAP_SEED=540009
+
+
+def rho_rate_constants(config,frame):
+    """Compare finite-window amplitudes on one shared grid, paired by trial."""
+    chosen=frame[(frame.N==config['fixed_N'])&(frame.lambda_multiplier==1)]
+    groups={rho:chosen[chosen.rho==rho] for rho in config['rho_values']}
+    if any(g.empty for g in groups.values()):
+        raise ValueError('The rho comparison requires every planned rho cell')
+    common=sorted(set.intersection(*(set(g.T_train) for g in groups.values())))
+    common=[int(t) for t in common if t>=config['asymptotic_T_min']]
+    if len(common)<3:
+        raise ValueError('The rho comparison needs at least three shared training times')
+    basis=np.asarray(common,float)**(-2/3);den=basis@basis
+    trial_amplitudes=[];mean_gaps=[];trial_ids=None
+    for rho,g in groups.items():
+        table=matrix(g,'T_train','SR_gap').sort_index().loc[:,common]
+        if trial_ids is None:trial_ids=table.index.to_numpy()
+        if not np.array_equal(table.index.to_numpy(),trial_ids) or len(table)!=config['trials']:
+            raise ValueError('The rho comparison requires matching complete trial paths')
+        values=table.to_numpy()
+        if not np.isfinite(values).all():raise ValueError('Incomplete rho comparison grid')
+        trial_amplitudes.append(values@basis/den)
+        mean_gaps.append(values.mean(axis=0))
+    amplitudes=np.column_stack(trial_amplitudes)
+    means=amplitudes.mean(axis=0)
+    rng=np.random.default_rng(RHO_BOOTSTRAP_SEED)
+    indices=rng.integers(0,len(amplitudes),size=(config['bootstrap_resamples'],len(amplitudes)))
+    bootstrap=amplitudes[indices].mean(axis=1)
+    rhos=list(groups);ref=rhos.index(config['fixed_rho'])
+    fraction=float(np.mean(bootstrap[:,ref]>0))
+    ratio_resolved=means[ref]>0 and fraction==1
+    rows=[]
+    for j,rho in enumerate(rhos):
+        ci=np.quantile(bootstrap[:,j],[.025,.975])
+        ratio_ci=np.quantile(bootstrap[:,j]/bootstrap[:,ref],[.025,.975]) if ratio_resolved else [None,None]
+        variance=float(np.sum((mean_gaps[j]-mean_gaps[j].mean())**2))
+        r2=1-float(np.sum((mean_gaps[j]-means[j]*basis)**2))/variance if variance>0 else None
+        slope=float(np.polyfit(np.log(common),np.log(mean_gaps[j]),1)[0]) if np.all(mean_gaps[j]>0) else None
+        rows.append(dict(N=config['fixed_N'],rho=rho,T_train_min=common[0],T_train_max=common[-1],
+            points=len(common),replications=len(amplitudes),expected_exponent=-2/3,
+            amplitude_mean=float(means[j]),amplitude_std=float(amplitudes[:,j].std(ddof=1)),
+            amplitude_p95=float(np.quantile(amplitudes[:,j],.95)),
+            amplitude_ci_low=float(ci[0]),amplitude_ci_high=float(ci[1]),
+            ratio_to_reference=float(means[j]/means[ref]) if means[ref]>0 else None,
+            ratio_ci_low=ratio_ci[0],ratio_ci_high=ratio_ci[1],
+            fixed_power_R_squared=r2,free_exponent=slope))
+    audit=dict(common_T_train_grid=common,window_rule='Intersection of actual rho grids at or above the prespecified primary cutoff',
+        N=config['fixed_N'],reference_rho=config['fixed_rho'],replications=len(amplitudes),
+        bootstrap_seed=RHO_BOOTSTRAP_SEED,bootstrap_resamples=config['bootstrap_resamples'],
+        bootstrap_pairing='Whole trial paths resampled with the same indices across rho',
+        positive_bootstrap_reference_fraction=fraction,amplitude_SD_ddof=1,percentile_reported=95,
+        primary_fit_unchanged=True,amplitude_intercept_fitted=False,
+        interpretation='Descriptive finite-window amplitudes; neither an asymptotic constant proof nor a monotone rho response is assumed')
+    return pd.DataFrame(rows),audit
 
 
 def draw(ax,frame,x,y,label,color,logy=False):
@@ -105,6 +160,8 @@ def build(out):
     spectrum=pd.read_csv(out/'complexity_lambda_trials.csv')
     fidelity=pd.read_csv(out/'fidelity_trials.csv')
     chosen=frame[frame.lambda_multiplier==1]
+    rho_constants,rho_audit=rho_rate_constants(config,frame)
+    rho_constants.to_csv(out/'rho_rate_constants.csv',index=False)
     fits,windows,lambda_window=tail_fits(config,frame,spectrum)
     (out/'rate_fits.json').write_text(json.dumps(fits,indent=2,allow_nan=False)+'\n')
     windows.to_csv(out/'window_sensitivity.csv',index=False)
@@ -296,6 +353,7 @@ def build(out):
               dispersion='mean +/- 1 sample standard deviation across independent training replications, ddof=1',
               standard_error_plotted=False,main_fit_T_train_min=cutoff,full_grid_shown=True,
               analysis_design=analysis_spec,
+              rho_constant_comparison=rho_audit,
               percentile_plotted=95,percentile_interpolation='linear',percentile_unit='independent training replications',
               temporal_points_per_comparison=len(config['T_train']),temporal_points_reference=len(config['T_train_reference']),
               publication_style=dict(pdf='vector, embedded TrueType serif fonts',png_dpi=300,
@@ -309,6 +367,10 @@ def build(out):
     (out/'plot_audit.json').write_text(json.dumps(meta,indent=2)+'\n')
     table=pd.DataFrame(main).to_html(index=False,float_format=lambda x:f'{x:.5f}')
     windows_html=windows.to_html(index=False,float_format=lambda x:f'{x:.5f}')
+    rho_display=rho_constants[['rho','amplitude_mean','amplitude_std','ratio_to_reference','fixed_power_R_squared','free_exponent']].copy()
+    rho_display['ratio_CI95']=[f'[{lo:.4f}, {hi:.4f}]' if pd.notna(lo) and pd.notna(hi) else 'undefined'
+        for lo,hi in zip(rho_constants.ratio_ci_low,rho_constants.ratio_ci_high)]
+    rho_html=rho_display.to_html(index=False,float_format=lambda x:f'{x:.5f}')
     selection=json.loads((out/'rank_selection.json').read_text())
     tail_html=''
     if tail_audit is not None:
@@ -362,6 +424,13 @@ La rappresentazione resta finita: C e limitata dal rango, e i risultati non cert
 <p>La copula AR e geometricamente mixing per |rho|&lt;1. La distribuzione marginale stazionaria delle caratteristiche resta la stessa e lo Sharpe ottimo annualizzato e 3 per ogni rho.
 La condizione E4 della <a href="../../source/MonteCarlo_Gaussian_DGP_E1_E6.tex">costruzione fornita</a> rende la score all'oracolo una differenza di martingala rispetto all'intera informazione F_t.
 Per i portafogli stimati, le differenze finite vanno misurate nella media e nella dispersione delle repliche: si riportano anche curve sovrapposte, senza imporre un ordinamento dei gap o delle costanti al variare di rho.</p>
+<h3>Ampiezza del rate su una finestra comune</h3>
+<p>Si stima gap(T_train) = a_rho*T_train^(-2/3) senza intercetta sugli stessi
+{len(rho_audit['common_T_train_grid'])} tempi da {rho_audit['common_T_train_grid'][0]} a {rho_audit['common_T_train_grid'][-1]} per ogni rho.
+Il fit primario del riferimento conserva la sua finestra dichiarata; questa tabella confronta le ampiezze soltanto sulla griglia comune.
+Si riportano STD e 95esimo percentile delle ampiezze per replica nel CSV e intervalli bootstrap appaiati: gli stessi indici di replica sono usati per tutti i rho.
+Le ampiezze sono descrittive a T finito. C0 della penalizzazione resta congelato.</p>
+{rho_html}<p><a href="rho_rate_constants.csv">Ampiezze, STD, percentile e intervalli completi</a>.</p>
 {image_html}</html>'''
     (out/'report.html').write_text(text)
     return meta

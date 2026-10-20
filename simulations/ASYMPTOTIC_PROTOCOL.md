@@ -72,6 +72,18 @@ le differenze finite tra rho vanno misurate nelle medie e nella dispersione
 delle repliche. L'eventuale sovrapposizione delle curve va riportata, senza
 imporre graficamente o nei fit un ordinamento delle costanti al variare di rho.
 
+Il confronto descrittivo delle ampiezze usa la stessa griglia per tutti i rho:
+l'intersezione dei T_train osservati, sopra il taglio primario 1600, quindi
+1600..12800 nel disegno attuale. I punti aggiuntivi del riferimento fino a
+25600 restano nel suo fit primario. Sulla griglia comune si stima senza
+intercetta `gap(T)=a_rho*T^(-2/3)` e si riportano media, STD campionaria e
+95esimo percentile delle ampiezze per replica. I bootstrap delle ampiezze
+e dei rapporti rispetto a rho=0.5 riusano gli stessi indici di replica fra
+i rho, rispettando gli shock primitivi appaiati (seme bootstrap 540009).
+La finestra dipende dalle griglie, non da pendenze o R2 osservati. I
+coefficienti sono descrittivi a T finito, distinti dalle costanti dei bound
+asintotici e da C0 della penalizzazione, che resta congelato.
+
 ## Precisione del kernel
 
 Aumentare le repliche riduce l'incertezza della media ma non l'errore di

@@ -290,3 +290,47 @@ def test_precision_resource_wait_needs_two_consecutive_sufficient_measurements(t
     for j in range(2):
         (tmp_path/f'precision_nystrom8_trial{j:03d}.npz').write_bytes(b'atomic cache placeholder')
     assert disk_requirement(c,8,tmp_path)<required
+
+
+def test_rho_constants_use_only_shared_times_and_keep_bootstrap_pairing():
+    import pandas as pd
+    from simulations.asymptotic_report import rho_rate_constants
+    from simulations.asymptotic_validate import validate_rho_constants
+    c=config();c.update(trials=4,asymptotic_T_min=200,bootstrap_resamples=200)
+    scales=np.array([.8,1.,1.2,1.4]);amplitudes={0.:2.,.5:3.,.95:5.}
+    rows=[]
+    for rho,a in amplitudes.items():
+        times=[100,200,400,800,1600]+([3200] if rho==.5 else [])
+        for j,scale in enumerate(scales):
+            for t in times:
+                # A distorted reference-only extension must not bias comparison.
+                gap=a*scale*t**(-2/3)*(10 if t==3200 else 1)
+                rows.append(dict(N=600,rho=rho,trial=j,T_train=t,lambda_multiplier=1,SR_gap=gap))
+    table,audit=rho_rate_constants(c,pd.DataFrame(rows))
+    assert validate_rho_constants(c,pd.DataFrame(rows),table,audit)==[200,400,800,1600]
+    assert audit['common_T_train_grid']==[200,400,800,1600]
+    assert audit['primary_fit_unchanged'] and audit['positive_bootstrap_reference_fraction']==1
+    for rho,a in amplitudes.items():
+        row=table[table.rho==rho].iloc[0]
+        np.testing.assert_allclose(row.amplitude_mean,a*scales.mean(),atol=1e-12)
+        np.testing.assert_allclose(row.amplitude_std,np.std(a*scales,ddof=1),atol=1e-12)
+        np.testing.assert_allclose(row.amplitude_p95,np.quantile(a*scales,.95),atol=1e-12)
+        # Shared trial shocks make this ratio constant in every paired resample.
+        np.testing.assert_allclose([row.ratio_to_reference,row.ratio_ci_low,row.ratio_ci_high],a/3,atol=1e-12)
+    tampered=table.copy();tampered.loc[tampered.rho==.5,'amplitude_std']/=np.sqrt(c['trials'])
+    with pytest.raises(AssertionError):
+        validate_rho_constants(c,pd.DataFrame(rows),tampered,audit)
+
+
+def test_rho_constants_leave_zero_reference_ratios_undefined():
+    import pandas as pd
+    from simulations.asymptotic_report import rho_rate_constants
+    from simulations.asymptotic_validate import validate_rho_constants
+    c=config();c.update(trials=2,asymptotic_T_min=100,bootstrap_resamples=20)
+    frame=pd.DataFrame([dict(N=600,rho=rho,trial=j,T_train=t,lambda_multiplier=1,
+        SR_gap=0. if rho==.5 else t**(-2/3))
+        for rho in c['rho_values'] for j in range(2) for t in [100,200,400]])
+    table,audit=rho_rate_constants(c,frame)
+    assert validate_rho_constants(c,frame,table,audit)==[100,200,400]
+    assert audit['positive_bootstrap_reference_fraction']==0
+    assert table[['ratio_to_reference','ratio_ci_low','ratio_ci_high']].isna().all().all()
