@@ -10,6 +10,7 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_pdf import PdfPages
+from matplotlib.ticker import NullFormatter
 import numpy as np
 import pandas as pd
 
@@ -248,6 +249,7 @@ def build(out):
                'C_lambda':r'Complexity vs. $\lambda$ (fixed spectrum)'}[metric]
         ax.set(xscale='log',xlabel=r'Lower training cutoff $T_{train,min}$',ylabel='Fitted exponent',title=title)
         ax.set_xticks(f.T_train_min,[str(int(t)) for t in f.T_train_min],rotation=35)
+        ax.xaxis.set_minor_formatter(NullFormatter())
         ax.legend(fontsize=7)
     fig.suptitle(rf'Fit-window sensitivity; N={nfix}, $\rho={rhofix}$',fontsize=10)
     save(fig,'06_window_sensitivity',True)

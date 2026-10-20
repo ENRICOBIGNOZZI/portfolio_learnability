@@ -192,3 +192,41 @@ def test_small_cutoff_analysis_keeps_the_frozen_primary_and_every_window(tmp_pat
     (tmp_path/'analysis_spec.json').write_text(json.dumps(spec))
     with pytest.raises(ValueError,match='primary cutoff'):
         analysis_design(c,tmp_path)
+
+
+def test_precision_selection_reports_failure_instead_of_selecting_a_good_slope():
+    import pandas as pd
+    from simulations.precision_report import select_rank
+    c=config();c.update(precision_ranks=[4096,8192],precision_frozen_C0=1e-6,
+        precision_relative_C_error_tolerance=.02)
+    lam=1e-6*3200**(-2/3)
+    certificates=pd.DataFrame([dict(rank=r,lambda_multiplier=1,relative_C_error_bound=e)
+        for r,e in [(4096,.021),(8192,.019)]])
+    spectra=pd.DataFrame([dict(rank=r,lambda_reg=lam,relative_C_error_bound=e)
+        for r,e in [(4096,.018),(8192,.019)]])
+    selected=select_rank(c,certificates,spectra)
+    assert selected['selected_rank']==8192
+    assert selected['selection_uses_slopes_or_R_squared'] is False
+    spectra['relative_C_error_bound']=.03
+    failed=select_rank(c,certificates,spectra)
+    assert failed['selected_rank'] is None
+    assert failed['benchmark_curve_rank']==8192
+
+
+def test_precision_sharpe_complexity_percentile_keeps_the_balanced_pairing():
+    import pandas as pd
+    import matplotlib.pyplot as plt
+    from simulations.precision_report import balanced
+    frame=pd.DataFrame([dict(trial=j,T_train=t,complexity=(j+1)*t,
+        SR_hat=(j+1)/t) for t in [100,200] for j in range(4)])
+    fig,ax=plt.subplots()
+    balanced(ax,frame,'SR_hat','paired','blue')
+    np.testing.assert_allclose(ax.lines[0].get_xdata(),[250,500])
+    np.testing.assert_allclose(ax.lines[0].get_ydata(),[.025,.0125])
+    percentile=next(line for line in ax.lines if line.get_gid()=='trial_percentile_95')
+    np.testing.assert_allclose(percentile.get_xdata(),[250,500])
+    np.testing.assert_allclose(percentile.get_ydata(),[.0385,.01925])
+    band=ax.collections[0].get_paths()[0].vertices[:,1]
+    sd=np.std([.01,.02,.03,.04],ddof=1)
+    np.testing.assert_allclose(band.max(),.025+sd)
+    plt.close(fig)

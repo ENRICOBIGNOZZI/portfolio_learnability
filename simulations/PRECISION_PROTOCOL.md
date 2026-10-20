@@ -72,4 +72,16 @@ VECLIB_MAXIMUM_THREADS=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 \
   python3 -u -m simulations.asymptotic_precision --rank 4096 --workers 1
 VECLIB_MAXIMUM_THREADS=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 \
   python3 -u -m simulations.asymptotic_precision --rank 8192 --workers 1
+python3 -m simulations.precision_report simulations/outputs/asymptotic_precision_v4
+python3 -m simulations.precision_validate simulations/outputs/asymptotic_precision_v4
 ```
+
+Il report richiede il completamento di entrambi i ranghi e pubblica un PDF
+vettoriale di tre pagine: livelli Sharpe, quattro rate e sensibilita di
+tutte le pendenze ai tagli. Non dichiara superata la soglia di precisione
+se il certificato conservativo non la dimostra. La validazione ricalcola
+dal CSV le statistiche, la regolarizzazione, i momenti, le pendenze,
+le griglie di fit e la selezione del rango, e verifica gli SHA dei dati.
+Il caso di prova completo ha inoltre verificato che sostituire una STD
+con il suo SE venga rilevato. I risultati scientifici devono ancora essere
+calcolati; il caso di prova e una verifica del codice, non un risultato.
