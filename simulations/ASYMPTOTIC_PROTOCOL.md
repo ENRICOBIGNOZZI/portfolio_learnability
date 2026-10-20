@@ -21,6 +21,10 @@ Comando: `nice -n 10 python3 -m simulations.asymptotic_prefetch simulations/outp
 con le stesse variabili BLAS a un thread del processo principale.
 Il progresso tecnico resta sotto `cache/prefetch_progress.json`, escluso
 dagli output scientifici; la validazione finale considera i CSV del collector.
+Durante l'esecuzione locale, un calo dello spazio libero ha motivato la
+riduzione dell'anticipo a un solo worker (`--workers 1`). Tutti i checkpoint
+gia completati sono stati preservati e riusati; la conferma principale
+mantiene gli stessi dati, semi, penalita e griglie.
 
 ## Requisiti e disegno
 

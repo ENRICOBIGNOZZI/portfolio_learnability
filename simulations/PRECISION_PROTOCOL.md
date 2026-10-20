@@ -85,3 +85,30 @@ le griglie di fit e la selezione del rango, e verifica gli SHA dei dati.
 Il caso di prova completo ha inoltre verificato che sostituire una STD
 con il suo SE venga rilevato. I risultati scientifici devono ancora essere
 calcolati; il caso di prova e una verifica del codice, non un risultato.
+
+## Ripresa quando varia lo spazio libero
+
+Il controllo preventivo del disco ha interrotto un tentativo a rango 4096
+dopo quattro repliche salvate. I quattro checkpoint sono stati verificati
+e riusati, con codice scientifico, configurazione, semi e penalita invariati.
+Anche i 20 checkpoint gia salvati per N=1200 hanno mantenuto i loro hash;
+il solo anticipo di quella cella e stato ridotto da due worker a uno.
+
+`asymptotic_precision_pipeline` coordina la ripresa dello stesso modulo
+scientifico. Prima di nuovi training richiede il margine del solver originale
+(scratch piu 2 GiB), piu 256 MiB, in due controlli consecutivi. Se tutte le
+policy del rango sono gia presenti, servono soltanto valutazione ed esportazione.
+Si riprovano esclusivamente le interruzioni esplicite per margine di disco
+o ENOSPC; gli altri errori fermano il tentativo. Le esecuzioni precedenti
+restano in `cache/execution_history/`, senza modificare dati o selezionare semi.
+
+Per contenere il picco di memoria, il rango maggiore attende il completamento
+di tutte le celle della conferma. Poi il report e il validatore vengono eseguiti
+automaticamente; restano la revisione visiva e la pubblicazione.
+
+```sh
+VECLIB_MAXIMUM_THREADS=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 \
+  python3 -u -m simulations.asymptotic_precision_pipeline \
+  simulations/outputs/asymptotic_precision_v4 \
+  --wait-main-output simulations/outputs/asymptotic_dense_v3
+```

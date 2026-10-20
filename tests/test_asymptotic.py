@@ -264,3 +264,29 @@ def test_prefetched_training_is_identical_to_the_frozen_main_engine(tmp_path):
             np.testing.assert_array_equal(a[key],b[key])
     with pytest.raises(RuntimeError,match='source changed'):
         prefetch_job((c,5,.5,0,rank,constant,str(cache),'wrong scientific signature'))
+
+
+def test_precision_recovery_only_retries_explicit_disk_errors():
+    from simulations.asymptotic_precision_pipeline import disk_failure
+    assert disk_failure('RuntimeError: Insufficient free disk for bounded-memory managed-feature scratch')
+    assert disk_failure('OSError: [Errno 28] No space left on device')
+    assert not disk_failure('RuntimeError: Precision code or design changed; use a new output directory')
+    assert not disk_failure('ArithmeticError: Nonpositive evaluation variance')
+
+
+def test_precision_resource_wait_needs_two_consecutive_sufficient_measurements(tmp_path):
+    from unittest.mock import patch
+    from types import SimpleNamespace
+    from simulations.asymptotic_precision_pipeline import disk_requirement,wait_for_disk
+    c=config();c.update(T_train=[100],trials=2)
+    required=disk_requirement(c,8,tmp_path)
+    states=[];state={}
+    samples=[0,required+1024**3,0,required+1024**3,required+1024**3]
+    with patch('simulations.asymptotic_precision_pipeline.shutil.disk_usage',
+        side_effect=[SimpleNamespace(free=v) for v in samples]),patch('simulations.asymptotic_precision_pipeline.time.sleep') as sleep:
+        wait_for_disk(c,8,tmp_path,state,lambda:states.append(dict(state)))
+    assert len(states)==5 and sleep.call_count==4
+    assert states[-1]['free_disk_bytes']>=states[-1]['required_disk_bytes']
+    for j in range(2):
+        (tmp_path/f'precision_nystrom8_trial{j:03d}.npz').write_bytes(b'atomic cache placeholder')
+    assert disk_requirement(c,8,tmp_path)<required
