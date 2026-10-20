@@ -28,6 +28,8 @@ unchanged policy, regenerates the artifacts, and runs the relevant tests.
 La branch `empirics-montecarlo-20261019` conserva il codice e gli output empirici e sostituisce tutte le precedenti simulazioni con il DGP D=3 fornito il 19 ottobre 2026. Le vecchie simulazioni restano nella storia Git e nella branch originale.
 
 - [Nuove simulazioni e protocollo](simulations/README.md)
+- [Riferimento completato: 100 repliche, 54 T_train fino a 25600, STD e 95esimo percentile](simulations/outputs/asymptotic_dense_v3/cells/N600_rho0.5/reference_plots.pdf)
+- [Tutti i tagli del riferimento: 100,200,400,800,1600,3200,6400](simulations/outputs/asymptotic_dense_v3/cells/N600_rho0.5/window_sensitivity.csv)
 - [Primo run completo: cinque T_train da 100 a 1600](simulations/outputs/new_montecarlo/report.html)
 - [PDF del primo run, con STD e 95esimo percentile](simulations/outputs/new_montecarlo/requested_plots.pdf)
 - [Fit del primo run: gap Sharpe-T -0.5264](simulations/outputs/new_montecarlo/rate_fits.csv)
@@ -38,6 +40,9 @@ L'estensione arriva a T_train=12800 e 25600. Il pilot Nyström1024 da otto
 repliche da una pendenza del gap Sharpe-T di -0.6736; la conferma a 100 repliche
 per scenario e ancora in corso. La tabella -0.5264/+0.3352/-0.4579/-1.5719
 appartiene al primo run completo, non e il risultato finale dell'estensione.
+Il riferimento N=600, rho=0.5 ha gia completato le sue 100 repliche e tutti
+i 54 T_train; gli altri quattro casi proseguono. Le pendenze e i limiti
+del riferimento, distinti dal pilot a otto repliche, sono in `simulations/README.md`.
 
 `paper/main.tex` include soltanto gli empirici e il loro approfondimento sulla complexity; la nuova simulazione e autonoma. I sorgenti teorici dello ZIP usati per fissare i benchmark sono conservati in `simulations/source/`.
 

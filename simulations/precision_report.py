@@ -48,7 +48,7 @@ def select_rank(config, certificates, spectra):
         note='If no rank certifies the tolerance, the highest studied rank only anchors benchmark curves; it is not declared numerically certified.')
 
 
-def balanced(ax,frame,y,label,color):
+def balanced(ax,frame,y,label,color,horizontal_T_train=None):
     """Keep each Sharpe observation paired with complexity at the same T."""
     cs=matrix(frame,'T_train','complexity')
     values=matrix(frame,'T_train',y)
@@ -58,7 +58,8 @@ def balanced(ax,frame,y,label,color):
     ax.plot(x,avg,'o-',color=color,label=label,markersize=3,linewidth=1.3)
     ax.fill_between(x,avg-sd,avg+sd,color=color,alpha=.16)
     ax.plot(x,p95,color=color,linestyle=(0,(4,2)),linewidth=1,gid='trial_percentile_95')
-    ax.errorbar(x,avg,xerr=cs.std(axis=0,ddof=1).to_numpy(),fmt='none',
+    anchors=np.ones(len(x),dtype=bool) if horizontal_T_train is None else cs.columns.isin(horizontal_T_train)
+    ax.errorbar(x[anchors],avg[anchors],xerr=cs.std(axis=0,ddof=1).to_numpy()[anchors],fmt='none',
                 ecolor=color,linewidth=.6,alpha=.65,capsize=1.5)
     ax.set_xscale('log')
     if y=='SR_gap':

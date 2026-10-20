@@ -12,6 +12,27 @@ La tabella con gap Sharpe-T -0.5264 si riferisce al **primo run completo**,
 `outputs/new_montecarlo`, con cinque T da 100 a 1600. L'estensione
 `outputs/asymptotic_dense_v3` e una simulazione distinta, ancora in corso:
 il suo `completed.json` viene scritto solo dopo tutte le 500 repliche.
+Il riferimento N=600, rho=0.5 e gia completato: **100 repliche indipendenti,
+54 T_train effettivi da 100 a 25600**. Gli altri quattro casi continuano.
+Il [PDF del riferimento](outputs/asymptotic_dense_v3/cells/N600_rho0.5/reference_plots.pdf)
+mostra media, STD, 95esimo percentile e tutti i tagli piccoli e grandi.
+
+| Rate, riferimento a 100 repliche | Benchmark | Primario da 1600 | Secondario da 200 |
+|---|---:|---:|---:|
+| Gap Sharpe vs T_train | -0.6667 | -0.6894 | -0.6487 |
+| C vs T_train | +0.3333 | +0.3107 | +0.3263 |
+| C vs lambda | -0.5000 | -0.4621 | -0.4757 |
+| Gap Sharpe vs C | -2.0000 | -2.2179 | -1.9839 |
+
+Il fit da 100, che usa tutta la griglia, da C(T)=+0.3331. Tutti i tagli
+sono in `cells/N600_rho0.5/window_sensitivity.csv`. C(lambda) usa sempre
+lo spettro a T_train=12800 e cambia soltanto la finestra di penalita.
+I quattro R2 con esponente teorico imposto del fit primario superano 0.99.
+Le pendenze libere restano diverse dai benchmark: i quattro fit primari
+non superano il criterio aggiuntivo dell'intervallo bootstrap prefissato.
+Il pilot a ranghi superiori studia separatamente l'errore numerico residuo.
+Questa e una cella completa, non il completamento dell'intero disegno.
+
 Il pilot numerico indipendente gia completato ha otto repliche per
 rappresentazione; i suoi esiti non sono risultati della conferma a 100.
 
@@ -40,6 +61,9 @@ Per riprodurre l'analisi dai CSV e cache originali:
 `python3 -m simulations.fidelity_windows simulations/outputs/asymptotic_v2`.
 La stessa invocazione con `--validate` verifica i 48 fit dai soli CSV
 pubblicati e riproduce le pendenze della tabella principale precedente.
+Per ricostruire il report del riferimento:
+`python3 -m simulations.reference_report simulations/outputs/asymptotic_dense_v3`;
+la stessa invocazione con `--validate` verifica dati, STD, percentili e 28 fit.
 
 Il [protocollo asintotico](ASYMPTOTIC_PROTOCOL.md) definisce l'estensione di
 T_train fino a 12800 e 25600, il controllo del rango e le finestre finali di fit.

@@ -1,0 +1,34 @@
+{
+  "status": "Complete reference cell; other four cells outside this report",
+  "completed_reference_replications": 100,
+  "required_experiment_replications": 500,
+  "covers_full_experiment": false,
+  "source_hash_matches": true,
+  "analysis_design": {
+    "source": "analysis_spec.json",
+    "sha256": "8abbff7d5625ff06b9632320e82bfd36835a0686a8099221b7773f129ec65dde",
+    "primary_T_train_min": 1600,
+    "sensitivity_T_min": [
+      100,
+      200,
+      400,
+      800,
+      1600,
+      3200,
+      6400
+    ],
+    "reason": "User requested small training cutoffs too, after seeing the preliminary eight-replication pilot. These are secondary window comparisons; the primary cutoff and all simulated data remain frozen."
+  },
+  "source_cell_manifest_sha256": "035f33a688dea6b864171c91c16462a3a94024ffd442a3c36fa170ccc9d1b2a6",
+  "x_axis": "T_train only",
+  "full_grid_shown": true,
+  "SD_ddof": 1,
+  "standard_error_plotted": false,
+  "percentile_plotted": 95,
+  "percentile_interpolation": "linear",
+  "pdf_pages": 2,
+  "figure_stems": [
+    "reference_curves",
+    "reference_windows"
+  ]
+}

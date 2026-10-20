@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "reviewed_utc": "2026-10-20T19:05:40.373651+00:00",
+  "pdf_pages": 2,
+  "all_pages_rendered_and_visually_inspected": true,
+  "render_dpi": 110,
+  "embedded_TrueType_fonts": true,
+  "all_text_word_boxes_within_page": true,
+  "observations": "All six reference panels and four cutoff profiles inspected; no clipped labels or overlap; all 54 training values retained; footer distinguishes the reference-only scope; SD and empirical percentile styles are separate.",
+  "pdf_sha256": "db62a2f24ccabebde0d67f6314cb2e08b9bbb4a6d5152d69604aecee375f9032"
+}
