@@ -84,6 +84,15 @@ La finestra dipende dalle griglie, non da pendenze o R2 osservati. I
 coefficienti sono descrittivi a T finito, distinti dalle costanti dei bound
 asintotici e da C0 della penalizzazione, che resta congelato.
 
+Le tre celle rho hanno completato 100 repliche ciascuna. Sul confronto
+comune i rapporti a_0/a_0.5 e a_0.95/a_0.5 sono 0.9848 e 0.9843,
+con intervalli bootstrap appaiati [0.9556,1.0120] e [0.9547,1.0147].
+I dati non mostrano una separazione chiara delle ampiezze; si mantengono
+questi esiti, senza imporre un aumento con rho. Il CSV delle ampiezze,
+l'audit della griglia e la validazione indipendente sono pubblicati in
+`outputs/asymptotic_dense_v3/rho_rate_constants*`. Questa parte completa
+del confronto temporale non completa il disegno a cinque celle.
+
 ## Precisione del kernel
 
 Aumentare le repliche riduce l'incertezza della media ma non l'errore di

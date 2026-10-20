@@ -1,0 +1,9 @@
+{
+  "source_hash": "84f75e5b4a91ded7f2d0cb08308a857935746a1b4d7bb6ba653d415a7ce0d76e",
+  "rank": 1024,
+  "replications": 100,
+  "files_sha256": {
+    "confirmation_trials.csv": "09d8793e94ba1cf901c19f12e7cdd372ed162f4c41654fadad78f464f0895046",
+    "complexity_lambda_trials.csv": "22d486d3528a4dff137e84a3cc8e2595189a0622d4780f09d2dad711e4b21f3f"
+  }
+}

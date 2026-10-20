@@ -1,0 +1,50 @@
+{
+  "passed": true,
+  "source_hash": "84f75e5b4a91ded7f2d0cb08308a857935746a1b4d7bb6ba653d415a7ce0d76e",
+  "N": 600,
+  "rho_values": [
+    0.0,
+    0.5,
+    0.95
+  ],
+  "completed_rho_replications": 300,
+  "required_experiment_replications": 500,
+  "complete_rho_comparison": true,
+  "covers_full_experiment": false,
+  "primary_fit_unchanged": true,
+  "common_T_train_grid": [
+    1600,
+    1749,
+    1980,
+    2243,
+    2540,
+    2876,
+    3200,
+    3257,
+    3689,
+    4178,
+    4731,
+    5358,
+    6068,
+    6400,
+    6872,
+    7782,
+    8813,
+    9980,
+    11303,
+    12800
+  ],
+  "STD_ddof": 1,
+  "percentile_reported": 95,
+  "paired_bootstrap_verified": true,
+  "source_cell_manifests_sha256": {
+    "cells/N600_rho0/completed.json": "24054573213fc0d70391243b1dd449e1e17618eba047002dcfd821fc025b9fc3",
+    "cells/N600_rho0.5/completed.json": "035f33a688dea6b864171c91c16462a3a94024ffd442a3c36fa170ccc9d1b2a6",
+    "cells/N600_rho0.95/completed.json": "f8b8dc9b3e99bd202227456b8c57a17e13539c6d1555599ea02479d1d546586e"
+  },
+  "files_sha256": {
+    "rho_rate_constants.csv": "e7b6645067b3ea2eb04e168bcbd7b3704a5898476767e237d76ea9e218bfdcfe",
+    "rho_rate_constants_audit.json": "58100ad0c7576dd233245271d80c8ff5139e1e9ef3f0898d6c53e0c6d43ef187"
+  },
+  "note": "Descriptive amplitudes compared on the prespecified common training grid; no assertion of monotone rho constants or completion of the five-cell experiment."
+}

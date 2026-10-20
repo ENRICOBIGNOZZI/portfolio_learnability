@@ -32,6 +32,8 @@ La branch `empirics-montecarlo-20261019` conserva il codice e gli output empiric
 - [Tutti i tagli del riferimento: 100,200,400,800,1600,3200,6400](simulations/outputs/asymptotic_dense_v3/cells/N600_rho0.5/window_sensitivity.csv)
 - [N=300 completato: 100 repliche e tutti i tagli](simulations/outputs/asymptotic_dense_v3/cells/N300_rho0.5/window_sensitivity.csv)
 - [N=600, rho=0 completato: 100 repliche e tutti i tagli](simulations/outputs/asymptotic_dense_v3/cells/N600_rho0/window_sensitivity.csv)
+- [N=600, rho=0.95 completato: 100 repliche e tutti i tagli](simulations/outputs/asymptotic_dense_v3/cells/N600_rho0.95/window_sensitivity.csv)
+- [Ampiezze dei tre rho sulla stessa finestra: STD, 95esimo percentile e intervalli appaiati](simulations/outputs/asymptotic_dense_v3/rho_rate_constants.csv)
 - [Primo run completo: cinque T_train da 100 a 1600](simulations/outputs/new_montecarlo/report.html)
 - [PDF del primo run, con STD e 95esimo percentile](simulations/outputs/new_montecarlo/requested_plots.pdf)
 - [Fit del primo run: gap Sharpe-T -0.5264](simulations/outputs/new_montecarlo/rate_fits.csv)
@@ -44,12 +46,15 @@ repliche da una pendenza del gap Sharpe-T di -0.6736; la conferma a 100 repliche
 per scenario e ancora in corso. La tabella -0.5264/+0.3352/-0.4579/-1.5719
 appartiene al primo run completo, non e il risultato finale dell'estensione.
 Il riferimento N=600, rho=0.5 ha gia completato le sue 100 repliche e tutti
-i 54 T_train; anche N=300, rho=0.5 e N=600, rho=0 hanno completato ciascuno
-100 repliche su 46 T_train. Sono esportate 300 delle 500 repliche del nuovo
-disegno; proseguono N=600, rho=0.95 e N=1200, rho=0.5. Per rho=0 il gap
+i 54 T_train; anche N=300, rho=0.5 e N=600, rho=0 e 0.95 hanno completato
+ciascuno 100 repliche su 46 T_train. Sono esportate 400 delle 500 repliche
+del nuovo disegno; prosegue N=1200, rho=0.5. Per rho=0 il gap
 Sharpe-T_train ha esponente primario -0.6596, con intervallo 95%
 [-0.6798,-0.6413], contro il benchmark -0.6667. Le pendenze e i limiti
 del riferimento, distinti dal pilot a otto repliche, sono in `simulations/README.md`.
+Il confronto dei tre rho usa la stessa griglia 1600..12800: i rapporti
+delle ampiezze rispetto a rho=0.5 sono 0.9848 e 0.9843, con intervalli
+bootstrap appaiati che includono 1. Le costanti osservate risultano simili.
 
 `paper/main.tex` include soltanto gli empirici e il loro approfondimento sulla complexity; la nuova simulazione e autonoma. I sorgenti teorici dello ZIP usati per fissare i benchmark sono conservati in `simulations/source/`.
 

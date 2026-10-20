@@ -14,7 +14,7 @@ La tabella con gap Sharpe-T -0.5264 si riferisce al **primo run completo**,
 il suo `completed.json` viene scritto solo dopo tutte le 500 repliche.
 Il riferimento N=600, rho=0.5 e gia completato: **100 repliche indipendenti,
 54 T_train effettivi da 100 a 25600**. Anche N=300, rho=0.5 e N=600,
-rho=0 sono completati; restano rho=0.95 e la cella N=1200.
+rho=0 e rho=0.95 sono completati; resta la cella N=1200.
 Il [PDF del riferimento](outputs/asymptotic_dense_v3/cells/N600_rho0.5/reference_plots.pdf)
 mostra media, STD, 95esimo percentile e tutti i tagli piccoli e grandi.
 
@@ -55,7 +55,7 @@ La descrizione di questa cella mantiene N=600 come riferimento primario
 del disegno generale.
 
 La cella **N=600, rho=0 ha 100 repliche complete**, anch'essa su 46 T_train
-da 100 a 12800. Sono ora esportate **300 delle 500 repliche** previste.
+da 100 a 12800.
 I [28 fit di rho=0](outputs/asymptotic_dense_v3/cells/N600_rho0/window_sensitivity.csv)
 mantengono ogni taglio dichiarato. Nel fit primario da 1600:
 
@@ -71,8 +71,33 @@ questo fit passa anche il criterio prefissato dell'intervallo e R2.
 Gli altri tre fit primari non lo superano. Il taglio secondario da 800 da
 gap(C)=-2.0105; la tabella pubblica anche tutti gli altri esiti, senza
 scegliere la finestra dopo aver visto la pendenza. Le ampiezze fra rho
-saranno confrontate sulla griglia comune 1600..12800 dopo la cella rho=0.95.
+sono confrontate sotto sulla griglia comune 1600..12800.
 Il riferimento rho=0.5 conserva il suo fit primario fino a 25600.
+
+Anche **N=600, rho=0.95 ha 100 repliche complete**, su tutti i 46 T_train:
+sono esportate **400 delle 500 repliche** previste. I
+[28 fit di rho=0.95](outputs/asymptotic_dense_v3/cells/N600_rho0.95/window_sensitivity.csv)
+restituiscono nel primario da 1600 gap(T)=-0.6918, C(T)=+0.3152,
+C(lambda)=-0.4621 e gap(C)=-2.1945. I quattro R2 a esponente teorico imposto
+superano 0.993, ma nessuno dei quattro intervalli delle pendenze libere
+include il benchmark. Restano riportati tutti i tagli, anche piccoli.
+
+Il [confronto delle ampiezze fra rho](outputs/asymptotic_dense_v3/rho_rate_constants.csv)
+e completo: N=600, 100 repliche per rho e gli stessi 20 T_train da 1600 a
+12800, con fit gap(T)=a_rho*T^(-2/3) senza intercetta.
+
+| rho | Media a | STD di a | 95esimo percentile di a | Rapporto a/a_0.5 | CI 95% del rapporto |
+|---|---:|---:|---:|---:|---:|
+| 0 | 12.4648 | 1.7235 | 15.1504 | 0.9848 | [0.9556,1.0120] |
+| 0.5 | 12.6567 | 1.5147 | 15.2322 | 1.0000 | [1.0000,1.0000] |
+| 0.95 | 12.4584 | 1.5937 | 15.0597 | 0.9843 | [0.9547,1.0147] |
+
+Gli intervalli appaiati dei due confronti includono 1: le ampiezze osservate
+sono molto simili, coerentemente con l'ortogonalita condizionale del DGP.
+Sono coefficienti descrittivi a T finito, distinti dalle costanti dei bound.
+Sulla griglia comune le pendenze libere del gap(T) sono -0.6596,-0.6794,
+-0.6918. Il riferimento mantiene separatamente il suo fit primario fino
+a 25600; nessuna finestra e scelta in base ai risultati.
 
 Il pilot numerico indipendente gia completato ha otto repliche per
 rappresentazione; i suoi esiti non sono risultati della conferma a 100.
