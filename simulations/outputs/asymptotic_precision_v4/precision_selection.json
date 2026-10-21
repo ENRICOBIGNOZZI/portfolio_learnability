@@ -1,0 +1,21 @@
+{
+  "selected_rank": 8192,
+  "checks": [
+    {
+      "rank": 4096,
+      "maximum_balanced_relative_C_error_bound": 0.0249380027749701,
+      "maximum_fit_window_relative_C_error_bound": 0.0249380027749701,
+      "passes_certified_tolerance": false
+    },
+    {
+      "rank": 8192,
+      "maximum_balanced_relative_C_error_bound": 0.0118465336672901,
+      "maximum_fit_window_relative_C_error_bound": 0.0118465336672901,
+      "passes_certified_tolerance": true
+    }
+  ],
+  "relative_C_error_tolerance": 0.02,
+  "selection_uses_slopes_or_R_squared": false,
+  "benchmark_curve_rank": 8192,
+  "note": "If no rank certifies the tolerance, the highest studied rank only anchors benchmark curves; it is not declared numerically certified."
+}

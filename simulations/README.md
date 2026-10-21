@@ -183,33 +183,33 @@ tutti visibili e si pubblicano le quattro pendenze per ogni finestra,
 compresa C(lambda) sullo stesso spettro di training. L'aggiunta secondaria
 di 200 e registrata in `analysis_spec.json`, separata dal disegno congelato.
 
-Il [pilot di precisione aggiuntivo](PRECISION_PROTOCOL.md) confronta ranghi
-4096 e 8192, senza cambiare kernel, otto semi appaiati o C0 del pilot.
-Parte da T_train=100 e arriva a 25600, con tutti i tagli piccoli e grandi.
-Il rango viene valutato con un certificato di errore della complessita
-empirica; le pendenze non determinano la selezione. Questo calcolo resta
-distinto dalla conferma a 100 repliche. Il rango **4096 ha completato tutte
-le otto repliche e la valutazione**, su nove T_train da 100 a 25600.
-Il primario da 1600 restituisce gap(T)=-0.6908, C(T)=+0.3259,
-C(lambda)=-0.4802 e gap(C)=-2.1184, con R2 a potenza teorica >0.997.
-Gli intervalli bootstrap includono il benchmark per i due rate del gap,
-non per i due rate di C. Il certificato massimo e 2.4938%, sopra la soglia
-numerica prefissata del 2%; non viene quindi dichiarato selezionato.
-I [28 fit del rango 4096](outputs/asymptotic_precision_v4/precision_nystrom4096_fits.json)
-e i dati grezzi sono pubblicati con audit indipendente, inclusi gli
-intervalli bootstrap. Il confronto con 8192 e le nuove figure restano da
-completare. La finestra e lo spettro del nuovo pilot sono diversi dalla
-precedente tabella Nyström1024: vedere il protocollo per il confronto corretto.
-Il report finale di precisione racchiudera inoltre le pendenze C(T) e C(lambda)
-del kernel empirico completo usando i certificati puntuali. Questi limiti
-numerici, distinti dai bootstrap, aiutano a capire se lo scarto residuo
-puo dipendere dall'approssimazione del kernel sulla finestra osservata.
-Per il rango 4096 completo sono gia pubblicati i
-[14 intervalli numerici delle pendenze](outputs/asymptotic_precision_v4/precision_nystrom4096_complexity_slope_enclosures.csv),
-con audit indipendente. Nel primario, C(T) del kernel empirico completo
-ha pendenza compresa fra +0.321395 e +0.335833; C(lambda) fra -0.497703
-e -0.470953. Quest'ultimo intervallo esclude il valore esatto -0.5 per
-quel fit finito, senza contraddire il benchmark asintotico.
+Il [pilot di precisione aggiuntivo](PRECISION_PROTOCOL.md#confronto-completato-4096-e-8192)
+ha completato entrambi i ranghi 4096 e 8192, con le stesse otto repliche,
+nove T_train da 100 a 25600, C0 e kernel invariati. Resta distinto dalla
+conferma a 100 repliche. I 432 portafogli, i 1040 punti spettrali e tutti
+i 56 fit sono pubblicati, con STD e 95esimo percentile.
+
+Il rango **8192 e selezionato dal certificato su C**: errore relativo massimo
+1.1847%, sotto il 2% prefissato, contro 2.4938% per 4096. La selezione non
+usa pendenze o R2. Nel primario da 1600, gli esponenti a rango 8192 sono
+**gap(T)=-0.6907, C(T)=+0.3286, C(lambda)=-0.4842 e gap(C)=-2.1012**;
+i quattro fit a esponente teorico hanno R2 almeno 0.9978.
+I bootstrap includono i benchmark per i due rate del gap, non per quelli
+di C. L'aumento di rango avvicina alla teoria le pendenze di C; sul
+percorso bilanciato primario lo Sharpe cambia al massimo di 8.875e-6
+tra le policy appaiate dei due ranghi.
+
+Il [report finale](outputs/asymptotic_precision_v4/precision_report.html)
+e il [PDF vettoriale di tre pagine](outputs/asymptotic_precision_v4/precision_plots.pdf)
+mostrano tutti i dati e i sette tagli, compresi quelli minori.
+I [28 intervalli numerici di pendenza](outputs/asymptotic_precision_v4/precision_complexity_slope_enclosures.csv)
+sono distinti dai bootstrap: a rango 8192, il fit primario di C(T) del
+kernel empirico completo e racchiuso in [+0.32642080,+0.33333398], quello
+di C(lambda) in [-0.49256711,-0.47975878]. Il secondo esclude -0.5 su
+quella finestra finita, senza contraddire il benchmark asintotico.
+La validazione numerica e la revisione visiva delle tre pagine sono complete.
+Le vecchie pendenze Nyström1024 usavano una finestra e uno spettro diversi;
+il protocollo distingue quel confronto dal confronto appaiato 4096--8192.
 
 ## Output del primo run completo: T_train da 100 a 1600
 

@@ -1,0 +1,69 @@
+{
+  "replications": 8,
+  "ranks": [
+    4096,
+    8192
+  ],
+  "full_training_grid": [
+    100,
+    200,
+    400,
+    800,
+    1600,
+    3200,
+    6400,
+    12800,
+    25600
+  ],
+  "main_fit_T_train_min": 1600,
+  "all_sensitivity_cutoffs": [
+    100,
+    200,
+    400,
+    800,
+    1600,
+    3200,
+    6400
+  ],
+  "standard_error_plotted": false,
+  "SD_ddof": 1,
+  "percentile_plotted": 95,
+  "percentile_interpolation": "linear",
+  "paired_complexity_axis": "mean complexity at the same T; horizontal bars are sample SD",
+  "x_axis": "T_train only; separate pilot validation and evaluation observations excluded",
+  "selection": {
+    "selected_rank": 8192,
+    "checks": [
+      {
+        "rank": 4096,
+        "maximum_balanced_relative_C_error_bound": 0.0249380027749701,
+        "maximum_fit_window_relative_C_error_bound": 0.0249380027749701,
+        "passes_certified_tolerance": false
+      },
+      {
+        "rank": 8192,
+        "maximum_balanced_relative_C_error_bound": 0.0118465336672901,
+        "maximum_fit_window_relative_C_error_bound": 0.0118465336672901,
+        "passes_certified_tolerance": true
+      }
+    ],
+    "relative_C_error_tolerance": 0.02,
+    "selection_uses_slopes_or_R_squared": false,
+    "benchmark_curve_rank": 8192,
+    "note": "If no rank certifies the tolerance, the highest studied rank only anchors benchmark curves; it is not declared numerically certified."
+  },
+  "figure_stems": [
+    "01_precision_sharpe",
+    "02_precision_rates",
+    "03_precision_windows"
+  ],
+  "pdf_pages": 3,
+  "complexity_slope_enclosures": {
+    "scope": "Full managed empirical kernel on the observed training samples",
+    "statistic": "Log-log slope of mean complexity on each declared grid",
+    "type": "Deterministic numerical enclosure; separate from bootstrap sampling intervals",
+    "sampling_interval": false,
+    "used_for_rank_selection": false,
+    "pointwise_upper_bound_capped_by_T_train": true
+  }
+}

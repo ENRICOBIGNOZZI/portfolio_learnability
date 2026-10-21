@@ -109,7 +109,7 @@ def build(output):
     ticks=config['T_train']
     with PdfPages(out/'precision_plots.pdf') as pages:
         def save(fig,stem,footer):
-            fig.text(.5,.012,footer,ha='center',fontsize=7,color='#444444',linespacing=1.5)
+            fig.text(.5,.02,footer,ha='center',fontsize=7,color='#444444',linespacing=1.5)
             for j,ax in enumerate(fig.axes):
                 title=ax.get_title();ax.set_title('')
                 ax.set_title(f'({chr(97+j)}) {title}',loc='left',pad=6)

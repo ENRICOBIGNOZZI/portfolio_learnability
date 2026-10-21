@@ -1,7 +1,16 @@
 # Pilot appaiato con maggiore precisione numerica
 
-Disegno aggiuntivo richiesto dopo la tabella preliminare a otto repliche.
-Non sostituisce la conferma a 100 repliche per ciascuna delle cinque celle.
+Studio completato: otto repliche per ciascuno dei due ranghi, 432 policy
+valutate e tutti i 56 fit dichiarati. Il rango 8192 certifica l'errore su C
+entro il 2% sul percorso e sulla finestra prefissati; il massimo e 1.1847%.
+
+- [Report completo](outputs/asymptotic_precision_v4/precision_report.html)
+- [Tre pagine PDF vettoriali revisionate](outputs/asymptotic_precision_v4/precision_plots.pdf)
+- [Tutti i tagli e ranghi](outputs/asymptotic_precision_v4/precision_window_sensitivity.csv)
+- [Certificati e selezione del rango](outputs/asymptotic_precision_v4/precision_selection.json)
+
+Il disegno aggiuntivo segue la tabella preliminare a otto repliche.
+Resta distinto dalla conferma a 100 repliche per ciascuna delle cinque celle.
 Il kernel resta il Matérn 3/2 non periodico sul cubo originale, con la
 stessa economia, calibrazione e penalizzazione del pilot completato.
 
@@ -116,59 +125,80 @@ Il caso di prova completo ha inoltre verificato che sostituire una STD
 con il suo SE venga rilevato. Il caso di prova e una verifica del codice,
 distinta dai risultati scientifici sotto riportati.
 
-## Primo rango completato: 4096
+## Confronto completato: 4096 e 8192
 
-Otto repliche complete e valutate su tutti i nove T_train da 100 a 25600:
-216 portafogli, 520 punti dello spettro e tutti i 28 fit dichiarati.
+Entrambi i ranghi hanno completato le stesse otto repliche su tutti i nove
+T_train da 100 a 25600: 216 policy e 520 punti dello spettro per rango.
 Il fit principale usa 1600,3200,6400,12800,25600; C(lambda) usa lo spettro
-a 25600 nella finestra prefissata. Gli esponenti liberi sono:
+a 25600 nella finestra prefissata, con 13 lambda effettive.
 
-| Rate | Benchmark | Rango 4096 | R2 con esponente teorico imposto |
-|---|---:|---:|---:|
-| Gap Sharpe vs T_train | -0.6667 | -0.6908 | 0.9984 |
-| C vs T_train | +0.3333 | +0.3259 | 0.9992 |
-| C vs lambda | -0.5000 | -0.4802 | 0.9982 |
-| Gap Sharpe vs C | -2.0000 | -2.1184 | 0.9978 |
+| Rate | Benchmark | Rango 4096 | Rango 8192 | R2 a potenza teorica, rango 8192 |
+|---|---:|---:|---:|---:|
+| Gap Sharpe vs T_train | -0.6667 | -0.6908 | -0.6907 | 0.9984 |
+| C vs T_train | +0.3333 | +0.3259 | +0.3286 | 0.9996 |
+| C vs lambda | -0.5000 | -0.4802 | -0.4842 | 0.9989 |
+| Gap Sharpe vs C | -2.0000 | -2.1184 | -2.1012 | 0.9978 |
 
-Gli intervalli bootstrap del gap(T) e del gap(C) includono i benchmark;
-quelli dei due rate di C non li includono. Il massimo certificato relativo
-e **2.4938%**, sopra la soglia prefissata del 2%: il rango 4096 non passa
-questa soglia e non viene dichiarato selezionato. Il rango 8192 resta
-da completare, come pure il confronto e le figure finali. La finestra
-temporale e lo spettro differiscono da quelli della precedente tabella
-Nyström1024: le pendenze non vanno confrontate come se il solo rango cambiasse.
+| Rate, rango 8192 | Intervallo bootstrap 95% della pendenza | Benchmark compreso |
+|---|---:|---|
+| Gap Sharpe vs T_train | [-0.732413,-0.645503] | Si |
+| C vs T_train | [+0.328302,+0.328895] | No |
+| C vs lambda | [-0.484245,-0.484119] | No |
+| Gap Sharpe vs C | [-2.229140,-1.963565] | Si |
 
-I dati e i fit sono in `outputs/asymptotic_precision_v4/precision_nystrom4096_*`.
-L'audit del singolo rango si riproduce senza richiedere il report finale:
+Le forme a potenza teorica descrivono bene queste curve finite, mentre
+le pendenze libere dei due rate di C restano diverse dai benchmark.
+L'aumento di rango avvicina entrambi i fit di C alla teoria e cambia poco
+lo Sharpe: sul percorso bilanciato primario, la massima differenza assoluta
+appaiata tra i due ranghi e 8.875e-6, su tutte le otto repliche e i cinque T.
+Questo confronto dello Sharpe e descrittivo, non un certificato del suo
+bias rispetto al kernel completo. Su tutte le policy, inclusi gli altri
+moltiplicatori di lambda e i T minori, la differenza massima e 2.5935e-4.
 
-```sh
-python3 -m simulations.precision_validate simulations/outputs/asymptotic_precision_v4 --rank 4096
-```
+Il massimo certificato relativo di C e **2.4938% per 4096** e **1.1847%
+per 8192**. 4096 non certifica la tolleranza prefissata;
+8192 e il piu piccolo dei ranghi studiati che certifica al massimo il 2%.
+La scelta dipende soltanto da questo certificato, non dagli esponenti o R2.
+Il certificato riguarda C empirica sul percorso bilanciato e sulla finestra
+spettrale prefissata; non certifica il rate Sharpe o C di popolazione.
 
-L'audit verifica manifest, momenti, griglie, tracce e certificati, e
-ricalcola da percorsi grezzi le pendenze, i fit a potenza fissata e gli
-intervalli bootstrap con regressione centrata indipendente da `polyfit`.
-Per gap(C) ricampiona insieme entrambe le coordinate. Il risultato distingue
-esplicitamente dati corretti, soglia numerica superata e studio completo;
-nessun report grafico viene dichiarato verificato da questo controllo parziale.
+La sensibilita mantiene tutti i tagli 100,200,400,800,1600,3200,6400, senza
+sostituire il primario da 1600. Le finestre e lo spettro differiscono da
+quelli della vecchia tabella Nyström1024: i nuovi esponenti non vanno
+attribuiti al solo cambio di rango confrontando disegni diversi.
+Il confronto 4096--8192, invece, usa gli stessi dati e la stessa griglia.
 
-Anche gli intervalli numerici del rango 4096 sono calcolati su tutte le
-otto repliche, mantenendo tutti i tagli. Nel primario da 1600 a 25600:
+I 28 intervalli numerici delle pendenze di C sono pubblicati per entrambi
+i ranghi. Nel primario da 1600 a 25600:
 
-| Pendenza | Fit Nystrom4096 | Minimo kernel empirico completo | Massimo kernel empirico completo | Benchmark compreso |
-|---|---:|---:|---:|---|
-| C(T) | +0.325929 | +0.321395 | +0.335833 | Si: +1/3 |
-| C(lambda) | -0.480170 | -0.497703 | -0.470953 | No: -1/2 |
+| Rango | Pendenza | Fit Nyström | Minimo kernel empirico completo | Massimo kernel empirico completo | Benchmark compreso |
+|---|---|---:|---:|---:|---|
+| 4096 | C(T) | +0.32592943 | +0.32139484 | +0.33583297 | Si: +1/3 |
+| 8192 | C(T) | +0.32859663 | +0.32642080 | +0.33333398 | Si: +1/3 |
+| 4096 | C(lambda) | -0.48016996 | -0.49770329 | -0.47095326 | No: -1/2 |
+| 8192 | C(lambda) | -0.48417853 | -0.49256711 | -0.47975878 | No: -1/2 |
 
-La seconda riga esclude l'uguaglianza esatta del fit finito del kernel
-empirico completo con -1/2 su quei campioni e quella finestra; il benchmark
-asintotico resta tale. La prima riga e compatibile con +1/3 ma non determina
-la pendenza effettiva del kernel completo. Sono limiti numerici condizionati,
-distinti dai bootstrap e dalla complessita di popolazione.
-I 14 intervalli sono in `precision_nystrom4096_complexity_slope_enclosures.csv`,
-con manifest e controllo indipendente in
-`precision_nystrom4096_slope_enclosures_validation.json`. La selezione del
-rango e il completamento del confronto con 8192 restano separati.
+Questi limiti sono condizionati agli otto campioni e racchiudono il fit
+finito del kernel empirico completo, non una pendenza di popolazione.
+Tutti i 14 incroci tra gli intervalli dei due ranghi sulla stessa finestra
+sono non vuoti. Le tracce complete coincidono per ogni replica e T,
+coerentemente con gli input appaiati previsti dal codice e dai semi fissati.
+Per C(lambda), anche il fit finito del kernel empirico completo e diverso
+da -1/2 su questa finestra: il limite numerico esclude l'uguaglianza del
+benchmark con la pendenza del kernel completo su quei campioni. Il risultato
+non contraddice il benchmark asintotico.
+Per C(T), +1/3 e contenuto nel limite numerico, ma questo non dimostra
+l'uguaglianza della pendenza effettiva. I bootstrap e i limiti numerici
+misurano incertezze diverse e sono entrambi pubblicati.
+
+I dati, i certificati e i fit sono in
+`outputs/asymptotic_precision_v4/precision_nystrom{4096,8192}_*`.
+`precision_validation.json` verifica tutti i ranghi, STD, 95esimo percentile,
+finestre, intervalli bootstrap, intervalli numerici e selezione.
+`visual_review.json` lega la revisione delle tre pagine agli hash del PDF
+e dei PNG, con font incorporati e margini controllati. I file parziali del
+solo 4096 rimangono disponibili come audit intermedio e sono coerenti con
+il report finale.
 
 ## Ripresa quando varia lo spazio libero
 
@@ -194,7 +224,8 @@ dati o cambiare la dimensione dello studio.
 
 Per contenere il picco di memoria, il rango maggiore attende il completamento
 di tutte le celle della conferma. Poi il report e il validatore vengono eseguiti
-automaticamente; restano la revisione visiva e la pubblicazione.
+automaticamente. Entrambi i ranghi, il report, la validazione numerica e la
+revisione visiva sono ora completati; i risultati sono pubblicati insieme.
 
 ```sh
 VECLIB_MAXIMUM_THREADS=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 \

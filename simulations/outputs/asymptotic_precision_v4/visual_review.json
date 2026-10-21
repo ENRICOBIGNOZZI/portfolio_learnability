@@ -1,0 +1,74 @@
+{
+  "technical_checks_passed": true,
+  "visual_review_pending": false,
+  "pages": 3,
+  "rendered_dpi": 150,
+  "fonts": "Embedded subset TrueType with Unicode mapping",
+  "all_noncombining_text_boxes_inside_pages": true,
+  "ink_margins_left_top_right_bottom_pixels": {
+    "1": [
+      18,
+      25,
+      12,
+      8
+    ],
+    "2": [
+      17,
+      35,
+      16,
+      16
+    ],
+    "3": [
+      14,
+      35,
+      12,
+      16
+    ]
+  },
+  "passed": true,
+  "all_three_latest_pages_visually_inspected": true,
+  "no_visual_clipping_or_overlapping_labels": true,
+  "reviewed_utc": "2026-10-21T04:33:45.380615+00:00",
+  "footer_y_fraction": 0.02,
+  "bbox_exception_explanation": "Poppler zero-height boxes for rotated STIX combining hats; all three affected labels inspected at 300 dpi. Hats are complete and separated from page edge by white margins.",
+  "pdfs_sha256": {
+    "precision_plots.pdf": "0530ba899b4cd544625b672675849b595380c33a9945810ae924094214af96cf"
+  },
+  "figure_pngs_sha256": {
+    "figures/01_precision_sharpe.png": "82a6a4d2c55573e12ee51b513ce211b77dedc65b87ecb08692c6ddf5a6817b00",
+    "figures/02_precision_rates.png": "adfc66d34b2691dda4e9c0431ee2a0d92b7b669d09052bbca7dca44cd8025ccb",
+    "figures/03_precision_windows.png": "0ebdd119107e5a0e5640944acf044bb74ac9c83afe28092745527403fda65b34"
+  },
+  "zero_height_combining_mark_bbox_exceptions": [
+    {
+      "page": 1,
+      "text": "\u0302",
+      "box": {
+        "xMin": -1.055051,
+        "yMin": 82.066275,
+        "xMax": 18.160173,
+        "yMax": 82.066275
+      }
+    },
+    {
+      "page": 2,
+      "text": "\u0302",
+      "box": {
+        "xMin": -1.513258,
+        "yMin": 73.753065,
+        "xMax": 17.701966,
+        "yMax": 73.753065
+      }
+    },
+    {
+      "page": 2,
+      "text": "\u0302",
+      "box": {
+        "xMin": -1.513258,
+        "yMin": 278.668766,
+        "xMax": 17.701966,
+        "yMax": 278.668766
+      }
+    }
+  ]
+}

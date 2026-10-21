@@ -42,7 +42,7 @@ La branch `empirics-montecarlo-20261019` conserva il codice e gli output empiric
 - [Fit del primo run: gap Sharpe-T -0.5264](simulations/outputs/new_montecarlo/rate_fits.csv)
 - [Protocollo asintotico e griglia di 46/54 T_train](simulations/ASYMPTOTIC_PROTOCOL.md)
 - [Pilot numerico indipendente: fit su 8 repliche, distinti dalla conferma](simulations/outputs/asymptotic_v2/fidelity_rate_diagnostics.json)
-- [Pilot di maggiore precisione: rango 4096 completato, confronto con 8192 in corso](simulations/PRECISION_PROTOCOL.md#primo-rango-completato-4096)
+- [Pilot di precisione completato: rango 8192 certificato, confronto e figure](simulations/PRECISION_PROTOCOL.md#confronto-completato-4096-e-8192)
 
 La conferma ha completato 500 repliche, 100 per scenario, e arriva a
 T_train=12800 e 25600. Il pilot Nyström1024 da otto repliche aveva pendenza
@@ -61,7 +61,12 @@ delle ampiezze rispetto a rho=0.5 sono 0.9848 e 0.9843, con intervalli
 bootstrap appaiati che includono 1. Le costanti osservate risultano simili.
 Per N=1200 il gap Sharpe-T_train ha esponente primario -0.6618, con CI 95%
 [-0.6807,-0.6434]. Le figure finali mantengono tutti i punti, STD e percentile;
-il pilot aggiuntivo 4096 e completo, mentre il controllo 8192 e in corso.
+il pilot aggiuntivo 4096--8192 e completo e separato dalla conferma.
+Il rango 8192 certifica l'errore su C entro l'1.1847% sulla finestra
+prefissata (soglia 2%); le sue pendenze primarie sono -0.6907, +0.3286,
+-0.4842 e -2.1012. I fit teorici hanno R2 almeno 0.9978, senza dichiarare
+esattamente uguali ai benchmark le pendenze finite. Sono pubblicati il
+report, tutti i tagli e il PDF finale di tre pagine revisionate.
 
 `paper/main.tex` include soltanto gli empirici e il loro approfondimento sulla complexity; la nuova simulazione e autonoma. I sorgenti teorici dello ZIP usati per fissare i benchmark sono conservati in `simulations/source/`.
 
