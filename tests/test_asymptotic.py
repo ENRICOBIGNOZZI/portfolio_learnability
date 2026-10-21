@@ -363,3 +363,58 @@ def test_precision_completed_rank_audit_does_not_require_or_select_other_ranks(t
     record['files_sha256'][path.name]=hashlib.sha256(path.read_bytes()).hexdigest()
     marker.write_text(json.dumps(record))
     with pytest.raises(AssertionError):validate(tmp_path,rank=8)
+
+
+def test_log_slope_enclosure_attains_all_coordinate_box_extrema():
+    from itertools import product
+    from simulations.precision_enclosures import log_slope_enclosure
+    x=np.array([.01,.04,.13,1.]);low=np.array([100.,70.,40.,15.])
+    high=low*np.array([1.02,1.09,1.05,1.02])
+    slopes=[np.polyfit(np.log(x),np.log(np.where(choice,high,low)),1)[0]
+        for choice in product([False,True],repeat=len(x))]
+    np.testing.assert_allclose(log_slope_enclosure(x,low,high),[min(slopes),max(slopes)],atol=1e-12)
+    with pytest.raises(ValueError):log_slope_enclosure(x,high,low)
+    with pytest.raises(ValueError):log_slope_enclosure(np.ones(4),low,high)
+
+
+def test_full_matern_empirical_complexity_slopes_are_inside_numerical_enclosures():
+    import pandas as pd
+    from simulations.precision_enclosures import complexity_slope_enclosures
+    from simulations.precision_validate import validate_complexity_slope_enclosures
+    c=config();c.update(precision_ranks=[8],T_train=[3,8,17],sensitivity_T_min=[3],
+        spectrum_T_train=17,precision_frozen_C0=1e-5)
+    basis=Basis('nystrom',8,c);rows=[];cert=[];spectra=[];truth_T=[];truth_lambda=[]
+    grid=c['precision_frozen_C0']*17**(-2/3)*np.geomspace(.01,100,65)
+    for trial in range(3):
+        blocks=list(draw_blocks(5,.5,trial,c['fidelity_seed'],17,8))
+        z=np.concatenate([b[1] for b in blocks]);r=np.concatenate([b[2] for b in blocks])
+        kernel=matern_kernel(z.reshape(-1,3),z.reshape(-1,3)).reshape(17,5,17,5)
+        full=np.einsum('in,injm,jm->ij',r,kernel,r)/25
+        white=basis.whiten_rows(managed_block(basis,z,r));projected=white@white.T
+        exact_T=[]
+        for n in c['T_train']:
+            ea=np.maximum(np.linalg.eigvalsh(full[:n,:n]/n),0)
+            eb=np.maximum(np.linalg.eigvalsh(projected[:n,:n]/n),0)
+            lam=c['precision_frozen_C0']*n**(-2/3)
+            lower=float(np.sum(eb/(eb+lam)));residual=float(np.trace(full[:n,:n]-projected[:n,:n])/n)
+            exact_T.append(float(np.sum(ea/(ea+lam))))
+            rows.append(dict(rank=8,trial=trial,T_train=n,lambda_multiplier=1.,complexity=lower))
+            cert.append(dict(rank=8,trial=trial,T_train=n,lambda_multiplier=1.,residual_trace=residual,absolute_C_error_bound=residual/lam))
+        truth_T.append(exact_T)
+        ea=np.maximum(np.linalg.eigvalsh(full/17),0);eb=np.maximum(np.linalg.eigvalsh(projected/17),0)
+        residual=np.trace(full-projected)/17
+        truth_lambda.append(np.sum(ea[:,None]/(ea[:,None]+grid),axis=0))
+        for lam in grid:
+            spectra.append(dict(rank=8,trial=trial,T_train=17,lambda_reg=lam,
+                complexity=float(np.sum(eb/(eb+lam))),absolute_C_error_bound=float(residual/lam)))
+    f,cert,spectrum=map(pd.DataFrame,[rows,cert,spectra])
+    result=complexity_slope_enclosures(c,f,cert,spectrum)
+    validate_complexity_slope_enclosures(c,f,cert,spectrum,result)
+    keep=(grid>=grid[32]*(1-1e-10))&(grid<=c['precision_frozen_C0']*3**(-2/3)*(1+1e-10))
+    for metric,x,truth in [('C_T',np.array(c['T_train']),np.mean(truth_T,axis=0)),
+        ('C_lambda',grid[keep],np.mean(truth_lambda,axis=0)[keep])]:
+        slope=np.polyfit(np.log(x),np.log(truth),1)[0]
+        row=result[result.metric==metric].iloc[0]
+        assert row.full_empirical_exponent_lower-1e-10<=slope<=row.full_empirical_exponent_upper+1e-10
+    tampered=result.copy();tampered.loc[tampered.metric=='C_lambda','full_empirical_exponent_lower']+=.5
+    with pytest.raises(AssertionError):validate_complexity_slope_enclosures(c,f,cert,spectrum,tampered)

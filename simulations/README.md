@@ -200,6 +200,10 @@ e i dati grezzi sono pubblicati con audit indipendente, inclusi gli
 intervalli bootstrap. Il confronto con 8192 e le nuove figure restano da
 completare. La finestra e lo spettro del nuovo pilot sono diversi dalla
 precedente tabella Nyström1024: vedere il protocollo per il confronto corretto.
+Il report finale di precisione racchiudera inoltre le pendenze C(T) e C(lambda)
+del kernel empirico completo usando i certificati puntuali. Questi limiti
+numerici, distinti dai bootstrap, aiutano a capire se lo scarto residuo
+puo dipendere dall'approssimazione del kernel sulla finestra osservata.
 
 ## Output del primo run completo: T_train da 100 a 1600
 

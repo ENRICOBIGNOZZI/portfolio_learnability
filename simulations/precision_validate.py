@@ -13,6 +13,50 @@ from .asymptotic_precision import source_hash
 from .asymptotic_dense import write_json
 
 
+def validate_complexity_slope_enclosures(config,frame,cert,spectrum,table):
+    """Reconstruct bounds from raw traces and check endpoint regressions."""
+    rank=int(frame['rank'].iloc[0]);rows=table[table['rank']==rank]
+    assert not rows.duplicated(['metric','T_train_min']).any()
+    balanced=frame[frame.lambda_multiplier==1].merge(
+        cert[cert.lambda_multiplier==1][['trial','T_train','residual_trace']],
+        on=['trial','T_train'],validate='one_to_one')
+    penalty=config['precision_frozen_C0']*balanced.T_train**(-2/3)
+    balanced['upper']=np.minimum(balanced.complexity+np.maximum(balanced.residual_trace,0)/penalty,balanced.T_train)
+    residuals=cert[(cert.lambda_multiplier==1)&(cert.T_train==config['spectrum_T_train'])].set_index('trial').residual_trace
+    spectral=spectrum.copy()
+    spectral['upper']=np.minimum(spectral.complexity+
+        np.maximum(spectral.trial.map(residuals),0)/spectral.lambda_reg,spectral.T_train)
+    expected_rows=0
+    for cutoff in config['sensitivity_T_min']:
+        times=[t for t in config['T_train'] if t>=cutoff]
+        if len(times)<3:continue
+        low=config['precision_frozen_C0']*max(times)**(-2/3)
+        high=config['precision_frozen_C0']*min(times)**(-2/3)
+        choices=[('C_T',balanced[balanced.T_train>=cutoff],'T_train',1/3),
+            ('C_lambda',spectral[(spectral.lambda_reg>=low*(1-1e-10))&
+                (spectral.lambda_reg<=high*(1+1e-10))],'lambda_reg',-.5)]
+        for metric,part,index,target in choices:
+            curve=part.groupby(index)[['complexity','upper']].mean().sort_index()
+            x=curve.index.to_numpy(float);lower=curve.complexity.to_numpy();upper=curve.upper.to_numpy()
+            if metric=='C_T':assert list(curve.index)==times
+            logx=np.log(x);positive=logx>=logx.mean()
+            # Enumerating the minimizing/maximizing ordinate at each coordinate
+            # and running polyfit is independent of the producer's weight sum.
+            lo=np.polyfit(logx,np.log(np.where(positive,lower,upper)),1)[0]
+            hi=np.polyfit(logx,np.log(np.where(positive,upper,lower)),1)[0]
+            actual=rows[(rows.metric==metric)&(rows.T_train_min==cutoff)]
+            assert len(actual)==1;row=actual.iloc[0]
+            assert row.fit_points==len(x) and row.expected_exponent==target
+            assert row.T_train_max==max(times)
+            np.testing.assert_allclose([row.x_min,row.x_max],[x.min(),x.max()],rtol=1e-11)
+            np.testing.assert_allclose(row.approximate_exponent,np.polyfit(logx,np.log(lower),1)[0],atol=1e-11)
+            np.testing.assert_allclose([row.full_empirical_exponent_lower,row.full_empirical_exponent_upper],[lo,hi],rtol=1e-10,atol=1e-11)
+            assert row.theoretical_exponent_in_enclosure==bool(lo-1e-12<=target<=hi+1e-12)
+            np.testing.assert_allclose(row.maximum_mean_C_relative_numerical_uncertainty,np.max(upper/lower-1),rtol=1e-10,atol=1e-12)
+            expected_rows+=1
+    assert len(rows)==expected_rows
+
+
 def validate(output, rank=None):
     out=Path(output);config=json.loads((out/'config.json').read_text())
     report=rank is None
@@ -23,6 +67,7 @@ def validate(output, rank=None):
         selection=json.loads((out/'precision_selection.json').read_text())
         summary=pd.read_csv(out/'precision_summary.csv')
         windows=pd.read_csv(out/'precision_window_sensitivity.csv')
+        enclosures=pd.read_csv(out/'precision_complexity_slope_enclosures.csv')
         assert audit['standard_error_plotted'] is False and audit['SD_ddof']==1
         assert audit['percentile_plotted']==95 and audit['percentile_interpolation']=='linear'
         assert audit['full_training_grid']==config['T_train']
@@ -31,6 +76,10 @@ def validate(output, rank=None):
         assert set(summary['rank'])==set(config['precision_ranks'])
         assert set(windows['rank'])==set(config['precision_ranks'])
         assert selection['selection_uses_slopes_or_R_squared'] is False
+        assert set(enclosures['rank'])==set(config['precision_ranks'])
+        assert audit['complexity_slope_enclosures']['sampling_interval'] is False
+        assert audit['complexity_slope_enclosures']['used_for_rank_selection'] is False
+        assert audit['complexity_slope_enclosures']['pointwise_upper_bound_capped_by_T_train'] is True
     checks=[];observations=0;gaps_below_zero=0
     for rank in ranks:
         prefix=f'precision_nystrom{rank}_'
@@ -159,6 +208,7 @@ def validate(output, rank=None):
             if report:np.testing.assert_allclose(actual[field],value,rtol=1e-11)
             np.testing.assert_allclose(complete[field],value,rtol=1e-11)
         checks.append((rank,bool(passed)))
+        if report:validate_complexity_slope_enclosures(config,f,cert,spectrum,enclosures)
         observations+=len(f);gaps_below_zero+=int((f.SR_gap<0).sum())
     if not report:
         # A complete rank can be audited while the other planned rank is running.
@@ -186,6 +236,7 @@ def validate(output, rank=None):
     result=dict(passed=True,rank_replications=config['trials'],ranks=config['precision_ranks'],
         observations=observations,selected_rank=expected,all_sensitivity_windows_retained=True,
         bootstrap_exponent_intervals_independently_verified=True,
+        deterministic_full_empirical_complexity_slope_enclosures_verified=True,
         x_axis='T_train',SD_ddof=1,standard_error_plotted=False,percentile_plotted=95,
         negative_estimated_gaps=gaps_below_zero,
         note='Numerical and bookkeeping checks do not assert agreement with a theoretical rate or a passing complexity certificate.',

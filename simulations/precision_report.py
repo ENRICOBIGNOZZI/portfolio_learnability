@@ -17,6 +17,7 @@ import pandas as pd
 from .asymptotic_dense import write_json
 from .asymptotic_report import draw, X_LABEL
 from .report import COLORS, matrix
+from .precision_enclosures import complexity_slope_enclosures
 
 METRICS=[('SR_T',-2/3),('C_T',1/3),('SR_C',-2),('C_lambda',-.5)]
 TITLES={'SR_T':r'Sharpe gap vs. $T_{\mathrm{train}}$',
@@ -91,6 +92,8 @@ def build(output):
     frame=pd.concat(frames,ignore_index=True);cert=pd.concat(certificates,ignore_index=True)
     spectrum=pd.concat(spectra,ignore_index=True);rates=pd.DataFrame(rows)
     selection=select_rank(config,cert,spectrum)
+    enclosures=complexity_slope_enclosures(config,frame,cert,spectrum)
+    enclosures.to_csv(out/'precision_complexity_slope_enclosures.csv',index=False)
     write_json(out/'precision_selection.json',selection)
     rates.to_csv(out/'precision_window_sensitivity.csv',index=False)
     summary=frame.groupby(['rank','lambda_multiplier','T_train']).agg(
@@ -181,9 +184,19 @@ def build(output):
         standard_error_plotted=False,SD_ddof=1,percentile_plotted=95,percentile_interpolation='linear',
         paired_complexity_axis='mean complexity at the same T; horizontal bars are sample SD',
         x_axis='T_train only; separate pilot validation and evaluation observations excluded',
-        selection=selection,figure_stems=stems,pdf_pages=3))
+        selection=selection,figure_stems=stems,pdf_pages=3,
+        complexity_slope_enclosures=dict(scope='Full managed empirical kernel on the observed training samples',
+            statistic='Log-log slope of mean complexity on each declared grid',
+            type='Deterministic numerical enclosure; separate from bootstrap sampling intervals',
+            sampling_interval=False,used_for_rank_selection=False,pointwise_upper_bound_capped_by_T_train=True)))
     main=rates[rates.T_train_min==primary]
     checks=pd.DataFrame(selection['checks'])
+    primary_enclosures=enclosures[enclosures.T_train_min==primary][[
+        'rank','metric','approximate_exponent','full_empirical_exponent_lower',
+        'full_empirical_exponent_upper','expected_exponent','theoretical_exponent_in_enclosure']].rename(columns={
+            'rank':'Rango','metric':'Rate','approximate_exponent':'Pendenza Nystrom',
+            'full_empirical_exponent_lower':'Minimo kernel completo','full_empirical_exponent_upper':'Massimo kernel completo',
+            'expected_exponent':'Benchmark','theoretical_exponent_in_enclosure':'Benchmark compreso'})
     (out/'precision_report.html').write_text('''<!doctype html><meta charset="utf-8">
 <title>Pilot appaiato: maggiore precisione numerica</title>
 <style>body{font:16px Georgia,serif;max-width:1100px;margin:35px auto;padding:0 20px}table{border-collapse:collapse;font-size:13px}td,th{padding:7px;border-bottom:1px solid #ddd}img{width:100%;margin:20px 0}</style>
@@ -203,6 +216,14 @@ terminava a 12800: le due finestre non sono intercambiabili.</p>
         '<h2>Certificato della complessita empirica</h2><p>'+html.escape(selection['note'])+'</p>'+
         checks.to_html(index=False,float_format=lambda x:f'{x:.6f}')+
         '<p>Il bound della traccia e conservativo: il mancato superamento della soglia non prova un errore effettivo superiore alla soglia.</p>'+
+        '<h2>Quanto puo dipendere la pendenza dalla rappresentazione?</h2>'+
+        '<p>I certificati puntuali racchiudono C del kernel empirico completo fra C Nystrom e min(C Nystrom + errore certificato, T_train). '
+        'Mediando prima questi limiti e usando i pesi con segno della regressione log-log si racchiude anche la pendenza della media. '
+        'Sono intervalli numerici condizionati ai campioni osservati, distinti dai bootstrap tra repliche; non sono bound sulla complessita di popolazione o sullo Sharpe. '
+        "Se il benchmark asintotico e esterno all'intervallo, la pendenza del kernel empirico completo su quella finestra e diversa dal benchmark. "
+        'La selezione del rango conserva il solo criterio di errore del 2%.</p>'+
+        primary_enclosures.to_html(index=False,float_format=lambda x:f'{x:.6f}')+
+        '<p><a href="precision_complexity_slope_enclosures.csv">Intervalli numerici su tutti i tagli e ranghi</a>.</p>'+
         ''.join(f'<img src="figures/{stem}.png">' for stem in stems)+
         '<h2>Tutti i tagli</h2>'+rates.to_html(index=False,float_format=lambda x:f'{x:.6f}'))
     return selection

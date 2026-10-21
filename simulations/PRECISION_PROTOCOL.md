@@ -49,6 +49,36 @@ ridotto: [Bach, 2013](https://proceedings.mlr.press/v30/Bach13.pdf).
 Il certificato specifico sopra e verificato anche costruendo direttamente
 la Gram completa in un test piccolo, indipendente dal solver Nyström.
 
+## Intervalli numerici per le pendenze di C
+
+Il certificato puntuale racchiude anche la pendenza che si otterrebbe con
+il kernel empirico completo, sugli stessi dati e sulla stessa finestra.
+Per replica e punto vale `C_B <= C_A <= min(C_B + Delta_C, T_train)`.
+Si mediano prima questi limiti tra repliche, ottenendo `L_i <= mean(C_A)_i <= U_i`:
+il fit pubblicato usa il logaritmo della media, non la media dei logaritmi.
+
+Posto `x_i=log(T_train)` oppure `log(lambda)`, la pendenza OLS con intercetta
+e `beta = sum(w_i*log(mean(C_A)_i))`, dove
+`w_i=(x_i-mean(x))/sum((x_i-mean(x))^2)`. Il minimo numerico usa `log(L_i)`
+per i pesi positivi e `log(U_i)` per quelli negativi; il massimo inverte
+le scelte. Si ottiene un intervallo conservativo condizionato ai campioni
+osservati. Non serve conoscere gli autovalori dell'intera Gram T x T.
+
+Questi intervalli numerici sono distinti dagli intervalli bootstrap della
+pendenza tra repliche. Riguardano la complessita empirica; non racchiudono
+la complessita di popolazione o il gap Sharpe del portafoglio con kernel
+completo. Se un benchmark asintotico e esterno all'intervallo, la pendenza
+del kernel empirico completo su quella finestra e diversa dal benchmark:
+questo non contraddice un rate asintotico.
+
+Il report finale produce `precision_complexity_slope_enclosures.csv` per
+C(T) e C(lambda), su tutti i tagli e per entrambi i ranghi. Il validatore
+ricostruisce i limiti dalle tracce grezze e verifica gli estremi con una
+regressione indipendente. Due test controllano gli estremi di tutte le
+combinazioni puntuali e l'inclusione delle pendenze calcolate direttamente
+con una Gram Matérn completa. La selezione del rango resta determinata
+esclusivamente dalla soglia del 2% sul livello di C.
+
 ## Memoria, ripresa e output
 
 Le righe dei rendimenti gestiti risiedono in un memmap temporaneo;
