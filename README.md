@@ -28,33 +28,40 @@ unchanged policy, regenerates the artifacts, and runs the relevant tests.
 La branch `empirics-montecarlo-20261019` conserva il codice e gli output empirici e sostituisce tutte le precedenti simulazioni con il DGP D=3 fornito il 19 ottobre 2026. Le vecchie simulazioni restano nella storia Git e nella branch originale.
 
 - [Nuove simulazioni e protocollo](simulations/README.md)
+- [Conferma completata: 500 repliche, cinque figure e diagnostiche](simulations/outputs/asymptotic_dense_v3/report.html)
+- [PDF completo della conferma: 46/54 T_train, STD e 95esimo percentile](simulations/outputs/asymptotic_dense_v3/requested_plots.pdf)
 - [Riferimento completato: 100 repliche, 54 T_train fino a 25600, STD e 95esimo percentile](simulations/outputs/asymptotic_dense_v3/cells/N600_rho0.5/reference_plots.pdf)
 - [Tutti i tagli del riferimento: 100,200,400,800,1600,3200,6400](simulations/outputs/asymptotic_dense_v3/cells/N600_rho0.5/window_sensitivity.csv)
 - [N=300 completato: 100 repliche e tutti i tagli](simulations/outputs/asymptotic_dense_v3/cells/N300_rho0.5/window_sensitivity.csv)
 - [N=600, rho=0 completato: 100 repliche e tutti i tagli](simulations/outputs/asymptotic_dense_v3/cells/N600_rho0/window_sensitivity.csv)
 - [N=600, rho=0.95 completato: 100 repliche e tutti i tagli](simulations/outputs/asymptotic_dense_v3/cells/N600_rho0.95/window_sensitivity.csv)
+- [N=1200 completato: 100 repliche e tutti i tagli](simulations/outputs/asymptotic_dense_v3/cells/N1200_rho0.5/window_sensitivity.csv)
 - [Ampiezze dei tre rho sulla stessa finestra: STD, 95esimo percentile e intervalli appaiati](simulations/outputs/asymptotic_dense_v3/rho_rate_constants.csv)
 - [Primo run completo: cinque T_train da 100 a 1600](simulations/outputs/new_montecarlo/report.html)
 - [PDF del primo run, con STD e 95esimo percentile](simulations/outputs/new_montecarlo/requested_plots.pdf)
 - [Fit del primo run: gap Sharpe-T -0.5264](simulations/outputs/new_montecarlo/rate_fits.csv)
-- [Estensione asintotica in corso: protocollo e griglia di 46/54 T_train](simulations/ASYMPTOTIC_PROTOCOL.md)
+- [Protocollo asintotico e griglia di 46/54 T_train](simulations/ASYMPTOTIC_PROTOCOL.md)
 - [Pilot numerico indipendente: fit su 8 repliche, distinti dalla conferma](simulations/outputs/asymptotic_v2/fidelity_rate_diagnostics.json)
 - [Pilot di maggiore precisione: rango 4096 completato, confronto con 8192 in corso](simulations/PRECISION_PROTOCOL.md#primo-rango-completato-4096)
 
-L'estensione arriva a T_train=12800 e 25600. Il pilot Nyström1024 da otto
-repliche da una pendenza del gap Sharpe-T di -0.6736; la conferma a 100 repliche
-per scenario e ancora in corso. La tabella -0.5264/+0.3352/-0.4579/-1.5719
+La conferma ha completato 500 repliche, 100 per scenario, e arriva a
+T_train=12800 e 25600. Il pilot Nyström1024 da otto repliche aveva pendenza
+del gap Sharpe-T -0.6736; i dati a 100 repliche sono pubblicati separatamente.
+La tabella -0.5264/+0.3352/-0.4579/-1.5719
 appartiene al primo run completo, non e il risultato finale dell'estensione.
 Il riferimento N=600, rho=0.5 ha gia completato le sue 100 repliche e tutti
 i 54 T_train; anche N=300, rho=0.5 e N=600, rho=0 e 0.95 hanno completato
-ciascuno 100 repliche su 46 T_train. Sono esportate 400 delle 500 repliche
-del nuovo disegno; prosegue N=1200, rho=0.5. Per rho=0 il gap
+ciascuno 100 repliche su 46 T_train, come N=1200, rho=0.5. Sono esportate
+tutte le 500 repliche del nuovo disegno. Per rho=0 il gap
 Sharpe-T_train ha esponente primario -0.6596, con intervallo 95%
 [-0.6798,-0.6413], contro il benchmark -0.6667. Le pendenze e i limiti
 del riferimento, distinti dal pilot a otto repliche, sono in `simulations/README.md`.
 Il confronto dei tre rho usa la stessa griglia 1600..12800: i rapporti
 delle ampiezze rispetto a rho=0.5 sono 0.9848 e 0.9843, con intervalli
 bootstrap appaiati che includono 1. Le costanti osservate risultano simili.
+Per N=1200 il gap Sharpe-T_train ha esponente primario -0.6618, con CI 95%
+[-0.6807,-0.6434]. Le figure finali mantengono tutti i punti, STD e percentile;
+il pilot aggiuntivo 4096 e completo, mentre il controllo 8192 e in corso.
 
 `paper/main.tex` include soltanto gli empirici e il loro approfondimento sulla complexity; la nuova simulazione e autonoma. I sorgenti teorici dello ZIP usati per fissare i benchmark sono conservati in `simulations/source/`.
 

@@ -1,0 +1,28 @@
+{
+  "engine": "simulations.asymptotic: unchanged training, evaluation and collect functions",
+  "collector_sha256": "ca8d44c317d4a29fdee2e4f1412df53259b0fe6f68d37e51eb540b90b68b655e",
+  "source_hash": "84f75e5b4a91ded7f2d0cb08308a857935746a1b4d7bb6ba653d415a7ce0d76e",
+  "collection": "Atomic evaluated cell checkpoints; release only exported policy caches to bound disk usage",
+  "cell_execution_order": [
+    [
+      600,
+      0.5
+    ],
+    [
+      300,
+      0.5
+    ],
+    [
+      600,
+      0.0
+    ],
+    [
+      600,
+      0.95
+    ],
+    [
+      1200,
+      0.5
+    ]
+  ]
+}

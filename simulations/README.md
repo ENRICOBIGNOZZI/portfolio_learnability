@@ -6,15 +6,26 @@ Il codice originale ricevuto e conservato senza modifiche in
 Gli empirici preesistenti restano disponibili. `branch_scope.json` elenca le
 rimozioni delle vecchie simulazioni; la cartella di lavoro originale e intatta.
 
-## Estensione asintotica, griglia fitta e figure da paper
+## Conferma completata: 500 repliche e figure da paper
 
-La tabella con gap Sharpe-T -0.5264 si riferisce al **primo run completo**,
-`outputs/new_montecarlo`, con cinque T da 100 a 1600. L'estensione
-`outputs/asymptotic_dense_v3` e una simulazione distinta, ancora in corso:
-il suo `completed.json` viene scritto solo dopo tutte le 500 repliche.
-Il riferimento N=600, rho=0.5 e gia completato: **100 repliche indipendenti,
-54 T_train effettivi da 100 a 25600**. Anche N=300, rho=0.5 e N=600,
-rho=0 e rho=0.95 sono completati; resta la cella N=1200.
+`outputs/asymptotic_dense_v3` ha completato **500 repliche**, 100 per
+ciascuna delle cinque celle: N=300,600,1200 a rho=0.5 e N=600 a rho=0,0.95.
+Sono pubblicati 71.400 portafogli stimati e 32.500 punti dello spettro.
+I confronti usano 46 T_train effettivi da 100 a 12800; il riferimento
+N=600, rho=0.5 usa 54 tempi fino a 25600. Ogni punto e realmente ristimato.
+
+- [Report completo con tutte le cinque figure](outputs/asymptotic_dense_v3/report.html)
+- [PDF completo: cinque figure e tre pagine diagnostiche](outputs/asymptotic_dense_v3/requested_plots.pdf)
+- [PDF singoli e immagini da paper](outputs/asymptotic_dense_v3/figures/)
+- [Fit principali](outputs/asymptotic_dense_v3/main_rate_fits.csv) e [tutti i tagli](outputs/asymptotic_dense_v3/window_sensitivity.csv)
+- [Repliche complete](outputs/asymptotic_dense_v3/confirmation_trials.csv) e [audit indipendente](outputs/asymptotic_dense_v3/validation.json)
+
+Le figure mostrano media, STD campionaria fra repliche (ddof=1) e
+95esimo percentile empirico. L'asse temporale e T_train; Sharpe-complexity
+segue il percorso bilanciato. Le finestre 100,200,400,800,1600,3200,6400
+sono tutte riportate; il fit principale resta da 1600.
+La tabella con gap Sharpe-T -0.5264 appartiene al **primo run completo**,
+`outputs/new_montecarlo`, con cinque T da 100 a 1600, distinto da questa conferma.
 Il [PDF del riferimento](outputs/asymptotic_dense_v3/cells/N600_rho0.5/reference_plots.pdf)
 mostra media, STD, 95esimo percentile e tutti i tagli piccoli e grandi.
 
@@ -32,7 +43,8 @@ I quattro R2 con esponente teorico imposto del fit primario superano 0.99.
 Le pendenze libere restano diverse dai benchmark: i quattro fit primari
 non superano il criterio aggiuntivo dell'intervallo bootstrap prefissato.
 Il pilot a ranghi superiori studia separatamente l'errore numerico residuo.
-Questa e una cella completa, non il completamento dell'intero disegno.
+La conferma a rango 1024 e completa; il controllo aggiuntivo ai ranghi
+4096 e 8192 e separato e descritto sotto.
 
 Anche la cella **N=300, rho=0.5 ha 100 repliche complete**, su 46 T_train
 da 100 a 12800.
@@ -75,7 +87,7 @@ sono confrontate sotto sulla griglia comune 1600..12800.
 Il riferimento rho=0.5 conserva il suo fit primario fino a 25600.
 
 Anche **N=600, rho=0.95 ha 100 repliche complete**, su tutti i 46 T_train:
-sono esportate **400 delle 500 repliche** previste. I
+questa cella fa parte delle **500 repliche complete** del disegno. I
 [28 fit di rho=0.95](outputs/asymptotic_dense_v3/cells/N600_rho0.95/window_sensitivity.csv)
 restituiscono nel primario da 1600 gap(T)=-0.6918, C(T)=+0.3152,
 C(lambda)=-0.4621 e gap(C)=-2.1945. I quattro R2 a esponente teorico imposto
@@ -98,6 +110,23 @@ Sono coefficienti descrittivi a T finito, distinti dalle costanti dei bound.
 Sulla griglia comune le pendenze libere del gap(T) sono -0.6596,-0.6794,
 -0.6918. Il riferimento mantiene separatamente il suo fit primario fino
 a 25600; nessuna finestra e scelta in base ai risultati.
+
+La cella **N=1200, rho=0.5 e completa su 100 repliche e 46 T_train**.
+I [28 fit di N=1200](outputs/asymptotic_dense_v3/cells/N1200_rho0.5/window_sensitivity.csv)
+restituiscono nel primario da 1600:
+
+| Rate, N=1200 | Benchmark | Esponente libero | R2, esponente teorico imposto |
+|---|---:|---:|---:|
+| Gap Sharpe vs T_train | -0.6667 | -0.6618 | 0.9997 |
+| C vs T_train | +0.3333 | +0.3164 | 0.9967 |
+| C vs lambda | -0.5000 | -0.4645 | 0.9940 |
+| Gap Sharpe vs C | -2.0000 | -2.0912 | 0.9988 |
+
+Il bootstrap 95% del gap(T) e [-0.6807,-0.6434], quindi questo fit passa
+il criterio prefissato di intervallo e R2. Gli altri tre primari non lo
+superano. Il taglio secondario da 400 da gap(C)=-1.9849; quello da 200
+da C(T)=+0.3328. Questi confronti restano etichettati come secondari,
+senza modificare il riferimento N=600 o il taglio principale da 1600.
 
 Il pilot numerico indipendente gia completato ha otto repliche per
 rappresentazione; i suoi esiti non sono risultati della conferma a 100.

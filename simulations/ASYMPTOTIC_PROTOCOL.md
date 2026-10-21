@@ -90,8 +90,17 @@ con intervalli bootstrap appaiati [0.9556,1.0120] e [0.9547,1.0147].
 I dati non mostrano una separazione chiara delle ampiezze; si mantengono
 questi esiti, senza imporre un aumento con rho. Il CSV delle ampiezze,
 l'audit della griglia e la validazione indipendente sono pubblicati in
-`outputs/asymptotic_dense_v3/rho_rate_constants*`. Questa parte completa
-del confronto temporale non completa il disegno a cinque celle.
+`outputs/asymptotic_dense_v3/rho_rate_constants*`.
+
+Il disegno a cinque celle ha ora completato 500 repliche: 71.400 portafogli
+stimati e 32.500 punti dello spettro. Il report completo mantiene 46 tempi
+effettivi per confronto e 54 nel riferimento, media, STD e 95esimo percentile.
+Tutti i tagli restano pubblicati. Per N=1200, rho=0.5 il fit primario del
+gap(T) e -0.6618, con CI bootstrap [-0.6807,-0.6434]; il riferimento generale
+resta N=600, rho=0.5, T_train>=1600. I fit a potenza teorica del riferimento
+hanno R2>0.993, ma i quattro intervalli delle pendenze libere non includono
+i benchmark. Il pilot a ranghi 4096/8192 resta uno studio di precisione
+separato; il rango 8192 e in esecuzione.
 
 ## Precisione del kernel
 

@@ -1,0 +1,302 @@
+{
+  "passed": true,
+  "pdfs_reviewed": 7,
+  "combined_pages": 8,
+  "rendered_dpi": 150,
+  "fonts": {
+    "requested_plots.pdf": "Embedded subset TrueType with Unicode mapping",
+    "figures/01_sharpe_T_by_N.pdf": "Embedded subset TrueType with Unicode mapping",
+    "figures/02_sharpe_T_by_rho.pdf": "Embedded subset TrueType with Unicode mapping",
+    "figures/03_sharpe_complexity_by_N.pdf": "Embedded subset TrueType with Unicode mapping",
+    "figures/04_complexity_T.pdf": "Embedded subset TrueType with Unicode mapping",
+    "figures/05_complexity_lambda.pdf": "Embedded subset TrueType with Unicode mapping",
+    "figures/06_asymptotic_diagnostics.pdf": "Embedded subset TrueType with Unicode mapping"
+  },
+  "individual_raster_comparison": [
+    {
+      "page": 1,
+      "individual": "figures/01_sharpe_T_by_N.pdf",
+      "maximum": 0,
+      "mean": 0.0
+    },
+    {
+      "page": 2,
+      "individual": "figures/02_sharpe_T_by_rho.pdf",
+      "maximum": 0,
+      "mean": 0.0
+    },
+    {
+      "page": 3,
+      "individual": "figures/03_sharpe_complexity_by_N.pdf",
+      "maximum": 0,
+      "mean": 0.0
+    },
+    {
+      "page": 4,
+      "individual": "figures/04_complexity_T.pdf",
+      "maximum": 0,
+      "mean": 0.0
+    },
+    {
+      "page": 5,
+      "individual": "figures/05_complexity_lambda.pdf",
+      "maximum": 0,
+      "mean": 0.0
+    },
+    {
+      "page": 6,
+      "individual": "figures/06_asymptotic_diagnostics.pdf page 1",
+      "maximum": 0,
+      "mean": 0.0
+    },
+    {
+      "page": 7,
+      "individual": "figures/06_asymptotic_diagnostics.pdf page 2",
+      "maximum": 0,
+      "mean": 0.0
+    },
+    {
+      "page": 8,
+      "individual": "figures/06_asymptotic_diagnostics.pdf page 3",
+      "maximum": 0,
+      "mean": 0.0
+    }
+  ],
+  "all_noncombining_text_boxes_inside_pages": true,
+  "zero_height_combining_mark_bbox_exceptions": [
+    {
+      "pdf": "requested_plots.pdf",
+      "page": 1,
+      "text": "\u0302",
+      "box": {
+        "xMin": -1.055051,
+        "yMin": 85.666275,
+        "xMax": 18.160173,
+        "yMax": 85.666275
+      }
+    },
+    {
+      "pdf": "requested_plots.pdf",
+      "page": 2,
+      "text": "\u0302",
+      "box": {
+        "xMin": -1.055051,
+        "yMin": 84.1869,
+        "xMax": 18.160173,
+        "yMax": 84.1869
+      }
+    },
+    {
+      "pdf": "requested_plots.pdf",
+      "page": 3,
+      "text": "\u0302",
+      "box": {
+        "xMin": -1.055051,
+        "yMin": 88.081976,
+        "xMax": 18.160173,
+        "yMax": 88.081976
+      }
+    },
+    {
+      "pdf": "requested_plots.pdf",
+      "page": 7,
+      "text": "\u0302",
+      "box": {
+        "xMin": -1.513258,
+        "yMin": 92.401464,
+        "xMax": 17.701966,
+        "yMax": 92.401464
+      }
+    },
+    {
+      "pdf": "requested_plots.pdf",
+      "page": 8,
+      "text": "\u0302",
+      "box": {
+        "xMin": -0.613051,
+        "yMin": 83.743813,
+        "xMax": 18.602173,
+        "yMax": 83.743813
+      }
+    },
+    {
+      "pdf": "figures/01_sharpe_T_by_N.pdf",
+      "page": 1,
+      "text": "\u0302",
+      "box": {
+        "xMin": -1.055051,
+        "yMin": 85.666275,
+        "xMax": 18.160173,
+        "yMax": 85.666275
+      }
+    },
+    {
+      "pdf": "figures/02_sharpe_T_by_rho.pdf",
+      "page": 1,
+      "text": "\u0302",
+      "box": {
+        "xMin": -1.055051,
+        "yMin": 84.1869,
+        "xMax": 18.160173,
+        "yMax": 84.1869
+      }
+    },
+    {
+      "pdf": "figures/03_sharpe_complexity_by_N.pdf",
+      "page": 1,
+      "text": "\u0302",
+      "box": {
+        "xMin": -1.055051,
+        "yMin": 88.081976,
+        "xMax": 18.160173,
+        "yMax": 88.081976
+      }
+    },
+    {
+      "pdf": "figures/06_asymptotic_diagnostics.pdf",
+      "page": 2,
+      "text": "\u0302",
+      "box": {
+        "xMin": -1.513258,
+        "yMin": 92.401464,
+        "xMax": 17.701966,
+        "yMax": 92.401464
+      }
+    },
+    {
+      "pdf": "figures/06_asymptotic_diagnostics.pdf",
+      "page": 3,
+      "text": "\u0302",
+      "box": {
+        "xMin": -0.613051,
+        "yMin": 83.743813,
+        "xMax": 18.602173,
+        "yMax": 83.743813
+      }
+    }
+  ],
+  "bbox_exception_explanation": "Poppler zero-height boxes for rotated STIX combining hats. Magnified rendering confirms complete hats and white left margin; these are extraction artifacts.",
+  "ink_margins_left_top_right_bottom_pixels": {
+    "combined-8.png": [
+      19,
+      10,
+      15,
+      8
+    ],
+    "combined-3.png": [
+      18,
+      10,
+      12,
+      8
+    ],
+    "combined-2.png": [
+      18,
+      10,
+      15,
+      8
+    ],
+    "combined-1.png": [
+      18,
+      10,
+      15,
+      8
+    ],
+    "combined-5.png": [
+      17,
+      10,
+      12,
+      8
+    ],
+    "combined-4.png": [
+      19,
+      10,
+      12,
+      8
+    ],
+    "combined-6.png": [
+      14,
+      17,
+      12,
+      15
+    ],
+    "combined-7.png": [
+      17,
+      10,
+      15,
+      8
+    ],
+    "single_05_complexity_lambda-1.png": [
+      17,
+      10,
+      12,
+      8
+    ],
+    "single_06_asymptotic_diagnostics-1.png": [
+      14,
+      17,
+      12,
+      15
+    ],
+    "single_06_asymptotic_diagnostics-2.png": [
+      17,
+      10,
+      15,
+      8
+    ],
+    "single_03_sharpe_complexity_by_N-1.png": [
+      18,
+      10,
+      12,
+      8
+    ],
+    "single_06_asymptotic_diagnostics-3.png": [
+      19,
+      10,
+      15,
+      8
+    ],
+    "single_04_complexity_T-1.png": [
+      19,
+      10,
+      12,
+      8
+    ],
+    "single_02_sharpe_T_by_rho-1.png": [
+      18,
+      10,
+      15,
+      8
+    ],
+    "single_01_sharpe_T_by_N-1.png": [
+      18,
+      10,
+      15,
+      8
+    ]
+  },
+  "scientific_table_hashes_unchanged_by_footer_edit": {
+    "confirmation_trials.csv": "cb2d739e0913677feb7d65d8db8988a6d643e3656a3a432318f28fb5641a19e5",
+    "complexity_lambda_trials.csv": "41e8ba4f6f18b2685b7fbe9f68ceb6d34a3e490586807917dad2ef1faa5f065c",
+    "summary.csv": "89c73bd1d823635acc80b0c049f5b6a652c64048af917d425745ad7071103ae6",
+    "main_rate_fits.csv": "aff5be9897c23fa1ceb00ff90574732049ad3507a7e07439f8efdae173879f63",
+    "window_sensitivity.csv": "5d421b110a79587285ffb1fb02b3eee133decafb4b1becac2539ce115003a9f0",
+    "rate_fits.json": "4722cc177902d0fd97b3f104819c1f9c4a020e09b755912a65b96807d76fc4a5"
+  },
+  "pdfs_sha256": {
+    "requested_plots.pdf": "214a70b5890180a7de0289cd792a8ad55c1c6c1f49d47ea611bef43dd720b421",
+    "figures/01_sharpe_T_by_N.pdf": "c94b2e60ee72f11408b65773c62f407a39d499f15c06b4f49e0ccf93d5a3c201",
+    "figures/02_sharpe_T_by_rho.pdf": "98d838ede1bfd3a68f5549df3469065657123c5dfad991fd68d07d5e8adbc96f",
+    "figures/03_sharpe_complexity_by_N.pdf": "daff5b4ac251fa882e868c4a2d07ad96886877fbe0fe2ed3f8556f80288f2d2e",
+    "figures/04_complexity_T.pdf": "bd1041e10abb9a4cdaf57fb33a55328adb339c47cea9d226cd63d549a1b1ca1c",
+    "figures/05_complexity_lambda.pdf": "b16622c4bbdc5acce04854bdd4ff5895d7044098c841763ac81a35f868df6a92",
+    "figures/06_asymptotic_diagnostics.pdf": "e55d66c40e9a3be661d4cce36cb6d80001bdf4bfed58dc7f16c0c4aa11dcfaef"
+  },
+  "reviewed_utc": "2026-10-21T00:36:37.298362+00:00",
+  "all_eight_latest_pages_visually_inspected": true,
+  "no_visual_clipping_or_overlapping_labels": true,
+  "axes_T_train_verified": true,
+  "dispersion": "Sample STD across independent training replications, ddof=1",
+  "percentile": 95,
+  "all_seven_fit_cutoffs_visible": true,
+  "footer_y_fraction": 0.02
+}

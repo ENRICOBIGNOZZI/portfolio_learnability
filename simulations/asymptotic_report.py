@@ -189,7 +189,7 @@ def build(out):
             footer=f'Solid: mean; shading: $\\pm$1 SD; colored dashes: 95th percentile.\n{count} paired trials; N={nfix}, $\\rho={rhofix}$; same kernel, economy and primitive shocks.'
         elif stem=='08_scaled_gap_and_evaluation':
             footer=f'Solid: mean; shading: $\\pm$1 SD; colored dashes: 95th percentile.\n{count} independent training replications; N={nfix}, $\\rho={rhofix}$.'
-        fig.text(.5,.012,footer,ha='center',fontsize=7,color='#444444',linespacing=1.5)
+        fig.text(.5,.02,footer,ha='center',fontsize=7,color='#444444',linespacing=1.5)
         for index,ax in enumerate(fig.axes):
             ax.set_axisbelow(True)
             ax.grid(axis='y',which='major',color='#d8d8d8',linewidth=.4,alpha=.6)

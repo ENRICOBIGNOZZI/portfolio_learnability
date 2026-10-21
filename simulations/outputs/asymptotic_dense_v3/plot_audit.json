@@ -1,0 +1,152 @@
+{
+  "x_axis": "T_train only; pilot/validation/evaluation observations excluded",
+  "dispersion": "mean +/- 1 sample standard deviation across independent training replications, ddof=1",
+  "standard_error_plotted": false,
+  "main_fit_T_train_min": 1600,
+  "full_grid_shown": true,
+  "analysis_design": {
+    "source": "analysis_spec.json",
+    "sha256": "8abbff7d5625ff06b9632320e82bfd36835a0686a8099221b7773f129ec65dde",
+    "primary_T_train_min": 1600,
+    "sensitivity_T_min": [
+      100,
+      200,
+      400,
+      800,
+      1600,
+      3200,
+      6400
+    ],
+    "reason": "User requested small training cutoffs too, after seeing the preliminary eight-replication pilot. These are secondary window comparisons; the primary cutoff and all simulated data remain frozen."
+  },
+  "rho_constant_comparison": {
+    "common_T_train_grid": [
+      1600,
+      1749,
+      1980,
+      2243,
+      2540,
+      2876,
+      3200,
+      3257,
+      3689,
+      4178,
+      4731,
+      5358,
+      6068,
+      6400,
+      6872,
+      7782,
+      8813,
+      9980,
+      11303,
+      12800
+    ],
+    "window_rule": "Intersection of actual rho grids at or above the prespecified primary cutoff",
+    "N": 600,
+    "reference_rho": 0.5,
+    "replications": 100,
+    "bootstrap_seed": 540009,
+    "bootstrap_resamples": 2000,
+    "bootstrap_pairing": "Whole trial paths resampled with the same indices across rho",
+    "positive_bootstrap_reference_fraction": 1.0,
+    "amplitude_SD_ddof": 1,
+    "percentile_reported": 95,
+    "primary_fit_unchanged": true,
+    "amplitude_intercept_fitted": false,
+    "interpretation": "Descriptive finite-window amplitudes; neither an asymptotic constant proof nor a monotone rho response is assumed"
+  },
+  "percentile_plotted": 95,
+  "percentile_interpolation": "linear",
+  "percentile_unit": "independent training replications",
+  "temporal_points_per_comparison": 46,
+  "temporal_points_reference": 54,
+  "publication_style": {
+    "pdf": "vector, embedded TrueType serif fonts",
+    "png_dpi": 300,
+    "colors": [
+      "#0072B2",
+      "#D55E00",
+      "#009E73"
+    ],
+    "mean_style": "solid",
+    "percentile_style": "colored dashed",
+    "benchmark_style": "black dashed",
+    "series_markers": {
+      "#0072B2": "o",
+      "#D55E00": "s",
+      "#009E73": "^"
+    },
+    "complexity_horizontal_SD": "at original dyadic training anchors; all vertical SD bands and mean points shown"
+  },
+  "main_reference_N": 600,
+  "main_reference_rho": 0.5,
+  "figure_stems": [
+    "01_sharpe_T_by_N",
+    "02_sharpe_T_by_rho",
+    "03_sharpe_complexity_by_N",
+    "04_complexity_T",
+    "05_complexity_lambda",
+    "06_window_sensitivity",
+    "07_numerical_fidelity",
+    "08_scaled_gap_and_evaluation"
+  ],
+  "extended_horizon_numerical_audit": {
+    "design": {
+      "N": 600,
+      "rho": 0.5,
+      "T_train": [
+        25600
+      ],
+      "trials": 2,
+      "ranks": [
+        1024,
+        2048
+      ],
+      "seed": 881019,
+      "source_hash": "84f75e5b4a91ded7f2d0cb08308a857935746a1b4d7bb6ba653d415a7ce0d76e",
+      "driver_sha256": "a0035333c8f9167719ba7b152564a9f06a970f7a8624d3d4b6ce4a0f5cf14214",
+      "reason": "The primary numerical pilot stopped before the extended confirmation endpoint.",
+      "decision": "Diagnostic only; frozen confirmation rank and all rate-fit windows remain unchanged."
+    },
+    "checks": [
+      {
+        "lambda_multiplier": 0.3,
+        "T_train": 25600,
+        "selected_rank": 1024,
+        "reference_rank": 2048,
+        "selected_C": 201.08530504743266,
+        "reference_C": 218.69514489543883,
+        "relative_C_difference": 0.08052231729435821,
+        "absolute_SR_difference": 0.000323777777610168,
+        "meets_original_value_tolerances": false
+      },
+      {
+        "lambda_multiplier": 1.0,
+        "T_train": 25600,
+        "selected_rank": 1024,
+        "reference_rank": 2048,
+        "selected_C": 120.56893296092832,
+        "reference_C": 126.74364412330425,
+        "relative_C_difference": 0.04871811288910688,
+        "absolute_SR_difference": 1.2246914684599375e-05,
+        "meets_original_value_tolerances": true
+      },
+      {
+        "lambda_multiplier": 3.0,
+        "T_train": 25600,
+        "selected_rank": 1024,
+        "reference_rank": 2048,
+        "selected_C": 73.41357842137197,
+        "reference_C": 75.66590329950897,
+        "relative_C_difference": 0.029766708384113327,
+        "absolute_SR_difference": 8.075444624111583e-05,
+        "meets_original_value_tolerances": true
+      }
+    ],
+    "all_finite": true,
+    "note": "Two paired pilot trials diagnose numerical representation error; they are excluded from all 100-trial confirmation means, SD, percentiles and rate fits."
+  },
+  "max_control_variate_SR_change": 0.001117966643386925,
+  "all_finite": true
+}
