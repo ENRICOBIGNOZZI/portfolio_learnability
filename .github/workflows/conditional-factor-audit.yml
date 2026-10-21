@@ -1,0 +1,35 @@
+name: Conditional factor algebra audit
+on:
+  push:
+    branches: [codex/conditional-factor-audit-20261021]
+    paths:
+      - research/conditional_factor_20261021/**
+      - .github/workflows/conditional-factor-audit.yml
+permissions:
+  contents: read
+jobs:
+  bounded-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      VECLIB_MAXIMUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout: research/conditional_factor_20261021
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'numpy>=2,<3' 'scipy>=1.14,<2'
+      - name: Independent algebra and twelve exact-kernel smoke fits
+        run: python research/conditional_factor_20261021/verify_dgp.py --output "$RUNNER_TEMP/conditional-factor-receipt.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: conditional-factor-receipt
+          path: ${{ runner.temp }}/conditional-factor-receipt.json
+          if-no-files-found: error
