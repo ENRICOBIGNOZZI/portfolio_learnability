@@ -1,0 +1,11 @@
+{
+  "pair": [
+    "A00",
+    "A07"
+  ],
+  "tolerance_annualized_sharpe": 0.15,
+  "reference_scenario": "missing_total_zero",
+  "selected_before_first_test": "1994-01-31 00:00:00",
+  "rule": "Maximize combined concentration and signal-alignment spread among validation-Sharpe matches; same pair for all payoff scenarios.",
+  "status": "matched"
+}

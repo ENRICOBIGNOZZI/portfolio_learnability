@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "scope": "Visual layout inspection of all four PNG figures",
+  "inspected_date": "2026-10-21",
+  "observations": "Axes, labels, legends and scenario captions readable; no clipping or overlap.",
+  "files": {
+    "figures/A_matching_and_learning.png": "7b4cc1dbb1ce43985b58ccb5b1e7328ee4951d95fbedff403d18a42875036d8c",
+    "figures/BCD_loss.png": "d86d09a6107add586a7e5ac0c30f04e1f9e85dd902df481509552efa4fbe66ed",
+    "figures/E_ablations_and_net_returns.png": "e680332a6e4e5e1b77739118c7b6f5a3ba3383edc7e526b7d2dfedc7f48c6093",
+    "figures/E_spectrum_and_incremental_value.png": "818933a53a16d762335af8a586c07b36eb9b097ec02e5e8ca15a16ea0d041ca4"
+  }
+}

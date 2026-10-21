@@ -1,0 +1,402 @@
+{
+  "L8": {
+    "kernel": "linear",
+    "input_dimension": 8,
+    "maximum_features": 512,
+    "ell": 1.0,
+    "seed": 20261021,
+    "cosine_backend": "unused",
+    "frequencies_sha256": "75594d325d485596b77a388f320a2501747a358281e55c912e42d9f0924748ff",
+    "phases_sha256": "8551f463ea5b6c144082ee6d66829a8a5ac2e114952b4e0fca628e588fb96153"
+  },
+  "G8": {
+    "kernel": "gaussian",
+    "input_dimension": 8,
+    "maximum_features": 512,
+    "ell": 1.0921840076138647,
+    "seed": 20261021,
+    "cosine_backend": "Apple Accelerate vvcos float64",
+    "frequencies_sha256": "df67aa5c60ce756328e682bfc54aa9117c9d8c5ccde4a53fa070dc4c11ab1f15",
+    "phases_sha256": "8551f463ea5b6c144082ee6d66829a8a5ac2e114952b4e0fca628e588fb96153"
+  },
+  "L16": {
+    "kernel": "linear",
+    "input_dimension": 16,
+    "maximum_features": 512,
+    "ell": 1.0,
+    "seed": 20261021,
+    "cosine_backend": "unused",
+    "frequencies_sha256": "a0383f58f4a116008f44ee9cea9abf60591f509a4e66d2b705ec478a65fe8883",
+    "phases_sha256": "8551f463ea5b6c144082ee6d66829a8a5ac2e114952b4e0fca628e588fb96153"
+  },
+  "G16": {
+    "kernel": "gaussian",
+    "input_dimension": 16,
+    "maximum_features": 512,
+    "ell": 1.5506113340429417,
+    "seed": 20261021,
+    "cosine_backend": "Apple Accelerate vvcos float64",
+    "frequencies_sha256": "9ccea18a02a114e9001d5f9b7fac42e520d994270e786ffa80681971c1023b4f",
+    "phases_sha256": "8551f463ea5b6c144082ee6d66829a8a5ac2e114952b4e0fca628e588fb96153"
+  },
+  "L32": {
+    "kernel": "linear",
+    "input_dimension": 32,
+    "maximum_features": 512,
+    "ell": 1.0,
+    "seed": 20261021,
+    "cosine_backend": "unused",
+    "frequencies_sha256": "677fe751a628ce561ecc3f15f9c31fa3bd93223d6d68012f25739a4a4c4fc9bc",
+    "phases_sha256": "8551f463ea5b6c144082ee6d66829a8a5ac2e114952b4e0fca628e588fb96153"
+  },
+  "G32": {
+    "kernel": "gaussian",
+    "input_dimension": 32,
+    "maximum_features": 512,
+    "ell": 2.167687076809444,
+    "seed": 20261021,
+    "cosine_backend": "Apple Accelerate vvcos float64",
+    "frequencies_sha256": "46d1d4037b41a64d8e5a68d9d5cc163fc6937c8b613be97834d828ecbaa84a3f",
+    "phases_sha256": "8551f463ea5b6c144082ee6d66829a8a5ac2e114952b4e0fca628e588fb96153"
+  },
+  "L64": {
+    "kernel": "linear",
+    "input_dimension": 64,
+    "maximum_features": 512,
+    "ell": 1.0,
+    "seed": 20261021,
+    "cosine_backend": "unused",
+    "frequencies_sha256": "b0e4222e0a051a1cd03f93a488912a90e99788a67fc4b7e95cab1b2f67141e98",
+    "phases_sha256": "8551f463ea5b6c144082ee6d66829a8a5ac2e114952b4e0fca628e588fb96153"
+  },
+  "G64": {
+    "kernel": "gaussian",
+    "input_dimension": 64,
+    "maximum_features": 512,
+    "ell": 3.1069111606018645,
+    "seed": 20261021,
+    "cosine_backend": "Apple Accelerate vvcos float64",
+    "frequencies_sha256": "5245c8f14a2b4131673117bddf8f5a15863a0e5cfade97be55da6e3153bd3b4a",
+    "phases_sha256": "8551f463ea5b6c144082ee6d66829a8a5ac2e114952b4e0fca628e588fb96153"
+  },
+  "L130": {
+    "kernel": "linear",
+    "input_dimension": 130,
+    "maximum_features": 512,
+    "ell": 1.0,
+    "seed": 20261021,
+    "cosine_backend": "unused",
+    "frequencies_sha256": "c4f37a0b809e0ce9d2cb34c0d7893c4f8cd3d8a33e2df806da99ab194f3c45b2",
+    "phases_sha256": "8551f463ea5b6c144082ee6d66829a8a5ac2e114952b4e0fca628e588fb96153"
+  },
+  "G130": {
+    "kernel": "gaussian",
+    "input_dimension": 130,
+    "maximum_features": 512,
+    "ell": 4.423578795765139,
+    "seed": 20261021,
+    "cosine_backend": "Apple Accelerate vvcos float64",
+    "frequencies_sha256": "0fc7706f6f2b683a95915abbc6668861a11915b44edfbbe2309403e5ee256bd1",
+    "phases_sha256": "8551f463ea5b6c144082ee6d66829a8a5ac2e114952b4e0fca628e588fb96153"
+  },
+  "A00": {
+    "kernel": "linear",
+    "input_dimension": 32,
+    "maximum_features": 512,
+    "ell": 1.0,
+    "seed": 20261021,
+    "cosine_backend": "unused",
+    "frequencies_sha256": "677fe751a628ce561ecc3f15f9c31fa3bd93223d6d68012f25739a4a4c4fc9bc",
+    "phases_sha256": "8551f463ea5b6c144082ee6d66829a8a5ac2e114952b4e0fca628e588fb96153"
+  },
+  "A01": {
+    "kernel": "linear",
+    "input_dimension": 32,
+    "maximum_features": 512,
+    "ell": 1.0,
+    "seed": 20261021,
+    "cosine_backend": "unused",
+    "frequencies_sha256": "677fe751a628ce561ecc3f15f9c31fa3bd93223d6d68012f25739a4a4c4fc9bc",
+    "phases_sha256": "8551f463ea5b6c144082ee6d66829a8a5ac2e114952b4e0fca628e588fb96153"
+  },
+  "A02": {
+    "kernel": "linear",
+    "input_dimension": 32,
+    "maximum_features": 512,
+    "ell": 1.0,
+    "seed": 20261021,
+    "cosine_backend": "unused",
+    "frequencies_sha256": "677fe751a628ce561ecc3f15f9c31fa3bd93223d6d68012f25739a4a4c4fc9bc",
+    "phases_sha256": "8551f463ea5b6c144082ee6d66829a8a5ac2e114952b4e0fca628e588fb96153"
+  },
+  "A03": {
+    "kernel": "linear",
+    "input_dimension": 32,
+    "maximum_features": 512,
+    "ell": 1.0,
+    "seed": 20261021,
+    "cosine_backend": "unused",
+    "frequencies_sha256": "677fe751a628ce561ecc3f15f9c31fa3bd93223d6d68012f25739a4a4c4fc9bc",
+    "phases_sha256": "8551f463ea5b6c144082ee6d66829a8a5ac2e114952b4e0fca628e588fb96153"
+  },
+  "A04": {
+    "kernel": "linear",
+    "input_dimension": 32,
+    "maximum_features": 512,
+    "ell": 1.0,
+    "seed": 20261021,
+    "cosine_backend": "unused",
+    "frequencies_sha256": "677fe751a628ce561ecc3f15f9c31fa3bd93223d6d68012f25739a4a4c4fc9bc",
+    "phases_sha256": "8551f463ea5b6c144082ee6d66829a8a5ac2e114952b4e0fca628e588fb96153"
+  },
+  "A05": {
+    "kernel": "linear",
+    "input_dimension": 32,
+    "maximum_features": 512,
+    "ell": 1.0,
+    "seed": 20261021,
+    "cosine_backend": "unused",
+    "frequencies_sha256": "677fe751a628ce561ecc3f15f9c31fa3bd93223d6d68012f25739a4a4c4fc9bc",
+    "phases_sha256": "8551f463ea5b6c144082ee6d66829a8a5ac2e114952b4e0fca628e588fb96153"
+  },
+  "A06": {
+    "kernel": "linear",
+    "input_dimension": 32,
+    "maximum_features": 512,
+    "ell": 1.0,
+    "seed": 20261021,
+    "cosine_backend": "unused",
+    "frequencies_sha256": "677fe751a628ce561ecc3f15f9c31fa3bd93223d6d68012f25739a4a4c4fc9bc",
+    "phases_sha256": "8551f463ea5b6c144082ee6d66829a8a5ac2e114952b4e0fca628e588fb96153"
+  },
+  "A07": {
+    "kernel": "linear",
+    "input_dimension": 32,
+    "maximum_features": 512,
+    "ell": 1.0,
+    "seed": 20261021,
+    "cosine_backend": "unused",
+    "frequencies_sha256": "677fe751a628ce561ecc3f15f9c31fa3bd93223d6d68012f25739a4a4c4fc9bc",
+    "phases_sha256": "8551f463ea5b6c144082ee6d66829a8a5ac2e114952b4e0fca628e588fb96153"
+  },
+  "A08": {
+    "kernel": "linear",
+    "input_dimension": 32,
+    "maximum_features": 512,
+    "ell": 1.0,
+    "seed": 20261021,
+    "cosine_backend": "unused",
+    "frequencies_sha256": "677fe751a628ce561ecc3f15f9c31fa3bd93223d6d68012f25739a4a4c4fc9bc",
+    "phases_sha256": "8551f463ea5b6c144082ee6d66829a8a5ac2e114952b4e0fca628e588fb96153"
+  },
+  "A09": {
+    "kernel": "linear",
+    "input_dimension": 32,
+    "maximum_features": 512,
+    "ell": 1.0,
+    "seed": 20261021,
+    "cosine_backend": "unused",
+    "frequencies_sha256": "677fe751a628ce561ecc3f15f9c31fa3bd93223d6d68012f25739a4a4c4fc9bc",
+    "phases_sha256": "8551f463ea5b6c144082ee6d66829a8a5ac2e114952b4e0fca628e588fb96153"
+  },
+  "A10": {
+    "kernel": "linear",
+    "input_dimension": 32,
+    "maximum_features": 512,
+    "ell": 1.0,
+    "seed": 20261021,
+    "cosine_backend": "unused",
+    "frequencies_sha256": "677fe751a628ce561ecc3f15f9c31fa3bd93223d6d68012f25739a4a4c4fc9bc",
+    "phases_sha256": "8551f463ea5b6c144082ee6d66829a8a5ac2e114952b4e0fca628e588fb96153"
+  },
+  "A11": {
+    "kernel": "linear",
+    "input_dimension": 32,
+    "maximum_features": 512,
+    "ell": 1.0,
+    "seed": 20261021,
+    "cosine_backend": "unused",
+    "frequencies_sha256": "677fe751a628ce561ecc3f15f9c31fa3bd93223d6d68012f25739a4a4c4fc9bc",
+    "phases_sha256": "8551f463ea5b6c144082ee6d66829a8a5ac2e114952b4e0fca628e588fb96153"
+  },
+  "A12": {
+    "kernel": "linear",
+    "input_dimension": 32,
+    "maximum_features": 512,
+    "ell": 1.0,
+    "seed": 20261021,
+    "cosine_backend": "unused",
+    "frequencies_sha256": "677fe751a628ce561ecc3f15f9c31fa3bd93223d6d68012f25739a4a4c4fc9bc",
+    "phases_sha256": "8551f463ea5b6c144082ee6d66829a8a5ac2e114952b4e0fca628e588fb96153"
+  },
+  "A13": {
+    "kernel": "linear",
+    "input_dimension": 32,
+    "maximum_features": 512,
+    "ell": 1.0,
+    "seed": 20261021,
+    "cosine_backend": "unused",
+    "frequencies_sha256": "677fe751a628ce561ecc3f15f9c31fa3bd93223d6d68012f25739a4a4c4fc9bc",
+    "phases_sha256": "8551f463ea5b6c144082ee6d66829a8a5ac2e114952b4e0fca628e588fb96153"
+  },
+  "A14": {
+    "kernel": "linear",
+    "input_dimension": 32,
+    "maximum_features": 512,
+    "ell": 1.0,
+    "seed": 20261021,
+    "cosine_backend": "unused",
+    "frequencies_sha256": "677fe751a628ce561ecc3f15f9c31fa3bd93223d6d68012f25739a4a4c4fc9bc",
+    "phases_sha256": "8551f463ea5b6c144082ee6d66829a8a5ac2e114952b4e0fca628e588fb96153"
+  },
+  "A15": {
+    "kernel": "linear",
+    "input_dimension": 32,
+    "maximum_features": 512,
+    "ell": 1.0,
+    "seed": 20261021,
+    "cosine_backend": "unused",
+    "frequencies_sha256": "677fe751a628ce561ecc3f15f9c31fa3bd93223d6d68012f25739a4a4c4fc9bc",
+    "phases_sha256": "8551f463ea5b6c144082ee6d66829a8a5ac2e114952b4e0fca628e588fb96153"
+  },
+  "A16": {
+    "kernel": "linear",
+    "input_dimension": 32,
+    "maximum_features": 512,
+    "ell": 1.0,
+    "seed": 20261021,
+    "cosine_backend": "unused",
+    "frequencies_sha256": "677fe751a628ce561ecc3f15f9c31fa3bd93223d6d68012f25739a4a4c4fc9bc",
+    "phases_sha256": "8551f463ea5b6c144082ee6d66829a8a5ac2e114952b4e0fca628e588fb96153"
+  },
+  "A17": {
+    "kernel": "linear",
+    "input_dimension": 32,
+    "maximum_features": 512,
+    "ell": 1.0,
+    "seed": 20261021,
+    "cosine_backend": "unused",
+    "frequencies_sha256": "677fe751a628ce561ecc3f15f9c31fa3bd93223d6d68012f25739a4a4c4fc9bc",
+    "phases_sha256": "8551f463ea5b6c144082ee6d66829a8a5ac2e114952b4e0fca628e588fb96153"
+  },
+  "A18": {
+    "kernel": "linear",
+    "input_dimension": 32,
+    "maximum_features": 512,
+    "ell": 1.0,
+    "seed": 20261021,
+    "cosine_backend": "unused",
+    "frequencies_sha256": "677fe751a628ce561ecc3f15f9c31fa3bd93223d6d68012f25739a4a4c4fc9bc",
+    "phases_sha256": "8551f463ea5b6c144082ee6d66829a8a5ac2e114952b4e0fca628e588fb96153"
+  },
+  "A19": {
+    "kernel": "linear",
+    "input_dimension": 32,
+    "maximum_features": 512,
+    "ell": 1.0,
+    "seed": 20261021,
+    "cosine_backend": "unused",
+    "frequencies_sha256": "677fe751a628ce561ecc3f15f9c31fa3bd93223d6d68012f25739a4a4c4fc9bc",
+    "phases_sha256": "8551f463ea5b6c144082ee6d66829a8a5ac2e114952b4e0fca628e588fb96153"
+  },
+  "A20": {
+    "kernel": "linear",
+    "input_dimension": 32,
+    "maximum_features": 512,
+    "ell": 1.0,
+    "seed": 20261021,
+    "cosine_backend": "unused",
+    "frequencies_sha256": "677fe751a628ce561ecc3f15f9c31fa3bd93223d6d68012f25739a4a4c4fc9bc",
+    "phases_sha256": "8551f463ea5b6c144082ee6d66829a8a5ac2e114952b4e0fca628e588fb96153"
+  },
+  "A21": {
+    "kernel": "linear",
+    "input_dimension": 32,
+    "maximum_features": 512,
+    "ell": 1.0,
+    "seed": 20261021,
+    "cosine_backend": "unused",
+    "frequencies_sha256": "677fe751a628ce561ecc3f15f9c31fa3bd93223d6d68012f25739a4a4c4fc9bc",
+    "phases_sha256": "8551f463ea5b6c144082ee6d66829a8a5ac2e114952b4e0fca628e588fb96153"
+  },
+  "A22": {
+    "kernel": "linear",
+    "input_dimension": 32,
+    "maximum_features": 512,
+    "ell": 1.0,
+    "seed": 20261021,
+    "cosine_backend": "unused",
+    "frequencies_sha256": "677fe751a628ce561ecc3f15f9c31fa3bd93223d6d68012f25739a4a4c4fc9bc",
+    "phases_sha256": "8551f463ea5b6c144082ee6d66829a8a5ac2e114952b4e0fca628e588fb96153"
+  },
+  "A23": {
+    "kernel": "linear",
+    "input_dimension": 32,
+    "maximum_features": 512,
+    "ell": 1.0,
+    "seed": 20261021,
+    "cosine_backend": "unused",
+    "frequencies_sha256": "677fe751a628ce561ecc3f15f9c31fa3bd93223d6d68012f25739a4a4c4fc9bc",
+    "phases_sha256": "8551f463ea5b6c144082ee6d66829a8a5ac2e114952b4e0fca628e588fb96153"
+  },
+  "drop_value": {
+    "kernel": "gaussian",
+    "input_dimension": 125,
+    "maximum_features": 512,
+    "ell": 4.334372885746242,
+    "seed": 20261021,
+    "cosine_backend": "Apple Accelerate vvcos float64",
+    "frequencies_sha256": "3e9973821534c7b7cd7c122348a4d318f5ae8911273d67635c85cea604119184",
+    "phases_sha256": "8551f463ea5b6c144082ee6d66829a8a5ac2e114952b4e0fca628e588fb96153"
+  },
+  "drop_profitability": {
+    "kernel": "gaussian",
+    "input_dimension": 126,
+    "maximum_features": 512,
+    "ell": 4.3551427910136935,
+    "seed": 20261021,
+    "cosine_backend": "Apple Accelerate vvcos float64",
+    "frequencies_sha256": "7dfdb1b60c20f817ad35fe87db80216d2c54801cce62bc86754029b586f0c41c",
+    "phases_sha256": "8551f463ea5b6c144082ee6d66829a8a5ac2e114952b4e0fca628e588fb96153"
+  },
+  "drop_momentum": {
+    "kernel": "gaussian",
+    "input_dimension": 127,
+    "maximum_features": 512,
+    "ell": 4.367052102300678,
+    "seed": 20261021,
+    "cosine_backend": "Apple Accelerate vvcos float64",
+    "frequencies_sha256": "9ca015c4d79ecb1c7ccbe67e2dab488ff4960d820d68d04a0b43e904c4515f57",
+    "phases_sha256": "8551f463ea5b6c144082ee6d66829a8a5ac2e114952b4e0fca628e588fb96153"
+  },
+  "drop_random0": {
+    "kernel": "gaussian",
+    "input_dimension": 98,
+    "maximum_features": 512,
+    "ell": 3.8432947240296134,
+    "seed": 20261021,
+    "cosine_backend": "Apple Accelerate vvcos float64",
+    "frequencies_sha256": "863c5af06f1e81af85c8f27b6139298abb3b6cadaca6983bbf39a01376d08e80",
+    "phases_sha256": "8551f463ea5b6c144082ee6d66829a8a5ac2e114952b4e0fca628e588fb96153"
+  },
+  "drop_random1": {
+    "kernel": "gaussian",
+    "input_dimension": 98,
+    "maximum_features": 512,
+    "ell": 3.8503679502181365,
+    "seed": 20261021,
+    "cosine_backend": "Apple Accelerate vvcos float64",
+    "frequencies_sha256": "9bdd95967e295e20b0757a6d6566047bda1d9add8606cb519ae5a4b9867fb6f0",
+    "phases_sha256": "8551f463ea5b6c144082ee6d66829a8a5ac2e114952b4e0fca628e588fb96153"
+  },
+  "drop_random2": {
+    "kernel": "gaussian",
+    "input_dimension": 98,
+    "maximum_features": 512,
+    "ell": 3.8557728642595586,
+    "seed": 20261021,
+    "cosine_backend": "Apple Accelerate vvcos float64",
+    "frequencies_sha256": "24a6f30f6249d9e7aa09866bb0ab6a4af2fda33cefe2f5df71e4a89c0322d638",
+    "phases_sha256": "8551f463ea5b6c144082ee6d66829a8a5ac2e114952b4e0fca628e588fb96153"
+  }
+}

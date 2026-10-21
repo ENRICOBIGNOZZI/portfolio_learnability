@@ -1,0 +1,16 @@
+{
+  "command": [
+    "python3",
+    "-m",
+    "empirical_final.real_data_verify"
+  ],
+  "exit_code": 0,
+  "stopped_reason": null,
+  "sampled_tree_peak_mib": 140.953125,
+  "limit_mib": 500.0,
+  "minimum_system_available_mib": 256.0,
+  "interval_seconds": 1.0,
+  "samples": 3,
+  "elapsed_seconds": 3.045047125000565,
+  "measurement": "Sampled RSS, not an OS high-water mark; includes descendants. Other applications are not terminated."
+}

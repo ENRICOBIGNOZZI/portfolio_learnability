@@ -1,0 +1,41 @@
+EXPLORATORY A–E EVIDENCE
+
+Exploratory JKP sensitivities; imposed missing payoffs, not identified population performance
+Every contrast is the first named policy loss minus the policy after "minus" in the CSV column name; negative favors the first named policy.
+These are descriptive comparisons, without a sampling-uncertainty or population-optimality claim.
+
+Characteristic ablations change available policies, not the underlying financial economy.
+
+Random E ablations remove 32 characteristics, and are not cardinality-matched controls for the smaller economic families.
+
+              scenario  B_full_T360_minus_T36_Q  B_N3000_minus_N100_T240_Q  C_G130_minus_L130_Q  E_neutral_market_minus_ridge_Q  E_neutral_six_minus_ridge_Q  E_PCR_selected_minus_ridge_Q
+missing_total_minus100                 -0.16476                   -0.32273            -0.020963                        -0.03176                     -0.11681                      0.048399
+    missing_total_zero                 0.083802                   0.088218             0.068273                       -0.062081                     -0.20524                       0.15339
+ missing_total_plus100                 -0.11194                   -0.35181            -0.051007                       -0.016793                    -0.076322                      0.021493
+
+Complete-period net path statuses:
+scenario                net_status
+missing_total_minus100  complete      96
+missing_total_plus100   complete      96
+missing_total_zero      complete      96
+
+Common-period status counts:
+scenario                complete_common_period
+missing_total_minus100  True                      96
+missing_total_plus100   True                      96
+missing_total_zero      True                      96
+
+A prior matching audit:
+{
+  "pair": [
+    "A00",
+    "A07"
+  ],
+  "tolerance_annualized_sharpe": 0.15,
+  "reference_scenario": "missing_total_zero",
+  "selected_before_first_test": "1994-01-31 00:00:00",
+  "rule": "Maximize combined concentration and signal-alignment spread among validation-Sharpe matches; same pair for all payoff scenarios.",
+  "status": "matched"
+}
+
+REPORT.txt contains source identification limits, chronology, accounting, and the experiment definitions.

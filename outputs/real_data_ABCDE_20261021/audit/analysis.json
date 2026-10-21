@@ -1,0 +1,18 @@
+{
+  "code_sha256": "e7df7e46f1300ce1a122ce8991c25576177563cbfc0666d0cfecd007db394153",
+  "source_execution_sha256": "773558b0d094e9f149eae46e6c058a043a9253aae7d34ec8a15764683361dd55",
+  "inputs": {
+    "summary.csv": "875119a87bdb5e7b208dfa42a1fcb0eb018fc4db593d40793e95ff6dbc039520",
+    "economic_spectrum.csv": "e09cd33c6b6f236184043d5b1a58432a3890baec65bb001769355d84fa32315a",
+    "E_incremental_directions.csv": "eb390fbdd068730686247fd28c8505b7704099b49f13fe58e91f6fc8aac88985",
+    "A_candidates.csv": "4e922a35407f232ebe0ebd574d5c8bf81951e991f4247e98249f3943609753e4"
+  },
+  "outputs": {
+    "figures/A_matching_and_learning.png": "7b4cc1dbb1ce43985b58ccb5b1e7328ee4951d95fbedff403d18a42875036d8c",
+    "figures/E_spectrum_and_incremental_value.png": "818933a53a16d762335af8a586c07b36eb9b097ec02e5e8ca15a16ea0d041ca4",
+    "figures/E_ablations_and_net_returns.png": "e680332a6e4e5e1b77739118c7b6f5a3ba3383edc7e526b7d2dfedc7f48c6093",
+    "tables/selected_comparisons.csv": "309a92c579199896afc6209dc7e82014e36e0840cbd6811e6c2274eee2212355",
+    "tables/predefined_contrasts.csv": "cc736db94e0cf5ba953d42322a0b986eb9fd02d2a2096e72e8b2b4cc8a95c8f4",
+    "EVIDENCE.txt": "82d0519e216aee926eba222cbfecb8df0d6e4e35a90f291c002081597f41bb5b"
+  }
+}

@@ -1,0 +1,30 @@
+FIVE REAL-DATA JKP EXPERIMENTS — EXPLORATORY RESULTS
+Common formation test: 1994–2024; payoffs February 1994–January 2025.
+Gaussian approximation: 512 fixed random Fourier features; not the legacy 10,000-feature specification.
+All stock observations are real JKP observations. No simulation or old fitted policy is used.
+
+Identification: the source contains 7,489 unresolved subsequent returns. Formation ranks and N include these stocks.
+Three separate imposed TOTAL-return scenarios (-100%, 0%, +100%) are fitted and evaluated. These are sensitivity assumptions,
+not recovered data, confidence bounds, or a certified real-time trading record. No scenario is promoted to a primary estimate.
+The dictionary and characteristic snapshot are retrospective; historical data vintages are not certified.
+
+A: 24 fixed random groups of 32 characteristics; compare prior-validation Sharpe within 0.15, then maximize spectral spread.
+Frozen matched pair: ('A00', 'A07'). Matching is observational, population Sharpe equivalence is not established.
+B: nested stable identifier samples at N=100,500,1000,3000,all; T=36,60,120,240,360. All deploy on the full formation universe.
+Monthly actual N is min(requested N, available stocks), explicitly reported in universe.csv.
+C: nested fixed subsets of 8,16,32,64,130 characteristics; affine linear and Gaussian; past-only lengthscales and penalty tuning.
+D: exact effective-complexity targets versus T, plus validation-selected C. Infeasible inner-training complexities are reported, not capped.
+E: economic-family and random ablations; ridge versus PCR; market and six-factor position neutrality using trailing 60 observed months.
+New-listing exposures use a fixed market-beta-one / other-beta-zero prior (12 standardized observations), without excluding securities.
+PCR directions use the economic managed-return second-moment operator. Direction increments are measured by subsequent loss.
+
+T includes the final 12 chronological validation months; selected parameters are refitted on all T months.
+January-close decisions can use December-formation payoffs realized in January, before the first February test payoff.
+A single scale targets pretest linear median gross 1. It is frozen across policies and payoff scenarios.
+Net Sharpe assumes 10 bps per traded dollar and 30 annual bps on shorts; illustrative costs, not observed execution data.
+Costs use exact self-financing accounting, drifted positions, and liquidation of departed identifiers at the next formation mark.
+A nonpositive NAV or noncontractive execution cost invalidates the entire net path; no post-insolvency returns enter net Sharpe.
+Rows without the complete common period are not ranked. OOS surfaces are descriptive; their maxima do not select policies.
+
+See tables/summary.csv for every experiment under all three payoff assumptions; figures show only the labelled zero-total sensitivity.
+See audit/ for source hashes, protocol, common-scale calibration, temporal checks and separately generated memory logs.

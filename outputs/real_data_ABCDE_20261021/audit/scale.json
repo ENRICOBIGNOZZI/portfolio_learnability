@@ -1,0 +1,20 @@
+{
+  "scale": 0.01524253611642653,
+  "target_median_gross": 1.0,
+  "calibration_dates": [
+    "1993-01-31 00:00:00",
+    "1993-02-28 00:00:00",
+    "1993-03-31 00:00:00",
+    "1993-04-30 00:00:00",
+    "1993-05-31 00:00:00",
+    "1993-06-30 00:00:00",
+    "1993-07-31 00:00:00",
+    "1993-08-31 00:00:00",
+    "1993-09-30 00:00:00",
+    "1993-10-31 00:00:00",
+    "1993-11-30 00:00:00",
+    "1993-12-31 00:00:00"
+  ],
+  "scenario": "missing_total_zero",
+  "rule": "Common affine-linear scale, calibrated on the last 12 pretest months; frozen for every experiment and payoff scenario."
+}

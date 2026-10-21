@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "code_sha256": "62462410f134f575fbc3b32be68cfee237a97fa6eae283a004dbeec1d7eb1ac9",
+  "monthly_policy_observations": 107136,
+  "annual_policy_fits": 8928,
+  "policy_scenario_paths": 288,
+  "common_test_months": 372,
+  "formation_stock_months": 2504402,
+  "unresolved_payoffs": 7489,
+  "identified_performance": false,
+  "checks": [
+    "source and artifact identities",
+    "chronology",
+    "stock-versus-managed payoffs (main execution)",
+    "full common-period calendars",
+    "response-one loss",
+    "common scale",
+    "independent net return accounting",
+    "cost equals rate times turnover",
+    "identical baseline policies across B/C/E",
+    "unknown-payoff exposure",
+    "infeasible/invalid paths not ranked",
+    "direction incremental loss identity",
+    "historical matching tolerance"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "tests_passed": 9,
+  "pytest_report": "9 passed in 44.61s",
+  "command": "PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python3 empirical_final/memory_guard.py --out tmp/real_data_tests_final --limit-mib 500 -- python3 -m pytest -q -p no:cacheprovider tests/test_real_data_study.py",
+  "code_sha256": {
+    "tests/test_real_data_study.py": "5aae5cbbf15416b1b5e0e3bc9063e3d8df070deeeca4f000e0cca660e5460714",
+    "empirical_final/real_data_core.py": "f1769346daf28ec4b056e5f7f387aa5c73889f6c2c9bf20bdad97a02c7b27e1b",
+    "empirical_final/memory_guard.py": "379020981f71a40cd00f5297ca9e70b40b7caf5fc22d3b18986684876c7167fa"
+  },
+  "scope": "Numerical filters, chronology, historical matching, formation sampling, unknown payoffs, neutrality, and memory-guard failure/limit behavior; fixtures are not empirical evidence."
+}

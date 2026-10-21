@@ -1,4 +1,25 @@
-# Portfolio learnability: canonical simulations and empirical diagnostics
+# Portfolio learnability: real-data empirical experiments
+
+## New real-data A–E study
+
+The new exploratory empirical design uses only real JKP stock observations:
+historically matched characteristic groups (A), training stocks versus history
+(B), nested linear/Gaussian characteristic sets (C), the history/complexity OOS
+surface (D), and economic-spectrum ablations, PCR, and past-estimated factor
+neutralization (E). All experiments share 1994–2024 formation test dates and
+chronological tuning. No simulation or historical fitted-policy cache enters
+this study. Earlier sections below document separate historical research runs.
+
+See [the protocol and memory-bounded reproduction commands](empirical_final/REAL_DATA_EXPERIMENTS.md),
+[the report](outputs/real_data_ABCDE_20261021/REPORT.txt),
+[the predefined comparisons](outputs/real_data_ABCDE_20261021/EVIDENCE.txt), and
+[all three payoff-sensitivity tables](outputs/real_data_ABCDE_20261021/tables/summary.csv).
+The audited formation universe retains 7,489 unresolved subsequent payoffs;
+the new results explicitly compare missing-total-return assumptions of −100%,
+0%, and +100%. These are exploratory sensitivities, not recovered payoffs or
+identified investment performance. The Gaussian approximation uses 512 fixed
+RFF for this first run. A one-process supervisor samples memory and stops at
+600 MiB RSS or sustained low system headroom.
 
 ## Economic investment strategies in the spectral groups
 

@@ -1,0 +1,20 @@
+{
+  "command": [
+    "python3",
+    "-m",
+    "pytest",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "tests/test_real_data_study.py"
+  ],
+  "exit_code": 0,
+  "stopped_reason": null,
+  "sampled_tree_peak_mib": 104.5625,
+  "limit_mib": 500.0,
+  "minimum_system_available_mib": 256.0,
+  "interval_seconds": 1.0,
+  "samples": 47,
+  "elapsed_seconds": 47.837716416004696,
+  "measurement": "Sampled RSS, not an OS high-water mark; includes descendants. Other applications are not terminated."
+}
