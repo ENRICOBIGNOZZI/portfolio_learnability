@@ -81,7 +81,7 @@ python3 -m simulations.paper_density_report --source simulations/outputs/paper_d
 ```
 
 Il report verifica dati, ancoraggi, quattro rate e intervalli numerici di
-C, poi genera la figura e la didascalia LaTeX con la finestra fissata.
+C, poi genera la figura, la tabella e la didascalia LaTeX con la finestra fissata.
 La produzione del PDF richiede successivamente rendering e revisione
 visiva; lo stato distingue questa revisione dai controlli numerici.
 Checkpoint, log e scratch rimangono locali. Si pubblicheranno dati, fit,

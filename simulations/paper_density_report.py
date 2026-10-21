@@ -60,12 +60,29 @@ def build(source=None,tables_only=False):
     choice.update(T_train_max=max(actual),T_train_min=cutoff,
                   spectrum_T_train=int(spectrum.T_train.unique().item()),
                   paper_training_points=len(actual),window_reselected_after_densification=False)
+    # Update descriptive numbers for the denser grid without selecting a new window.
+    errors=[]
+    for m in TARGETS:
+        choice[m+'_exponent']=fits[m]['exponent']
+        choice[m+'_R_squared']=fits[m]['r_squared']
+        errors.append(abs(fits[m]['exponent']-TARGETS[m])/abs(TARGETS[m]))
+    choice.update(max_relative_exponent_error=float(max(errors)),
+                  mean_relative_exponent_error=float(np.mean(errors)),
+                  minimum_fixed_power_R_squared=float(min(f['r_squared'] for f in fits.values())))
     rates=[]
     for m,d in panels.items():
         d.to_csv(out/f'paper_{m}_curve.csv',index=False)
         rates.append(dict(metric=m,theoretical_exponent=TARGETS[m],exponent=fits[m]['exponent'],
                           fixed_power_R_squared=fits[m]['r_squared'],fit_points=fits[m]['fit_points']))
     pd.DataFrame(rates).to_csv(out/'paper_rates.csv',index=False)
+    labels={'SR_T':r'Sharpe gap vs. $T_{\mathrm{train}}$','C_T':r'$C$ vs. $T_{\mathrm{train}}$',
+            'SR_C':r'Sharpe gap vs. $C$','C_lambda':r'$C$ vs. $\lambda$'}
+    lines=[r'\begin{tabular}{lrrr}',r'\toprule',
+           r'Quantity & Theory & Simulation & Fixed-power $R^2$ \\',r'\midrule']
+    for m,target in METRICS:
+        lines.append(f'{labels[m]} & {target:+.4f} & {fits[m]["exponent"]:+.4f} & {fits[m]["r_squared"]:.4f} '+r'\\')
+    lines.extend([r'\bottomrule',r'\end{tabular}'])
+    (out/'paper_table.tex').write_text('\n'.join(lines)+'\n')
     analysis_config=dict(config,precision_ranks=[rank])
     enclosures=complexity_slope_enclosures(analysis_config,frame,cert,spectrum)
     validate_complexity_slope_enclosures(config,frame,cert,spectrum,enclosures)
