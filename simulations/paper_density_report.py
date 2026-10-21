@@ -29,7 +29,7 @@ def verify_anchors(frame,previous):
 
 
 def build(source=None,tables_only=False):
-    out=Path(source) if source else ROOT/'outputs/paper_density_v1'
+    out=Path(source) if source else ROOT/'outputs/paper_density_v2'
     plan=json.loads((out/'plan.json').read_text());config=json.loads((out/'config.json').read_text())
     previous=ROOT/'outputs/asymptotic_precision_v4'
     frozen=ROOT/'outputs/paper_selection_v1/selection.json'
@@ -40,6 +40,10 @@ def build(source=None,tables_only=False):
     assert config['precision_frozen_C0']==choice['C0']
     assert config['fidelity_seed']==plan['original_seed']
     assert config['trials']==choice['replications']==8
+    backend_audit=None
+    if (out/'training_backend.json').exists():
+        from .paper_density_compute import validate_backend
+        backend_audit=validate_backend(out)
     rank_audit=validate(out,rank=rank)
     prefix=f'precision_nystrom{rank}_'
     frame=pd.read_csv(out/(prefix+'trials.csv'))
@@ -66,7 +70,7 @@ def build(source=None,tables_only=False):
     enclosures=complexity_slope_enclosures(analysis_config,frame,cert,spectrum)
     validate_complexity_slope_enclosures(config,frame,cert,spectrum,enclosures)
     enclosures.to_csv(out/'complexity_slope_enclosures.csv',index=False)
-    result=dict(passed=True,numeric_rank_validation=rank_audit['passed'],
+    result=dict(passed=True,numeric_rank_validation=rank_audit['passed'],backend_validation=backend_audit,
         dense_training_grid_verified=True,actual_paper_training_points=len(actual),
         replications=8,same_eight_training_streams=True,anchors=anchors,
         frozen_paper_window=[cutoff,max(actual)],window_reselected_after_densification=False,
@@ -97,9 +101,11 @@ The primary analysis from 1600 and the full sensitivity results remain available
 \label{fig:simulation-dense-precision}
 \end{figure}
 ''')
-        (out/'paper_figure.tex').write_text(caption)
+        (out/'paper_figure.tex').write_text(caption.replace('outputs/paper_density_v1/',f'outputs/{out.name}/'))
     source_files=[out/'plan.json',out/'config.json',frozen,previous/(prefix+'trials.csv'),
                   *[out/(prefix+s) for s in ['trials.csv','spectrum.csv','certificates.csv','fits.json','completed.json']]]
+    if backend_audit is not None:
+        source_files.extend(out/name for name in ['training_backend.json','prior_config.json','prior_eigenvalues.csv','prior_trace_anchors.csv','prior_provenance.json'])
     result['inputs_sha256']={f'{f.parent.name}/{f.name}':hashlib.sha256(f.read_bytes()).hexdigest() for f in source_files}
     (out/'paper_validation.json').write_text(json.dumps(result,indent=2)+'\n')
     print(pd.DataFrame(rates).to_string(index=False))

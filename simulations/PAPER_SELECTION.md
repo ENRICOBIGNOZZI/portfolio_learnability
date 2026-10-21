@@ -1,6 +1,8 @@
 # Figure illustrative per il paper: scelta a posteriori
 
-La figura piu vicina congiuntamente ai quattro benchmark usa **N=600,
+Dopo questa selezione e stata avviata la [densificazione a 26 punti reali](PAPER_DENSITY.md), mantenendo rango8192 e finestra800. Il contenuto seguente documenta la selezione iniziale su sei punti.
+
+La specifica selezionata congiuntamente ai quattro benchmark usa **N=600,
 rho=0.5, rango 8192 e T_train da 800 a 25600**, sulle otto repliche del
 controllo di precisione. Le 100 repliche del confronto separato usano
 **N=1200, rho=0.5, rango 1024 e T_train da 200 a 12800**.

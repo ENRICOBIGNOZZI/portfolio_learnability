@@ -1,0 +1,23 @@
+{
+  "source_dataset": "asymptotic_precision_v4",
+  "rank": 8192,
+  "trials": 8,
+  "T_train": 25600,
+  "completed_source_hash": "a0af1225830946e76ae61b8393bb733d5224ae360ad9e4730511f48163c46821",
+  "completed_manifest_sha256": "f92031001049ae9da8d1f50630fed3b2b2cf9b3b27af8983f2b4666e6e26dd3d",
+  "source_checkpoints_sha256": {
+    "precision_nystrom8192_trial000.npz": "bdfe028eed3095f44eb8d8d91a8edb1f9212e4c12002ac7e2cf630bf01f02803",
+    "precision_nystrom8192_trial001.npz": "32ceaa2e9699cdcc8154696d54432df2cbdf0fd01eae546eb286277f38fa2276",
+    "precision_nystrom8192_trial002.npz": "32871fff24e3e77eb59a5e5d8992aa3a73bf39a69bd647ef5d06a4925f6be5fe",
+    "precision_nystrom8192_trial003.npz": "d430032e84aacbb7f27f7930b0bd6c1ff07182fbd00103fc5a648f114da2358a",
+    "precision_nystrom8192_trial004.npz": "5d1ff2e409c64e7cf8b51f1703a9463e19ecbb338b6977f26c985477042c19b3",
+    "precision_nystrom8192_trial005.npz": "af83794d0ea5b48e151c247b44a986f499ac68376cdb259a37149b49121dddef",
+    "precision_nystrom8192_trial006.npz": "85bb01e7cf54c1127b8ef5ae3d29ebdc55d8d347fcc2da9423942f731426d693",
+    "precision_nystrom8192_trial007.npz": "de84f78ce79008f92c0aa892cabe595696b9fc56697c5aca62bc0ae4b9c668ca"
+  },
+  "inputs_sha256": {
+    "prior_config.json": "38ce45bc15d4fafb90b9e6be7f1713801e1c8df8d7eb4ddfead875c3aa045827",
+    "prior_eigenvalues.csv": "979e422bfbf3fa3923cfc8997618b98a99ee0f1cdd419c391aecfe8f58c6d5e4",
+    "prior_trace_anchors.csv": "c5de859fa8fa73038522149814d062e4af40352374b95acff8077e00db4e4e5b"
+  }
+}

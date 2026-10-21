@@ -1,0 +1,11 @@
+{
+  "status": "superseded_before_any_results",
+  "stopped_utc": "2026-10-21T09:01:05.463805+00:00",
+  "reason": "Switch to algebraically equivalent exact Cholesky ridge and inverse-trace complexity after independent benchmark and seven equivalence tests; keep grid/window/data unchanged.",
+  "original_compute_signature": "381e922671dfc488633cc78e3fd6720ccd6649916b826b0ea89a8551cb3e0107",
+  "complete_checkpoints": [],
+  "removed_own_incomplete_scratch": [
+    "managed_nystrom8192_trial000.dat"
+  ],
+  "replacement_output": "paper_density_v2"
+}
