@@ -240,8 +240,11 @@ def validate(out):
                 coherence_comparison=improvement,
                 extended_endpoint_representation_check=tail_summary,
                 note='Numerical validity and rate coherence are reported separately; failing to match a benchmark is not relabeled a successful fit.')
+    # A running wrapper may append its audit output to run.log after this call.
+    # Hash durable scientific/report artifacts; live execution state is mutable.
     files=[p for p in out.rglob('*') if p.is_file() and 'cache' not in p.parts
-           and p.name not in ['validation.json','visual_review.json']]
+           and p.suffix in ['.json','.csv','.pdf','.png','.html']
+           and p.name not in ['validation.json','visual_review.json','execution.json']]
     report['files_sha256']={str(p.relative_to(out)):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(files)}
     (out/'validation.json').write_text(json.dumps(report,indent=2)+'\n')
     print(json.dumps({k:v for k,v in report.items() if k!='files_sha256'},indent=2))
