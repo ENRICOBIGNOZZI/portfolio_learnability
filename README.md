@@ -43,6 +43,7 @@ La branch `empirics-montecarlo-20261019` conserva il codice e gli output empiric
 - [Protocollo asintotico e griglia di 46/54 T_train](simulations/ASYMPTOTIC_PROTOCOL.md)
 - [Pilot numerico indipendente: fit su 8 repliche, distinti dalla conferma](simulations/outputs/asymptotic_v2/fidelity_rate_diagnostics.json)
 - [Pilot di precisione completato: rango 8192 certificato, confronto e figure](simulations/PRECISION_PROTOCOL.md#confronto-completato-4096-e-8192)
+- [Figure selezionate per il paper: scelta esplorativa con una finestra comune](simulations/PAPER_SELECTION.md)
 
 La conferma ha completato 500 repliche, 100 per scenario, e arriva a
 T_train=12800 e 25600. Il pilot Nyström1024 da otto repliche aveva pendenza

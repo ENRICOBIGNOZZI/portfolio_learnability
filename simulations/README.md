@@ -211,6 +211,12 @@ La validazione numerica e la revisione visiva delle tre pagine sono complete.
 Le vecchie pendenze Nyström1024 usavano una finestra e uno spettro diversi;
 il protocollo distingue quel confronto dal confronto appaiato 4096--8192.
 
+Le [figure selezionate per il paper](PAPER_SELECTION.md) sono separate dalle
+analisi primarie: una scelta esplorativa a posteriori usa il rango certificato
+8192 e il tratto 800--25600, con pendenze -0.6706, +0.3316, -0.4867 e
+-2.0209. E disponibile anche il confronto a 100 repliche. PDF, didascalie
+LaTeX, criteri e graduatoria completa sono in `outputs/paper_selection_v1/`.
+
 ## Output del primo run completo: T_train da 100 a 1600
 
 - `outputs/new_montecarlo/report.html`: figure, metodo, risultati e limiti dei fit.
