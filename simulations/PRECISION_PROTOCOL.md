@@ -152,6 +152,24 @@ Per gap(C) ricampiona insieme entrambe le coordinate. Il risultato distingue
 esplicitamente dati corretti, soglia numerica superata e studio completo;
 nessun report grafico viene dichiarato verificato da questo controllo parziale.
 
+Anche gli intervalli numerici del rango 4096 sono calcolati su tutte le
+otto repliche, mantenendo tutti i tagli. Nel primario da 1600 a 25600:
+
+| Pendenza | Fit Nystrom4096 | Minimo kernel empirico completo | Massimo kernel empirico completo | Benchmark compreso |
+|---|---:|---:|---:|---|
+| C(T) | +0.325929 | +0.321395 | +0.335833 | Si: +1/3 |
+| C(lambda) | -0.480170 | -0.497703 | -0.470953 | No: -1/2 |
+
+La seconda riga esclude l'uguaglianza esatta del fit finito del kernel
+empirico completo con -1/2 su quei campioni e quella finestra; il benchmark
+asintotico resta tale. La prima riga e compatibile con +1/3 ma non determina
+la pendenza effettiva del kernel completo. Sono limiti numerici condizionati,
+distinti dai bootstrap e dalla complessita di popolazione.
+I 14 intervalli sono in `precision_nystrom4096_complexity_slope_enclosures.csv`,
+con manifest e controllo indipendente in
+`precision_nystrom4096_slope_enclosures_validation.json`. La selezione del
+rango e il completamento del confronto con 8192 restano separati.
+
 ## Ripresa quando varia lo spazio libero
 
 Il controllo preventivo del disco ha interrotto un tentativo a rango 4096
@@ -167,6 +185,12 @@ policy del rango sono gia presenti, servono soltanto valutazione ed esportazione
 Si riprovano esclusivamente le interruzioni esplicite per margine di disco
 o ENOSPC; gli altri errori fermano il tentativo. Le esecuzioni precedenti
 restano in `cache/execution_history/`, senza modificare dati o selezionare semi.
+
+Anche il rango 8192 ha incontrato il controllo di spazio prima della quarta
+replica, dopo tre checkpoint completi e verificati. Il coordinatore ha
+atteso il margine richiesto e ha ripreso automaticamente dai tre checkpoint,
+con gli stessi semi e codice scientifico. Non e stato necessario cancellare
+dati o cambiare la dimensione dello studio.
 
 Per contenere il picco di memoria, il rango maggiore attende il completamento
 di tutte le celle della conferma. Poi il report e il validatore vengono eseguiti

@@ -204,6 +204,12 @@ Il report finale di precisione racchiudera inoltre le pendenze C(T) e C(lambda)
 del kernel empirico completo usando i certificati puntuali. Questi limiti
 numerici, distinti dai bootstrap, aiutano a capire se lo scarto residuo
 puo dipendere dall'approssimazione del kernel sulla finestra osservata.
+Per il rango 4096 completo sono gia pubblicati i
+[14 intervalli numerici delle pendenze](outputs/asymptotic_precision_v4/precision_nystrom4096_complexity_slope_enclosures.csv),
+con audit indipendente. Nel primario, C(T) del kernel empirico completo
+ha pendenza compresa fra +0.321395 e +0.335833; C(lambda) fra -0.497703
+e -0.470953. Quest'ultimo intervallo esclude il valore esatto -0.5 per
+quel fit finito, senza contraddire il benchmark asintotico.
 
 ## Output del primo run completo: T_train da 100 a 1600
 
